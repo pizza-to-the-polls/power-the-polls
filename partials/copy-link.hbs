@@ -1,0 +1,3 @@
+<a href="#" title="Post on Facebook" onclick="copyText($(this), 'https://{{ settings.site_url }}'); gtag('event', 'link-copy', {'event_category' : 'social_share','event_label' : '{{ placement }}{{^placement}}Default{{/placement}}'}); return false;" target="_blank" class="{{ class }}" rel="noopener noreferrer">
+  {{> copy.svg }}Copy Link
+</a>

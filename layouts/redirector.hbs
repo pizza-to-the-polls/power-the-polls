@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  {{> header }}
+
+  {{> scripts redirector=true }}
+
+</head>
+<body class="body">
+
+
+  <main class="main" style="display: none">
+
+    {{> nav }}
+
+    <article class="body__article">
+
+    <img alt="Power the Polls logo." class="logo--homepage" src="/images/logo.svg">
+
+    <h2>We'll be in touch!</h2>
+
+    <hr>
+
+    <div class="u_pre-signup u_article state__fallback" style="display: none">
+      <p>
+        Unfortunately it doesn't look like <span class="state__replace">your local election jurisdiction</span> is signing up poll workers at this time.
+      </p>
+      <p>
+        We are still collecting infromation compiling a list of locations that accept poll workers from other jurisdictions and will be in touch with other options when we're closer to the election.
+      </p>
+    </div>
+
+    <div class="u_pre-signup u_article state__partner" style="display: none">
+      <p>
+        You'll hear from a partner election official or nonprofit soon about how you can help everyone in <span class="state__replace">your state</span> vote.
+      </p>
+    </div>
+
+    </article>
+  </main>
+
+  {{> footer }}
+
+</body>
+</html>

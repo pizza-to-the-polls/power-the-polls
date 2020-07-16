@@ -1,0 +1,556 @@
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+
+/* COLORS */
+
+$yellow: #FEE700;
+$black: #000;
+$gray-light: #CCCCD0;
+$blue: #2A1B50;
+
+$color-selection: $yellow;
+$color-link-text: $blue;
+
+/* FONTS */
+
+$font-primary: 'Work Sans', sans-serif;
+$font-secondary: 'Oswald', sans-serif;
+
+/* Font sizes */
+$f-1: 0.8rem;
+$f0: 0.9rem;
+$f1: 1rem;
+$f2: 1.25rem;
+$f3: 1.5rem;
+$f4: 2rem;
+$f5: 2.6rem;
+$f6: 4rem;
+
+/* Padding */
+$p0: 4px;
+$p1: 8px;
+$p2: 12px;
+$p3: 16px;
+$p4: 24px;
+$p5: 36px;
+$p6: 64px;
+$p7: 128px;
+
+/* STRUCTURAL */
+
+$max-width: 420px;
+
+/* ==========================================================================
+   Custom Styles
+   ========================================================================== */
+
+/* GLOBAL - unscoped and tag-scoped selectors */
+
+a {
+  color: inherit;
+}
+
+html {
+  font-family: $font-primary;
+  color: #fff;
+  background: $black;
+}
+
+h2 {
+  color: $yellow;
+  font-family: $font-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: $f4;
+  line-height: 1;
+  font-weight: 400;
+  margin: $p4 0;
+}
+
+h3 {
+  font-size: $f2;
+  font-family: $font-secondary;
+  color: $yellow;
+  text-transform: uppercase;
+  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+form {
+  max-width: 30ch;
+  font-size: $f1;
+  padding: $p3 0;
+  font-family: $font-primary;
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0;
+
+  input,
+  select {
+    width: 100%;
+    font: inherit;
+    border: 1px solid darken($blue, 5);
+    padding: $p1 $p2;
+    display: block;
+
+    &:disabled {
+      color: #fff;
+    }
+  }
+
+  select {
+    padding: $p2;
+  }
+
+  label {
+    pointer-events: all !important; /* Important for ActionKit */
+    margin-bottom: $p2;
+    display: block;
+    font-size: $f0;
+  }
+
+  .label--checkbox {
+    display: flex;
+    align-items: center;
+
+    &:first-of-type {
+      margin-top: $p4;
+    }
+
+    input {
+      transform: scale(1.5);
+      flex: 0 1 $p4;
+      margin-right: $p1;
+      z-index: -1;
+    }
+  }
+}
+
+p.show-recruit,
+p.show-volunteer {
+  padding: $p1 0 $p3;
+}
+
+.footer {
+  background: $black;
+  color: $gray-light;
+  padding: $p5;
+  font-size: $f-1;
+
+  &__logo {
+    width: 80px;
+  }
+}
+
+article {
+  font-size: $f0;
+  color: $gray-light;
+}
+
+hr {
+  border: 0;
+  background: url('/images/hr-bg.svg') no-repeat left center / 200px;
+  height: $p4;
+}
+
+
+/* BLOCK__ELEMENT--MODIFIERS */
+
+.menu {
+  display: none;
+
+  &--active {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+
+  &__ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: $font-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin-bottom: $p4;
+
+    a {
+      font-size: $f0;
+      display: block;
+      color: $yellow;
+      text-decoration: none;
+      padding: $p1 0;
+      line-height: 1;
+
+      &:hover,
+      &:active {
+        color: #fff;
+      }
+    }
+
+  }
+
+  &__social {
+
+    margin: $p4 0 0;
+
+    & ~ & {
+      margin: 0;
+    }
+
+    a {
+      padding: $p0 0;
+      font-family: $font-primary;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: $f-1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        background: #fff;
+        width: $p5;
+        height: $p5;
+        z-index: 1;
+        display: block;
+        border-radius: $p5;
+      }
+
+      &:hover,
+      &:active {
+        color: $yellow;
+
+        &::before {
+          background: $yellow;
+        }
+      }
+
+      svg {
+        z-index: 2;
+        width: $p5;
+        height: $p5;
+        padding: $p1;
+        margin-right: $p1;
+        position: relative;
+
+        path {
+          fill: #000;
+        }
+      }
+    }
+
+  }
+
+}
+
+
+.logo {
+  &--sidebar {
+    display: none;
+  }
+
+  &--homepage {
+    margin-bottom: $p6;
+  }
+}
+
+.sidebar {
+  z-index: 2;
+  width: $p6;
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 100%;
+
+  &__logo {
+    position: sticky;
+    z-index: 0;
+    padding: $p2;
+    margin: $p6 0 $p5;
+
+    &--active {
+      margin-top: 0;
+    }
+  }
+}
+
+.body__article {
+  margin-left: $p6;
+  margin-top: -144px;
+  padding: $p5 $p5 $p5 $p1;
+}
+
+.site-name {
+  margin: 0 auto;
+  padding: $p3;
+  max-width: $max-width;
+}
+
+ul.partner-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: $p4;
+  margin-left: -$p3;
+  margin-right: -$p3;
+  padding: $p3;
+  background: #fff;
+
+  li {
+    align-self: center;
+    padding: $p3;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.4);
+    }
+
+    img {
+      width: 100%;
+      max-width: 100px;
+      max-height: 150px;
+    }
+  }
+}
+
+.button {
+  display: block;
+  width: 100%;
+  margin: $p5 0 0;
+  text-align: center;
+  border: 0;
+  background: $yellow;
+  color: $black;
+  font-family: $font-secondary;
+  text-transform: uppercase;
+  padding: $p3;
+  letter-spacing: 0.1em;
+  font-size: $f1;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover,
+  &:active {
+    background: lighten($yellow,20);
+  }
+
+  &[disabled] {
+    background: #999;
+    cursor: not-allowed;
+    position: relative;
+    z-index: -1;
+
+    &:hover,
+    &:focus,
+    &:active {
+      &::after {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: #999;
+        text-transform: none;
+        letter-spacing: 0;
+        font-family: $font-primary;
+        content: "Please pick a way to help";
+      }
+    }
+  }
+
+  &--post-action {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: $f3;
+    letter-spacing: 0.02em;
+
+    svg {
+      width: 48px;
+      height: 48px;
+      margin-right: $p2;
+
+      path {
+        fill: $black;
+      }
+    }
+  }
+
+  &--nav {
+    color: $yellow;
+    background: $black;
+    padding: 0;
+    margin: 0;
+    top: $p6;
+    font-size: $f2;
+    height: $p6;
+    padding: 0 0 $p5;
+    position: fixed;
+    width: $p6;
+    z-index: 3;
+
+    &:hover,
+    &:active {
+      color: #fff;
+      background: $black;
+    }
+  }
+}
+
+.disclaimer {
+  margin-top: $p4;
+  color: $gray-light;
+  font-size: $f-1;
+}
+
+.body--404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: $f5;
+    margin-bottom: $p3;
+  }
+}
+
+.note {
+  border: 1px solid $yellow;
+  padding: $p4;
+
+  strong {
+    background: $yellow;
+    color: $black;
+  }
+
+  > * + * {
+    margin-top: 1em;
+  }
+}
+
+/* U_UTILITIES */
+
+.u_post-signup {
+  display: none;
+
+  .body--submitted & {
+    display: block;
+    padding-top: $p5;
+  }
+}
+.body--submitted .u_pre-signup {
+  display: none;
+}
+
+/* Smarty Streets */
+
+#ui-id-1 {
+  width: 100% !important;
+}
+
+/* ActionKit */
+
+.ak-err {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    color: rgba(#fff, 0.75);
+    margin-top: -$p1;
+    padding: 0 0 $p4;
+    font-size: $f-1;
+  }
+}
+
+/* ==========================================================================
+   Media Queries for Responsive Design.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    display: flex;
+    justify-content: center;
+  }
+
+  .body__article {
+    margin-top: 0;
+    max-width: 55ch;
+  }
+
+  h2 {
+    font-size: $f6;
+    margin-top: $p7;
+  }
+
+  .logo--homepage {
+    display: none;
+  }
+
+  .logo--sidebar {
+    display: block;
+    position: fixed;
+    width: 180px;
+    top: $p5;
+  }
+
+  .footer {
+    text-align: center;
+    margin: 0 auto;
+
+    &__logo {
+      margin: 0 auto;
+    }
+  }
+
+  .menu {
+    width: 200px;
+    display: block;
+    padding-top: $p6;
+    padding-left: $p3;
+    margin-top: $p6;
+
+    &--active {
+      position: static;
+      top: auto;
+      left: auto;
+      height: auto;
+      width: 180px;
+      background: transparent;
+    }
+
+    &__ul {
+      padding-top: $p5;
+      position: fixed;
+      z-index: 2;
+      width: 180px;
+      padding-left: 64px; /* magic number based on width of lightning bolt in logo */
+      height: auto;
+      display: block;
+    }
+
+  }
+
+}
