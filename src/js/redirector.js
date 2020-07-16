@@ -25,16 +25,23 @@
     }
 
     if( found ) {
-      document.location = "https://www.workelections.com/j/" + [
+      var path = "/j/" + [
         found[1],
         found[0].replace(/\s/g, '-')
       ].join('/')
+
     } else {
-      document.location = "https://www.workelections.com/states/" + [
+      var path = "/states/" + [
         state.id,
         state.name
       ].join('/')
     }
+
+    document.location = "https://www.workelections.com" + path
+
+    gtag('event', 'signup_link',
+         { event_category: 'signup_link_clicked', event_label: 'redirect', value: path });
+    fbq('track', 'SignUpLinkClicked');
   } else {
     var fallbacks = {
       OR: 'Oregon',
@@ -45,17 +52,28 @@
       ME: 'Maine',
       MI: 'Michigan',
     }
+
+
     $(document).ready(function() {
       var state_name = false
+      var fallback_type = null;
 
       if( fallbacks[abrieve] ) {
         $('.state__fallback').show()
+        fallback_type = 'fallback_state'
         state_name =  fallbacks[abrieve]
       } else {
         $('.state__partner').show()
+        fallback_type = 'partner_state'
         state_name =  partner_states[abrieve]
       }
-      if( state_name ) $('.state__replace').text(state_name)
+      if( state_name ) {
+        $('.state__replace').text(state_name)
+
+        gtag('event', 'signup_link',
+             { event_category: 'signup_link_clicked', event_label: fallback_type, value: state_name });
+        fbq('track', 'SignUpLinkClicked');
+      }
 
       $('.main').show()
     })
