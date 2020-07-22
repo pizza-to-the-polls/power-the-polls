@@ -7,8 +7,8 @@
   var state = window.statesData[abrieve];
 
   if (state) {
-    var found = pieces.reduce(function (found, piece) {
-      var county = state.jurisdictions[piece + " County"];
+    var found = pieces.reduce(function (found, piece, idx) {
+      var county = idx < 1 && state.jurisdictions[piece + " County"];
       var city = state.jurisdictions[piece + " (City)"];
 
       return (city ? [piece, city] : county ? [piece, county] : found);
