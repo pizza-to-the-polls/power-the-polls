@@ -1,9 +1,9 @@
 ---
 title: Power the Polls
-name: 'theSkimm'
-source: 'skimm'
+name: 'Every Vote Counts'
+source: 'evc'
 layout: homepage.hbs
-logo: '/images/partners/theSkimm.png'
+logo: '/images/partners/EVC_LOGO.png'
 collection: partners
 headline: 'Help Staff Your Local Polling Place'
 ---
