@@ -45,12 +45,12 @@
   } else {
     var fallbacks = {
       OR: 'Oregon',
-      WA: 'Washington',
       HI: 'Hawaii',
     };
     var partner_states = {
       ME: 'Maine',
       MI: 'Michigan',
+      WA: 'Washington',
     }
 
 
