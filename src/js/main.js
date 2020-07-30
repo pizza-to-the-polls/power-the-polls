@@ -50,12 +50,11 @@ $(function() {
     $.ajax({
       url: "https://us-autocomplete-pro.api.smartystreets.com/lookup?",
       data: {
-        "auth-id": {{ SMARTY_STREETS_KEY }},
+        "auth-id": "{{ SMARTY_STREETS_KEY }}",
         "search": search,
         "selected": (selected ? selected : ""),
         "include_only_states": (state ? state : "")
       },
-      dataType: "jsonp",
       success: function(data) {
         if (data.suggestions) {
           buildMenu(data.suggestions);
@@ -73,7 +72,7 @@ $(function() {
     $.ajax({
       url: "https://us-street.api.smartystreets.com/street-address?",
       data: {
-        "auth-id": {{ SMARTY_STREETS_KEY }},
+        "auth-id": "{{ SMARTY_STREETS_KEY }}",
         "street": address[0],
         "city": address[1],
         "state": address[2]

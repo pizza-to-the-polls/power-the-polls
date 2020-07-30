@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
-    "start": "SERVE=true WATCH=true yarn build"
+    "start": "cross-env SERVE=true WATCH=true yarn build"
   },
   "author": "Kyle Stoneman",
   "license": "ISC",
@@ -41,5 +41,8 @@
     "moment": "2.24.0",
     "postcss-import": "12.0.1",
     "postcss-nesting": "7.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
   }
 }
