@@ -1,0 +1,33 @@
+{
+   "compilerOptions": {
+      "strict": true,
+      "alwaysStrict": true,
+      "allowJs": false,
+      "composite": false,
+      "target": "es2017",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "lib": [
+         "dom",
+         "dom.iterable",
+         "es2017"
+      ],
+      "sourceMap": true,
+      "declaration": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "allowUnreachableCode": false,
+      "experimentalDecorators": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "jsx": "react",
+      "jsxFactory": "h"
+   },
+   "include": [
+      "src",
+      "types/jsx.d.ts"
+   ],
+   "exclude": [
+      "node_modules"
+   ]
+}
