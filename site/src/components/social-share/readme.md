@@ -21,11 +21,13 @@
 ### Used by
 
  - [app-root](../app-root)
+ - [component-list](../component-list)
 
 ### Graph
 ```mermaid
 graph TD;
   app-root --> social-share
+  component-list --> social-share
   style social-share fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
