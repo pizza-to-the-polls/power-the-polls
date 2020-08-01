@@ -1,5 +1,7 @@
 import { Component, h } from "@stencil/core";
 
+import { FaqData, PartnerList, Social } from "../../data";
+
 @Component( {
    tag: "app-root",
    styleUrl: "app-root.scss",
@@ -8,35 +10,9 @@ import { Component, h } from "@stencil/core";
 export class AppRoot {
 
    public render() {
-
-      const tweet = encodeURIComponent( `🗳️ Join me and make sure our election runs smoothly!
-🚨 Prevent voting location closures and long lines at the polls.
-▶️ https://www.powerthepolls.org
-#PowerThePolls`);
-      const url = encodeURIComponent( "https://www.powerthepolls.org/" );
-      const social = [
-         {
-            name: "Twitter",
-            cta: "Tweet",
-            image: "icon-tw.png",
-            url: "https://twitter.com/intent/tweet?text=" + tweet,
-            analytics: "twitter-share",
-         },
-         {
-            name: "Instagram",
-            cta: "Instagram",
-            image: "icon-ig.png",
-            url: "https://www.instagram.com/p/CCEOfBrjtwg/",
-            analytics: "instagram-share",
-         },
-         {
-            name: "Facebook",
-            cta: "Share",
-            image: "icon-fb.png",
-            url: "https://www.facebook.com/share.php?u=" + url,
-            analytics: "facebook-share",
-         },
-      ];
+      const social = Social;
+      const faqData = FaqData;
+      const partnerList = PartnerList;
 
       return (
          <div class="container">
@@ -57,38 +33,20 @@ export class AppRoot {
                            <stencil-route-link url="/signup">Sign Up</stencil-route-link>
                         </li>
                         <li>
-                           <stencil-route-link url="/about">About</stencil-route-link>
+                           <stencil-route-link url="/about-us">About</stencil-route-link>
                         </li>
                         <li>
-                           <stencil-route-link url="/faq">FAQ</stencil-route-link>
+                           <stencil-route-link url="/ptp-faq">FAQ</stencil-route-link>
                         </li>
                         <li>
                            <stencil-route-link url="/partners">Partners</stencil-route-link>
                         </li>
                         <li>
-                           <stencil-route-link url="/contact">Contact</stencil-route-link>
+                           <stencil-route-link url="/contact-us">Contact</stencil-route-link>
                         </li>
                      </ul>
                   </nav>
-                  {social.map( service => (
-                     <div class="social">
-                        <img
-                           alt={service.name}
-                           src={`assets/images/social/${service.image}`}
-                           width="41"
-                           height="41"
-                        />
-                        <a
-                           href={service.url}
-                           title={service.cta}
-                           target="_blank"
-                           rel="noopener noreferrer"
-                        >
-                           {/*onclick="window.open(this.href, 'share','left=20,top=20,width=550,height=250,toolbar=1,resizable=0'); gtag('event', 'instagram-share', {'event_category' : 'social_share','event_label' : ''}); return false;"*/}
-                           <span>{service.cta}</span>
-                        </a>
-                     </div>
-                  ) )}
+                  {social.map( service => <social-share {...service} /> )}
                </div>
             </aside>
 
@@ -97,32 +55,38 @@ export class AppRoot {
                   <stencil-router>
                      <stencil-route-switch scrollTopOffset={0}>
                         <stencil-route
-                           url="/about"
-                           component="page-about"
+                           url="/about-us"
+                           component="about-us"
                         />
                         <stencil-route
-                           url="/contact"
-                           component="page-contact"
+                           url="/contact-us"
+                           component="contact-us"
                         />
                         <stencil-route
-                           url="/faq"
-                           component="page-faq"
+                           url="/ptp-faq"
+                           component="ptp-faq"
+                           componentProps={{ data: faqData }}
                         />
                         <stencil-route
                            url="/partners"
-                           component="page-partners"
+                           component="partners-list"
+                           componentProps={{ partners: partnerList }}
                         />
                         <stencil-route
-                           url="/privacy"
-                           component="page-privacy"
+                           url="/privacy-info"
+                           component="privacy-info"
                         />
                         <stencil-route
-                           component="page-form"
+                           url="/dev"
+                           component="component-list"
+                        />
+                        <stencil-route
+                           component="main-form"
                         />
                      </stencil-route-switch>
                   </stencil-router>
 
-                  <footer class="footer u_article">
+                  <footer>
                      <p>This work is licensed under a Creative Commons Attribution 4.0 International License.</p>
                      <p>Powered by Work Elections.</p>
                      <p>
@@ -133,7 +97,6 @@ export class AppRoot {
                         >
                            <img
                               src="assets/images/partners/work-elections.png"
-                              class="footer__logo"
                               alt="Work Elections"
                               width="100"
                            />

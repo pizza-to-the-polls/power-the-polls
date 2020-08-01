@@ -4,8 +4,8 @@ import { Component, h, Host, Prop } from "@stencil/core";
  * The Power the Polls sign-up form.
  */
 @Component( {
-   tag: "ptp-form",
-   styleUrl: "ptp-form.scss",
+   tag: "power-the-polls-form",
+   styleUrl: "power-the-polls-form.scss",
    shadow: false,
 } )
 export class PtpForm {
@@ -217,7 +217,7 @@ export class PtpForm {
 
             <p class="disclaimer">
                By signing up, you agree to receive occasional emails or text messages from Power the Polls and
-               accept our <stencil-route-link url="./privacy">Privacy Policy</stencil-route-link>. You can unsubscribe
+               accept our <stencil-route-link url="./privacy-info">Privacy Policy</stencil-route-link>. You can unsubscribe
                at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
             </p>
          </form>

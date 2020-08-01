@@ -1,8 +1,12 @@
 import { Component, h, Host } from "@stencil/core";
 
+/**
+ * The power-the-polls-form for the main site because there are a few additional bits of text and branding that
+ * aren't part of power-the-polls-form
+ */
 @Component( {
-   tag: "page-form",
-   styleUrl: "page-form.scss",
+   tag: "main-form",
+   styleUrl: "main-form.scss",
    shadow: false,
 } )
 export class PageForm {
@@ -25,7 +29,7 @@ export class PageForm {
                </p>
                <hr />
             </div>
-            <ptp-form />
+            <power-the-polls-form id="form" />
          </Host>
       );
    }

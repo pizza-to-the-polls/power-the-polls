@@ -76,23 +76,5 @@ app-root {
             }
          }
       }
-
-      .social {
-         margin: 1em 0;
-         display: flex;
-         flex-direction: row;
-         align-items: center;
-         a {
-            margin: 0 0 0 1em;
-            font-size: 1.1em;
-            color: $color-font-accent-contrast;
-            font-weight: bold;
-            text-decoration: none;
-            &:hover {
-               color: $color-font-accent-contrast;
-               text-decoration: none;
-            }
-         }
-      }
    }
 }

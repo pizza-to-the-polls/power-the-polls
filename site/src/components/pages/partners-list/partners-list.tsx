@@ -1,39 +1,19 @@
-import { Component, h, Host } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component( {
-   tag: "page-partners",
-   styleUrl: "page-partners.scss",
+   tag: "partners-list",
+   styleUrl: "partners-list.scss",
    shadow: false,
 } )
 export class PagePartners {
 
+   /**
+    * List of all the partner logos to display
+    */
+   @Prop() public partners?: { logo: string, name: string }[];
+
    public render() {
-      const partners = [
-         { logo: "acs.png", name: "ACS" },
-         { logo: "alliance-for-youth-organizing.png", name: "" },
-         { logo: "american-promise.png", name: "American Promise" },
-         { logo: "boys-and-girls-clubs.png", name: "" },
-         { logo: "campus-compact.png", name: "" },
-         { logo: "civi-georgia.png", name: "" },
-         { logo: "civic-alliance.png", name: "" },
-         { logo: "comedy-central.png", name: "" },
-         { logo: "every-vote-counts.png", name: "" },
-         { logo: "fair-elections-center.png", name: "" },
-         { logo: "levi-strauss.png", name: "" },
-         { logo: "mtv.png", name: "MTV" },
-         { logo: "nrdn.png", name: "" },
-         { logo: "patagonia.png", name: "" },
-         { logo: "pizza-to-the-polls.png", name: "" },
-         { logo: "public-wise.png", name: "" },
-         { logo: "slsv.png", name: "" },
-         { logo: "the-skimm.png", name: "" },
-         { logo: "time-to-vote.png", name: "" },
-         { logo: "uber.png", name: "Uber" },
-         { logo: "unitedway.png", name: "United Way" },
-         { logo: "wecanvote.png", name: "" },
-         { logo: "when-we-all-vote.png", name: "" },
-         { logo: "work-elections.png", name: "" },
-      ];
+      const partners = this.partners || [];
       return ( <Host>
          <h1>Power the Polls Partners</h1>
          <p>
@@ -53,8 +33,7 @@ export class PagePartners {
             If you’d like to become a campaign partner, please reach out to: <a href="mailto:partnerships@powerthepolls.org">partnerships@powerthepolls.org</a>.
          </p>
 
-         <hr />
-         <h3>Founding Partners</h3>
+         <h3-bar>Founding Partners</h3-bar>
          <p>
             Power the Polls is a collaboration between nonprofit organizations and businesses:
          </p>

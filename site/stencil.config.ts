@@ -27,5 +27,8 @@ export const config: Config = {
          baseUrl: "https://www.powerthepolls.org/",
          serviceWorker: false,
       },
+      {
+         type: "docs-readme",
+      }
    ],
 };

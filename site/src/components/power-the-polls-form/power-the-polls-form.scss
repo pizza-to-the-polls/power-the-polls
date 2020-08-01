@@ -1,5 +1,18 @@
-ptp-form {
+power-the-polls-form {
    display: block;
+
+   button[type="submit"] {
+      border: 0;
+      padding: 0.5em 1em;
+      width: 100%;
+      background-color: $color-highlight;
+      color: $color-font-primary;
+      font-family: $font-heading;
+      text-transform: uppercase;
+      font-size: 1.2em;
+      letter-spacing: 0.05rem;
+      font-weight: bold;
+   }
 
    form {
       max-width: 30ch;
@@ -13,8 +26,8 @@ ptp-form {
       input,
       select {
          width: 100%;
-         font: inherit;
-         border: 1px solid darken($blue, 5);
+         font-family: $font-primary;
+         border: 0;
          padding: $p1 $p2;
          display: block;
 

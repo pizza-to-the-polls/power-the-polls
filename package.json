@@ -1,5 +1,5 @@
 {
-   "name": "ptp-form",
+   "name": "power-the-polls-form",
    "version": "1.0.0",
    "description": "Power the Polls Volunteer Form",
    "main": "dist/index.js",
@@ -9,7 +9,7 @@
    "types": "dist/types/index.d.ts",
    "collection": "dist/collection/collection-manifest.json",
    "collection:main": "dist/collection/index.js",
-   "unpkg": "dist/ptp-form/ptp-form.js",
+   "unpkg": "dist/power-the-polls-form/power-the-polls-form.js",
    "files": [
       "dist/"
    ],
