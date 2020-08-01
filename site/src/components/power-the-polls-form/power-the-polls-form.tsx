@@ -137,29 +137,6 @@ export class PtpForm {
                </label>
             </div>
 
-            <label class="label--checkbox">
-               <input
-                  name="action_support"
-                  value="Volunteer"
-                  class="volunteer-toggle ak-userfield-input"
-                  type="checkbox"
-               />
-               I want to be a poll worker
-            </label>
-
-            <label class="label--checkbox">
-               <input
-                  name="action_support"
-                  value="Recruit"
-                  class="recruit-toggle ak-userfield-input"
-                  type="checkbox"
-               />
-               I will help recruit other poll workers
-            </label>
-
-            <p class="show-recruit u_hidden">Great! Our Power to the Polls texting team will let you know how to help from home.</p>
-            <p class="show-volunteer u_hidden">Great! The process to become a poll  worker varies in each community. We’ll stay in touch to help you complete the process.</p>
-
             <div id="ak-fieldbox-address2" >
                <input
                   type="hidden"
@@ -188,7 +165,7 @@ export class PtpForm {
                />
             </div>
 
-            <div id="ak-fieldbox-mobile_phone" class="show-volunteer show-recruit u_hidden">
+            <div id="ak-fieldbox-mobile_phone">
                <label>
                   Mobile phone
                   <input
