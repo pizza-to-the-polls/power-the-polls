@@ -1,4 +1,4 @@
-# Power the Polls
+# Power the Polls - deploy me!
 
 This site uses [metalsmith](http://www.metalsmith.io/) to build a static website.
 
