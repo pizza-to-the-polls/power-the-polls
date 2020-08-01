@@ -1,0 +1,11 @@
+page-form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   .main-logo {
+      height: 381px;
+      text-align: center;
+      margin: 0 0 2em 0;
+   }
+}

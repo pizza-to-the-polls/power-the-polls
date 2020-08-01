@@ -1,0 +1,98 @@
+app-root {
+   flex-grow: 1;
+   display: flex;
+   flex-flow: column;
+
+   // layout
+   & > .container {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 34% 66%;
+      grid-template-rows: 100%;
+      .sidebar {
+         grid-column: 1;
+      }
+      main {
+         grid-column: 2;
+      }
+   }
+
+   main {
+      padding: 4em;
+      display: flex;
+      justify-content: flex-start;
+
+      & > .container {
+         max-width: 600px;
+      }
+   }
+
+   footer {
+      margin: 10em 0 0 0;
+      font-size: 0.8em;
+   }
+
+   .sidebar {
+      background-color: $color-accent;
+      color: $color-font-accent-contrast;
+      padding: 3em 4em 2em 2em;
+      display: flex;
+      justify-content: flex-end;
+
+      & > .container {
+         position: fixed;
+         max-width: 300px;
+      }
+
+      .logo {
+         width: 160px;
+      }
+
+      nav {
+         display: block;
+         font-family: $font-heading;
+         text-align: left;
+         margin: 2em 0 3em 0;
+         ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            li {
+               margin: 0.5em 0;
+               a {
+                  font-size: 1.3em;
+                  text-decoration: none;
+                  color: $color-font-accent-contrast;
+                  text-transform: uppercase;
+                  font-weight: bold;
+                  &:hover {
+                     color: $color-font-accent-contrast;
+                     text-decoration: underline;
+                  }
+                  &.link-active {
+                     color: $color-font-primary;
+                  }
+               }
+            }
+         }
+      }
+
+      .social {
+         margin: 1em 0;
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         a {
+            margin: 0 0 0 1em;
+            font-size: 1.1em;
+            color: $color-font-accent-contrast;
+            font-weight: bold;
+            text-decoration: none;
+            &:hover {
+               color: $color-font-accent-contrast;
+               text-decoration: none;
+            }
+         }
+      }
+   }
+}

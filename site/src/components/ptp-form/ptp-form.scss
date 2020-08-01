@@ -1,0 +1,56 @@
+ptp-form {
+   display: block;
+
+   form {
+      max-width: 30ch;
+      font-size: $f1;
+      padding: $p3 0;
+      font-family: $font-primary;
+      color: #fff;
+      text-transform: none;
+      letter-spacing: 0;
+
+      input,
+      select {
+         width: 100%;
+         font: inherit;
+         border: 1px solid darken($blue, 5);
+         padding: $p1 $p2;
+         display: block;
+
+         &:disabled {
+            color: #fff;
+         }
+      }
+
+      select {
+         padding: $p2;
+      }
+
+      label {
+         pointer-events: all !important; /* Important for ActionKit */
+         margin-bottom: $p2;
+         display: block;
+         font-size: $f0;
+         color: $color-accent;
+         text-transform: uppercase;
+         font-variant: small-caps;
+      }
+
+      .label--checkbox {
+         display: flex;
+         align-items: center;
+
+         &:first-of-type {
+            margin-top: $p4;
+         }
+
+         input {
+            transform: scale(1.5);
+            flex: 0 1 $p4;
+            margin-right: $p1;
+            z-index: -1;
+         }
+      }
+   }
+}

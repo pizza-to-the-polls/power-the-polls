@@ -1,0 +1,14 @@
+page-partners {
+   .partner-logos {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      align-content: stretch;
+      justify-content: space-between;
+      img {
+         margin: 3em 3em 3em 1em;
+         max-width: 140px;
+      }
+   }
+}
