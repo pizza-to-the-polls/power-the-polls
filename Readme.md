@@ -21,6 +21,7 @@ Production build: `npm run build`
 Commits to the `master` branch trigger automatic deploys in [Netlify](https://netlify.com). These are generally available 20-40 seconds after the commit is made.
 
 > see: [Netlify settings](https://app.netlify.com/sites/powerthepolls/settings/deploys)
+
 command: `cd site && npm install && npm run build`
 publish directory: `/dist/www`
 

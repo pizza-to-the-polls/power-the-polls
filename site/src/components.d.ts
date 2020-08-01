@@ -26,6 +26,15 @@ export namespace Components {
     }
     interface PowerThePollsForm {
         /**
+          * The label for an additional field to be displayed on the signup form
+         */
+        "customFormFieldLabel"?: string;
+        /**
+          * The URL where the form data will be submitted
+         */
+        "destination": string;
+        "optUserOutOfChase": boolean;
+        /**
           * To display custom text and images for a specific Power the Polls partner, enter their ID here.
          */
         "partnerId"?: string;
@@ -48,7 +57,7 @@ export namespace Components {
          */
         "cta"?: string;
         /**
-          * Image to use from assets/images/social/*
+          * Image to use from `assets/images/social/*`
          */
         "image"?: string;
         /**
@@ -163,6 +172,15 @@ declare namespace LocalJSX {
     }
     interface PowerThePollsForm {
         /**
+          * The label for an additional field to be displayed on the signup form
+         */
+        "customFormFieldLabel"?: string;
+        /**
+          * The URL where the form data will be submitted
+         */
+        "destination"?: string;
+        "optUserOutOfChase"?: boolean;
+        /**
           * To display custom text and images for a specific Power the Polls partner, enter their ID here.
          */
         "partnerId"?: string;
@@ -185,7 +203,7 @@ declare namespace LocalJSX {
          */
         "cta"?: string;
         /**
-          * Image to use from assets/images/social/*
+          * Image to use from `assets/images/social/*`
          */
         "image"?: string;
         /**

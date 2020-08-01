@@ -7,6 +7,9 @@ declare const gtag: ( type: string, key: string, data: any ) => void;
    styleUrl: "social-share.scss",
    shadow: false,
 } )
+/**
+ * Simple button and image used for social network buttons
+ */
 export class SocialShare {
 
    /**
@@ -20,7 +23,7 @@ export class SocialShare {
    @Prop() public cta?: string;
 
    /**
-    * Image to use from assets/images/social/*
+    * Image to use from `assets/images/social/*`
     */
    @Prop() public image?: string;
 

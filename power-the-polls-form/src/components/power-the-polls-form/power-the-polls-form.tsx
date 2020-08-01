@@ -1,12 +1,12 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h } from "@stencil/core";
 
 @Component( {
-   tag: "ptp-form",
-   styleUrl: "ptp-form.css",
+   tag: "power-the-polls-form",
+   styleUrl: "power-the-polls-form.scss",
    shadow: false,
 } )
-export class MyComponent {
+export class PowerThePollsForm {
    public render() {
+      return <div></div>;
    }
-
 }

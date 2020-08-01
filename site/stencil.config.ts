@@ -21,14 +21,17 @@ export const config: Config = {
          type: "www",
          dir: "../dist/www", // default output dir is ./www
          copy: [
-            // copy public dir to output as-is (path is relative to srcDir)
+            // copy public dir to output as-is
+            // (src is relative to the root srcDir, dest is relative to this output's dir)
             { src: "../public", dest: "." },
          ],
          baseUrl: "https://www.powerthepolls.org/",
          serviceWorker: false,
       },
       {
+         // Generates readme files in each component dir. Nice for GitHub.
          type: "docs-readme",
-      }
+         footer: "", // supports markdown
+      },
    ],
 };
