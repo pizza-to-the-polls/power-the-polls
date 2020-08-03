@@ -12,12 +12,14 @@ export const config: Config = {
    taskQueue: "async",
    srcDir: "src", // "src" is the default; just here for clarity
    plugins: [
+      dotenvPlugin(), // replace all process.env.* usage using the values from local .env files (.env.NODE_ENV, etc)
       replace( {
          exclude: "node_modules/**",
-         // replace SMARTY_STREETS_KEY with env var if present, else leave it as-is
-         values: { "process.env.SMARTY_STREETS_KEY": `"${process.env.SMARTY_STREETS_KEY}"` || "process.env.SMARTY_STREETS_KEY" },
+         values: {
+            // replace SMARTY_STREETS_KEY with env var if present, else leave it as-is
+            "process.env.SMARTY_STREETS_KEY": process.env.SMARTY_STREETS_KEY ? `"${process.env.SMARTY_STREETS_KEY}"` : "process.env.SMARTY_STREETS_KEY",
+         },
       } ),
-      dotenvPlugin(), // do the same replace for all process.env.* but using the local .env file (could remove this in prod if desired)
       sass( {
          // scss files in components will automatically have these imported
          injectGlobalPaths: [

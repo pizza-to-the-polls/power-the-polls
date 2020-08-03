@@ -32,16 +32,18 @@
 
 ### Depends on
 
-- [work-elections-info](../work-elections-info)
+- [poll-worker-info](../poll-worker-info)
 - [address-input](../address-input)
 - stencil-route-link
 
 ### Graph
 ```mermaid
 graph TD;
-  power-the-polls-form --> work-elections-info
+  power-the-polls-form --> poll-worker-info
   power-the-polls-form --> address-input
   power-the-polls-form --> stencil-route-link
+  poll-worker-info --> jurisdiction-info
+  poll-worker-info --> state-info
   main-form --> power-the-polls-form
   style power-the-polls-form fill:#f9f,stroke:#333,stroke-width:4px
 ```

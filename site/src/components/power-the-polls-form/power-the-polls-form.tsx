@@ -1,8 +1,5 @@
 import { Component, Event, EventEmitter, h, Host, Prop, State } from "@stencil/core";
 
-import { PartnerStates, WorkElections, WorkElectionsFallbacks } from "../../data";
-import { JurisdictionQueryResponse } from "../../data/WorkElections";
-import analytics from "../../util/Analytics";
 import { Fragment } from "../../util/Fragment";
 
 /**
@@ -61,7 +58,9 @@ export class PowerThePollsForm {
    @State() private showStateFallback: boolean;
    @State() private showPartner: boolean;
    @State() private stateName?: string;
-   @State() private jurisdiction?: JurisdictionQueryResponse;
+   @State() private city?: string;
+   @State() private county?: string;
+   @State() private state?: string;
 
    constructor() {
       this.formComplete = false;
@@ -87,12 +86,15 @@ export class PowerThePollsForm {
             new Map<string, string>(),
          );
          // hacky way to get the data from address-input without wiring up events or callbacks
-         const stateCode: string = data.get( "state" ) || "";
          const city: string = data.get( "city" ) || "";
          const county: string = data.get( "action_county" ) || "";
+         const stateCode: string = data.get( "state" ) || "";
 
+         this.city = city;
+         this.county = county;
+         this.state = stateCode;
          // query for work elections data so we can display the completion page with further information
-         this.getWorkElectionsData( stateCode, city, county );
+         // this.getWorkElectionsData( stateCode, city, county );
 
          // submit to actionkit
          fetch( form.action, {
@@ -112,6 +114,7 @@ export class PowerThePollsForm {
             } )
             .catch( err => {
                this.submitError.emit( err );
+               this.formComplete = true;
             } );
 
          // cancel the submit so the browser doesn't do anything
@@ -135,9 +138,13 @@ export class PowerThePollsForm {
                   <p>The application process for poll workers is different for every state, county, and voting territory. In the weeks ahead, Power the Polls will follow up via email and text message to make sure you complete the correct application for your community and are connected with your local election administrator.</p>
                </div>
 
-               {this.jurisdiction != null ? (
+               {/*this.jurisdiction != null ? (
                   <work-elections-info jurisdiction={this.jurisdiction} />
-               ) : null}
+               ) : null*/}
+               <poll-worker-info
+                  city={this.city}
+                  county={this.county}
+                  state={this.state} />
 
                {this.showStateFallback ? ( <Fragment>
                   <p>
@@ -238,9 +245,8 @@ export class PowerThePollsForm {
       </Host> );
    }
 
-
-
-   private getWorkElectionsData( stateCode: string, city: string, county: string )/*: ["found" | "fallback" | "partner" | "unknown", string]*/ {
+   /*
+   private getWorkElectionsData( stateCode: string, city: string, county: string ){
       let state = WorkElections[stateCode];
       if( state == null ) {
          let fallback = WorkElectionsFallbacks[stateCode];
@@ -285,7 +291,7 @@ export class PowerThePollsForm {
             : `/states/${state.id}/${state.name}` );
 
          if( jurisdictionCode !== -1 ) {
-            fetch( `http://workelections.powerthepolls.org/jurisdictions/${jurisdictionCode}/`, {
+            fetch( `https://workelections.powerthepolls.org/jurisdictions/${jurisdictionCode}/`, {
                mode: "cors",
                headers: {},
             } )
@@ -303,5 +309,6 @@ export class PowerThePollsForm {
          // return ["found", path];
       }
    }
+   //*/
 
 }

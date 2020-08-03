@@ -8,14 +8,14 @@ namespace analytics {
       try {
          gtag( type, key, data );
       } catch( e ) {
-         console.log( e );
+         // console.log( e );
       }
    };
    const facebook = ( type: string, key: string ): void => {
       try {
          fbq( type, key );
       } catch( e ) {
-         console.log( e );
+         // console.log( e );
       }
    };
 

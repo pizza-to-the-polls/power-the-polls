@@ -36,7 +36,7 @@ export class PageForm {
          this.formComplete = true;
       };
       const formError = ( err: any ) => {
-         console.error( "Error submitting data", err );
+         console.log( "Error submitting data", err );
       };
       return (
          <Host>

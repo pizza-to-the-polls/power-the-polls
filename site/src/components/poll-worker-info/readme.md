@@ -16,6 +16,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [power-the-polls-form](../power-the-polls-form)
+
 ### Depends on
 
 - [jurisdiction-info](../jurisdiction-info)
@@ -26,6 +30,7 @@
 graph TD;
   poll-worker-info --> jurisdiction-info
   poll-worker-info --> state-info
+  power-the-polls-form --> poll-worker-info
   style poll-worker-info fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
