@@ -33,6 +33,16 @@ export class PagePartners {
             If you’d like to become a campaign partner, please reach out to: <a href="mailto:partnerships@powerthepolls.org">partnerships@powerthepolls.org</a>.
          </p>
 
+         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+         <blockquote class="twitter-tweet">
+            <p lang="en" dir="ltr">
+               America is facing a nationwide poll worker shortage, but you can
+               help by going to <a href="https://t.co/70gHiVzDaT">https://t.co/70gHiVzDaT</a>
+               <a href="https://t.co/qBJbcmVpVp">pic.twitter.com/qBJbcmVpVp</a>
+            </p>&mdash; The Daily Show (@TheDailyShow)
+            <a href="https://twitter.com/TheDailyShow/status/1283099189568626690?ref_src=twsrc%5Etfw">July 14, 2020</a>
+         </blockquote>
+
          <h3-bar>Founding Partners</h3-bar>
          <p>
             Power the Polls is a collaboration between nonprofit organizations and businesses:
