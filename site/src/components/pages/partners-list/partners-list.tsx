@@ -10,7 +10,7 @@ export class PagePartners {
    /**
     * List of all the partner logos to display
     */
-   @Prop() public partners?: { logo: string, name: string }[];
+   @Prop() public partners?: { logo: string, name: string, founding: boolean }[];
 
    public render() {
       const partners = this.partners || [];
@@ -39,10 +39,20 @@ export class PagePartners {
          </p>
          <div class="partner-logos">
             {partners.map( partner => (
-               <img
+               partner.founding && partner.logo && (<img
                   src={`assets/images/partners/${partner.logo}`}
                   title={partner.name}
-               />
+               />)
+            ) )}
+         </div>
+
+         <h3-bar>Partners</h3-bar>
+         <div class="partner-logos">
+            {partners.map( partner => (
+               !partner.founding && partner.logo && (<img
+                  src={`assets/images/partners/${partner.logo}`}
+                  title={partner.name}
+               />)
             ) )}
          </div>
       </Host> );

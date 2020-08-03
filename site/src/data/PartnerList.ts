@@ -129,7 +129,7 @@ const data: Partner[] = [
    {
       id: "headcount",
       name: "HeadCount",
-      logo: "headcount.png",
+      logo: "HeadCount.png",
       actionKitKey: "HeadCount",
    },
    {

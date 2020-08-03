@@ -22,7 +22,7 @@ export namespace Components {
         /**
           * List of all the partner logos to display
          */
-        "partners"?: { logo: string, name: string }[];
+        "partners"?: { logo: string, name: string, founding: boolean }[];
     }
     interface PowerThePollsForm {
         /**
@@ -168,7 +168,7 @@ declare namespace LocalJSX {
         /**
           * List of all the partner logos to display
          */
-        "partners"?: { logo: string, name: string }[];
+        "partners"?: { logo: string, name: string, founding: boolean }[];
     }
     interface PowerThePollsForm {
         /**
