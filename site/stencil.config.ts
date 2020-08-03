@@ -19,7 +19,7 @@ export const config: Config = {
    outputTargets: [
       {
          type: "www",
-         dir: "../dist/www", // default output dir is ./www
+         dir: "build", // default output dir is ./www
          copy: [
             // copy public dir to output as-is
             // (src is relative to the root srcDir, dest is relative to this output's dir)

@@ -36,7 +36,7 @@ export class PageForm {
             </div>
             <power-the-polls-form
                id="form"
-               partnerId={partner?.actionKitKey || partner?.id}
+               partnerId={partner?.source || partner?.id}
                optUserOutOfChase={partner?.optUserOutOfChase || false}
                customFormFieldLabel={partner?.customSignupFormField}
             />

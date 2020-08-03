@@ -22,7 +22,7 @@ export namespace Components {
         /**
           * List of all the partner logos to display
          */
-        "partners"?: { logo: string, name: string }[];
+        "partners"?: { logo: string, name: string, founding: boolean }[];
     }
     interface PowerThePollsForm {
         /**
@@ -68,6 +68,20 @@ export namespace Components {
           * href for anchor (will open in a new window)
          */
         "url"?: string;
+    }
+    interface WorkElections {
+        /**
+          * City for matching to location
+         */
+        "city": string;
+        /**
+          * County for matching to location
+         */
+        "county": string;
+        /**
+          * State for matching to location
+         */
+        "state": string;
     }
 }
 declare global {
@@ -137,6 +151,12 @@ declare global {
         prototype: HTMLSocialShareElement;
         new (): HTMLSocialShareElement;
     };
+    interface HTMLWorkElectionsElement extends Components.WorkElections, HTMLStencilElement {
+    }
+    var HTMLWorkElectionsElement: {
+        prototype: HTMLWorkElectionsElement;
+        new (): HTMLWorkElectionsElement;
+    };
     interface HTMLElementTagNameMap {
         "about-us": HTMLAboutUsElement;
         "app-root": HTMLAppRootElement;
@@ -149,6 +169,7 @@ declare global {
         "privacy-info": HTMLPrivacyInfoElement;
         "ptp-faq": HTMLPtpFaqElement;
         "social-share": HTMLSocialShareElement;
+        "work-elections": HTMLWorkElectionsElement;
     }
 }
 declare namespace LocalJSX {
@@ -168,7 +189,7 @@ declare namespace LocalJSX {
         /**
           * List of all the partner logos to display
          */
-        "partners"?: { logo: string, name: string }[];
+        "partners"?: { logo: string, name: string, founding: boolean }[];
     }
     interface PowerThePollsForm {
         /**
@@ -215,6 +236,20 @@ declare namespace LocalJSX {
          */
         "url"?: string;
     }
+    interface WorkElections {
+        /**
+          * City for matching to location
+         */
+        "city"?: string;
+        /**
+          * County for matching to location
+         */
+        "county"?: string;
+        /**
+          * State for matching to location
+         */
+        "state"?: string;
+    }
     interface IntrinsicElements {
         "about-us": AboutUs;
         "app-root": AppRoot;
@@ -227,6 +262,7 @@ declare namespace LocalJSX {
         "privacy-info": PrivacyInfo;
         "ptp-faq": PtpFaq;
         "social-share": SocialShare;
+        "work-elections": WorkElections;
     }
 }
 export { LocalJSX as JSX };
@@ -244,6 +280,7 @@ declare module "@stencil/core" {
             "privacy-info": LocalJSX.PrivacyInfo & JSXBase.HTMLAttributes<HTMLPrivacyInfoElement>;
             "ptp-faq": LocalJSX.PtpFaq & JSXBase.HTMLAttributes<HTMLPtpFaqElement>;
             "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;
+            "work-elections": LocalJSX.WorkElections & JSXBase.HTMLAttributes<HTMLWorkElectionsElement>;
         }
     }
 }
