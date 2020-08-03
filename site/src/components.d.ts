@@ -5,7 +5,6 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { JurisdictionQueryResponse } from "./data/WorkElections";
 export namespace Components {
     interface AddressInput {
         /**
@@ -122,9 +121,6 @@ export namespace Components {
          */
         "stateId": number | null;
     }
-    interface WorkElectionsInfo {
-        "jurisdiction"?: JurisdictionQueryResponse;
-    }
 }
 declare global {
     interface HTMLAddressInputElement extends Components.AddressInput, HTMLStencilElement {
@@ -217,12 +213,6 @@ declare global {
         prototype: HTMLStateInfoElement;
         new (): HTMLStateInfoElement;
     };
-    interface HTMLWorkElectionsInfoElement extends Components.WorkElectionsInfo, HTMLStencilElement {
-    }
-    var HTMLWorkElectionsInfoElement: {
-        prototype: HTMLWorkElectionsInfoElement;
-        new (): HTMLWorkElectionsInfoElement;
-    };
     interface HTMLElementTagNameMap {
         "address-input": HTMLAddressInputElement;
         "app-root": HTMLAppRootElement;
@@ -239,7 +229,6 @@ declare global {
         "power-the-polls-form": HTMLPowerThePollsFormElement;
         "social-share": HTMLSocialShareElement;
         "state-info": HTMLStateInfoElement;
-        "work-elections-info": HTMLWorkElectionsInfoElement;
     }
 }
 declare namespace LocalJSX {
@@ -366,9 +355,6 @@ declare namespace LocalJSX {
          */
         "stateId"?: number | null;
     }
-    interface WorkElectionsInfo {
-        "jurisdiction"?: JurisdictionQueryResponse;
-    }
     interface IntrinsicElements {
         "address-input": AddressInput;
         "app-root": AppRoot;
@@ -385,7 +371,6 @@ declare namespace LocalJSX {
         "power-the-polls-form": PowerThePollsForm;
         "social-share": SocialShare;
         "state-info": StateInfo;
-        "work-elections-info": WorkElectionsInfo;
     }
 }
 export { LocalJSX as JSX };
@@ -407,7 +392,6 @@ declare module "@stencil/core" {
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
             "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;
             "state-info": LocalJSX.StateInfo & JSXBase.HTMLAttributes<HTMLStateInfoElement>;
-            "work-elections-info": LocalJSX.WorkElectionsInfo & JSXBase.HTMLAttributes<HTMLWorkElectionsInfoElement>;
         }
     }
 }

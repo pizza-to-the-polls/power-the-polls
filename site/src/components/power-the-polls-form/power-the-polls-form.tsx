@@ -108,17 +108,16 @@ export class PowerThePollsForm {
                },
             } )
                .then( ( response ) => {
-                  if( response.status === 200 || response.status === 201 || response.status === 0 ) {
-                     console.log( "response", response );
+                  if( response.status === 200 || response.status === 201
+                     || response.status === 0 /*we're currently makign a simple no-cors request and can't get the status*/ ) {
                      let evt = this.submitCompleted.emit();
                      if( !evt.defaultPrevented ) {
                         this.formComplete = true;
                      }
                   } else {
-                     console.log( "error", response );
                      response.json()
                         .then( json => this.submitError.emit( { statusText: response.statusText, status: response.status, data: json } ) )
-                        .catch( e => console.error( e ) );
+                        .catch( e2 => console.error( e2 ) );
                   }
                } )
                .catch( err => {
@@ -135,11 +134,6 @@ export class PowerThePollsForm {
       return ( <Host>
          {this.formComplete ? (
             <article>
-               <img
-                  class="logo"
-                  alt="Power the Polls"
-                  src="assets/images/logo-blue.svg"
-               />
                <h1>Thanks for signing up to Power the Polls!</h1>
                <h2>We'll be in touch!</h2>
                <hr />
@@ -148,13 +142,11 @@ export class PowerThePollsForm {
                   <p>The application process for poll workers is different for every state, county, and voting territory. In the weeks ahead, Power the Polls will follow up via email and text message to make sure you complete the correct application for your community and are connected with your local election administrator.</p>
                </div>
 
-               {/*this.jurisdiction != null ? (
-                  <work-elections-info jurisdiction={this.jurisdiction} />
-               ) : null*/}
                <poll-worker-info
                   city={this.city}
                   county={this.county}
-                  state={this.state} />
+                  state={this.state}
+               />
 
                {this.showStateFallback ? ( <Fragment>
                   <p>

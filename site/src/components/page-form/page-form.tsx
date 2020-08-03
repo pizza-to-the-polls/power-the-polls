@@ -40,12 +40,12 @@ export class PageForm {
       };
       return (
          <Host>
-            <img
-               class="main-logo"
-               alt="Power the Polls"
-               src="assets/images/logo-icon-pink.png"
-            />
             {!this.formComplete ? ( <Fragment>
+               <img
+                  class="main-logo"
+                  alt="Power the Polls"
+                  src="assets/images/logo-icon-pink.png"
+               />
                <h1>POWER THE POLLS IS RECRUITING A NEW WAVE OF POLL WORKERS</h1>
                <p>
                   America is facing an unprecedented shortage of poll

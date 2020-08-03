@@ -2,18 +2,16 @@ import { h } from "@stencil/core";
 
 import { Jurisdiction } from "./types";
 
-const Hours = (jurisdiction: Jurisdiction) => (
-  <div>
-     <h3>Hours and Compensation</h3>
-     <ul>
-        {jurisdiction.hours_start && (<li>Start Time {jurisdiction.hours_start}</li>)}
-        {jurisdiction.hours_end && (<li>End Time {jurisdiction.hours_end}</li>)}
-        {jurisdiction.compensation && (<li>Compensation {jurisdiction.compensation}</li>)}
-        {jurisdiction.full_day_req === "Y" && (<li>You must work the full day.</li>)}
-        {jurisdiction.full_day_req === "N" && (<li>Part-day poll worker shifts are available.</li>)}
-        {jurisdiction.full_day_req.length > 1 && (<li>{jurisdiction.full_day_req}</li>)}
-     </ul>
-  </div>
+const Hours = ( j: Jurisdiction ) => (
+   <div>
+      <h4>Hours and Compensation</h4>
+      {j.hours_start && ( <p><strong>Start Time: </strong>{j.hours_start}</p> )}
+      {j.hours_end && ( <p><strong>End Time: </strong>{j.hours_end}</p> )}
+      {j.compensation && ( <p><strong>Compensation: </strong>{j.compensation}</p> )}
+      {j.full_day_req === "Y" ? <p>You must work the full day</p> : null}
+      {j.full_day_req === "N" && ( <p>Part-day poll worker shifts are available.</p> )}
+      {j.full_day_req.length > 1 && ( <p>{j.full_day_req}</p> )}
+   </div>
 );
 
 export default Hours;
