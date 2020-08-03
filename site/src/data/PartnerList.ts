@@ -116,6 +116,11 @@ const data: Partner[] = [
       name: "Every Vote Counts",
    },
    {
+      id: 'CrookedMedia',
+      name: 'Crooked Media',
+      logo: 'VSA_logo.png',
+   },
+   {
       id: "fairelections",
       logo: "fair-elections-center.png",
       name: "Fair Elections Center",
