@@ -158,6 +158,16 @@ const data: Partner[] = [
       founding: true,
    },
    {
+      id: 'microsoft',
+      name: 'Microsoft',
+      source: 'Microsoft',
+   },
+   {
+      id: 'microsoftint',
+      name: 'Microsoft',
+      source: 'MicrosoftInt',
+   },
+   {
       id: "nea",
       name: "NEA",
       source: "labor-nea",
@@ -198,6 +208,11 @@ const data: Partner[] = [
       name: "Students Learn Students Vote",
       source: "SLSV",
       founding: true,
+   },
+   {
+      id: 'salesforce',
+      name: 'Salesforce',
+      source: 'Salesforce'
    },
    {
       id: "starbucks",
