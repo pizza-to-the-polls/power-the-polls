@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop } from "@stencil/core";
+
 import getParams from "../../util/getParams";
 
 /**
@@ -29,7 +30,7 @@ export class PowerThePollsForm {
    @Prop() public customFormFieldLabel?: string;
 
    public render() {
-      const source = this.partnerId || getParams()['source'];
+      const source = this.partnerId || getParams().source;
       const chase = this.optUserOutOfChase === true ? "" : "true";
       const partnerField = this.customFormFieldLabel;
       const submissionUrl = this.destination;
