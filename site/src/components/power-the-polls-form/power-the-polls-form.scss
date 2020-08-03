@@ -1,7 +1,7 @@
 power-the-polls-form {
    display: block;
 
-   button[type="submit"] {
+   button {
       border: 0;
       padding: 0.5em 1em;
       width: 100%;
@@ -9,9 +9,14 @@ power-the-polls-form {
       color: $color-font-primary;
       font-family: $font-heading;
       text-transform: uppercase;
-      font-size: 1.2em;
+      font-size: 1.2rem;
       letter-spacing: 0.05rem;
       font-weight: bold;
+      cursor: pointer;
+   }
+
+   p.disclaimer {
+      font-size: 0.9rem;
    }
 
    form {
@@ -26,7 +31,6 @@ power-the-polls-form {
       input,
       select {
          width: 100%;
-         font-family: $font-primary;
          border: 0;
          padding: $p1 $p2;
          display: block;
@@ -48,21 +52,27 @@ power-the-polls-form {
          color: $color-accent;
          text-transform: uppercase;
          font-variant: small-caps;
-      }
 
-      .label--checkbox {
-         display: flex;
-         align-items: center;
-
-         &:first-of-type {
-            margin-top: $p4;
+         input,
+         select {
+            text-transform: none;
+            font-variant: normal;
          }
 
-         input {
-            transform: scale(1.5);
-            flex: 0 1 $p4;
-            margin-right: $p1;
-            z-index: -1;
+         .checkbox {
+            display: flex;
+            align-items: center;
+
+            &:first-of-type {
+               margin-top: $p4;
+            }
+
+            input {
+               transform: scale(1.5);
+               flex: 0 1 $p4;
+               margin-right: $p1;
+               z-index: -1;
+            }
          }
       }
    }

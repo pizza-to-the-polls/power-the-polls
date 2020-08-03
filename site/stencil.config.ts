@@ -1,20 +1,22 @@
 import { Config } from "@stencil/core";
 import { sass } from "@stencil/sass";
+import dotenvPlugin from "rollup-plugin-dotenv";
 
-// https://stenciljs.com/docs/config
+// see: https://stenciljs.com/docs/config
 
 export const config: Config = {
-   globalStyle: "styles/app.scss",
-   globalScript: "src/app.ts",
+   globalStyle: "styles/main.scss",
+   globalScript: "src/app-init.ts",
    taskQueue: "async",
    srcDir: "src", // "src" is the default; just here for clarity
    plugins: [
       sass( {
          // scss files in components will automatically have these imported
          injectGlobalPaths: [
-            "styles/variables.scss",
+            "styles/include/variables.scss",
          ],
       } ),
+      dotenvPlugin(),
    ],
    outputTargets: [
       {

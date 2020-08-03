@@ -82,6 +82,9 @@ export class AppRoot {
                         />
                         <stencil-route
                            component="main-form"
+                           componentProps={{
+                              smartyStreetsApiKey: process.env.SMARTY_STREETS_KEY,
+                           }}
                         />
                      </stencil-route-switch>
                   </stencil-router>

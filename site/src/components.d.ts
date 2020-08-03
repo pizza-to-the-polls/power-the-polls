@@ -5,8 +5,23 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { JurisdictionQueryResponse } from "./data/WorkElections";
 export namespace Components {
     interface AboutUs {
+    }
+    interface AddressInput {
+        /**
+          * Delay, in ms, between user pressing a key while entering an address and the API call being made. Default: 200 (ms)
+         */
+        "lookupDelay": number;
+        /**
+          * The state to narrow-down the address search to
+         */
+        "showStateSelect": boolean;
+        /**
+          * The API key to access the SmartyStreets API
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface AppRoot {
     }
@@ -17,6 +32,10 @@ export namespace Components {
     interface H3Bar {
     }
     interface MainForm {
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface PartnersList {
         /**
@@ -26,7 +45,7 @@ export namespace Components {
     }
     interface PowerThePollsForm {
         /**
-          * The label for an additional field to be displayed on the signup form
+          * The label for an additional field to be displayed on the signup form. If undefined, no additional field will be displayed.
          */
         "customFormFieldLabel"?: string;
         /**
@@ -38,6 +57,10 @@ export namespace Components {
           * To display custom text and images for a specific Power the Polls partner, enter their ID here.
          */
         "partnerId"?: string;
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface PrivacyInfo {
     }
@@ -69,6 +92,9 @@ export namespace Components {
          */
         "url"?: string;
     }
+    interface WorkElectionsInfo {
+        "jurisdiction"?: JurisdictionQueryResponse;
+    }
 }
 declare global {
     interface HTMLAboutUsElement extends Components.AboutUs, HTMLStencilElement {
@@ -76,6 +102,12 @@ declare global {
     var HTMLAboutUsElement: {
         prototype: HTMLAboutUsElement;
         new (): HTMLAboutUsElement;
+    };
+    interface HTMLAddressInputElement extends Components.AddressInput, HTMLStencilElement {
+    }
+    var HTMLAddressInputElement: {
+        prototype: HTMLAddressInputElement;
+        new (): HTMLAddressInputElement;
     };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
@@ -137,8 +169,15 @@ declare global {
         prototype: HTMLSocialShareElement;
         new (): HTMLSocialShareElement;
     };
+    interface HTMLWorkElectionsInfoElement extends Components.WorkElectionsInfo, HTMLStencilElement {
+    }
+    var HTMLWorkElectionsInfoElement: {
+        prototype: HTMLWorkElectionsInfoElement;
+        new (): HTMLWorkElectionsInfoElement;
+    };
     interface HTMLElementTagNameMap {
         "about-us": HTMLAboutUsElement;
+        "address-input": HTMLAddressInputElement;
         "app-root": HTMLAppRootElement;
         "component-list": HTMLComponentListElement;
         "contact-us": HTMLContactUsElement;
@@ -149,10 +188,25 @@ declare global {
         "privacy-info": HTMLPrivacyInfoElement;
         "ptp-faq": HTMLPtpFaqElement;
         "social-share": HTMLSocialShareElement;
+        "work-elections-info": HTMLWorkElectionsInfoElement;
     }
 }
 declare namespace LocalJSX {
     interface AboutUs {
+    }
+    interface AddressInput {
+        /**
+          * Delay, in ms, between user pressing a key while entering an address and the API call being made. Default: 200 (ms)
+         */
+        "lookupDelay"?: number;
+        /**
+          * The state to narrow-down the address search to
+         */
+        "showStateSelect"?: boolean;
+        /**
+          * The API key to access the SmartyStreets API
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface AppRoot {
     }
@@ -163,6 +217,10 @@ declare namespace LocalJSX {
     interface H3Bar {
     }
     interface MainForm {
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface PartnersList {
         /**
@@ -172,18 +230,30 @@ declare namespace LocalJSX {
     }
     interface PowerThePollsForm {
         /**
-          * The label for an additional field to be displayed on the signup form
+          * The label for an additional field to be displayed on the signup form. If undefined, no additional field will be displayed.
          */
         "customFormFieldLabel"?: string;
         /**
           * The URL where the form data will be submitted
          */
         "destination"?: string;
+        /**
+          * Dispatched when the user has submitted the form and it has successfully POSTed to `destination`
+         */
+        "onSubmitCompleted"?: (event: CustomEvent<any>) => void;
+        /**
+          * Dispatched when there is an error submitting the form to `destination`
+         */
+        "onSubmitError"?: (event: CustomEvent<any>) => void;
         "optUserOutOfChase"?: boolean;
         /**
           * To display custom text and images for a specific Power the Polls partner, enter their ID here.
          */
         "partnerId"?: string;
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface PrivacyInfo {
     }
@@ -215,8 +285,12 @@ declare namespace LocalJSX {
          */
         "url"?: string;
     }
+    interface WorkElectionsInfo {
+        "jurisdiction"?: JurisdictionQueryResponse;
+    }
     interface IntrinsicElements {
         "about-us": AboutUs;
+        "address-input": AddressInput;
         "app-root": AppRoot;
         "component-list": ComponentList;
         "contact-us": ContactUs;
@@ -227,6 +301,7 @@ declare namespace LocalJSX {
         "privacy-info": PrivacyInfo;
         "ptp-faq": PtpFaq;
         "social-share": SocialShare;
+        "work-elections-info": WorkElectionsInfo;
     }
 }
 export { LocalJSX as JSX };
@@ -234,6 +309,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "about-us": LocalJSX.AboutUs & JSXBase.HTMLAttributes<HTMLAboutUsElement>;
+            "address-input": LocalJSX.AddressInput & JSXBase.HTMLAttributes<HTMLAddressInputElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "component-list": LocalJSX.ComponentList & JSXBase.HTMLAttributes<HTMLComponentListElement>;
             "contact-us": LocalJSX.ContactUs & JSXBase.HTMLAttributes<HTMLContactUsElement>;
@@ -244,6 +320,7 @@ declare module "@stencil/core" {
             "privacy-info": LocalJSX.PrivacyInfo & JSXBase.HTMLAttributes<HTMLPrivacyInfoElement>;
             "ptp-faq": LocalJSX.PtpFaq & JSXBase.HTMLAttributes<HTMLPtpFaqElement>;
             "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;
+            "work-elections-info": LocalJSX.WorkElectionsInfo & JSXBase.HTMLAttributes<HTMLWorkElectionsInfoElement>;
         }
     }
 }

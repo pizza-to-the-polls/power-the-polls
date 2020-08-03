@@ -38,7 +38,7 @@ export class PagePartners {
             Power the Polls is a collaboration between nonprofit organizations and businesses:
          </p>
          <div class="partner-logos">
-            {partners.map( partner => (
+            {partners.map( partner => partner.logo == null ? null : (
                <img
                   src={`assets/images/partners/${partner.logo}`}
                   title={partner.name}
