@@ -11,8 +11,8 @@ export class PageAbout {
          <Host>
             <h1>About Us</h1>
             <p>
-               Power the Polls is a first-of-its-kind initiative to recruit poll workers to ensure a safe, fair
-               election for all voters.
+               Power the Polls is a first-of-its-kind initiative to recruit poll workers to ensure a
+               safe, fair election for all voters.
             </p>
             <p>
                This is a critical moment. America is in the midst of a nationwide poll worker shortage.
@@ -31,30 +31,25 @@ export class PageAbout {
 
             <h3>What Power the Polls is Doing</h3>
             <p>
-               Power the Polls will be a part of the solution by addressing the need for healthy and diverse poll
-               workers who can staff in-person voting locations during early voting and on Election Day.
+               Power the Polls will be a part of the solution by addressing the
+               need for low-risk and diverse poll workers who can staff
+               in-person voting locations during early voting and on Election Day.
             </p>
+            <h4>WE AIM TO INSPIRE 250,000 AMERICANS TO SIGN UP</h4>
             <p>
-               We aim to inspire upwards of 250,000 Americans to sign up as poll workers this year.
-            </p>
-            <p>
-               Power the Polls is focusing on healthy candidates to ensure that those workers most susceptible to
-               the coronavirus are given the space to take care of their health, while still keeping polling sites
-               open and available for efficient in-person voting.
+               Power the Polls is focusing on healthy, low-risk candidates to
+               ensure that those workers most susceptible to the coronavirus
+               are given the space to take care of their health, while still
+               keeping polling sites open and available for efficient in-person
+               voting.
             </p>
             <p>
                We have fewer than 100 days to sign up poll workers who will:
             </p>
             <ul>
-               <li>
-                  Prevent staffing shortages that would result in closure of polling places
-               </li>
-               <li>
-                  Ensure election technology functions properly and efficiently, minimizing lines and delays
-               </li>
-               <li>
-                  Help voters in their communities navigate issues when voting.
-               </li>
+               <li>Prevent staffing shortages that would result in closure of polling places</li>
+               <li>Ensure election technology functions properly and efficiently, minimizing lines and delays</li>
+               <li>Help voters in their communities navigate issues when voting.</li>
             </ul>
 
             <h3>Providing Accurate Poll Worker Information</h3>

@@ -23,8 +23,7 @@ export class PagePartners {
             <li>Educating potential voters about the opportunity to work Election Day polling places.</li>
             <li>Creating efficient and effective programming that ensures poll workers sign up and then show up when they’re needed.</li>
             <li>Activating businesses to give their workers Election Day off so they can serve.</li>
-            <li>Providing PPE to ensure worker safety on Election Day (through corporate partners).</li>
-            <li>Rewarding poll workers for their service by providing virtual gifts (merchandise, gift cards, etc.) from Power the Polls business partners.</li>
+            <li>Providing PPE to ensure worker safety on Election Day (through corporate partners)</li>
          </ul>
          <p>
             Over the coming weeks, Power the Polls will recruit poll workers while simultaneously activating business to get involved.
