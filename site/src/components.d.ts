@@ -16,6 +16,12 @@ export namespace Components {
     }
     interface H3Bar {
     }
+    interface JurisdictionInfo {
+        /**
+          * City for matching to location
+         */
+        "jurisdictionId"?: number;
+    }
     interface MainForm {
     }
     interface PartnersList {
@@ -23,6 +29,20 @@ export namespace Components {
           * List of all the partner logos to display
          */
         "partners"?: { logo: string, name: string, founding: boolean }[];
+    }
+    interface PollWorkerInfo {
+        /**
+          * City for matching to location
+         */
+        "city"?: string;
+        /**
+          * County for matching to location
+         */
+        "county"?: string;
+        /**
+          * State for matching to location
+         */
+        "state"?: string;
     }
     interface PowerThePollsForm {
         /**
@@ -69,19 +89,15 @@ export namespace Components {
          */
         "url"?: string;
     }
-    interface WorkElections {
+    interface StateInfo {
         /**
-          * City for matching to location
+          * State abrieviation
          */
-        "city": string;
+        "state"?: string;
         /**
-          * County for matching to location
+          * State id in work elections
          */
-        "county": string;
-        /**
-          * State for matching to location
-         */
-        "state": string;
+        "stateId": number | null;
     }
 }
 declare global {
@@ -115,6 +131,12 @@ declare global {
         prototype: HTMLH3BarElement;
         new (): HTMLH3BarElement;
     };
+    interface HTMLJurisdictionInfoElement extends Components.JurisdictionInfo, HTMLStencilElement {
+    }
+    var HTMLJurisdictionInfoElement: {
+        prototype: HTMLJurisdictionInfoElement;
+        new (): HTMLJurisdictionInfoElement;
+    };
     interface HTMLMainFormElement extends Components.MainForm, HTMLStencilElement {
     }
     var HTMLMainFormElement: {
@@ -126,6 +148,12 @@ declare global {
     var HTMLPartnersListElement: {
         prototype: HTMLPartnersListElement;
         new (): HTMLPartnersListElement;
+    };
+    interface HTMLPollWorkerInfoElement extends Components.PollWorkerInfo, HTMLStencilElement {
+    }
+    var HTMLPollWorkerInfoElement: {
+        prototype: HTMLPollWorkerInfoElement;
+        new (): HTMLPollWorkerInfoElement;
     };
     interface HTMLPowerThePollsFormElement extends Components.PowerThePollsForm, HTMLStencilElement {
     }
@@ -151,11 +179,11 @@ declare global {
         prototype: HTMLSocialShareElement;
         new (): HTMLSocialShareElement;
     };
-    interface HTMLWorkElectionsElement extends Components.WorkElections, HTMLStencilElement {
+    interface HTMLStateInfoElement extends Components.StateInfo, HTMLStencilElement {
     }
-    var HTMLWorkElectionsElement: {
-        prototype: HTMLWorkElectionsElement;
-        new (): HTMLWorkElectionsElement;
+    var HTMLStateInfoElement: {
+        prototype: HTMLStateInfoElement;
+        new (): HTMLStateInfoElement;
     };
     interface HTMLElementTagNameMap {
         "about-us": HTMLAboutUsElement;
@@ -163,13 +191,15 @@ declare global {
         "component-list": HTMLComponentListElement;
         "contact-us": HTMLContactUsElement;
         "h3-bar": HTMLH3BarElement;
+        "jurisdiction-info": HTMLJurisdictionInfoElement;
         "main-form": HTMLMainFormElement;
         "partners-list": HTMLPartnersListElement;
+        "poll-worker-info": HTMLPollWorkerInfoElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
         "privacy-info": HTMLPrivacyInfoElement;
         "ptp-faq": HTMLPtpFaqElement;
         "social-share": HTMLSocialShareElement;
-        "work-elections": HTMLWorkElectionsElement;
+        "state-info": HTMLStateInfoElement;
     }
 }
 declare namespace LocalJSX {
@@ -183,6 +213,12 @@ declare namespace LocalJSX {
     }
     interface H3Bar {
     }
+    interface JurisdictionInfo {
+        /**
+          * City for matching to location
+         */
+        "jurisdictionId"?: number;
+    }
     interface MainForm {
     }
     interface PartnersList {
@@ -190,6 +226,20 @@ declare namespace LocalJSX {
           * List of all the partner logos to display
          */
         "partners"?: { logo: string, name: string, founding: boolean }[];
+    }
+    interface PollWorkerInfo {
+        /**
+          * City for matching to location
+         */
+        "city"?: string;
+        /**
+          * County for matching to location
+         */
+        "county"?: string;
+        /**
+          * State for matching to location
+         */
+        "state"?: string;
     }
     interface PowerThePollsForm {
         /**
@@ -236,19 +286,15 @@ declare namespace LocalJSX {
          */
         "url"?: string;
     }
-    interface WorkElections {
+    interface StateInfo {
         /**
-          * City for matching to location
-         */
-        "city"?: string;
-        /**
-          * County for matching to location
-         */
-        "county"?: string;
-        /**
-          * State for matching to location
+          * State abrieviation
          */
         "state"?: string;
+        /**
+          * State id in work elections
+         */
+        "stateId"?: number | null;
     }
     interface IntrinsicElements {
         "about-us": AboutUs;
@@ -256,13 +302,15 @@ declare namespace LocalJSX {
         "component-list": ComponentList;
         "contact-us": ContactUs;
         "h3-bar": H3Bar;
+        "jurisdiction-info": JurisdictionInfo;
         "main-form": MainForm;
         "partners-list": PartnersList;
+        "poll-worker-info": PollWorkerInfo;
         "power-the-polls-form": PowerThePollsForm;
         "privacy-info": PrivacyInfo;
         "ptp-faq": PtpFaq;
         "social-share": SocialShare;
-        "work-elections": WorkElections;
+        "state-info": StateInfo;
     }
 }
 export { LocalJSX as JSX };
@@ -274,13 +322,15 @@ declare module "@stencil/core" {
             "component-list": LocalJSX.ComponentList & JSXBase.HTMLAttributes<HTMLComponentListElement>;
             "contact-us": LocalJSX.ContactUs & JSXBase.HTMLAttributes<HTMLContactUsElement>;
             "h3-bar": LocalJSX.H3Bar & JSXBase.HTMLAttributes<HTMLH3BarElement>;
+            "jurisdiction-info": LocalJSX.JurisdictionInfo & JSXBase.HTMLAttributes<HTMLJurisdictionInfoElement>;
             "main-form": LocalJSX.MainForm & JSXBase.HTMLAttributes<HTMLMainFormElement>;
             "partners-list": LocalJSX.PartnersList & JSXBase.HTMLAttributes<HTMLPartnersListElement>;
+            "poll-worker-info": LocalJSX.PollWorkerInfo & JSXBase.HTMLAttributes<HTMLPollWorkerInfoElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
             "privacy-info": LocalJSX.PrivacyInfo & JSXBase.HTMLAttributes<HTMLPrivacyInfoElement>;
             "ptp-faq": LocalJSX.PtpFaq & JSXBase.HTMLAttributes<HTMLPtpFaqElement>;
             "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;
-            "work-elections": LocalJSX.WorkElections & JSXBase.HTMLAttributes<HTMLWorkElectionsElement>;
+            "state-info": LocalJSX.StateInfo & JSXBase.HTMLAttributes<HTMLStateInfoElement>;
         }
     }
 }

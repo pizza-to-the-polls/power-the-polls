@@ -1,0 +1,38 @@
+export interface Jurisdiction {
+   id: number;
+   state: { alpha: string };
+   jurisdiction_link?: { id: number, name: string };
+   name: string;
+   obtained_at: string;
+   website: string;
+   application: string;
+   telephone: string;
+   email: string;
+   office_address: string;
+   mailing_address: string;
+   how_obtained: string;
+   registration_status: string;
+   pre_registration?: any;
+   voter_registration_url: string;
+   minimum_age: string;
+   high_school_student: string;
+   hours_start: string;
+   hours_end: string;
+   full_day_req: string;
+   split_days_allowed?: any;
+   compensation: string;
+   interview?: any;
+   training: string;
+   training_note?: string;
+   complete_training: string;
+   post_training_exam: string;
+   must_have_email: string;
+   candidate_prohibition?: any;
+   city: boolean;
+   city_label: string;
+   further_notes: string;
+   trusted_notes: string;
+   display: string;
+   student_website?: string;
+   jurisdiction_link_text?: string;
+}

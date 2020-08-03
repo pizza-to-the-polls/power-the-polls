@@ -3,9 +3,17 @@ import { Jurisdictions } from "../data";
 const workElectionsDomain = "https://workelections.powerthepolls.org";
 
 /**
+ * Asynchronous function for returning data from WE
+ */
+export const fetchFromWE = async (path: string) => {
+   const data = await fetch(`${workElectionsDomain}${path}`);
+   return await data.json();
+};
+
+/**
  * Return the URL of the Work Election's jurisdiction
  **/
-export const findJurisdiction = (state: string, county: string, city: string): string | null => {
+export const findJurisdiction = (state: string, county?: string, city?: string): number | null => {
    const stateData = Jurisdictions[state];
 
    if( stateData ) {
@@ -19,23 +27,18 @@ export const findJurisdiction = (state: string, county: string, city: string): s
          `${county} County`,
       ].find(type => stateData.jurisdictions[type]);
 
-      if( found ) {
-         return `${workElectionsDomain}/jurisdictions/${stateData.jurisdictions[found]}/`;
-      }
+      if( found ) { return stateData.jurisdictions[found]; }
    }
 
    return null;
 };
 
+
 /**
  * Return the URL of the Work Election's state
  **/
-export const findState = (state: string): string | null => {
+export const findState = (state: string): number | null => {
    const stateData = Jurisdictions[state];
 
-   if( stateData ) {
-      return `${workElectionsDomain}/states/${stateData.id}/`;
-   }
-
-   return null;
+   return stateData ? stateData.id : null;
 };
