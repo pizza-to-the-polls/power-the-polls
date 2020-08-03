@@ -8,6 +8,7 @@ import WorkReqs from "./WorkReqs";
 const Details = ( j: Jurisdiction ) => (
    <div>
       <h2>{j.name}, {j.state.alpha}</h2>
+      <p>{j.jurisdiction_link_text}</p>
 
       <div class="links">
          <a class="cta" href={j.application} target="_blank">Apply Now!</a>
