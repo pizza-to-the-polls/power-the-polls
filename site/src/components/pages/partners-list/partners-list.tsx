@@ -10,7 +10,7 @@ export class PagePartners {
    /**
     * List of all the partner logos to display
     */
-   @Prop() public partners?: { logo: string, name: string }[];
+   @Prop() public partners?: { logo: string, name: string, founding: boolean }[];
 
    public render() {
       const partners = this.partners || [];
@@ -38,11 +38,21 @@ export class PagePartners {
             Power the Polls is a collaboration between nonprofit organizations and businesses:
          </p>
          <div class="partner-logos">
-            {partners.map( partner => partner.logo == null ? null : (
-               <img
+            {partners.map( partner => (
+               partner.founding && partner.logo && (<img
                   src={`assets/images/partners/${partner.logo}`}
                   title={partner.name}
-               />
+               />)
+            ) )}
+         </div>
+
+         <h3-bar>Partners</h3-bar>
+         <div class="partner-logos">
+            {partners.map( partner => (
+               !partner.founding && partner.logo && (<img
+                  src={`assets/images/partners/${partner.logo}`}
+                  title={partner.name}
+               />)
             ) )}
          </div>
       </Host> );

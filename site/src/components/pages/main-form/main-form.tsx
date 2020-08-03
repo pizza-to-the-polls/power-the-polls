@@ -1,8 +1,9 @@
 import { Component, h, Host, Prop, State } from "@stencil/core";
 
 import { PartnerList } from "../../../data";
-import { Fragment } from "../../../util/Fragment";
 import analytics from "../../../util/Analytics";
+import { Fragment } from "../../../util/Fragment";
+import getParams from "../../../util/getParams";
 
 /**
  * The power-the-polls-form for the main site because there are a few additional bits of text and branding that
@@ -29,7 +30,7 @@ export class PageForm {
       const paths = document.location.pathname.split( "/" ).filter( x => x !== "" );
       const urlParam = paths.length > 0 ? paths[0] : "";
       const partner = ( PartnerList.filter( x => x.id === urlParam ) || [null] )[0];
-      const partnerId = partner?.actionKitKey || partner?.id;
+      const partnerId = partner?.source || partner?.id || getParams()?.source;
       const formCompleted = () => {
          analytics.signup();
          this.formComplete = true;

@@ -1,0 +1,25 @@
+poll-worker-info {
+   .links {
+      a {
+         border: 0;
+         padding: 0.5em 1em;
+         width: 100%;
+         min-width: 240px;
+         margin: 2rem 0;
+         font-size: 1.2em;
+         letter-spacing: 0.05rem;
+         font-weight: bold;
+         display: block;
+         text-decoration: none;
+         text-align: center;
+         background-color: $color-highlight;
+         color: $color-font-primary;
+      }
+      .cta {
+         background-color: $color-font-primary;
+         color: black;
+         font-family: $font-heading;
+         text-transform: uppercase;
+      }
+   }
+}

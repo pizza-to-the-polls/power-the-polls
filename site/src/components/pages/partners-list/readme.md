@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property   | Attribute | Description                              | Type                                             | Default     |
-| ---------- | --------- | ---------------------------------------- | ------------------------------------------------ | ----------- |
-| `partners` | --        | List of all the partner logos to display | `undefined \| { logo: string; name: string; }[]` | `undefined` |
+| Property   | Attribute | Description                              | Type                                                                | Default     |
+| ---------- | --------- | ---------------------------------------- | ------------------------------------------------------------------- | ----------- |
+| `partners` | --        | List of all the partner logos to display | `undefined \| { logo: string; name: string; founding: boolean; }[]` | `undefined` |
 
 
 ## Dependencies

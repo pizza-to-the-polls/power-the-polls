@@ -19,7 +19,7 @@ export interface Partner {
     * The key to use for thie source in ActionKit. If `undefined`, then the value
     * of `id` should be used instead.
     */
-   readonly actionKitKey?: string;
+   readonly source?: string;
 
    /**
     * By, default users are opted into chase in ActionKit.
@@ -42,25 +42,25 @@ const data: Partner[] = [
       id: "acs",
       logo: "acs.png",
       name: "American Constitution Society",
-      actionKitKey: "american-constitution-society",
+      source: "american-constitution-society",
    },
    {
       id: "aflcio",
       name: "AFL-CIO",
-      actionKitKey: "labor-aflcio",
+      source: "labor-aflcio",
       optUserOutOfChase: true,
       customSignupFormField: "Union Name",
    },
    {
       id: "afscme",
       name: "AFSCME",
-      actionKitKey: "labor-afscme",
+      source: "labor-afscme",
       optUserOutOfChase: true,
    },
    {
       id: "aft",
       name: "AFT",
-      actionKitKey: "labor-aft",
+      source: "labor-aft",
       optUserOutOfChase: true,
    },
    {
@@ -78,7 +78,7 @@ const data: Partner[] = [
       id: "boys-and-girls-club",
       logo: "boys-and-girls-clubs.png",
       name: "Boys and Girls Clubs of America",
-      actionKitKey: "boys-and-girls-clubs",
+      source: "boys-and-girls-clubs",
    },
    {
       id: "campus",
@@ -94,20 +94,20 @@ const data: Partner[] = [
       id: "civicgeorgia",
       logo: "civi-georgia.png",
       name: "Civic Georgia",
-      actionKitKey: "civic-georgia",
+      source: "civic-georgia",
    },
    {
       id: "civicalliance",
       name: "Civic Alliance",
       logo: "civic-alliance.png",
-      actionKitKey: "CivicAlliance",
+      source: "CivicAlliance",
       founding: true,
    },
    {
       id: "cc",
       name: "Comedy Central",
       logo: "comedy-central.png",
-      actionKitKey: "ComedyCentral",
+      source: "ComedyCentral",
       founding: true,
    },
    {
@@ -116,10 +116,15 @@ const data: Partner[] = [
       name: "Every Vote Counts",
    },
    {
+      id: "CrookedMedia",
+      name: "Crooked Media",
+      logo: "VSA_logo.png",
+   },
+   {
       id: "fairelections",
       logo: "fair-elections-center.png",
       name: "Fair Elections Center",
-      actionKitKey: "FairElections",
+      source: "FairElections",
       founding: true,
    },
    {
@@ -129,14 +134,14 @@ const data: Partner[] = [
    {
       id: "headcount",
       name: "HeadCount",
-      logo: "headcount.png",
-      actionKitKey: "HeadCount",
+      logo: "HeadCount.png",
+      source: "HeadCount",
    },
    {
       id: "levis",
       logo: "levi-strauss.png",
       name: "Levi's",
-      actionKitKey: "Levis",
+      source: "Levis",
       founding: true,
    },
    {
@@ -149,13 +154,13 @@ const data: Partner[] = [
       id: "AAAAAAAAAAAA",
       logo: "nrdn.png",
       name: "National Disability Rights Network",
-      actionKitKey: "NDRN",
+      source: "NDRN",
       founding: true,
    },
    {
       id: "nea",
       name: "NEA",
-      actionKitKey: "labor-nea",
+      source: "labor-nea",
       optUserOutOfChase: true,
    },
    {
@@ -166,14 +171,14 @@ const data: Partner[] = [
       id: "patagonia",
       logo: "patagonia.png",
       name: "Patagonia",
-      actionKitKey: "Patagonia",
+      source: "Patagonia",
       founding: true,
    },
    {
       id: "pizza",
       logo: "pizza-to-the-polls.png",
       name: "Pizza to the Polls",
-      actionKitKey: "Pizza",
+      source: "Pizza",
       founding: true,
    },
    {
@@ -184,14 +189,14 @@ const data: Partner[] = [
    {
       id: "seiu",
       name: "SEUI",
-      actionKitKey: "labor-seiu",
+      source: "labor-seiu",
       optUserOutOfChase: true,
    },
    {
       id: "slsv",
       logo: "slsv.png",
       name: "Students Learn Students Vote",
-      actionKitKey: "SLSV",
+      source: "SLSV",
       founding: true,
    },
    {
@@ -201,51 +206,52 @@ const data: Partner[] = [
    {
       id: "tds",
       name: "The Daily Show",
-      actionKitKey: "TheDailyShow",
+      source: "TheDailyShow",
    },
    {
       id: "theSkimm",
       logo: "the-skimm.png",
       name: "theSkimm",
-      actionKitKey: "skimm",
+      source: "skimm",
    },
    {
       id: "timetovote",
       logo: "time-to-vote.png",
       name: "Time to Vote",
-      actionKitKey: "TimeToVote",
+      source: "TimeToVote",
       founding: true,
    },
    {
       id: "uber",
       logo: "uber.png",
       name: "Uber",
-      actionKitKey: "Uber",
+      source: "Uber",
+      founding: true,
    },
    {
       id: "unitedway",
       logo: "unitedway.png",
       name: "United Way",
-      actionKitKey: "UnitedWay",
+      source: "UnitedWay",
       founding: true,
    },
    {
       id: "viacomcbs",
       name: "ViacomCBS",
-      actionKitKey: "ViacomCBS",
+      source: "ViacomCBS",
    },
    {
       id: "wecanvote",
       logo: "wecanvote.png",
       name: "We Can Vote",
-      actionKitKey: "WeCanVote",
+      source: "WeCanVote",
       founding: true,
    },
    {
       id: "when-we-all-vote",
       logo: "when-we-all-vote.png",
       name: "When We All Vote",
-      actionKitKey: "when-we-all-vote",
+      source: "when-we-all-vote",
    },
    {
       id: "wi",
@@ -253,7 +259,6 @@ const data: Partner[] = [
    },
    {
       id: "work-elections",
-      logo: "work-elections.png",
       name: "Work Elections",
    },
 ];

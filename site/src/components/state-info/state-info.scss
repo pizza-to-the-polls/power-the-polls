@@ -1,0 +1,22 @@
+state-info {
+   .jurisdictions {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: top;
+      align-content: stretch;
+      justify-content: space-between;
+
+      a {
+         display: block;
+         width: 46%;
+         margin: 20px 1%;
+         text-decoration: none;
+         border: 1px solid $color-font-primary;
+         padding: 8px;
+         &:hover {
+            border-color: $color-accent;
+         }
+      }
+   }
+}
