@@ -15,7 +15,8 @@ export class AppRoot {
       const partnerList = PartnerList;
 
       // help out development by logging an explicit error if you forgot to copy dot_env to .env or to add SMARTY_STREETS_KEY env var in the production build
-      if( `process.env.SMARTY_STREETS_KEY` === "process" + ".env.SMARTY_STREETS_KEY" ) {
+      let env = `process.env.SMARTY_STREETS_KEY`; // will be `"the-correct-key"` if replaced
+      if( env === "process" + ".env.SMARTY_STREETS_KEY" || env === `""` ) {
          console.error( "SMARTY_STREETS_KEY environment variable not present during build. Cannot continue." );
       }
 

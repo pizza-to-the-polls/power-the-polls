@@ -1,6 +1,7 @@
 import { Component, Event, EventEmitter, h, Host, Prop, State } from "@stencil/core";
 
 import { Fragment } from "../../util/Fragment";
+import { toQueryString } from "../../util";
 
 /**
  * The Power the Polls sign-up form.
@@ -21,7 +22,7 @@ export class PowerThePollsForm {
    /**
     * The URL where the form data will be submitted
     */
-   @Prop() public destination: string = "https://ptp.actionkit.com/act/";
+   @Prop() public destination: string = "https://ptp.actionkit.com/rest/v1/action/";
 
    /**
     * The API key to access SmartyStreets which is used for address lookup.
@@ -75,50 +76,60 @@ export class PowerThePollsForm {
       const submissionUrl = this.destination;
 
       const submitForm = ( e: Event ) => {
-         // gather up all the form data
-         const form = e.target as HTMLFormElement;
-         const elements = [
-            ...form.getElementsByTagName( "input" ),
-            ...form.getElementsByTagName( "select" ),
-         ];
-         const data = elements.reduce(
-            ( x, el ) => x.set( el.name, el.value ),
-            new Map<string, string>(),
-         );
-         // hacky way to get the data from address-input without wiring up events or callbacks
-         const city: string = data.get( "city" ) || "";
-         const county: string = data.get( "action_county" ) || "";
-         const stateCode: string = data.get( "state" ) || "";
+         try {
+            // gather up all the form data
+            const form = e.target as HTMLFormElement;
+            const elements = [
+               ...form.getElementsByTagName( "input" ),
+               ...form.getElementsByTagName( "select" ),
+            ];
+            const data: any = elements.reduce(
+               ( x, el ) => { x[el.name] = el.value; return x; },
+               ( {} as any ),
+            );
+            // hacky way to get the data from address-input without wiring up events or callbacks
+            const city: string = data.city || "";
+            const county: string = data.action_county || "";
+            const stateCode: string = data.state || "";
 
-         this.city = city;
-         this.county = county;
-         this.state = stateCode;
-         // query for work elections data so we can display the completion page with further information
-         // this.getWorkElectionsData( stateCode, city, county );
+            this.city = city;
+            this.county = county;
+            this.state = stateCode;
+            // query for work elections data so we can display the completion page with further information
+            // this.getWorkElectionsData( stateCode, city, county );
 
-         // submit to actionkit
-         fetch( form.action, {
-            method: form.method,
-            body: elements.reduce(
-               ( x, el ) => { x.append( el.name, el.value ); return x; },
-               new FormData(),
-            ),
-            mode: "cors",
-         } )
-            .then( ( response ) => {
-               console.log( "success", response );
-               let evt = this.submitCompleted.emit();
-               if( !evt.defaultPrevented ) {
-                  this.formComplete = true;
-               }
+            // submit to actionkit
+            fetch( form.action, {
+               method: form.method,
+               body: toQueryString( data ),
+               mode: "no-cors",
+               headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+               },
             } )
-            .catch( err => {
-               this.submitError.emit( err );
-            } );
-
-         // cancel the submit so the browser doesn't do anything
-         e.preventDefault();
-         return false;
+               .then( ( response ) => {
+                  if( response.status === 200 || response.status === 201 || response.status === 0 ) {
+                     console.log( "response", response );
+                     let evt = this.submitCompleted.emit();
+                     if( !evt.defaultPrevented ) {
+                        this.formComplete = true;
+                     }
+                  } else {
+                     console.log( "error", response );
+                     response.json()
+                        .then( json => this.submitError.emit( { statusText: response.statusText, status: response.status, data: json } ) )
+                        .catch( e => console.error( e ) );
+                  }
+               } )
+               .catch( err => {
+                  this.submitError.emit( err );
+               } );
+         } catch( e ) {
+            this.submitError.emit( e );
+         } finally { // make sure we cancel the submit so the browser doesn't do anything
+            e.preventDefault();
+            return false;
+         }
       };
 
       return ( <Host>
