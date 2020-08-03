@@ -11,7 +11,7 @@ export interface Partner {
 
    /**
     * A logo for partners that should be displayed on the partners page.
-    * If no logo is provided, the partner will no appear on partners-list.tsx
+    * If no logo is provided, the partner will no appear on page-partners.tsx
     */
    readonly logo?: string;
 

@@ -1,4 +1,4 @@
-# partners-list
+# page-partners
 
 
 
@@ -16,13 +16,13 @@
 
 ### Depends on
 
-- [h3-bar](../../h3-bar)
+- [h3-bar](../h3-bar)
 
 ### Graph
 ```mermaid
 graph TD;
-  partners-list --> h3-bar
-  style partners-list fill:#f9f,stroke:#333,stroke-width:4px
+  page-partners --> h3-bar
+  style page-partners fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

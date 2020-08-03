@@ -14,6 +14,11 @@ export class AppRoot {
       const faqData = FaqData;
       const partnerList = PartnerList;
 
+      // help out development by logging an explicit error if you forgot to copy dot_env to .env or to add SMARTY_STREETS_KEY env var in the production build
+      if( `process.env.SMARTY_STREETS_KEY` === "process" + ".env.SMARTY_STREETS_KEY" ) {
+         console.error( "SMARTY_STREETS_KEY environment variable not present during build. Cannot continue." );
+      }
+
       return (
          <div class="container">
             <aside class="sidebar">
@@ -33,16 +38,16 @@ export class AppRoot {
                            <stencil-route-link url="/signup">Sign Up</stencil-route-link>
                         </li>
                         <li>
-                           <stencil-route-link url="/about-us">About</stencil-route-link>
+                           <stencil-route-link url="/about">About</stencil-route-link>
                         </li>
                         <li>
-                           <stencil-route-link url="/ptp-faq">FAQ</stencil-route-link>
+                           <stencil-route-link url="/faq">FAQ</stencil-route-link>
                         </li>
                         <li>
                            <stencil-route-link url="/partners">Partners</stencil-route-link>
                         </li>
                         <li>
-                           <stencil-route-link url="/contact-us">Contact</stencil-route-link>
+                           <stencil-route-link url="/contact">Contact</stencil-route-link>
                         </li>
                      </ul>
                   </nav>
@@ -55,33 +60,33 @@ export class AppRoot {
                   <stencil-router>
                      <stencil-route-switch scrollTopOffset={0}>
                         <stencil-route
-                           url="/about-us"
-                           component="about-us"
+                           url="/about"
+                           component="page-about"
                         />
                         <stencil-route
-                           url="/contact-us"
-                           component="contact-us"
+                           url="/contact"
+                           component="page-contact"
                         />
                         <stencil-route
-                           url="/ptp-faq"
-                           component="ptp-faq"
+                           url="/faq"
+                           component="page-faq"
                            componentProps={{ data: faqData }}
                         />
                         <stencil-route
                            url="/partners"
-                           component="partners-list"
+                           component="page-partners"
                            componentProps={{ partners: partnerList }}
                         />
                         <stencil-route
-                           url="/privacy-info"
-                           component="privacy-info"
+                           url="/privacy"
+                           component="page-privacy"
                         />
                         <stencil-route
                            url="/dev"
                            component="component-list"
                         />
                         <stencil-route
-                           component="main-form"
+                           component="page-form"
                            componentProps={{
                               smartyStreetsApiKey: process.env.SMARTY_STREETS_KEY/*replaced with correct value by build*/,
                            }}

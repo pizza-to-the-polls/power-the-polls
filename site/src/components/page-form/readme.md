@@ -1,4 +1,4 @@
-# main-form
+# page-form
 
 
 
@@ -16,18 +16,18 @@
 
 ### Depends on
 
-- [power-the-polls-form](../../power-the-polls-form)
+- [power-the-polls-form](../power-the-polls-form)
 
 ### Graph
 ```mermaid
 graph TD;
-  main-form --> power-the-polls-form
+  page-form --> power-the-polls-form
   power-the-polls-form --> poll-worker-info
   power-the-polls-form --> address-input
   power-the-polls-form --> stencil-route-link
   poll-worker-info --> jurisdiction-info
   poll-worker-info --> state-info
-  style main-form fill:#f9f,stroke:#333,stroke-width:4px
+  style page-form fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

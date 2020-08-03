@@ -1,4 +1,4 @@
-# contact-us
+# page-contact
 
 
 
@@ -9,13 +9,13 @@
 
 ### Depends on
 
-- [h3-bar](../../h3-bar)
+- [h3-bar](../h3-bar)
 
 ### Graph
 ```mermaid
 graph TD;
-  contact-us --> h3-bar
-  style contact-us fill:#f9f,stroke:#333,stroke-width:4px
+  page-contact --> h3-bar
+  style page-contact fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

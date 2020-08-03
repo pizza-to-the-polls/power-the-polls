@@ -1,8 +1,8 @@
 import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component( {
-   tag: "partners-list",
-   styleUrl: "partners-list.scss",
+   tag: "page-partners",
+   styleUrl: "page-partners.scss",
    shadow: false,
 } )
 export class PagePartners {
@@ -39,20 +39,20 @@ export class PagePartners {
          </p>
          <div class="partner-logos">
             {partners.map( partner => (
-               partner.founding && partner.logo && (<img
+               partner.founding && partner.logo && ( <img
                   src={`assets/images/partners/${partner.logo}`}
                   title={partner.name}
-               />)
+               /> )
             ) )}
          </div>
 
          <h3-bar>Partners</h3-bar>
          <div class="partner-logos">
             {partners.map( partner => (
-               !partner.founding && partner.logo && (<img
+               !partner.founding && partner.logo && ( <img
                   src={`assets/images/partners/${partner.logo}`}
                   title={partner.name}
-               />)
+               /> )
             ) )}
          </div>
       </Host> );

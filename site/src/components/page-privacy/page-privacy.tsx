@@ -1,7 +1,7 @@
 import { Component, h, Host } from "@stencil/core";
 
 @Component( {
-   tag: "privacy-info",
+   tag: "page-privacy",
    shadow: false,
 } )
 export class PagePrivacy {

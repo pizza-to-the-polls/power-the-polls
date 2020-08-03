@@ -7,8 +7,6 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { JurisdictionQueryResponse } from "./data/WorkElections";
 export namespace Components {
-    interface AboutUs {
-    }
     interface AddressInput {
         /**
           * Delay, in ms, between user pressing a key while entering an address and the API call being made. Default: 200 (ms)
@@ -27,8 +25,6 @@ export namespace Components {
     }
     interface ComponentList {
     }
-    interface ContactUs {
-    }
     interface H3Bar {
     }
     interface JurisdictionInfo {
@@ -37,17 +33,29 @@ export namespace Components {
          */
         "jurisdictionId"?: number;
     }
-    interface MainForm {
+    interface PageAbout {
+    }
+    interface PageContact {
+    }
+    interface PageFaq {
+        /**
+          * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
+         */
+        "data"?: { question: string, answer: string }[];
+    }
+    interface PageForm {
         /**
           * The API key to access SmartyStreets which is used for address lookup.
          */
         "smartyStreetsApiKey"?: string;
     }
-    interface PartnersList {
+    interface PagePartners {
         /**
           * List of all the partner logos to display
          */
         "partners"?: { logo: string, name: string, founding: boolean }[];
+    }
+    interface PagePrivacy {
     }
     interface PollWorkerInfo {
         /**
@@ -81,14 +89,6 @@ export namespace Components {
           * The API key to access SmartyStreets which is used for address lookup.
          */
         "smartyStreetsApiKey"?: string;
-    }
-    interface PrivacyInfo {
-    }
-    interface PtpFaq {
-        /**
-          * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
-         */
-        "data"?: { question: string, answer: string }[];
     }
     interface SocialShare {
         /**
@@ -127,12 +127,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLAboutUsElement extends Components.AboutUs, HTMLStencilElement {
-    }
-    var HTMLAboutUsElement: {
-        prototype: HTMLAboutUsElement;
-        new (): HTMLAboutUsElement;
-    };
     interface HTMLAddressInputElement extends Components.AddressInput, HTMLStencilElement {
     }
     var HTMLAddressInputElement: {
@@ -151,12 +145,6 @@ declare global {
         prototype: HTMLComponentListElement;
         new (): HTMLComponentListElement;
     };
-    interface HTMLContactUsElement extends Components.ContactUs, HTMLStencilElement {
-    }
-    var HTMLContactUsElement: {
-        prototype: HTMLContactUsElement;
-        new (): HTMLContactUsElement;
-    };
     interface HTMLH3BarElement extends Components.H3Bar, HTMLStencilElement {
     }
     var HTMLH3BarElement: {
@@ -169,17 +157,41 @@ declare global {
         prototype: HTMLJurisdictionInfoElement;
         new (): HTMLJurisdictionInfoElement;
     };
-    interface HTMLMainFormElement extends Components.MainForm, HTMLStencilElement {
+    interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
     }
-    var HTMLMainFormElement: {
-        prototype: HTMLMainFormElement;
-        new (): HTMLMainFormElement;
+    var HTMLPageAboutElement: {
+        prototype: HTMLPageAboutElement;
+        new (): HTMLPageAboutElement;
     };
-    interface HTMLPartnersListElement extends Components.PartnersList, HTMLStencilElement {
+    interface HTMLPageContactElement extends Components.PageContact, HTMLStencilElement {
     }
-    var HTMLPartnersListElement: {
-        prototype: HTMLPartnersListElement;
-        new (): HTMLPartnersListElement;
+    var HTMLPageContactElement: {
+        prototype: HTMLPageContactElement;
+        new (): HTMLPageContactElement;
+    };
+    interface HTMLPageFaqElement extends Components.PageFaq, HTMLStencilElement {
+    }
+    var HTMLPageFaqElement: {
+        prototype: HTMLPageFaqElement;
+        new (): HTMLPageFaqElement;
+    };
+    interface HTMLPageFormElement extends Components.PageForm, HTMLStencilElement {
+    }
+    var HTMLPageFormElement: {
+        prototype: HTMLPageFormElement;
+        new (): HTMLPageFormElement;
+    };
+    interface HTMLPagePartnersElement extends Components.PagePartners, HTMLStencilElement {
+    }
+    var HTMLPagePartnersElement: {
+        prototype: HTMLPagePartnersElement;
+        new (): HTMLPagePartnersElement;
+    };
+    interface HTMLPagePrivacyElement extends Components.PagePrivacy, HTMLStencilElement {
+    }
+    var HTMLPagePrivacyElement: {
+        prototype: HTMLPagePrivacyElement;
+        new (): HTMLPagePrivacyElement;
     };
     interface HTMLPollWorkerInfoElement extends Components.PollWorkerInfo, HTMLStencilElement {
     }
@@ -192,18 +204,6 @@ declare global {
     var HTMLPowerThePollsFormElement: {
         prototype: HTMLPowerThePollsFormElement;
         new (): HTMLPowerThePollsFormElement;
-    };
-    interface HTMLPrivacyInfoElement extends Components.PrivacyInfo, HTMLStencilElement {
-    }
-    var HTMLPrivacyInfoElement: {
-        prototype: HTMLPrivacyInfoElement;
-        new (): HTMLPrivacyInfoElement;
-    };
-    interface HTMLPtpFaqElement extends Components.PtpFaq, HTMLStencilElement {
-    }
-    var HTMLPtpFaqElement: {
-        prototype: HTMLPtpFaqElement;
-        new (): HTMLPtpFaqElement;
     };
     interface HTMLSocialShareElement extends Components.SocialShare, HTMLStencilElement {
     }
@@ -224,27 +224,25 @@ declare global {
         new (): HTMLWorkElectionsInfoElement;
     };
     interface HTMLElementTagNameMap {
-        "about-us": HTMLAboutUsElement;
         "address-input": HTMLAddressInputElement;
         "app-root": HTMLAppRootElement;
         "component-list": HTMLComponentListElement;
-        "contact-us": HTMLContactUsElement;
         "h3-bar": HTMLH3BarElement;
         "jurisdiction-info": HTMLJurisdictionInfoElement;
-        "main-form": HTMLMainFormElement;
-        "partners-list": HTMLPartnersListElement;
+        "page-about": HTMLPageAboutElement;
+        "page-contact": HTMLPageContactElement;
+        "page-faq": HTMLPageFaqElement;
+        "page-form": HTMLPageFormElement;
+        "page-partners": HTMLPagePartnersElement;
+        "page-privacy": HTMLPagePrivacyElement;
         "poll-worker-info": HTMLPollWorkerInfoElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
-        "privacy-info": HTMLPrivacyInfoElement;
-        "ptp-faq": HTMLPtpFaqElement;
         "social-share": HTMLSocialShareElement;
         "state-info": HTMLStateInfoElement;
         "work-elections-info": HTMLWorkElectionsInfoElement;
     }
 }
 declare namespace LocalJSX {
-    interface AboutUs {
-    }
     interface AddressInput {
         /**
           * Delay, in ms, between user pressing a key while entering an address and the API call being made. Default: 200 (ms)
@@ -263,8 +261,6 @@ declare namespace LocalJSX {
     }
     interface ComponentList {
     }
-    interface ContactUs {
-    }
     interface H3Bar {
     }
     interface JurisdictionInfo {
@@ -273,17 +269,29 @@ declare namespace LocalJSX {
          */
         "jurisdictionId"?: number;
     }
-    interface MainForm {
+    interface PageAbout {
+    }
+    interface PageContact {
+    }
+    interface PageFaq {
+        /**
+          * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
+         */
+        "data"?: { question: string, answer: string }[];
+    }
+    interface PageForm {
         /**
           * The API key to access SmartyStreets which is used for address lookup.
          */
         "smartyStreetsApiKey"?: string;
     }
-    interface PartnersList {
+    interface PagePartners {
         /**
           * List of all the partner logos to display
          */
         "partners"?: { logo: string, name: string, founding: boolean }[];
+    }
+    interface PagePrivacy {
     }
     interface PollWorkerInfo {
         /**
@@ -326,14 +334,6 @@ declare namespace LocalJSX {
          */
         "smartyStreetsApiKey"?: string;
     }
-    interface PrivacyInfo {
-    }
-    interface PtpFaq {
-        /**
-          * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
-         */
-        "data"?: { question: string, answer: string }[];
-    }
     interface SocialShare {
         /**
           * Key to send for analytics when user selects this social share
@@ -370,19 +370,19 @@ declare namespace LocalJSX {
         "jurisdiction"?: JurisdictionQueryResponse;
     }
     interface IntrinsicElements {
-        "about-us": AboutUs;
         "address-input": AddressInput;
         "app-root": AppRoot;
         "component-list": ComponentList;
-        "contact-us": ContactUs;
         "h3-bar": H3Bar;
         "jurisdiction-info": JurisdictionInfo;
-        "main-form": MainForm;
-        "partners-list": PartnersList;
+        "page-about": PageAbout;
+        "page-contact": PageContact;
+        "page-faq": PageFaq;
+        "page-form": PageForm;
+        "page-partners": PagePartners;
+        "page-privacy": PagePrivacy;
         "poll-worker-info": PollWorkerInfo;
         "power-the-polls-form": PowerThePollsForm;
-        "privacy-info": PrivacyInfo;
-        "ptp-faq": PtpFaq;
         "social-share": SocialShare;
         "state-info": StateInfo;
         "work-elections-info": WorkElectionsInfo;
@@ -392,19 +392,19 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "about-us": LocalJSX.AboutUs & JSXBase.HTMLAttributes<HTMLAboutUsElement>;
             "address-input": LocalJSX.AddressInput & JSXBase.HTMLAttributes<HTMLAddressInputElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "component-list": LocalJSX.ComponentList & JSXBase.HTMLAttributes<HTMLComponentListElement>;
-            "contact-us": LocalJSX.ContactUs & JSXBase.HTMLAttributes<HTMLContactUsElement>;
             "h3-bar": LocalJSX.H3Bar & JSXBase.HTMLAttributes<HTMLH3BarElement>;
             "jurisdiction-info": LocalJSX.JurisdictionInfo & JSXBase.HTMLAttributes<HTMLJurisdictionInfoElement>;
-            "main-form": LocalJSX.MainForm & JSXBase.HTMLAttributes<HTMLMainFormElement>;
-            "partners-list": LocalJSX.PartnersList & JSXBase.HTMLAttributes<HTMLPartnersListElement>;
+            "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
+            "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
+            "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;
+            "page-form": LocalJSX.PageForm & JSXBase.HTMLAttributes<HTMLPageFormElement>;
+            "page-partners": LocalJSX.PagePartners & JSXBase.HTMLAttributes<HTMLPagePartnersElement>;
+            "page-privacy": LocalJSX.PagePrivacy & JSXBase.HTMLAttributes<HTMLPagePrivacyElement>;
             "poll-worker-info": LocalJSX.PollWorkerInfo & JSXBase.HTMLAttributes<HTMLPollWorkerInfoElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
-            "privacy-info": LocalJSX.PrivacyInfo & JSXBase.HTMLAttributes<HTMLPrivacyInfoElement>;
-            "ptp-faq": LocalJSX.PtpFaq & JSXBase.HTMLAttributes<HTMLPtpFaqElement>;
             "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;
             "state-info": LocalJSX.StateInfo & JSXBase.HTMLAttributes<HTMLStateInfoElement>;
             "work-elections-info": LocalJSX.WorkElectionsInfo & JSXBase.HTMLAttributes<HTMLWorkElectionsInfoElement>;

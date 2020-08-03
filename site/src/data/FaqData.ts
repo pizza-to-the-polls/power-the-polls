@@ -1,5 +1,5 @@
 /**
- * Ordered list of questions and answers for ptp-faq.tsx, see also app-root.tsx
+ * Ordered list of questions and answers for page-faq.tsx, see also app-root.tsx
  */
 const data: { question: string, answer: string }[] = [
    {

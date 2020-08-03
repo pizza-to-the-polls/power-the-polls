@@ -1,7 +1,7 @@
 import { Component, h, Host } from "@stencil/core";
 
 @Component( {
-   tag: "about-us",
+   tag: "page-about",
    shadow: false,
 } )
 export class PageAbout {

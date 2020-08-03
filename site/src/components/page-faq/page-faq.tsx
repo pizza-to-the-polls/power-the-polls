@@ -1,10 +1,10 @@
 import { Component, h, Host, Prop } from "@stencil/core";
 
-import { Fragment } from "../../../util/Fragment";
+import { Fragment } from "../../util/Fragment";
 
 @Component( {
-   tag: "ptp-faq",
-   styleUrl: "ptp-faq.scss",
+   tag: "page-faq",
+   styleUrl: "page-faq.scss",
    shadow: false,
 } )
 export class PageFaq {

@@ -1,17 +1,17 @@
 import { Component, h, Host, Prop, State } from "@stencil/core";
 
-import { PartnerList } from "../../../data";
-import analytics from "../../../util/Analytics";
-import { Fragment } from "../../../util/Fragment";
-import getParams from "../../../util/getParams";
+import { PartnerList } from "../../data";
+import analytics from "../../util/Analytics";
+import { Fragment } from "../../util/Fragment";
+import getParams from "../../util/getParams";
 
 /**
  * The power-the-polls-form for the main site because there are a few additional bits of text and branding that
  * aren't part of power-the-polls-form
  */
 @Component( {
-   tag: "main-form",
-   styleUrl: "main-form.scss",
+   tag: "page-form",
+   styleUrl: "page-form.scss",
    shadow: false,
 } )
 export class PageForm {
