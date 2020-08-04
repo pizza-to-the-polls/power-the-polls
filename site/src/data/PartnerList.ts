@@ -39,9 +39,9 @@ export interface Partner {
 
 const data: Partner[] = [
    {
-      id: '911day',
-      name: '9/11 Day',
-      logo: '911day.png'
+      id: "911day",
+      name: "9/11 Day",
+      logo: "911day.png",
    },
    {
       id: "acs",
@@ -69,9 +69,9 @@ const data: Partner[] = [
       optUserOutOfChase: true,
    },
    {
-      id: 'allin',
-      name: 'All In',
-      logo: 'allin.png'
+      id: "allin",
+      name: "All In",
+      logo: "allin.png",
    },
    {
       id: "AYO",
@@ -131,14 +131,14 @@ const data: Partner[] = [
       logo: "VSA_logo.png",
    },
    {
-      id: 'blockpower',
-      name: 'Block Power',
-      logo: 'Block Power.png'
+      id: "blockpower",
+      name: "Block Power",
+      logo: "Block Power.png",
    },
    {
-      id: 'defendourfuture',
-      name: 'Defend Our Future',
-      logo: 'Defend Our Future.png'
+      id: "defendourfuture",
+      name: "Defend Our Future",
+      logo: "Defend Our Future.png",
    },
    {
       id: "fairelections",
@@ -160,22 +160,22 @@ const data: Partner[] = [
    {
       id: "impactual",
       name: "Impactual",
-      logo: "impactual.png"
+      logo: "impactual.png",
    },
    {
-      id: 'jolt',
-      name: 'Jolt Action',
-      logo: 'Jolt.png'
+      id: "jolt",
+      name: "Jolt Action",
+      logo: "Jolt.png",
    },
    {
-      id: 'leadershipnow',
-      name: 'Leadership Now Project',
-      logo: 'Leadership Now Project.png'
+      id: "leadershipnow",
+      name: "Leadership Now Project",
+      logo: "Leadership Now Project.png",
    },
    {
-      id: 'leadmn',
-      name: 'Lead MN',
-      logo: 'LeadMN.jpg'
+      id: "leadmn",
+      name: "Lead MN",
+      logo: "LeadMN.jpg",
    },
    {
       id: "levis",
@@ -198,34 +198,34 @@ const data: Partner[] = [
       founding: true,
    },
    {
-      id: 'mcn',
-      name: 'Master Clinician Network',
-      logo: 'MCN.png',
+      id: "mcn",
+      name: "Master Clinician Network",
+      logo: "MCN.png",
    },
    {
-      id: 'mitzvote',
-      name: 'Mitz Vote',
-      logo: 'Mitz Vote.png',
+      id: "mitzvote",
+      name: "Mitz Vote",
+      logo: "Mitz Vote.png",
    },
    {
-      id: 'mweg',
-      name: 'Mormon Women For Ethical Government',
-      logo: 'Mormon Women For Ethical Government.png',
+      id: "mweg",
+      name: "Mormon Women For Ethical Government",
+      logo: "Mormon Women For Ethical Government.png",
    },
    {
-      id: 'ncbcp',
-      name: 'National Coalition On Black Civic Participation',
-      logo: 'National Coalition On Black Civic Participation.png',
+      id: "ncbcp",
+      name: "National Coalition On Black Civic Participation",
+      logo: "National Coalition On Black Civic Participation.png",
    },
    {
-      id: 'microsoft',
-      name: 'Microsoft',
-      source: 'Microsoft',
+      id: "microsoft",
+      name: "Microsoft",
+      source: "Microsoft",
    },
    {
-      id: 'microsoftint',
-      name: 'Microsoft',
-      source: 'MicrosoftInt',
+      id: "microsoftint",
+      name: "Microsoft",
+      source: "MicrosoftInt",
    },
    {
       id: "nea",
@@ -252,7 +252,7 @@ const data: Partner[] = [
       founding: true,
    },
    {
-      id: 'repairtheworld',
+      id: "repairtheworld",
       logo: "Repair The World.png",
       name: "Repair The World",
    },
@@ -275,9 +275,9 @@ const data: Partner[] = [
       founding: true,
    },
    {
-      id: 'salesforce',
-      name: 'Salesforce',
-      source: 'Salesforce'
+      id: "salesforce",
+      name: "Salesforce",
+      source: "Salesforce",
    },
    {
       id: "starbucks",
@@ -321,7 +321,7 @@ const data: Partner[] = [
       source: "ViacomCBS",
    },
    {
-      id: 'Vote411',
+      id: "Vote411",
       name: "Vote411",
       logo: "Vote411.png",
    },
@@ -347,7 +347,7 @@ const data: Partner[] = [
       name: "Work Elections",
    },
    {
-      id: 'YMCA',
+      id: "YMCA",
       name: "YMCA",
       logo: "YMCA.png",
    },

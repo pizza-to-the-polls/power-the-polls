@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, h, Host, Prop, State } from "@stencil/core";
 
-import { Fragment } from "../../util/Fragment";
 import { toQueryString } from "../../util";
+import { Fragment } from "../../util/Fragment";
 
 /**
  * The Power the Polls sign-up form.
