@@ -39,6 +39,11 @@ export interface Partner {
 
 const data: Partner[] = [
    {
+      id: '911day',
+      name: '9/11 Day',
+      logo: '911day.png'
+   },
+   {
       id: "acs",
       logo: "acs.png",
       name: "American Constitution Society",
@@ -62,6 +67,11 @@ const data: Partner[] = [
       name: "AFT",
       source: "labor-aft",
       optUserOutOfChase: true,
+   },
+   {
+      id: 'allin',
+      name: 'All In',
+      logo: 'allin.png'
    },
    {
       id: "AYO",
@@ -121,6 +131,16 @@ const data: Partner[] = [
       logo: "VSA_logo.png",
    },
    {
+      id: 'blockpower',
+      name: 'Block Power',
+      logo: 'Block Power.png'
+   },
+   {
+      id: 'defendourfuture',
+      name: 'Defend Our Future',
+      logo: 'Defend Our Future.png'
+   },
+   {
       id: "fairelections",
       logo: "fair-elections-center.png",
       name: "Fair Elections Center",
@@ -136,6 +156,26 @@ const data: Partner[] = [
       name: "HeadCount",
       logo: "HeadCount.png",
       source: "HeadCount",
+   },
+   {
+      id: "impactual",
+      name: "Impactual",
+      logo: "impactual.png"
+   },
+   {
+      id: 'jolt',
+      name: 'Jolt Action',
+      logo: 'Jolt.png'
+   },
+   {
+      id: 'leadershipnow',
+      name: 'Leadership Now Project',
+      logo: 'Leadership Now Project.png'
+   },
+   {
+      id: 'leadmn',
+      name: 'Lead MN',
+      logo: 'LeadMN.jpg'
    },
    {
       id: "levis",
@@ -156,6 +196,26 @@ const data: Partner[] = [
       name: "National Disability Rights Network",
       source: "NDRN",
       founding: true,
+   },
+   {
+      id: 'mcn',
+      name: 'Master Clinician Network',
+      logo: 'MCN.png',
+   },
+   {
+      id: 'mitzvote',
+      name: 'Mitz Vote',
+      logo: 'Mitz Vote.png',
+   },
+   {
+      id: 'mweg',
+      name: 'Mormon Women For Ethical Government',
+      logo: 'Mormon Women For Ethical Government.png',
+   },
+   {
+      id: 'ncbcp',
+      name: 'National Coalition On Black Civic Participation',
+      logo: 'National Coalition On Black Civic Participation.png',
    },
    {
       id: 'microsoft',
@@ -190,6 +250,11 @@ const data: Partner[] = [
       name: "Pizza to the Polls",
       source: "Pizza",
       founding: true,
+   },
+   {
+      id: 'repairtheworld',
+      logo: "Repair The World.png",
+      name: "Repair The World",
    },
    {
       id: "AAAAAAApublicwiseAAAAA",
@@ -256,6 +321,11 @@ const data: Partner[] = [
       source: "ViacomCBS",
    },
    {
+      id: 'Vote411',
+      name: "Vote411",
+      logo: "Vote411.png",
+   },
+   {
       id: "wecanvote",
       logo: "wecanvote.png",
       name: "We Can Vote",
@@ -275,6 +345,11 @@ const data: Partner[] = [
    {
       id: "work-elections",
       name: "Work Elections",
+   },
+   {
+      id: 'YMCA',
+      name: "YMCA",
+      logo: "YMCA.png",
    },
 ];
 export default data;
