@@ -41,7 +41,7 @@ const data: Partner[] = [
    {
       id: "911day",
       name: "9/11 Day",
-      logo: "911day.png",
+      logo: "911-day.png",
    },
    {
       id: "acs",
@@ -128,7 +128,7 @@ const data: Partner[] = [
    {
       id: "CrookedMedia",
       name: "Crooked Media",
-      logo: "VSA_logo.png",
+      logo: "vsa.png",
    },
    {
       id: "blockpower",
@@ -138,7 +138,7 @@ const data: Partner[] = [
    {
       id: "defendourfuture",
       name: "Defend Our Future",
-      logo: "Defend Our Future.png",
+      logo: "defend-our-future.png",
    },
    {
       id: "fairelections",
@@ -154,7 +154,7 @@ const data: Partner[] = [
    {
       id: "headcount",
       name: "HeadCount",
-      logo: "HeadCount.png",
+      logo: "head-count.png",
       source: "HeadCount",
    },
    {
@@ -165,17 +165,17 @@ const data: Partner[] = [
    {
       id: "jolt",
       name: "Jolt Action",
-      logo: "Jolt.png",
+      logo: "jolt.png",
    },
    {
       id: "leadershipnow",
       name: "Leadership Now Project",
-      logo: "Leadership Now Project.png",
+      logo: "leadership-now-project.png",
    },
    {
       id: "leadmn",
       name: "Lead MN",
-      logo: "LeadMN.jpg",
+      logo: "lead-mn.jpg",
    },
    {
       id: "levis",
@@ -200,22 +200,22 @@ const data: Partner[] = [
    {
       id: "mcn",
       name: "Master Clinician Network",
-      logo: "MCN.png",
+      logo: "mcn.png",
    },
    {
       id: "mitzvote",
       name: "Mitz Vote",
-      logo: "Mitz Vote.png",
+      logo: "mitz-vote.png",
    },
    {
       id: "mweg",
       name: "Mormon Women For Ethical Government",
-      logo: "Mormon Women For Ethical Government.png",
+      logo: "mweg.png",
    },
    {
       id: "ncbcp",
       name: "National Coalition On Black Civic Participation",
-      logo: "National Coalition On Black Civic Participation.png",
+      logo: "ncbcp.png",
    },
    {
       id: "microsoft",
@@ -253,7 +253,7 @@ const data: Partner[] = [
    },
    {
       id: "repairtheworld",
-      logo: "Repair The World.png",
+      logo: "repair-the-world.png",
       name: "Repair The World",
    },
    {
@@ -323,7 +323,7 @@ const data: Partner[] = [
    {
       id: "Vote411",
       name: "Vote411",
-      logo: "Vote411.png",
+      logo: "vote-411.png",
    },
    {
       id: "wecanvote",
@@ -349,7 +349,7 @@ const data: Partner[] = [
    {
       id: "YMCA",
       name: "YMCA",
-      logo: "YMCA.png",
+      logo: "ymca.png",
    },
 ];
 export default data;
