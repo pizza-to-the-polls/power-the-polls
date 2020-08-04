@@ -39,6 +39,11 @@ export interface Partner {
 
 const data: Partner[] = [
    {
+      id: "911day",
+      name: "9/11 Day",
+      logo: "911-day.png",
+   },
+   {
       id: "acs",
       logo: "acs.png",
       name: "American Constitution Society",
@@ -62,6 +67,11 @@ const data: Partner[] = [
       name: "AFT",
       source: "labor-aft",
       optUserOutOfChase: true,
+   },
+   {
+      id: "allin",
+      name: "All In",
+      logo: "allin.png",
    },
    {
       id: "AYO",
@@ -118,7 +128,17 @@ const data: Partner[] = [
    {
       id: "CrookedMedia",
       name: "Crooked Media",
-      logo: "VSA_logo.png",
+      logo: "vsa.png",
+   },
+   {
+      id: "blockpower",
+      name: "Block Power",
+      logo: "block-power.png",
+   },
+   {
+      id: "defendourfuture",
+      name: "Defend Our Future",
+      logo: "defend-our-future.png",
    },
    {
       id: "fairelections",
@@ -134,8 +154,28 @@ const data: Partner[] = [
    {
       id: "headcount",
       name: "HeadCount",
-      logo: "HeadCount.png",
+      logo: "head-count.png",
       source: "HeadCount",
+   },
+   {
+      id: "impactual",
+      name: "Impactual",
+      logo: "impactual.png",
+   },
+   {
+      id: "jolt",
+      name: "Jolt Action",
+      logo: "jolt.png",
+   },
+   {
+      id: "leadershipnow",
+      name: "Leadership Now Project",
+      logo: "leadership-now-project.png",
+   },
+   {
+      id: "leadmn",
+      name: "Lead MN",
+      logo: "lead-mn.jpg",
    },
    {
       id: "levis",
@@ -156,6 +196,36 @@ const data: Partner[] = [
       name: "National Disability Rights Network",
       source: "NDRN",
       founding: true,
+   },
+   {
+      id: "mcn",
+      name: "Master Clinician Network",
+      logo: "mcn.png",
+   },
+   {
+      id: "mitzvote",
+      name: "Mitz Vote",
+      logo: "mitz-vote.png",
+   },
+   {
+      id: "mweg",
+      name: "Mormon Women For Ethical Government",
+      logo: "mweg.png",
+   },
+   {
+      id: "ncbcp",
+      name: "National Coalition On Black Civic Participation",
+      logo: "ncbcp.png",
+   },
+   {
+      id: "microsoft",
+      name: "Microsoft",
+      source: "Microsoft",
+   },
+   {
+      id: "microsoftint",
+      name: "Microsoft",
+      source: "MicrosoftInt",
    },
    {
       id: "nea",
@@ -182,6 +252,11 @@ const data: Partner[] = [
       founding: true,
    },
    {
+      id: "repairtheworld",
+      logo: "repair-the-world.png",
+      name: "Repair The World",
+   },
+   {
       id: "AAAAAAApublicwiseAAAAA",
       logo: "public-wise.png",
       name: "Public Wise",
@@ -198,6 +273,11 @@ const data: Partner[] = [
       name: "Students Learn Students Vote",
       source: "SLSV",
       founding: true,
+   },
+   {
+      id: "salesforce",
+      name: "Salesforce",
+      source: "Salesforce",
    },
    {
       id: "starbucks",
@@ -241,6 +321,11 @@ const data: Partner[] = [
       source: "ViacomCBS",
    },
    {
+      id: "Vote411",
+      name: "Vote411",
+      logo: "vote-411.png",
+   },
+   {
       id: "wecanvote",
       logo: "wecanvote.png",
       name: "We Can Vote",
@@ -260,6 +345,11 @@ const data: Partner[] = [
    {
       id: "work-elections",
       name: "Work Elections",
+   },
+   {
+      id: "YMCA",
+      name: "YMCA",
+      logo: "ymca.png",
    },
 ];
 export default data;
