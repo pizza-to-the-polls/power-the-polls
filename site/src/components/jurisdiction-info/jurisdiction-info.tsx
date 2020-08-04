@@ -14,12 +14,11 @@ import { Jurisdiction } from "./types";
 export class JurisdictionInfo {
 
     /**
-      * City for matching to location
+      * ID of jurisdiction for Work Elections
       */
     @Prop() public jurisdictionId?: number;
 
     @State() public jurisdiction?: Jurisdiction;
-
 
   public async componentWillLoad() {
     if( this.jurisdictionId ) {

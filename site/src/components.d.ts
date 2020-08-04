@@ -30,7 +30,7 @@ export namespace Components {
     }
     interface JurisdictionInfo {
         /**
-          * City for matching to location
+          * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: number;
     }
@@ -274,7 +274,7 @@ declare namespace LocalJSX {
     }
     interface JurisdictionInfo {
         /**
-          * City for matching to location
+          * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: number;
     }
