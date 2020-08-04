@@ -23,11 +23,6 @@ export class PageContact {
                General inquiries can be submitted by emailing <a href="mailto:info@powerthepolls.org">info@powerthepolls.org</a>.
             </p>
 
-            <h3-bar>Volunteer Inquiries</h3-bar>
-            <p>
-               Volunteer inquiries can be submitted by emailing <a href="mailto:volunteer@powerthepolls.org">volunteer@powerthepolls.org</a>.
-            </p>
-
             <h3-bar>Press Inquiries</h3-bar>
             <p>
                Press inquiries can be submitted by emailing <a href="mailto:press@powerthepolls.org">press@powerthepolls.org</a>.
