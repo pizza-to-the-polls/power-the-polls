@@ -133,7 +133,7 @@ const data: Partner[] = [
    {
       id: "blockpower",
       name: "Block Power",
-      logo: "Block Power.png",
+      logo: "block-power.png",
    },
    {
       id: "defendourfuture",
