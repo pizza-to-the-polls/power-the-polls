@@ -49,7 +49,7 @@ export class PagePartners {
          <div class="partner-logos">
             {partners.map( partner => (
                partner.founding && partner.logo && ( <img
-                  src={`assets/images/partners/${partner.logo}`}
+                  src={`/assets/images/partners/${partner.logo}`}
                   title={partner.name}
                /> )
             ) )}
@@ -59,7 +59,7 @@ export class PagePartners {
          <div class="partner-logos">
             {partners.map( partner => (
                !partner.founding && partner.logo && ( <img
-                  src={`assets/images/partners/${partner.logo}`}
+                  src={`/assets/images/partners/${partner.logo}`}
                   title={partner.name}
                /> )
             ) )}
