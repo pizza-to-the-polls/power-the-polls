@@ -5,7 +5,7 @@ import { fetchFromWE } from "../../util/workElections";
 import { Jurisdiction, State as StateType } from "./types";
 import WorkElectState from "./WorkElectState";
 
-const falbacks: {[abrieve: string]: string} = {
+const fallbacks: {[abrieve: string]: string} = {
    OR: "Oregon",
    HI: "Hawaii",
    ME: "Maine",
@@ -45,12 +45,12 @@ export class StateInfo {
   public render() {
      if( this.stateId ) {
         if( this.info ) { return (<WorkElectState info={this.info} jurisdictions={this.jurisdictions} />); }
-     } else if(this.state && falbacks[this.state]) {
+     } else if(this.state && fallbacks[this.state]) {
         return (<div>
-           <h2>{falbacks[this.state]}</h2>
+           <h2>{fallbacks[this.state]}</h2>
            <p>
               You'll hear from a partner election official or nonprofit soon
-              about how you can help everyone in {falbacks[this.state]} vote.
+              about how you can help everyone in {fallbacks[this.state]} vote.
            </p>
         </div>);
      }
