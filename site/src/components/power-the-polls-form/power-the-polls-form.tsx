@@ -165,7 +165,7 @@ export class PowerThePollsForm {
 
             </article>
          ) : ( <Fragment>
-            <h3>Help your community and sign up to Power the Polls.</h3>
+            <h3>Help democracy in your community. Sign up to Power the Polls.</h3>
             <form
                name="signup"
                method="POST"

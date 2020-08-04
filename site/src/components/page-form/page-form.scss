@@ -4,13 +4,16 @@ page-form {
    align-items: center;
 
    .main-logo {
-      height: 381px;
+      max-height: 380px;
+      @include on-mobile() {
+         max-height: 250px;
+      }
       text-align: center;
       margin: 0 0 2em 0;
    }
 
    /*
     * DO NOT STYLE THE FORM HERE
-    * see: power-the-polls-form
+    * see: power-the-polls-form.tsx
     */
 }

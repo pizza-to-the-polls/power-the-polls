@@ -46,13 +46,12 @@ export class PageForm {
                   alt="Power the Polls"
                   src="assets/images/logo-icon-pink.png"
                />
-               <h1>POWER THE POLLS IS RECRUITING A NEW WAVE OF POLL WORKERS</h1>
+               <h1>America is facing a record shortage of poll workers. </h1>
                <p>
-                  America is facing an unprecedented shortage of poll
-                  workers that could mean closed polling places and long
-                  delays. You can help make sure we have a safe, fair,
-                  efficient election for all voters.
-                  </p>
+                  As coronavirus continues to impact Americans across the country, we are also seeing a staggering decrease in poll workers &mdash;
+                  which could mean closed polling places and long delays for elections in 2020. You can help make sure we have a safe, fair,
+                  efficient election for all voters, and potentially get paid to do it
+               </p>
                <hr />
             </Fragment> ) : null}
             <power-the-polls-form

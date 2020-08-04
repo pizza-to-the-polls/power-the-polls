@@ -34,3 +34,8 @@ $p7: 128px;
 /* STRUCTURAL */
 
 $max-width: 420px;
+
+@mixin on-mobile()
+{
+   @media only screen and (max-device-width: $max-width) { @content; }
+}
