@@ -32,13 +32,12 @@ export class PagePartners {
             If you’d like to become a campaign partner, please reach out to: <a href="mailto:partnerships@powerthepolls.org">partnerships@powerthepolls.org</a>.
          </p>
 
-         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-         <blockquote class="twitter-tweet">
+         <blockquote class="twitter-tweet" data-dnt="true" data-theme="dark">
             <p lang="en" dir="ltr">
                America is facing a nationwide poll worker shortage, but you can
                help by going to <a href="https://t.co/70gHiVzDaT">https://t.co/70gHiVzDaT</a>
                <a href="https://t.co/qBJbcmVpVp">pic.twitter.com/qBJbcmVpVp</a>
-            </p>&mdash; The Daily Show (@TheDailyShow)
+            </p>&mdash; The Daily Show (@TheDailyShow)&nbsp;
             <a href="https://twitter.com/TheDailyShow/status/1283099189568626690?ref_src=twsrc%5Etfw">July 14, 2020</a>
          </blockquote>
 
