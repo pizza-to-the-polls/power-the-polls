@@ -78,6 +78,10 @@ textarea,
 select {
   font: inherit;
 }
+button::-moz-focus-inner {
+   border: 0;
+ }
+
 
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
@@ -99,7 +103,7 @@ select {
  * Kroc Camen, and the H5BP dev community and team.
  */
 
- 
+
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
@@ -239,7 +243,7 @@ Utility Classes
   clear: both;
 }
 
-/* 
+/*
 *  Commonly Used Classes
 */
 
@@ -268,7 +272,7 @@ Utility Classes
     background-size: 100% 100%;
   }
 }
- 
+
 /* ==========================================================================
    Print styles.
    Inlined to avoid the additional HTTP request:

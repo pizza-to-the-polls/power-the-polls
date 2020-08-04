@@ -44,7 +44,7 @@ export class PageForm {
                <img
                   class="main-logo"
                   alt="Power the Polls"
-                  src="assets/images/logo-icon-pink.png"
+                  src="/assets/images/logo-icon-pink.png"
                />
                <h1>America is facing a record shortage of poll workers. </h1>
                <p>
