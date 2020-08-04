@@ -58,6 +58,8 @@ export namespace Components {
     }
     interface PagePrivacy {
     }
+    interface PageRedirector {
+    }
     interface PollWorkerInfo {
         /**
           * City for matching to location
@@ -197,6 +199,12 @@ declare global {
         prototype: HTMLPagePrivacyElement;
         new (): HTMLPagePrivacyElement;
     };
+    interface HTMLPageRedirectorElement extends Components.PageRedirector, HTMLStencilElement {
+    }
+    var HTMLPageRedirectorElement: {
+        prototype: HTMLPageRedirectorElement;
+        new (): HTMLPageRedirectorElement;
+    };
     interface HTMLPollWorkerInfoElement extends Components.PollWorkerInfo, HTMLStencilElement {
     }
     var HTMLPollWorkerInfoElement: {
@@ -234,6 +242,7 @@ declare global {
         "page-form": HTMLPageFormElement;
         "page-partners": HTMLPagePartnersElement;
         "page-privacy": HTMLPagePrivacyElement;
+        "page-redirector": HTMLPageRedirectorElement;
         "poll-worker-info": HTMLPollWorkerInfoElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
         "social-share": HTMLSocialShareElement;
@@ -292,6 +301,8 @@ declare namespace LocalJSX {
         "partners"?: { logo: string, name: string, founding: boolean }[];
     }
     interface PagePrivacy {
+    }
+    interface PageRedirector {
     }
     interface PollWorkerInfo {
         /**
@@ -379,6 +390,7 @@ declare namespace LocalJSX {
         "page-form": PageForm;
         "page-partners": PagePartners;
         "page-privacy": PagePrivacy;
+        "page-redirector": PageRedirector;
         "poll-worker-info": PollWorkerInfo;
         "power-the-polls-form": PowerThePollsForm;
         "social-share": SocialShare;
@@ -401,6 +413,7 @@ declare module "@stencil/core" {
             "page-form": LocalJSX.PageForm & JSXBase.HTMLAttributes<HTMLPageFormElement>;
             "page-partners": LocalJSX.PagePartners & JSXBase.HTMLAttributes<HTMLPagePartnersElement>;
             "page-privacy": LocalJSX.PagePrivacy & JSXBase.HTMLAttributes<HTMLPagePrivacyElement>;
+            "page-redirector": LocalJSX.PageRedirector & JSXBase.HTMLAttributes<HTMLPageRedirectorElement>;
             "poll-worker-info": LocalJSX.PollWorkerInfo & JSXBase.HTMLAttributes<HTMLPollWorkerInfoElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
             "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;

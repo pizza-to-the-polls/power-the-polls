@@ -133,6 +133,10 @@ export class AppRoot {
                            component="page-privacy"
                         />
                         <stencil-route
+                           url="/redirector"
+                           component="page-redirector"
+                        />
+                        <stencil-route
                            url="/dev"
                            component="component-list"
                         />
