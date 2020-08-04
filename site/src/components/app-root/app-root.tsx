@@ -137,6 +137,10 @@ export class AppRoot {
                            component="page-redirector"
                         />
                         <stencil-route
+                           url="/jurisdiction"
+                           component="page-jurisdiction"
+                        />
+                        <stencil-route
                            url="/dev"
                            component="component-list"
                         />

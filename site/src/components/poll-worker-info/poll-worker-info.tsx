@@ -7,7 +7,6 @@ import { findJurisdiction, findState } from "../../util/workElections";
  */
 @Component({
   tag: "poll-worker-info",
-  styleUrl: "poll-worker-info.scss",
   shadow: false,
 })
 export class PollWorkerInfo {

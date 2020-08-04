@@ -10,13 +10,15 @@ import { Jurisdiction } from "./types";
  */
 @Component({
   tag: "jurisdiction-info",
+  styleUrl: "jurisdiction-info.scss",
+  shadow: false,
 })
 export class JurisdictionInfo {
 
     /**
       * ID of jurisdiction for Work Elections
       */
-    @Prop() public jurisdictionId?: number;
+    @Prop() public jurisdictionId?: string | number;
 
     @State() public jurisdiction?: Jurisdiction;
 

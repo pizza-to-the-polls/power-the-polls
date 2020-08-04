@@ -21,6 +21,9 @@ const WorkElectState = ( { info, jurisdictions }: Props ) => (
             <a href={`https://workelections.com/j/${id}/${name.split( " " ).join( "-" )}`}
                target="_blank">{name}</a>
          ) )}
+      {jurisdictions.map(({id, name}) => (
+            <a href={`/jurisdiction#${id}`} >{name}</a>
+       ))}
       </div>
    </div>
 );

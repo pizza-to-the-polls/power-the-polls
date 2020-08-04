@@ -32,7 +32,7 @@ export namespace Components {
         /**
           * ID of jurisdiction for Work Elections
          */
-        "jurisdictionId"?: number;
+        "jurisdictionId"?: string | number;
     }
     interface PageAbout {
     }
@@ -49,6 +49,8 @@ export namespace Components {
           * The API key to access SmartyStreets which is used for address lookup.
          */
         "smartyStreetsApiKey"?: string;
+    }
+    interface PageJurisdiction {
     }
     interface PagePartners {
         /**
@@ -187,6 +189,12 @@ declare global {
         prototype: HTMLPageFormElement;
         new (): HTMLPageFormElement;
     };
+    interface HTMLPageJurisdictionElement extends Components.PageJurisdiction, HTMLStencilElement {
+    }
+    var HTMLPageJurisdictionElement: {
+        prototype: HTMLPageJurisdictionElement;
+        new (): HTMLPageJurisdictionElement;
+    };
     interface HTMLPagePartnersElement extends Components.PagePartners, HTMLStencilElement {
     }
     var HTMLPagePartnersElement: {
@@ -240,6 +248,7 @@ declare global {
         "page-contact": HTMLPageContactElement;
         "page-faq": HTMLPageFaqElement;
         "page-form": HTMLPageFormElement;
+        "page-jurisdiction": HTMLPageJurisdictionElement;
         "page-partners": HTMLPagePartnersElement;
         "page-privacy": HTMLPagePrivacyElement;
         "page-redirector": HTMLPageRedirectorElement;
@@ -276,7 +285,7 @@ declare namespace LocalJSX {
         /**
           * ID of jurisdiction for Work Elections
          */
-        "jurisdictionId"?: number;
+        "jurisdictionId"?: string | number;
     }
     interface PageAbout {
     }
@@ -293,6 +302,8 @@ declare namespace LocalJSX {
           * The API key to access SmartyStreets which is used for address lookup.
          */
         "smartyStreetsApiKey"?: string;
+    }
+    interface PageJurisdiction {
     }
     interface PagePartners {
         /**
@@ -388,6 +399,7 @@ declare namespace LocalJSX {
         "page-contact": PageContact;
         "page-faq": PageFaq;
         "page-form": PageForm;
+        "page-jurisdiction": PageJurisdiction;
         "page-partners": PagePartners;
         "page-privacy": PagePrivacy;
         "page-redirector": PageRedirector;
@@ -411,6 +423,7 @@ declare module "@stencil/core" {
             "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
             "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;
             "page-form": LocalJSX.PageForm & JSXBase.HTMLAttributes<HTMLPageFormElement>;
+            "page-jurisdiction": LocalJSX.PageJurisdiction & JSXBase.HTMLAttributes<HTMLPageJurisdictionElement>;
             "page-partners": LocalJSX.PagePartners & JSXBase.HTMLAttributes<HTMLPagePartnersElement>;
             "page-privacy": LocalJSX.PagePrivacy & JSXBase.HTMLAttributes<HTMLPagePrivacyElement>;
             "page-redirector": LocalJSX.PageRedirector & JSXBase.HTMLAttributes<HTMLPageRedirectorElement>;
