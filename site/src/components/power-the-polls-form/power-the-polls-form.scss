@@ -13,6 +13,9 @@ power-the-polls-form {
       letter-spacing: 0.05rem;
       font-weight: bold;
       cursor: pointer;
+      &:hover { opacity: 0.8; }
+      &:focus { opacity: 0.6; }
+      &:active { opacity: 0.4; }
    }
 
    h3 {
