@@ -6,7 +6,7 @@ const Nav: FunctionalComponent<{ onClick?: () => void }> = ( { onClick } ) => (
    <nav>
       <ul>
          <li>
-            <stencil-route-link url="/signup" onClick={onClick}>Sign Up</stencil-route-link>
+            <stencil-route-link url="/signup#form" onClick={onClick}>Sign Up</stencil-route-link>
          </li>
          <li>
             <stencil-route-link url="/about" onClick={onClick}>About</stencil-route-link>
