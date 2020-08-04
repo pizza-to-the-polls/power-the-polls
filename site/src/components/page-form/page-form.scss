@@ -12,6 +12,33 @@ page-form {
       margin: 0 0 2em 0;
    }
 
+   .impact-boxes {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 100%;
+      impact-box:first-child {
+         grid-column: 1;
+         grid-row: 1;
+      }
+      impact-box:last-child {
+         grid-column: 2;
+         grid-row: 1;
+      }
+      @include on-mobile() {
+         grid-template-columns: 100%;
+         grid-template-rows: 50% 50%;
+         impact-box:first-child {
+            grid-column: 1;
+            grid-row: 1;
+         }
+         impact-box:last-child {
+            grid-column: 1;
+            grid-row: 2;
+         }
+      }
+   }
+
    /*
     * DO NOT STYLE THE FORM HERE
     * see: power-the-polls-form.tsx

@@ -53,6 +53,16 @@ export class PageForm {
                   efficient election for all voters, and potentially get paid to do it
                </p>
                <hr />
+               <div class="impact-boxes">
+                  <impact-box>
+                     <h2>250K</h2>
+                     <p>Poll workers still needed</p>
+                  </impact-box>
+                  <impact-box>
+                     <h2>&lt; 100 DAYS</h2>
+                     <p>To recruit and train them</p>
+                  </impact-box>
+               </div>
             </Fragment> ) : null}
             <power-the-polls-form
                id="form"

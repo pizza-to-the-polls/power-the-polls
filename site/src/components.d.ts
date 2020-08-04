@@ -26,6 +26,8 @@ export namespace Components {
     }
     interface H3Bar {
     }
+    interface ImpactBox {
+    }
     interface JurisdictionInfo {
         /**
           * City for matching to location
@@ -147,6 +149,12 @@ declare global {
         prototype: HTMLH3BarElement;
         new (): HTMLH3BarElement;
     };
+    interface HTMLImpactBoxElement extends Components.ImpactBox, HTMLStencilElement {
+    }
+    var HTMLImpactBoxElement: {
+        prototype: HTMLImpactBoxElement;
+        new (): HTMLImpactBoxElement;
+    };
     interface HTMLJurisdictionInfoElement extends Components.JurisdictionInfo, HTMLStencilElement {
     }
     var HTMLJurisdictionInfoElement: {
@@ -218,6 +226,7 @@ declare global {
         "app-root": HTMLAppRootElement;
         "component-list": HTMLComponentListElement;
         "h3-bar": HTMLH3BarElement;
+        "impact-box": HTMLImpactBoxElement;
         "jurisdiction-info": HTMLJurisdictionInfoElement;
         "page-about": HTMLPageAboutElement;
         "page-contact": HTMLPageContactElement;
@@ -251,6 +260,8 @@ declare namespace LocalJSX {
     interface ComponentList {
     }
     interface H3Bar {
+    }
+    interface ImpactBox {
     }
     interface JurisdictionInfo {
         /**
@@ -360,6 +371,7 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "component-list": ComponentList;
         "h3-bar": H3Bar;
+        "impact-box": ImpactBox;
         "jurisdiction-info": JurisdictionInfo;
         "page-about": PageAbout;
         "page-contact": PageContact;
@@ -381,6 +393,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "component-list": LocalJSX.ComponentList & JSXBase.HTMLAttributes<HTMLComponentListElement>;
             "h3-bar": LocalJSX.H3Bar & JSXBase.HTMLAttributes<HTMLH3BarElement>;
+            "impact-box": LocalJSX.ImpactBox & JSXBase.HTMLAttributes<HTMLImpactBoxElement>;
             "jurisdiction-info": LocalJSX.JurisdictionInfo & JSXBase.HTMLAttributes<HTMLJurisdictionInfoElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
