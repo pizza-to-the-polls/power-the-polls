@@ -35,6 +35,7 @@ export const config: Config = {
             // copy public dir to output as-is
             // (src is relative to the root srcDir, dest is relative to this output's dir)
             { src: "../public", dest: "." },
+            { src: "../_redirects", dest: "_redirects" },
          ],
          baseUrl: "https://www.powerthepolls.org/",
          serviceWorker: false,
