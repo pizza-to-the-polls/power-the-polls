@@ -1,6 +1,7 @@
 import { Component, h, Host, Prop } from "@stencil/core";
 
-declare const gtag: ( type: string, key: string, data: any ) => void;
+import { SocialInfo } from "../../data/Social";
+import analytics from "../../util/Analytics";
 
 @Component( {
    tag: "social-share",
@@ -10,7 +11,7 @@ declare const gtag: ( type: string, key: string, data: any ) => void;
 /**
  * Simple button and image used for social network buttons
  */
-export class SocialShare {
+export class SocialShare implements Partial<SocialInfo> {
 
    /**
     * The full name of the social network. Used as the link title text.
@@ -35,7 +36,7 @@ export class SocialShare {
    /**
     * Key to send for analytics when user selects this social share
     */
-   @Prop() public analytics?: string;
+   @Prop() public eventKey?: string;
 
    public render() {
       return ( <Host>
@@ -44,7 +45,7 @@ export class SocialShare {
             title={`Share on ${this.name}`}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => !!this.analytics ? null : gtag( "event", this.analytics || "", { "event_category": "social_share", "event_label": "" } )}
+            onClick={() => !!this.eventKey ? null : analytics.socialShare( this.eventKey )}
          >
             <img
                alt={this.name}
@@ -56,5 +57,4 @@ export class SocialShare {
          </a>
       </Host> );
    }
-
 }

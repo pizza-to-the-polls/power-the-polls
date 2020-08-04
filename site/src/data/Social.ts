@@ -1,9 +1,16 @@
+export interface SocialInfo {
+   readonly name: string;
+   readonly cta: string;
+   readonly image: string;
+   readonly url: string;
+   readonly eventKey: string;
+}
 /**
  * Social share links for the left nav
  * see: social-share.tsx
  * see: app-root.tsx
  */
-const data = [
+const data: SocialInfo[] = [
    {
       name: "Twitter",
       cta: "Tweet",
@@ -14,21 +21,21 @@ const data = [
 ▶️ https://www.powerthepolls.org
 #PowerThePolls
 `).trim(),
-      analytics: "twitter-share",
+      eventKey: "twitter-share",
    },
    {
       name: "Instagram",
       cta: "Instagram",
       image: "icon-ig.png",
       url: "https://www.instagram.com/powerthepolls/",
-      analytics: "instagram-share",
+      eventKey: "instagram-share",
    },
    {
       name: "Facebook",
       cta: "Share",
       image: "icon-fb.png",
       url: "https://www.facebook.com/share.php?u=" + encodeURIComponent( "https://www.powerthepolls.org/" ),
-      analytics: "facebook-share",
+      eventKey: "facebook-share",
    },
 ];
 export default data;

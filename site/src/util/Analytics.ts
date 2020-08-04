@@ -33,5 +33,9 @@ namespace analytics {
       google( "event", "signup_link", { event_category: "signup_link_clicked", event_label: fallbackType, value: stateName } );
       facebook( "track", "SignUpLinkClicked" );
    };
+
+   export const socialShare = ( key: string | undefined ) => {
+      google( "event", key || "", { "event_category": "social_share", "event_label": "" } );
+   };
 }
 export default analytics;
