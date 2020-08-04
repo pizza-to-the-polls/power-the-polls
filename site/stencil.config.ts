@@ -16,12 +16,12 @@ export const config: Config = {
       replace( {
          exclude: "node_modules/**",
          values: {
-            // replace SMARTY_STREETS_KEY with env var if present, else leave it as-is
+            // replace SMARTY_STREETS_KEY with actual env vars present in the environment during build, else leave it as-is
             "process.env.SMARTY_STREETS_KEY": process.env.SMARTY_STREETS_KEY ? `"${process.env.SMARTY_STREETS_KEY}"` : "process.env.SMARTY_STREETS_KEY",
          },
       } ),
       sass( {
-         // scss files in components will automatically have these imported
+         // scss files will automatically have these added
          injectGlobalPaths: [
             "styles/include/variables.scss",
          ],
@@ -32,13 +32,11 @@ export const config: Config = {
          type: "www",
          dir: "../dist/www", // default output dir is ./www
          copy: [
-            // copy public dir to output as-is
+            // copy contents of ./public dir to output
             // (src is relative to the root srcDir, dest is relative to this output's dir)
             { src: "../public", dest: "." },
-            { src: "../_redirects", dest: "_redirects" },
          ],
          baseUrl: "https://www.powerthepolls.org/",
-         serviceWorker: true,
       },
       {
          // Generates readme files in each component dir. Nice for GitHub.

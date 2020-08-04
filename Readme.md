@@ -7,6 +7,13 @@ There are two projects in this repository:
 
 ## `/site`
 
+* `/public`  
+  Files here are copied directly to the build output and will be available at `/*` in the deployed website.
+* `/src`  
+  Compiled TypeScript files comprising the app. Start at `./src/index.html` which just has a single `<app-root>` element, then look at the component in `./src/components/app-root` and go from there...
+* `/styles`  
+  Root SCSS for the entire app in addition to styles injected into every component. These app-wide styles should be kept to a minimum in favor of component styles.
+
 ### Developing Locally
 
 1. Run `npm install` to install dependencies
@@ -29,7 +36,12 @@ publish directory: `/dist/www`
 
 ### Dependencies
 
-This project currently has two external dependencies: [ActionKit](https://ptp.actionkit.com/admin/) which is used to provide the marketing and chase functionality and [SmartyStreets](https://account.smartystreets.com/), which is used for address autocomplete and data augmentation. Both of these pieces could be replaced with similar products with minimal disruption.
+#### APIs
+
+> Both of these pieces could be replaced with similar products with minimal disruption.
+
+1. [ActionKit](https://ptp.actionkit.com/admin/), which is used to provide the marketing and chase functionality
+2. [SmartyStreets](https://account.smartystreets.com/), which is used for address autocomplete and data augmentation.
 
 ## `/power-the-polls-form`
 
