@@ -1,0 +1,46 @@
+import { Component, h, Host, Prop } from "@stencil/core";
+
+import { findJurisdiction, findState } from "../../util/workElections";
+
+/**
+ * Component to render local info about how to be a poll worker.
+ */
+@Component({
+  tag: "poll-worker-info",
+  styleUrl: "poll-worker-info.scss",
+  shadow: false,
+})
+export class PollWorkerInfo {
+
+   /**
+    * State for matching to location
+    */
+   @Prop() public state?: string;
+
+   /**
+    * County for matching to location
+    */
+   @Prop() public county?: string;
+
+   /**
+    * City for matching to location
+    */
+   @Prop() public city?: string;
+
+  public render() {
+    const { state, county, city } = this;
+    const jurisdictionId = state ? findJurisdiction(state, county, city) : null;
+    const stateId = state ? findState(state) : null;
+
+    return (
+      <Host>
+         { state
+            ? jurisdictionId
+               ? (<jurisdiction-info jurisdictionId={jurisdictionId} />)
+               : (<state-info state={state} stateId={stateId} />)
+            : (<h3>Enter state, county, city</h3>) }
+      </Host>
+    );
+  }
+
+}

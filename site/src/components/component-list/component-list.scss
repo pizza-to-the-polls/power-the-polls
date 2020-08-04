@@ -1,0 +1,25 @@
+component-list {
+   dt,
+   dd {
+      overflow: hidden;
+   }
+   dt {
+      float: left;
+      font-weight: bold;
+      font-family: "Consolas", "Inconsolata", monospace;
+      margin: 0 2em 2em 0;
+      background-color: #222;
+      padding: 0.1em 0.25em;
+   }
+   dd {
+      text-align: right;
+      border: 1px dashed blue;
+      margin: 0 0 2em 0;
+      word-wrap: break-word;
+   }
+
+   .accent-background {
+      background-color: $color-accent;
+      padding: 1em;
+   }
+}

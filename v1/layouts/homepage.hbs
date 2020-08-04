@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+	<script>startTime=new Date()</script>
+
+	{{> header }}
+
+	{{> scripts actionKit=true }}
+
+</head>
+<body class="body">
+
+
+	<main class="main">
+
+		{{> nav }}
+
+		<article class="body__article">
+
+			<img alt="Power the Polls logo." class="logo--homepage" src="/images/logo.svg">
+
+			<h2>{{ headline }}</h2>
+
+			<hr>
+
+			<div class="u_pre-signup u_article">
+				{{{ contents }}}
+			</div>
+
+			{{> signup }}
+
+		</article>
+
+	</main>
+
+	{{> footer }}
+
+</body>
+</html>

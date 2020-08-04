@@ -1,0 +1,89 @@
+power-the-polls-form {
+   display: block;
+
+   button {
+      border: 0;
+      padding: 0.5em 1em;
+      width: 100%;
+      background-color: $color-highlight;
+      color: $color-font-primary;
+      font-family: $font-heading;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      letter-spacing: 0.05rem;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover { opacity: 0.8; }
+      &:focus { opacity: 0.6; }
+      &:active { opacity: 0.4; }
+   }
+
+   h3 {
+      margin-top: 1em;
+   }
+
+   p.disclaimer {
+      font-size: 0.9rem;
+   }
+
+   form {
+      max-width: 30ch;
+      @include on-mobile() {
+         max-width: inherit;
+      }
+      font-size: $f1;
+      padding: $p3 0;
+      font-family: $font-primary;
+      color: #fff;
+      text-transform: none;
+      letter-spacing: 0;
+
+      input,
+      select {
+         width: 100%;
+         border: 0;
+         padding: $p1 $p2;
+         display: block;
+
+         &:disabled {
+            color: #fff;
+         }
+      }
+
+      select {
+         padding: $p2;
+      }
+
+      label {
+         pointer-events: all !important; /* Important for ActionKit */
+         margin-bottom: $p2;
+         display: block;
+         font-size: $f0;
+         color: $color-accent;
+         text-transform: lowercase;
+         font-variant: small-caps;
+
+         input,
+         select {
+            text-transform: none;
+            font-variant: normal;
+         }
+
+         .checkbox {
+            display: flex;
+            align-items: center;
+
+            &:first-of-type {
+               margin-top: $p4;
+            }
+
+            input {
+               transform: scale(1.5);
+               flex: 0 1 $p4;
+               margin-right: $p1;
+               z-index: -1;
+            }
+         }
+      }
+   }
+}

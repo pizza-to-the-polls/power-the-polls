@@ -1,0 +1,41 @@
+//
+// This file is injected into all scss files -- global and component. See stencil.config.js
+//
+
+$color-background-app: #1C1834;
+$color-accent: #FF5554;
+$color-highlight: #444BFD;
+$color-font-primary: #F5F3F1;
+$color-font-accent-contrast: #1C1834;
+
+$font-primary: 'Work Sans', monospace, sans-serif;
+$font-heading: 'Oswald', monospace, sans-serif;
+
+/* Font sizes */
+$f-1: 0.8rem;
+$f0: 0.9rem;
+$f1: 1rem;
+$f2: 1.25rem;
+$f3: 1.5rem;
+$f4: 2rem;
+$f5: 2.6rem;
+$f6: 4rem;
+
+/* Padding */
+$p0: 4px;
+$p1: 8px;
+$p2: 12px;
+$p3: 16px;
+$p4: 24px;
+$p5: 36px;
+$p6: 64px;
+$p7: 128px;
+
+/* STRUCTURAL */
+
+$max-width: 620px;
+
+@mixin on-mobile()
+{
+   @media only screen and (max-width: $max-width) { @content; }
+}

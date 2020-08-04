@@ -1,0 +1,24 @@
+social-share {
+   a {
+      background-color: $color-accent;
+      color: $color-font-accent-contrast;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 1em 0;
+
+      font-size: 1.1em;
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+         color: $color-font-accent-contrast;
+         text-decoration: none;
+      }
+
+      span {
+         margin: 0 0 0 1em;
+      }
+   }
+}
