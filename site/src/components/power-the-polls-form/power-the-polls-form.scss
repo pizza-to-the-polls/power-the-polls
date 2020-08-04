@@ -25,6 +25,9 @@ power-the-polls-form {
 
    form {
       max-width: 30ch;
+      @include on-mobile() {
+         max-width: inherit;
+      }
       font-size: $f1;
       padding: $p3 0;
       font-family: $font-primary;

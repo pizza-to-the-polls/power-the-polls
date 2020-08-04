@@ -96,7 +96,7 @@ export class AppRoot {
                </div>
                <div class="container">
                   <stencil-router>
-                     <stencil-route-switch scrollTopOffset={0}>
+                     <stencil-route-switch scrollTopOffset={1}>
                         <stencil-route
                            url="/about"
                            component="page-about"

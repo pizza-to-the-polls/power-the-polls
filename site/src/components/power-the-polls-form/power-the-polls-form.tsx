@@ -239,7 +239,7 @@ export class PowerThePollsForm {
 
                <p class="disclaimer">
                   By signing up, you agree to receive occasional emails or text messages from Power the Polls and
-                  accept our <stencil-route-link url="./privacy">Privacy Policy</stencil-route-link>. You can unsubscribe
+                  accept our <stencil-route-link url="/privacy">Privacy Policy</stencil-route-link>. You can unsubscribe
                   at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
                </p>
             </form>
