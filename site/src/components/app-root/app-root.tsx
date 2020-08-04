@@ -64,7 +64,7 @@ export class AppRoot {
                         <img
                            class="logo"
                            alt="Power the Polls"
-                           src="assets/images/logo-blue.svg"
+                           src="/assets/images/logo-blue.svg"
                         />
                      </stencil-route-link>
                   </h1>
@@ -81,13 +81,13 @@ export class AppRoot {
                            <img
                               style={{ display: ( this.menuIsActive ? "none" : "block" ) }}
                               alt="Power the Polls"
-                              src="assets/images/icon-white.svg"
+                              src="/assets/images/icon-white.svg"
                               width="25"
                            />
                            <img
                               style={{ display: ( this.menuIsActive ? "block" : "none" ) }}
                               alt="Power the Polls"
-                              src="assets/images/icon-blue.svg"
+                              src="/assets/images/icon-blue.svg"
                               width="25"
                            />
                         </stencil-route-link>
@@ -159,7 +159,7 @@ export class AppRoot {
                            rel="noopener"
                         >
                            <img
-                              src="assets/images/partners/work-elections.png"
+                              src="/assets/images/partners/work-elections.png"
                               alt="Work Elections"
                               width="100"
                            />
