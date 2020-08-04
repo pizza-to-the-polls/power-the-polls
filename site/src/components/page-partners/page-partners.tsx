@@ -32,6 +32,7 @@ export class PagePartners {
             If you’d like to become a campaign partner, please reach out to: <a href="mailto:partnerships@powerthepolls.org">partnerships@powerthepolls.org</a>.
          </p>
 
+         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
          <blockquote class="twitter-tweet" data-dnt="true" data-theme="dark">
             <p lang="en" dir="ltr">
                America is facing a nationwide poll worker shortage, but you can

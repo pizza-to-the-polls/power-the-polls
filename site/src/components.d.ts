@@ -93,13 +93,13 @@ export namespace Components {
     }
     interface SocialShare {
         /**
-          * Key to send for analytics when user selects this social share
-         */
-        "analytics"?: string;
-        /**
           * The displayed call-to-action text
          */
         "cta"?: string;
+        /**
+          * Key to send for analytics when user selects this social share
+         */
+        "eventKey"?: string;
         /**
           * Image to use from `assets/images/social/*`
          */
@@ -336,13 +336,13 @@ declare namespace LocalJSX {
     }
     interface SocialShare {
         /**
-          * Key to send for analytics when user selects this social share
-         */
-        "analytics"?: string;
-        /**
           * The displayed call-to-action text
          */
         "cta"?: string;
+        /**
+          * Key to send for analytics when user selects this social share
+         */
+        "eventKey"?: string;
         /**
           * Image to use from `assets/images/social/*`
          */

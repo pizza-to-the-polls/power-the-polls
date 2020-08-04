@@ -20,6 +20,7 @@
       "cross-env": "^7.0.2",
       "rollup-plugin-dotenv": "^0.3.0",
       "tslint": "^6.1.2",
-      "typescript": "^3.9.7"
+      "typescript": "^3.9.7",
+      "workbox-build": "^4.3.1"
    }
 }

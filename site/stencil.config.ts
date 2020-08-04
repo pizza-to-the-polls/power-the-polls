@@ -38,7 +38,7 @@ export const config: Config = {
             { src: "../_redirects", dest: "_redirects" },
          ],
          baseUrl: "https://www.powerthepolls.org/",
-         serviceWorker: false,
+         serviceWorker: true,
       },
       {
          // Generates readme files in each component dir. Nice for GitHub.

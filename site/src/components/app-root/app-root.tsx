@@ -3,7 +3,7 @@ import { Component, FunctionalComponent, h, State } from "@stencil/core";
 import { FaqData, PartnerList, Social } from "../../data";
 
 const Nav: FunctionalComponent<{ onClick?: () => void }> = ( { onClick } ) => (
-   <nav>
+   <nav aria-label="Main">
       <ul>
          <li>
             <stencil-route-link url="/signup#form" onClick={onClick}>Sign Up</stencil-route-link>
@@ -55,6 +55,8 @@ export class AppRoot {
 
       return (
          <div class="container">
+            <a class="u_visually-hidden" href="#main-content">Skip to main content</a>
+
             <aside class="sidebar">
                <div class="container">
                   <h1>
@@ -74,27 +76,38 @@ export class AppRoot {
             <main>
                <div class={"mobile-menu" + ( this.menuIsActive ? " is-active" : "" )}>
                   <div class="header">
-                     <img
-                        style={{ display: ( this.menuIsActive ? "none" : "block" ) }}
-                        alt="Power the Polls"
-                        src="assets/images/icon-white.png"
-                        width="25"
-                     />
-                     <img
-                        style={{ display: ( this.menuIsActive ? "block" : "none" ) }}
-                        alt="Power the Polls"
-                        src="assets/images/icon-blue.png"
-                        width="25"
-                     />
-                     <button class={"hamburger hamburger--spin" + ( this.menuIsActive ? " is-active" : "" )} type="button" onClick={clickMenu}>
-                        <span class="hamburger-box">
-                           <span class="hamburger-inner"></span>
-                        </span>
+                     <h1>
+                        <stencil-route-link url="/" onClick={clickMenu}>
+                           <img
+                              style={{ display: ( this.menuIsActive ? "none" : "block" ) }}
+                              alt="Power the Polls"
+                              src="assets/images/icon-white.svg"
+                              width="25"
+                           />
+                           <img
+                              style={{ display: ( this.menuIsActive ? "block" : "none" ) }}
+                              alt="Power the Polls"
+                              src="assets/images/icon-blue.svg"
+                              width="25"
+                           />
+                        </stencil-route-link>
+                     </h1>
+                     <button
+                        class={`hamburger hamburger--spin${this.menuIsActive ? " is-active" : ""}`}
+                        type="button"
+                        onClick={clickMenu}
+                        aria-label="Show navigation menu"
+                     >
+                        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
                      </button>
                   </div>
                   <Nav onClick={clickMenu} />
                </div>
-               <div class="container">
+               <div
+                  class="container"
+                  id="main-content"
+                  tabindex="-1"
+               >
                   <stencil-router>
                      <stencil-route-switch scrollTopOffset={1}>
                         <stencil-route
