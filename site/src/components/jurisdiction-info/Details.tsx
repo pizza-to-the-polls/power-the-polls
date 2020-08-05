@@ -11,7 +11,7 @@ const Details = ( j: Jurisdiction ) => (
       { j.jurisdiction_link_text && j.jurisdiction_link &&
          (<p>
             {j.jurisdiction_link_text}
-            {' '}
+            {" "}
             <a href={`/jurisdiction#${j.jurisdiction_link.id}`} >click here</a>.
          </p>)}
 

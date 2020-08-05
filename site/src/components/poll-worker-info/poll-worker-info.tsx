@@ -37,7 +37,7 @@ export class PollWorkerInfo {
             ? jurisdictionId
                ? (<jurisdiction-info jurisdictionId={jurisdictionId} />)
                : (<state-info state={state} stateId={stateId} />)
-            : (<h3>Enter state, county, city</h3>) }
+            : (<no-capture-form />) }
       </Host>
     );
   }
