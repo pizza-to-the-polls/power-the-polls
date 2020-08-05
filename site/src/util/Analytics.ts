@@ -6,14 +6,14 @@ namespace analytics {
 
    const google = ( type: string, key: string, data: any ): void => {
       try {
-         gtag( type, key, data );
+         if( "gtag" in window ) { gtag( type, key, data ); }
       } catch( e ) {
          // console.log( e );
       }
    };
    const facebook = ( type: string, key: string ): void => {
       try {
-         fbq( type, key );
+         if( "fbq" in window ) { fbq( type, key ); }
       } catch( e ) {
          // console.log( e );
       }

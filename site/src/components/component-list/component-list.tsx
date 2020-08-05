@@ -25,6 +25,10 @@ export class ComponentList {
             tag: "social-share",
             example: <social-share image="icon-fb.png" name="SocialNetworkName" cta="Social Share" url="#" />,
          },
+         {
+            tag: "impact-box",
+            example: <impact-box><h2>h2 heading</h2><p>Lorem ipsum dolor sit amet</p></impact-box>,
+         },
          // {tag: "AAAA", example: FOOOO},
       ];
       return ( <Host>

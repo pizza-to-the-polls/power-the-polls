@@ -2,23 +2,23 @@ import { Component, FunctionalComponent, h, State } from "@stencil/core";
 
 import { FaqData, PartnerList, Social } from "../../data";
 
-const Nav: FunctionalComponent<{ onClick?: () => void }> = ( { onClick } ) => (
+const Nav: FunctionalComponent<{ onSelectNavItem?: () => void }> = ( { onSelectNavItem } ) => (
    <nav aria-label="Main">
       <ul>
          <li>
-            <stencil-route-link url="/signup#form" onClick={onClick}>Sign Up</stencil-route-link>
+            <stencil-route-link url="/signup#form" onClick={onSelectNavItem}>Sign Up</stencil-route-link>
          </li>
          <li>
-            <stencil-route-link url="/about" onClick={onClick}>About</stencil-route-link>
+            <stencil-route-link url="/about" onClick={onSelectNavItem}>About</stencil-route-link>
          </li>
          <li>
-            <stencil-route-link url="/faq" onClick={onClick}>FAQ</stencil-route-link>
+            <stencil-route-link url="/faq" onClick={onSelectNavItem}>FAQ</stencil-route-link>
          </li>
          <li>
-            <stencil-route-link url="/partners" onClick={onClick}>Partners</stencil-route-link>
+            <stencil-route-link url="/partners" onClick={onSelectNavItem}>Partners</stencil-route-link>
          </li>
          <li>
-            <stencil-route-link url="/contact" onClick={onClick}>Contact</stencil-route-link>
+            <stencil-route-link url="/contact" onClick={onSelectNavItem}>Contact</stencil-route-link>
          </li>
       </ul>
    </nav>
@@ -49,7 +49,7 @@ export class AppRoot {
          console.error( "SMARTY_STREETS_KEY environment variable not present during build. Cannot continue." );
       }
 
-      const clickMenu = () => {
+      const toggleMenu = () => {
          this.menuIsActive = !this.menuIsActive;
       };
 
@@ -77,7 +77,7 @@ export class AppRoot {
                <div class={"mobile-menu" + ( this.menuIsActive ? " is-active" : "" )}>
                   <div class="header">
                      <h1>
-                        <stencil-route-link url="/" onClick={clickMenu}>
+                        <stencil-route-link url="/" onClick={() => this.menuIsActive = false}>
                            <img
                               style={{ display: ( this.menuIsActive ? "none" : "block" ) }}
                               alt="Power the Polls"
@@ -95,13 +95,13 @@ export class AppRoot {
                      <button
                         class={`hamburger hamburger--spin${this.menuIsActive ? " is-active" : ""}`}
                         type="button"
-                        onClick={clickMenu}
+                        onClick={toggleMenu}
                         aria-label="Show navigation menu"
                      >
                         <span class="hamburger-box"><span class="hamburger-inner"></span></span>
                      </button>
                   </div>
-                  <Nav onClick={clickMenu} />
+                  <Nav onSelectNavItem={toggleMenu} />
                </div>
                <div
                   class="container"

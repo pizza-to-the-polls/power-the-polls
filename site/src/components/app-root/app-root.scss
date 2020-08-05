@@ -65,7 +65,8 @@ app-root {
                visibility: hidden;
             }
             ul {
-               transition: top 0.3s ease-in-out;
+               transition: top 0.3s ease-in-out, opacity 0.5s ease-in;
+               opacity: 0;
                position: relative;
                top: -300px;
             }
@@ -78,6 +79,7 @@ app-root {
                margin: 0 0 3em 0;
                ul {
                   top: 0;
+                  opacity: 1;
                }
             }
             // stencil-route class

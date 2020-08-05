@@ -9,7 +9,7 @@ Thank you to: https://hankchizljaw.com/wrote/a-modern-css-reset/
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+   box-sizing: border-box;
 }
 
 /* Remove default padding */
@@ -33,19 +33,19 @@ figcaption,
 blockquote,
 dl,
 dd {
-  margin: 0;
+   margin: 0;
 }
 
 /* Set core document defaults */
 html {
-  scroll-behavior: smooth;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
+   scroll-behavior: smooth;
+   text-rendering: optimizeLegibility;
+   line-height: 1.5;
 }
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
+   min-height: 100vh;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -56,19 +56,19 @@ ol[class] {
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
-  text-decoration-skip-ink: auto;
+   text-decoration-skip-ink: auto;
 }
 
 /* Make images easier to work with */
 img {
-  max-width: 100%;
-  display: block;
+   max-width: 100%;
+   display: block;
 }
 
 /* Natural flow and rhythm in articles by default */
 article > * + *,
 .u_article > * + * {
-  margin-top: 1em;
+   margin-top: 1em;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -76,17 +76,22 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+   font: inherit;
+}
+
+*::-moz-focus-inner {
+   border: 0;
+   outline: 0 !important;
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+   * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+   }
 }
 
 /* The "good" parts of HTML5 Boilerplate v7.0.1 */
@@ -99,19 +104,18 @@ select {
  * Kroc Camen, and the H5BP dev community and team.
  */
 
- 
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
 
 ::selection {
-  background: #b3d4fc;
-  text-shadow: none;
+   background: #b3d4fc;
+   text-shadow: none;
 }
 
 html,
 body {
-  roll-behavior: smooth;
+   roll-behavior: smooth;
 }
 
 /*
@@ -119,12 +123,12 @@ body {
  */
 
 hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
+   display: block;
+   height: 1px;
+   border: 0;
+   border-top: 1px solid #ccc;
+   margin: 1em 0;
+   padding: 0;
 }
 
 /*
@@ -139,7 +143,7 @@ iframe,
 img,
 svg,
 video {
-  vertical-align: middle;
+   vertical-align: middle;
 }
 
 /*
@@ -147,9 +151,9 @@ video {
  */
 
 fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
+   border: 0;
+   margin: 0;
+   padding: 0;
 }
 
 /*
@@ -157,7 +161,7 @@ fieldset {
  */
 
 textarea {
-  resize: vertical;
+   resize: vertical;
 }
 
 /* ==========================================================================
@@ -169,7 +173,7 @@ Utility Classes
  */
 
 .u_hidden {
-  display: none !important;
+   display: none !important;
 }
 
 /*
@@ -182,15 +186,15 @@ Utility Classes
 */
 
 .u_visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap; /* 1 */
+   border: 0;
+   clip: rect(0 0 0 0);
+   height: 1px;
+   margin: -1px;
+   overflow: hidden;
+   padding: 0;
+   position: absolute;
+   width: 1px;
+   white-space: nowrap; /* 1 */
 }
 
 /*
@@ -201,13 +205,13 @@ Utility Classes
 
 .u_visually-hidden.focusable:active,
 .u_visually-hidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-  white-space: inherit;
+   clip: auto;
+   height: auto;
+   margin: 0;
+   overflow: visible;
+   position: static;
+   width: auto;
+   white-space: inherit;
 }
 
 /*
@@ -215,7 +219,7 @@ Utility Classes
 */
 
 .u_invisible {
-  visibility: hidden;
+   visibility: hidden;
 }
 
 /*
@@ -232,134 +236,129 @@ Utility Classes
 
 .u_clearfix:before,
 .u_clearfix:after {
-  content: " "; /* 1 */
-  display: table; /* 2 */
+   content: " "; /* 1 */
+   display: table; /* 2 */
 }
 .u_clearfix:after {
-  clear: both;
+   clear: both;
 }
 
-/* 
+/*
 *  Commonly Used Classes
 */
 
 .u_no-br {
-  white-space: nowrap;
+   white-space: nowrap;
 }
 
 .u_center {
-  text-align: center;
+   text-align: center;
 }
 
 .u_highlight {
-  display: inline;
-  background-image: linear-gradient( yellow 100% );
-  background-repeat: no-repeat;
-  background-size: 0% 100%;
-  animation: u_highlight-keyframes 0.7s ease-out forwards;
-  margin-left: -0.15em;
-  margin-right: -0.15em;
-  padding-left: 0.15em;
-  padding-right: 0.15em;
+   display: inline;
+   background-image: linear-gradient(yellow 100%);
+   background-repeat: no-repeat;
+   background-size: 0% 100%;
+   animation: u_highlight-keyframes 0.7s ease-out forwards;
+   margin-left: -0.15em;
+   margin-right: -0.15em;
+   padding-left: 0.15em;
+   padding-right: 0.15em;
 }
 
 @keyframes u_highlight-keyframes {
-  to {
-    background-size: 100% 100%;
-  }
+   to {
+      background-size: 100% 100%;
+   }
 }
- 
+
 /* ==========================================================================
    Print styles.
    Inlined to avoid the additional HTTP request:
    https://www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
 
-  @media print,
-    (-webkit-min-device-pixel-ratio: 1.25),
-    (min-resolution: 1.25dppx),
-    (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
-  }
+@media print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
+   /* Style adjustments for high resolution devices */
+}
 
-  @media print {
-    *,
-    *:before,
-    *:after {
+@media print {
+   *,
+   *:before,
+   *:after {
       background: transparent !important;
       color: #000 !important; /* Black prints faster */
       -webkit-box-shadow: none !important;
       box-shadow: none !important;
       text-shadow: none !important;
-    }
+   }
 
-    a,
-    a:visited {
+   a,
+   a:visited {
       text-decoration: underline;
-    }
+   }
 
-    a[href]:after {
+   a[href]:after {
       content: " (" attr(href) ")";
-    }
+   }
 
-    abbr[title]:after {
+   abbr[title]:after {
       content: " (" attr(title) ")";
-    }
+   }
 
-    /*
+   /*
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
 
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
+   a[href^="#"]:after,
+   a[href^="javascript:"]:after {
       content: "";
-    }
+   }
 
-    pre {
+   pre {
       white-space: pre-wrap !important;
-    }
-    pre,
-    blockquote {
+   }
+   pre,
+   blockquote {
       border: 1px solid #999;
       page-break-inside: avoid;
-    }
+   }
 
-    /*
+   /*
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
 
-    thead {
+   thead {
       display: table-header-group;
-    }
+   }
 
-    tr,
-    img {
+   tr,
+   img {
       page-break-inside: avoid;
-    }
+   }
 
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
+   p,
+   h2,
+   h3 {
+      orphans: 3;
+      widows: 3;
+   }
 
-    h2,
-    h3 {
+   h2,
+   h3 {
       page-break-after: avoid;
-    }
-  }
+   }
+}
 
 /* ==========================================================================
    Media Queries for Responsive Design.
    ========================================================================== */
 
 @media only screen and (min-width: 35em) {
-
-  .u_small-screen-only {
-    display: none;
-  }
-
+   .u_small-screen-only {
+      display: none;
+   }
 }
