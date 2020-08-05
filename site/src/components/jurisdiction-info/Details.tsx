@@ -12,7 +12,7 @@ const Details = ( j: Jurisdiction ) => (
          (<p>
             {j.jurisdiction_link_text}
             {" "}
-            <a href={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</a>.
+            <stencil-route-link url={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</stencil-route-link>.
          </p>)}
 
       <div class="links">

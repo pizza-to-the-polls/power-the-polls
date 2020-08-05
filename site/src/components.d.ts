@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
+import { MatchResults, RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AddressInput {
         /**
@@ -85,6 +85,7 @@ export namespace Components {
           * County for matching to location
          */
         "county"?: string;
+        "history"?: RouterHistory;
         /**
           * State for matching to location
          */
@@ -365,6 +366,7 @@ declare namespace LocalJSX {
           * County for matching to location
          */
         "county"?: string;
+        "history"?: RouterHistory;
         /**
           * State for matching to location
          */
