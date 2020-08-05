@@ -10,7 +10,10 @@ export class PageJurisdiction {
       const jurisdictionId = document.location.hash.replace("#", "");
 
       return (<Host>
-         <jurisdiction-info jurisdictionId={jurisdictionId} />
+      { jurisdictionId.length > 0
+         ? <jurisdiction-info jurisdictionId={jurisdictionId} />
+         : (<no-capture-form />)
+      }
       </Host>);
    }
 

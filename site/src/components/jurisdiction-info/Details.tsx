@@ -8,7 +8,12 @@ import WorkReqs from "./WorkReqs";
 const Details = ( j: Jurisdiction ) => (
    <div>
       <h2>{j.name}, {j.state.alpha}</h2>
-      <p>{j.jurisdiction_link_text}</p>
+      { j.jurisdiction_link_text && j.jurisdiction_link &&
+         (<p>
+            {j.jurisdiction_link_text}
+            {' '}
+            <a href={`/jurisdiction#${j.jurisdiction_link.id}`} >click here</a>.
+         </p>)}
 
       <div class="links">
          <a class="cta" href={j.application ? j.application : `mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`} target="_blank">Apply Now!</a>

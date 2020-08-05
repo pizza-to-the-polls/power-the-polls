@@ -34,6 +34,8 @@ export namespace Components {
          */
         "jurisdictionId"?: string | number;
     }
+    interface NoCaptureForm {
+    }
     interface PageAbout {
     }
     interface PageContact {
@@ -165,6 +167,12 @@ declare global {
         prototype: HTMLJurisdictionInfoElement;
         new (): HTMLJurisdictionInfoElement;
     };
+    interface HTMLNoCaptureFormElement extends Components.NoCaptureForm, HTMLStencilElement {
+    }
+    var HTMLNoCaptureFormElement: {
+        prototype: HTMLNoCaptureFormElement;
+        new (): HTMLNoCaptureFormElement;
+    };
     interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
     }
     var HTMLPageAboutElement: {
@@ -244,6 +252,7 @@ declare global {
         "h3-bar": HTMLH3BarElement;
         "impact-box": HTMLImpactBoxElement;
         "jurisdiction-info": HTMLJurisdictionInfoElement;
+        "no-capture-form": HTMLNoCaptureFormElement;
         "page-about": HTMLPageAboutElement;
         "page-contact": HTMLPageContactElement;
         "page-faq": HTMLPageFaqElement;
@@ -286,6 +295,8 @@ declare namespace LocalJSX {
           * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: string | number;
+    }
+    interface NoCaptureForm {
     }
     interface PageAbout {
     }
@@ -395,6 +406,7 @@ declare namespace LocalJSX {
         "h3-bar": H3Bar;
         "impact-box": ImpactBox;
         "jurisdiction-info": JurisdictionInfo;
+        "no-capture-form": NoCaptureForm;
         "page-about": PageAbout;
         "page-contact": PageContact;
         "page-faq": PageFaq;
@@ -419,6 +431,7 @@ declare module "@stencil/core" {
             "h3-bar": LocalJSX.H3Bar & JSXBase.HTMLAttributes<HTMLH3BarElement>;
             "impact-box": LocalJSX.ImpactBox & JSXBase.HTMLAttributes<HTMLImpactBoxElement>;
             "jurisdiction-info": LocalJSX.JurisdictionInfo & JSXBase.HTMLAttributes<HTMLJurisdictionInfoElement>;
+            "no-capture-form": LocalJSX.NoCaptureForm & JSXBase.HTMLAttributes<HTMLNoCaptureFormElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
             "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;
