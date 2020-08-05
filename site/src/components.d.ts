@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { MatchResults } from "@stencil/router";
 export namespace Components {
     interface AddressInput {
         /**
@@ -53,6 +54,7 @@ export namespace Components {
         "smartyStreetsApiKey"?: string;
     }
     interface PageJurisdiction {
+        "match"?: MatchResults;
     }
     interface PagePartners {
         /**
@@ -315,6 +317,7 @@ declare namespace LocalJSX {
         "smartyStreetsApiKey"?: string;
     }
     interface PageJurisdiction {
+        "match"?: MatchResults;
     }
     interface PagePartners {
         /**

@@ -5,7 +5,6 @@ import { Component, h, Host } from "@stencil/core";
    shadow: false,
 } )
 export class PageRedirector {
-
    public render() {
       const hash = document.location.hash.replace("#", "");
 

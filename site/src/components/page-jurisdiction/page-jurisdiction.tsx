@@ -1,19 +1,18 @@
-import { Component, h, Host } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
+import { MatchResults } from "@stencil/router";
 
 @Component( {
    tag: "page-jurisdiction",
    shadow: false,
 } )
 export class PageJurisdiction {
+   @Prop() public match?: MatchResults;
 
    public render() {
-      const jurisdictionId = document.location.hash.replace("#", "");
+      const id = this.match ? this.match.params.id : null;
 
       return (<Host>
-      { jurisdictionId.length > 0
-         ? <jurisdiction-info jurisdictionId={jurisdictionId} />
-         : (<no-capture-form />)
-      }
+      { id && (<jurisdiction-info jurisdictionId={id} />)}
       </Host>);
    }
 
