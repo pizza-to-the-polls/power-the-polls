@@ -18,8 +18,7 @@ const WorkElectState = ( { info, jurisdictions }: Props ) => (
       )}
       <div class="jurisdictions">
          {jurisdictions.map( ( { id, name } ) => (
-            <a href={`/jurisdiction/${id}`}
-               target="_blank">{name}</a>
+            <a href={`/jurisdiction/${id}`}>{name}</a>
          ) )}
       </div>
    </div>
