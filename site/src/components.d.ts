@@ -36,6 +36,10 @@ export namespace Components {
         "jurisdictionId"?: string | number;
     }
     interface NoCaptureForm {
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface PageAbout {
     }
@@ -65,6 +69,12 @@ export namespace Components {
     interface PagePrivacy {
     }
     interface PageRedirector {
+    }
+    interface PageSearch {
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface PollWorkerInfo {
         /**
@@ -223,6 +233,12 @@ declare global {
         prototype: HTMLPageRedirectorElement;
         new (): HTMLPageRedirectorElement;
     };
+    interface HTMLPageSearchElement extends Components.PageSearch, HTMLStencilElement {
+    }
+    var HTMLPageSearchElement: {
+        prototype: HTMLPageSearchElement;
+        new (): HTMLPageSearchElement;
+    };
     interface HTMLPollWorkerInfoElement extends Components.PollWorkerInfo, HTMLStencilElement {
     }
     var HTMLPollWorkerInfoElement: {
@@ -263,6 +279,7 @@ declare global {
         "page-partners": HTMLPagePartnersElement;
         "page-privacy": HTMLPagePrivacyElement;
         "page-redirector": HTMLPageRedirectorElement;
+        "page-search": HTMLPageSearchElement;
         "poll-worker-info": HTMLPollWorkerInfoElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
         "social-share": HTMLSocialShareElement;
@@ -299,6 +316,10 @@ declare namespace LocalJSX {
         "jurisdictionId"?: string | number;
     }
     interface NoCaptureForm {
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface PageAbout {
     }
@@ -328,6 +349,12 @@ declare namespace LocalJSX {
     interface PagePrivacy {
     }
     interface PageRedirector {
+    }
+    interface PageSearch {
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface PollWorkerInfo {
         /**
@@ -418,6 +445,7 @@ declare namespace LocalJSX {
         "page-partners": PagePartners;
         "page-privacy": PagePrivacy;
         "page-redirector": PageRedirector;
+        "page-search": PageSearch;
         "poll-worker-info": PollWorkerInfo;
         "power-the-polls-form": PowerThePollsForm;
         "social-share": SocialShare;
@@ -443,6 +471,7 @@ declare module "@stencil/core" {
             "page-partners": LocalJSX.PagePartners & JSXBase.HTMLAttributes<HTMLPagePartnersElement>;
             "page-privacy": LocalJSX.PagePrivacy & JSXBase.HTMLAttributes<HTMLPagePrivacyElement>;
             "page-redirector": LocalJSX.PageRedirector & JSXBase.HTMLAttributes<HTMLPageRedirectorElement>;
+            "page-search": LocalJSX.PageSearch & JSXBase.HTMLAttributes<HTMLPageSearchElement>;
             "poll-worker-info": LocalJSX.PollWorkerInfo & JSXBase.HTMLAttributes<HTMLPollWorkerInfoElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
             "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;

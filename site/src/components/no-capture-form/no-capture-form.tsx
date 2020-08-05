@@ -1,4 +1,4 @@
-import { Component, h, Host, State } from "@stencil/core";
+import { Component, h, Host, Prop, State } from "@stencil/core";
 
 /**
  * Component to render local info about how to be a poll worker.
@@ -9,6 +9,11 @@ import { Component, h, Host, State } from "@stencil/core";
   shadow: false,
 })
 export class NoCaptureForm {
+
+  /**
+   * The API key to access SmartyStreets which is used for address lookup.
+   */
+  @Prop() public smartyStreetsApiKey?: string;
 
   @State() private state?: string;
   @State() private county?: string;
@@ -39,7 +44,7 @@ export class NoCaptureForm {
             : (<form onSubmit={submitForm}>
                      <address-input
                         showStateSelect={false}
-                        smartyStreetsApiKey={process.env.SMARTY_STREETS_KEY} />
+                        smartyStreetsApiKey={this.smartyStreetsApiKey} />
 
                      <button type="submit" class="button" >Find My Polling Place</button>
                </form>) }

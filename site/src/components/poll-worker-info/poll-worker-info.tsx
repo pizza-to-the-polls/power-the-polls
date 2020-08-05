@@ -37,7 +37,7 @@ export class PollWorkerInfo {
             ? jurisdictionId
                ? (<jurisdiction-info jurisdictionId={jurisdictionId} />)
                : (<state-info state={state} stateId={stateId} />)
-            : (<no-capture-form />) }
+            : <stencil-route-redirect url="/search" /> }
       </Host>
     );
   }
