@@ -2,12 +2,12 @@ import { h } from "@stencil/core";
 
 import { Jurisdiction, State as StateType } from "./types";
 
-interface Props {
+interface WorkElectStateProps {
    info: StateType;
    jurisdictions: Array<Jurisdiction>;
 }
 
-const WorkElectState = ( { info, jurisdictions }: Props ) => (
+const WorkElectState = ( { info, jurisdictions }: WorkElectStateProps ) => (
    <div>
       <h2>{info.name}</h2>
       {info.notes && <p>{info.notes}</p>}

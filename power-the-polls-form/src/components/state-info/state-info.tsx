@@ -1,17 +1,9 @@
 import { Component, h, Prop, State } from "@stencil/core";
 
-import { fetchFromWE } from "../../util/workElections";
+import { fetchFromWE } from "../../util/WorkElections";
 
 import { Jurisdiction, State as StateType } from "./types";
 import WorkElectState from "./WorkElectState";
-
-const fallbacks: {[abrieve: string]: string} = {
-   OR: "Oregon",
-   HI: "Hawaii",
-   ME: "Maine",
-   MI: "Michigan",
-   WA: "Washington",
-};
 
 /**
  * Component to render local info about how to be a poll worker.

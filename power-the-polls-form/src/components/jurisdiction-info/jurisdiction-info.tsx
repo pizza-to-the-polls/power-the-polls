@@ -1,6 +1,6 @@
 import { Component, h, Prop, State } from "@stencil/core";
 
-import { fetchFromWE } from "../../util/workElections";
+import { fetchFromWE } from "../../util/WorkElections";
 
 import Details from "./Details";
 import { Jurisdiction } from "./types";

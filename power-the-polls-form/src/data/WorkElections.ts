@@ -51,11 +51,6 @@ export interface JurisdictionQueryResponse {
    jurisdiction_link_text: string;
 }
 
-export const fallbacks: { [state: string]: string } = {
-   "OR": "Oregon",
-   "HI": "Hawaii",
-};
-
 /**
  * Mappings for Work Elections
  */

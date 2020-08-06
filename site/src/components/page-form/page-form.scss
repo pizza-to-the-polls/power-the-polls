@@ -39,8 +39,19 @@ page-form {
       }
    }
 
-   /*
-    * DO NOT STYLE THE FORM HERE
-    * see: power-the-polls-form.tsx
-    */
+   power-the-polls-form {
+      button {
+         background-color: $color-highlight;
+         color: $color-font-primary;
+         font-family: $font-heading;
+      }
+
+      form {
+         font-family: $font-primary;
+
+         label {
+            color: $color-accent;
+         }
+      }
+   }
 }

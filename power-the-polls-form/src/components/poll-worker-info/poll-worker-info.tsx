@@ -1,7 +1,7 @@
 import { Component, h, Host, Prop, Element } from "@stencil/core";
 import { RouterHistory, injectHistory } from "@stencil/router";
 
-import { findJurisdiction, findState } from "../../util/workElections";
+import { findJurisdiction, findState } from "../../util/WorkElections";
 
 /**
  * Component to render local info about how to be a poll worker.

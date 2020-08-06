@@ -7,21 +7,22 @@ export const config: Config = {
    srcDir: "src", // "src" is the default; just here for clarity
    plugins: [
       sass( {
-         // scss files in components will automatically have these imported
+         // scss files will automatically have these added
          injectGlobalPaths: [
-            "styles/variables.scss",
+            "styles/include/variables.scss",
+            "styles/include/mixins.scss",
          ],
       } ),
    ],
    outputTargets: [
       {
          type: "dist",
-         dir: "build",
+         dir: "dist",
       },
       {
          // single .js file to dist/custom-elements
          type: "dist-custom-elements-bundle",
-         dir: "build",
+         dir: "dist",
       },
       {
          // Generates readme files in each component dir. Nice for GitHub.

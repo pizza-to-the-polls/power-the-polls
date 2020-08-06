@@ -24,7 +24,7 @@
       "jsxFactory": "h"
    },
    "include": [
-      "src"
+      "src", "../power-the-polls-form/src/data/WorkElections.ts"
    ],
    "exclude": [
       "node_modules"

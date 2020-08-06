@@ -1,3 +1,84 @@
-power-the-polls-form {
-  display: block;
+power-the-polls-form.default {
+   display: block;
+
+   button {
+      border: 0;
+      padding: 0.5em 1em;
+      width: 100%;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      letter-spacing: 0.05rem;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover { opacity: 0.8; }
+      &:focus { opacity: 0.6; }
+      &:active { opacity: 0.4; }
+   }
+
+   h3 {
+      margin-top: 1em;
+   }
+
+   p.disclaimer {
+      font-size: 0.9rem;
+   }
+
+   form {
+      max-width: 32ch;
+      @include on-mobile() {
+         max-width: inherit;
+      }
+      font-size: 1rem;
+      padding: 1em 0;
+      color: #fff;
+      text-transform: none;
+      letter-spacing: 0;
+
+      input,
+      select {
+         width: 100%;
+         border: 0;
+         padding: 0.5em 0.75em;
+         display: block;
+
+         &:disabled {
+            color: #fff;
+         }
+      }
+
+      select {
+         padding: 0.75em;
+      }
+
+      label {
+         margin-bottom: 0.75em;
+         display: block;
+         font-size: 0.9rem;
+         color: $color-accent;
+         text-transform: lowercase;
+         font-variant: small-caps;
+
+         input,
+         select {
+            text-transform: none;
+            font-variant: normal;
+         }
+
+         .checkbox {
+            display: flex;
+            align-items: center;
+
+            &:first-of-type {
+               margin-top: 1.5em;
+            }
+
+            input {
+               transform: scale(1.5);
+               flex: 0 1 1.5em;
+               margin-right: 0.5em;
+               z-index: -1;
+            }
+         }
+      }
+   }
 }
