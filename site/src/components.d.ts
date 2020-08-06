@@ -9,7 +9,7 @@ import { MatchResults, RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AddressInput {
         /**
-          * Delay, in ms, between user pressing a key while entering an address and the API call being made. Default: 200 (ms)
+          * Delay, in ms, between user pressing a key while entering an address and the API call being made, in ms. (default: 200ms)
          */
         "lookupDelay": number;
         /**
@@ -290,7 +290,7 @@ declare global {
 declare namespace LocalJSX {
     interface AddressInput {
         /**
-          * Delay, in ms, between user pressing a key while entering an address and the API call being made. Default: 200 (ms)
+          * Delay, in ms, between user pressing a key while entering an address and the API call being made, in ms. (default: 200ms)
          */
         "lookupDelay"?: number;
         /**
