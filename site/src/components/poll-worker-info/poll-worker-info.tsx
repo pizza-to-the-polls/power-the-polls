@@ -1,4 +1,5 @@
-import { Component, h, Host, Prop } from "@stencil/core";
+import { Component, h, Host, Prop, Element } from "@stencil/core";
+import { RouterHistory, injectHistory } from "@stencil/router";
 
 import { findJurisdiction, findState } from "../../util/workElections";
 
@@ -7,7 +8,6 @@ import { findJurisdiction, findState } from "../../util/workElections";
  */
 @Component({
   tag: "poll-worker-info",
-  styleUrl: "poll-worker-info.scss",
   shadow: false,
 })
 export class PollWorkerInfo {
@@ -27,10 +27,16 @@ export class PollWorkerInfo {
     */
    @Prop() public city?: string;
 
+   @Prop() history?: RouterHistory;
+   @Element() el?: HTMLElement;
+
+
   public render() {
     const { state, county, city } = this;
     const jurisdictionId = state ? findJurisdiction(state, county, city) : null;
     const stateId = state ? findState(state) : null;
+
+   if( !state && this.history ) return this.history.replace('/search');
 
     return (
       <Host>
@@ -38,9 +44,10 @@ export class PollWorkerInfo {
             ? jurisdictionId
                ? (<jurisdiction-info jurisdictionId={jurisdictionId} />)
                : (<state-info state={state} stateId={stateId} />)
-            : (<h3>Enter state, county, city</h3>) }
+            : null }
       </Host>
     );
   }
-
 }
+
+injectHistory(PollWorkerInfo);

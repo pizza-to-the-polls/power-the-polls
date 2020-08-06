@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { MatchResults, RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AddressInput {
         /**
@@ -30,9 +31,15 @@ export namespace Components {
     }
     interface JurisdictionInfo {
         /**
-          * City for matching to location
+          * ID of jurisdiction for Work Elections
          */
-        "jurisdictionId"?: number;
+        "jurisdictionId"?: string | number;
+    }
+    interface NoCaptureForm {
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface PageAbout {
     }
@@ -50,6 +57,9 @@ export namespace Components {
          */
         "smartyStreetsApiKey"?: string;
     }
+    interface PageJurisdiction {
+        "match"?: MatchResults;
+    }
     interface PagePartners {
         /**
           * List of all the partner logos to display
@@ -60,6 +70,12 @@ export namespace Components {
     }
     interface PageRedirector {
     }
+    interface PageSearch {
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
+    }
     interface PollWorkerInfo {
         /**
           * City for matching to location
@@ -69,6 +85,7 @@ export namespace Components {
           * County for matching to location
          */
         "county"?: string;
+        "history"?: RouterHistory;
         /**
           * State for matching to location
          */
@@ -163,6 +180,12 @@ declare global {
         prototype: HTMLJurisdictionInfoElement;
         new (): HTMLJurisdictionInfoElement;
     };
+    interface HTMLNoCaptureFormElement extends Components.NoCaptureForm, HTMLStencilElement {
+    }
+    var HTMLNoCaptureFormElement: {
+        prototype: HTMLNoCaptureFormElement;
+        new (): HTMLNoCaptureFormElement;
+    };
     interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
     }
     var HTMLPageAboutElement: {
@@ -187,6 +210,12 @@ declare global {
         prototype: HTMLPageFormElement;
         new (): HTMLPageFormElement;
     };
+    interface HTMLPageJurisdictionElement extends Components.PageJurisdiction, HTMLStencilElement {
+    }
+    var HTMLPageJurisdictionElement: {
+        prototype: HTMLPageJurisdictionElement;
+        new (): HTMLPageJurisdictionElement;
+    };
     interface HTMLPagePartnersElement extends Components.PagePartners, HTMLStencilElement {
     }
     var HTMLPagePartnersElement: {
@@ -204,6 +233,12 @@ declare global {
     var HTMLPageRedirectorElement: {
         prototype: HTMLPageRedirectorElement;
         new (): HTMLPageRedirectorElement;
+    };
+    interface HTMLPageSearchElement extends Components.PageSearch, HTMLStencilElement {
+    }
+    var HTMLPageSearchElement: {
+        prototype: HTMLPageSearchElement;
+        new (): HTMLPageSearchElement;
     };
     interface HTMLPollWorkerInfoElement extends Components.PollWorkerInfo, HTMLStencilElement {
     }
@@ -236,13 +271,16 @@ declare global {
         "h3-bar": HTMLH3BarElement;
         "impact-box": HTMLImpactBoxElement;
         "jurisdiction-info": HTMLJurisdictionInfoElement;
+        "no-capture-form": HTMLNoCaptureFormElement;
         "page-about": HTMLPageAboutElement;
         "page-contact": HTMLPageContactElement;
         "page-faq": HTMLPageFaqElement;
         "page-form": HTMLPageFormElement;
+        "page-jurisdiction": HTMLPageJurisdictionElement;
         "page-partners": HTMLPagePartnersElement;
         "page-privacy": HTMLPagePrivacyElement;
         "page-redirector": HTMLPageRedirectorElement;
+        "page-search": HTMLPageSearchElement;
         "poll-worker-info": HTMLPollWorkerInfoElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
         "social-share": HTMLSocialShareElement;
@@ -274,9 +312,15 @@ declare namespace LocalJSX {
     }
     interface JurisdictionInfo {
         /**
-          * City for matching to location
+          * ID of jurisdiction for Work Elections
          */
-        "jurisdictionId"?: number;
+        "jurisdictionId"?: string | number;
+    }
+    interface NoCaptureForm {
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
     }
     interface PageAbout {
     }
@@ -294,6 +338,9 @@ declare namespace LocalJSX {
          */
         "smartyStreetsApiKey"?: string;
     }
+    interface PageJurisdiction {
+        "match"?: MatchResults;
+    }
     interface PagePartners {
         /**
           * List of all the partner logos to display
@@ -304,6 +351,12 @@ declare namespace LocalJSX {
     }
     interface PageRedirector {
     }
+    interface PageSearch {
+        /**
+          * The API key to access SmartyStreets which is used for address lookup.
+         */
+        "smartyStreetsApiKey"?: string;
+    }
     interface PollWorkerInfo {
         /**
           * City for matching to location
@@ -313,6 +366,7 @@ declare namespace LocalJSX {
           * County for matching to location
          */
         "county"?: string;
+        "history"?: RouterHistory;
         /**
           * State for matching to location
          */
@@ -384,13 +438,16 @@ declare namespace LocalJSX {
         "h3-bar": H3Bar;
         "impact-box": ImpactBox;
         "jurisdiction-info": JurisdictionInfo;
+        "no-capture-form": NoCaptureForm;
         "page-about": PageAbout;
         "page-contact": PageContact;
         "page-faq": PageFaq;
         "page-form": PageForm;
+        "page-jurisdiction": PageJurisdiction;
         "page-partners": PagePartners;
         "page-privacy": PagePrivacy;
         "page-redirector": PageRedirector;
+        "page-search": PageSearch;
         "poll-worker-info": PollWorkerInfo;
         "power-the-polls-form": PowerThePollsForm;
         "social-share": SocialShare;
@@ -407,13 +464,16 @@ declare module "@stencil/core" {
             "h3-bar": LocalJSX.H3Bar & JSXBase.HTMLAttributes<HTMLH3BarElement>;
             "impact-box": LocalJSX.ImpactBox & JSXBase.HTMLAttributes<HTMLImpactBoxElement>;
             "jurisdiction-info": LocalJSX.JurisdictionInfo & JSXBase.HTMLAttributes<HTMLJurisdictionInfoElement>;
+            "no-capture-form": LocalJSX.NoCaptureForm & JSXBase.HTMLAttributes<HTMLNoCaptureFormElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
             "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;
             "page-form": LocalJSX.PageForm & JSXBase.HTMLAttributes<HTMLPageFormElement>;
+            "page-jurisdiction": LocalJSX.PageJurisdiction & JSXBase.HTMLAttributes<HTMLPageJurisdictionElement>;
             "page-partners": LocalJSX.PagePartners & JSXBase.HTMLAttributes<HTMLPagePartnersElement>;
             "page-privacy": LocalJSX.PagePrivacy & JSXBase.HTMLAttributes<HTMLPagePrivacyElement>;
             "page-redirector": LocalJSX.PageRedirector & JSXBase.HTMLAttributes<HTMLPageRedirectorElement>;
+            "page-search": LocalJSX.PageSearch & JSXBase.HTMLAttributes<HTMLPageSearchElement>;
             "poll-worker-info": LocalJSX.PollWorkerInfo & JSXBase.HTMLAttributes<HTMLPollWorkerInfoElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
             "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;

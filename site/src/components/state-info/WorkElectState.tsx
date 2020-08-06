@@ -18,8 +18,7 @@ const WorkElectState = ( { info, jurisdictions }: Props ) => (
       )}
       <div class="jurisdictions">
          {jurisdictions.map( ( { id, name } ) => (
-            <a href={`https://workelections.com/j/${id}/${name.split( " " ).join( "-" )}`}
-               target="_blank">{name}</a>
+            <stencil-route-link url={`/jurisdiction/${id}`}>{name}</stencil-route-link>
          ) )}
       </div>
    </div>

@@ -8,11 +8,16 @@ import WorkReqs from "./WorkReqs";
 const Details = ( j: Jurisdiction ) => (
    <div>
       <h2>{j.name}, {j.state.alpha}</h2>
-      <p>{j.jurisdiction_link_text}</p>
+      { j.jurisdiction_link_text && j.jurisdiction_link &&
+         (<p>
+            {j.jurisdiction_link_text}
+            {" "}
+            <stencil-route-link url={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</stencil-route-link>.
+         </p>)}
 
       <div class="links">
-         <a class="cta" href={j.application} target="_blank">Apply Now!</a>
-         <a href={j.website} target="_blank">Poll Worker Information</a>
+         <a class="cta" href={j.application ? j.application : `mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`} target="_blank">Apply Now!</a>
+         {j.website && (<a href={j.website} target="_blank">Poll Worker Information</a>)}
          {j.student_website && ( <a href={j.student_website} target="_blank">Student Poll Worker Information</a> )}
       </div>
 
