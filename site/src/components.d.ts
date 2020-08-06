@@ -64,7 +64,7 @@ export namespace Components {
         /**
           * List of all the partner logos to display
          */
-        "partners"?: { logo: string, name: string, founding: boolean }[];
+        "partners"?: { logo: string, name: string, founding: boolean, dark?: boolean }[];
     }
     interface PagePrivacy {
     }
@@ -345,7 +345,7 @@ declare namespace LocalJSX {
         /**
           * List of all the partner logos to display
          */
-        "partners"?: { logo: string, name: string, founding: boolean }[];
+        "partners"?: { logo: string, name: string, founding: boolean, dark?: boolean }[];
     }
     interface PagePrivacy {
     }
