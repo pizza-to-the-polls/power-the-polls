@@ -102,6 +102,11 @@ const data: Partner[] = [
 
    },
    {
+      id: 'caa',
+      name: 'CAA Foundation',
+      logo: 'caa-foundation.png'
+   },
+   {
       id: "cbs",
       name: "CBS",
    },
