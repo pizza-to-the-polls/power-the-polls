@@ -56,6 +56,11 @@ const data: Partner[] = [
       source: "american-constitution-society",
    },
    {
+      name: "Action Button",
+      id: "actionbutton",
+      logo: "action-button.png",
+   },
+   {
       id: "aflcio",
       name: "AFL-CIO",
       source: "labor-aflcio",
@@ -66,6 +71,7 @@ const data: Partner[] = [
       id: "afscme",
       name: "AFSCME",
       source: "labor-afscme",
+      logo: "afscme.png",
       optUserOutOfChase: true,
    },
    {
@@ -86,9 +92,20 @@ const data: Partner[] = [
       founding: true,
    },
    {
+      id: "alliance-students-at-the-polls",
+      name: "Alliance Students at the Polls",
+      logo: "alliance-students-at-the-polls.png",
+   },
+   {
       id: "american-promise",
       name: "American Promise",
       logo: "american-promise.png",
+   },
+   {
+      id: "baltimore-votes",
+      name: "Baltimore Votes",
+      logo: "baltimore-votes.png",
+      dark: true,
    },
    {
       id: "blockpower",
@@ -102,10 +119,35 @@ const data: Partner[] = [
       source: "boys-and-girls-clubs",
    },
    {
+      id: "bbyo",
+      name: "BBYO",
+      logo: "bbyo.png",
+   },
+   {
+      id: "big-tent-usa",
+      name: "Big Tent USA",
+      logo: "big-tent-usa.jpeg",
+      dark: true,
+   },
+   {
+      id: "breakout",
+      name: "Breakout",
+      logo: "breakout.png",
+   },
+   {
+      id: "burton",
+      name: "Burton",
+      logo: "burton.png",
+   },
+   {
       id: "campus",
       name: "Campus Compact",
       logo: "campus-compact.png",
-
+   },
+   {
+      id: "campusvote",
+      name: "Campus Vote Project",
+      logo: "campus-vote-project.png",
    },
    {
       id: "caa",
@@ -139,6 +181,12 @@ const data: Partner[] = [
       founding: true,
    },
    {
+      id: "civil-review-board",
+      name: "Civil Review Board",
+      logo: "civil-review-board.jpg",
+      dark: true,
+   },
+   {
       id: "CrookedMedia",
       name: "Crooked Media",
       logo: "vsa.png",
@@ -161,8 +209,20 @@ const data: Partner[] = [
       founding: true,
    },
    {
+      id: "feministmajority",
+      logo: "feminist-majority-foundation.png",
+      name: "Feminist Majority Foundation",
+      dark: true,
+   },
+   {
       id: "fl",
       name: "Florida",
+   },
+   {
+      id: "global-black-caucus",
+      name: "Global Black Caucus",
+      logo: "global-black-caucus.jpg",
+      dark: true,
    },
    {
       id: "headcount",
@@ -193,6 +253,7 @@ const data: Partner[] = [
       id: "leadmn",
       name: "Lead MN",
       logo: "lead-mn.jpg",
+      dark: true,
    },
    {
       id: "levis",
@@ -206,6 +267,12 @@ const data: Partner[] = [
       logo: "mtv.png",
       name: "MTV",
       founding: true,
+   },
+   {
+      id: "miami-dade-college",
+      name: "Miami Dade College",
+      logo: "miami-dade-college.jpg",
+      dark: true,
    },
    {
       id: "AAAAAAAAAAAA",
@@ -233,6 +300,12 @@ const data: Partner[] = [
       dark: true,
    },
    {
+      id: "national-coalition-for-accessible-voting",
+      name: "National College for Accessible Voting",
+      logo: "national-coalition-for-accessible-voting.png",
+      dark: true,
+   },
+   {
       id: "ncbcp",
       name: "National Coalition On Black Civic Participation",
       logo: "ncbcp.png",
@@ -255,6 +328,11 @@ const data: Partner[] = [
       optUserOutOfChase: true,
    },
    {
+      name: "OMG WTF",
+      id: "omg-wtf",
+      logo: "omg-wtf.png",
+   },
+   {
       id: "nh",
       name: "New Hampshire",
    },
@@ -273,14 +351,30 @@ const data: Partner[] = [
       founding: true,
    },
    {
+      id: "AAAAAAApublicwiseAAAAA",
+      logo: "public-wise.png",
+      name: "Public Wise",
+   },
+   {
       id: "repairtheworld",
       logo: "repair-the-world.png",
       name: "Repair The World",
    },
    {
-      id: "AAAAAAApublicwiseAAAAA",
-      logo: "public-wise.png",
-      name: "Public Wise",
+      id: "represent-us",
+      name: "Represent US",
+      logo: "represent-us.png",
+   },
+   {
+      id: "salesforce",
+      name: "Salesforce",
+      source: "Salesforce",
+   },
+   {
+      id: "scholars-strategy-network",
+      name: "Scholars Strategy Network",
+      logo: "scholars-strategy-network.png",
+      dark: true,
    },
    {
       id: "seiu",
@@ -296,13 +390,24 @@ const data: Partner[] = [
       founding: true,
    },
    {
-      id: "salesforce",
-      name: "Salesforce",
-      source: "Salesforce",
+      id: "socially-driven-music",
+      name: "Socially Driven Music",
+      logo: "socially-driven-music.png",
    },
    {
       id: "starbucks",
       name: "Starbucks",
+   },
+   {
+      id: "sva",
+      name: "Student Veterans of America",
+      logo: "sva.png",
+   },
+   {
+      id: "texas-lbj-school",
+      name: "Texas LBJ School",
+      logo: "texas-lbj-school.png",
+      dark: true,
    },
    {
       id: "tds",
@@ -321,6 +426,11 @@ const data: Partner[] = [
       name: "Time to Vote",
       source: "TimeToVote",
       founding: true,
+   },
+   {
+      name: "Town Hall Project",
+      id: "town-hall-project",
+      logo: "town-hall-project.png",
    },
    {
       id: "uber",
@@ -352,6 +462,12 @@ const data: Partner[] = [
       name: "We Can Vote",
       source: "WeCanVote",
       founding: true,
+   },
+   {
+      id: "weslayan-engaged",
+      name: "Weslayan Engaged",
+      logo: "weslayan-engaged.jpg",
+      dark: true,
    },
    {
       id: "when-we-all-vote",
