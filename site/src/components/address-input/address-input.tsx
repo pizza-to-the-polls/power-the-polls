@@ -92,7 +92,6 @@ export class AddressInput {
        * Focus the address selection list when user presses keydown with address input focused
        */
       const addressOnKeyDown = ( event: KeyboardEvent ) => {
-         console.log( "addressOnKeyDown", event );
          if( this.addressOptions.length > 0 && event.key === "ArrowDown" ) {
             event.stopImmediatePropagation();
             event.preventDefault();
@@ -124,7 +123,6 @@ export class AddressInput {
       };
 
       const addressSuggestionOnKeyDown = ( event: KeyboardEvent ) => {
-         console.log( "addressSuggestionOnKeyDown", event );
          let index = parseInt( ( event.target as HTMLSelectElement ).value, 10 ) || 0;
          if( event.keyCode === 13 || event.keyCode === 32 || event.key === "Enter" || event.key === " " ) {
             applySuggestionAtIndex( index );
