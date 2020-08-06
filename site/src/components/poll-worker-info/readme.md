@@ -7,17 +7,19 @@
 
 ## Properties
 
-| Property | Attribute | Description                     | Type                  | Default     |
-| -------- | --------- | ------------------------------- | --------------------- | ----------- |
-| `city`   | `city`    | City for matching to location   | `string \| undefined` | `undefined` |
-| `county` | `county`  | County for matching to location | `string \| undefined` | `undefined` |
-| `state`  | `state`   | State for matching to location  | `string \| undefined` | `undefined` |
+| Property  | Attribute | Description                     | Type                         | Default     |
+| --------- | --------- | ------------------------------- | ---------------------------- | ----------- |
+| `city`    | `city`    | City for matching to location   | `string \| undefined`        | `undefined` |
+| `county`  | `county`  | County for matching to location | `string \| undefined`        | `undefined` |
+| `history` | --        |                                 | `RouterHistory \| undefined` | `undefined` |
+| `state`   | `state`   | State for matching to location  | `string \| undefined`        | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
+ - [no-capture-form](../no-capture-form)
  - [page-redirector](../page-redirector)
  - [power-the-polls-form](../power-the-polls-form)
 
@@ -31,6 +33,9 @@
 graph TD;
   poll-worker-info --> jurisdiction-info
   poll-worker-info --> state-info
+  jurisdiction-info --> stencil-route-link
+  state-info --> stencil-route-link
+  no-capture-form --> poll-worker-info
   page-redirector --> poll-worker-info
   power-the-polls-form --> poll-worker-info
   style poll-worker-info fill:#f9f,stroke:#333,stroke-width:4px
