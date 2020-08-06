@@ -26,7 +26,8 @@ export class AddressInput {
    @Prop() public smartyStreetsApiKey?: string;
 
    /**
-    * Delay, in ms, between user pressing a key while entering an address and the API call being made. Default: 200 (ms)
+    * Delay, in ms, between user pressing a key while entering an address and the API call
+    * being made, in ms. (default: 200ms)
     */
    @Prop() public lookupDelay: number;
 
@@ -45,6 +46,7 @@ export class AddressInput {
    }[];
 
    private addressSelect?: HTMLSelectElement;
+   private addressInput?: HTMLInputElement;
    private smartyStreetsLookupTimeout?: number;
 
    constructor() {
@@ -76,7 +78,7 @@ export class AddressInput {
          if( value !== "" ) {
             this.smartyStreetsLookupTimeout = window.setTimeout( () => {
                if( this.smartyStreetsApiKey != null ) {
-                  this.getSuggestions( this.addressValue, false );
+                  this.getSuggestions( this.addressValue );
                } else {
                   console.log( "No SmartyStreets API key provided, cannot lookup addresses" );
                }
@@ -90,38 +92,49 @@ export class AddressInput {
        * Focus the address selection list when user presses keydown with address input focused
        */
       const addressOnKeyDown = ( event: KeyboardEvent ) => {
+         console.log( "addressOnKeyDown", event );
          if( this.addressOptions.length > 0 && event.key === "ArrowDown" ) {
-            if( this.addressSelect != null ) {
-               this.addressSelect.focus();
-               // select the first value if nothing is selected
-               if( this.addressSelect.value == null ) {
-                  this.addressSelect.value = "0";
-               }
-            }
             event.stopImmediatePropagation();
             event.preventDefault();
+            this.addressSelect?.focus();
          }
       };
 
       /**
        * On select of an address option from the list, replace the address inputs with this value and clear
-       * the suggestions.
+       * the suggestions. Optionally lookup further values if this was a multi-entry suggestion
        */
-      const selectAddressOption = ( event: Event ) => {
-         let index = parseInt( ( event.target as HTMLSelectElement ).value, 10 ) || 0;
-         let address = this.addressOptions[index];
-         this.addressValue = address.suggestion.street_line || "";
-         this.cityValue = address.suggestion.city || "";
-         this.stateValue = address.suggestion.state || "";
+      const applySuggestionAtIndex = ( index: number ) => {
+         let suggestion = this.addressOptions[index].suggestion;
+         // if this is a multi-entry suggestion, lookup further entries
+         if( suggestion.entries > 1 ) {
+            this.getSuggestions( suggestion );
+         } else {
+            this.addressOptions = [];
+            this.addressValue = suggestion.street_line || "";
+            this.cityValue = suggestion.city || "";
+            this.stateValue = suggestion.state || "";
+            this.getSingleAddressData( suggestion );
+         }
+      };
 
-         // if( text.search( /(?:\ more\ entries\))/ ) === "-1" ) {
-         this.getSingleAddressData( address.suggestion );
-         // } else {
-         //    this.addressValue = address[0] + " ";
-         //    let selected = text.replace( " more entries", "" );
-         //    selected = selected.replace( ",", "" );
-         //    this.getSuggestions( address[0], selected );
-         // }
+      const addressSuggestionOnClick = ( event: Event ) => {
+         let index = parseInt( ( event.target as HTMLSelectElement ).value, 10 ) || 0;
+         applySuggestionAtIndex( index );
+      };
+
+      const addressSuggestionOnKeyDown = ( event: KeyboardEvent ) => {
+         console.log( "addressSuggestionOnKeyDown", event );
+         let index = parseInt( ( event.target as HTMLSelectElement ).value, 10 ) || 0;
+         if( event.keyCode === 13 || event.keyCode === 32 || event.key === "Enter" || event.key === " " ) {
+            applySuggestionAtIndex( index );
+         } else if( event.key === "ArrowUp" && index === 0 ) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+            this.addressSelect?.blur();
+            this.addressInput?.focus();
+            this.addressInput?.select();
+         }
       };
 
       const selectStateOption = ( event: Event ) => {
@@ -152,6 +165,7 @@ export class AddressInput {
             Street address<span class="ak-required-flag">*</span>
             <input
                type="text"
+               ref={el => this.addressInput = el as HTMLInputElement}
                required
                name="address1"
                id="id_address1"
@@ -161,13 +175,15 @@ export class AddressInput {
             />
             <select
                ref={el => this.addressSelect = el as HTMLSelectElement}
-               onInput={selectAddressOption}
+               onKeyDown={addressSuggestionOnKeyDown}
+               onClick={addressSuggestionOnClick}
                size={this.addressOptions.length + 1}
                style={{
+                  display: this.addressOptions.length > 0 ? "block" : "none",
                   overflowY: "auto",
+                  // offset the scrollbar for user agents that refuse to hide it
                   paddingRight: "17px",
                   marginRight: "-17px",
-                  display: this.addressOptions.length > 0 ? "block" : "none",
                   padding: "0.1em",
                }}
                tabIndex={-1}
@@ -211,39 +227,39 @@ export class AddressInput {
       </Host> );
    }
 
-   private getSuggestions( search: string, selected: boolean ) {
-
-      const formatAddress = ( suggestion: any ) => {
-         let whiteSpace = "";
-         if( suggestion.secondary || suggestion.entries > 1 ) {
-            if( suggestion.entries > 1 ) {
-               suggestion.secondary += " (" + suggestion.entries + " more entries)";
-            }
-            whiteSpace = " ";
-         }
-         return suggestion.street_line + whiteSpace + suggestion.secondary + " " + suggestion.city + ", " + suggestion.state + " " + suggestion.zipcode;
-      };
-
+   private getSuggestions( search: string | USAutocomplete.Suggestion ) {
+      // if passed a suggestion, search using the address and start from the suggestion as the selected value for SmartyStreets
+      const selected = typeof search !== "string" ? search : null;
+      search = typeof search !== "string" ? search.street_line || "" : search;
       fetch( "https://us-autocomplete-pro.api.smartystreets.com/lookup?" + toQueryString( {
          "auth-id": this.smartyStreetsApiKey,
          "search": search,
-         "selected": ( selected ? selected : "" ),
+         // see: https://smartystreets.com/docs/cloud/us-autocomplete-api#pro-secondary-expansion
+         "selected": selected == null || selected.entries < 2 ? ""
+            : `${selected.street_line} ${selected.secondary} (${selected.entries}) ${selected.city} ${selected.state} ${selected.zipcode}`,
          "include_only_states": this.stateValue || "",
       } ), {
          method: "GET",
       } )
          .then( response => response.json().then( ( data: USAutocomplete.QueryResult ) => {
-            this.addressOptions = ( data.suggestions || [] ).map( ( suggestion, i: number ) => {
+            let suggestions = ( data.suggestions || [] ).map( ( suggestion, i: number ) => {
                return {
                   suggestion: suggestion,
                   value: i,
-                  text: formatAddress( suggestion ),
+                  text: suggestion.street_line
+                     + ( suggestion.secondary ? " " + suggestion.secondary : "" )
+                     + ( suggestion.entries > 1 ? " (" + suggestion.entries + " more entries)" : "" )
+                     + " " + suggestion.city + ", " + suggestion.state + " " + suggestion.zipcode,
                };
             } );
+            this.addressOptions = suggestions;
          } ) )
          .catch( err => console.log( "smartystreets error", err ) );
    }
 
+   /**
+    * Try to ge tmore detailed street data given the user's selection
+    */
    private getSingleAddressData( address: USAutocomplete.Suggestion ) {
       fetch( "https://us-street.api.smartystreets.com/street-address?" + toQueryString( {
          "auth-id": this.smartyStreetsApiKey,

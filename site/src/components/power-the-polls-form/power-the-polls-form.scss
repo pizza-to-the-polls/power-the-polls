@@ -27,7 +27,7 @@ power-the-polls-form {
    }
 
    form {
-      max-width: 30ch;
+      max-width: 32ch;
       @include on-mobile() {
          max-width: inherit;
       }

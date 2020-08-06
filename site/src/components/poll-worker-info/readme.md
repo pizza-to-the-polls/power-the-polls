@@ -18,6 +18,7 @@
 
 ### Used by
 
+ - [page-redirector](../page-redirector)
  - [power-the-polls-form](../power-the-polls-form)
 
 ### Depends on
@@ -30,6 +31,7 @@
 graph TD;
   poll-worker-info --> jurisdiction-info
   poll-worker-info --> state-info
+  page-redirector --> poll-worker-info
   power-the-polls-form --> poll-worker-info
   style poll-worker-info fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -111,13 +111,16 @@ export declare namespace USAutocomplete {
       geolocate_precision?: string;
    }
    interface Suggestion {
-      text?: string;
-      street_line?: string;
-      city?: string;
-      state?: string;
+      readonly text?: string;
+      readonly street_line?: string;
+      readonly city?: string;
+      readonly state?: string;
+      readonly zipcode?: string;
+      readonly secondary?: string;
+      readonly entries: number;
    }
    interface QueryResult {
-      suggestions: Suggestion[];
+      readonly suggestions: Suggestion[];
    }
 }
 export declare namespace InternationalStreetAddress {
