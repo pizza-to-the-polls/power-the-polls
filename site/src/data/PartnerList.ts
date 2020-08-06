@@ -71,7 +71,7 @@ const data: Partner[] = [
    {
       id: "allin",
       name: "All In",
-      logo: "allin.png",
+      logo: "all-in.png",
    },
    {
       id: "AYO",
