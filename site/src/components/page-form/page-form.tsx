@@ -38,6 +38,9 @@ export class PageForm {
       const formError = ( err: any ) => {
          console.log( "Error submitting data", err );
       };
+      let daysLeft = Math.round( ( new Date( 2020, 9, 1 ).getTime() - Date.now() ) / 1000 / 60 / 60 / 24 / 7 ) * 7;
+      // count down every 10 days (since the 2020-10-01 end is arbitrary) by extracting off the days less than 10 and rounding up or down
+      daysLeft = ( daysLeft - daysLeft % 10 ) + Math.round( daysLeft % 10 / 10 ) * 10;
       return (
          <Host>
             {!this.formComplete ? ( <Fragment>
@@ -59,7 +62,7 @@ export class PageForm {
                      <p>Poll workers still needed</p>
                   </impact-box>
                   <impact-box>
-                     <h2>&lt; 100 DAYS</h2>
+                     <h2>&lt; {daysLeft} DAYS</h2>
                      <p>To recruit and train them</p>
                   </impact-box>
                </div>

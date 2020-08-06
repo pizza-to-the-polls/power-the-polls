@@ -3,7 +3,7 @@
 There are two projects in this repository:
 
 1. `/site` contains the website for powerthepolls.org
-2. `/power-the-polls-form` is the main submission form as an independent web component. It is used by `/site` and intended for sharing with partners and generally spreading the signup as wide as possible.
+2. `/power-the-polls-form` will eventually contain the main submission form as an independent web component. It will be used by `/site` and intended for sharing with partners and generally spreading the signup as wide as possible.
 
 ## `/site`
 
