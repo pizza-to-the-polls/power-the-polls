@@ -133,8 +133,19 @@ export class AppRoot {
                            component="page-privacy"
                         />
                         <stencil-route
+                           url="/search"
+                           component="page-search"
+                           componentProps={{
+                              smartyStreetsApiKey: process.env.SMARTY_STREETS_KEY/*replaced with correct value by build*/,
+                           }}
+                        />
+                        <stencil-route
                            url="/redirector"
                            component="page-redirector"
+                        />
+                        <stencil-route
+                           url="/jurisdiction/:id"
+                           component="page-jurisdiction"
                         />
                         <stencil-route
                            url="/dev"

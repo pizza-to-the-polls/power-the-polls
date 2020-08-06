@@ -85,6 +85,11 @@ const data: Partner[] = [
       logo: "american-promise.png",
    },
    {
+      id: "blockpower",
+      name: "Block Power",
+      logo: "block-power.png",
+   },
+   {
       id: "boys-and-girls-club",
       logo: "boys-and-girls-clubs.png",
       name: "Boys and Girls Clubs of America",
@@ -101,6 +106,13 @@ const data: Partner[] = [
       name: "CBS",
    },
    {
+      id: "cc",
+      name: "Comedy Central",
+      logo: "comedy-central.png",
+      source: "ComedyCentral",
+      founding: true,
+   },
+   {
       id: "civicgeorgia",
       logo: "civi-georgia.png",
       name: "Civic Georgia",
@@ -114,31 +126,19 @@ const data: Partner[] = [
       founding: true,
    },
    {
-      id: "cc",
-      name: "Comedy Central",
-      logo: "comedy-central.png",
-      source: "ComedyCentral",
-      founding: true,
-   },
-   {
-      id: "evc",
-      logo: "every-vote-counts.png",
-      name: "Every Vote Counts",
-   },
-   {
       id: "CrookedMedia",
       name: "Crooked Media",
       logo: "vsa.png",
    },
    {
-      id: "blockpower",
-      name: "Block Power",
-      logo: "block-power.png",
-   },
-   {
       id: "defendourfuture",
       name: "Defend Our Future",
       logo: "defend-our-future.png",
+   },
+   {
+      id: "evc",
+      logo: "every-vote-counts.png",
+      name: "Every Vote Counts",
    },
    {
       id: "fairelections",
@@ -210,7 +210,7 @@ const data: Partner[] = [
    {
       id: "mweg",
       name: "Mormon Women For Ethical Government",
-      logo: "mweg.png",
+      logo: "mweg.svg",
    },
    {
       id: "ncbcp",

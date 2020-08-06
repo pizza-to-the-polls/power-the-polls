@@ -146,7 +146,7 @@ export class AddressInput {
                   ) )}
                </select>
             </label>
-         ) : null}
+         ) : <input type="hidden" value={this.stateValue} name="state" />}
 
          <label>
             Street address<span class="ak-required-flag">*</span>
