@@ -35,6 +35,11 @@ export interface Partner {
     * The label for an additional field to be displayed on the signup form
     */
    readonly customSignupFormField?: string;
+
+   /**
+    *
+    */
+   readonly dark?: boolean;
 }
 
 const data: Partner[] = [
@@ -42,6 +47,7 @@ const data: Partner[] = [
       id: "911day",
       name: "9/11 Day",
       logo: "911-day.png",
+      dark: true,
    },
    {
       id: "acs",
@@ -71,7 +77,7 @@ const data: Partner[] = [
    {
       id: "allin",
       name: "All In",
-      logo: "all-in.png",
+      logo: "all-in.svg",
    },
    {
       id: "AYO",
@@ -102,10 +108,11 @@ const data: Partner[] = [
 
    },
    {
-      id: 'caa',
-      name: 'CAA Foundation',
-      logo: 'caa-foundation.png',
+      id: "caa",
+      name: "CAA Foundation",
+      logo: "caa-foundation.png",
       founding: true,
+      dark: true,
    },
    {
       id: "cbs",
@@ -162,21 +169,25 @@ const data: Partner[] = [
       name: "HeadCount",
       logo: "head-count.png",
       source: "HeadCount",
+      dark: true,
    },
    {
       id: "impactual",
       name: "Impactual",
       logo: "impactual.png",
+      dark: true,
    },
    {
       id: "jolt",
       name: "Jolt Action",
       logo: "jolt.png",
+      dark: true,
    },
    {
       id: "leadershipnow",
       name: "Leadership Now Project",
       logo: "leadership-now-project.png",
+      dark: true,
    },
    {
       id: "leadmn",
@@ -207,21 +218,25 @@ const data: Partner[] = [
       id: "mcn",
       name: "Master Clinician Network",
       logo: "mcn.png",
+      dark: true,
    },
    {
       id: "mitzvote",
       name: "Mitz Vote",
       logo: "mitz-vote.png",
+      dark: true,
    },
    {
       id: "mweg",
       name: "Mormon Women For Ethical Government",
       logo: "mweg.svg",
+      dark: true,
    },
    {
       id: "ncbcp",
       name: "National Coalition On Black Civic Participation",
       logo: "ncbcp.png",
+      dark: true,
    },
    {
       id: "microsoft",
