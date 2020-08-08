@@ -1,18 +1,17 @@
 import { Component, h, Prop, State } from "@stencil/core";
 
+import { WorkElectionsFallbacks } from "../../data";
+import { Jurisdiction, StateInfo } from "../../data/WorkElections";
 import { fetchFromWE } from "../../util/WorkElections";
-
-import { Jurisdiction, State as StateType } from "./types";
-import WorkElectState from "./WorkElectState";
 
 /**
  * Component to render local info about how to be a poll worker.
  */
-@Component({
-  tag: "state-info",
-  styleUrl: "state-info.scss",
-})
-export class StateInfo {
+@Component( {
+   tag: "state-info",
+   styleUrl: "state-info.scss",
+} )
+export class StateInfoComponent {
 
    /**
     * State abrieviation
@@ -25,27 +24,48 @@ export class StateInfo {
    @Prop() public stateId: number | null = null;
 
    @State() public jurisdictions: Array<Jurisdiction> = [];
-   @State() public info?: StateType;
+   @State() public info?: StateInfo;
 
-  public async componentWillLoad() {
-    if( this.stateId ) {
-      this.jurisdictions = await fetchFromWE(`/jurisdictions/?summary=true&state_id=${this.stateId}`);
-      this.info = await fetchFromWE(`/states/${this.stateId}/`);
-    }
-  }
+   public async componentWillLoad() {
+      if( this.stateId ) {
+         this.jurisdictions = await fetchFromWE( `/jurisdictions/?summary=true&state_id=${this.stateId}` );
+         this.info = await fetchFromWE( `/states/${this.stateId}/` );
+      }
+   }
 
-  public render() {
-     if( this.stateId ) {
-        if( this.info ) { return (<WorkElectState info={this.info} jurisdictions={this.jurisdictions} />); }
-     } else if(this.state && fallbacks[this.state]) {
-        return (<div>
-           <h2>{fallbacks[this.state]}</h2>
-           <p>
-              You'll hear from a partner election official or nonprofit soon
-              about how you can help everyone in {fallbacks[this.state]} vote.
-           </p>
-        </div>);
-     }
-  }
+   public render() {
+      const fallbacks = WorkElectionsFallbacks;
+      const { info, jurisdictions } = this;
+      if( this.stateId ) {
+         if( info != null ) {
+            return (
+               <div>
+                  <h2>{info.name}</h2>
+                  {info.notes && <p>{info.notes}</p>}
+                  <div class="jurisdictions">
+                     {jurisdictions.map( ( { id, name } ) => (
+                        <stencil-route-link
+                           url={`/jurisdiction/${id}`}
+                           anchorClass="jurisdiction"
+                        >
+                           {name}
+                        </stencil-route-link>
+                     ) )}
+                  </div>
+               </div>
+            );
+         }
+      } else if( this.state && fallbacks[this.state] ) {
+         return (
+            <div>
+               <h2>{fallbacks[this.state]}</h2>
+               <p>
+                  You'll hear from a partner election official or nonprofit soon
+                  about how you can help everyone in {fallbacks[this.state]} vote.
+               </p>
+            </div>
+         );
+      }
+   }
 
 }

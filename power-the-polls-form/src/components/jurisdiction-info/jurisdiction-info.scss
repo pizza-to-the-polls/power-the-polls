@@ -1,29 +1,24 @@
 jurisdiction-info {
-   .links {
-      a {
-         border: 0;
-         padding: 0.5em 1em;
-         width: 100%;
-         min-width: 240px;
-         margin: 2rem 0;
-         font-size: 1.2em;
-         letter-spacing: 0.05rem;
-         font-weight: bold;
-         font-family: $font-heading;
-         display: block;
-         text-decoration: none;
-         text-align: center;
-         background-color: $color-highlight;
-         color: $color-font-primary;
-         text-transform: uppercase;
-         &:hover { opacity: 0.8; }
-         &:focus { opacity: 0.6; }
-         &:active { opacity: 0.4; }
+   a.poll-worker-action {
+      border: 0;
+      padding: 0.5em 1em;
+      width: 100%;
+      min-width: 240px;
+      margin: 2rem 0;
+      font-size: 1.2em;
+      letter-spacing: 0.05rem;
+      display: block;
+      text-align: center;
+      &:hover {
+         opacity: 0.8;
       }
-      .cta {
-         background-color: $color-font-primary;
-         color: black;
-         font-family: $font-heading;
+      &:focus {
+         opacity: 0.6;
+      }
+      &:active {
+         opacity: 0.4;
+      }
+      &.cta {
          text-transform: uppercase;
       }
    }

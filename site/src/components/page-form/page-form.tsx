@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop, State } from "@stencil/core";
+import "power-the-polls-form";
 
 import { PartnerList } from "../../data";
 import analytics from "../../util/Analytics";

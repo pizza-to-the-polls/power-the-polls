@@ -1,4 +1,4 @@
-power-the-polls-form.default {
+power-the-polls-form {
    display: block;
 
    button {
@@ -24,10 +24,6 @@ power-the-polls-form.default {
    }
 
    form {
-      max-width: 32ch;
-      @include on-mobile() {
-         max-width: inherit;
-      }
       font-size: 1rem;
       padding: 1em 0;
       color: #fff;
@@ -48,13 +44,13 @@ power-the-polls-form.default {
 
       select {
          padding: 0.75em;
+         height: auto;
       }
 
       label {
          margin-bottom: 0.75em;
          display: block;
          font-size: 0.9rem;
-         color: $color-accent;
          text-transform: lowercase;
          font-variant: small-caps;
 

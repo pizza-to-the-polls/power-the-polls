@@ -26,10 +26,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [page-form](../page-form)
-
 ### Depends on
 
 - [poll-worker-info](../poll-worker-info)
@@ -46,7 +42,6 @@ graph TD;
   poll-worker-info --> state-info
   jurisdiction-info --> stencil-route-link
   state-info --> stencil-route-link
-  page-form --> power-the-polls-form
   style power-the-polls-form fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

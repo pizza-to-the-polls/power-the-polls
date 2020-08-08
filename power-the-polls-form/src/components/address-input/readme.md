@@ -18,13 +18,11 @@
 
 ### Used by
 
- - [no-capture-form](../no-capture-form)
  - [power-the-polls-form](../power-the-polls-form)
 
 ### Graph
 ```mermaid
 graph TD;
-  no-capture-form --> address-input
   power-the-polls-form --> address-input
   style address-input fill:#f9f,stroke:#333,stroke-width:4px
 ```

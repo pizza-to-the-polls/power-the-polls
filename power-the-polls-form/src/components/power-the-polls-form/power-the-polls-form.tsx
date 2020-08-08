@@ -73,6 +73,8 @@ export class PowerThePollsForm {
       const chase = this.optUserOutOfChase === true ? "" : "true";
       const partnerField = this.customFormFieldLabel;
       const submissionUrl = this.destination;
+      let ski = "SMARTY_STREETS_KEY"; // injected by build
+      const sk = this.smartyStreetsApiKey || ( ski === "none" ? undefined : ski );
 
       const submitForm = ( e: Event ) => {
          try {
@@ -187,7 +189,7 @@ export class PowerThePollsForm {
 
                <address-input
                   showStateSelect={true}
-                  smartyStreetsApiKey={this.smartyStreetsApiKey}
+                  smartyStreetsApiKey={sk}
                />
 
                <input

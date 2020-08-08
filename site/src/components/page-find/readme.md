@@ -22,12 +22,6 @@
 ```mermaid
 graph TD;
   page-search --> no-capture-form
-  no-capture-form --> poll-worker-info
-  no-capture-form --> address-input
-  poll-worker-info --> jurisdiction-info
-  poll-worker-info --> state-info
-  jurisdiction-info --> stencil-route-link
-  state-info --> stencil-route-link
   style page-search fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

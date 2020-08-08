@@ -47,10 +47,36 @@ page-form {
       }
 
       form {
+         max-width: 32ch;
+         @include on-mobile() {
+            max-width: inherit;
+         }
          font-family: $font-primary;
 
          label {
             color: $color-accent;
+         }
+      }
+
+      a.jurisdiction {
+         border-color: $color-font-primary;
+         &:hover {
+            border-color: $color-accent;
+         }
+      }
+
+      a.poll-worker-action {
+         font-family: $font-heading;
+         background-color: $color-highlight;
+         color: $color-font-primary;
+         font-weight: bold;
+         text-decoration: none;
+         text-transform: uppercase;
+         &.cta {
+            background-color: $color-font-primary;
+            color: black;
+            font-family: $font-heading;
+            text-transform: uppercase;
          }
       }
    }

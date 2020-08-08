@@ -1,28 +1,29 @@
+import replace from "@rollup/plugin-replace";
 import { Config } from "@stencil/core";
 import { sass } from "@stencil/sass";
+declare var process: any;
 
 export const config: Config = {
-   namespace: "power-the-polls",
+   namespace: "power-the-polls-form",
    taskQueue: "async",
    srcDir: "src", // "src" is the default; just here for clarity
    plugins: [
-      sass( {
-         // scss files will automatically have these added
-         injectGlobalPaths: [
-            "styles/include/variables.scss",
-            "styles/include/mixins.scss",
-         ],
+      replace( {
+         exclude: "node_modules/**",
+         values: {
+            // replace SMARTY_STREETS_KEY with actual env vars present in the environment during build
+            "SMARTY_STREETS_KEY": process.env.SMARTY_STREETS_KEY || "none",
+         },
       } ),
+      sass(),
    ],
    outputTargets: [
       {
          type: "dist",
-         dir: "dist",
       },
       {
          // single .js file to dist/custom-elements
          type: "dist-custom-elements-bundle",
-         dir: "dist",
       },
       {
          // Generates readme files in each component dir. Nice for GitHub.
