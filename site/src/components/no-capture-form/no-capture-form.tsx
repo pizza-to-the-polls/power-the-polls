@@ -43,7 +43,6 @@ export class NoCaptureForm {
             ? (<poll-worker-info state={this.state} county={this.county} city={this.city} />)
             : (<form onSubmit={submitForm}>
                      <address-input
-                        showStateSelect={false}
                         smartyStreetsApiKey={this.smartyStreetsApiKey} />
 
                      <button type="submit" class="button" >Find My Polling Place</button>

@@ -13,10 +13,6 @@ export namespace Components {
          */
         "lookupDelay": number;
         /**
-          * The state to narrow-down the address search to
-         */
-        "showStateSelect": boolean;
-        /**
           * The API key to access the SmartyStreets API
          */
         "smartyStreetsApiKey"?: string;
@@ -293,10 +289,6 @@ declare namespace LocalJSX {
           * Delay, in ms, between user pressing a key while entering an address and the API call being made, in ms. (default: 200ms)
          */
         "lookupDelay"?: number;
-        /**
-          * The state to narrow-down the address search to
-         */
-        "showStateSelect"?: boolean;
         /**
           * The API key to access the SmartyStreets API
          */

@@ -188,7 +188,6 @@ export class PowerThePollsForm {
                ) : null )}
 
                <address-input
-                  showStateSelect={true}
                   smartyStreetsApiKey={this.smartyStreetsApiKey}
                />
 

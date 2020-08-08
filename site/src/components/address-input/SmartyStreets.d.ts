@@ -212,24 +212,30 @@ export declare namespace USZipCode {
    }
    type QueryParams = QueryParamsItem | QueryParamsItem[];
    interface CityState {
-      city?: string;
-      state_abbreviation?: StateCode;
-      state?: string;
-      mailable_city?: boolean;
+      city: string;
+      state_abbreviation: StateCode;
+      state: string;
+      mailable_city: boolean;
    }
    type ZipCodeType = "S" | "M" | "P" | "U";
    type CoordinatesPrecision = GeoPrecision;
+   interface AlternateCounty {
+      county_name: string;
+      state_abbreviation: StateCode;
+      state: string;
+   }
    interface ZipCode {
-      zipcode?: string;
-      zipcode_type?: ZipCodeType;
-      default_city?: string;
-      county_fips?: string;
-      county_name?: string;
-      state_abbreviation?: StateCode;
-      state?: string;
-      latitude?: number;
-      longitude?: number;
-      precision?: CoordinatesPrecision;
+      zipcode: string;
+      zipcode_type: ZipCodeType;
+      default_city: string;
+      county_fips: string;
+      county_name: string;
+      state_abbreviation: StateCode;
+      state: string;
+      latitude: number;
+      longitude: number;
+      precision: CoordinatesPrecision;
+      alternate_counties?: AlternateCounty[];
    }
    type ResultStatus = "blank" | "invalid_state" | "invalid_city" | "invalid_zipcode" | "conflict";
    interface QueryResultItem {
