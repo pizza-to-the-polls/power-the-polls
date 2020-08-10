@@ -26,20 +26,13 @@ power-the-polls-form {
    form {
       font-size: 1rem;
       padding: 1em 0;
-      color: #fff;
-      text-transform: none;
       letter-spacing: 0;
 
       input,
       select {
          width: 100%;
-         border: 0;
          padding: 0.5em 0.75em;
          display: block;
-
-         &:disabled {
-            color: #fff;
-         }
       }
 
       select {
@@ -51,14 +44,6 @@ power-the-polls-form {
          margin-bottom: 0.75em;
          display: block;
          font-size: 0.9rem;
-         text-transform: lowercase;
-         font-variant: small-caps;
-
-         input,
-         select {
-            text-transform: none;
-            font-variant: normal;
-         }
 
          .checkbox {
             display: flex;

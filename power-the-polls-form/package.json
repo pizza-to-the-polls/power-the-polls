@@ -12,6 +12,7 @@
    "unpkg": "dist/power-the-polls-form/power-the-polls-form.js",
    "scripts": {
       "dev": "stencil build --dev --watch --serve",
+      "dev:site":  "npm run clean && stencil build --watch",
       "build": "stencil build --docs --no-cache",
       "build:copy": "copyfiles -u 1 ./dist/**/* ../dist/power-the-polls-form/ && copyfiles package.json ../dist/power-the-polls-form/ && copyfiles Readme.md ../dist/power-the-polls-form/",
       "release": "npm run clean-all && npm run build && npm run build:copy && replace \"dist/\" \"\" ../dist/power-the-polls-form/package.json",

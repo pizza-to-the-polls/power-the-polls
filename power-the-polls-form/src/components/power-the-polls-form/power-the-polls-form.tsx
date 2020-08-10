@@ -145,13 +145,12 @@ export class PowerThePollsForm {
          ) : ( <Fragment>
             <h3>Help democracy in your community. Sign up to Power the Polls.</h3>
             <form
-               name="signup"
                method="POST"
                action={submissionUrl}
                onSubmit={submitForm}
             >
                <label>
-                  Name<span class="ak-required-flag">*</span>
+                  Name<span>*</span>
                   <input
                      type="text"
                      required
@@ -160,7 +159,7 @@ export class PowerThePollsForm {
                </label>
 
                <label>
-                  Email address<span class="ak-required-flag">*</span>
+                  Email address<span>*</span>
                   <input
                      type="email"
                      required
@@ -221,6 +220,22 @@ export class PowerThePollsForm {
                   at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
                </p>
             </form>
+            <footer>
+               <p>This work is licensed under a&nbsp;
+                  <a
+                     href="https://creativecommons.org/licenses/by/4.0/"
+                     target="_blank"
+                     rel="noopener"
+                  >Creative Commons Attribution 4.0 International License.</a>
+               </p>
+               <p>
+                  <a
+                     href="https://www.workelections.com/"
+                     target="_blank"
+                     rel="noopener"
+                  >Powered by Work Elections.</a>
+               </p>
+            </footer>
          </Fragment> )}
       </Host> );
    }

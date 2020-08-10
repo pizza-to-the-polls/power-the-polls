@@ -160,7 +160,7 @@ export class AddressInput {
          ) : <input type="hidden" value={this.stateValue} name="state" />}
 
          <label>
-            Street address<span class="ak-required-flag">*</span>
+            Street address<span>*</span>
             <input
                type="text"
                ref={el => this.addressInput = el as HTMLInputElement}

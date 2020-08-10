@@ -46,15 +46,37 @@ page-form {
          font-family: $font-heading;
       }
 
+      footer {
+         display: none;
+      }
+
       form {
+         text-transform: none;
          max-width: 32ch;
          @include on-mobile() {
             max-width: inherit;
          }
          font-family: $font-primary;
+         color: #fff;
 
          label {
             color: $color-accent;
+            text-transform: lowercase;
+            font-variant: small-caps;
+
+            input,
+            select {
+               text-transform: none;
+               font-variant: normal;
+            }
+         }
+
+         input,
+         select {
+            border: 0;
+            &:disabled {
+               color: #fff;
+            }
          }
       }
 

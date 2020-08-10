@@ -4,6 +4,23 @@ This is a custom web component that allows our partners to embed the Power the P
 
 ## How to embed
 
+### HTML
+
+Include the latest version:
+
+```html
+  <script type="module" src="https://unpkg.com/@username/power-the-polls-form@1.0.0/power-the-polls-form.js"></script>
+```
+
+Reference it like any other HTML element:
+
+```html
+<power-the-polls-form
+  destination="http://optional-form-target-here"
+  custom-form-field-label="Label for your own custom field here"
+/>
+```
+
 ### React
 
 #### In your `index.tsx`
@@ -35,7 +52,7 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 #### In your JSX/HTML
 
-> Note that in our testing attribute names msut be kebab-case and not camelCase
+> Note that in our testing attribute names must be kebab-case and not camelCase
 
 ```html
 <power-the-polls-form
