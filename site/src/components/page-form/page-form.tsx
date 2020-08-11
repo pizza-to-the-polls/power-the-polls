@@ -1,5 +1,5 @@
+import "@ptp-us/power-the-polls-form";
 import { Component, h, Host, Prop, State } from "@stencil/core";
-import "power-the-polls-form/dist";
 
 import { PartnerList } from "../../data";
 import analytics from "../../util/Analytics";
