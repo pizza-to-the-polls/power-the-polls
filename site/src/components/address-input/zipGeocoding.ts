@@ -1,5 +1,17 @@
 import { StateCode, USZipCode } from "./SmartyStreets";
-import { ZipGeocoding } from "./zipGeocoding.d";
+
+declare namespace ZipGeocoding {
+   interface Result {
+      zip: string;
+      cities: Set<string>;
+      counties: Set<string>;
+      states: Map<StateCode, string>;
+   }
+
+   interface Error {
+      error: string;
+   }
+}
 
 const smartyApiURL = "https://us-zipcode.api.smartystreets.com/lookup";
 
