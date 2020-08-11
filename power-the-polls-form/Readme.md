@@ -12,7 +12,7 @@ Visit https://powerthepolls.org to sign-up and learn more.
 
 ## How to embed the form
 
-### HTML
+### How to embed in HTML
 
 Include the latest version:
 
@@ -35,6 +35,7 @@ Reference it like any other HTML element:
 
 <body>
    <power-the-polls-form
+      partner-id="your-ptp-partner-id"
       custom-form-field-label="Label for your own custom field here"
    />
 </body>
@@ -42,7 +43,7 @@ Reference it like any other HTML element:
 </html>
 ```
 
-### React
+### How to embed in React
 
 Add to your project:
 
@@ -64,28 +65,71 @@ applyPolyfills().then(() => {
 
 Include the form in your component:
 
-> Note that in our testing attribute names must be `kebab-case` and not `camelCase`
+> Note: in our testing with React, attribute names must be `kebab-case` and not `camelCase`
 
-```html
+```jsx
+import "@ptp-us/power-the-polls-form";
+
+// ...
+
 <power-the-polls-form
-  destination="http://form-target-here"
-  custom-form-field-label="Label for your own custom field here"
+   partner-id={partnerId}
+   custom-form-field-label={customFieldLabel}
 />
 ```
 
 ## How to customize the form
 
-### Styling
+### How to customize: Attributes
 
-The form will take on whatever styles you use on your site for standard elements like `<form>` and `<input>`. It does add some basic styling, but you can override with your own CSS.
+#### partner-id
 
-You can use the root `power-the-polls-form` element in CSS:
+This will allow us to track the source of signups back to you.
+
+```html
+<power-the-polls-form
+   partner-id="your-ptp-partner-id"
+/>
+```
+
+#### custom-form-field-label
+
+*Optional* label for an additional `<input type="text">` field on the form. If `null`, no additional field will be displayed.
+
+```html
+<power-the-polls-form
+   custom-form-field-label="Union name"
+/>
+```
+
+#### destination
+
+If you are maintaining ownership of the submitted data, this is the https URL where you want data submitted.
+
+```html
+<power-the-polls-form
+   destination="https://form-target-here"
+/>
+```
+
+This will be `POST`ed as `application/x-www-form-urlencoded` data, and the fields are:
+
+* TBD
+
+### How to customize: Styles
+
+The form will take on whatever styles you use on your site for standard elements like `<form>`, `<input>`, and `<select>`. It does add some basic styling, but you can override with your own CSS.
+
+For further styling, you can use the `power-the-polls-form` element in CSS:
 
 ```css
 power-the-polls-form form {
 
 }
 power-the-polls-form input {
+
+}
+power-the-polls-form select {
 
 }
 power-the-polls-form label {
@@ -100,4 +144,20 @@ power-the-polls-form h4 {
 power-the-polls-form p {
 
 }
+```
+
+### How to customize: Events
+
+You can listen for a `submitCompleted` or `submitError` event if desired in order to provide additional feedback to your users.
+
+```javascript
+const form = document.querySelector("power-the-polls-form");
+
+form.addEventListener("submitCompleted", () => {
+   console.log("Power the Polls form has been submitted");
+});
+
+form.addEventListener("submitError", () => {
+   console.log("Power the Polls form has encountered an error")
+});
 ```
