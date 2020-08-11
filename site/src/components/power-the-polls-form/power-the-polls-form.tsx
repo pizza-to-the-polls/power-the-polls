@@ -70,6 +70,9 @@ export class PowerThePollsForm {
       const partnerField = this.customFormFieldLabel;
       const submissionUrl = this.destination;
 
+      // Adapted from https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
+      const phoneValidationRegex = "\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}";
+
       const submitForm = ( e: Event ) => {
          try {
             // gather up all the form data
@@ -163,10 +166,13 @@ export class PowerThePollsForm {
                </label>
 
                <label>
-                  Mobile phone
+                  Mobile phone*
                   <input
-                     type="text"
+                     type="tel"
+                     required
                      name="mobile_phone"
+                     pattern={phoneValidationRegex}
+                     title="Please enter a valid US phone number"
                   />
                </label>
 
