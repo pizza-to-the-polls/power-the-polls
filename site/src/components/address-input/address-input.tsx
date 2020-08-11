@@ -15,7 +15,7 @@ export class AddressInput {
    /**
     * The API key to access the SmartyStreets API
     */
-   @Prop() public smartyStreetsApiKey?: string;
+   @Prop() public smartyStreetsApiKey: string;
 
    @State() private zipValue: string;
    @State() private cityValue: string;
@@ -26,6 +26,7 @@ export class AddressInput {
    @State() private stateOptions: Map<string, string>;
 
    constructor() {
+      this.smartyStreetsApiKey = "";
       this.zipValue = "";
       this.cityValue = "";
       this.countyValue = "";
@@ -42,7 +43,7 @@ export class AddressInput {
          this.zipValue = ( event.target as HTMLInputElement ).value;
 
          if(zipValidationRegex.test(this.zipValue)) {
-            ZipGeocode(this.zipValue).
+            ZipGeocode(this.zipValue, this.smartyStreetsApiKey).
             then((result) => {
                if("error" in result) {
                   console.log(result.error);

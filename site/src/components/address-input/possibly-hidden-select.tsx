@@ -2,7 +2,7 @@ import {Component, h, Prop} from "@stencil/core";
 
 @Component({
    tag: "possibly-hidden-select",
-   shadow: false
+   shadow: false,
 })
 export class PossiblyHiddenSelect {
    @Prop() public fieldLabel: string;

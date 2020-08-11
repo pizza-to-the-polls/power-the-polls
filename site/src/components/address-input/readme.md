@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property              | Attribute                | Description                                                                                                              | Type                  | Default     |
-| --------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ | --------------------- | ----------- |
-| `smartyStreetsApiKey` | `smarty-streets-api-key` | The API key to access the SmartyStreets API                                                                              | `string \| undefined` | `undefined` |
+| Property              | Attribute                | Description                                                                                                              | Type     | Default     |
+| --------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ---------| ----------- |
+| `smartyStreetsApiKey` | `smarty-streets-api-key` | The API key to access the SmartyStreets API                                                                              | `string` |             |
 
 
 ## Dependencies

@@ -2,11 +2,10 @@ import { StateCode, USZipCode } from "./SmartyStreets";
 import { ZipGeocoding } from "./zipGeocoding.d";
 
 const smartyApiURL = "https://us-zipcode.api.smartystreets.com/lookup";
-const smartyAuthId = (process.env.SMARTY_STREETS_KEY as string);
 
-export default async (zipcode: string): Promise<ZipGeocoding.Result | ZipGeocoding.Error> => {
+export default async (zipcode: string, authId: string): Promise<ZipGeocoding.Result | ZipGeocoding.Error> => {
    const url = new URL(smartyApiURL);
-   url.searchParams.append("auth-id", smartyAuthId);
+   url.searchParams.append("auth-id", authId);
    url.searchParams.append("zipcode", zipcode);
    return fetch(url.toString()).
       then(

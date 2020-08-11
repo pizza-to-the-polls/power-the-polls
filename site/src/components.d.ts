@@ -11,7 +11,7 @@ export namespace Components {
         /**
           * The API key to access the SmartyStreets API
          */
-        "smartyStreetsApiKey"?: string;
+        "smartyStreetsApiKey": string;
     }
     interface AppRoot {
     }
