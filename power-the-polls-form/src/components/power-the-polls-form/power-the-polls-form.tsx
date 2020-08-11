@@ -24,11 +24,6 @@ export class PowerThePollsForm {
    @Prop() public partnerId?: string;
 
    /**
-    * The URL where the form data will be submitted
-    */
-   @Prop() public destination?: string;
-
-   /**
     * The API key to access SmartyStreets which is used for address lookup.
     */
    @Prop() public smartyStreetsApiKey?: string;
@@ -59,6 +54,11 @@ export class PowerThePollsForm {
       cancelable: false,
    } ) public submitError!: EventEmitter<any>;
 
+   /**
+    * The URL where the form data will be submitted
+    */
+   private destination?: string;
+
    @State() private isFormComplete: boolean;
    @State() private city?: string;
    @State() private county?: string;
@@ -67,12 +67,12 @@ export class PowerThePollsForm {
    constructor() {
       this.isFormComplete = false;
       this.optUserOutOfChase = false;
-      this.destination = "https://ptp.actionkit.com/rest/v1/action/";
+      this.destination = "https" + "://ptp.actionkit.com/rest/v1/action/";
    }
 
    public render() {
       const source = this.partnerId;
-      const chase = this.optUserOutOfChase === true ? "" : "true";
+      const chase = this.optUserOutOfChase === true || ( this.optUserOutOfChase as any ) === "true" ? "" : "true";
       const partnerField = this.customFormFieldLabel;
       const submissionUrl = this.destination;
       let ski = "SMARTY_STREETS_KEY"; // injected by build
@@ -217,11 +217,13 @@ export class PowerThePollsForm {
                   class="button"
                >Sign Up</button>
 
-               <p class="disclaimer">
-                  By signing up, you agree to receive occasional emails or text messages from Power the Polls and
-                  accept our <stencil-route-link url="/privacy">Privacy Policy</stencil-route-link>. You can unsubscribe
-                  at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
-               </p>
+               {chase && (
+                  <p class="disclaimer">
+                     By signing up, you agree to receive occasional emails or text messages from Power the Polls and
+                     accept our <stencil-route-link url="/privacy">Privacy Policy</stencil-route-link>. You can unsubscribe
+                     at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
+                  </p>
+               )}
             </form>
             <footer>
                <p class="disclaimer">This work is licensed under a&nbsp;

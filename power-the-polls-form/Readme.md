@@ -65,8 +65,6 @@ applyPolyfills().then(() => {
 
 Include the form in your component:
 
-> Note: in our testing with React, attribute names must be `kebab-case` and not `camelCase`
-
 ```jsx
 import "@ptp-us/power-the-polls-form";
 
@@ -77,6 +75,10 @@ import "@ptp-us/power-the-polls-form";
    custom-form-field-label={customFieldLabel}
 />
 ```
+
+> Note: in our testing with React, attribute names must be `kebab-case` and not `camelCase`
+>
+> To test in your environment, set `customFormFieldLabel` to a non-null value and if it doesn't show up in the form, you need to use `kebab-case`.
 
 ## How to customize the form
 
@@ -102,19 +104,15 @@ This will allow us to track the source of signups back to you.
 />
 ```
 
-#### destination
+#### opt-user-out-of-chase
 
-If you are maintaining ownership of the submitted data, this is the https URL where you want data submitted.
+Power the Polls is following up by email to ensure users who sign-up continue on and fill out the poll worker application form in their local jurisdiction. If you do not want us to follow up with people who sign up using your embed of the PtP form, you can set this field to `true`.
 
 ```html
 <power-the-polls-form
-   destination="https://form-target-here"
+   opt-user-out-of-chase="true"
 />
 ```
-
-This will be `POST`ed as `application/x-www-form-urlencoded` data, and the fields are:
-
-* TBD
 
 ### How to customize: Styles
 
