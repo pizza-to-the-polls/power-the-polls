@@ -70,6 +70,7 @@ export class PageForm {
             </Fragment> ) : null}
             <power-the-polls-form
                id="form"
+               destination="https://ptp.actionkit.com/rest/v1/action/"
                partnerId={partnerId}
                optUserOutOfChase={partner?.optUserOutOfChase || false}
                customFormFieldLabel={partner?.customSignupFormField}

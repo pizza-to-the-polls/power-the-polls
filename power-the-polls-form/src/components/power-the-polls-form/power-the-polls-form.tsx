@@ -26,7 +26,7 @@ export class PowerThePollsForm {
    /**
     * The URL where the form data will be submitted
     */
-   @Prop() public destination: string = "https://ptp.actionkit.com/rest/v1/action/";
+   @Prop() public destination?: string;
 
    /**
     * The API key to access SmartyStreets which is used for address lookup.
@@ -39,7 +39,7 @@ export class PowerThePollsForm {
     */
    @Prop() public customFormFieldLabel?: string;
 
-   @Prop() public optUserOutOfChase: boolean = false;
+   @Prop() public optUserOutOfChase: boolean;
 
    /**
     * Dispatched when the user has submitted the form and it has successfully POSTed to `destination`
@@ -66,6 +66,8 @@ export class PowerThePollsForm {
 
    constructor() {
       this.isFormComplete = false;
+      this.optUserOutOfChase = false;
+      this.destination = "https://ptp.actionkit.com/rest/v1/action/";
    }
 
    public render() {
@@ -120,7 +122,8 @@ export class PowerThePollsForm {
                } );
          } catch( e ) {
             this.submitError.emit( e );
-         } finally { // make sure we cancel the submit so the browser doesn't do anything
+         } finally {
+            // make sure we cancel the submit so the browser doesn't do anything
             e.preventDefault();
             return false;
          }

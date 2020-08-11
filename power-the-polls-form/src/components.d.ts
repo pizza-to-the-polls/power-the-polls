@@ -50,7 +50,7 @@ export namespace Components {
         /**
           * The URL where the form data will be submitted
          */
-        "destination": string;
+        "destination"?: string;
         "optUserOutOfChase": boolean;
         /**
           * To display custom text and images for a specific Power the Polls partner, enter their ID here.

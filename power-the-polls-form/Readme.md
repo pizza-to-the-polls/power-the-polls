@@ -1,62 +1,82 @@
-# Power the Polls
+# [Power the Polls](https://powerthepolls.org)
 
 This is a custom web component that allows our partners to embed the Power the Polls signup form on their own web sites and intranets. Contact info@powerthepolls.org to discuss any partnerships.
 
-## How to embed
+## America is facing a record shortage of poll workers
+
+As coronavirus continues to impact Americans across the country, we are also seeing a staggering decrease in poll workers &mdash; which could mean closed polling places and **long delays for elections in 2020**.
+
+**You can help** make sure we have a safe, fair, efficient election for all voters, and potentially get paid to do it!
+
+Visit https://powerthepolls.org to sign-up and learn more.
+
+## How to embed this form
 
 ### HTML
 
 Include the latest version:
 
 ```html
-  <script type="module" src="https://unpkg.com/@username/power-the-polls-form@1.0.0/power-the-polls-form.js"></script>
+<script type="module" src="https://unpkg.com/@ptp-us/power-the-polls-form@latest/power-the-polls-form/power-the-polls-form.esm.js"></script>
+<script nomodule src="https://unpkg.com/@ptp-us/power-the-polls-form@latest/power-the-polls-form/power-the-polls-form.js"></script>
 ```
 
 Reference it like any other HTML element:
 
 ```html
-<power-the-polls-form
-  destination="http://optional-form-target-here"
-  custom-form-field-label="Label for your own custom field here"
-/>
+<html>
+
+<head>
+   <script type="module"
+      src="https://unpkg.com/@ptp-us/power-the-polls-form@latest/power-the-polls-form/power-the-polls-form.esm.js"></script>
+   <script nomodule
+      src="https://unpkg.com/@ptp-us/power-the-polls-form@latest/power-the-polls-form/power-the-polls-form.js"></script>
+</head>
+
+<body>
+   <power-the-polls-form
+      destination="http://form-target-here"
+      custom-form-field-label="Label for your own custom field here"
+   />
+</body>
+
+</html>
 ```
 
 ### React
 
-#### In your `index.tsx`
+Add to your project:
 
-Add the following code to initialize the form and load any polyfills if necessary (this will ensure that all browsers from IE 11+ will work with the form).
-
-```js
-import { applyPolyfills, defineCustomElements } from "power-the-polls-form/dist/loader";
-
-applyPolyfills().then(() => {
-   defineCustomElements();
-});
+```shell
+npm install @ptp-us/power-the-polls-form
 ```
 
-A complete example:
+In your `index.tsx`, add the following code to initialize the form element:
 
 ```js
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App/App.jsx";
-import { applyPolyfills, defineCustomElements } from "power-the-polls-form/dist/loader";
+import { applyPolyfills, defineCustomElements } from "@ptp-us/power-the-polls-form/loader";
 
 applyPolyfills().then(() => {
    defineCustomElements();
 });
 
-ReactDOM.render(<App />, document.getElementById("root"));
+// ReactDOM.render( ... )
 ```
 
-#### In your JSX/HTML
+Include the form in your component:
 
-> Note that in our testing attribute names must be kebab-case and not camelCase
+> Note that in our testing attribute names must be `kebab-case` and not `camelCase`
 
 ```html
 <power-the-polls-form
-  destination="http://optional-form-target-here"
+  destination="http://form-target-here"
   custom-form-field-label="Label for your own custom field here"
 />
+```
+
+## How to style the form
+
+You can use the root `power-the-polls-form` element in CSS. The rest of the structure looks like this:
+
+```html
 ```

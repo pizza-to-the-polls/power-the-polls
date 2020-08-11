@@ -1,6 +1,7 @@
 import replace from "@rollup/plugin-replace";
 import { Config } from "@stencil/core";
 import { sass } from "@stencil/sass";
+
 declare var process: any;
 
 export const config: Config = {
