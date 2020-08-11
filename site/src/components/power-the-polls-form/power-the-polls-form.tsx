@@ -166,7 +166,7 @@ export class PowerThePollsForm {
                </label>
 
                <label>
-                  Mobile phone<span class="ak-required-flag">*</span>
+                  Mobile phone*
                   <input
                      type="tel"
                      required
