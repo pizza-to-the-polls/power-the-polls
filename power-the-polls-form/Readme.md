@@ -10,7 +10,7 @@ As coronavirus continues to impact Americans across the country, we are also see
 
 Visit https://powerthepolls.org to sign-up and learn more.
 
-## How to embed this form
+## How to embed the form
 
 ### HTML
 
@@ -35,7 +35,6 @@ Reference it like any other HTML element:
 
 <body>
    <power-the-polls-form
-      destination="http://form-target-here"
       custom-form-field-label="Label for your own custom field here"
    />
 </body>
@@ -51,7 +50,7 @@ Add to your project:
 npm install @ptp-us/power-the-polls-form
 ```
 
-In your `index.tsx`, add the following code to initialize the form element:
+In your `index.jsx`, add the following code to initialize the form element:
 
 ```js
 import { applyPolyfills, defineCustomElements } from "@ptp-us/power-the-polls-form/loader";
@@ -74,9 +73,31 @@ Include the form in your component:
 />
 ```
 
-## How to style the form
+## How to customize the form
 
-You can use the root `power-the-polls-form` element in CSS. The rest of the structure looks like this:
+### Styling
 
-```html
+The form will take on whatever styles you use on your site for standard elements like `<form>` and `<input>`. It does add some basic styling, but you can override with your own CSS.
+
+You can use the root `power-the-polls-form` element in CSS:
+
+```css
+power-the-polls-form form {
+
+}
+power-the-polls-form input {
+
+}
+power-the-polls-form label {
+
+}
+power-the-polls-form h3 {
+
+}
+power-the-polls-form h4 {
+
+}
+power-the-polls-form p {
+
+}
 ```

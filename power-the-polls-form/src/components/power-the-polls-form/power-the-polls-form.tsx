@@ -224,14 +224,14 @@ export class PowerThePollsForm {
                </p>
             </form>
             <footer>
-               <p>This work is licensed under a&nbsp;
+               <p class="disclaimer">This work is licensed under a&nbsp;
                   <a
                      href="https://creativecommons.org/licenses/by/4.0/"
                      target="_blank"
                      rel="noopener"
                   >Creative Commons Attribution 4.0 International License.</a>
                </p>
-               <p>
+               <p class="disclaimer">
                   <a
                      href="https://www.workelections.com/"
                      target="_blank"

@@ -1,8 +1,13 @@
 {
-   "name": "ptp",
+   "name": "power-the-polls-site",
    "private": false,
    "version": "2.0.0",
    "description": "Power the Polls",
+   "license": "MIT",
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/pizza-to-the-polls/power-the-polls"
+   },
    "scripts": {
       "dev": "stencil build --dev --watch --serve",
       "build": "npm run lint && stencil build --docs --no-cache",
@@ -25,6 +30,6 @@
       "workbox-build": "^4.3.1"
    },
    "dependencies": {
-      "@ptp-us/power-the-polls-form": "^0.9.2"
+      "@ptp-us/power-the-polls-form": "^0.9.3"
    }
 }
