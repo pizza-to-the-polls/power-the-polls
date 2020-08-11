@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, State } from "@stencil/core";
 
-import ZipGeocode from "../../util/zipGeocoding";
+import ZipGeocode from "./zipGeocoding";
 
 /**
  * An input and (optional) select element for a US postal address and state which will lookup address values based on
@@ -17,12 +17,6 @@ export class AddressInput {
     */
    @Prop() public smartyStreetsApiKey?: string;
 
-   /**
-    * Delay, in ms, between user pressing a key while entering an address and the API call
-    * being made, in ms. (default: 200ms)
-    */
-   @Prop() public lookupDelay: number;
-
    @State() private zipValue: string;
    @State() private cityValue: string;
    @State() private countyValue: string;
@@ -32,7 +26,6 @@ export class AddressInput {
    @State() private stateOptions: Map<string, string>;
 
    constructor() {
-      this.lookupDelay = 200;
       this.zipValue = "";
       this.cityValue = "";
       this.countyValue = "";
@@ -46,28 +39,21 @@ export class AddressInput {
       const zipValidationRegex = /^\d{5}$/;
 
       const onZipInputChange = (event: Event) => {
-         this.zipValue = ( event.target as HTMLSelectElement ).value;
+         this.zipValue = ( event.target as HTMLInputElement ).value;
 
          if(zipValidationRegex.test(this.zipValue)) {
             ZipGeocode(this.zipValue).
             then((result) => {
-               if(result.error) {
+               if("error" in result) {
                   console.log(result.error);
-                  return;
+               } else {
+                  this.cityOptions = result.cities;
+                  this.cityValue = this.cityOptions.values().next().value;
+                  this.countyOptions = result.counties;
+                  this.countyValue = this.countyOptions.values().next().value;
+                  this.stateOptions = result.states;
+                  this.stateValue = this.stateOptions.keys().next().value;
                }
-
-               // @ts-ignore
-               this.cityOptions = result.cities;
-               // @ts-ignore
-               this.cityValue = result.cities[0];
-               // @ts-ignore
-               this.countyOptions = result.counties;
-               // @ts-ignore
-               this.countyValue = result.counties[0];
-               // @ts-ignore
-               this.stateOptions = result.states;
-               // @ts-ignore
-               this.stateValue = result.states[0];
             });
          }
       };
@@ -75,7 +61,7 @@ export class AddressInput {
       return ( <Host>
 
          <label>
-            ZIP<span class="ak-required-flag">*</span>
+            ZIP*
             <input
                name="zip"
                required
@@ -83,37 +69,30 @@ export class AddressInput {
                pattern={"\\d{5}"}
                maxLength={5}
                title={"Please enter a valid ZIP code"}
-               onChange={onZipInputChange}
+               onInput={onZipInputChange}
             />
          </label>
 
-         { AddressInput.possiblyHiddenSelect("City", "city", this.cityValue, this.cityOptions)}
+         <possibly-hidden-select
+            fieldLabel="City"
+            name="city"
+            selected={this.cityValue}
+            options={this.cityOptions}
+         />
 
-         { AddressInput.possiblyHiddenSelect("County", "action_county", this.countyValue, this.countyOptions)}
+         <possibly-hidden-select
+            fieldLabel="County"
+            name="action_county"
+            selected={this.countyValue}
+            options={this.countyOptions}
+         />
 
-         { AddressInput.possiblyHiddenSelect("State", "state", this.stateValue, this.stateOptions)}
-
+         <possibly-hidden-select
+            fieldLabel="State"
+            name="state"
+            selected={this.stateValue}
+            options={this.stateOptions}
+         />
       </Host> );
-   }
-
-   private static possiblyHiddenSelect(
-      fieldLabel: string,
-      name: string,
-      selected: string,
-      options: Map<string, string> | Set<string>
-   ) {
-      const labelClass = options.size <= 1 ? { class: "hide" } : {};
-      let optionTags = new Array<HTMLElement>();
-
-      for(let [value, label] of options.entries()) {
-         optionTags.push(<option value={value} selected={selected === value}>{ label }</option>);
-      }
-
-      return (
-         <label {...labelClass}>
-            { fieldLabel }<span class="ak-required-flag">*</span>
-            <select name={name} required>{ optionTags }</select>
-         </label>
-      );
    }
 }

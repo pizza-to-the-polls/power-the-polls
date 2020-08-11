@@ -9,10 +9,6 @@ import { MatchResults, RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AddressInput {
         /**
-          * Delay, in ms, between user pressing a key while entering an address and the API call being made, in ms. (default: 200ms)
-         */
-        "lookupDelay": number;
-        /**
           * The API key to access the SmartyStreets API
          */
         "smartyStreetsApiKey"?: string;
@@ -86,6 +82,12 @@ export namespace Components {
           * State for matching to location
          */
         "state"?: string;
+    }
+    interface PossiblyHiddenSelect {
+        "fieldLabel": string;
+        "name": string;
+        "options": Map<string, string> | Set<string>;
+        "selected": string;
     }
     interface PowerThePollsForm {
         /**
@@ -242,6 +244,12 @@ declare global {
         prototype: HTMLPollWorkerInfoElement;
         new (): HTMLPollWorkerInfoElement;
     };
+    interface HTMLPossiblyHiddenSelectElement extends Components.PossiblyHiddenSelect, HTMLStencilElement {
+    }
+    var HTMLPossiblyHiddenSelectElement: {
+        prototype: HTMLPossiblyHiddenSelectElement;
+        new (): HTMLPossiblyHiddenSelectElement;
+    };
     interface HTMLPowerThePollsFormElement extends Components.PowerThePollsForm, HTMLStencilElement {
     }
     var HTMLPowerThePollsFormElement: {
@@ -278,6 +286,7 @@ declare global {
         "page-redirector": HTMLPageRedirectorElement;
         "page-search": HTMLPageSearchElement;
         "poll-worker-info": HTMLPollWorkerInfoElement;
+        "possibly-hidden-select": HTMLPossiblyHiddenSelectElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
         "social-share": HTMLSocialShareElement;
         "state-info": HTMLStateInfoElement;
@@ -285,10 +294,6 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AddressInput {
-        /**
-          * Delay, in ms, between user pressing a key while entering an address and the API call being made, in ms. (default: 200ms)
-         */
-        "lookupDelay"?: number;
         /**
           * The API key to access the SmartyStreets API
          */
@@ -363,6 +368,12 @@ declare namespace LocalJSX {
           * State for matching to location
          */
         "state"?: string;
+    }
+    interface PossiblyHiddenSelect {
+        "fieldLabel"?: string;
+        "name"?: string;
+        "options"?: Map<string, string> | Set<string>;
+        "selected"?: string;
     }
     interface PowerThePollsForm {
         /**
@@ -441,6 +452,7 @@ declare namespace LocalJSX {
         "page-redirector": PageRedirector;
         "page-search": PageSearch;
         "poll-worker-info": PollWorkerInfo;
+        "possibly-hidden-select": PossiblyHiddenSelect;
         "power-the-polls-form": PowerThePollsForm;
         "social-share": SocialShare;
         "state-info": StateInfo;
@@ -467,6 +479,7 @@ declare module "@stencil/core" {
             "page-redirector": LocalJSX.PageRedirector & JSXBase.HTMLAttributes<HTMLPageRedirectorElement>;
             "page-search": LocalJSX.PageSearch & JSXBase.HTMLAttributes<HTMLPageSearchElement>;
             "poll-worker-info": LocalJSX.PollWorkerInfo & JSXBase.HTMLAttributes<HTMLPollWorkerInfoElement>;
+            "possibly-hidden-select": LocalJSX.PossiblyHiddenSelect & JSXBase.HTMLAttributes<HTMLPossiblyHiddenSelectElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
             "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;
             "state-info": LocalJSX.StateInfo & JSXBase.HTMLAttributes<HTMLStateInfoElement>;
