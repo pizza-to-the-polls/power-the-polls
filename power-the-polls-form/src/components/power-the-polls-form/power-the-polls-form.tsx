@@ -72,7 +72,7 @@ export class PowerThePollsForm {
 
    public render() {
       const source = this.partnerId;
-      const chase = this.optUserOutOfChase === true || ( this.optUserOutOfChase as any ) === "true" ? "" : "true";
+      const chase = this.optUserOutOfChase === true || ( this.optUserOutOfChase as any ) === "true" ? false : true;
       const partnerField = this.customFormFieldLabel;
       const submissionUrl = this.destination;
       let ski = "SMARTY_STREETS_KEY"; // injected by build
@@ -204,7 +204,7 @@ export class PowerThePollsForm {
                <input
                   type="hidden"
                   name="user_chase_enabled"
-                  value={chase}
+                  value={( chase ? "true" : "" )}
                />
 
                <input type="hidden" name="country" value="United States" />
@@ -226,13 +226,6 @@ export class PowerThePollsForm {
                )}
             </form>
             <footer>
-               <p class="disclaimer">This work is licensed under a&nbsp;
-                  <a
-                     href="https://creativecommons.org/licenses/by/4.0/"
-                     target="_blank"
-                     rel="noopener"
-                  >Creative Commons Attribution 4.0 International License.</a>
-               </p>
                <p class="disclaimer">
                   <a
                      href="https://www.workelections.com/"
