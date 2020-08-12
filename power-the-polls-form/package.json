@@ -1,6 +1,6 @@
 {
    "name": "@ptp-us/power-the-polls-form",
-   "version": "0.10.0",
+   "version": "0.10.1",
    "description": "Power the Polls Volunteer Form",
    "main": "dist/index.js",
    "module": "dist/index.mjs",
@@ -15,7 +15,7 @@
       "dev:site": "npm run clean && stencil build --watch",
       "build": "stencil build --docs --no-cache",
       "build:copy": "copyfiles -u 1 ./dist/**/* ../dist/power-the-polls-form/ && copyfiles package.json ../dist/power-the-polls-form/ && copyfiles Readme.md ../dist/power-the-polls-form/",
-      "release": "npm run clean-all && npm run build && npm run build:copy && replace \"dist/\" \"\" ../dist/power-the-polls-form/package.json",
+      "release": "npm run clean-all && npm run build && npm run build:copy && replace \"dist/\" \"\" ../dist/power-the-polls-form/package.json && cd ../dist/power-the-polls-form && npm publish && cd ../power-the-polls-form",
       "start": "npm run dev",
       "clean": "rimraf ./dist",
       "clean-all": "rimraf ./www && rimraf ../dist/power-the-polls-form/ && npm run clean",

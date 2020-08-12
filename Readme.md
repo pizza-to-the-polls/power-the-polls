@@ -12,13 +12,15 @@ There are two projects in this repository:
 1. Run `npm install` to install dependencies
 2. Run `npm run dev` to start a server locally and watch changes
 
+To do a full build, run `npm run build`.
+
 ### Deploying
 
 This is currently done manually
 
 1. Bump the version in `./package.json`
 2. Run `npm run release` to do a production build
-3. The contents of `/dist/power-the-polls-form` can then be deployed to NPM with `cd ../dist/power-the-polls-form && npm publish`
+3. Enter your 2-factor auth key when prompted in order to publish to NPM
 4. Change `/site/package.json` to the latest version or use `npm update`
 
 ### Dependencies
