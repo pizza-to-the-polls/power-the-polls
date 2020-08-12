@@ -27,8 +27,10 @@ export class PageForm {
       this.formComplete = false;
    }
    public render() {
+      // see if this is a partner linkg, e.g., https://powerthepolls.org/aflcio
       const paths = document.location.pathname.split( "/" ).filter( x => x !== "" );
       const urlParam = paths.length > 0 ? paths[0] : "";
+      // if the field in the URL matches a partner, get their partner ID (source or ID) used, else fallback to querystring arg "source"
       const partner = ( PartnerList.filter( x => x.id === urlParam ) || [null] )[0];
       const partnerId = partner?.source || partner?.id || getParams()?.source;
       const formCompleted = () => {
