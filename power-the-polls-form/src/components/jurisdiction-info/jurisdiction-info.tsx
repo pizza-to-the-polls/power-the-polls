@@ -75,9 +75,6 @@ export class JurisdictionInfo {
    public render() {
       const j = this.jurisdiction;
 
-      // some jurisdictions list multiple addresses, this is an attempt to make that more legible. If it backfires, feel free to remove.
-      const offices = j?.office_address?.split( "\n" ) || [];
-
       return ( j == null ? null :
          <Host>
             <h2>{j.name}, {j.state.alpha}</h2>
@@ -109,10 +106,7 @@ export class JurisdictionInfo {
             <h4>Contact Information</h4>
             <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>
             <p><strong>Email: </strong><a href={`mailto:${j.email}`}>{j.email}</a></p>
-            <p><strong>Office Address: </strong></p>
-            {offices.map( office => (
-               <p><a target="_blank" href={`https://www.google.com/maps/search/${encodeURIComponent( office )}`}>{office}</a></p>
-            ) )}
+            {j?.office_address && <p><strong>Office Address: </strong><a target="_blank" href={`https://www.google.com/maps/search/${encodeURIComponent( j?.office_address )}`}>{j?.office_address}</a></p>}
 
             <Reqs {...j} />
             <Hours {...j} />

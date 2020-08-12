@@ -149,7 +149,7 @@ export class PowerThePollsForm {
                         <h2>What’s next?</h2>
                         <hr />
                         <p>
-                           You still need to complete an application to be a poll worker! Use the below information to apply to be a poll worker in your community.
+                           <strong>You still need to complete an application to be a poll worker!</strong> Use the below information to apply to be a poll worker in your community.
                         </p>
                         {this.state != null && this.state in SemiPartnerStates ? (
                            <p>
