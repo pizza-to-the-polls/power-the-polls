@@ -37,6 +37,11 @@ export interface Partner {
    readonly customSignupFormField?: string;
 
    /**
+    * Whether to include the partner logo on the landing page.
+    */
+   readonly customLanding?: boolean;
+
+   /**
     *
     */
    readonly dark?: boolean;
@@ -73,6 +78,7 @@ const data: Partner[] = [
       source: "labor-afscme",
       logo: "afscme.png",
       optUserOutOfChase: true,
+      customLanding: true,
    },
    {
       id: "aft",

@@ -11,6 +11,14 @@ page-form {
       text-align: center;
       margin: 0 0 2em 0;
    }
+   .custom-logo {
+      max-height: 120px;
+      @include on-mobile() {
+         max-height: 80px;
+      }
+      text-align: center;
+      margin: 0 0 3em 0;
+   }
 
    .impact-boxes {
       width: 100%;

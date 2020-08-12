@@ -50,6 +50,7 @@ export class PageForm {
                   alt="Power the Polls"
                   src="/assets/images/logo-icon-pink.png"
                />
+               { partner?.customLanding && (<img class="custom-logo" src={`/assets/images/partners/${partner.logo}`} title={partner.name} />)}
                <h1>America is facing a record shortage of poll workers. </h1>
                <p>
                   As coronavirus continues to impact Americans across the country, we are also seeing a staggering decrease in poll workers &mdash;
