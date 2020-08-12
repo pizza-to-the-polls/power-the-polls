@@ -9,17 +9,9 @@ import { RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AddressInput {
         /**
-          * Delay, in ms, between user pressing a key while entering an address and the API call being made, in ms. (default: 200ms)
-         */
-        "lookupDelay": number;
-        /**
-          * The state to narrow-down the address search to
-         */
-        "showStateSelect": boolean;
-        /**
           * The API key to access the SmartyStreets API
          */
-        "smartyStreetsApiKey"?: string;
+        "smartyStreetsApiKey": string;
     }
     interface JurisdictionInfo {
         /**
@@ -42,15 +34,17 @@ export namespace Components {
          */
         "state"?: string;
     }
+    interface PossiblyHiddenSelect {
+        "fieldLabel": string;
+        "name": string;
+        "options": Map<string, string> | Set<string>;
+        "selected": string;
+    }
     interface PowerThePollsForm {
         /**
           * The label for an additional field to be displayed on the signup form. If undefined, no additional field will be displayed.
          */
         "customFormFieldLabel"?: string;
-        /**
-          * The URL where the form data will be submitted
-         */
-        "destination"?: string;
         "optUserOutOfChase": boolean;
         /**
           * To display custom text and images for a specific Power the Polls partner, enter their ID here.
@@ -91,6 +85,12 @@ declare global {
         prototype: HTMLPollWorkerInfoElement;
         new (): HTMLPollWorkerInfoElement;
     };
+    interface HTMLPossiblyHiddenSelectElement extends Components.PossiblyHiddenSelect, HTMLStencilElement {
+    }
+    var HTMLPossiblyHiddenSelectElement: {
+        prototype: HTMLPossiblyHiddenSelectElement;
+        new (): HTMLPossiblyHiddenSelectElement;
+    };
     interface HTMLPowerThePollsFormElement extends Components.PowerThePollsForm, HTMLStencilElement {
     }
     var HTMLPowerThePollsFormElement: {
@@ -107,20 +107,13 @@ declare global {
         "address-input": HTMLAddressInputElement;
         "jurisdiction-info": HTMLJurisdictionInfoElement;
         "poll-worker-info": HTMLPollWorkerInfoElement;
+        "possibly-hidden-select": HTMLPossiblyHiddenSelectElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
         "state-info": HTMLStateInfoElement;
     }
 }
 declare namespace LocalJSX {
     interface AddressInput {
-        /**
-          * Delay, in ms, between user pressing a key while entering an address and the API call being made, in ms. (default: 200ms)
-         */
-        "lookupDelay"?: number;
-        /**
-          * The state to narrow-down the address search to
-         */
-        "showStateSelect"?: boolean;
         /**
           * The API key to access the SmartyStreets API
          */
@@ -147,15 +140,17 @@ declare namespace LocalJSX {
          */
         "state"?: string;
     }
+    interface PossiblyHiddenSelect {
+        "fieldLabel"?: string;
+        "name"?: string;
+        "options"?: Map<string, string> | Set<string>;
+        "selected"?: string;
+    }
     interface PowerThePollsForm {
         /**
           * The label for an additional field to be displayed on the signup form. If undefined, no additional field will be displayed.
          */
         "customFormFieldLabel"?: string;
-        /**
-          * The URL where the form data will be submitted
-         */
-        "destination"?: string;
         /**
           * Dispatched when the user has submitted the form and it has successfully POSTed to `destination`
          */
@@ -188,6 +183,7 @@ declare namespace LocalJSX {
         "address-input": AddressInput;
         "jurisdiction-info": JurisdictionInfo;
         "poll-worker-info": PollWorkerInfo;
+        "possibly-hidden-select": PossiblyHiddenSelect;
         "power-the-polls-form": PowerThePollsForm;
         "state-info": StateInfo;
     }
@@ -199,6 +195,7 @@ declare module "@stencil/core" {
             "address-input": LocalJSX.AddressInput & JSXBase.HTMLAttributes<HTMLAddressInputElement>;
             "jurisdiction-info": LocalJSX.JurisdictionInfo & JSXBase.HTMLAttributes<HTMLJurisdictionInfoElement>;
             "poll-worker-info": LocalJSX.PollWorkerInfo & JSXBase.HTMLAttributes<HTMLPollWorkerInfoElement>;
+            "possibly-hidden-select": LocalJSX.PossiblyHiddenSelect & JSXBase.HTMLAttributes<HTMLPossiblyHiddenSelectElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
             "state-info": LocalJSX.StateInfo & JSXBase.HTMLAttributes<HTMLStateInfoElement>;
         }

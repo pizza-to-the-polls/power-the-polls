@@ -10,7 +10,6 @@
 | Property               | Attribute                 | Description                                                                                                                | Type                  | Default     |
 | ---------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
 | `customFormFieldLabel` | `custom-form-field-label` | The label for an additional field to be displayed on the signup form. If undefined, no additional field will be displayed. | `string \| undefined` | `undefined` |
-| `destination`          | `destination`             | The URL where the form data will be submitted                                                                              | `string \| undefined` | `undefined` |
 | `optUserOutOfChase`    | `opt-user-out-of-chase`   |                                                                                                                            | `boolean`             | `undefined` |
 | `partnerId`            | `partner-id`              | To display custom text and images for a specific Power the Polls partner, enter their ID here.                             | `string \| undefined` | `undefined` |
 | `smartyStreetsApiKey`  | `smarty-streets-api-key`  | The API key to access SmartyStreets which is used for address lookup.                                                      | `string \| undefined` | `undefined` |
@@ -42,6 +41,7 @@ graph TD;
   poll-worker-info --> state-info
   jurisdiction-info --> stencil-route-link
   state-info --> stencil-route-link
+  address-input --> possibly-hidden-select
   style power-the-polls-form fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
