@@ -71,6 +71,8 @@ const data: Partner[] = [
       source: "labor-aflcio",
       optUserOutOfChase: true,
       customSignupFormField: "Union Name",
+      logo: "aflcio.svg",
+      customLanding: true,
    },
    {
       id: "afscme",
@@ -451,6 +453,12 @@ const data: Partner[] = [
       name: "United Way",
       source: "UnitedWay",
       founding: true,
+   },
+   {
+      id: "unitehere",
+      logo: "united-here.png",
+      name: "Unite Here!",
+      source: "UniteHere",
    },
    {
       id: "viacomcbs",
