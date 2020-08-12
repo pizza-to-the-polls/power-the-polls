@@ -39,7 +39,7 @@ export interface Partner {
    /**
     * Whether to include the partner logo on the landing page.
     */
-   readonly customLanding?: boolean;
+   readonly customLandingLogo?: boolean;
 
    /**
     *
@@ -72,7 +72,7 @@ const data: Partner[] = [
       optUserOutOfChase: true,
       customSignupFormField: "Union Name",
       logo: "aflcio.svg",
-      customLanding: true,
+      customLandingLogo: true,
    },
    {
       id: "afscme",
@@ -80,7 +80,7 @@ const data: Partner[] = [
       source: "labor-afscme",
       logo: "afscme.png",
       optUserOutOfChase: true,
-      customLanding: true,
+      customLandingLogo: true,
    },
    {
       id: "aft",
