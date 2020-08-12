@@ -62,7 +62,7 @@ export class AddressInput {
       return ( <Host>
 
          <label>
-            ZIP*
+            ZIP<span class="required">*</span>
             <input
                name="zip"
                required

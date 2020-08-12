@@ -1,6 +1,5 @@
 import { Component, h, Prop, State } from "@stencil/core";
 
-import { WorkElectionsFallbacks } from "../../data";
 import { Jurisdiction, StateInfo } from "../../data/WorkElections";
 import { fetchFromWE } from "../../util/WorkElections";
 
@@ -34,11 +33,12 @@ export class StateInfoComponent {
    }
 
    public render() {
-      const fallbacks = WorkElectionsFallbacks;
-      const { info, jurisdictions } = this;
       if( this.stateId ) {
-         if( info != null ) {
-            return (
+         const { info, jurisdictions } = this;
+         return info == null ?
+            // TODO: Add an animation here
+            <p>Loading poll jurisdiction...</p> :
+            (
                <div>
                   <h2>{info.name}</h2>
                   {info.notes && <p>{info.notes}</p>}
@@ -54,17 +54,6 @@ export class StateInfoComponent {
                   </div>
                </div>
             );
-         }
-      } else if( this.state && fallbacks[this.state] ) {
-         return (
-            <div>
-               <h2>{fallbacks[this.state]}</h2>
-               <p>
-                  You'll hear from a partner election official or nonprofit soon
-                  about how you can help everyone in {fallbacks[this.state]} vote.
-               </p>
-            </div>
-         );
       }
    }
 

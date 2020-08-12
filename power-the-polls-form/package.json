@@ -1,6 +1,6 @@
 {
    "name": "@ptp-us/power-the-polls-form",
-   "version": "0.9.4",
+   "version": "0.10.0",
    "description": "Power the Polls Volunteer Form",
    "main": "dist/index.js",
    "module": "dist/index.mjs",

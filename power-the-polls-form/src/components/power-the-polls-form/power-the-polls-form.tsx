@@ -1,5 +1,6 @@
 import { Component, Event, EventEmitter, FunctionalComponent, h, Host, Prop, State } from "@stencil/core";
 
+import { PartnerStates, SemiPartnerStates } from "../../data";
 import { toQueryString } from "../../util";
 
 /**
@@ -131,17 +132,43 @@ export class PowerThePollsForm {
             return false;
          }
       };
-
       return ( <Host>
          {this.isFormComplete ? (
             <article>
-               <h1>Thanks for signing up to Power the Polls!</h1>
-               <h2>We'll be in touch!</h2>
-               <hr />
-               <div class="disclaimer">
-                  <p><strong>Please note:</strong> You still need to complete an application for your community!</p>
-                  <p>The application process for poll workers is different for every state, county, and voting territory. In the weeks ahead, Power the Polls will follow up via email and text message to make sure you complete the correct application for your community and are connected with your local election administrator.</p>
-               </div>
+               {this.state != null && this.state in PartnerStates ?
+                  (
+                     <Fragment>
+                        <h1>Thanks for signing up to Power the Polls!</h1>
+                        <p>
+                           You'll hear from a partner election official or nonprofit soon about how you can help serve as a poll worker in {PartnerStates[this.state]}.
+                        </p>
+                     </Fragment>
+                  ) : (
+                     <Fragment>
+                        <h1>You’re one step closer to Powering the Polls!</h1>
+                        <h2>What’s next?</h2>
+                        <hr />
+                        <p>
+                           You still need to complete an application to be a poll worker! Use the below information to apply to be a poll worker in your community.
+                        </p>
+                        {this.state != null && this.state in SemiPartnerStates ? (
+                           <p>
+                              Power the Polls is working with local organizations and election administrators to connect them with individuals like you that want
+                              to serve as poll workers. We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your
+                              application so we can help you become a poll worker.
+                           </p>
+                        ) : (
+                              <p>
+                                 Power the Polls is working with local organizations and election administrators to connect them with individuals like you that want to
+                                 serve as poll workers. In the weeks leading up to the election, you will hear back from your local election administrators if you were
+                                 selected to be a worker in your jurisdiction.
+                              </p>
+                           )}
+                        <p>
+                           In the meantime, please encourage your friends and family to sign up to be poll workers!
+                        </p>
+                     </Fragment>
+                  )}
                <poll-worker-info
                   city={this.city}
                   county={this.county}
@@ -156,7 +183,7 @@ export class PowerThePollsForm {
                onSubmit={submitForm}
             >
                <label>
-                  Name<span>*</span>
+                  Name<span class="required">*</span>
                   <input
                      type="text"
                      required
@@ -165,7 +192,7 @@ export class PowerThePollsForm {
                </label>
 
                <label>
-                  Email address<span>*</span>
+                  Email address<span class="required">*</span>
                   <input
                      type="email"
                      required
@@ -174,7 +201,7 @@ export class PowerThePollsForm {
                </label>
 
                <label>
-                  Mobile phone
+                  Mobile phone<span class="required">*</span>
                   <input
                      type="tel"
                      required
