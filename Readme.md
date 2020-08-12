@@ -14,8 +14,12 @@ There are two projects in this repository:
 
 ### Deploying
 
-1. Run `npm run release` to do a production build
-2. The contents of `/dist/power-the-polls-form` can then be deployed to NPM with `npm publish`
+This is currently done manually
+
+1. Bump the version in `./package.json`
+2. Run `npm run release` to do a production build
+3. The contents of `/dist/power-the-polls-form` can then be deployed to NPM with `cd ../dist/power-the-polls-form && npm publish`
+4. Change `/site/package.json` to the latest version or use `npm update`
 
 ### Dependencies
 
