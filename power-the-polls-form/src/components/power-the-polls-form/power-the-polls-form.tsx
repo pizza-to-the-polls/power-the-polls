@@ -216,7 +216,6 @@ export class PowerThePollsForm {
                      {partnerField}
                      <input
                         type="text"
-                        required
                         name="user_partner_field"
                      />
                   </label>
