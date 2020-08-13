@@ -31,6 +31,6 @@
       "workbox-build": "^4.3.1"
    },
    "dependencies": {
-      "@ptp-us/power-the-polls-form": "^0.11.0-beta.1"
+      "@ptp-us/power-the-polls-form": "^0.11.0-beta.2"
    }
 }
