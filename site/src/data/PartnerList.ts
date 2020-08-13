@@ -349,6 +349,11 @@ const data: Partner[] = [
       logo: "omg-wtf.png",
    },
    {
+      partnerId: "NARAL",
+      name: "NARAL Pro-Choice America",
+      logo: "naral.png",
+   },
+   {
       partnerId: "nh",
       name: "New Hampshire",
    },
@@ -432,10 +437,10 @@ const data: Partner[] = [
       name: "The Daily Show",
    },
    {
+      partnerId: "skimm",
       vanityUrl: "theSkimm",
       logo: "the-skimm.png",
       name: "theSkimm",
-      partnerId: "skimm",
    },
    {
       partnerId: "TimeToVote",
@@ -453,6 +458,11 @@ const data: Partner[] = [
       logo: "uber.png",
       name: "Uber",
       founding: true,
+   },
+   {
+      partnerId: "UFCW",
+      name: "United Food & Commercial Workers Intl Union",
+      logo: "",
    },
    {
       partnerId: "UnitedWay",
