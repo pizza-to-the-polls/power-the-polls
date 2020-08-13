@@ -288,7 +288,7 @@ const data: Partner[] = [
       dark: true,
    },
    {
-      id: "AAAAAAAAAAAA",
+      id: "ndrn",
       logo: "nrdn.png",
       name: "National Disability Rights Network",
       source: "NDRN",
@@ -316,6 +316,13 @@ const data: Partner[] = [
       id: "national-coalition-for-accessible-voting",
       name: "National College for Accessible Voting",
       logo: "national-coalition-for-accessible-voting.png",
+      dark: true,
+   },
+   {
+      id: "nacdd",
+      name: "National Association of Councils on Developmental Disabilities",
+      logo: "nacdd.png",
+      source: "NACDD",
       dark: true,
    },
    {
@@ -364,7 +371,7 @@ const data: Partner[] = [
       founding: true,
    },
    {
-      id: "AAAAAAApublicwiseAAAAA",
+      id: "publicwise",
       logo: "public-wise.png",
       name: "Public Wise",
    },
@@ -410,6 +417,12 @@ const data: Partner[] = [
    {
       id: "starbucks",
       name: "Starbucks",
+   },
+   {
+      id: "sua",
+      name: "Stand Up America",
+      source: "SUA",
+      logo: "sua.png",
    },
    {
       id: "sva",
@@ -461,7 +474,7 @@ const data: Partner[] = [
    },
    {
       id: "unitehere",
-      logo: "united-here.png",
+      logo: "unite-here.png",
       name: "Unite Here!",
       source: "UniteHere",
    },
