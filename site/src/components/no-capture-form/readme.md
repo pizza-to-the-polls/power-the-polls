@@ -20,8 +20,8 @@
 
 ### Depends on
 
-- [poll-worker-info](../poll-worker-info)
-- [address-input](../address-input)
+- poll-worker-info
+- address-input
 
 ### Graph
 ```mermaid

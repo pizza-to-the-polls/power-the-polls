@@ -1,3 +1,4 @@
+import "@ptp-us/power-the-polls-form";
 import { Component, h, Host, Prop, State } from "@stencil/core";
 
 import { PartnerList } from "../../data";
@@ -69,6 +70,7 @@ export class PageForm {
             </Fragment> ) : null}
             <power-the-polls-form
                id="form"
+               destination="https://ptp.actionkit.com/rest/v1/action/"
                partnerId={partnerId}
                optUserOutOfChase={partner?.optUserOutOfChase || false}
                customFormFieldLabel={partner?.customSignupFormField}

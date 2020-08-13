@@ -10,12 +10,10 @@ export interface StateInfo {
    jurisdictions: { [key: string]: number };
 }
 
-export interface JurisdictionQueryResponse {
+export interface Jurisdiction {
    id: number;
-   state: {
-      alpha: string;
-   };
-   jurisdiction_link?: any;
+   state: { alpha: string; };
+   jurisdiction_link?: { id: number, name: string };
    name: string;
    obtained_at: string;
    website: string;
@@ -37,7 +35,7 @@ export interface JurisdictionQueryResponse {
    compensation: string;
    interview?: any;
    training: string;
-   training_note: string;
+   training_note?: string;
    complete_training: string;
    post_training_exam: string;
    must_have_email: string;
@@ -47,14 +45,9 @@ export interface JurisdictionQueryResponse {
    further_notes: string;
    trusted_notes: string;
    display: string;
-   student_website: string;
-   jurisdiction_link_text: string;
+   student_website?: string;
+   jurisdiction_link_text?: string;
 }
-
-export const fallbacks: { [state: string]: string } = {
-   "OR": "Oregon",
-   "HI": "Hawaii",
-};
 
 /**
  * Mappings for Work Elections

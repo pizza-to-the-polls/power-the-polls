@@ -17,7 +17,7 @@
 ### Depends on
 
 - [impact-box](../impact-box)
-- [power-the-polls-form](../power-the-polls-form)
+- power-the-polls-form
 
 ### Graph
 ```mermaid

@@ -161,7 +161,15 @@ export class AppRoot {
                   </stencil-router>
 
                   <footer>
-                     <p>This work is licensed under a Creative Commons Attribution 4.0 International License.</p>
+                     <p>This work is licensed under a&nbsp;
+                        <a
+                           href="https://creativecommons.org/licenses/by/4.0/"
+                           target="_blank"
+                           rel="noopener"
+                        >
+                           Creative Commons Attribution 4.0 International License.
+                        </a>
+                     </p>
                      <p>Powered by Work Elections.</p>
                      <p>
                         <a

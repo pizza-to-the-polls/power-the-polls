@@ -19,8 +19,6 @@
 
 ### Used by
 
- - [no-capture-form](../no-capture-form)
- - [page-redirector](../page-redirector)
  - [power-the-polls-form](../power-the-polls-form)
 
 ### Depends on
@@ -35,8 +33,6 @@ graph TD;
   poll-worker-info --> state-info
   jurisdiction-info --> stencil-route-link
   state-info --> stencil-route-link
-  no-capture-form --> poll-worker-info
-  page-redirector --> poll-worker-info
   power-the-polls-form --> poll-worker-info
   style poll-worker-info fill:#f9f,stroke:#333,stroke-width:4px
 ```
