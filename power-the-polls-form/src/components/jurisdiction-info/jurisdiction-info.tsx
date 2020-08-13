@@ -67,56 +67,60 @@ export class JurisdictionInfo {
 
    @State() public jurisdiction?: Jurisdiction;
 
-   public async componentWillLoad() {
+   public componentWillLoad() {
       if( this.jurisdictionId ) {
-         this.jurisdiction = await fetchFromWE( `/jurisdictions/${this.jurisdictionId}/` );
+         fetchFromWE( `/jurisdictions/${this.jurisdictionId}/` )
+            .then( x => this.jurisdiction = x );
       }
    }
 
    public render() {
       const j = this.jurisdiction;
 
-      return ( j == null ? null :
-         <Host>
-            <h2>{j.name}, {j.state.alpha}</h2>
-            {j.jurisdiction_link_text && j.jurisdiction_link &&
-               ( <p>
-                  {j.jurisdiction_link_text}
-                  {" "}
+      return j == null ?
+         <loading-spinner dark={true} />
+         : (
+            <Host>
+               <h2>{j.name}, {j.state.alpha}</h2>
+               {j.jurisdiction_link_text && j.jurisdiction_link &&
+                  ( <p>
+                     {j.jurisdiction_link_text}
+                     {" "}
                   <PtpLink path={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</PtpLink>.
-               </p> )}
+                  </p> )}
 
-            <div>
-               <a
-                  class="poll-worker-action cta"
-                  href={j.application ? j.application : `mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`}
-                  target="_blank"
-               >Apply Now!</a>
-               {j.website && ( <a
-                  class="poll-worker-action"
-                  href={j.website}
-                  target="_blank"
-               >Poll Worker Information</a> )}
-               {j.student_website && ( <a
-                  class="poll-worker-action"
-                  href={j.student_website}
-                  target="_blank"
-               >Student Poll Worker Information</a> )}
-            </div>
+               <div>
+                  <a
+                     class="poll-worker-action cta"
+                     href={j.application ? j.application : `mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`}
+                     target="_blank"
+                  >Apply Now!</a>
+                  {j.website && ( <a
+                     class="poll-worker-action"
+                     href={j.website}
+                     target="_blank"
+                  >Poll Worker Information</a> )}
+                  {j.student_website && ( <a
+                     class="poll-worker-action"
+                     href={j.student_website}
+                     target="_blank"
+                  >Student Poll Worker Information</a> )}
+               </div>
 
-            <h4>Contact Information</h4>
-            <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>
-            <p><strong>Email: </strong><a href={`mailto:${j.email}`}>{j.email}</a></p>
-            {j?.office_address && <p><strong>Office Address: </strong><a target="_blank" href={`https://www.google.com/maps/search/${encodeURIComponent( j?.office_address )}`}>{j?.office_address}</a></p>}
+               <h4>Contact Information</h4>
+               <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>
+               <p><strong>Email: </strong><a href={`mailto:${j.email}`}>{j.email}</a></p>
+               {j?.office_address && <p><strong>Office Address: </strong><a target="_blank" href={`https://www.google.com/maps/search/${encodeURIComponent( j?.office_address )}`}>{j?.office_address}</a></p>}
 
-            <Reqs {...j} />
-            <Hours {...j} />
-            <WorkReqs {...j} />
-            {j.further_notes
-               && ( <div>
-                  <h4>Further Notes</h4>
-                  <p>{j.further_notes}</p>
-               </div> )}
-         </Host> );
+               <Reqs {...j} />
+               <Hours {...j} />
+               <WorkReqs {...j} />
+               {j.further_notes
+                  && ( <div>
+                     <h4>Further Notes</h4>
+                     <p>{j.further_notes}</p>
+                  </div> )}
+            </Host>
+         );
    }
 }

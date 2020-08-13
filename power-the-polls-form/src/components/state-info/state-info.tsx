@@ -26,10 +26,12 @@ export class StateInfoComponent {
    @State() public jurisdictions: Array<Jurisdiction> = [];
    @State() public info?: StateInfo;
 
-   public async componentWillLoad() {
+   public componentWillLoad() {
       if( this.stateId ) {
-         this.jurisdictions = await fetchFromWE( `/jurisdictions/?summary=true&state_id=${this.stateId}` );
-         this.info = await fetchFromWE( `/states/${this.stateId}/` );
+         fetchFromWE( `/jurisdictions/?summary=true&state_id=${this.stateId}` )
+            .then( x => this.jurisdictions = x );
+         fetchFromWE( `/states/${this.stateId}/` )
+            .then( x => this.info = x );
       }
    }
 
@@ -37,8 +39,7 @@ export class StateInfoComponent {
       if( this.stateId ) {
          const { info, jurisdictions } = this;
          return info == null ?
-            // TODO: Add an animation here
-            <p>Loading poll jurisdiction...</p> :
+            <loading-spinner dark={true} /> :
             (
                <div>
                   <h2>{info.name}</h2>
