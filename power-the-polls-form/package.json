@@ -1,6 +1,6 @@
 {
    "name": "@ptp-us/power-the-polls-form",
-   "version": "0.10.2",
+   "version": "0.11.0-beta.1",
    "description": "Power the Polls Volunteer Form",
    "main": "dist/index.js",
    "module": "dist/index.mjs",
@@ -18,7 +18,9 @@
       "build:copy": "copyfiles -u 1 ./dist/**/* ../dist/power-the-polls-form/ && copyfiles package.json ../dist/power-the-polls-form/ && copyfiles Readme.md ../dist/power-the-polls-form/",
       "package": "npm run build:copy && replace \"dist/\" \"\" ../dist/power-the-polls-form/package.json",
       "deploy": "cd ../dist/power-the-polls-form && npm publish && cd ../power-the-polls-form",
+      "deploy:beta": "cd ../dist/power-the-polls-form && npm publish --tag beta && cd ../power-the-polls-form",
       "release": "npm run clean-all && npm run build && npm run package && npm run deploy",
+      "release:beta": "npm run clean-all && npm run build && npm run package && npm run deploy:beta",
       "clean": "rimraf ./dist",
       "clean-all": "rimraf ./www && rimraf ../dist/power-the-polls-form/ && npm run clean",
       "lint": "tslint --project .",

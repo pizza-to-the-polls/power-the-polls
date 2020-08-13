@@ -10,7 +10,7 @@ export type PtpLinkProps = Partial<Components.StencilRouteLink> & {
 };
 
 /**
- * Decides whether to generate `stencil-route-link` or `a` for each link based on whether or not
+ * Decides whether to generate `stencil-route-link` element or anchor element for each link based on whether or not
  * the form is hosted on powerthepolls.org
  */
 export const PtpLink: FunctionalComponent<PtpLinkProps> = ( { path, ...props }, children ) => {

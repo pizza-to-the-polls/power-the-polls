@@ -42,12 +42,14 @@ Type: `Promise<void>`
 
 - [poll-worker-info](../poll-worker-info)
 - [address-input](../address-input)
+- stencil-route-link
 
 ### Graph
 ```mermaid
 graph TD;
   power-the-polls-form --> poll-worker-info
   power-the-polls-form --> address-input
+  power-the-polls-form --> stencil-route-link
   poll-worker-info --> jurisdiction-info
   poll-worker-info --> state-info
   jurisdiction-info --> stencil-route-link

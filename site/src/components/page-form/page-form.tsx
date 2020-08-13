@@ -1,4 +1,4 @@
-import "@ptp-us/power-the-polls-form/dist";
+import "@ptp-us/power-the-polls-form";
 import { Component, h, Host, Prop, State } from "@stencil/core";
 import { RouterHistory } from "@stencil/router";
 
