@@ -138,6 +138,11 @@ const data: Partner[] = [
       dark: true,
    },
    {
+      id: "billieeilish",
+      name: "Billie Eilish",
+      source: "BillieEilish",
+   },
+   {
       id: "breakout",
       name: "Breakout",
       logo: "breakout.png",
