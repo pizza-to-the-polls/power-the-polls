@@ -8,7 +8,7 @@ export interface Partner {
    /**
     * Optional vanity URL which will result in `https://powerthepolls.org/{additionalVanityUrl}` including `partnerId`
     * upon submission. Note that `partnerId` will itself always be a valid URL (`https://powerthepolls.org/{partnerId}`),
-    * so this is only if there is an additinal URL desired.
+    * so this is only needed if there is an alternative URL desired.
     */
    readonly vanityUrl?: string;
 

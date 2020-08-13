@@ -1,4 +1,4 @@
-import "@ptp-us/power-the-polls-form";
+import "@ptp-us/power-the-polls-form/dist";
 import { Component, h, Host, Prop, State } from "@stencil/core";
 import { RouterHistory } from "@stencil/router";
 
@@ -33,6 +33,7 @@ export class PageForm {
    constructor() {
       this.formComplete = false;
    }
+
    public render() {
       // see if this is a partner link, e.g., https://powerthepolls.org/aflcio
       const paths = document.location.pathname.split( "/" ).filter( x => x !== "" );
@@ -48,8 +49,8 @@ export class PageForm {
       // count down every 10 days (since the 2020-10-01 end is arbitrary) by extracting off the days less than 10 and rounding up or down
       daysLeft = ( daysLeft - daysLeft % 10 ) + Math.round( daysLeft % 10 / 10 ) * 10;
 
+      // change URL to /signup if the partner ID is invalid so there is no question that the partnerID will not be included in the form
       if( urlParam !== "" && urlParam !== SIGNUP_PATH && partner == null ) {
-         // change URL to /signup if the partner ID is invalid so there is no question that the partnerID will not be included in the form
          this.history?.replace( "/" + SIGNUP_PATH );
       } else if( partner != null
          && ( ( partner.vanityUrl && paths[0] !== partner.vanityUrl )
@@ -63,6 +64,7 @@ export class PageForm {
          analytics.signup();
          this.formComplete = true;
       };
+
       const formError = ( err: any ) => {
          console.log( "Error submitting data", err );
       };
@@ -96,7 +98,6 @@ export class PageForm {
             </Fragment> ) : null}
             <power-the-polls-form
                id="form"
-               destination="https://ptp.actionkit.com/rest/v1/action/"
                partnerId={partnerId}
                optUserOutOfChase={partner?.optUserOutOfChase || false}
                customFormFieldLabel={partner?.customSignupFormField}
@@ -104,6 +105,13 @@ export class PageForm {
                onSubmitCompleted={formCompleted}
                onSubmitError={formError}
             />
+            {!this.formComplete && partner?.optUserOutOfChase !== true &&
+               <p class="disclaimer">
+                  By signing up, you agree to receive occasional emails or text messages from Power the Polls and
+                  accept our <stencil-route-link url="/privacy">Privacy Policy</stencil-route-link>. You can unsubscribe
+                  at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
+               </p>
+            }
          </Host>
       );
    }

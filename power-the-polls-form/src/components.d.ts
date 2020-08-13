@@ -50,6 +50,7 @@ export namespace Components {
           * To display custom text and images for a specific Power the Polls partner, enter their ID here.
          */
         "partnerId"?: string;
+        "reset": () => Promise<void>;
         /**
           * The API key to access SmartyStreets which is used for address lookup.
          */
