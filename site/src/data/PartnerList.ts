@@ -37,6 +37,11 @@ export interface Partner {
    readonly customSignupFormField?: string;
 
    /**
+    * Whether to include the partner logo on the landing page.
+    */
+   readonly customLandingLogo?: boolean;
+
+   /**
     *
     */
    readonly dark?: boolean;
@@ -66,6 +71,8 @@ const data: Partner[] = [
       source: "labor-aflcio",
       optUserOutOfChase: true,
       customSignupFormField: "Union Name",
+      logo: "aflcio.svg",
+      customLandingLogo: true,
    },
    {
       id: "afscme",
@@ -73,6 +80,7 @@ const data: Partner[] = [
       source: "labor-afscme",
       logo: "afscme.png",
       optUserOutOfChase: true,
+      customLandingLogo: true,
    },
    {
       id: "aft",
@@ -128,6 +136,11 @@ const data: Partner[] = [
       name: "Big Tent USA",
       logo: "big-tent-usa.jpeg",
       dark: true,
+   },
+   {
+      id: "billieeilish",
+      name: "Billie Eilish",
+      source: "BillieEilish",
    },
    {
       id: "breakout",
@@ -445,6 +458,12 @@ const data: Partner[] = [
       name: "United Way",
       source: "UnitedWay",
       founding: true,
+   },
+   {
+      id: "unitehere",
+      logo: "united-here.png",
+      name: "Unite Here!",
+      source: "UniteHere",
    },
    {
       id: "viacomcbs",
