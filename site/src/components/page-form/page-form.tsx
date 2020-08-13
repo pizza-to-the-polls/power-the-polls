@@ -30,7 +30,7 @@ export class PageForm {
    public render() {
       const paths = document.location.pathname.split( "/" ).filter( x => x !== "" );
       const urlParam = paths.length > 0 ? paths[0] : "";
-      const partner = ( PartnerList.filter( x => x.id === urlParam ) || [null] )[0];
+      const partner = ( PartnerList.filter( x => x.id === urlParam.toLowerCase() ) || [null] )[0];
       const partnerId = partner?.source || partner?.id || getParams()?.source;
       const formCompleted = () => {
          analytics.signup();
