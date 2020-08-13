@@ -24,6 +24,7 @@ export const config: Config = {
          // scss files will automatically have these added
          injectGlobalPaths: [
             "styles/include/variables.scss",
+            "styles/include/mixins.scss",
          ],
       } ),
    ],

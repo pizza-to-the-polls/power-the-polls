@@ -1,3 +1,4 @@
+import "@ptp-us/power-the-polls-form";
 import { Component, h, Host, Prop, State } from "@stencil/core";
 
 import { PartnerList } from "../../data";
@@ -31,7 +32,7 @@ export class PageForm {
       const paths = document.location.pathname.split( "/" ).filter( x => x !== "" );
       const urlParam = paths.length > 0 ? paths[0] : "";
       // if the field in the URL matches a partner, get their partner ID (source or ID) used, else fallback to querystring arg "source"
-      const partner = ( PartnerList.filter( x => x.id === urlParam ) || [null] )[0];
+      const partner = ( PartnerList.filter( x => x.id === urlParam.toLowerCase() ) || [null] )[0];
       const partnerId = partner?.source || partner?.id || getParams()?.source;
       const formCompleted = () => {
          analytics.signup();
@@ -51,6 +52,7 @@ export class PageForm {
                   alt="Power the Polls"
                   src="/assets/images/logo-icon-pink.png"
                />
+               { partner?.customLandingLogo && (<img class="custom-logo" src={`/assets/images/partners/${partner.logo}`} title={partner.name} />)}
                <h1>America is facing a record shortage of poll workers. </h1>
                <p>
                   As coronavirus continues to impact Americans across the country, we are also seeing a staggering decrease in poll workers &mdash;
@@ -71,6 +73,7 @@ export class PageForm {
             </Fragment> ) : null}
             <power-the-polls-form
                id="form"
+               destination="https://ptp.actionkit.com/rest/v1/action/"
                partnerId={partnerId}
                optUserOutOfChase={partner?.optUserOutOfChase || false}
                customFormFieldLabel={partner?.customSignupFormField}

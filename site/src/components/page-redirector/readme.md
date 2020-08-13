@@ -9,7 +9,7 @@
 
 ### Depends on
 
-- [poll-worker-info](../poll-worker-info)
+- poll-worker-info
 
 ### Graph
 ```mermaid

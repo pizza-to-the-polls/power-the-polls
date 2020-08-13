@@ -16,7 +16,7 @@
 
 ### Depends on
 
-- [jurisdiction-info](../jurisdiction-info)
+- jurisdiction-info
 
 ### Graph
 ```mermaid
