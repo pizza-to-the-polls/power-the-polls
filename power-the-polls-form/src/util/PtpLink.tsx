@@ -18,6 +18,12 @@ export const PtpLink: FunctionalComponent<PtpLinkProps> = ( { path, ...props }, 
    return isPtpDotOrg ? (
       <stencil-route-link url={path} {...props}>{children}</stencil-route-link>
    ) : (
-         <a href={"https://powerthepolls.org" + path} target="_blank" {...props}>{children}</a >
+         <a
+            href={"https://powerthepolls.org" + path}
+            target="_blank"
+            class={props?.anchorClass}
+            title={props?.anchorTitle}
+            {...props}
+         >{children}</a>
       );
 };
