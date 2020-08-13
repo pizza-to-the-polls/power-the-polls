@@ -47,11 +47,6 @@ page-form {
       }
    }
 
-   p.disclaimer {
-      max-width: 32ch;
-      align-self: flex-start;
-   }
-
    power-the-polls-form {
       button {
          background-color: $color-highlight;
@@ -60,10 +55,6 @@ page-form {
       }
 
       footer {
-         display: none;
-      }
-      form p.disclaimer {
-         // we add this back ourselves so we can use a stencil-route
          display: none;
       }
 

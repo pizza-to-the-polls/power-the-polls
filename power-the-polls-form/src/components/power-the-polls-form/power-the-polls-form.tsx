@@ -2,6 +2,7 @@ import { Component, Event, EventEmitter, FunctionalComponent, h, Host, Method, P
 
 import { PartnerStates, SemiPartnerStates } from "../../data";
 import { toQueryString } from "../../util";
+import { PtpLink } from "../../util/PtpLink";
 
 /**
  * Empty container element, i.e.: `<></>`
@@ -266,7 +267,7 @@ export class PowerThePollsForm {
                {chase && (
                   <p class="disclaimer">
                      By signing up, you agree to receive occasional emails or text messages from Power the Polls and
-                     accept our <a href="https://powerthepolls.org/privacy" target="_blank">Privacy Policy</a>. You can unsubscribe
+                     accept our <PtpLink path="/privacy">Privacy Policy</PtpLink>. You can unsubscribe
                      at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
                   </p>
                )}

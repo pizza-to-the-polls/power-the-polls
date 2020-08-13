@@ -105,13 +105,6 @@ export class PageForm {
                onSubmitCompleted={formCompleted}
                onSubmitError={formError}
             />
-            {!this.formComplete && partner?.optUserOutOfChase !== true &&
-               <p class="disclaimer">
-                  By signing up, you agree to receive occasional emails or text messages from Power the Polls and
-                  accept our <stencil-route-link url="/privacy">Privacy Policy</stencil-route-link>. You can unsubscribe
-                  at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
-               </p>
-            }
          </Host>
       );
    }
