@@ -21,11 +21,13 @@
 
 ### Depends on
 
+- [loading-spinner](../loading-spinner)
 - stencil-route-link
 
 ### Graph
 ```mermaid
 graph TD;
+  state-info --> loading-spinner
   state-info --> stencil-route-link
   poll-worker-info --> state-info
   style state-info fill:#f9f,stroke:#333,stroke-width:4px
