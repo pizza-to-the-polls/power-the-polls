@@ -10,6 +10,7 @@
    },
    "scripts": {
       "dev": "stencil build --dev --watch --serve",
+      "dev:form": "cd ../power-the-polls-form && npm run build && cd ../site && npm run dev",
       "build": "npm run lint && stencil build --docs --no-cache",
       "release": "npm run build",
       "start": "npm run dev",
