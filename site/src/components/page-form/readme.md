@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property              | Attribute                | Description                                                           | Type                  | Default     |
-| --------------------- | ------------------------ | --------------------------------------------------------------------- | --------------------- | ----------- |
-| `smartyStreetsApiKey` | `smarty-streets-api-key` | The API key to access SmartyStreets which is used for address lookup. | `string \| undefined` | `undefined` |
+| Property              | Attribute                | Description                                                           | Type                         | Default     |
+| --------------------- | ------------------------ | --------------------------------------------------------------------- | ---------------------------- | ----------- |
+| `history`             | --                       |                                                                       | `RouterHistory \| undefined` | `undefined` |
+| `smartyStreetsApiKey` | `smarty-streets-api-key` | The API key to access SmartyStreets which is used for address lookup. | `string \| undefined`        | `undefined` |
 
 
 ## Dependencies
@@ -31,6 +32,7 @@ graph TD;
   poll-worker-info --> state-info
   jurisdiction-info --> stencil-route-link
   state-info --> stencil-route-link
+  address-input --> possibly-hidden-select
   style page-form fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

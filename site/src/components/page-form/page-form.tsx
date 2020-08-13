@@ -1,10 +1,14 @@
 import "@ptp-us/power-the-polls-form";
 import { Component, h, Host, Prop, State } from "@stencil/core";
+import { RouterHistory } from "@stencil/router";
 
 import { PartnerList } from "../../data";
 import analytics from "../../util/Analytics";
 import { Fragment } from "../../util/Fragment";
 import getParams from "../../util/getParams";
+
+
+const SIGNUP_PATH: String = "signup";
 
 /**
  * The power-the-polls-form for the main site because there are a few additional bits of text and branding that
@@ -22,28 +26,49 @@ export class PageForm {
     */
    @Prop() public smartyStreetsApiKey?: string;
 
+   @Prop() public history?: RouterHistory;
+
    @State() private formComplete: boolean;
 
    constructor() {
       this.formComplete = false;
    }
+
    public render() {
-      // see if this is a partner linkg, e.g., https://powerthepolls.org/aflcio
+      // see if this is a partner link, e.g., https://powerthepolls.org/aflcio
       const paths = document.location.pathname.split( "/" ).filter( x => x !== "" );
-      const urlParam = paths.length > 0 ? paths[0] : "";
-      // if the field in the URL matches a partner, get their partner ID (source or ID) used, else fallback to querystring arg "source"
-      const partner = ( PartnerList.filter( x => x.id === urlParam.toLowerCase() ) || [null] )[0];
-      const partnerId = partner?.source || partner?.id || getParams()?.source;
+      const urlParam = paths.length > 0 ? paths[0].toLowerCase() : "";
+      const partner = urlParam != null
+         ? ( PartnerList.filter(
+            p => ( p.vanityUrl && p.vanityUrl.toLowerCase() === urlParam ) || p.partnerId.toLowerCase() === urlParam,
+         ) || [null] )[0]
+         : null;
+      const partnerId = partner?.partnerId || getParams()?.source;
+
+      let daysLeft = Math.round( ( new Date( 2020, 9, 1 ).getTime() - Date.now() ) / 1000 / 60 / 60 / 24 / 7 ) * 7;
+      // count down every 10 days (since the 2020-10-01 end is arbitrary) by extracting off the days less than 10 and rounding up or down
+      daysLeft = ( daysLeft - daysLeft % 10 ) + Math.round( daysLeft % 10 / 10 ) * 10;
+
+      // change URL to /signup if the partner ID is invalid so there is no question that the partnerID will not be included in the form
+      if( urlParam !== "" && urlParam !== SIGNUP_PATH && partner == null ) {
+         this.history?.replace( "/" + SIGNUP_PATH );
+      } else if( partner != null
+         && ( ( partner.vanityUrl && paths[0] !== partner.vanityUrl )
+            || ( partner.vanityUrl == null && paths[0] !== partner.partnerId ) )
+      ) {
+         // normalize the URL if we've found a partner
+         this.history?.replace( "/" + ( partner.vanityUrl != null ? partner.vanityUrl : partner.partnerId ) );
+      }
+
       const formCompleted = () => {
          analytics.signup();
          this.formComplete = true;
       };
+
       const formError = ( err: any ) => {
          console.log( "Error submitting data", err );
       };
-      let daysLeft = Math.round( ( new Date( 2020, 9, 1 ).getTime() - Date.now() ) / 1000 / 60 / 60 / 24 / 7 ) * 7;
-      // count down every 10 days (since the 2020-10-01 end is arbitrary) by extracting off the days less than 10 and rounding up or down
-      daysLeft = ( daysLeft - daysLeft % 10 ) + Math.round( daysLeft % 10 / 10 ) * 10;
+
       return (
          <Host>
             {!this.formComplete ? ( <Fragment>
@@ -52,7 +77,7 @@ export class PageForm {
                   alt="Power the Polls"
                   src="/assets/images/logo-icon-pink.png"
                />
-               { partner?.customLandingLogo && (<img class="custom-logo" src={`/assets/images/partners/${partner.logo}`} title={partner.name} />)}
+               {partner?.customLandingLogo && ( <img class="custom-logo" src={`/assets/images/partners/${partner.logo}`} title={partner.name} /> )}
                <h1>America is facing a record shortage of poll workers. </h1>
                <p>
                   As coronavirus continues to impact Americans across the country, we are also seeing a staggering decrease in poll workers &mdash;
@@ -73,7 +98,6 @@ export class PageForm {
             </Fragment> ) : null}
             <power-the-polls-form
                id="form"
-               destination="https://ptp.actionkit.com/rest/v1/action/"
                partnerId={partnerId}
                optUserOutOfChase={partner?.optUserOutOfChase || false}
                customFormFieldLabel={partner?.customSignupFormField}

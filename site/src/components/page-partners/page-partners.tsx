@@ -1,5 +1,7 @@
 import { Component, h, Host, Prop } from "@stencil/core";
 
+import { Partner } from "../../data/PartnerList";
+
 @Component( {
    tag: "page-partners",
    styleUrl: "page-partners.scss",
@@ -10,7 +12,7 @@ export class PagePartners {
    /**
     * List of all the partner logos to display
     */
-   @Prop() public partners?: { logo: string, name: string, founding: boolean, dark?: boolean }[];
+   @Prop() public partners?: Partner[];
 
    public render() {
       const partners = this.partners || [];
@@ -48,7 +50,7 @@ export class PagePartners {
          </p>
          <div class="partner-logos">
             {partners.map( partner => (
-               partner.founding && partner.logo && ( <div class={partner.dark ? "dark" : ""}><img
+               partner.founding && partner.logo && ( <div class={partner.logoIsDark ? "dark" : ""}><img
                   src={`/assets/images/partners/${partner.logo}`}
                   title={partner.name}
                /></div> )
@@ -58,7 +60,7 @@ export class PagePartners {
          <h3-bar>Partners</h3-bar>
          <div class="partner-logos">
             {partners.map( partner => (
-               !partner.founding && partner.logo && ( <div class={partner.dark ? "dark" : ""}><img
+               !partner.founding && partner.logo && ( <div class={partner.logoIsDark ? "dark" : ""}><img
                   src={`/assets/images/partners/${partner.logo}`}
                   title={partner.name}
                /></div> )

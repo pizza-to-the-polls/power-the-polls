@@ -9,6 +9,7 @@ page-partners {
       div {
          margin: 3em 3em 3em 1em;
          max-width: 140px;
+         width: 100%;
          @include on-mobile() {
             margin: 2em 2em 2em 0.5em;
             max-width: 120px;

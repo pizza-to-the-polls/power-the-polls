@@ -10,6 +10,7 @@
    },
    "scripts": {
       "dev": "stencil build --dev --watch --serve",
+      "dev:form": "cd ../power-the-polls-form && npm run build && cd ../site && npm run dev",
       "build": "npm run lint && stencil build --docs --no-cache",
       "release": "npm run build",
       "start": "npm run dev",
@@ -30,6 +31,6 @@
       "workbox-build": "^4.3.1"
    },
    "dependencies": {
-      "@ptp-us/power-the-polls-form": "^0.10.1"
+      "@ptp-us/power-the-polls-form": "^0.11.0-beta.2"
    }
 }

@@ -5,7 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
+import { MatchResults, RouterHistory } from "@stencil/router";
+import { Partner } from "./data/PartnerList";
 export namespace Components {
     interface AppRoot {
     }
@@ -32,6 +33,7 @@ export namespace Components {
         "data"?: { question: string, answer: string }[];
     }
     interface PageForm {
+        "history"?: RouterHistory;
         /**
           * The API key to access SmartyStreets which is used for address lookup.
          */
@@ -44,7 +46,7 @@ export namespace Components {
         /**
           * List of all the partner logos to display
          */
-        "partners"?: { logo: string, name: string, founding: boolean, dark?: boolean }[];
+        "partners"?: Partner[];
     }
     interface PagePrivacy {
     }
@@ -214,6 +216,7 @@ declare namespace LocalJSX {
         "data"?: { question: string, answer: string }[];
     }
     interface PageForm {
+        "history"?: RouterHistory;
         /**
           * The API key to access SmartyStreets which is used for address lookup.
          */
@@ -226,7 +229,7 @@ declare namespace LocalJSX {
         /**
           * List of all the partner logos to display
          */
-        "partners"?: { logo: string, name: string, founding: boolean, dark?: boolean }[];
+        "partners"?: Partner[];
     }
     interface PagePrivacy {
     }

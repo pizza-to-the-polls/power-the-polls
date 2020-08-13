@@ -1,7 +1,8 @@
-import { Component, Event, EventEmitter, FunctionalComponent, h, Host, Prop, State } from "@stencil/core";
+import { Component, Event, EventEmitter, FunctionalComponent, h, Host, Method, Prop, State } from "@stencil/core";
 
 import { PartnerStates, SemiPartnerStates } from "../../data";
 import { toQueryString } from "../../util";
+import { PtpLink } from "../../util/PtpLink";
 
 /**
  * Empty container element, i.e.: `<></>`
@@ -60,15 +61,24 @@ export class PowerThePollsForm {
     */
    private destination?: string;
 
-   @State() private isFormComplete: boolean;
+   @State() private formStatus: "incomplete" | "submitting" | "completed";
    @State() private city?: string;
    @State() private county?: string;
    @State() private state?: string;
 
    constructor() {
-      this.isFormComplete = false;
+      this.formStatus = "incomplete";
       this.optUserOutOfChase = false;
       this.destination = "https" + "://ptp.actionkit.com/rest/v1/action/";
+   }
+
+   @Method()
+   public reset() {
+      this.formStatus = "incomplete";
+      this.city = undefined;
+      this.county = undefined;
+      this.state = undefined;
+      return Promise.resolve();
    }
 
    public render() {
@@ -76,7 +86,7 @@ export class PowerThePollsForm {
       const chase = this.optUserOutOfChase === true || ( this.optUserOutOfChase as any ) === "true" ? false : true;
       const partnerField = this.customFormFieldLabel;
       const submissionUrl = this.destination;
-      let ski = "SMARTY_STREETS_KEY"; // injected by build
+      let ski = "SMARTY_STREETS_KEY"; // injected by build, see stencil.config.ts
       const sk = this.smartyStreetsApiKey || ( ski === "none" ? undefined : ski );
 
       // Adapted from https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
@@ -95,9 +105,11 @@ export class PowerThePollsForm {
                ( {} as any ),
             );
             // hacky way to get the data from address-input without wiring up events or callbacks
-            this.city = data.city || "";
-            this.county = data.action_county || "";
-            this.state = data.state || "";
+            const city = data.city || "";
+            const county = data.action_county || "";
+            const state = data.state || "";
+
+            this.formStatus = "submitting";
 
             // submit to actionkit
             fetch( form.action, {
@@ -113,7 +125,10 @@ export class PowerThePollsForm {
                      || response.status === 0 /*we're currently making a simple no-cors request and can't get the status; presume success*/ ) {
                      let evt = this.submitCompleted.emit();
                      if( !evt.defaultPrevented ) {
-                        this.isFormComplete = true;
+                        this.formStatus = "completed";
+                        this.city = city;
+                        this.county = county;
+                        this.state = state;
                      }
                   } else {
                      response.json()
@@ -132,8 +147,9 @@ export class PowerThePollsForm {
             return false;
          }
       };
+
       return ( <Host>
-         {this.isFormComplete ? (
+         {this.formStatus === "completed" ? (
             <article>
                {this.state != null && this.state in PartnerStates ?
                   (
@@ -251,7 +267,7 @@ export class PowerThePollsForm {
                {chase && (
                   <p class="disclaimer">
                      By signing up, you agree to receive occasional emails or text messages from Power the Polls and
-                     accept our <stencil-route-link url="/privacy">Privacy Policy</stencil-route-link>. You can unsubscribe
+                     accept our <PtpLink path="/privacy">Privacy Policy</PtpLink>. You can unsubscribe
                      at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
                   </p>
                )}

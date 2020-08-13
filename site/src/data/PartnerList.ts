@@ -1,8 +1,16 @@
 export interface Partner {
    /**
-    * Unique ID for this partner
+    * The key to use for thie source in ActionKit and for a vanity URL `https://powerthepolls.org/{partnerId}`
+    * for the partner which will include their partnerID when the form is submitted
     */
-   readonly id: string;
+   readonly partnerId: string;
+
+   /**
+    * Optional vanity URL which will result in `https://powerthepolls.org/{additionalVanityUrl}` including `partnerId`
+    * upon submission. Note that `partnerId` will itself always be a valid URL (`https://powerthepolls.org/{partnerId}`),
+    * so this is only needed if there is an alternative URL desired.
+    */
+   readonly vanityUrl?: string;
 
    /**
     * The full name of this partner
@@ -10,16 +18,11 @@ export interface Partner {
    readonly name: string;
 
    /**
-    * A logo for partners that should be displayed on the partners page.
-    * If no logo is provided, the partner will no appear on page-partners.tsx
+    * A logo for partners that should be displayed on the `/partners` page (page-partners.tsx). Images are sourced
+    * from `/site/public/assets/images/partners/*`). If no logo is provided, the partner will no appear on the
+    * Partners page.
     */
    readonly logo?: string;
-
-   /**
-    * The key to use for thie source in ActionKit. If `undefined`, then the value
-    * of `id` should be used instead.
-    */
-   readonly source?: string;
 
    /**
     * By, default users are opted into chase in ActionKit.
@@ -32,478 +35,482 @@ export interface Partner {
    readonly founding?: boolean;
 
    /**
-    * The label for an additional field to be displayed on the signup form
+    * The label for an additional field to be displayed on the signup form. If not provided, no additional field
+    * will be displayed.
     */
    readonly customSignupFormField?: string;
 
    /**
-    * Whether to include the partner logo on the landing page.
+    * Whether to include the partner `logo` on the landing page of the partner's vanity URL (either
+    * `https://powerthepolls.org/{partnerId}` or `https://powerthepolls.org/{additionalVanityUrl}`).
     */
    readonly customLandingLogo?: boolean;
 
    /**
-    *
+    * If true, the `logo`, when displayed, will receive a white background.
     */
-   readonly dark?: boolean;
+   readonly logoIsDark?: boolean;
 }
 
 const data: Partner[] = [
    {
-      id: "911day",
+      partnerId: "911day",
       name: "9/11 Day",
       logo: "911-day.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "acs",
-      logo: "acs.png",
+      partnerId: "american-constitution-society",
+      vanityUrl: "acs",
       name: "American Constitution Society",
-      source: "american-constitution-society",
+      logo: "acs.png",
    },
    {
+      partnerId: "actionbutton",
       name: "Action Button",
-      id: "actionbutton",
       logo: "action-button.png",
    },
    {
-      id: "aflcio",
+      partnerId: "labor-aflcio",
+      vanityUrl: "aflcio",
       name: "AFL-CIO",
-      source: "labor-aflcio",
       optUserOutOfChase: true,
       customSignupFormField: "Union Name",
       logo: "aflcio.svg",
       customLandingLogo: true,
    },
    {
-      id: "afscme",
+      partnerId: "labor-afscme",
+      vanityUrl: "afscme",
       name: "AFSCME",
-      source: "labor-afscme",
       logo: "afscme.png",
       optUserOutOfChase: true,
       customLandingLogo: true,
    },
    {
-      id: "aft",
+      vanityUrl: "aft",
       name: "AFT",
-      source: "labor-aft",
+      partnerId: "labor-aft",
       optUserOutOfChase: true,
    },
    {
-      id: "allin",
+      partnerId: "allin",
       name: "All In",
       logo: "all-in.svg",
    },
    {
-      id: "AYO",
+      partnerId: "AYO",
       name: "Alliance for Youth Organizing",
       logo: "alliance-for-youth-organizing.png",
       founding: true,
    },
    {
-      id: "alliance-students-at-the-polls",
+      partnerId: "alliance-students-at-the-polls",
       name: "Alliance Students at the Polls",
       logo: "alliance-students-at-the-polls.png",
    },
    {
-      id: "american-promise",
+      partnerId: "american-promise",
       name: "American Promise",
       logo: "american-promise.png",
    },
    {
-      id: "baltimore-votes",
+      partnerId: "baltimore-votes",
       name: "Baltimore Votes",
       logo: "baltimore-votes.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "blockpower",
+      partnerId: "blockpower",
       name: "Block Power",
       logo: "block-power.png",
    },
    {
-      id: "boys-and-girls-club",
+      partnerId: "boys-and-girls-clubs",
+      vanityUrl: "boys-and-girls-club",
       logo: "boys-and-girls-clubs.png",
       name: "Boys and Girls Clubs of America",
-      source: "boys-and-girls-clubs",
    },
    {
-      id: "bbyo",
+      partnerId: "bbyo",
       name: "BBYO",
       logo: "bbyo.png",
    },
    {
-      id: "big-tent-usa",
+      partnerId: "big-tent-usa",
       name: "Big Tent USA",
       logo: "big-tent-usa.jpeg",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "billieeilish",
+      partnerId: "BillieEilish",
       name: "Billie Eilish",
-      source: "BillieEilish",
    },
    {
-      id: "breakout",
+      partnerId: "breakout",
       name: "Breakout",
       logo: "breakout.png",
    },
    {
-      id: "burton",
+      partnerId: "burton",
       name: "Burton",
       logo: "burton.png",
    },
    {
-      id: "campus",
+      partnerId: "campus",
       name: "Campus Compact",
       logo: "campus-compact.png",
    },
    {
-      id: "campusvote",
+      partnerId: "campusvote",
       name: "Campus Vote Project",
       logo: "campus-vote-project.png",
    },
    {
-      id: "caa",
+      partnerId: "caa",
       name: "CAA Foundation",
       logo: "caa-foundation.png",
       founding: true,
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "cbs",
+      partnerId: "cbs",
       name: "CBS",
    },
    {
-      id: "cc",
+      partnerId: "ComedyCentral",
+      vanityUrl: "cc",
       name: "Comedy Central",
       logo: "comedy-central.png",
-      source: "ComedyCentral",
       founding: true,
    },
    {
-      id: "civicgeorgia",
+      vanityUrl: "civicgeorgia",
       logo: "civi-georgia.png",
       name: "Civic Georgia",
-      source: "civic-georgia",
+      partnerId: "civic-georgia",
    },
    {
-      id: "civicalliance",
+      partnerId: "CivicAlliance",
       name: "Civic Alliance",
       logo: "civic-alliance.png",
-      source: "CivicAlliance",
       founding: true,
    },
    {
-      id: "civil-review-board",
+      partnerId: "civil-review-board",
       name: "Civil Review Board",
       logo: "civil-review-board.jpg",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "CrookedMedia",
+      partnerId: "CrookedMedia",
       name: "Crooked Media",
       logo: "vsa.png",
    },
    {
-      id: "defendourfuture",
+      partnerId: "defendourfuture",
       name: "Defend Our Future",
       logo: "defend-our-future.png",
    },
    {
-      id: "evc",
+      partnerId: "evc",
       logo: "every-vote-counts.png",
       name: "Every Vote Counts",
    },
    {
-      id: "fairelections",
+      partnerId: "FairElections",
       logo: "fair-elections-center.png",
       name: "Fair Elections Center",
-      source: "FairElections",
       founding: true,
    },
    {
-      id: "feministmajority",
+      partnerId: "feministmajority",
       logo: "feminist-majority-foundation.png",
       name: "Feminist Majority Foundation",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "fl",
+      partnerId: "fl",
       name: "Florida",
    },
    {
-      id: "global-black-caucus",
+      partnerId: "global-black-caucus",
       name: "Global Black Caucus",
       logo: "global-black-caucus.jpg",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "headcount",
+      partnerId: "HeadCount",
       name: "HeadCount",
       logo: "head-count.png",
-      source: "HeadCount",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "impactual",
+      partnerId: "impactual",
       name: "Impactual",
       logo: "impactual.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "jolt",
+      partnerId: "jolt",
       name: "Jolt Action",
       logo: "jolt.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "leadershipnow",
+      partnerId: "leadershipnow",
       name: "Leadership Now Project",
       logo: "leadership-now-project.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "leadmn",
+      partnerId: "leadmn",
       name: "Lead MN",
       logo: "lead-mn.jpg",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "levis",
+      partnerId: "levis",
       logo: "levi-strauss.png",
       name: "Levi's",
-      source: "Levis",
       founding: true,
    },
    {
-      id: "mtv",
+      partnerId: "mtv",
       logo: "mtv.png",
       name: "MTV",
       founding: true,
    },
    {
-      id: "miami-dade-college",
+      partnerId: "miami-dade-college",
       name: "Miami Dade College",
       logo: "miami-dade-college.jpg",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "AAAAAAAAAAAA",
+      partnerId: "NDRN",
       logo: "nrdn.png",
       name: "National Disability Rights Network",
-      source: "NDRN",
       founding: true,
    },
    {
-      id: "mcn",
+      partnerId: "mcn",
       name: "Master Clinician Network",
       logo: "mcn.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "mitzvote",
+      partnerId: "mitzvote",
       name: "Mitz Vote",
       logo: "mitz-vote.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "mweg",
+      partnerId: "mweg",
       name: "Mormon Women For Ethical Government",
       logo: "mweg.svg",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "national-coalition-for-accessible-voting",
+      partnerId: "national-coalition-for-accessible-voting",
       name: "National College for Accessible Voting",
       logo: "national-coalition-for-accessible-voting.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "ncbcp",
+      partnerId: "NACDD",
+      name: "National Association of Councils on Developmental Disabilities",
+      logo: "nacdd.png",
+      logoIsDark: true,
+   },
+   {
+      partnerId: "ncbcp",
       name: "National Coalition On Black Civic Participation",
       logo: "ncbcp.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "microsoft",
+      partnerId: "microsoft",
       name: "Microsoft",
-      source: "Microsoft",
    },
    {
-      id: "microsoftint",
+      partnerId: "MicrosoftInt",
       name: "Microsoft",
-      source: "MicrosoftInt",
    },
    {
-      id: "nea",
+      partnerId: "labor-nea",
+      vanityUrl: "nea",
       name: "NEA",
-      source: "labor-nea",
       optUserOutOfChase: true,
    },
    {
+      partnerId: "omg-wtf",
       name: "OMG WTF",
-      id: "omg-wtf",
       logo: "omg-wtf.png",
    },
    {
-      id: "nh",
+      partnerId: "NARAL",
+      name: "NARAL Pro-Choice America",
+      logo: "naral.png",
+   },
+   {
+      partnerId: "nh",
       name: "New Hampshire",
    },
    {
-      id: "patagonia",
+      partnerId: "patagonia",
       logo: "patagonia.png",
       name: "Patagonia",
-      source: "Patagonia",
       founding: true,
    },
    {
-      id: "pizza",
+      partnerId: "Pizza",
       logo: "pizza-to-the-polls.png",
       name: "Pizza to the Polls",
-      source: "Pizza",
       founding: true,
    },
    {
-      id: "AAAAAAApublicwiseAAAAA",
+      partnerId: "publicwise",
       logo: "public-wise.png",
       name: "Public Wise",
    },
    {
-      id: "repairtheworld",
+      partnerId: "repairtheworld",
       logo: "repair-the-world.png",
       name: "Repair The World",
    },
    {
-      id: "represent-us",
+      partnerId: "represent-us",
       name: "Represent US",
       logo: "represent-us.png",
    },
    {
-      id: "salesforce",
+      partnerId: "Salesforce",
       name: "Salesforce",
-      source: "Salesforce",
    },
    {
-      id: "scholars-strategy-network",
+      partnerId: "scholars-strategy-network",
       name: "Scholars Strategy Network",
       logo: "scholars-strategy-network.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "seiu",
+      partnerId: "labor-seiu",
+      vanityUrl: "seiu",
       name: "SEUI",
-      source: "labor-seiu",
       optUserOutOfChase: true,
    },
    {
-      id: "slsv",
+      partnerId: "SLSV",
       logo: "slsv.png",
       name: "Students Learn Students Vote",
-      source: "SLSV",
       founding: true,
    },
    {
-      id: "socially-driven-music",
+      partnerId: "socially-driven-music",
       name: "Socially Driven Music",
       logo: "socially-driven-music.png",
    },
    {
-      id: "starbucks",
+      partnerId: "starbucks",
       name: "Starbucks",
    },
    {
-      id: "sva",
+      partnerId: "SUA",
+      name: "Stand Up America",
+      logo: "sua.png",
+   },
+   {
+      partnerId: "sva",
       name: "Student Veterans of America",
       logo: "sva.png",
    },
    {
-      id: "texas-lbj-school",
+      partnerId: "texas-lbj-school",
       name: "Texas LBJ School",
       logo: "texas-lbj-school.png",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "tds",
+      partnerId: "TheDailyShow",
+      vanityUrl: "tds",
       name: "The Daily Show",
-      source: "TheDailyShow",
    },
    {
-      id: "theSkimm",
+      partnerId: "skimm",
+      vanityUrl: "theSkimm",
       logo: "the-skimm.png",
       name: "theSkimm",
-      source: "skimm",
    },
    {
-      id: "timetovote",
+      partnerId: "TimeToVote",
       logo: "time-to-vote.png",
       name: "Time to Vote",
-      source: "TimeToVote",
       founding: true,
    },
    {
+      partnerId: "town-hall-project",
       name: "Town Hall Project",
-      id: "town-hall-project",
       logo: "town-hall-project.png",
    },
    {
-      id: "uber",
+      partnerId: "Uber",
       logo: "uber.png",
       name: "Uber",
-      source: "Uber",
       founding: true,
    },
    {
-      id: "unitedway",
+      partnerId: "UFCW",
+      name: "United Food & Commercial Workers Intl Union",
+      logo: "",
+   },
+   {
+      partnerId: "UnitedWay",
       logo: "unitedway.png",
       name: "United Way",
-      source: "UnitedWay",
       founding: true,
    },
    {
-      id: "unitehere",
-      logo: "united-here.png",
+      partnerId: "UniteHere",
+      logo: "unite-here.png",
       name: "Unite Here!",
-      source: "UniteHere",
    },
    {
-      id: "viacomcbs",
+      partnerId: "ViacomCBS",
       name: "ViacomCBS",
-      source: "ViacomCBS",
    },
    {
-      id: "Vote411",
+      partnerId: "Vote411",
       name: "Vote411",
       logo: "vote-411.png",
    },
    {
-      id: "wecanvote",
+      partnerId: "WeCanVote",
       logo: "wecanvote.png",
       name: "We Can Vote",
-      source: "WeCanVote",
       founding: true,
    },
    {
-      id: "weslayan-engaged",
+      partnerId: "weslayan-engaged",
       name: "Weslayan Engaged",
       logo: "weslayan-engaged.jpg",
-      dark: true,
+      logoIsDark: true,
    },
    {
-      id: "when-we-all-vote",
+      partnerId: "when-we-all-vote",
       logo: "when-we-all-vote.png",
       name: "When We All Vote",
-      source: "when-we-all-vote",
    },
    {
-      id: "wi",
+      partnerId: "wi",
       name: "Wisconsin",
    },
    {
-      id: "work-elections",
+      partnerId: "work-elections",
       name: "Work Elections",
    },
    {
-      id: "YMCA",
+      partnerId: "YMCA",
       name: "YMCA",
       logo: "ymca.png",
    },

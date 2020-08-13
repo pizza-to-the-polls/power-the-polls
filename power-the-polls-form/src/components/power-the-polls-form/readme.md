@@ -23,6 +23,19 @@
 | `submitError`     | Dispatched when there is an error submitting the form to `destination`                          | `CustomEvent<any>` |
 
 
+## Methods
+
+### `reset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on

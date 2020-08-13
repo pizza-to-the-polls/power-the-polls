@@ -1,6 +1,7 @@
 import { Component, h, Host, Prop, State } from "@stencil/core";
 
 import { Jurisdiction } from "../../data/WorkElections";
+import { PtpLink } from "../../util/PtpLink";
 import { fetchFromWE } from "../../util/WorkElections";
 
 const Reqs = ( jurisdiction: Jurisdiction ) => (
@@ -82,7 +83,7 @@ export class JurisdictionInfo {
                ( <p>
                   {j.jurisdiction_link_text}
                   {" "}
-                  <stencil-route-link url={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</stencil-route-link>.
+                  <PtpLink path={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</PtpLink>.
                </p> )}
 
             <div>

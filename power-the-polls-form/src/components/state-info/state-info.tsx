@@ -1,6 +1,7 @@
 import { Component, h, Prop, State } from "@stencil/core";
 
 import { Jurisdiction, StateInfo } from "../../data/WorkElections";
+import { PtpLink } from "../../util/PtpLink";
 import { fetchFromWE } from "../../util/WorkElections";
 
 /**
@@ -44,12 +45,12 @@ export class StateInfoComponent {
                   {info.notes && <p>{info.notes}</p>}
                   <div class="jurisdictions">
                      {jurisdictions.map( ( { id, name } ) => (
-                        <stencil-route-link
-                           url={`/jurisdiction/${id}`}
+                        <PtpLink
+                           path={`/jurisdiction/${id}`}
                            anchorClass="jurisdiction"
                         >
                            {name}
-                        </stencil-route-link>
+                        </PtpLink>
                      ) )}
                   </div>
                </div>
