@@ -28,6 +28,7 @@ graph TD;
   poll-worker-info --> state-info
   jurisdiction-info --> stencil-route-link
   state-info --> stencil-route-link
+  address-input --> possibly-hidden-select
   style page-search fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

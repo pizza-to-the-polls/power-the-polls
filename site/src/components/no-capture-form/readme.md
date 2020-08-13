@@ -32,6 +32,7 @@ graph TD;
   poll-worker-info --> state-info
   jurisdiction-info --> stencil-route-link
   state-info --> stencil-route-link
+  address-input --> possibly-hidden-select
   page-search --> no-capture-form
   style no-capture-form fill:#f9f,stroke:#333,stroke-width:4px
 ```
