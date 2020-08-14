@@ -17,10 +17,10 @@ export class AddressInput {
     */
    @Prop() public smartyStreetsApiKey: string;
 
-   @State() private zipValue: string;
    @State() private cityValue: string;
    @State() private countyValue: string;
    @State() private stateValue: string;
+   @State() private zipValue: string;
    @State() private cityOptions: Set<string>;
    @State() private countyOptions: Set<string>;
    @State() private stateOptions: Map<string, string>;
@@ -39,23 +39,23 @@ export class AddressInput {
    public render() {
       const zipValidationRegex = /^\d{5}$/;
 
-      const onZipInputChange = (event: Event) => {
+      const onZipInputChange = ( event: Event ) => {
          this.zipValue = ( event.target as HTMLInputElement ).value;
 
-         if(zipValidationRegex.test(this.zipValue)) {
-            ZipGeocode(this.zipValue, this.smartyStreetsApiKey).
-            then((result) => {
-               if("error" in result) {
-                  console.log(result.error);
-               } else {
-                  this.cityOptions = result.cities;
-                  this.cityValue = this.cityOptions.values().next().value;
-                  this.countyOptions = result.counties;
-                  this.countyValue = this.countyOptions.values().next().value;
-                  this.stateOptions = result.states;
-                  this.stateValue = this.stateOptions.keys().next().value;
-               }
-            });
+         if( zipValidationRegex.test( this.zipValue ) ) {
+            ZipGeocode( this.zipValue, this.smartyStreetsApiKey ).
+               then( ( result ) => {
+                  if( "error" in result ) {
+                     console.log( result.error );
+                  } else {
+                     this.cityOptions = result.cities;
+                     this.cityValue = this.cityOptions.values().next().value;
+                     this.countyOptions = result.counties;
+                     this.countyValue = this.countyOptions.values().next().value;
+                     this.stateOptions = result.states;
+                     this.stateValue = this.stateOptions.keys().next().value;
+                  }
+               } );
          }
       };
 
@@ -83,7 +83,7 @@ export class AddressInput {
 
          <possibly-hidden-select
             fieldLabel="County"
-            name="action_county"
+            name="user_county"
             selected={this.countyValue}
             options={this.countyOptions}
          />
