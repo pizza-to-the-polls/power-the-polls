@@ -24,7 +24,7 @@ export class NoCaptureForm {
     const submitForm = ( e: Event ) => {
        const form = e.target as HTMLFormElement;
 
-       const [city, county, state] = ["city", "action_county", "state"].map(attr => {
+       const [city, county, state] = ["city", "user_county", "state"].map(attr => {
           const input = form.querySelector(`[name=${attr}]`) as HTMLFormElement;
           return input ? input.value : null;
        });
