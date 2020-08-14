@@ -115,6 +115,12 @@ const data: Partner[] = [
       logo: "american-promise.png",
    },
    {
+      name: "Bad Robot",
+      partnerId: "BadRobot",
+      logo: "bad-robot.png",
+      logoIsDark: true,
+   },
+   {
       partnerId: "baltimore-votes",
       name: "Baltimore Votes",
       logo: "baltimore-votes.png",
@@ -145,6 +151,10 @@ const data: Partner[] = [
    {
       partnerId: "BillieEilish",
       name: "Billie Eilish",
+   },
+   {
+      partnerId: "blk",
+      name: "BLK",
    },
    {
       partnerId: "breakout",
@@ -191,6 +201,11 @@ const data: Partner[] = [
       partnerId: "civic-georgia",
    },
    {
+      partnerId: "Civic",
+      name: "Civic",
+      logo: "civic.png",
+   },
+   {
       partnerId: "CivicAlliance",
       name: "Civic Alliance",
       logo: "civic-alliance.png",
@@ -216,6 +231,11 @@ const data: Partner[] = [
       partnerId: "evc",
       logo: "every-vote-counts.png",
       name: "Every Vote Counts",
+   },
+   {
+      name: "Expedia",
+      partnerId: "expedia",
+      vanityUrl: "expediagroupvotes2020",
    },
    {
       partnerId: "FairElections",
@@ -332,6 +352,8 @@ const data: Partner[] = [
    {
       partnerId: "microsoft",
       name: "Microsoft",
+      logo: "microsoft.png",
+      logoIsDark: true,
    },
    {
       partnerId: "MicrosoftInt",
@@ -387,6 +409,7 @@ const data: Partner[] = [
    {
       partnerId: "Salesforce",
       name: "Salesforce",
+      logo: "salesforce.png",
    },
    {
       partnerId: "scholars-strategy-network",
@@ -443,10 +466,28 @@ const data: Partner[] = [
       name: "theSkimm",
    },
    {
+      name: "Spiro",
+      partnerId: "Spiro",
+      logo: "spiro.jpg",
+      logoIsDark: true,
+   },
+   {
+      name: "Starbucks",
+      partnerId: "starbucks",
+      logo: "starbucks.png",
+      logoIsDark: true,
+   },
+   {
       partnerId: "TimeToVote",
       logo: "time-to-vote.png",
       name: "Time to Vote",
       founding: true,
+   },
+   {
+      name: "Twitter",
+      logo: "twitter.png",
+      logoIsDark: true,
+      partnerId: "Twitter",
    },
    {
       partnerId: "town-hall-project",
@@ -483,6 +524,11 @@ const data: Partner[] = [
       partnerId: "Vote411",
       name: "Vote411",
       logo: "vote-411.png",
+   },
+   {
+      name: "Warby Parker",
+      partnerId: "warbyparker",
+      logo: "warby-parker.png",
    },
    {
       partnerId: "WeCanVote",
