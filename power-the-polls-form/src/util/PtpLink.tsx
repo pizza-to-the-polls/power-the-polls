@@ -4,7 +4,7 @@ import { FunctionalComponent } from "@stencil/router/dist/types/stencil.core";
 
 export type PtpLinkProps = Partial<Components.StencilRouteLink> & {
    /**
-    * The rooted relative path to link to. Will have "https://powerthepolls.org" added if hosted ofd-site
+    * The rooted relative path to link to. Will have "https://powerthepolls.org" prefixed if hosted off-site
     */
    path?: string;
 };
