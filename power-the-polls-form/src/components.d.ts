@@ -19,6 +19,9 @@ export namespace Components {
          */
         "jurisdictionId"?: string | number;
     }
+    interface LoadingSpinner {
+        "dark": boolean;
+    }
     interface PollWorkerInfo {
         /**
           * City for matching to location
@@ -80,6 +83,12 @@ declare global {
         prototype: HTMLJurisdictionInfoElement;
         new (): HTMLJurisdictionInfoElement;
     };
+    interface HTMLLoadingSpinnerElement extends Components.LoadingSpinner, HTMLStencilElement {
+    }
+    var HTMLLoadingSpinnerElement: {
+        prototype: HTMLLoadingSpinnerElement;
+        new (): HTMLLoadingSpinnerElement;
+    };
     interface HTMLPollWorkerInfoElement extends Components.PollWorkerInfo, HTMLStencilElement {
     }
     var HTMLPollWorkerInfoElement: {
@@ -107,6 +116,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "address-input": HTMLAddressInputElement;
         "jurisdiction-info": HTMLJurisdictionInfoElement;
+        "loading-spinner": HTMLLoadingSpinnerElement;
         "poll-worker-info": HTMLPollWorkerInfoElement;
         "possibly-hidden-select": HTMLPossiblyHiddenSelectElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
@@ -125,6 +135,9 @@ declare namespace LocalJSX {
           * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: string | number;
+    }
+    interface LoadingSpinner {
+        "dark"?: boolean;
     }
     interface PollWorkerInfo {
         /**
@@ -183,6 +196,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "address-input": AddressInput;
         "jurisdiction-info": JurisdictionInfo;
+        "loading-spinner": LoadingSpinner;
         "poll-worker-info": PollWorkerInfo;
         "possibly-hidden-select": PossiblyHiddenSelect;
         "power-the-polls-form": PowerThePollsForm;
@@ -195,6 +209,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "address-input": LocalJSX.AddressInput & JSXBase.HTMLAttributes<HTMLAddressInputElement>;
             "jurisdiction-info": LocalJSX.JurisdictionInfo & JSXBase.HTMLAttributes<HTMLJurisdictionInfoElement>;
+            "loading-spinner": LocalJSX.LoadingSpinner & JSXBase.HTMLAttributes<HTMLLoadingSpinnerElement>;
             "poll-worker-info": LocalJSX.PollWorkerInfo & JSXBase.HTMLAttributes<HTMLPollWorkerInfoElement>;
             "possibly-hidden-select": LocalJSX.PossiblyHiddenSelect & JSXBase.HTMLAttributes<HTMLPossiblyHiddenSelectElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
