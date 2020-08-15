@@ -26,7 +26,9 @@ export default async ( zipcode: string, authId: string ): Promise<ZipGeocoding.R
       ).then( ( response: USZipCode.QueryResult ) => {
          let result: USZipCode.QueryResultItem = response[0];
 
-         if( result.reason ) { return { error: result.reason }; }
+         if( result.reason ) {
+            return { error: result.reason };
+         }
 
          let cities = new Set<string>();
          let counties = new Set<string>();

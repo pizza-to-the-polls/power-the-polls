@@ -1,0 +1,20 @@
+{
+   "name": "enrich-actionkit-data",
+   "version": "1.0.0",
+   "description": "Augment ActionKit data with county and jurisdiction info",
+   "main": "index.js",
+   "scripts": {
+      "add-county": "rimraf add_county.js && rimraf output1.csv && tsc add_county.ts && node add_county.js",
+      "add-jurisdiction": "rimraf add_jurisdiction.js && rimraf output2.csv && cd ../../ && tsc --build power-the-polls-form && cd scripts/enrich-actionkit-data && tsc add_jurisdiction.ts && node add_jurisdiction.js"
+   },
+   "author": "",
+   "license": "ISC",
+   "devDependencies": {
+      "@types/node": "^14.0.27",
+      "fast-csv": "^4.3.1",
+      "node-fetch": "^2.6.0",
+      "rimraf": "^3.0.2",
+      "tslint": "^6.1.3",
+      "typescript": "^3.9.7"
+   }
+}

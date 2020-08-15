@@ -31,7 +31,9 @@ export const findJurisdiction = ( state: string, county?: string, city?: string 
          `${county} County`,
       ].find( type => stateData.jurisdictions[type] );
 
-      if( found ) { return stateData.jurisdictions[found]; }
+      if( found ) {
+         return stateData.jurisdictions[found];
+      }
    }
 
    return null;

@@ -25,3 +25,9 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+
+/power-the-polls-form/src/**/*.js.map
+/power-the-polls-form/src/**/*.js
+/power-the-polls-form/src/**/*.d.ts
+tsconfig.tsbuildinfo
+/scripts/enrich-actionkit-data/*.js
