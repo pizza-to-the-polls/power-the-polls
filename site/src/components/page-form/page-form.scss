@@ -12,12 +12,17 @@ page-form {
       margin: 0 0 2em 0;
    }
    .custom-logo {
+      text-align: center;
+      margin: 0 0 2em 0;
       max-height: 120px;
       @include on-mobile() {
          max-height: 80px;
       }
-      text-align: center;
-      margin: 0 0 3em 0;
+      &.dark {
+         padding: 1em;
+         background-color: rgba($color: #fff, $alpha: 0.8);
+         border-radius: 10px;
+      }
    }
 
    .impact-boxes {

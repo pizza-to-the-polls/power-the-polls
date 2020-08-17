@@ -374,6 +374,8 @@ const data: Partner[] = [
       partnerId: "NARAL",
       name: "NARAL Pro-Choice America",
       logo: "naral.png",
+      logoIsDark: true,
+      customLandingLogo: true,
    },
    {
       partnerId: "nh",
@@ -503,7 +505,7 @@ const data: Partner[] = [
    {
       partnerId: "UFCW",
       name: "United Food & Commercial Workers Intl Union",
-      logo: "",
+      logo: "ufcw.png",
    },
    {
       partnerId: "UnitedWay",
