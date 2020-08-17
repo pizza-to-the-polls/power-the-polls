@@ -18,10 +18,10 @@ To do a full build, run `npm run build`.
 
 This is currently done manually
 
-1. Bump the version in `./package.json`
-2. Run `npm run release` to do a production build
+1. Bump the version in `./package.json`, if creating a beta version, make sure there is a revision, e.g., `1.0.0-beta.1`, `1.2.0-beta.24`.
+2. Run `npm run release` to do a production release. Run `npm run release:beta` to do a beta release.
 3. Enter your 2-factor auth key when prompted in order to publish to NPM
-4. Change `/site/package.json` to the latest version or use `npm update`
+4. You will then also want to change `/site/package.json` to this new version (or use `npm update`)
 
 ### Dependencies
 

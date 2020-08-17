@@ -108,7 +108,7 @@ export class PowerThePollsForm {
             );
             // hacky way to get the data from address-input without wiring up events or callbacks
             const city = data.city || "";
-            const county = data.action_county || "";
+            const county = data.user_county || "";
             const state = data.state || "";
 
             this.formStatus = "submitting";
