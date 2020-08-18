@@ -87,9 +87,9 @@ export class PowerThePollsForm {
       const partnerField = this.customFormFieldLabel;
       const submissionUrl = this.destination;
       let ski = "SMARTY_STREETS_KEY"; // injected by build, see stencil.config.js
-      const sk = this.smartyStreetsApiKey || ( ski === "none" ? undefined : ski );
+      const sk = this.smartyStreetsApiKey || ( ski === "SMARTY_" + "STREETS_KEY" || ski === "none" ? undefined : ski );
       if( sk == null ) {
-         console.log( "No SmartyStreets API key present" );
+         console.log( "API key not present. This is a bug in the power-the-polls-form component." );
       }
       // Adapted from https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
       const phoneValidationRegex = "\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}";
