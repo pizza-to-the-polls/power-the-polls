@@ -17,8 +17,8 @@ graph TD;
   page-redirector --> poll-worker-info
   poll-worker-info --> jurisdiction-info
   poll-worker-info --> state-info
-  jurisdiction-info --> stencil-route-link
-  state-info --> stencil-route-link
+  jurisdiction-info --> loading-spinner
+  state-info --> loading-spinner
   style page-redirector fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
