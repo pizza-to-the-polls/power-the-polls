@@ -31,3 +31,5 @@ UserInterfaceState.xcuserstate
 /power-the-polls-form/src/**/*.d.ts
 tsconfig.tsbuildinfo
 /scripts/enrich-actionkit-data/*.js
+
+/scripts/**/*.csv

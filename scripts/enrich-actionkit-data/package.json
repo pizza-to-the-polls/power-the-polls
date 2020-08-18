@@ -4,8 +4,8 @@
    "description": "Augment ActionKit data with county and jurisdiction info",
    "main": "index.js",
    "scripts": {
-      "add-county": "rimraf add_county.js && rimraf output1.csv && tsc add_county.ts && node add_county.js",
-      "add-jurisdiction": "rimraf add_jurisdiction.js && rimraf output2.csv && cd ../../ && tsc --build power-the-polls-form && cd scripts/enrich-actionkit-data && tsc add_jurisdiction.ts && node add_jurisdiction.js"
+      "add-county": "rimraf *.js && rimraf output1.csv && tsc add_county.ts && node add_county.js",
+      "add-jurisdiction": "rimraf *.js && rimraf output2.csv && tsc add_jurisdiction.ts && node add_jurisdiction.js"
    },
    "author": "",
    "license": "ISC",
