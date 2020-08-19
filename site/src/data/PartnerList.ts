@@ -115,6 +115,10 @@ const data: Partner[] = [
       logo: "american-promise.png",
    },
    {
+      name: "Arizona",
+      partnerId: "azadvocacy",
+   },
+   {
       name: "Bad Robot",
       partnerId: "BadRobot",
       logo: "bad-robot.png",
@@ -259,8 +263,12 @@ const data: Partner[] = [
       logo: "fenwick.png",
    },
    {
-      partnerId: "fl",
-      name: "Florida",
+      partnerId: "floridavoices",
+      name: "Florida Voices",
+   },
+   {
+      partnerId: "floridavotes",
+      name: "Florida Votes",
    },
    {
       partnerId: "global-black-caucus",
@@ -392,6 +400,10 @@ const data: Partner[] = [
       optUserOutOfChase: true,
    },
    {
+      name: "Nevada",
+      partnerId: "silverstatevoices",
+   },
+   {
       partnerId: "omg-wtf",
       name: "OMG WTF",
       logo: "omg-wtf.png",
@@ -410,7 +422,7 @@ const data: Partner[] = [
       customLandingLogo: true,
    },
    {
-      partnerId: "nh",
+      partnerId: "nhvotes",
       name: "New Hampshire",
    },
    {
@@ -587,7 +599,7 @@ const data: Partner[] = [
       name: "When We All Vote",
    },
    {
-      partnerId: "wi",
+      partnerId: "wivoices",
       name: "Wisconsin",
    },
    {
