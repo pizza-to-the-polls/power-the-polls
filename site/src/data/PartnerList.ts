@@ -155,6 +155,7 @@ const data: Partner[] = [
    {
       partnerId: "blk",
       name: "BLK",
+      logo: "blk.png",
    },
    {
       partnerId: "breakout",
@@ -234,8 +235,10 @@ const data: Partner[] = [
    },
    {
       name: "Expedia",
-      partnerId: "expedia",
+      partnerId: "expediagroup",
       vanityUrl: "expediagroupvotes2020",
+      logo: "expedia-group.png",
+      logoIsDark: true,
    },
    {
       partnerId: "FairElections",
@@ -248,6 +251,12 @@ const data: Partner[] = [
       logo: "feminist-majority-foundation.png",
       name: "Feminist Majority Foundation",
       logoIsDark: true,
+   },
+   {
+      name: "Fenwick & West",
+      partnerId: "fenwick",
+      logoIsDark: true,
+      logo: "fenwick.png",
    },
    {
       partnerId: "fl",
@@ -263,6 +272,12 @@ const data: Partner[] = [
       partnerId: "HeadCount",
       name: "HeadCount",
       logo: "head-count.png",
+      logoIsDark: true,
+   },
+   {
+      partnerId: "invision",
+      name: "InVision",
+      logo: "invision.jpg",
       logoIsDark: true,
    },
    {
@@ -296,10 +311,15 @@ const data: Partner[] = [
       founding: true,
    },
    {
-      partnerId: "mtv",
-      logo: "mtv.png",
-      name: "MTV",
-      founding: true,
+      name: "Lime",
+      partnerId: "lime",
+      logo: "lime.png",
+   },
+   {
+      name: "Lyft",
+      partnerId: "lyft",
+      logo: "lyft.png",
+      logoIsDark: true,
    },
    {
       partnerId: "miami-dade-college",
@@ -308,22 +328,32 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
-      partnerId: "NDRN",
-      logo: "nrdn.png",
-      name: "National Disability Rights Network",
-      founding: true,
-   },
-   {
       partnerId: "mcn",
       name: "Master Clinician Network",
       logo: "mcn.png",
       logoIsDark: true,
    },
    {
+      partnerId: "microsoft",
+      name: "Microsoft",
+      logo: "microsoft.png",
+      logoIsDark: true,
+   },
+   {
+      partnerId: "MicrosoftInt",
+      name: "Microsoft",
+   },
+   {
       partnerId: "mitzvote",
       name: "Mitz Vote",
       logo: "mitz-vote.png",
       logoIsDark: true,
+   },
+   {
+      partnerId: "mtv",
+      logo: "mtv.png",
+      name: "MTV",
+      founding: true,
    },
    {
       partnerId: "mweg",
@@ -344,20 +374,16 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "NDRN",
+      logo: "nrdn.png",
+      name: "National Disability Rights Network",
+      founding: true,
+   },
+   {
       partnerId: "ncbcp",
       name: "National Coalition On Black Civic Participation",
       logo: "ncbcp.png",
       logoIsDark: true,
-   },
-   {
-      partnerId: "microsoft",
-      name: "Microsoft",
-      logo: "microsoft.png",
-      logoIsDark: true,
-   },
-   {
-      partnerId: "MicrosoftInt",
-      name: "Microsoft",
    },
    {
       partnerId: "labor-nea",
@@ -369,6 +395,12 @@ const data: Partner[] = [
       partnerId: "omg-wtf",
       name: "OMG WTF",
       logo: "omg-wtf.png",
+   },
+   {
+      partnerId: "otherwiseincorporated",
+      name: "Otherwise Incorporated",
+      logo: "otherwise-incorporated.png",
+      logoIsDark: true,
    },
    {
       partnerId: "NARAL",
@@ -407,6 +439,11 @@ const data: Partner[] = [
       partnerId: "represent-us",
       name: "Represent US",
       logo: "represent-us.png",
+   },
+   {
+      name: "Richer Poorer",
+      partnerId: "richerpoorer",
+      logo: "richer-poorer.png",
    },
    {
       partnerId: "Salesforce",
@@ -451,17 +488,6 @@ const data: Partner[] = [
       logo: "sva.png",
    },
    {
-      partnerId: "texas-lbj-school",
-      name: "Texas LBJ School",
-      logo: "texas-lbj-school.png",
-      logoIsDark: true,
-   },
-   {
-      partnerId: "TheDailyShow",
-      vanityUrl: "tds",
-      name: "The Daily Show",
-   },
-   {
       partnerId: "skimm",
       vanityUrl: "theSkimm",
       logo: "the-skimm.png",
@@ -478,6 +504,17 @@ const data: Partner[] = [
       partnerId: "starbucks",
       logo: "starbucks.png",
       logoIsDark: true,
+   },
+   {
+      partnerId: "texas-lbj-school",
+      name: "Texas LBJ School",
+      logo: "texas-lbj-school.png",
+      logoIsDark: true,
+   },
+   {
+      partnerId: "TheDailyShow",
+      vanityUrl: "tds",
+      name: "The Daily Show",
    },
    {
       partnerId: "TimeToVote",
