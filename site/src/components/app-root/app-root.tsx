@@ -48,6 +48,7 @@ export class AppRoot {
          // if env var wasn't replaced at all or was replaced with a null/empty value, log an error
          console.error( "SMARTY_STREETS_KEY environment variable not present during build. Cannot continue." );
       }
+      const smartyStreetsApiKey = process.env.SMARTY_STREETS_KEY/*replaced with correct value by build*/;
 
       const toggleMenu = () => {
          this.menuIsActive = !this.menuIsActive;
@@ -135,9 +136,7 @@ export class AppRoot {
                         <stencil-route
                            url="/search"
                            component="page-search"
-                           componentProps={{
-                              smartyStreetsApiKey: process.env.SMARTY_STREETS_KEY/*replaced with correct value by build*/,
-                           }}
+                           componentProps={{ smartyStreetsApiKey: smartyStreetsApiKey }}
                         />
                         <stencil-route
                            url="/redirector"
@@ -153,9 +152,7 @@ export class AppRoot {
                         />
                         <stencil-route
                            component="page-form"
-                           componentProps={{
-                              smartyStreetsApiKey: process.env.SMARTY_STREETS_KEY/*replaced with correct value by build*/,
-                           }}
+                           componentProps={{ smartyStreetsApiKey: smartyStreetsApiKey }}
                         />
                      </stencil-route-switch>
                   </stencil-router>
