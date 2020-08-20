@@ -27,7 +27,7 @@ export class PagePartners {
 
    public render() {
       const partners = this.partners || [];
-      const hash = this.highlightedPartner;
+      const chosenPartner = this.highlightedPartner;
       return ( <Host>
          <h1>Power the Polls Partners</h1>
          <p>
@@ -65,7 +65,7 @@ export class PagePartners {
                <div
                   class={{
                      "dark": partner.logoIsDark ?? false,
-                     "chosen-partner": hash === partner.partnerId,
+                     "chosen-partner": chosenPartner === partner.partnerId,
                   }}
                   id={partner.partnerId}>
                   <img
@@ -82,7 +82,7 @@ export class PagePartners {
                <div
                   class={{
                      "dark": partner.logoIsDark ?? false,
-                     "chosen-partner": hash === partner.partnerId,
+                     "chosen-partner": chosenPartner === partner.partnerId,
                   }}
                   id={partner.partnerId}>
                   <img
