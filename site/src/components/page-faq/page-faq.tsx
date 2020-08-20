@@ -22,7 +22,7 @@ export class PageFaq {
          <h1>Frequently Asked Questions about Poll Working</h1>
          {data.map( ( item, index ) => (
             <Fragment>
-               <div class="number">0{index + 1}</div>
+               <div class="number">{index + 1 < 10 ? "0" : ""}{index + 1}</div>
                <h3>{item.question}</h3>
                <hr />
                <p>{item.answer}</p>

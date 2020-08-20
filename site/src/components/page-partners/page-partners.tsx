@@ -49,22 +49,32 @@ export class PagePartners {
             Power the Polls is a collaboration between nonprofit organizations and businesses:
          </p>
          <div class="partner-logos">
-            {partners.map( partner => (
-               partner.founding && partner.logo && ( <div class={partner.logoIsDark ? "dark" : ""}><img
-                  src={`/assets/images/partners/${partner.logo}`}
-                  title={partner.name}
-               /></div> )
-            ) )}
+            {partners.map( partner => ( !partner.excludeFromPartnerList && partner.founding && partner.logo && (
+               <div
+                  class={{
+                     "dark": partner.logoIsDark ?? false,
+                  }}
+                  <img
+                     src={`/assets/images/partners/${partner.logo}`}
+                     title={partner.name}
+                  />
+               </div>
+            ) ) )}
          </div>
 
          <h3-bar>Partners</h3-bar>
          <div class="partner-logos">
-            {partners.map( partner => (
-               !partner.founding && partner.logo && ( <div class={partner.logoIsDark ? "dark" : ""}><img
-                  src={`/assets/images/partners/${partner.logo}`}
-                  title={partner.name}
-               /></div> )
-            ) )}
+            {partners.map( partner => ( !partner.excludeFromPartnerList && !partner.founding && partner.logo && (
+               <div
+                  class={{
+                     "dark": partner.logoIsDark ?? false,
+                  }}
+                  <img
+                     src={`/assets/images/partners/${partner.logo}`}
+                     title={partner.name}
+                  />
+               </div>
+            ) ) )}
          </div>
       </Host> );
    }

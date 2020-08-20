@@ -40,25 +40,28 @@ export class PageForm {
       const urlParam = paths.length > 0 ? paths[0].toLowerCase() : "";
       const partner = urlParam != null
          ? ( PartnerList.filter(
-            p => ( p.vanityUrl && p.vanityUrl.toLowerCase() === urlParam ) || p.partnerId.toLowerCase() === urlParam,
+            p => ( p.vanityUrls && p.vanityUrls.filter( x => x.toLowerCase() === urlParam ).length > 0 ) || p.partnerId.toLowerCase() === urlParam,
          ) || [null] )[0]
          : null;
-      const partnerId = partner?.partnerId || getParams()?.source;
+
+      if( urlParam !== "" && urlParam !== SIGNUP_PATH && partner == null ) {
+         // change URL to /signup if the partner ID is invalid so there is no question that the partnerID will not be included in the form
+         this.history?.replace( "/" + SIGNUP_PATH );
+      } else if( partner != null && ( ( partner.vanityUrls && partner.vanityUrls.filter( x => x === paths[0] ).length === 0 ) || ( partner.vanityUrls == null && paths[0] !== partner.partnerId ) ) ) {
+         // else normalize the URL if we've found a partner
+         this.history?.replace( "/" + ( partner.vanityUrls != null ? partner.vanityUrls[0] : partner.partnerId ) );
+      }
+
+      // get the partnerID from the partner parsed out of the URL (if any), else see if there is a source querystring are and use that, exactly, as the partner ID
+      const sourceParam = getParams()?.source;
+      const partnerId = partner?.partnerId || sourceParam;
+      if( partner?.partnerId != null && sourceParam != null && partner?.partnerId !== sourceParam ) {
+         console.warn( `Error. Partner ID conflict:`, partner?.partnerId, sourceParam );
+      }
 
       let daysLeft = Math.round( ( new Date( 2020, 9, 1 ).getTime() - Date.now() ) / 1000 / 60 / 60 / 24 / 7 ) * 7;
       // count down every 10 days (since the 2020-10-01 end is arbitrary) by extracting off the days less than 10 and rounding up or down
       daysLeft = ( daysLeft - daysLeft % 10 ) + Math.round( daysLeft % 10 / 10 ) * 10;
-
-      // change URL to /signup if the partner ID is invalid so there is no question that the partnerID will not be included in the form
-      if( urlParam !== "" && urlParam !== SIGNUP_PATH && partner == null ) {
-         this.history?.replace( "/" + SIGNUP_PATH );
-      } else if( partner != null
-         && ( ( partner.vanityUrl && paths[0] !== partner.vanityUrl )
-            || ( partner.vanityUrl == null && paths[0] !== partner.partnerId ) )
-      ) {
-         // normalize the URL if we've found a partner
-         this.history?.replace( "/" + ( partner.vanityUrl != null ? partner.vanityUrl : partner.partnerId ) );
-      }
 
       const formCompleted = () => {
          analytics.signup();
