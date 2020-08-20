@@ -1,14 +1,9 @@
 import "@ptp-us/power-the-polls-form";
 import { Component, h, Host, Prop, State } from "@stencil/core";
-import { RouterHistory } from "@stencil/router";
 
 import { PartnerList } from "../../data";
 import analytics from "../../util/Analytics";
 import { Fragment } from "../../util/Fragment";
-import getParams from "../../util/getParams";
-
-
-const SIGNUP_PATH: String = "signup";
 
 /**
  * The power-the-polls-form for the main site because there are a few additional bits of text and branding that
@@ -26,7 +21,11 @@ export class PageForm {
     */
    @Prop() public smartyStreetsApiKey?: string;
 
-   @Prop() public history?: RouterHistory;
+   /**
+    * Optional partnerId/source parameter to use when submitting the form. If the partnerId exists
+    * in `/data/PartnerList.ts` then additional partner data will be looked up.
+    */
+   @Prop() public partnerId?: string;
 
    @State() private formComplete: boolean;
 
@@ -35,30 +34,14 @@ export class PageForm {
    }
 
    public render() {
-      // see if this is a partner link, e.g., https://powerthepolls.org/aflcio
-      const paths = document.location.pathname.split( "/" ).filter( x => x !== "" );
-      const urlParam = paths.length > 0 ? paths[0].toLowerCase() : "";
-      const partner = urlParam != null
-         ? ( PartnerList.filter(
-            p => ( p.vanityUrl && p.vanityUrl.toLowerCase() === urlParam ) || p.partnerId.toLowerCase() === urlParam,
-         ) || [null] )[0]
+      const partnerId = this.partnerId;
+      const partner = partnerId != null
+         ? ( PartnerList.filter( p => p.partnerId === partnerId ) || [null] )[0]
          : null;
-      const partnerId = partner?.partnerId || getParams()?.source;
 
       let daysLeft = Math.round( ( new Date( 2020, 9, 1 ).getTime() - Date.now() ) / 1000 / 60 / 60 / 24 / 7 ) * 7;
       // count down every 10 days (since the 2020-10-01 end is arbitrary) by extracting off the days less than 10 and rounding up or down
       daysLeft = ( daysLeft - daysLeft % 10 ) + Math.round( daysLeft % 10 / 10 ) * 10;
-
-      // change URL to /signup if the partner ID is invalid so there is no question that the partnerID will not be included in the form
-      if( urlParam !== "" && urlParam !== SIGNUP_PATH && partner == null ) {
-         this.history?.replace( "/" + SIGNUP_PATH );
-      } else if( partner != null
-         && ( ( partner.vanityUrl && paths[0] !== partner.vanityUrl )
-            || ( partner.vanityUrl == null && paths[0] !== partner.partnerId ) )
-      ) {
-         // normalize the URL if we've found a partner
-         this.history?.replace( "/" + ( partner.vanityUrl != null ? partner.vanityUrl : partner.partnerId ) );
-      }
 
       const formCompleted = () => {
          analytics.signup();

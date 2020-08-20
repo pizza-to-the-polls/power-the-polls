@@ -1,12 +1,21 @@
 import { Component, FunctionalComponent, h, State } from "@stencil/core";
+import { Components } from "@stencil/router";
 
 import { FaqData, PartnerList, Social } from "../../data";
+import { Partner } from "../../data/PartnerList";
+import getParams from "../../util/getParams";
 
-const Nav: FunctionalComponent<{ onSelectNavItem?: () => void }> = ( { onSelectNavItem } ) => (
+type NavProps = {
+   onSelectNavItem?: () => void,
+   formPath: string,
+   partnerId?: string,
+};
+
+const Nav: FunctionalComponent<NavProps> = ( { onSelectNavItem, formPath, partnerId } ) => (
    <nav aria-label="Main">
       <ul>
          <li>
-            <stencil-route-link url="/signup#form" onClick={onSelectNavItem}>Sign Up</stencil-route-link>
+            <stencil-route-link url={`/${formPath}#form`} onClick={onSelectNavItem}>Sign Up</stencil-route-link>
          </li>
          <li>
             <stencil-route-link url="/about" onClick={onSelectNavItem}>About</stencil-route-link>
@@ -15,7 +24,11 @@ const Nav: FunctionalComponent<{ onSelectNavItem?: () => void }> = ( { onSelectN
             <stencil-route-link url="/faq" onClick={onSelectNavItem}>FAQ</stencil-route-link>
          </li>
          <li>
-            <stencil-route-link url="/partners" onClick={onSelectNavItem}>Partners</stencil-route-link>
+            <stencil-route-link
+               url={`/partners${partnerId != null ? "#" + partnerId : ""}`}
+               urlMatch={["/partners", "/partners#*"]}
+               onClick={onSelectNavItem}
+            >Partners</stencil-route-link>
          </li>
          <li>
             <stencil-route-link url="/contact" onClick={onSelectNavItem}>Contact</stencil-route-link>
@@ -23,6 +36,8 @@ const Nav: FunctionalComponent<{ onSelectNavItem?: () => void }> = ( { onSelectN
       </ul>
    </nav>
 );
+
+const SIGNUP_PATH: string = "signup";
 
 @Component( {
    tag: "app-root",
@@ -33,14 +48,14 @@ export class AppRoot {
 
    @State() private menuIsActive: boolean;
 
+   /**
+    * The source value from ether the URL (https://powerthepolls.org/partnerId) or querystring (https://powerthepolls.org/?source=aflcio)
+    */
+   private source?: { value: string, partner: Partner | null };
+   private routes: Partial<Components.StencilRoute>[];
+
    constructor() {
       this.menuIsActive = false;
-   }
-
-   public render() {
-      const social = Social;
-      const faqData = FaqData;
-      const partnerList = PartnerList;
 
       // help out development by logging an explicit error if you forgot to copy dot_env to .env or to add SMARTY_STREETS_KEY env var in the production build
       let env = `process.env.SMARTY_STREETS_KEY`; // will be `"the-correct-key"` if replaced by the build as intended
@@ -49,6 +64,114 @@ export class AppRoot {
          console.error( "SMARTY_STREETS_KEY environment variable not present during build. Cannot continue." );
       }
       const smartyStreetsApiKey = process.env.SMARTY_STREETS_KEY/*replaced with correct value by build*/;
+
+      // maps to stencil-route components, we need to be able to lookup these URLs in code as well
+      this.routes = [
+         {
+            url: "/about",
+            component: "page-about",
+         },
+         {
+            url: "/contact",
+            component: "page-contact",
+         },
+         {
+            url: "/faq",
+            component: "page-faq",
+            componentProps: {
+               data: FaqData,
+            },
+         },
+         {
+            url: "/partners",
+            component: "page-partners",
+            componentProps: {
+               partners: PartnerList,
+            },
+         },
+         {
+            url: "/privacy",
+            component: "page-privacy",
+         },
+         {
+            url: "/search",
+            component: "page-search",
+            componentProps: {
+               smartyStreetsApiKey: smartyStreetsApiKey,
+            },
+         },
+         {
+            url: "/redirector",
+            component: "page-redirector",
+         },
+         {
+            url: "/jurisdiction/:id",
+            component: "page-jurisdiction",
+         },
+         {
+            url: "/dev",
+            component: "component-list",
+         },
+         {
+            component: "page-form",
+            componentProps: {
+               smartyStreetsApiKey: smartyStreetsApiKey,
+            },
+         },
+      ];
+   }
+
+   public connectedCallback() {
+      // see if this is a partner link, e.g., https://powerthepolls.org/aflcio
+      const paths = document.location.pathname.split( "/" ).filter( x => x !== "" );
+      const urlParam = paths.length > 0 && !this.isNavRoute( paths[0] ) ? paths[0] : "";
+      // we also allow manually specifying a source value in the querystring
+      const queryStringParam = getParams()?.source;
+      const partnerIdMatch = urlParam.toLowerCase() || queryStringParam?.toLowerCase();
+      const partner = partnerIdMatch != null
+         ? ( PartnerList.filter(
+            p => ( p.vanityUrls && p.vanityUrls.filter( x => x.toLowerCase() === partnerIdMatch ).length > 0 ) || p.partnerId.toLowerCase() === partnerIdMatch,
+         ) || [null] )[0]
+         : null;
+
+      // get the partnerID from the partner parsed out of the URL (if any), else see if there is a source querystring are and use that, exactly, as the partner ID
+      if( partner != null && queryStringParam != null && partner?.partnerId !== queryStringParam ) {
+         console.warn( `Error. Partner ID conflict:`, partner?.partnerId, queryStringParam );
+      }
+
+      // if the partner matched, use the exact urlParam as the source value (exact casing and all) the partnerId should be used in most cases though
+      const source = ( partner != null ? urlParam : null ) || queryStringParam;
+      this.source = source == null ? undefined : {
+         value: source,
+         partner: partner,
+      };
+
+      // if there is a URL path included that isn't a valid partner, change URL to /signup so there is no question that the partnerID will not be included in the form
+      if( partner == null && urlParam !== "" && urlParam !== SIGNUP_PATH ) {
+         window.history.replaceState( {}, "", "/" + SIGNUP_PATH );
+      } else if( partner != null ) {
+         // if we matched the source querystring param to a partner, redirect to their vanity URL
+         if( queryStringParam != null && paths.length > 0 && this.isNavRoute( paths[0] ) ) {
+            window.history.replaceState( {}, "", "/" + paths[0] + "#" + partner.partnerId );
+         } else {
+            // else we've matched the partner on their vanity URL, so make sure it is normalized in case and URL type (vanity vs partnerId)
+            if( ( partner.vanityUrls && partner.vanityUrls.filter( x => x === urlParam ).length === 0 ) || ( partner.vanityUrls == null && urlParam !== partner.partnerId ) ) {
+               window.history.replaceState( {}, "", "/" + ( partner.vanityUrls != null ? partner.vanityUrls[0] : partner.partnerId ) );
+            }
+         }
+      }
+   }
+
+   public render() {
+      const social = Social;
+      const { source } = this;
+      // get the proper path to the signup form considering the incoming partner or source
+      const formPath = source == null ? SIGNUP_PATH
+         : source.partner == null
+            // if source is not a partner, use the source value directly
+            ? SIGNUP_PATH + "?source=" + source.value
+            // else use the partner's vanity URL or partner ID
+            : ( source.partner.vanityUrls != null && source.partner.vanityUrls.length > 0 ? source.partner.vanityUrls[0] : source.partner.partnerId );
 
       const toggleMenu = () => {
          this.menuIsActive = !this.menuIsActive;
@@ -61,7 +184,7 @@ export class AppRoot {
             <aside class="sidebar">
                <div class="container">
                   <h1>
-                     <stencil-route-link url="/">
+                     <stencil-route-link url={"/" + ( source == null ? "" : formPath )}>
                         <img
                            class="logo"
                            alt="Power the Polls"
@@ -69,16 +192,25 @@ export class AppRoot {
                         />
                      </stencil-route-link>
                   </h1>
-                  <Nav />
+                  <Nav
+                     formPath={formPath}
+                     partnerId={this.source?.partner?.partnerId}
+                  />
                   {social.map( service => <social-share {...service} /> )}
                </div>
             </aside>
 
             <main>
-               <div class={"mobile-menu" + ( this.menuIsActive ? " is-active" : "" )}>
+               <div class={{
+                  "mobile-menu": true,
+                  "is-active": this.menuIsActive,
+               }}>
                   <div class="header">
                      <h1>
-                        <stencil-route-link url="/" onClick={() => this.menuIsActive = false}>
+                        <stencil-route-link
+                           url={"/" + ( source == null ? "" : formPath )}
+                           onClick={() => this.menuIsActive = false}
+                        >
                            <img
                               style={{ display: ( this.menuIsActive ? "none" : "block" ) }}
                               alt="Power the Polls"
@@ -94,7 +226,11 @@ export class AppRoot {
                         </stencil-route-link>
                      </h1>
                      <button
-                        class={`hamburger hamburger--spin${this.menuIsActive ? " is-active" : ""}`}
+                        class={{
+                           "hamburger": true,
+                           "hamburger--spin": true,
+                           "is-active": this.menuIsActive,
+                        }}
                         type="button"
                         onClick={toggleMenu}
                         aria-label="Show navigation menu"
@@ -102,58 +238,30 @@ export class AppRoot {
                         <span class="hamburger-box"><span class="hamburger-inner"></span></span>
                      </button>
                   </div>
-                  <Nav onSelectNavItem={toggleMenu} />
+                  <Nav
+                     onSelectNavItem={toggleMenu}
+                     formPath={formPath}
+                     partnerId={this.source?.partner?.partnerId}
+                  />
                </div>
                <div
                   class="container"
                   id="main-content"
                   tabindex="-1"
                >
+
                   <stencil-router>
                      <stencil-route-switch scrollTopOffset={1}>
-                        <stencil-route
-                           url="/about"
-                           component="page-about"
-                        />
-                        <stencil-route
-                           url="/contact"
-                           component="page-contact"
-                        />
-                        <stencil-route
-                           url="/faq"
-                           component="page-faq"
-                           componentProps={{ data: faqData }}
-                        />
-                        <stencil-route
-                           url="/partners"
-                           component="page-partners"
-                           componentProps={{ partners: partnerList }}
-                        />
-                        <stencil-route
-                           url="/privacy"
-                           component="page-privacy"
-                        />
-                        <stencil-route
-                           url="/search"
-                           component="page-search"
-                           componentProps={{ smartyStreetsApiKey: smartyStreetsApiKey }}
-                        />
-                        <stencil-route
-                           url="/redirector"
-                           component="page-redirector"
-                        />
-                        <stencil-route
-                           url="/jurisdiction/:id"
-                           component="page-jurisdiction"
-                        />
-                        <stencil-route
-                           url="/dev"
-                           component="component-list"
-                        />
-                        <stencil-route
-                           component="page-form"
-                           componentProps={{ smartyStreetsApiKey: smartyStreetsApiKey }}
-                        />
+                        {this.routes.map( route => {
+                           // add partnerId to props of all components, if no found partner, use whatever source was given
+                           return ( <stencil-route {...{
+                              ...route,
+                              componentProps: {
+                                 ...route.componentProps,
+                                 partnerId: this.source?.partner?.partnerId || source?.value,
+                              },
+                           }} /> );
+                        } )}
                      </stencil-route-switch>
                   </stencil-router>
 
@@ -186,5 +294,13 @@ export class AppRoot {
             </main>
          </div>
       );
+   }
+
+   /**
+    * Returns `true` if the provided `path` is one of the app's nav routes (e.g., /partners, /contact etc). This will check
+    * with and without a leading '/' so you don't need to add or trim it.
+    */
+   private isNavRoute( path: string ) {
+      return this.routes.filter( x => x.url === path || x.url === "/" + path ).length > 0;
    }
 }

@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from "@stencil/core";
+import { Component, h, Host, Listen, Prop, State } from "@stencil/core";
 
 import { Partner } from "../../data/PartnerList";
 
@@ -14,8 +14,20 @@ export class PagePartners {
     */
    @Prop() public partners?: Partner[];
 
+   @State() private highlightedPartner?: string;
+
+   @Listen( "hashchange", { target: "window" } )
+   public hashChanged() {
+      this.highlightedPartner = window.location.hash.replace( "#", "" ) || "";
+   }
+
+   public connectedCallback() {
+      this.highlightedPartner = window.location.hash.replace( "#", "" ) || "";
+   }
+
    public render() {
       const partners = this.partners || [];
+      const chosenPartner = this.highlightedPartner;
       return ( <Host>
          <h1>Power the Polls Partners</h1>
          <p>
@@ -49,22 +61,36 @@ export class PagePartners {
             Power the Polls is a collaboration between nonprofit organizations and businesses:
          </p>
          <div class="partner-logos">
-            {partners.map( partner => (
-               partner.founding && partner.logo && ( <div class={partner.logoIsDark ? "dark" : ""}><img
-                  src={`/assets/images/partners/${partner.logo}`}
-                  title={partner.name}
-               /></div> )
-            ) )}
+            {partners.map( partner => ( !partner.excludeFromPartnerList && partner.founding && partner.logo && (
+               <div
+                  class={{
+                     "dark": partner.logoIsDark ?? false,
+                     "chosen-partner": chosenPartner === partner.partnerId,
+                  }}>
+                  <span id={partner.partnerId} class="anchor"></span>
+                  <img
+                     src={`/assets/images/partners/${partner.logo}`}
+                     title={partner.name}
+                  />
+               </div>
+            ) ) )}
          </div>
 
          <h3-bar>Partners</h3-bar>
          <div class="partner-logos">
-            {partners.map( partner => (
-               !partner.founding && partner.logo && ( <div class={partner.logoIsDark ? "dark" : ""}><img
-                  src={`/assets/images/partners/${partner.logo}`}
-                  title={partner.name}
-               /></div> )
-            ) )}
+            {partners.map( partner => ( !partner.excludeFromPartnerList && !partner.founding && partner.logo && (
+               <div
+                  class={{
+                     "dark": partner.logoIsDark ?? false,
+                     "chosen-partner": chosenPartner === partner.partnerId,
+                  }}>
+                  <span id={partner.partnerId} class="anchor"></span>
+                  <img
+                     src={`/assets/images/partners/${partner.logo}`}
+                     title={partner.name}
+                  />
+               </div>
+            ) ) )}
          </div>
       </Host> );
    }
