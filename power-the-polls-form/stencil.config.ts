@@ -3,6 +3,11 @@ import { Config } from "@stencil/core";
 import { sass } from "@stencil/sass";
 
 declare var process: any;
+declare var require: ( pkg: string ) => any;
+
+require( "dotenv" ).config();
+const key = process.env.SMARTY_STREETS_KEY || "none";
+console.log( "process.env.SMARTY_STREETS_KEY: " + key );
 
 export const config: Config = {
    namespace: "power-the-polls-form",
@@ -11,20 +16,13 @@ export const config: Config = {
    plugins: [
       replace( {
          exclude: "node_modules/**",
-         values: {
-            // replace SMARTY_STREETS_KEY with actual env vars present in the environment during build
-            "SMARTY_STREETS_KEY": process.env.SMARTY_STREETS_KEY || "none",
-         },
+         values: { "SMARTY_STREETS_KEY": key },
       } ),
       sass(),
    ],
    outputTargets: [
       {
          type: "dist",
-      },
-      {
-         // single .js file to dist/custom-elements
-         type: "dist-custom-elements-bundle",
       },
       {
          // Generates readme files in each component dir. Nice for GitHub.

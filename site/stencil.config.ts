@@ -1,8 +1,10 @@
 import replace from "@rollup/plugin-replace";
 import { Config } from "@stencil/core";
 import { sass } from "@stencil/sass";
-import dotenvPlugin from "rollup-plugin-dotenv";
 declare var process: any;
+declare var require: ( pkg: string ) => any;
+
+require( "dotenv" ).config();
 
 // see: https://stenciljs.com/docs/config
 
@@ -12,7 +14,6 @@ export const config: Config = {
    taskQueue: "async",
    srcDir: "src", // "src" is the default; just here for clarity
    plugins: [
-      dotenvPlugin(), // replace all process.env.* usage using the values from local .env files (.env.NODE_ENV, etc)
       replace( {
          exclude: "node_modules/**",
          values: {
