@@ -37,24 +37,6 @@ const Nav: FunctionalComponent<NavProps> = ( { onSelectNavItem, formPath, partne
    </nav>
 );
 
-const RenderRoutes: FunctionalComponent<{ routes: Partial<Components.StencilRoute>[], partnerId?: string }> = ( { routes, partnerId } ) => (
-   <stencil-router>
-      <stencil-route-switch scrollTopOffset={1}>
-         {routes.map( route => {
-            // add partnerId to all components
-            route = {
-               ...route,
-               componentProps: {
-                  ...route.componentProps,
-                  partnerId,
-               },
-            };
-            return ( <stencil-route {...route} /> );
-         } )}
-      </stencil-route-switch>
-   </stencil-router>
-);
-
 const SIGNUP_PATH: string = "signup";
 
 @Component( {
@@ -143,9 +125,10 @@ export class AppRoot {
       // see if this is a partner link, e.g., https://powerthepolls.org/aflcio
       const paths = document.location.pathname.split( "/" ).filter( x => x !== "" );
       const urlParam = paths.length > 0 && !this.isNavRoute( paths[0] ) ? paths[0] : "";
+      // we also allow manually specifying a source value in the querystring
       const queryStringParam = getParams()?.source;
       const partnerIdMatch = urlParam.toLowerCase() || queryStringParam?.toLowerCase();
-      const partner = urlParam != null
+      const partner = partnerIdMatch != null
          ? ( PartnerList.filter(
             p => ( p.vanityUrls && p.vanityUrls.filter( x => x.toLowerCase() === partnerIdMatch ).length > 0 ) || p.partnerId.toLowerCase() === partnerIdMatch,
          ) || [null] )[0]
@@ -156,6 +139,7 @@ export class AppRoot {
          console.warn( `Error. Partner ID conflict:`, partner?.partnerId, queryStringParam );
       }
 
+      // if the partner matched, use the exact urlParam as the source value (exact casing and all) the partnerId should be used in most cases though
       const source = ( partner != null ? urlParam : null ) || queryStringParam;
       this.source = source == null ? undefined : {
          value: source,
@@ -166,11 +150,11 @@ export class AppRoot {
       if( partner == null && urlParam !== "" && urlParam !== SIGNUP_PATH ) {
          window.history.replaceState( {}, "", "/" + SIGNUP_PATH );
       } else if( partner != null ) {
-         // if the source querystring param was used, remove it if we've matched a partner
+         // if we matched the source querystring param to a partner, redirect to their vanity URL
          if( queryStringParam != null && paths.length > 0 && this.isNavRoute( paths[0] ) ) {
             window.history.replaceState( {}, "", "/" + paths[0] + "#" + partner.partnerId );
          } else {
-            // else we've matched on a partner, so make sure their URL is normalized
+            // else we've matched the partner on their vanity URL, so make sure it is normalized in case and URL type (vanity vs partnerId)
             if( ( partner.vanityUrls && partner.vanityUrls.filter( x => x === urlParam ).length === 0 ) || ( partner.vanityUrls == null && urlParam !== partner.partnerId ) ) {
                window.history.replaceState( {}, "", "/" + ( partner.vanityUrls != null ? partner.vanityUrls[0] : partner.partnerId ) );
             }
@@ -265,10 +249,21 @@ export class AppRoot {
                   id="main-content"
                   tabindex="-1"
                >
-                  <RenderRoutes
-                     routes={this.routes}
-                     partnerId={this.source?.partner?.partnerId}
-                  />
+
+                  <stencil-router>
+                     <stencil-route-switch scrollTopOffset={1}>
+                        {this.routes.map( route => {
+                           // add partnerId to props of all components, if no found partner, use whatever source was given
+                           return ( <stencil-route {...{
+                              ...route,
+                              componentProps: {
+                                 ...route.componentProps,
+                                 partnerId: this.source?.partner?.partnerId || source?.value,
+                              },
+                           }} /> );
+                        } )}
+                     </stencil-route-switch>
+                  </stencil-router>
 
                   <footer>
                      <p>This work is licensed under a&nbsp;
