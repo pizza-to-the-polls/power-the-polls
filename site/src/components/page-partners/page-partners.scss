@@ -23,6 +23,14 @@ page-partners {
             border-radius: 4px;
          }
       }
+
+      // anchor link for partners, hide and bump it up so it's not directly at the top fo the user's screen
+      .anchor {
+         display: block;
+         position: relative;
+         top: -10em;
+         visibility: hidden;
+      }
    }
 
    .chosen-partner {

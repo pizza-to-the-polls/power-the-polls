@@ -66,8 +66,8 @@ export class PagePartners {
                   class={{
                      "dark": partner.logoIsDark ?? false,
                      "chosen-partner": chosenPartner === partner.partnerId,
-                  }}
-                  id={partner.partnerId}>
+                  }}>
+                  <span id={partner.partnerId} class="anchor"></span>
                   <img
                      src={`/assets/images/partners/${partner.logo}`}
                      title={partner.name}
@@ -83,8 +83,8 @@ export class PagePartners {
                   class={{
                      "dark": partner.logoIsDark ?? false,
                      "chosen-partner": chosenPartner === partner.partnerId,
-                  }}
-                  id={partner.partnerId}>
+                  }}>
+                  <span id={partner.partnerId} class="anchor"></span>
                   <img
                      src={`/assets/images/partners/${partner.logo}`}
                      title={partner.name}
