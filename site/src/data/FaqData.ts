@@ -11,10 +11,11 @@ const data: { question: string, answer: string }[] = [
       `,
    },
    {
-      question: "Can I work the polls if I am a permanent resident?",
+      question: "I’m not a U.S. citizen / I’m a permanent resident. Can I serve as a poll worker?",
       answer: `
-      In some jurisdictions, you can work the polls if you are a permanent resident.
-      Find your election office’s regulations using workelections.com.
+      In most states you cannot work the polls unless you are a registered voter and citizen. The best
+      place to find guidance is with your local administrator, which you can search for by entering your
+      information on our site.
       `,
    },
    {
