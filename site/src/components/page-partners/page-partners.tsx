@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from "@stencil/core";
+import { Component, h, Host, Listen, Prop, State } from "@stencil/core";
 
 import { Partner } from "../../data/PartnerList";
 
@@ -14,8 +14,20 @@ export class PagePartners {
     */
    @Prop() public partners?: Partner[];
 
+   @State() private highlightedPartner?: string;
+
+   @Listen( "hashchange", { target: "window" } )
+   public hashChanged() {
+      this.highlightedPartner = window.location.hash.replace( "#", "" ) || "";
+   }
+
+   public connectedCallback() {
+      this.highlightedPartner = window.location.hash.replace( "#", "" ) || "";
+   }
+
    public render() {
       const partners = this.partners || [];
+      const hash = this.highlightedPartner;
       return ( <Host>
          <h1>Power the Polls Partners</h1>
          <p>
@@ -53,7 +65,9 @@ export class PagePartners {
                <div
                   class={{
                      "dark": partner.logoIsDark ?? false,
+                     "chosen-partner": hash === partner.partnerId,
                   }}
+                  id={partner.partnerId}>
                   <img
                      src={`/assets/images/partners/${partner.logo}`}
                      title={partner.name}
@@ -68,7 +82,9 @@ export class PagePartners {
                <div
                   class={{
                      "dark": partner.logoIsDark ?? false,
+                     "chosen-partner": hash === partner.partnerId,
                   }}
+                  id={partner.partnerId}>
                   <img
                      src={`/assets/images/partners/${partner.logo}`}
                      title={partner.name}
