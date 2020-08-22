@@ -24,7 +24,7 @@ page-partners {
          }
       }
 
-      // anchor link for partners, hide and bump it up so it's not directly at the top fo the user's screen
+      // anchor link for partners, hide and bump it up so it doesn't scroll the user directly to the top of the image
       .anchor {
          display: block;
          position: relative;
@@ -34,8 +34,7 @@ page-partners {
    }
 
    .chosen-partner {
-      animation: pulse 1s;
-      animation-iteration-count: 5;
+      animation: pulse 1s infinite;
    }
 }
 
