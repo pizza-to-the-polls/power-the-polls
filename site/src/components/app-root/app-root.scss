@@ -3,7 +3,6 @@ app-root {
    display: flex;
    flex-flow: column;
 
-   // layout
    & > .container {
       flex-grow: 1;
       display: grid;
@@ -35,9 +34,29 @@ app-root {
 
       & > .container {
          max-width: 600px;
+
+         &:focus,
+         &:active {
+            outline: 0 !important;
+            box-shadow: none;
+         }
       }
 
       & > .mobile-menu {
+         button::-moz-focus-inner {
+            border: 0;
+         }
+
+         *:-moz-focusring {
+            outline: none !important;
+         }
+
+         button:focus,
+         button:active {
+            outline: none !important;
+            box-shadow: none;
+         }
+
          // undo the margins from main
          margin: -4em -4em 0 -4em;
          display: none;
@@ -141,7 +160,7 @@ app-root {
       }
    }
 
-   .__dev{
+   .__dev {
       color: #f0f;
       background-color: #ff0;
       border-color: #0ff;

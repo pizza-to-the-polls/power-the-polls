@@ -79,11 +79,6 @@ select {
    font: inherit;
 }
 
-*::-moz-focus-inner {
-   border: 0;
-   outline: 0 !important;
-}
-
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
    * {
