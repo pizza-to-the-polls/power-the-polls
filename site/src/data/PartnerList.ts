@@ -517,7 +517,7 @@ const data: Partner[] = [
       logo: "socially-driven-music.png",
    },
    {
-      partnerId: "SUA",
+      partnerId: "StandUpAmerica",
       name: "Stand Up America",
       logo: "sua.png",
    },
