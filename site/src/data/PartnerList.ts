@@ -253,6 +253,10 @@ const data: Partner[] = [
       logo: "defend-our-future.png",
    },
    {
+      partnerId: "discovery",
+      name: "Discovery",
+   },
+   {
       partnerId: "evc",
       logo: "every-vote-counts.png",
       name: "Every Vote Counts",
@@ -517,7 +521,7 @@ const data: Partner[] = [
       logo: "socially-driven-music.png",
    },
    {
-      partnerId: "SUA",
+      partnerId: "StandUpAmerica",
       name: "Stand Up America",
       logo: "sua.png",
    },
