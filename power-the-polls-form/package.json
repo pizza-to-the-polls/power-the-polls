@@ -1,7 +1,8 @@
 {
    "name": "@ptp-us/power-the-polls-form",
-   "version": "0.12.0",
+   "version": "0.12.1",
    "description": "Power the Polls Volunteer Form",
+   "license": "MIT",
    "main": "dist/index.js",
    "module": "dist/index.mjs",
    "es2015": "dist/esm/index.mjs",
@@ -20,8 +21,8 @@
       "package": "npm run build:copy && replace \"dist/\" \"\" ../dist/power-the-polls-form/package.json",
       "deploy": "cd ../dist/power-the-polls-form && npm publish && cd ../power-the-polls-form",
       "deploy:beta": "cd ../dist/power-the-polls-form && npm publish --tag beta && cd ../power-the-polls-form",
-      "release": "npm run clean-all && npm run build && npm run package && npm run deploy",
-      "release:beta": "npm run clean-all && npm run build && npm run package && npm run deploy:beta",
+      "release": "npm whoami && npm run clean-all && npm run build && npm run package && npm run deploy",
+      "release:beta": "npm whoami && npm run clean-all && npm run build && npm run package && npm run deploy:beta",
       "clean": "rimraf ./dist",
       "clean-all": "rimraf ./www && rimraf ../dist/power-the-polls-form/ && npm run clean",
       "lint": "tslint --project .",
@@ -47,6 +48,5 @@
       "rimraf": "^3.0.2",
       "tslint": "^6.1.2",
       "typescript": "^3.9.7"
-   },
-   "license": "MIT"
+   }
 }
