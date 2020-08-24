@@ -27,7 +27,7 @@ app-root {
    }
 
    main {
-      padding: 4em;
+      padding: 0 3em;
       @include on-mobile() {
          padding: 2em;
       }
