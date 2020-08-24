@@ -195,7 +195,7 @@ export class PowerThePollsForm {
                />
             </article>
          ) : ( <Fragment>
-            <h3>Help democracy in your community. Sign up to Power the Polls.</h3>
+            <h3>Help your community and sign up to Power the Polls.</h3>
             <form
                method="POST"
                action={submissionUrl}
@@ -265,7 +265,7 @@ export class PowerThePollsForm {
                <button
                   type="submit"
                   class="button"
-               >Sign Up</button>
+               >Sign Up To Get Started</button>
 
                {chase && (
                   <p class="disclaimer">
