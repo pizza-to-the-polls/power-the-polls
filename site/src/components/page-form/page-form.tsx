@@ -60,7 +60,7 @@ export class PageForm {
                   alt="Power the Polls"
                   src="/assets/images/logo-icon-pink.png"
                />
-               {partner?.customLandingLogo && (
+               {partner?.logoAppearsOnLandingPage && (
                   <img
                      class={{ "custom-logo": true, "dark": partner.logoIsDark ?? false }}
                      src={`/assets/images/partners/${partner.logo}`}

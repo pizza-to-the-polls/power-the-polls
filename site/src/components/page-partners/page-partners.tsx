@@ -1,6 +1,20 @@
-import { Component, h, Host, Listen, Prop, State } from "@stencil/core";
+import { Component, FunctionalComponent, h, Host, Listen, Prop, State } from "@stencil/core";
 
 import { Partner } from "../../data/PartnerList";
+
+const PartnerImage: FunctionalComponent<{ partner: Partner, chosenPartner?: string }> = ( { partner, chosenPartner } ) => (
+   <div
+      class={{
+         "dark": partner.logoIsDark ?? false,
+         "chosen-partner": chosenPartner === partner.partnerId,
+      }}>
+      <span id={partner.partnerId} class="anchor"></span>
+      <img
+         src={`/assets/images/partners/${partner.logo}`}
+         title={partner.name}
+      />
+   </div>
+);
 
 @Component( {
    tag: "page-partners",
@@ -61,35 +75,15 @@ export class PagePartners {
             Power the Polls is a collaboration between nonprofit organizations and businesses:
          </p>
          <div class="partner-logos">
-            {partners.map( partner => ( !partner.excludeFromPartnerList && partner.founding && partner.logo && (
-               <div
-                  class={{
-                     "dark": partner.logoIsDark ?? false,
-                     "chosen-partner": chosenPartner === partner.partnerId,
-                  }}>
-                  <span id={partner.partnerId} class="anchor"></span>
-                  <img
-                     src={`/assets/images/partners/${partner.logo}`}
-                     title={partner.name}
-                  />
-               </div>
+            {partners.map( partner => ( partner.isFoundingPartner && !partner.excludeFromPartnerList && partner.logo && (
+               <PartnerImage partner={partner} chosenPartner={chosenPartner} />
             ) ) )}
          </div>
 
          <h3-bar>Partners</h3-bar>
          <div class="partner-logos">
-            {partners.map( partner => ( !partner.excludeFromPartnerList && !partner.founding && partner.logo && (
-               <div
-                  class={{
-                     "dark": partner.logoIsDark ?? false,
-                     "chosen-partner": chosenPartner === partner.partnerId,
-                  }}>
-                  <span id={partner.partnerId} class="anchor"></span>
-                  <img
-                     src={`/assets/images/partners/${partner.logo}`}
-                     title={partner.name}
-                  />
-               </div>
+            {partners.map( partner => ( !partner.isFoundingPartner && !partner.excludeFromPartnerList && partner.logo && (
+               <PartnerImage partner={partner} chosenPartner={chosenPartner} />
             ) ) )}
          </div>
       </Host> );

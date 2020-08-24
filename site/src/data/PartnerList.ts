@@ -6,14 +6,14 @@ export interface Partner {
    readonly partnerId: string;
 
    /**
-    * Optional vanity URL which will result in `https://powerthepolls.org/{additionalVanityUrl}` including `partnerId`
+    * Optional vanity URL which will result in `https://powerthepolls.org/{vanityUrls}` including `partnerId`
     * upon submission. Note that `partnerId` will itself always be a valid URL (`https://powerthepolls.org/{partnerId}`),
     * so this is only needed if there is an alternative URL desired.
     */
    readonly vanityUrls?: string[];
 
    /**
-    * The full name of this partner
+    * The full name of this partner.
     */
    readonly name: string;
 
@@ -25,14 +25,14 @@ export interface Partner {
    readonly logo?: string;
 
    /**
-    * By, default users are opted into chase in ActionKit.
+    * If `true`, when users sign up using the form and this `partnerId` the `chase` flag will be set to false.
     */
    readonly optUserOutOfChase?: boolean;
 
    /**
     * If `true` this partner is a Founding Partner
     */
-   readonly founding?: boolean;
+   readonly isFoundingPartner?: boolean;
 
    /**
     * The label for an additional field to be displayed on the signup form. If not provided, no additional field
@@ -42,9 +42,9 @@ export interface Partner {
 
    /**
     * Whether to include the partner `logo` on the landing page of the partner's vanity URL (either
-    * `https://powerthepolls.org/{partnerId}` or `https://powerthepolls.org/{additionalVanityUrl}`).
+    * `https://powerthepolls.org/{partnerId}` or `https://powerthepolls.org/{vanityUrls}`).
     */
-   readonly customLandingLogo?: boolean;
+   readonly logoAppearsOnLandingPage?: boolean;
 
    /**
     * If true, the `logo`, when displayed, will receive a white background.
@@ -87,7 +87,7 @@ const data: Partner[] = [
       optUserOutOfChase: true,
       customSignupFormField: "Union Name",
       logo: "aflcio.svg",
-      customLandingLogo: true,
+      logoAppearsOnLandingPage: true,
    },
    {
       partnerId: "labor-afscme",
@@ -95,7 +95,7 @@ const data: Partner[] = [
       name: "AFSCME",
       logo: "afscme.png",
       optUserOutOfChase: true,
-      customLandingLogo: true,
+      logoAppearsOnLandingPage: true,
    },
    {
       partnerId: "labor-aft",
@@ -118,7 +118,7 @@ const data: Partner[] = [
       partnerId: "AYO",
       name: "Alliance for Youth Organizing",
       logo: "alliance-for-youth-organizing.png",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "alliance-students-at-the-polls",
@@ -133,6 +133,10 @@ const data: Partner[] = [
    {
       name: "Arizona",
       partnerId: "azadvocacy",
+   },
+   {
+      partnerId: "APBCO",
+      name: "Association of Pro Bono Counsel",
    },
    {
       name: "Bad Robot",
@@ -166,7 +170,6 @@ const data: Partner[] = [
       partnerId: "big-tent-usa",
       name: "Big Tent USA",
       logo: "big-tent-usa.jpeg",
-      logoIsDark: true,
    },
    {
       partnerId: "BillieEilish",
@@ -202,7 +205,7 @@ const data: Partner[] = [
       partnerId: "caa",
       name: "CAA Foundation",
       logo: "caa-foundation.png",
-      founding: true,
+      isFoundingPartner: true,
       logoIsDark: true,
    },
    {
@@ -214,7 +217,7 @@ const data: Partner[] = [
       vanityUrls: ["cc"],
       name: "Comedy Central",
       logo: "comedy-central.png",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       vanityUrls: ["civicgeorgia"],
@@ -231,7 +234,7 @@ const data: Partner[] = [
       partnerId: "CivicAlliance",
       name: "Civic Alliance",
       logo: "civic-alliance.png",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "civil-review-board",
@@ -259,13 +262,12 @@ const data: Partner[] = [
       partnerId: "expediagroup",
       vanityUrls: ["expediagroupvotes2020"],
       logo: "expedia-group.png",
-      logoIsDark: true,
    },
    {
       partnerId: "FairElections",
       logo: "fair-elections-center.png",
       name: "Fair Elections Center",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "feministmajority",
@@ -274,9 +276,8 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
-      name: "Fenwick & West",
       partnerId: "fenwick",
-      logoIsDark: true,
+      name: "Fenwick & West",
       logo: "fenwick.png",
    },
    {
@@ -303,7 +304,6 @@ const data: Partner[] = [
       partnerId: "invision",
       name: "InVision",
       logo: "invision.jpg",
-      logoIsDark: true,
    },
    {
       partnerId: "impactual",
@@ -327,13 +327,18 @@ const data: Partner[] = [
       partnerId: "leadmn",
       name: "Lead MN",
       logo: "lead-mn.jpg",
+   },
+   {
+      partnerId: "Vote411",
+      name: "League of Women Voters",
+      logo: "lwv.jpg",
       logoIsDark: true,
    },
    {
       partnerId: "levis",
       logo: "levi-strauss.png",
       name: "Levi's",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       name: "Lime",
@@ -378,7 +383,7 @@ const data: Partner[] = [
       partnerId: "mtv",
       logo: "mtv.png",
       name: "MTV",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "mweg",
@@ -402,13 +407,21 @@ const data: Partner[] = [
       partnerId: "NDRN",
       logo: "nrdn.png",
       name: "National Disability Rights Network",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "ncbcp",
       name: "National Coalition On Black Civic Participation",
       logo: "ncbcp.png",
       logoIsDark: true,
+   },
+   {
+      partnerId: "NRDCA",
+      name: "Natural Resources Defense Council",
+      vanityUrls: ["nrdcactionfund"],
+      logo: "nrdc.jpg",
+      logoIsDark: true,
+      logoAppearsOnLandingPage: true,
    },
    {
       partnerId: "labor-nea",
@@ -429,14 +442,13 @@ const data: Partner[] = [
       partnerId: "otherwiseincorporated",
       name: "Otherwise Incorporated",
       logo: "otherwise-incorporated.png",
-      logoIsDark: true,
    },
    {
       partnerId: "NARAL",
       name: "NARAL Pro-Choice America",
       logo: "naral.png",
       logoIsDark: true,
-      customLandingLogo: true,
+      logoAppearsOnLandingPage: true,
       excludeFromPartnerList: true,
    },
    {
@@ -447,13 +459,13 @@ const data: Partner[] = [
       partnerId: "patagonia",
       logo: "patagonia.png",
       name: "Patagonia",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "Pizza",
       logo: "pizza-to-the-polls.png",
       name: "Pizza to the Polls",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "publicwise",
@@ -497,7 +509,7 @@ const data: Partner[] = [
       partnerId: "SLSV",
       logo: "slsv.png",
       name: "Students Learn Students Vote",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "socially-driven-music",
@@ -547,7 +559,7 @@ const data: Partner[] = [
       partnerId: "TimeToVote",
       logo: "time-to-vote.png",
       name: "Time to Vote",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "Twitter",
@@ -563,7 +575,7 @@ const data: Partner[] = [
       partnerId: "Uber",
       logo: "uber.png",
       name: "Uber",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "UFCW",
@@ -574,7 +586,8 @@ const data: Partner[] = [
       partnerId: "UnitedWay",
       logo: "unitedway.png",
       name: "United Way",
-      founding: true,
+      isFoundingPartner: true,
+      logoIsDark: true,
    },
    {
       partnerId: "UniteHere",
@@ -586,9 +599,9 @@ const data: Partner[] = [
       name: "ViacomCBS",
    },
    {
-      partnerId: "Vote411",
-      name: "Vote411",
-      logo: "vote-411.png",
+      partnerId: "VPC",
+      name: "Voter Protection Corps",
+      logo: "vpc.png",
    },
    {
       name: "Warby Parker",
@@ -599,7 +612,7 @@ const data: Partner[] = [
       partnerId: "WeCanVote",
       logo: "wecanvote.png",
       name: "We Can Vote",
-      founding: true,
+      isFoundingPartner: true,
    },
    {
       partnerId: "weslayan-engaged",
