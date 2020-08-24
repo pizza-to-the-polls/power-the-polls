@@ -181,6 +181,11 @@ const data: Partner[] = [
       logo: "blk.png",
    },
    {
+      partnerId: "BAC",
+      name: "Black Advancement Coalition",
+      logo: "bac.png",
+   },
+   {
       partnerId: "breakout",
       name: "Breakout",
       logo: "breakout.png",
@@ -211,6 +216,10 @@ const data: Partner[] = [
    {
       partnerId: "cbs",
       name: "CBS",
+   },
+   {
+      partnerId: "CollectiveImpact",
+      name: "Collective Impact",
    },
    {
       partnerId: "ComedyCentral",
@@ -331,6 +340,14 @@ const data: Partner[] = [
       partnerId: "leadmn",
       name: "Lead MN",
       logo: "lead-mn.jpg",
+   },
+   {
+      partnerId: "LCV",
+      name: "League of Conservation Voters",
+      logo: "lcv.jpg",
+      logoIsDark: true,
+      logoAppearsOnLandingPage: true,
+      excludeFromPartnerList: true,
    },
    {
       partnerId: "Vote411",
