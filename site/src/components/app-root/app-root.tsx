@@ -301,6 +301,6 @@ export class AppRoot {
     * with and without a leading '/' so you don't need to add or trim it.
     */
    private isNavRoute( path: string ) {
-      return this.routes.filter( x => x.url === path || x.url === "/" + path ).length > 0;
+      return this.routes.map(x => x.url || "").filter(url => url.toString().match(RegExp(`${path}|/\\${path}`))).length > 0;
    }
 }
