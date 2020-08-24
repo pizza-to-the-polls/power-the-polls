@@ -1,5 +1,4 @@
 import { Component, FunctionalComponent, h, State } from "@stencil/core";
-import { Components } from "@stencil/router";
 
 import { FaqData, PartnerList, Social } from "../../data";
 import { Partner } from "../../data/PartnerList";
@@ -52,7 +51,16 @@ export class AppRoot {
     * The source value from ether the URL (https://powerthepolls.org/partnerId) or querystring (https://powerthepolls.org/?source=aflcio)
     */
    private source?: { value: string, partner: Partner | null };
-   private routes: Partial<Components.StencilRoute>[];
+   /**
+    * Routes for app.
+    * > Type is a simplified form of `Components.StencilRoute` from `@stencil/router`
+    */
+   private routes: {
+      component: string;
+      componentProps?: { [key: string]: any };
+      exact?: boolean;
+      url?: string;
+   }[];
 
    constructor() {
       this.menuIsActive = false;
@@ -123,8 +131,9 @@ export class AppRoot {
 
    public connectedCallback() {
       // see if this is a partner link, e.g., https://powerthepolls.org/aflcio
-      const paths = document.location.pathname.split( "/" ).filter( x => x !== "" );
-      const urlParam = paths.length > 0 && !this.isNavRoute( paths[0] ) ? paths[0] : "";
+      const path = document.location.pathname.split( "/" ).filter( x => x !== "" );
+      const isNavRoute = path.length > 0 && this.isNavRoute( path[0] );
+      const urlParam = path.length > 0 && !isNavRoute ? path[0] : "";
       // we also allow manually specifying a source value in the querystring
       const queryStringParam = getParams()?.source;
       const partnerIdMatch = urlParam.toLowerCase() || queryStringParam?.toLowerCase();
@@ -151,8 +160,8 @@ export class AppRoot {
          window.history.replaceState( {}, "", "/" + SIGNUP_PATH );
       } else if( partner != null ) {
          // if we matched the source querystring param to a partner, redirect to their vanity URL
-         if( queryStringParam != null && paths.length > 0 && this.isNavRoute( paths[0] ) ) {
-            window.history.replaceState( {}, "", "/" + paths[0] + "#" + partner.partnerId );
+         if( queryStringParam != null && path.length > 0 && isNavRoute ) {
+            window.history.replaceState( {}, "", "/" + path[0] + "#" + partner.partnerId );
          } else {
             // else we've matched the partner on their vanity URL, so make sure it is normalized in case and URL type (vanity vs partnerId)
             if( ( partner.vanityUrls && partner.vanityUrls.filter( x => x === urlParam ).length === 0 ) || ( partner.vanityUrls == null && urlParam !== partner.partnerId ) ) {
@@ -297,10 +306,10 @@ export class AppRoot {
    }
 
    /**
-    * Returns `true` if the provided `path` is one of the app's nav routes (e.g., /partners, /contact etc). This will check
-    * with and without a leading '/' so you don't need to add or trim it.
+    * Returns `true` if the provided `firstPathSection` is one of the app's nav routes (e.g., /partners, /contact etc).
+    * This will check with and without a leading '/' so you don't need to add or trim it.
     */
-   private isNavRoute( path: string ) {
-      return this.routes.map(x => x.url || "").filter(url => url.toString().match(RegExp(`${path}|/\\${path}`))).length > 0;
+   private isNavRoute( firstPathSection: string ) {
+      return this.routes.filter( x => x.url && x.url.split( "/" ).filter( y => y !== "" )[0] === firstPathSection ).length > 0;
    }
 }
