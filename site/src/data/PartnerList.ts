@@ -89,6 +89,14 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "ACLUGeorgia",
+      name: "ACLU Georgia",
+   },
+   {
+      partnerId: "ACLUMI",
+      name: "ACLU Michigan",
+   },
+   {
       partnerId: "actionbutton",
       name: "Action Button",
       logo: "action-button.png",
@@ -150,6 +158,7 @@ const data: Partner[] = [
    {
       partnerId: "APBCO",
       name: "Association of Pro Bono Counsel",
+      customSignupFormField: "What is Your Occupation?",
    },
    {
       name: "Bad Robot",
@@ -270,13 +279,23 @@ const data: Partner[] = [
       logo: "vsa.png",
    },
    {
+      name: "Democracy Maine",
+      partnerId: "DemocracyMaine",
+   },
+   {
+      name: "Democracy North Carolina",
+      partnerId: "DemocracyNC",
+   },
+   {
       partnerId: "defendourfuture",
       name: "Defend Our Future",
       logo: "defend-our-future.png",
    },
    {
       partnerId: "discovery",
-      name: "Discovery",
+      name: "Discovery Inc.",
+      logo: "discovery.png",
+      logoIsDark: true,
    },
    {
       partnerId: "evc",
@@ -305,6 +324,7 @@ const data: Partner[] = [
       partnerId: "fenwick",
       name: "Fenwick & West",
       logo: "fenwick.png",
+      logoIsDark: true,
    },
    {
       partnerId: "floridavoices",
@@ -313,6 +333,11 @@ const data: Partner[] = [
    {
       partnerId: "floridavotes",
       name: "Florida Votes",
+   },
+   {
+      name: "GitHub",
+      logo: "github.png",
+      partnerId: "github.png",
    },
    {
       partnerId: "global-black-caucus",
@@ -363,10 +388,18 @@ const data: Partner[] = [
       excludeFromPartnerList: true,
    },
    {
+      name: "League of Conservation Voters Michigan",
+      partnerId: "LCVMI",
+   },
+   {
       partnerId: "Vote411",
       name: "League of Women Voters",
       logo: "lwv.jpg",
       logoIsDark: true,
+   },
+   {
+      name: "League of Women Voters Maine",
+      partnerId: "LVWME",
    },
    {
       partnerId: "levis",
@@ -468,6 +501,27 @@ const data: Partner[] = [
       partnerId: "silverstatevoices",
    },
    {
+      name: "Nucleus",
+      partnerId: "nucleus",
+      logo: "nucleus.png",
+      logoIsDark: true,
+   },
+   {
+      name: "Old Navy",
+      logo: "old-navy.png",
+      partnerId: "oldnavy",
+      logoIsDark: true,
+      logoAppearsOnLandingPage: true,
+   },
+   {
+      name: "Old Navy Fam",
+      logo: "old-navy.png",
+      partnerId: "oldnavyfam",
+      logoIsDark: true,
+      logoAppearsOnLandingPage: true,
+      excludeFromPartnerList: true,
+   },
+   {
       partnerId: "omg-wtf",
       name: "OMG WTF",
       logo: "omg-wtf.png",
@@ -506,6 +560,10 @@ const data: Partner[] = [
       name: "Public Citizen MOU",
    },
    {
+      name: "Pro Georgia",
+      partnerId: "ProGeorgia",
+   },
+   {
       partnerId: "publicwise",
       logo: "public-wise.png",
       name: "Public Wise",
@@ -519,6 +577,11 @@ const data: Partner[] = [
       partnerId: "represent-us",
       name: "Represent US",
       logo: "represent-us.png",
+   },
+   {
+      name: "Reddit",
+      partnerId: "reddit",
+      logo: "reddit.png",
    },
    {
       name: "Richer Poorer",
@@ -594,6 +657,15 @@ const data: Partner[] = [
       name: "The Daily Show",
    },
    {
+      name: "The Vote Project",
+      partnerId: "thevoterproject",
+   },
+   {
+      name: "Timber Wolves and Lynx",
+      partnerId: "timberwolves",
+      logo: "timber-wolves-and-lynx.png",
+   },
+   {
       partnerId: "TimeToVote",
       logo: "time-to-vote.png",
       name: "Time to Vote",
@@ -640,6 +712,9 @@ const data: Partner[] = [
    {
       partnerId: "ViacomCBS",
       name: "ViacomCBS",
+      logo: "viacomcbs.png",
+      isFoundingPartner: true,
+      logoIsDark: true,
    },
    {
       partnerId: "VPC",
@@ -680,6 +755,12 @@ const data: Partner[] = [
       partnerId: "YMCA",
       name: "YMCA",
       logo: "ymca.png",
+   },
+   {
+      name: "Zillow",
+      partnerId: "zillow",
+      logo: "zillow.png",
+      logoIsDark: true,
    },
 ];
 export default data;

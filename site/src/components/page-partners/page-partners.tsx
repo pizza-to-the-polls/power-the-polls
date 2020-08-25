@@ -40,7 +40,7 @@ export class PagePartners {
    }
 
    public render() {
-      const partners = this.partners || [];
+      const partners = (this.partners || []).sort(() => 0.5 - Math.random());
       const chosenPartner = this.highlightedPartner;
       return ( <Host>
          <h1>Power the Polls Partners</h1>
