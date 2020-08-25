@@ -39,10 +39,6 @@ export class PageForm {
          ? ( PartnerList.filter( p => p.partnerId === partnerId ) || [null] )[0]
          : null;
 
-      let daysLeft = Math.round( ( new Date( 2020, 9, 1 ).getTime() - Date.now() ) / 1000 / 60 / 60 / 24 / 7 ) * 7;
-      // count down every 10 days (since the 2020-10-01 end is arbitrary) by extracting off the days less than 10 and rounding up or down
-      daysLeft = ( daysLeft - daysLeft % 10 ) + Math.round( daysLeft % 10 / 10 ) * 10;
-
       const formCompleted = () => {
          analytics.signup();
          this.formComplete = true;
@@ -67,23 +63,35 @@ export class PageForm {
                      title={partner.name}
                   />
                )}
-               <h1>America is facing a record shortage of poll workers. </h1>
-               <p>
-                  As coronavirus continues to impact Americans across the country, we are also seeing a staggering decrease in poll workers &mdash;
-                  which could mean closed polling places and long delays for elections in 2020. You can help make sure we have a safe, fair,
-                  efficient election for all voters, and potentially get paid to do it
+               <h1>Help staff your local polling place</h1>
+               <p class="hide-mobile">
+                  America is facing a record shortage of poll workers this year due to the coronavirus. Our democracy depends on
+                  ordinary people who make sure elections run smoothly and everyone's vote is counted. You can make sure we have
+                  a safe, fair, efficient election for all.
                </p>
-               <hr />
-               <div class="impact-boxes">
-                  <impact-box>
-                     <h2>250K</h2>
-                     <p>Poll workers still needed</p>
-                  </impact-box>
-                  <impact-box>
-                     <h2>&lt; {daysLeft} DAYS</h2>
-                     <p>To recruit and train them</p>
-                  </impact-box>
+               <p class="hide-desktop">
+                  America is facing an unprecedented shortage of poll workers, meaning closed polling places and long delays.
+               </p>
+
+               <div class="incentive-container">
+                  <p class="accent uppercase">Poll workers get:</p>
+                  <div class="incentive-items">
+                     <div>
+                        <img src="/assets/images/icon_checkmark.svg"/>
+                        <h2>PPE</h2>
+                     </div>
+                     <div>
+                        <img src="/assets/images/icon_checkmark.svg"/>
+                        <h2>Training</h2>
+                     </div>
+                     <div>
+                        <img src="/assets/images/icon_checkmark.svg"/>
+                        <h2>Paid*</h2>
+                     </div>
+                  </div>
+                  <p class="accent">*Varies by district</p>
                </div>
+               <hr />
             </Fragment> ) : null}
             <power-the-polls-form
                id="form"
