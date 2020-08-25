@@ -41,12 +41,13 @@ page-form {
       flex-wrap: wrap;
 
       img {
-         max-height: 1.5em;
+         max-height: 1.6em;
          margin-right: 8px;
       }
 
       h2 {
          margin-right: 0.75em;
+         font-family: $font-heading;
       }
 
       div {
