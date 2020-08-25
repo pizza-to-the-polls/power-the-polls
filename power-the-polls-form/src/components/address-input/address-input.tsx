@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, State } from "@stencil/core";
+import { Component, h, Host, State } from "@stencil/core";
 
 import ZipGeocode from "./zipGeocoding";
 
@@ -12,11 +12,6 @@ import ZipGeocode from "./zipGeocoding";
 } )
 export class AddressInput {
 
-   /**
-    * The API key to access the SmartyStreets API
-    */
-   @Prop() public smartyStreetsApiKey: string;
-
    @State() private cityValue: string;
    @State() private countyValue: string;
    @State() private stateValue: string;
@@ -26,7 +21,6 @@ export class AddressInput {
    @State() private stateOptions: Map<string, string>;
 
    constructor() {
-      this.smartyStreetsApiKey = "";
       this.zipValue = "";
       this.cityValue = "";
       this.countyValue = "";
@@ -43,8 +37,8 @@ export class AddressInput {
          this.zipValue = ( event.target as HTMLInputElement ).value;
 
          if( zipValidationRegex.test( this.zipValue ) ) {
-            ZipGeocode( this.zipValue, this.smartyStreetsApiKey ).
-               then( ( result ) => {
+            ZipGeocode( this.zipValue )
+               .then( ( result ) => {
                   if( "error" in result ) {
                      console.log( result.error );
                   } else {
