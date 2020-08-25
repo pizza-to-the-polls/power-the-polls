@@ -52,7 +52,10 @@ export class PageForm {
          <Host>
             {!this.formComplete ? ( <Fragment>
                <img
-                  class="main-logo"
+                  class={{
+                     "main-logo": true,
+                     "partner": partner?.logoAppearsOnLandingPage ?? false,
+                  }}
                   alt="Power the Polls"
                   src="/assets/images/logo-icon-pink.png"
                />

@@ -18,6 +18,9 @@ page-form {
       left: -3rem;
       z-index: -1;
       opacity: 80%;
+      &.partner {
+         opacity: 0.6;
+      }
       max-height: 350px;
       @include on-mobile() {
          max-height: 175px;
