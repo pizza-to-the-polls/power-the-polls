@@ -52,7 +52,10 @@ export class PageForm {
          <Host>
             {!this.formComplete ? ( <Fragment>
                <img
-                  class="main-logo"
+                  class={{
+                     "main-logo": true,
+                     "partner": partner?.logoAppearsOnLandingPage ?? false,
+                  }}
                   alt="Power the Polls"
                   src="/assets/images/logo-icon-pink.png"
                />
@@ -63,7 +66,7 @@ export class PageForm {
                      title={partner.name}
                   />
                )}
-               <h1>Help staff your local polling place</h1>
+               <h1 class={{ "partner": partner?.logoAppearsOnLandingPage ?? false }}>Help staff your local polling place</h1>
                <p class="hide-mobile">
                   America is facing a record shortage of poll workers this year due to the coronavirus. Our democracy depends on
                   ordinary people who make sure elections run smoothly and everyone's vote is counted. You can make sure we have
@@ -77,15 +80,15 @@ export class PageForm {
                   <p class="accent uppercase">Poll workers get:</p>
                   <div class="incentive-items">
                      <div>
-                        <img src="/assets/images/icon_checkmark.svg"/>
+                        <img src="/assets/images/icon_checkmark.svg" />
                         <h2>PPE</h2>
                      </div>
                      <div>
-                        <img src="/assets/images/icon_checkmark.svg"/>
+                        <img src="/assets/images/icon_checkmark.svg" />
                         <h2>Training</h2>
                      </div>
                      <div>
-                        <img src="/assets/images/icon_checkmark.svg"/>
+                        <img src="/assets/images/icon_checkmark.svg" />
                         <h2>Paid*</h2>
                      </div>
                   </div>
@@ -98,7 +101,6 @@ export class PageForm {
                partnerId={partnerId}
                optUserOutOfChase={partner?.optUserOutOfChase || false}
                customFormFieldLabel={partner?.customSignupFormField}
-               smartyStreetsApiKey={this.smartyStreetsApiKey}
                onSubmitCompleted={formCompleted}
                onSubmitError={formError}
             />
