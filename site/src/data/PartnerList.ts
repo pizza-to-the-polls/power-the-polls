@@ -616,6 +616,7 @@ const data: Partner[] = [
       partnerId: "socially-driven-music",
       name: "Socially Driven Music",
       logo: "socially-driven-music.png",
+      customSignupFormField: "Name of Local Artist that Referred You",
    },
    {
       partnerId: "StandUpAmerica",
