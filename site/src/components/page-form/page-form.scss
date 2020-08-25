@@ -3,10 +3,12 @@ page-form {
    flex-direction: column;
 
    h1 {
-       margin-top: 150px;
-
+      margin-top: 150px;
       @include on-mobile() {
          margin-top: auto;
+      }
+      &.partner {
+         margin-top: 0;
       }
    }
 
@@ -21,11 +23,12 @@ page-form {
    }
 
    .custom-logo {
-      text-align: center;
-      margin: 0 0 2em 0;
-      max-height: 120px;
+      align-self: flex-start;
+      margin: 5em 0 2em 0;
+      max-height: 80px;
+
       @include on-mobile() {
-         max-height: 80px;
+         max-height: 60px;
       }
       &.dark {
          padding: 0.25em;
