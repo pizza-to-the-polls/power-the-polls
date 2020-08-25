@@ -3,8 +3,10 @@ page-form {
    flex-direction: column;
 
    h1 {
-      @include on-desktop() {
-         margin-top: 150px;
+       margin-top: 150px;
+
+      @include on-mobile() {
+         margin-top: auto;
       }
    }
 
@@ -55,8 +57,10 @@ page-form {
    }
 
    .incentive-container {
-      @include on-desktop() {
-         margin-bottom: 2em;
+      margin-bottom: 2em;
+
+      @include on-mobile() {
+         margin-bottom: auto;
       }
    }
 
@@ -103,8 +107,10 @@ page-form {
    }
 
    .hide-desktop {
-      @include on-desktop() {
-         display: none;
+      display: none;
+
+      @include on-mobile() {
+         display: block;
       }
    }
 
