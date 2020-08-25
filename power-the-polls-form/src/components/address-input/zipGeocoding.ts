@@ -13,7 +13,7 @@ declare namespace ZipGeocoding {
    }
 }
 
-const smartyApiURL = "https://us-zipcode.api.smartystreets.com/lookup";
+const smartyApiURL = "https://smartystreet.powerthepolls.org/dev/zip";
 
 export default async ( zipcode: string, authId: string ): Promise<ZipGeocoding.Result | ZipGeocoding.Error> => {
    const url = new URL( smartyApiURL );
