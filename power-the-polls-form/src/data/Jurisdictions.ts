@@ -2697,6 +2697,11 @@ const data: { [state: string]: { id: number, jurisdictions: { [jurisdiction: str
          "Westchester County": 3656,
          "Wyoming County": 4301,
          "Yates County": 5832,
+         "Queens County": 5868,
+         "Kings County": 5868,
+         "Richmond County": 5868,
+         "Bronx County": 5868,
+         "New York County": 5868,
       },
    },
    "NC": {
