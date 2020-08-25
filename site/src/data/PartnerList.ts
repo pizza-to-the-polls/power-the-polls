@@ -47,7 +47,8 @@ export interface Partner {
    readonly logoAppearsOnLandingPage?: boolean;
 
    /**
-    * If true, the `logo`, when displayed, will receive a white background.
+    * If true, the `logo`, when displayed, will receive a white background. If the logo is already on a white background
+    * then set this to `true` so that the corners will be rounded.
     */
    readonly logoIsDark?: boolean;
 
@@ -70,10 +71,22 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "AALDEF",
+      name: "Asian American Legal Defense and Education Fund",
+      logo: "aaldef.png",
+   },
+   {
       partnerId: "american-constitution-society",
       vanityUrls: ["acs"],
       name: "American Constitution Society",
       logo: "acs.png",
+   },
+   {
+      partnerId: "AmeriCorps",
+      name: "AmeriCorps",
+      logo: "americorps.png",
+      logoAppearsOnLandingPage: true,
+      logoIsDark: true,
    },
    {
       partnerId: "actionbutton",
@@ -489,6 +502,10 @@ const data: Partner[] = [
       isFoundingPartner: true,
    },
    {
+      partnerId: "PublicCitizen",
+      name: "Public Citizen MOU",
+   },
+   {
       partnerId: "publicwise",
       logo: "public-wise.png",
       name: "Public Wise",
@@ -614,6 +631,11 @@ const data: Partner[] = [
       partnerId: "UniteHere",
       logo: "unite-here.png",
       name: "Unite Here!",
+   },
+   {
+      partnerId: "UVA",
+      name: "UVA Alumni Association",
+      logo: "uvaaa.png",
    },
    {
       partnerId: "ViacomCBS",
