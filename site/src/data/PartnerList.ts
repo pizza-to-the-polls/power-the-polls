@@ -710,6 +710,10 @@ const data: Partner[] = [
       logo: "ufcw.png",
    },
    {
+      partnerId: "USW",
+      name: "United Steel Workers",
+   },
+   {
       partnerId: "UnitedWay",
       logo: "unitedway.png",
       name: "United Way",
