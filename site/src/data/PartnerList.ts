@@ -352,6 +352,15 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      name: "Human Rights Campaign Foundation",
+      logo: "hrc.png",
+      logoAppearsOnLandingPage: true,
+      excludeFromPartnerList: true,
+      vanityUrls: ["HRCFoundation"],
+      partnerId: "HRC",
+      logoIsDark: true,
+   },
+   {
       partnerId: "invision",
       name: "InVision",
       logo: "invision.jpg",
@@ -457,6 +466,12 @@ const data: Partner[] = [
       name: "Mormon Women For Ethical Government",
       logo: "mweg.svg",
       logoIsDark: true,
+   },
+   {
+      partnerId: "NAACP",
+      name: "NAACP",
+      logo: "naacp.png",
+      logoAppearsOnLandingPage: true,
    },
    {
       partnerId: "national-coalition-for-accessible-voting",
@@ -617,6 +632,7 @@ const data: Partner[] = [
       name: "Socially Driven Music",
       logo: "socially-driven-music.png",
       customSignupFormField: "Name of Local Artist that Referred You",
+      vanityUrls: ["SociallyDrivenMusic"],
    },
    {
       partnerId: "StandUpAmerica",
