@@ -8,10 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AddressInput {
-        /**
-          * The API key to access the SmartyStreets API
-         */
-        "smartyStreetsApiKey": string;
     }
     interface JurisdictionInfo {
         /**
@@ -125,10 +121,6 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AddressInput {
-        /**
-          * The API key to access the SmartyStreets API
-         */
-        "smartyStreetsApiKey"?: string;
     }
     interface JurisdictionInfo {
         /**

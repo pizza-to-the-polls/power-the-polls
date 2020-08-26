@@ -7,8 +7,8 @@ import CsvRow, { formatRow, Header } from "./CsvRow";
 
 const fetch = require( "node-fetch" );
 
-const authId = "4b9dfb80-317f-7a34-7e96-1f2d25db05ac";
-const authToken = "QlziL3kKVu2zsIHs7ACO";
+const authId = "";
+const authToken = "";
 
 const toQueryString = ( data: any ) => {
    return Object.keys( data ).map( key => encodeURIComponent( key ) + "=" + encodeURIComponent( data[key] + "" ) ).join( "&" );
