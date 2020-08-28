@@ -76,15 +76,21 @@ const data: Partner[] = [
       logo: "aaldef.png",
    },
    {
+      partnerId: "AARP",
+      name: "AARP",
+      logoAppearsOnLandingPage: true,
+      logo: "aarp.png",
+   },
+   {
       partnerId: "american-constitution-society",
       vanityUrls: ["acs"],
       name: "American Constitution Society",
       logo: "acs.png",
    },
    {
-      partnerId: "AmeriCorps",
-      name: "AmeriCorps",
-      logo: "americorps.png",
+      partnerId: "AmericorpsAlumni",
+      name: "AmericorpsAlumni",
+      logo: "americorps-alumni.jpg",
       logoAppearsOnLandingPage: true,
       logoIsDark: true,
    },
@@ -136,6 +142,16 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "AVIL",
+      name: "All Voting Is Local",
+      logo: "avil.svg",
+   },
+   {
+      partnerId: "LeadershipConferece",
+      name: "All Voting Is Local Leadership Conference",
+      logo: "avil-lc.png",
+   },
+   {
       partnerId: "AYO",
       name: "Alliance for Youth Organizing",
       logo: "alliance-for-youth-organizing.png",
@@ -154,6 +170,10 @@ const data: Partner[] = [
    {
       name: "Arizona",
       partnerId: "azadvocacy",
+   },
+   {
+      partnerId: "ASAP",
+      name: "Alliance of Students at the Polls",
    },
    {
       partnerId: "APBCO",
@@ -218,6 +238,12 @@ const data: Partner[] = [
       logo: "burton.png",
    },
    {
+      partnerId: "CamelsVote",
+      name: "CamelsVote",
+      logo: "camels-vote.png",
+      logoIsDark: true,
+   },
+   {
       partnerId: "campus",
       name: "Campus Compact",
       logo: "campus-compact.png",
@@ -225,7 +251,7 @@ const data: Partner[] = [
    {
       partnerId: "campusvote",
       name: "Campus Vote Project",
-      vanityUrls: ["CVPE", "CVPM", "CVPS"],
+      vanityUrls: ["CVP", "CVPE", "CVPM", "CVPS"],
       logo: "campus-vote-project.png",
    },
    {
@@ -242,6 +268,7 @@ const data: Partner[] = [
    {
       partnerId: "CollectiveImpact",
       name: "Collective Impact",
+      vanityUrls: ["2020", "hero", "now"],
    },
    {
       partnerId: "ComedyCentral",
@@ -279,6 +306,12 @@ const data: Partner[] = [
       logo: "vsa.png",
    },
    {
+      partnerId: "DemLabs",
+      name: "DemLabs",
+      logo: "demlabs.png",
+      logoAppearsOnLandingPage: true,
+   },
+   {
       name: "Democracy Maine",
       partnerId: "DemocracyMaine",
    },
@@ -313,6 +346,13 @@ const data: Partner[] = [
       logo: "fair-elections-center.png",
       name: "Fair Elections Center",
       isFoundingPartner: true,
+   },
+   {
+      partnerId: "fairfight",
+      name: "Fair Fight",
+      logo: "fairfight.png",
+      logoAppearsOnLandingPage: true,
+      excludeFromPartnerList: true,
    },
    {
       partnerId: "feministmajority",
@@ -397,6 +437,10 @@ const data: Partner[] = [
       excludeFromPartnerList: true,
    },
    {
+      partnerId: "LCVEF",
+      name: "League of Conservation Voters Education Fund",
+   },
+   {
       name: "League of Conservation Voters Michigan",
       partnerId: "LCVMI",
    },
@@ -454,6 +498,17 @@ const data: Partner[] = [
       name: "Mitz Vote",
       logo: "mitz-vote.png",
       logoIsDark: true,
+   },
+   {
+      partnerId: "Motivote",
+      name: "Motivote",
+      logo: "motivote.png",
+   },
+   {
+      partnerId: "SEARAC",
+      name: "Southeast Asia Resource Action Center",
+      logo: "searac.png",
+      logoAppearsOnLandingPage: true,
    },
    {
       partnerId: "mtv",
@@ -522,6 +577,12 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "nuifc",
+      name: "National Urban Indian Family Coalition",
+      logo: "nuifc.png",
+      logoIsDark: true,
+   },
+   {
       name: "Old Navy",
       logo: "old-navy.png",
       partnerId: "oldnavy",
@@ -553,6 +614,12 @@ const data: Partner[] = [
       logoIsDark: true,
       logoAppearsOnLandingPage: true,
       excludeFromPartnerList: true,
+   },
+   {
+      partnerId: "ncai",
+      name: "National Congress of American Indians",
+      logo: "ncai.png",
+      logoIsDark: true,
    },
    {
       partnerId: "nhvotes",
@@ -620,6 +687,8 @@ const data: Partner[] = [
       vanityUrls: ["seiu"],
       name: "SEUI",
       optUserOutOfChase: true,
+      logo: "seiu.jpg",
+      logoAppearsOnLandingPage: true,
    },
    {
       partnerId: "SLSV",
@@ -633,6 +702,11 @@ const data: Partner[] = [
       logo: "socially-driven-music.png",
       customSignupFormField: "Name of Local Artist that Referred You",
       vanityUrls: ["SociallyDrivenMusic"],
+   },
+   {
+      partnerId: "SocialGoodClub",
+      name: "ocial Good Club",
+      logo: "social-good-club.png",
    },
    {
       partnerId: "StandUpAmerica",
@@ -657,6 +731,11 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "SpreadTheVote",
+      name: "Spread the Vote",
+      logo: "spread-the-vote.png",
+   },
+   {
       partnerId: "starbucks",
       name: "Starbucks",
       logo: "starbucks.jpg",
@@ -672,6 +751,12 @@ const data: Partner[] = [
       partnerId: "TheDailyShow",
       vanityUrls: ["tds"],
       name: "The Daily Show",
+   },
+   {
+      partnerId: "TheFlow",
+      name: "The Flow",
+      logo: "the-flow.png",
+      logoIsDark: true,
    },
    {
       name: "The Vote Project",

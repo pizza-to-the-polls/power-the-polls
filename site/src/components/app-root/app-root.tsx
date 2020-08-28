@@ -2,6 +2,7 @@ import { Component, FunctionalComponent, h, State } from "@stencil/core";
 
 import { FaqData, PartnerList, Social } from "../../data";
 import { Partner } from "../../data/PartnerList";
+import { shuffle } from "../../util";
 import getParams from "../../util/getParams";
 
 type NavProps = {
@@ -94,7 +95,7 @@ export class AppRoot {
             url: "/partners",
             component: "page-partners",
             componentProps: {
-               partners: PartnerList,
+               partners: shuffle( PartnerList ),
             },
          },
          {

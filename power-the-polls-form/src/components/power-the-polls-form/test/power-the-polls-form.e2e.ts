@@ -10,7 +10,7 @@ describe( "power-the-polls-form", () => {
       expect( element ).toHaveClass( "hydrated" );
    } );
 
-   it( "has a SmartyStreets API key", async () => {
+   it( "is not missing SmartyStreets API key", async () => {
       console.error = jest.fn();
       const page = await newE2EPage();
       await page.setContent( "<power-the-polls-form></power-the-polls-form>" );
