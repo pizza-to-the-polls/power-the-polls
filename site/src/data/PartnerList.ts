@@ -88,9 +88,9 @@ const data: Partner[] = [
       logo: "acs.png",
    },
    {
-      partnerId: "AmeriCorps",
-      name: "AmeriCorps",
-      logo: "americorps.png",
+      partnerId: "AmericorpsAlumni",
+      name: "AmericorpsAlumni",
+      logo: "americorps-alumni.jpg",
       logoAppearsOnLandingPage: true,
       logoIsDark: true,
    },
@@ -483,6 +483,11 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "Motivote",
+      name: "Motivote",
+      logo: "motivote.png",
+   },
+   {
       partnerId: "mtv",
       logo: "mtv.png",
       name: "MTV",
@@ -549,6 +554,12 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "nuifc",
+      name: "National Urban Indian Family Coalition",
+      logo: "nuifc.png",
+      logoIsDark: true,
+   },
+   {
       name: "Old Navy",
       logo: "old-navy.png",
       partnerId: "oldnavy",
@@ -580,6 +591,12 @@ const data: Partner[] = [
       logoIsDark: true,
       logoAppearsOnLandingPage: true,
       excludeFromPartnerList: true,
+   },
+   {
+      partnerId: "ncai",
+      name: "National Congress of American Indians",
+      logo: "ncai.png",
+      logoIsDark: true,
    },
    {
       partnerId: "nhvotes",
@@ -663,6 +680,11 @@ const data: Partner[] = [
       vanityUrls: ["SociallyDrivenMusic"],
    },
    {
+      partnerId: "SocialGoodClub",
+      name: "ocial Good Club",
+      logo: "social-good-club.png",
+   },
+   {
       partnerId: "StandUpAmerica",
       name: "Stand Up America",
       logo: "sua.png",
@@ -685,6 +707,11 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "SpreadTheVote",
+      name: "Spread the Vote",
+      logo: "spread-the-vote.png",
+   },
+   {
       partnerId: "starbucks",
       name: "Starbucks",
       logo: "starbucks.jpg",
@@ -700,6 +727,12 @@ const data: Partner[] = [
       partnerId: "TheDailyShow",
       vanityUrls: ["tds"],
       name: "The Daily Show",
+   },
+   {
+      partnerId: "TheFlow",
+      name: "The Flow",
+      logo: "the-flow.png",
+      logoIsDark: true,
    },
    {
       name: "The Vote Project",
