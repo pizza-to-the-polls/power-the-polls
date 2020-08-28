@@ -147,6 +147,11 @@ const data: Partner[] = [
       logo: "avil.svg",
    },
    {
+      partnerId: "LeadershipConferece",
+      name: "All Voting Is Local Leadership Conference",
+      logo: "avil-lc.png",
+   },
+   {
       partnerId: "AYO",
       name: "Alliance for Youth Organizing",
       logo: "alliance-for-youth-organizing.png",
@@ -304,6 +309,7 @@ const data: Partner[] = [
       partnerId: "DemLabs",
       name: "DemLabs",
       logo: "demlabs.png",
+      logoAppearsOnLandingPage: true,
    },
    {
       name: "Democracy Maine",
@@ -344,9 +350,9 @@ const data: Partner[] = [
    {
       partnerId: "fairfight",
       name: "Fair Fight",
+      logo: "fairfight.png",
       logoAppearsOnLandingPage: true,
       excludeFromPartnerList: true,
-      logo: "fairfight.png",
    },
    {
       partnerId: "feministmajority",
@@ -682,6 +688,7 @@ const data: Partner[] = [
       name: "SEUI",
       optUserOutOfChase: true,
       logo: "seiu.jpg",
+      logoAppearsOnLandingPage: true,
    },
    {
       partnerId: "SLSV",
