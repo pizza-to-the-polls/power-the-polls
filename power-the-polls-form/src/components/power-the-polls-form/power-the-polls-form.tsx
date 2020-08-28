@@ -260,13 +260,11 @@ export class PowerThePollsForm {
                   class="button"
                >Sign Up To Get Started</button>
 
-               {chase && (
-                  <p class="disclaimer">
-                     By signing up, you agree to receive occasional emails or text messages from Power the Polls and
-                     accept our <PtpLink path="/privacy">Privacy Policy</PtpLink>. You can unsubscribe
-                     at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
-                  </p>
-               )}
+               <p class="disclaimer">
+                  By signing up, you agree to receive occasional emails or text messages from Power the Polls and
+                  accept our <PtpLink path="/privacy">Privacy Policy</PtpLink>. You can unsubscribe
+                  at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
+               </p>
             </form>
             <footer>
                <p class="disclaimer">
