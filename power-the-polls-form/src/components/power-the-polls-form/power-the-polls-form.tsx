@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, FunctionalComponent, h, Host, Method, Prop, State } from "@stencil/core";
 
-import { PartnerStates, SemiPartnerStates } from "../../data";
+import { States } from "../../data";
 import { toQueryString } from "../../util";
 import { PtpLink } from "../../util/PtpLink";
 
@@ -148,48 +148,78 @@ export class PowerThePollsForm {
       return ( <Host>
          {this.formStatus === "completed" ? (
             <article>
-               {this.state != null && this.state in PartnerStates ?
+               {this.state != null && this.state in States.partners ?
                   (
                      <Fragment>
                         <h1>Thanks for signing up to Power the Polls!</h1>
                         <p>
-                           You'll hear from a partner election official or nonprofit soon about how you can help serve as a poll worker in {PartnerStates[this.state]}.
+                           We are sharing your information with election administrators and our state partners.
+                        </p>
+                        <p>
+                           You'll hear from a partner in the next week about how you can help serve as a poll worker in {States.partners[this.state]}.
+                        </p>
+                     </Fragment>
+                  ) : this.state != null && this.state in States.noPollWorkersNeeded ? (
+                     <Fragment>
+                        <h1>Thanks for signing up to Power the Polls!</h1>
+                        <p>Thank you so much for your interest in being a poll worker.</p>
+                        <p>
+                           Good news: <strong>{States.noPollWorkersNeeded[this.state]} has indicated that they have all the election workers they need this year!</strong>
+                        </p>
+                        <p>
+                           The bad news is, that means we won’t have a place for you to serve as a poll worker, since your state is all set, and jurisdiction requirements unfortunately mean
+                           you won’t be eligible to serve in another state.
+                        </p>
+                        <p>
+                           We are passing your information on to your state's election administrators who will reach out if their needs change or if there are other
+                           opportunities to help their offices.
+                        </p>
+                        <p>
+                           <strong>You can still help power the polls</strong> by voting in this upcoming election, and encouraging your friends and family across the country to register
+                           to vote and, for those who live in other states - signing up to be poll workers.
                         </p>
                      </Fragment>
                   ) : (
-                     <Fragment>
-                        <h1>You’re one step closer to Powering the Polls!</h1>
-                        <h2>What’s next?</h2>
-                        <hr />
-                     </Fragment>
-                  )}
+                        <Fragment>
+                           <h1>You’re one step closer to Powering the Polls!</h1>
+                           <h2>What’s next?</h2>
+                           <hr />
+                        </Fragment>
+                     )}
                <poll-worker-info
                   city={this.city}
                   county={this.county}
                   state={this.state}
                >
-                  {this.state == null || !( this.state in PartnerStates ) && (
+                  {this.state == null || !( this.state in States.noPollWorkersNeeded ) && !( this.state in States.partners ) && (
                      <div>
                         <div class="next-steps">
                            <p>
                               <span class="number">1</span>
                               <strong>Complete your community's application to be a poll worker!</strong> Learn more about hours, compensation, and requirements below.
-                        </p>
+                           </p>
                            <p>
                               <span class="number">2</span>
-                              {this.state != null && this.state in SemiPartnerStates ?
+                              {this.state == null || !( this.state in States.semiPartners ) ?
                                  `
-                           We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your
-                           application so we can help you become a poll worker.
-                           ` : `
-                           In the weeks leading up to the election, you will hear back from your local election administrators if you were
-                           selected to be a worker in your jurisdiction.
-                           `}
+                              In the weeks leading up to the election, you will hear back from your local election administrators
+                              if you were selected to be a worker in your jurisdiction.
+                              ` : `
+                              We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application
+                              so we can help you become a poll worker. Be on the lookout for a call from our team!
+                              `
+                              }
                            </p>
                            <p>
                               <span class="number">3</span>
-                           Please encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!
-                        </p>
+                              {this.state == null || !( this.state in States.semiPartners ) ?
+                                 `
+                              Please encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!
+                              ` : `
+                              Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!
+                              `
+                              }
+                           </p>
                         </div>
                         <hr />
                      </div>
