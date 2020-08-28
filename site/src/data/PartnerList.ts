@@ -233,6 +233,12 @@ const data: Partner[] = [
       logo: "burton.png",
    },
    {
+      partnerId: "CamelsVote",
+      name: "CamelsVote",
+      logo: "camels-vote.png",
+      logoIsDark: true,
+   },
+   {
       partnerId: "campus",
       name: "Campus Compact",
       logo: "campus-compact.png",
@@ -293,6 +299,11 @@ const data: Partner[] = [
       partnerId: "CrookedMedia",
       name: "Crooked Media",
       logo: "vsa.png",
+   },
+   {
+      partnerId: "DemLabs",
+      name: "DemLabs",
+      logo: "demlabs.png",
    },
    {
       name: "Democracy Maine",
