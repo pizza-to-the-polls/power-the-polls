@@ -488,6 +488,12 @@ const data: Partner[] = [
       logo: "motivote.png",
    },
    {
+      partnerId: "SEARAC",
+      name: "Southeast Asia Resource Action Center",
+      logo: "searac.png",
+      logoAppearsOnLandingPage: true,
+   },
+   {
       partnerId: "mtv",
       logo: "mtv.png",
       name: "MTV",
