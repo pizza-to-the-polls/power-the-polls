@@ -49,7 +49,7 @@ export class PageForm {
       };
 
       return (
-         <Host>
+         <Host class={{ "complete": this.formComplete }}>
             {!this.formComplete ? ( <Fragment>
                <img
                   class={{

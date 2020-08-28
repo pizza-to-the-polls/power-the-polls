@@ -3,13 +3,21 @@ page-form {
    flex-direction: column;
    position: relative;
 
+   // adjust margins of container and heading to account for PtP and partner logos
+   margin-top: -3em; // undo paddding of main in app-root.scss
+   @include on-mobile() {
+      margin-top: auto; // not on mobile though
+   }
    h1 {
       margin-top: 150px;
       @include on-mobile() {
          margin-top: auto;
       }
-      &.partner {
-         margin-top: 0;
+   }
+   &.complete {
+       margin-top: auto; // undo paddding of main in app-root.scss
+      h1 {
+         margin-top: auto;
       }
    }
 
