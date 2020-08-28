@@ -76,6 +76,12 @@ const data: Partner[] = [
       logo: "aaldef.png",
    },
    {
+      partnerId: "AARP",
+      name: "AARP",
+      logoAppearsOnLandingPage: true,
+      logo: "aarp.png",
+   },
+   {
       partnerId: "american-constitution-society",
       vanityUrls: ["acs"],
       name: "American Constitution Society",
@@ -136,6 +142,11 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "AVIL",
+      name: "All Voting Is Local",
+      logo: "avil.svg",
+   },
+   {
       partnerId: "AYO",
       name: "Alliance for Youth Organizing",
       logo: "alliance-for-youth-organizing.png",
@@ -154,6 +165,10 @@ const data: Partner[] = [
    {
       name: "Arizona",
       partnerId: "azadvocacy",
+   },
+   {
+      partnerId: "ASAP",
+      name: "Alliance of Students at the Polls",
    },
    {
       partnerId: "APBCO",
@@ -225,7 +240,7 @@ const data: Partner[] = [
    {
       partnerId: "campusvote",
       name: "Campus Vote Project",
-      vanityUrls: ["CVPE", "CVPM", "CVPS"],
+      vanityUrls: ["CVP", "CVPE", "CVPM", "CVPS"],
       logo: "campus-vote-project.png",
    },
    {
@@ -242,6 +257,7 @@ const data: Partner[] = [
    {
       partnerId: "CollectiveImpact",
       name: "Collective Impact",
+      vanityUrls: ["2020", "hero", "now"],
    },
    {
       partnerId: "ComedyCentral",
@@ -313,6 +329,13 @@ const data: Partner[] = [
       logo: "fair-elections-center.png",
       name: "Fair Elections Center",
       isFoundingPartner: true,
+   },
+   {
+      partnerId: "fairfight",
+      name: "Fair Fight",
+      logoAppearsOnLandingPage: true,
+      excludeFromPartnerList: true,
+      logo: "fairfight.png",
    },
    {
       partnerId: "feministmajority",
@@ -395,6 +418,10 @@ const data: Partner[] = [
       logoIsDark: true,
       logoAppearsOnLandingPage: true,
       excludeFromPartnerList: true,
+   },
+   {
+      partnerId: "LCVEF",
+      name: "League of Conservation Voters Education Fund",
    },
    {
       name: "League of Conservation Voters Michigan",
@@ -620,6 +647,7 @@ const data: Partner[] = [
       vanityUrls: ["seiu"],
       name: "SEUI",
       optUserOutOfChase: true,
+      logo: "seiu.jpg",
    },
    {
       partnerId: "SLSV",
