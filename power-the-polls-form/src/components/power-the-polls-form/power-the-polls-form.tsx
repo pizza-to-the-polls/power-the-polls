@@ -161,36 +161,43 @@ export class PowerThePollsForm {
                         <h1>You’re one step closer to Powering the Polls!</h1>
                         <h2>What’s next?</h2>
                         <hr />
-                        <p>
-                           <strong>You still need to complete an application to be a poll worker!</strong> Use the below information to apply to be a poll worker in your community.
-                        </p>
-                        {this.state != null && this.state in SemiPartnerStates ? (
-                           <p>
-                              Power the Polls is working with local organizations and election administrators to connect them with individuals like you that want
-                              to serve as poll workers. We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your
-                              application so we can help you become a poll worker.
-                           </p>
-                        ) : (
-                              <p>
-                                 Power the Polls is working with local organizations and election administrators to connect them with individuals like you that want to
-                                 serve as poll workers. In the weeks leading up to the election, you will hear back from your local election administrators if you were
-                                 selected to be a worker in your jurisdiction.
-                              </p>
-                           )}
-                        <p>
-                           In the meantime, please encourage your friends and family to sign up to be poll workers!
-                        </p>
                      </Fragment>
                   )}
-
                <poll-worker-info
                   city={this.city}
                   county={this.county}
                   state={this.state}
-               />
+               >
+                  {this.state == null || !( this.state in PartnerStates ) && (
+                     <div>
+                        <div class="next-steps">
+                           <p>
+                              <span class="number">1</span>
+                              <strong>Complete your community's application to be a poll worker!</strong> Learn more about hours, compensation, and requirements below.
+                        </p>
+                           <p>
+                              <span class="number">2</span>
+                              {this.state != null && this.state in SemiPartnerStates ?
+                                 `
+                           We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your
+                           application so we can help you become a poll worker.
+                           ` : `
+                           In the weeks leading up to the election, you will hear back from your local election administrators if you were
+                           selected to be a worker in your jurisdiction.
+                           `}
+                           </p>
+                           <p>
+                              <span class="number">3</span>
+                           Please encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!
+                        </p>
+                        </div>
+                        <hr />
+                     </div>
+                  )}
+               </poll-worker-info>
             </article>
          ) : ( <Fragment>
-            <h3>Help your community and sign up to Power the Polls.</h3>
+            <h3>Help your community and sign up to Power the Polls!</h3>
             <form
                method="POST"
                action={submissionUrl}

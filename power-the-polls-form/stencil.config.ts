@@ -7,7 +7,13 @@ export const config: Config = {
    taskQueue: "async",
    srcDir: "src", // "src" is the default; just here for clarity
    plugins: [
-      sass(),
+      sass( {
+         // scss files will automatically have these added
+         injectGlobalPaths: [
+            "styles/include/variables.scss",
+            "styles/include/mixins.scss",
+         ],
+      } ),
    ],
    outputTargets: [
       {

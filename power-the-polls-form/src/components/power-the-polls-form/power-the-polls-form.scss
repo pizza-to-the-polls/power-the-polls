@@ -10,9 +10,41 @@ power-the-polls-form {
       letter-spacing: 0.05rem;
       font-weight: bold;
       cursor: pointer;
-      &:hover { opacity: 0.8; }
-      &:focus { opacity: 0.6; }
-      &:active { opacity: 0.4; }
+      &:hover {
+         opacity: 0.8;
+      }
+      &:focus {
+         opacity: 0.6;
+      }
+      &:active {
+         opacity: 0.4;
+      }
+   }
+
+   .next-steps {
+      p {
+         clear: left;
+         .number {
+            margin: 0 0.5em 0.5em 0;
+            border-style: solid;
+            border-width: 2px;
+            padding: 0.25em;
+            display: block;
+            width: 2.2em;
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: bold;
+            float: left;
+            @include on-mobile() {
+               float: none;
+            }
+         }
+      }
+      &::after {
+         content: "";
+         display: block;
+         clear: both;
+      }
    }
 
    h3 {

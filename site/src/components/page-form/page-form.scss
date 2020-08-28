@@ -15,7 +15,7 @@ page-form {
 
    .main-logo {
       position: absolute;
-      left: -3rem;
+      left: -3em;
       z-index: -1;
       opacity: 80%;
       &.partner {
@@ -131,6 +131,8 @@ page-form {
    }
 
    power-the-polls-form {
+      // NOTE: styles for a.poll-worker-action are in main.scss
+
       button {
          background-color: $color-highlight;
          color: $color-font-primary;
@@ -176,11 +178,21 @@ page-form {
          }
       }
 
-      a.jurisdiction {
-         border-color: $color-font-primary;
-         &:hover {
-            border-color: $color-accent;
+      .jurisdictions {
+         a.jurisdiction {
+            border-color: $color-font-primary;
+            color: $color-font-primary;
+            &:hover {
+               border-color: $color-accent;
+               color: $color-accent;
+            }
          }
+      }
+
+      .number {
+         border-color: $color-accent;
+         color: $color-accent;
+         font-family: $font-heading;
       }
    }
 }
