@@ -49,6 +49,10 @@ export namespace Components {
           * To display custom text and images for a specific Power the Polls partner, enter their ID here.
          */
         "partnerId"?: string;
+        /**
+          * Optional name displayed in privacy policy disclaimer when `optUserOutOfChase` is true
+         */
+        "partnerName"?: string;
         "reset": () => Promise<void>;
         /**
           * The API key to access SmartyStreets which is used for address lookup.
@@ -170,6 +174,10 @@ declare namespace LocalJSX {
           * To display custom text and images for a specific Power the Polls partner, enter their ID here.
          */
         "partnerId"?: string;
+        /**
+          * Optional name displayed in privacy policy disclaimer when `optUserOutOfChase` is true
+         */
+        "partnerName"?: string;
         /**
           * The API key to access SmartyStreets which is used for address lookup.
          */

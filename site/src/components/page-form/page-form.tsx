@@ -99,6 +99,7 @@ export class PageForm {
             <power-the-polls-form
                id="form"
                partnerId={partnerId}
+               partnerName={partner?.name}
                optUserOutOfChase={partner?.optUserOutOfChase || false}
                customFormFieldLabel={partner?.customSignupFormField}
                onSubmitCompleted={formCompleted}
