@@ -1,6 +1,6 @@
 {
    "name": "@ptp-us/power-the-polls-form",
-   "version": "0.14.3",
+   "version": "0.14.4-beta.1",
    "description": "Power the Polls Volunteer Form",
    "license": "MIT",
    "main": "dist/index.js",
