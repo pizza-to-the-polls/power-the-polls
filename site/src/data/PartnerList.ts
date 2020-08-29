@@ -618,7 +618,7 @@ const data: Partner[] = [
    {
       partnerId: "labor-seiu",
       vanityUrls: ["seiu"],
-      name: "SEUI",
+      name: "SEIU",
       optUserOutOfChase: true,
    },
    {
