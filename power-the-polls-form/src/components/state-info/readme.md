@@ -9,7 +9,7 @@
 
 | Property  | Attribute  | Description                | Type                  | Default     |
 | --------- | ---------- | -------------------------- | --------------------- | ----------- |
-| `state`   | `state`    | State abrieviation         | `string \| undefined` | `undefined` |
+| `state`   | `state`    | State abbreviation         | `string \| undefined` | `undefined` |
 | `stateId` | `state-id` | State id in work elections | `null \| number`      | `null`      |
 
 

@@ -61,7 +61,7 @@ export namespace Components {
     }
     interface StateInfo {
         /**
-          * State abrieviation
+          * State abbreviation
          */
         "state"?: string;
         /**
@@ -185,7 +185,7 @@ declare namespace LocalJSX {
     }
     interface StateInfo {
         /**
-          * State abrieviation
+          * State abbreviation
          */
         "state"?: string;
         /**

@@ -1,4 +1,27 @@
-const data = [
+const partners: { [state: string]: string } = {
+   ME: "Maine",
+   MI: "Michigan",
+};
+/**
+ * Can't think of a better term
+ */
+const semiPartners: { [state: string]: string } = {
+   AZ: "Arizona",
+   FL: "Florida",
+   GA: "Georgia",
+   MN: "Minnesota",
+   NV: "Nevada",
+   NH: "New Hampshire",
+   NC: "North Carolina",
+   PA: "Pennsylvania",
+   WI: "Wisconsin",
+};
+const noPollWorkersNeeded: { [state: string]: string } = {
+   OR: "Oregon",
+   HI: "Hawaii",
+   WA: "Washington",
+};
+const stateList = [
    { short: "AL", full: "Alabama" },
    { short: "AK", full: "Alaska" },
    { short: "AZ", full: "Arizona" },
@@ -57,4 +80,10 @@ const data = [
    { short: "VI", full: "Virgin Islands" },
 ];
 
+const data = {
+   partners,
+   semiPartners,
+   noPollWorkersNeeded,
+   stateList,
+};
 export default data;

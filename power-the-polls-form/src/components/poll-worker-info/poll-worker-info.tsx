@@ -6,10 +6,10 @@ import { findJurisdiction, findState } from "../../util/WorkElections";
 /**
  * Component to render local info about how to be a poll worker.
  */
-@Component({
-  tag: "poll-worker-info",
-  shadow: false,
-})
+@Component( {
+   tag: "poll-worker-info",
+   shadow: false,
+} )
 export class PollWorkerInfo {
 
    /**
@@ -30,24 +30,28 @@ export class PollWorkerInfo {
    @Prop() public history?: RouterHistory;
    @Element() public el?: HTMLElement;
 
+   public render() {
+      const { state, county, city } = this;
+      const jurisdictionId = state ? findJurisdiction( state, county, city ) : null;
+      const stateId = state ? findState( state ) : null;
 
-  public render() {
-    const { state, county, city } = this;
-    const jurisdictionId = state ? findJurisdiction(state, county, city) : null;
-    const stateId = state ? findState(state) : null;
+      if( !state && this.history ) { return this.history.replace( "/search" ); }
 
-   if( !state && this.history ) { return this.history.replace("/search"); }
-
-    return (
-      <Host>
-         { state
-            ? jurisdictionId
-               ? (<jurisdiction-info jurisdictionId={jurisdictionId} />)
-               : (<state-info state={state} stateId={stateId} />)
-            : null }
-      </Host>
-    );
-  }
+      return (
+         <Host>
+            {state
+               ? jurisdictionId
+                  ? (
+                     <jurisdiction-info jurisdictionId={jurisdictionId}>
+                        <slot />
+                     </jurisdiction-info>
+                  ) : (
+                     <state-info state={state} stateId={stateId} />
+                  )
+               : null}
+         </Host>
+      );
+   }
 }
 
-injectHistory(PollWorkerInfo);
+injectHistory( PollWorkerInfo );

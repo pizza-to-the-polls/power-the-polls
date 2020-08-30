@@ -4,24 +4,24 @@ import { Jurisdiction } from "../../data/WorkElections";
 import { PtpLink } from "../../util/PtpLink";
 import { fetchFromWE } from "../../util/WorkElections";
 
-const Reqs = ( jurisdiction: Jurisdiction ) => (
-   jurisdiction.registration_status.length < 1
+const VoterRegistrationReqs = ( j: Jurisdiction ) => (
+   j.registration_status.length < 1
       ? null
       : (
          <div>
             <h4>Voter Registration Requirements</h4>
             <ul>
-               <li>{jurisdiction.registration_status === "S"
-                  ? `You can be registered to vote anywhere in the state to work on Election Day in ${jurisdiction.name}.`
-                  : jurisdiction.registration_status === "J"
-                     ? `You must be registered to vote in ${jurisdiction.name} to work on Election Day`
-                     : jurisdiction.registration_status}</li>
+               <li>{j.registration_status === "S"
+                  ? `You can be registered to vote anywhere in the state to work on Election Day in ${j.name}.`
+                  : j.registration_status === "J"
+                     ? `You must be registered to vote in ${j.name} to work on Election Day`
+                     : j.registration_status}</li>
             </ul>
          </div>
       )
 );
 
-const Hours = ( j: Jurisdiction ) => (
+const HoursAndCompensation = ( j: Jurisdiction ) => (
    <div>
       <h4>Hours and Compensation</h4>
       <ul>
@@ -48,6 +48,24 @@ const WorkReqs = ( j: Jurisdiction ) => (
          {j.training_note && ( <li><strong>Training Details: </strong>{j.training_note}</li> )}
       </ul>
    </div>
+);
+
+const ContactInfo = ( j: Jurisdiction ) => (
+   <div>
+      <h4>Contact Information</h4>
+      <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>
+      <p><strong>Email: </strong><a href={`mailto:${j.email}`}>{j.email}</a></p>
+      {j?.office_address &&
+         <p><strong>Office Address: </strong><a target="_blank" href={`https://www.google.com/maps/search/${encodeURIComponent( j?.office_address )}`}>{j?.office_address}</a></p>}
+   </div>
+);
+
+const CompleteApplicationButton = ( j: Jurisdiction ) => (
+   <a
+      class="poll-worker-action cta"
+      href={j.application ? j.application : `mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`}
+      target="_blank"
+   >Complete your application</a>
 );
 
 /**
@@ -78,7 +96,10 @@ export class JurisdictionInfo {
       const j = this.jurisdiction;
 
       return j == null ?
-         <loading-spinner dark={true} />
+         <Host>
+            <slot />
+            <loading-spinner dark={true} />
+         </Host>
          : (
             <Host>
                <h2>{j.name}, {j.state.alpha}</h2>
@@ -86,40 +107,41 @@ export class JurisdictionInfo {
                   ( <p>
                      {j.jurisdiction_link_text}
                      {" "}
-                  <PtpLink path={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</PtpLink>.
+                     <PtpLink path={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</PtpLink>.
                   </p> )}
 
-               <div>
-                  <a
-                     class="poll-worker-action cta"
-                     href={j.application ? j.application : `mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`}
-                     target="_blank"
-                  >Apply Now!</a>
-                  {j.website && ( <a
-                     class="poll-worker-action"
-                     href={j.website}
-                     target="_blank"
-                  >Poll Worker Information</a> )}
-                  {j.student_website && ( <a
-                     class="poll-worker-action"
-                     href={j.student_website}
-                     target="_blank"
-                  >Student Poll Worker Information</a> )}
-               </div>
+               <a
+                  class="poll-worker-action cta"
+                  href={j.application ? j.application : `mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`}
+                  target="_blank"
+               >Complete your application</a>
 
-               <h4>Contact Information</h4>
-               <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>
-               <p><strong>Email: </strong><a href={`mailto:${j.email}`}>{j.email}</a></p>
-               {j?.office_address && <p><strong>Office Address: </strong><a target="_blank" href={`https://www.google.com/maps/search/${encodeURIComponent( j?.office_address )}`}>{j?.office_address}</a></p>}
+               <slot />
 
-               <Reqs {...j} />
-               <Hours {...j} />
+               <HoursAndCompensation {...j} />
+               <VoterRegistrationReqs {...j} />
                <WorkReqs {...j} />
+
                {j.further_notes
                   && ( <div>
                      <h4>Further Notes</h4>
                      <p>{j.further_notes}</p>
                   </div> )}
+
+               <ContactInfo {...j} />
+
+               {j.website && ( <a
+                  class="poll-worker-action"
+                  href={j.website}
+                  target="_blank"
+               >Poll Worker Information</a> )}
+               {j.student_website && ( <a
+                  class="poll-worker-action"
+                  href={j.student_website}
+                  target="_blank"
+               >Student Poll Worker Information</a> )}
+               <CompleteApplicationButton {...j} />
+
             </Host>
          );
    }

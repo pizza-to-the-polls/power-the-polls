@@ -5,7 +5,8 @@ import { PtpLink } from "../../util/PtpLink";
 import { fetchFromWE } from "../../util/WorkElections";
 
 /**
- * Component to render local info about how to be a poll worker.
+ * When we have no specific polling jurisdiction for a user and just their state we
+ * display a list of all the counties for them to choose from.
  */
 @Component( {
    tag: "state-info",
@@ -14,7 +15,7 @@ import { fetchFromWE } from "../../util/WorkElections";
 export class StateInfoComponent {
 
    /**
-    * State abrieviation
+    * State abbreviation
     */
    @Prop() public state?: string;
 

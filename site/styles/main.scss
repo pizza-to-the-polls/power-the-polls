@@ -86,14 +86,11 @@ a {
 a.poll-worker-action {
    font-family: $font-heading;
    background-color: $color-highlight;
+   border: 0;
    color: $color-font-primary;
-   font-weight: bold;
-   text-decoration: none;
-   text-transform: uppercase;
    &.cta {
       background-color: $color-font-primary;
       color: black;
       font-family: $font-heading;
-      text-transform: uppercase;
    }
 }
