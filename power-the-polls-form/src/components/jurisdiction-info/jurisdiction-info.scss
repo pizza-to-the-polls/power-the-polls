@@ -23,8 +23,8 @@ jurisdiction-info {
       }
       &.cta {
          border: 0;
-         background-color: #444bfd;
-         color: #f5f3f1;
+         background-color: $color-highlight;
+         color: $color-font-highlight;
       }
    }
 }
