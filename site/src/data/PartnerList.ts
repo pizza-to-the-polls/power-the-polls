@@ -6,11 +6,11 @@ export interface Partner {
    readonly partnerId: string;
 
    /**
-    * Optional vanity URL which will result in `https://powerthepolls.org/{vanityUrls}` including `partnerId`
-    * upon submission. Note that `partnerId` will itself always be a valid URL (`https://powerthepolls.org/{partnerId}`),
-    * so this is only needed if there is an alternative URL desired.
+    * Optional additional vanity URLs that will resolve to this partner.
+    * Note that `partnerId` will itself always be a valid URL (`https://powerthepolls.org/{partnerId}`),
+    * so this is only needed if there are alternative URLs desired.
     */
-   readonly vanityUrls?: string[];
+   readonly additionalVanityUrls?: string[];
 
    /**
     * The full name of this partner.
@@ -88,7 +88,7 @@ const data: Partner[] = [
    },
    {
       partnerId: "american-constitution-society",
-      vanityUrls: ["acs"],
+      additionalVanityUrls: ["acs"],
       name: "American Constitution Society",
       logo: "acs.png",
    },
@@ -114,7 +114,7 @@ const data: Partner[] = [
    },
    {
       partnerId: "labor-aflcio",
-      vanityUrls: ["aflcio"],
+      additionalVanityUrls: ["aflcio"],
       name: "AFL-CIO",
       optUserOutOfChase: true,
       customSignupFormField: "Union Name",
@@ -123,7 +123,7 @@ const data: Partner[] = [
    },
    {
       partnerId: "labor-afscme",
-      vanityUrls: ["afscme"],
+      additionalVanityUrls: ["afscme"],
       name: "AFSCME",
       logo: "afscme.png",
       optUserOutOfChase: true,
@@ -131,8 +131,8 @@ const data: Partner[] = [
    },
    {
       partnerId: "labor-aft",
+      additionalVanityUrls: ["aft"],
       name: "AFT",
-      vanityUrls: ["aft"],
       optUserOutOfChase: true,
    },
    {
@@ -177,7 +177,6 @@ const data: Partner[] = [
       partnerId: "AndrewGoodmanFoundation",
       logo: "andrew-goodman-foundation.png",
       logoIsDark: true,
-      vanityUrls: ["AndrewGoodmanFoundation"],
    },
    {
       name: "Anonymous Content",
@@ -220,22 +219,21 @@ const data: Partner[] = [
       logo: "block-power.png",
    },
    {
-      name: "Blue Apron",
       partnerId: "blueapron",
+      name: "Blue Apron",
       logo: "blue-apron.png",
       logoIsDark: true,
    },
    {
-      name: "BlueCross and BlueShield of Minnesota",
       partnerId: "bluecrossandblueshieldminnesota",
+      name: "BlueCross and BlueShield of Minnesota",
       logo: "blue-cross-and-blue-shield-minnesota.jpg",
       logoIsDark: true,
    },
    {
       partnerId: "boys-and-girls-clubs",
-      vanityUrls: ["boys-and-girls-club"],
-      logo: "boys-and-girls-clubs.png",
       name: "Boys and Girls Clubs of America",
+      logo: "boys-and-girls-clubs.png",
    },
    {
       partnerId: "bbyo",
@@ -282,7 +280,6 @@ const data: Partner[] = [
       logo: "camels-vote.png",
       logoIsDark: true,
    },
-   },
    {
       name: "Campbell Ewald",
       partnerId: "campbellewald",
@@ -296,7 +293,7 @@ const data: Partner[] = [
    {
       partnerId: "campusvote",
       name: "Campus Vote Project",
-      vanityUrls: ["CVP", "CVPE", "CVPM", "CVPS"],
+      additionalVanityUrls: ["CVP", "CVPE", "CVPM", "CVPS"],
       logo: "campus-vote-project.png",
    },
    {
@@ -322,14 +319,13 @@ const data: Partner[] = [
    },
    {
       partnerId: "CollectiveImpact",
+      additionalVanityUrls: ["2020", "hero", "now"],
       name: "Collective Impact",
-      vanityUrls: ["2020", "hero", "now"],
    },
    {
       name: "The Change Agentcy",
       partnerId: "thechangeagentcy",
       logo: "the-change-agentcy.png",
-      logoIsDark: true,
    },
    {
       name: "Color Farm Media",
@@ -339,16 +335,16 @@ const data: Partner[] = [
    },
    {
       partnerId: "ComedyCentral",
-      vanityUrls: ["cc"],
+      additionalVanityUrls: ["cc"],
       name: "Comedy Central",
       logo: "comedy-central.png",
       isFoundingPartner: true,
    },
    {
-      vanityUrls: ["civicgeorgia"],
+      partnerId: "civic-georgia",
+      additionalVanityUrls: ["civicgeorgia"],
       logo: "civi-georgia.png",
       name: "Civic Georgia",
-      partnerId: "civic-georgia",
    },
    {
       partnerId: "Civic",
@@ -403,9 +399,9 @@ const data: Partner[] = [
       name: "Every Vote Counts",
    },
    {
-      name: "Expedia",
       partnerId: "expediagroup",
-      vanityUrls: ["expediagroupvotes2020"],
+      additionalVanityUrls: ["expediagroupvotes2020"],
+      name: "Expedia",
       logo: "expedia-group.png",
    },
    {
@@ -485,7 +481,7 @@ const data: Partner[] = [
       logo: "hrc.png",
       logoAppearsOnLandingPage: true,
       excludeFromPartnerList: true,
-      vanityUrls: ["HRCFoundation"],
+      additionalVanityUrls: ["HRCFoundation"],
       partnerId: "HRC",
       logoIsDark: true,
    },
@@ -493,6 +489,7 @@ const data: Partner[] = [
       name: "iCitizen",
       partnerId: "icitizen",
       logo: "icitizen.jpg",
+      logoIsDark: true,
    },
    {
       partnerId: "invision",
@@ -546,7 +543,6 @@ const data: Partner[] = [
    },
    {
       name: "League of United Latin American Citizens",
-      vanityUrls: ["LULAC"],
       partnerId: "LULAC",
    },
    {
@@ -671,15 +667,15 @@ const data: Partner[] = [
    },
    {
       partnerId: "NRDCA",
+      additionalVanityUrls: ["nrdcactionfund"],
       name: "Natural Resources Defense Council",
-      vanityUrls: ["nrdcactionfund"],
       logo: "nrdc.jpg",
       logoIsDark: true,
       logoAppearsOnLandingPage: true,
    },
    {
       partnerId: "labor-nea",
-      vanityUrls: ["nea"],
+      additionalVanityUrls: ["nea"],
       name: "NEA",
       optUserOutOfChase: true,
    },
@@ -771,9 +767,8 @@ const data: Partner[] = [
       isFoundingPartner: true,
    },
    {
-      name: "The Poll Workers Project",
-      vanityUrls: ["PWP"],
       partnerId: "PWP",
+      name: "The Poll Workers Project",
    },
    {
       partnerId: "PublicCitizen",
@@ -822,7 +817,7 @@ const data: Partner[] = [
    },
    {
       partnerId: "labor-seiu",
-      vanityUrls: ["seiu"],
+      additionalVanityUrls: ["seiu"],
       name: "SEIU",
       optUserOutOfChase: true,
       logo: "seiu.jpg",
@@ -836,10 +831,10 @@ const data: Partner[] = [
    },
    {
       partnerId: "socially-driven-music",
+      additionalVanityUrls: ["SociallyDrivenMusic"],
       name: "Socially Driven Music",
       logo: "socially-driven-music.png",
       customSignupFormField: "Name of Local Artist that Referred You",
-      vanityUrls: ["SociallyDrivenMusic"],
    },
    {
       partnerId: "SocialGoodClub",
@@ -850,6 +845,7 @@ const data: Partner[] = [
       name: "Solve",
       partnerId: "solve",
       logo: "solve.png",
+      logoIsDark: true,
    },
    {
       partnerId: "StandUpAmerica",
@@ -863,7 +859,7 @@ const data: Partner[] = [
    },
    {
       partnerId: "skimm",
-      vanityUrls: ["theSkimm"],
+      additionalVanityUrls: ["theSkimm"],
       logo: "the-skimm.png",
       name: "theSkimm",
    },
@@ -892,7 +888,7 @@ const data: Partner[] = [
    },
    {
       partnerId: "TheDailyShow",
-      vanityUrls: ["tds"],
+      additionalVanityUrls: ["tds"],
       name: "The Daily Show",
    },
    {
@@ -971,11 +967,9 @@ const data: Partner[] = [
       logo: "vpc.png",
    },
    {
+      partnerId: "VAI",
       name: "Veterans for American Ideals",
       logo: "vets-for-american-ideals.jpg",
-      logoIsDark: true,
-      vanityUrls: ["VAI"],
-      partnerId: "VAI",
    },
    {
       name: "Warby Parker",
