@@ -4,7 +4,8 @@ import { injectHistory, RouterHistory } from "@stencil/router";
 import { findJurisdiction, findState } from "../../util/WorkElections";
 
 /**
- * Component to render local info about how to be a poll worker.
+ * Display state or specific jurisdiction information for poll worker information based on whether
+ * the provided `state`, `county`, and `city` match a jurisdiction or not.
  */
 @Component( {
    tag: "poll-worker-info",
