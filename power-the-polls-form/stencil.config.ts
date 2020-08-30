@@ -20,6 +20,10 @@ export const config: Config = {
          type: "dist",
       },
       {
+         type: "dist-custom-elements-bundle",
+         dir: "./dist/full",
+      },
+      {
          // Generates readme files in each component dir. Nice for GitHub.
          type: "docs-readme",
          footer: "", // supports markdown

@@ -27,7 +27,7 @@ app-root {
    }
 
    main {
-      padding: 2em 3em 0em 3em; // adjust page-form.scss with negative top margin to offset top padding
+      padding: 3em 3em 0em 3em; // adjust page-form.scss with negative top margin to offset top padding
 
       @include on-mobile() {
          padding: 2em;

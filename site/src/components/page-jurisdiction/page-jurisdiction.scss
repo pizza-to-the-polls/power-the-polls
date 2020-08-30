@@ -1,0 +1,13 @@
+page-jurisdiction {
+   // this is also used in page-form.scss so if you change one, change the other
+   a.poll-worker-action {
+      font-family: $font-heading;
+      border: 0;
+      background-color: $color-font-primary;
+      color: black;
+      &.cta {
+         background-color: $color-highlight;
+         color: $color-font-primary;
+      }
+   }
+}

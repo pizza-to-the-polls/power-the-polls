@@ -102,6 +102,7 @@ const data: Partner[] = [
    {
       partnerId: "ACLUGeorgia",
       name: "ACLU Georgia",
+      additionalVanityUrls: ["acluga"],
    },
    {
       partnerId: "ACLUMI",
@@ -195,6 +196,12 @@ const data: Partner[] = [
    {
       partnerId: "ASAP",
       name: "Alliance of Students at the Polls",
+   },
+   {
+      partnerId: "ASIV",
+      name: "ASIV",
+      logo: "asiv.jpg",
+      logoIsDark: true,
    },
    {
       partnerId: "APBCO",
@@ -307,6 +314,7 @@ const data: Partner[] = [
       name: "Compass Coffee",
       partnerId: "compasscoffee",
       logo: "compass-coffee.png",
+      logoIsDark: true,
    },
    {
       name: "Crossover Collective",
@@ -532,18 +540,18 @@ const data: Partner[] = [
       name: "League of Conservation Voters Education Fund",
    },
    {
-      name: "League of Conservation Voters Michigan",
       partnerId: "LCVMI",
+      name: "League of Conservation Voters Michigan",
+   },
+   {
+      name: "League of United Latin American Citizens",
+      partnerId: "LULAC",
    },
    {
       name: "LinkedIn",
       partnerId: "linkedin",
       logo: "linkedin.png",
       logoIsDark: true,
-   },
-   {
-      name: "League of United Latin American Citizens",
-      partnerId: "LULAC",
    },
    {
       name: "Verizon Media",
@@ -583,6 +591,10 @@ const data: Partner[] = [
       partnerId: "lyft",
       logo: "lyft.png",
       logoIsDark: true,
+   },
+   {
+      partnerId: "mainevoices",
+      name: "Maine Voices",
    },
    {
       partnerId: "miami-dade-college",
@@ -640,6 +652,12 @@ const data: Partner[] = [
       name: "NAACP",
       logo: "naacp.png",
       logoAppearsOnLandingPage: true,
+   },
+   {
+      partnerId: "ncjw",
+      name: "National Council of Jewish Women",
+      logo: "ncjw.jpg",
+      logoIsDark: true,
    },
    {
       partnerId: "national-coalition-for-accessible-voting",

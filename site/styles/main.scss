@@ -81,16 +81,3 @@ a {
       color: $color-accent;
    }
 }
-
-// here so page-form.tsx and page-jurisdiction.tsx can share it
-a.poll-worker-action {
-   font-family: $font-heading;
-   background-color: $color-highlight;
-   border: 0;
-   color: $color-font-primary;
-   &.cta {
-      background-color: $color-font-primary;
-      color: black;
-      font-family: $font-heading;
-   }
-}

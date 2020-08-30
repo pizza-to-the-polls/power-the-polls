@@ -13,9 +13,12 @@ page-form {
       @include on-mobile() {
          margin-top: auto;
       }
+      &.partner {
+         margin-top: auto;
+      }
    }
    &.complete {
-       margin-top: auto; // undo paddding of main in app-root.scss
+      margin-top: auto; // undo paddding of main in app-root.scss
       h1 {
          margin-top: auto;
       }
@@ -139,14 +142,6 @@ page-form {
    }
 
    power-the-polls-form {
-      // NOTE: styles for a.poll-worker-action are in main.scss
-
-      button {
-         background-color: $color-highlight;
-         color: $color-font-primary;
-         font-family: $font-heading;
-      }
-
       footer {
          display: none;
       }
@@ -186,14 +181,30 @@ page-form {
          }
       }
 
-      .jurisdictions {
-         a.jurisdiction {
-            border-color: $color-font-primary;
+      button {
+         background-color: $color-highlight;
+         color: $color-font-primary;
+         font-family: $font-heading;
+      }
+
+      // this is also used in page-jurisdiction.scss so if you change one, change the other
+      a.poll-worker-action {
+         font-family: $font-heading;
+         border: 0;
+         background-color: $color-font-primary;
+         color: black;
+         &.cta {
+            background-color: $color-highlight;
             color: $color-font-primary;
-            &:hover {
-               border-color: $color-accent;
-               color: $color-accent;
-            }
+         }
+      }
+
+      a.jurisdiction {
+         border-color: $color-font-primary;
+         color: $color-font-primary;
+         &:hover {
+            border-color: $color-accent;
+            color: $color-accent;
          }
       }
 

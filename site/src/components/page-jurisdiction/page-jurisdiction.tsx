@@ -1,8 +1,9 @@
-import { Component, h, Host, Prop } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 import { MatchResults } from "@stencil/router";
 
 @Component( {
    tag: "page-jurisdiction",
+   styleUrl: "page-jurisdiction.scss",
    shadow: false,
 } )
 export class PageJurisdiction {
@@ -11,9 +12,7 @@ export class PageJurisdiction {
    public render() {
       const id = this.match ? this.match.params.id : null;
 
-      return (<Host>
-      { id && (<jurisdiction-info jurisdictionId={id} />)}
-      </Host>);
+      return id && ( <jurisdiction-info jurisdictionId={id} /> );
    }
 
 }
