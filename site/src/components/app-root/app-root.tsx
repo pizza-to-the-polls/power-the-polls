@@ -140,7 +140,7 @@ export class AppRoot {
       const partnerIdMatch = urlParam.toLowerCase() || queryStringParam?.toLowerCase();
       const partner = partnerIdMatch != null
          ? ( PartnerList.filter(
-            p => ( p.vanityUrls && p.vanityUrls.filter( x => x.toLowerCase() === partnerIdMatch ).length > 0 ) || p.partnerId.toLowerCase() === partnerIdMatch,
+            p => ( p.additionalVanityUrls && p.additionalVanityUrls.filter( x => x.toLowerCase() === partnerIdMatch ).length > 0 ) || p.partnerId.toLowerCase() === partnerIdMatch,
          ) || [null] )[0]
          : null;
 
@@ -165,8 +165,8 @@ export class AppRoot {
             window.history.replaceState( {}, "", "/" + path[0] + "#" + partner.partnerId );
          } else {
             // else we've matched the partner on their vanity URL, so make sure it is normalized in case and URL type (vanity vs partnerId)
-            if( ( partner.vanityUrls && partner.vanityUrls.filter( x => x === urlParam ).length === 0 ) || ( partner.vanityUrls == null && urlParam !== partner.partnerId ) ) {
-               window.history.replaceState( {}, "", "/" + ( partner.vanityUrls != null ? partner.vanityUrls[0] : partner.partnerId ) );
+            if( ( partner.additionalVanityUrls && partner.additionalVanityUrls.filter( x => x === urlParam ).length === 0 ) || ( partner.additionalVanityUrls == null && urlParam !== partner.partnerId ) ) {
+               window.history.replaceState( {}, "", "/" + ( partner.additionalVanityUrls != null ? partner.additionalVanityUrls[0] : partner.partnerId ) );
             }
          }
       }
@@ -181,7 +181,7 @@ export class AppRoot {
             // if source is not a partner, use the source value directly
             ? SIGNUP_PATH + "?source=" + source.value
             // else use the partner's vanity URL or partner ID
-            : ( source.partner.vanityUrls != null && source.partner.vanityUrls.length > 0 ? source.partner.vanityUrls[0] : source.partner.partnerId );
+            : ( source.partner.additionalVanityUrls != null && source.partner.additionalVanityUrls.length > 0 ? source.partner.additionalVanityUrls[0] : source.partner.partnerId );
 
       const toggleMenu = () => {
          this.menuIsActive = !this.menuIsActive;
