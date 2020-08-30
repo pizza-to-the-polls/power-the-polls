@@ -12,6 +12,7 @@
 | `customFormFieldLabel` | `custom-form-field-label` | The label for an additional field to be displayed on the signup form. If undefined, no additional field will be displayed. | `string \| undefined` | `undefined` |
 | `optUserOutOfChase`    | `opt-user-out-of-chase`   |                                                                                                                            | `boolean`             | `undefined` |
 | `partnerId`            | `partner-id`              | To display custom text and images for a specific Power the Polls partner, enter their ID here.                             | `string \| undefined` | `undefined` |
+| `partnerName`          | `partner-name`            | Optional name displayed in privacy policy disclaimer when `optUserOutOfChase` is true                                      | `string \| undefined` | `undefined` |
 | `smartyStreetsApiKey`  | `smarty-streets-api-key`  | The API key to access SmartyStreets which is used for address lookup.                                                      | `string \| undefined` | `undefined` |
 
 

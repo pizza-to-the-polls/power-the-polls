@@ -26,6 +26,11 @@ export class PowerThePollsForm {
    @Prop() public partnerId?: string;
 
    /**
+    * Optional name displayed in privacy policy disclaimer when `optUserOutOfChase` is true
+    */
+   @Prop() public partnerName?: string;
+
+   /**
     * The API key to access SmartyStreets which is used for address lookup.
     */
    @Prop() public smartyStreetsApiKey?: string;
@@ -261,7 +266,8 @@ export class PowerThePollsForm {
                >Sign Up To Get Started</button>
 
                <p class="disclaimer">
-                  By signing up, you agree to receive occasional emails or text messages from Power the Polls and
+                  By signing up, you agree to receive occasional emails or text messages from Power the Polls
+                  and{!chase && this.partnerName && ` ${this.partnerName} and`}&nbsp;
                   accept our <PtpLink path="/privacy">Privacy Policy</PtpLink>. You can unsubscribe
                   at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
                </p>
