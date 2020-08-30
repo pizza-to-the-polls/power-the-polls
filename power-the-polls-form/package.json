@@ -15,7 +15,7 @@
       "start": "npm run dev",
       "dev": "stencil build --dev --watch --serve",
       "dev:site": "npm run clean && stencil build --watch",
-      "build": "stencil build --prod --docs --no-cache",
+      "build": "stencil build --prod --docs --no-cache && terser ./dist/full/index.js -o ./dist/full/index.js",
       "build:copy": "copyfiles -u 1 ./dist/**/* ../dist/power-the-polls-form/ && copyfiles package.json ../dist/power-the-polls-form/ && copyfiles Readme.md ../dist/power-the-polls-form/",
       "build:clean": "npm run clean-all && npm run build",
       "package": "npm run build:copy && replace \"dist/\" \"\" ../dist/power-the-polls-form/package.json",
@@ -51,6 +51,7 @@
       "puppeteer": "2.1.1",
       "replace": "^1.2.0",
       "rimraf": "^3.0.2",
+      "terser": "^5.2.1",
       "tslint": "^6.1.2",
       "typescript": "^3.9.7"
    }
