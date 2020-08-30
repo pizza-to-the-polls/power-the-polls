@@ -13,6 +13,9 @@ page-form {
       @include on-mobile() {
          margin-top: auto;
       }
+      &.partner {
+         margin-top: auto;
+      }
    }
    &.complete {
       margin-top: auto; // undo paddding of main in app-root.scss
