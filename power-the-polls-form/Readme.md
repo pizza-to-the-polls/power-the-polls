@@ -104,43 +104,24 @@ This will allow us to track the source of signups back to you.
 />
 ```
 
-#### opt-user-out-of-chase
-
-Power the Polls is following up by email to ensure users who sign-up continue on and fill out the poll worker application form in their local jurisdiction. If you do not want us to follow up with people who sign up using your embed of the PtP form, you can set this field to `true`.
-
-```html
-<power-the-polls-form
-   opt-user-out-of-chase="true"
-/>
-```
-
 ### How to customize: Styles
 
-The form will take on whatever styles you use on your site for standard elements like `<form>`, `<input>`, and `<select>`. It does add some basic styling, but you can override with your own CSS.
+The form does add some basic styling, but you can override with your own CSS. The elements in use are:
+`<form>`, `<input>`, `<select>`, `<h3>`, `<h4>`, `<p>`, `<button>`, and `<a>` as well as three relevant classes: `a.poll-worker-action`, `a.poll-worker-action.cta`, and `a.jurisdiction`.
 
-For further styling, you can use the `power-the-polls-form` element in CSS:
+Also of note, `button` and `a.poll-worker-action.cta` are styled the same and both set a `background-color`.
+
+You can use the `power-the-polls-form` element in CSS, e.g.:
 
 ```css
-power-the-polls-form form {
-
+power-the-polls-form button {
+  background-color: #f0f;
+  color: #fff;
 }
-power-the-polls-form input {
 
-}
-power-the-polls-form select {
-
-}
-power-the-polls-form label {
-
-}
-power-the-polls-form h3 {
-
-}
-power-the-polls-form h4 {
-
-}
-power-the-polls-form p {
-
+power-the-polls-form a.poll-worker-action.cta {
+  background-color: #f0f;
+  color: #fff;
 }
 ```
 
