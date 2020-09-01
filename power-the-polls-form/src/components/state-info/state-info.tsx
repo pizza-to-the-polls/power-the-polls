@@ -1,8 +1,8 @@
 import { Component, h, Prop, State } from "@stencil/core";
 
-import { Jurisdiction, StateInfo } from "../../data/WorkElections";
+import { Jurisdiction, StateInfo } from "../../data/States";
 import { PtpLink } from "../../util/PtpLink";
-import { fetchFromWE } from "../../util/WorkElections";
+import { fetchState, fetchStateJurisdictionsList } from "../../util/WorkElections";
 
 /**
  * When we have no specific polling jurisdiction for a user and just their state we
@@ -24,15 +24,14 @@ export class StateInfoComponent {
     */
    @Prop() public stateId: number | null = null;
 
-   @State() public jurisdictions: Array<Jurisdiction> = [];
+   @State() public jurisdictions: Jurisdiction[] = [];
    @State() public info?: StateInfo;
 
    public componentWillLoad() {
+      // load data if given a valid state (and componentWillLoad will wait to render if async so don't `await`)
       if( this.stateId ) {
-         fetchFromWE( `/jurisdictions/?summary=true&state_id=${this.stateId}` )
-            .then( x => this.jurisdictions = x );
-         fetchFromWE( `/states/${this.stateId}/` )
-            .then( x => this.info = x );
+         fetchStateJurisdictionsList( this.stateId ).then( x => this.jurisdictions = x );
+         fetchState( this.stateId ).then( x => this.info = x );
       }
    }
 

@@ -1,8 +1,8 @@
 import { Component, h, Host, Prop, State } from "@stencil/core";
 
-import { Jurisdiction } from "../../data/WorkElections";
+import { Jurisdiction } from "../../data/States";
 import { PtpLink } from "../../util/PtpLink";
-import { fetchFromWE } from "../../util/WorkElections";
+import { fetchJurisdiction } from "../../util/WorkElections";
 
 const VoterRegistrationReqs = ( j: Jurisdiction ) => (
    j.registration_status.length < 1
@@ -87,14 +87,12 @@ export class JurisdictionInfo {
 
    public componentWillLoad() {
       if( this.jurisdictionId ) {
-         fetchFromWE( `/jurisdictions/${this.jurisdictionId}/` )
-            .then( x => this.jurisdiction = x );
+         fetchJurisdiction( this.jurisdictionId ).then( x => this.jurisdiction = x );
       }
    }
 
    public render() {
       const j = this.jurisdiction;
-
       return j == null ?
          <Host>
             <slot />
@@ -122,11 +120,12 @@ export class JurisdictionInfo {
                <VoterRegistrationReqs {...j} />
                <WorkReqs {...j} />
 
-               {j.further_notes
-                  && ( <div>
+               {j.further_notes && (
+                  <div>
                      <h4>Further Notes</h4>
                      <p>{j.further_notes}</p>
-                  </div> )}
+                  </div>
+               )}
 
                <ContactInfo {...j} />
 
