@@ -4,6 +4,8 @@ import { States } from "../../data";
 import { toQueryString } from "../../util";
 import { PtpLink } from "../../util/PtpLink";
 
+import NextSteps from "../../util/NextSteps";
+
 /**
  * Empty container element, i.e.: `<></>`
  **/
@@ -91,6 +93,7 @@ export class PowerThePollsForm {
       const chase = this.optUserOutOfChase === true || ( this.optUserOutOfChase as any ) === "true" ? false : true;
       const partnerField = this.customFormFieldLabel;
       const submissionUrl = this.destination;
+      const stateInfo = this.state && this.state in States ? States[this.state] : null;
       // Adapted from https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
       const phoneValidationRegex = "(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}";
 
@@ -150,81 +153,53 @@ export class PowerThePollsForm {
          }
       };
 
+      //
+      // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
+      //
+      const nextSteps = this.state === "ME" ?
+         [
+            () => <Fragment>
+               We are sharing your information with our state partners who will be following up to help you connect with your local administrators. <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Maine.
+            </Fragment>,
+            () => "In the meantime, please review the state requirements and compensation below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
+         ]
+         : this.state === "MI" ?
+            [
+               () => <Fragment>
+                  We are sharing your information with election administrators and our state partners who will follow up to help you be placed as a poll worker! <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
+               </Fragment>,
+               () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
+            ] :
+            [
+               () => <Fragment><strong>Complete your official application to be a poll worker!</strong> Learn more about hours, compensation, and requirements for your community below and be sure to complete your official application!</Fragment>,
+
+               ( stateInfo == null || !stateInfo.semiPartner ) ?
+                  () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction."
+                  : () => "We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application so we can help you become a poll worker. Be on the lookout for a call from our team!",
+
+               ( stateInfo == null || !stateInfo.semiPartner ) ?
+                  () => "Please encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!"
+                  : () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
+            ];
+
       return ( <Host>
          {this.formStatus === "completed" ? (
             <article>
-               {this.state != null && this.state in States.partners ?
-                  (
-                     <Fragment>
-                        <h1>Thanks for signing up to Power the Polls!</h1>
-                        <p>
-                           We are sharing your information with election administrators and our state partners.
-                        </p>
-                        <p>
-                           You'll hear from a partner in the next week about how you can help serve as a poll worker in {States.partners[this.state]}.
-                        </p>
-                     </Fragment>
-                  ) : this.state != null && this.state in States.noPollWorkersNeeded ? (
-                     <Fragment>
-                        <h1>Thanks for signing up to Power the Polls!</h1>
-                        <p>Thank you so much for your interest in being a poll worker.</p>
-                        <p>
-                           Good news: <strong>{States.noPollWorkersNeeded[this.state]} has indicated that they have all the election workers they need this year!</strong>
-                        </p>
-                        <p>
-                           The bad news is, that means we won’t have a place for you to serve as a poll worker, since your state is all set, and jurisdiction requirements unfortunately mean
-                           you won’t be eligible to serve in another state.
-                        </p>
-                        <p>
-                           We are passing your information on to your state's election administrators who will reach out if their needs change or if there are other
-                           opportunities to help their offices.
-                        </p>
-                        <p>
-                           <strong>You can still help power the polls</strong> by voting in this upcoming election, and encouraging your friends and family across the country to register
-                           to vote and, for those who live in other states - signing up to be poll workers.
-                        </p>
-                     </Fragment>
-                  ) : (
-                        <Fragment>
-                           <h1>You’re one step closer to Powering the Polls!</h1>
-                           <h2>What’s next?</h2>
-                           <hr />
-                        </Fragment>
-                     )}
+               <NextSteps stateInfo={stateInfo} />
                <poll-worker-info
                   city={this.city}
                   county={this.county}
                   state={this.state}
                >
-                  {this.state == null || !( this.state in States.noPollWorkersNeeded ) && !( this.state in States.partners ) && (
+                  {stateInfo == null || !stateInfo.noPollWorkersNeeded && (
                      <div>
                         <div class="next-steps">
-                           <p>
-                              <span class="number">1</span>
-                              <strong>Complete your community's application to be a poll worker!</strong> Learn more about hours, compensation, and requirements below.
-                           </p>
-                           <p>
-                              <span class="number">2</span>
-                              {this.state == null || !( this.state in States.semiPartners ) ?
-                                 `
-                              In the weeks leading up to the election, you will hear back from your local election administrators
-                              if you were selected to be a worker in your jurisdiction.
-                              ` : `
-                              We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application
-                              so we can help you become a poll worker. Be on the lookout for a call from our team!
-                              `
-                              }
-                           </p>
-                           <p>
-                              <span class="number">3</span>
-                              {this.state == null || !( this.state in States.semiPartners ) ?
-                                 `
-                              Please encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!
-                              ` : `
-                              Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!
-                              `
-                              }
-                           </p>
+                           {nextSteps.map( ( x, i ) => (
+                              <p>
+                                 <span class="number">{i + 1}</span>
+                                 {x()}
+                              </p>
+                           ) )}
                         </div>
                         <hr />
                      </div>
