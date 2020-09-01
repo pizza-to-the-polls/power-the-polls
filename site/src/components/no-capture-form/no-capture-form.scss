@@ -1,6 +1,47 @@
 no-capture-form {
-   input[type=text] {
-      display: block;
-      width: 80%;
+   form {
+      max-width: 450px;
+      font-size: 1rem;
+      padding: 1em 0;
+      letter-spacing: 0;
+
+      input,
+      select {
+         width: 100%;
+         padding: 0.5em 0.75em;
+         display: block;
+      }
+
+      select {
+         padding: 0.75em;
+         height: auto;
+      }
+
+      label {
+         margin-bottom: 0.75em;
+         display: block;
+         font-size: 0.9rem;
+      }
+   }
+
+   button[type=submit] {
+      background-color: $color-highlight;
+      border: 0;
+      padding: 0.5em 1em;
+      width: 100%;
+      text-transform: uppercase;
+      font-size: 1rem;
+      letter-spacing: 0.05rem;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover {
+         opacity: 0.8;
+      }
+      &:focus {
+         opacity: 0.6;
+      }
+      &:active {
+         opacity: 0.4;
+      }
    }
 }
