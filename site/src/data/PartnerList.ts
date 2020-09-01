@@ -158,6 +158,11 @@ const data: Partner[] = [
       logo: "avil-lc.png",
    },
    {
+      partnerId: "LDF",
+      name: "Legal Defense Fund",
+      logo: "legal-defense-fund.png",
+   },
+   {
       partnerId: "AYO",
       name: "Alliance for Youth Organizing",
       logo: "alliance-for-youth-organizing.png",
@@ -623,6 +628,18 @@ const data: Partner[] = [
       name: "Mitz Vote",
       logo: "mitz-vote.png",
       logoIsDark: true,
+   },
+   {
+      name: "More Than A Vote",
+      partnerId: "MTAV",
+      logo: "more-than-a-vote.jpg",
+   },
+   {
+      name: "More Than A Vote x Legal Defense Fund",
+      partnerId: "MTAVxLDF",
+      logo: "more-than-a-vote-x-legal-defense-fund.png",
+      logoAppearsOnLandingPage: true,
+      excludeFromPartnerList: true,
    },
    {
       partnerId: "Motivote",

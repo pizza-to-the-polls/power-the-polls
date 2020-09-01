@@ -15,12 +15,6 @@ import { Fragment } from "../../util/Fragment";
    shadow: false,
 } )
 export class PageForm {
-
-   /**
-    * The API key to access SmartyStreets which is used for address lookup.
-    */
-   @Prop() public smartyStreetsApiKey?: string;
-
    /**
     * Optional partnerId/source parameter to use when submitting the form. If the partnerId exists
     * in `/data/PartnerList.ts` then additional partner data will be looked up.
