@@ -797,6 +797,11 @@ const data: Partner[] = [
       partnerId: "ProGeorgia",
    },
    {
+      name: "Protect Democracy",
+      partnerId: "ProtectDemocracy",
+      customSignupFormField: "School",
+   },
+   {
       partnerId: "publicwise",
       logo: "public-wise.png",
       name: "Public Wise",
