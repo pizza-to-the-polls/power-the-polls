@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property              | Attribute                | Description                                                                                                                                                            | Type                  | Default     |
-| --------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `partnerId`           | `partner-id`             | Optional partnerId/source parameter to use when submitting the form. If the partnerId exists in `/data/PartnerList.ts` then additional partner data will be looked up. | `string \| undefined` | `undefined` |
-| `smartyStreetsApiKey` | `smarty-streets-api-key` | The API key to access SmartyStreets which is used for address lookup.                                                                                                  | `string \| undefined` | `undefined` |
+| Property    | Attribute    | Description                                                                                                                                                            | Type                  | Default     |
+| ----------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `partnerId` | `partner-id` | Optional partnerId/source parameter to use when submitting the form. If the partnerId exists in `/data/PartnerList.ts` then additional partner data will be looked up. | `string \| undefined` | `undefined` |
 
 
 ## Dependencies
