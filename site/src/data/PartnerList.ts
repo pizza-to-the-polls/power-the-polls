@@ -76,6 +76,13 @@ const data: Partner[] = [
       logo: "aaldef.png",
    },
    {
+      partnerId: "APALA",
+      name: "Asian Pacific American Labor Alliance, AFL-CIO",
+      logoAppearsOnLandingPage: true,
+      logo: "apala.png",
+      logoIsDark: true,
+   },
+   {
       partnerId: "AARP",
       name: "AARP",
       logoAppearsOnLandingPage: true,
@@ -153,7 +160,7 @@ const data: Partner[] = [
       logo: "avil.svg",
    },
    {
-      partnerId: "LeadershipConferece",
+      partnerId: "LeadershipConference",
       name: "All Voting Is Local Leadership Conference",
       logo: "avil-lc.png",
    },
@@ -490,13 +497,12 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "HRC",
       name: "Human Rights Campaign Foundation",
       logo: "hrc.png",
       logoAppearsOnLandingPage: true,
       excludeFromPartnerList: true,
       additionalVanityUrls: ["HRCFoundation"],
-      partnerId: "HRC",
-      logoIsDark: true,
    },
    {
       name: "iCitizen",
@@ -921,6 +927,13 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "teamsters",
+      name: "International Brotherhood of Teamsters",
+      logo: "teamsters.png",
+      logoIsDark: true,
+      logoAppearsOnLandingPage: true,
+   },
+   {
       partnerId: "texas-lbj-school",
       name: "Texas LBJ School",
       logo: "texas-lbj-school.png",
@@ -972,6 +985,7 @@ const data: Partner[] = [
       partnerId: "UFCW",
       name: "United Food & Commercial Workers Intl Union",
       logo: "ufcw.png",
+      optUserOutOfChase: true,
    },
    {
       partnerId: "USW",
@@ -988,6 +1002,7 @@ const data: Partner[] = [
       partnerId: "UniteHere",
       logo: "unite-here.png",
       name: "Unite Here!",
+      optUserOutOfChase: true,
    },
    {
       partnerId: "UVA",
