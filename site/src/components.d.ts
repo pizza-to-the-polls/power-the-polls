@@ -17,10 +17,6 @@ export namespace Components {
     interface ImpactBox {
     }
     interface NoCaptureForm {
-        /**
-          * The API key to access SmartyStreets which is used for address lookup.
-         */
-        "smartyStreetsApiKey"?: string;
     }
     interface PageAbout {
     }
@@ -37,10 +33,6 @@ export namespace Components {
           * Optional partnerId/source parameter to use when submitting the form. If the partnerId exists in `/data/PartnerList.ts` then additional partner data will be looked up.
          */
         "partnerId"?: string;
-        /**
-          * The API key to access SmartyStreets which is used for address lookup.
-         */
-        "smartyStreetsApiKey"?: string;
     }
     interface PageJurisdiction {
         "match"?: MatchResults;
@@ -56,10 +48,6 @@ export namespace Components {
     interface PageRedirector {
     }
     interface PageSearch {
-        /**
-          * The API key to access SmartyStreets which is used for address lookup.
-         */
-        "smartyStreetsApiKey"?: string;
     }
     interface SocialShare {
         /**
@@ -203,10 +191,6 @@ declare namespace LocalJSX {
     interface ImpactBox {
     }
     interface NoCaptureForm {
-        /**
-          * The API key to access SmartyStreets which is used for address lookup.
-         */
-        "smartyStreetsApiKey"?: string;
     }
     interface PageAbout {
     }
@@ -223,10 +207,6 @@ declare namespace LocalJSX {
           * Optional partnerId/source parameter to use when submitting the form. If the partnerId exists in `/data/PartnerList.ts` then additional partner data will be looked up.
          */
         "partnerId"?: string;
-        /**
-          * The API key to access SmartyStreets which is used for address lookup.
-         */
-        "smartyStreetsApiKey"?: string;
     }
     interface PageJurisdiction {
         "match"?: MatchResults;
@@ -242,10 +222,6 @@ declare namespace LocalJSX {
     interface PageRedirector {
     }
     interface PageSearch {
-        /**
-          * The API key to access SmartyStreets which is used for address lookup.
-         */
-        "smartyStreetsApiKey"?: string;
     }
     interface SocialShare {
         /**

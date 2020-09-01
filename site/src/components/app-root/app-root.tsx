@@ -66,14 +66,6 @@ export class AppRoot {
    constructor() {
       this.menuIsActive = false;
 
-      // help out development by logging an explicit error if you forgot to copy dot_env to .env or to add SMARTY_STREETS_KEY env var in the production build
-      let env = `process.env.SMARTY_STREETS_KEY`; // will be `"the-correct-key"` if replaced by the build as intended
-      if( env === "process" + ".env.SMARTY_STREETS_KEY" || env === `""` ) {
-         // if env var wasn't replaced at all or was replaced with a null/empty value, log an error
-         console.error( "SMARTY_STREETS_KEY environment variable not present during build. Cannot continue." );
-      }
-      const smartyStreetsApiKey = process.env.SMARTY_STREETS_KEY/*replaced with correct value by build*/;
-
       // maps to stencil-route components, we need to be able to lookup these URLs in code as well
       this.routes = [
          {
@@ -105,9 +97,6 @@ export class AppRoot {
          {
             url: "/search",
             component: "page-search",
-            componentProps: {
-               smartyStreetsApiKey: smartyStreetsApiKey,
-            },
          },
          {
             url: "/redirector",
@@ -123,9 +112,6 @@ export class AppRoot {
          },
          {
             component: "page-form",
-            componentProps: {
-               smartyStreetsApiKey: smartyStreetsApiKey,
-            },
          },
       ];
    }
