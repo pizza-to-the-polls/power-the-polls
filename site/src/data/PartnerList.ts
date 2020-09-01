@@ -168,6 +168,7 @@ const data: Partner[] = [
       partnerId: "LDF",
       name: "Legal Defense Fund",
       logo: "legal-defense-fund.png",
+      logoIsDark: true,
    },
    {
       partnerId: "AYO",
