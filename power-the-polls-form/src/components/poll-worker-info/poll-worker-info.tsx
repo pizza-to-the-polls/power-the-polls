@@ -77,6 +77,7 @@ export class PollWorkerInfo {
             </ul>
          </Host> );
       }
+
       return (
          <Host>
             {state

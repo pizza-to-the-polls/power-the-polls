@@ -165,9 +165,7 @@ export class PowerThePollsForm {
          ]
          : this.state === "MI" ?
             [
-               () => <Fragment>
-                  We are sharing your information with election administrators and our state partners who will follow up to help you be placed as a poll worker! <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
-               </Fragment>,
+               () => <Fragment>We are sharing your information with election administrators and our state partners who will follow up to help you be placed as a poll worker! <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.</Fragment>,
                () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
             ] :
             [
@@ -177,9 +175,7 @@ export class PowerThePollsForm {
                   () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction."
                   : () => "We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application so we can help you become a poll worker. Be on the lookout for a call from our team!",
 
-               ( stateInfo == null || !stateInfo.semiPartner ) ?
-                  () => "Please encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!"
-                  : () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
+               () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
             ];
 
       return ( <Host>

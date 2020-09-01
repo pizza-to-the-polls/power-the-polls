@@ -74,18 +74,6 @@ const data: { [state: string]: StateInfo } = {
       "noPollWorkersNeeded": true,
       "jurisdictions": {},
    },
-   "ME": {
-      "id": -4,
-      "name": "Maine",
-      "partner": true,
-      "jurisdictions": {},
-   },
-   "MI": {
-      "id": -5,
-      "name": "Michigan",
-      "partner": true,
-      "jurisdictions": {},
-   },
    "AL": {
       "id": 1,
       "name": "Alabama",
