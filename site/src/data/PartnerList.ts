@@ -25,7 +25,7 @@ export interface Partner {
    readonly logo?: string;
 
    /**
-    * If `true`, when users sign up using the form and this `partnerId` the `chase` flag will be set to false.
+    * malachi: it seems tthis is really just turning into a `showPartnerNameInPrivacyDisclaimer` value and that's all
     */
    readonly optUserOutOfChase?: boolean;
 
@@ -642,11 +642,12 @@ const data: Partner[] = [
       logo: "more-than-a-vote.jpg",
    },
    {
-      name: "More Than A Vote x Legal Defense Fund",
+      name: "LDF and MTAV",
       partnerId: "MTAVxLDF",
       logo: "more-than-a-vote-x-legal-defense-fund.png",
       logoAppearsOnLandingPage: true,
       excludeFromPartnerList: true,
+      optUserOutOfChase: true,
    },
    {
       partnerId: "Motivote",

@@ -55,7 +55,10 @@ export class PageForm {
                />
                {partner?.logoAppearsOnLandingPage && (
                   <img
-                     class={{ "custom-logo": true, "dark": partner.logoIsDark ?? false }}
+                     class={{
+                        "partner-logo": true,
+                        "dark": partner.logoIsDark ?? false,
+                     }}
                      src={`/assets/images/partners/${partner.logo}`}
                      title={partner.name}
                   />
