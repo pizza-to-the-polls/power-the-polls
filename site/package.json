@@ -12,7 +12,7 @@
       "dev": "stencil build --dev --watch --serve",
       "dev:form": "cd ../power-the-polls-form && npm run build && cd ../site && npm run dev",
       "build": "npm run lint && stencil build --docs --no-cache && npm run build:copy",
-      "build:copy": "copyfiles -u 3 ./node_modules/@ptp-us/power-the-polls-form/**/* ../dist/www/assets/scripts/",
+      "build:copy": "copyfiles -E -u 3 ./node_modules/@ptp-us/power-the-polls-form/**/* ../dist/www/assets/scripts/",
       "clean": "rimraf ../dist/www",
       "release": "npm run clean && npm run build",
       "start": "npm run dev",
