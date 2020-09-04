@@ -93,6 +93,20 @@ export class JurisdictionInfo {
 
    public render() {
       const j = this.jurisdiction;
+      if( j && !j.name ) {
+         return <Host>
+            <h3>Uh oh!</h3>
+            <p>
+               Unfortunately we're not able to retrieve jurisdiction{' '}
+               <strong>#{ this.jurisdictionId }</strong>{' '}
+               at this time
+            </p>
+            <p>
+               Please contact <a href="mailto:info@powerthepolls.org">info@powerthepolls.org</a>{' '}
+               and let us know the zip code you've entered and jurisdiction (#{ this.jurisdictionId }).
+            </p>
+         </Host>
+      }
       return j == null ?
          <Host>
             <slot />
