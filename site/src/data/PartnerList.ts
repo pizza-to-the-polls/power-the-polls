@@ -187,6 +187,12 @@ const data: Partner[] = [
       logo: "american-promise.png",
    },
    {
+      partnerId: "American Sustainable Business Council",
+      name: "American Sustainable Business Council",
+      logo: "american-sustainable-business-council.png",
+      logoIsDark: true,
+   },
+   {
       name: "The Andrew Goodman Foundation",
       partnerId: "AndrewGoodmanFoundation",
       logo: "andrew-goodman-foundation.png",
@@ -394,6 +400,14 @@ const data: Partner[] = [
       name: "DemLabs",
       logo: "demlabs.png",
       logoAppearsOnLandingPage: true,
+   },
+   {
+      partnerId: "DemocracyInitiative",
+      name: "Democracy Initiative",
+      logo: "democracy-initiative.png",
+      excludeFromPartnerList: true,
+      logoAppearsOnLandingPage: true,
+      logoIsDark: true,
    },
    {
       name: "Democracy Maine",
@@ -653,6 +667,10 @@ const data: Partner[] = [
       partnerId: "Motivote",
       name: "Motivote",
       logo: "motivote.png",
+   },
+   {
+      partnerId: "MoveTexas",
+      name: "MoveTexas",
    },
    {
       partnerId: "SEARAC",
@@ -955,6 +973,9 @@ const data: Partner[] = [
    {
       name: "The Vote Project",
       partnerId: "thevoterproject",
+      logo: "the-voter-project.png",
+      logoAppearsOnLandingPage: true,
+      logoIsDark: true,
    },
    {
       name: "Timber Wolves and Lynx",
