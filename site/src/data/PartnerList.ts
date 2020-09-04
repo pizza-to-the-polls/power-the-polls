@@ -947,6 +947,11 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      // duplicate for starbucks to differentiate the form widget on customer and employee portals
+      partnerId: "starbucks-customer",
+      name: "Starbucks",
+   },
+   {
       partnerId: "teamsters",
       name: "International Brotherhood of Teamsters",
       logo: "teamsters.png",
