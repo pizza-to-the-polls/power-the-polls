@@ -1943,7 +1943,7 @@ const data: { [state: string]: StateInfo } = {
          "Grant County": 3960,
          "Ham Lake (City)": 8003,
          "Harris (City)": 8018,
-         "Hennepin County": 3395,
+         "Hennepin County":  8672,
          "Hilltop (City)": 8004,
          "Hopkins (City)": 5887,
          "Houston County": 4869,
