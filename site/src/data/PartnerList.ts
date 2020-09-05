@@ -580,15 +580,9 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
-      name: "Verizon Media",
-      partnerId: "verizonmedia",
-      logo: "verizon-media.png",
-      logoIsDark: true,
-   },
-   {
-      partnerId: "Vote411",
-      name: "League of Women Voters",
-      logo: "lwv.jpg",
+      name: "Lush",
+      partnerId: "lush",
+      logo: "lush.png",
       logoIsDark: true,
    },
    {
@@ -1038,10 +1032,22 @@ const data: Partner[] = [
       logo: "uvaaa.png",
    },
    {
+      name: "Verizon Media",
+      partnerId: "verizonmedia",
+      logo: "verizon-media.png",
+      logoIsDark: true,
+   },
+   {
       partnerId: "ViacomCBS",
       name: "ViacomCBS",
       logo: "viacomcbs.png",
       isFoundingPartner: true,
+      logoIsDark: true,
+   },
+   {
+      partnerId: "Vote411",
+      name: "League of Women Voters",
+      logo: "lwv.jpg",
       logoIsDark: true,
    },
    {
