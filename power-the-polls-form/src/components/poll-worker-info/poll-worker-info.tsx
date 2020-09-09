@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, Prop } from "@stencil/core";
 import { injectHistory, RouterHistory } from "@stencil/router";
 
+import { AdditionalFormData } from "../../util";
 import { findJurisdictionId, findStateId } from "../../util/WorkElections";
 
 /**
@@ -28,7 +29,13 @@ export class PollWorkerInfo {
     */
    @Prop() public city?: string;
 
+   /**
+    * Complete form data, if available
+    */
+   @Prop() public formData?: AdditionalFormData;
+
    @Prop() public history?: RouterHistory;
+
    @Element() public el?: HTMLElement;
 
    public render() {
@@ -75,6 +82,7 @@ export class PollWorkerInfo {
                <li>Serving as a poll worker is a paid position with a flat daily rate. Many cities are also providing hazard pay for poll workers who serve during the 2020 election.</li>
                <li>While hours vary, both by city and by position worked, most poll workers should expect to work long days, beginning before polls open at 7am and concluding after polls close at 8pm.</li>
             </ul>
+
          </Host> );
       }
 
@@ -83,7 +91,7 @@ export class PollWorkerInfo {
             {state
                ? jurisdictionId
                   ? (
-                     <jurisdiction-info jurisdictionId={jurisdictionId}>
+                     <jurisdiction-info jurisdictionId={jurisdictionId} addtl={this.formData}>
                         <slot />
                      </jurisdiction-info>
                   ) : (

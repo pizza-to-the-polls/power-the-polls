@@ -5,11 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AdditionalFormData } from "./util";
 import { RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AddressInput {
     }
     interface JurisdictionInfo {
+        /**
+          * Props possibly passed in from the form
+         */
+        "addtl"?: AdditionalFormData;
         /**
           * ID of jurisdiction for Work Elections
          */
@@ -27,6 +32,10 @@ export namespace Components {
           * County for matching to location
          */
         "county"?: string;
+        /**
+          * Complete form data, if available
+         */
+        "formData"?: AdditionalFormData;
         "history"?: RouterHistory;
         /**
           * State for matching to location
@@ -128,6 +137,10 @@ declare namespace LocalJSX {
     }
     interface JurisdictionInfo {
         /**
+          * Props possibly passed in from the form
+         */
+        "addtl"?: AdditionalFormData;
+        /**
           * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: string | number;
@@ -144,6 +157,10 @@ declare namespace LocalJSX {
           * County for matching to location
          */
         "county"?: string;
+        /**
+          * Complete form data, if available
+         */
+        "formData"?: AdditionalFormData;
         "history"?: RouterHistory;
         /**
           * State for matching to location
