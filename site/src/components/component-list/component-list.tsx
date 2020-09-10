@@ -1,6 +1,6 @@
 import { Component, h, Host } from "@stencil/core";
 
-import { Fragment } from "../../util/Fragment";
+import { Fragment } from "../../util";
 
 /**
  * List of all components in use in the app

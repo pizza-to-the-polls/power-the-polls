@@ -15,7 +15,7 @@ export class PageRedirector {
 
       return ( <Host>
          <ptp-info-poll-worker city={city} county={county} state={state} />
-         {stateInfo != null && stateInfo.noPollWorkersNeeded && <util.NextSteps stateInfo={stateInfo} />}
+         {stateInfo != null && stateInfo.noPollWorkersNeeded && <util.FormSubmissionThankYou stateInfo={stateInfo} />}
       </Host> );
    }
 
