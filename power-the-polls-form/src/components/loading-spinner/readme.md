@@ -16,14 +16,14 @@
 
 ### Used by
 
- - [jurisdiction-info](../jurisdiction-info)
- - [state-info](../state-info)
+ - [ptp-info-jurisdiction](../ptp-info-jurisdiction)
+ - [ptp-info-state](../ptp-info-state)
 
 ### Graph
 ```mermaid
 graph TD;
-  jurisdiction-info --> loading-spinner
-  state-info --> loading-spinner
+  ptp-info-jurisdiction --> loading-spinner
+  ptp-info-state --> loading-spinner
   style loading-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

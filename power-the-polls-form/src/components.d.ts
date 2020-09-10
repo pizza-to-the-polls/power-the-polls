@@ -5,42 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AdditionalFormData } from "./util";
+import { PtpFormData } from "./util";
 import { RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AddressInput {
     }
-    interface JurisdictionInfo {
-        /**
-          * Props possibly passed in from the form
-         */
-        "addtl"?: AdditionalFormData;
-        /**
-          * ID of jurisdiction for Work Elections
-         */
-        "jurisdictionId"?: string | number;
-    }
     interface LoadingSpinner {
         "dark": boolean;
-    }
-    interface PollWorkerInfo {
-        /**
-          * City for matching to location
-         */
-        "city"?: string;
-        /**
-          * County for matching to location
-         */
-        "county"?: string;
-        /**
-          * Complete form data, if available
-         */
-        "formData"?: AdditionalFormData;
-        "history"?: RouterHistory;
-        /**
-          * State for matching to location
-         */
-        "state"?: string;
     }
     interface PossiblyHiddenSelect {
         "fieldLabel": string;
@@ -68,15 +39,40 @@ export namespace Components {
          */
         "smartyStreetsApiKey"?: string;
     }
-    interface StateInfo {
+    interface PtpInfoJurisdiction {
+        /**
+          * Props possibly passed in from the form
+         */
+        "addtl"?: PtpFormData;
+        /**
+          * ID of jurisdiction for Work Elections
+         */
+        "jurisdictionId"?: string | number;
+    }
+    interface PtpInfoPollWorker {
+        /**
+          * City for matching to location
+         */
+        "city"?: string;
+        /**
+          * County for matching to location
+         */
+        "county"?: string;
+        /**
+          * Complete form data, if available
+         */
+        "formData"?: PtpFormData;
+        "history"?: RouterHistory;
+        /**
+          * State for matching to location
+         */
+        "state"?: string;
+    }
+    interface PtpInfoState {
         /**
           * State abbreviation
          */
         "state"?: string;
-        /**
-          * State id in work elections
-         */
-        "stateId": number | null;
     }
 }
 declare global {
@@ -86,23 +82,11 @@ declare global {
         prototype: HTMLAddressInputElement;
         new (): HTMLAddressInputElement;
     };
-    interface HTMLJurisdictionInfoElement extends Components.JurisdictionInfo, HTMLStencilElement {
-    }
-    var HTMLJurisdictionInfoElement: {
-        prototype: HTMLJurisdictionInfoElement;
-        new (): HTMLJurisdictionInfoElement;
-    };
     interface HTMLLoadingSpinnerElement extends Components.LoadingSpinner, HTMLStencilElement {
     }
     var HTMLLoadingSpinnerElement: {
         prototype: HTMLLoadingSpinnerElement;
         new (): HTMLLoadingSpinnerElement;
-    };
-    interface HTMLPollWorkerInfoElement extends Components.PollWorkerInfo, HTMLStencilElement {
-    }
-    var HTMLPollWorkerInfoElement: {
-        prototype: HTMLPollWorkerInfoElement;
-        new (): HTMLPollWorkerInfoElement;
     };
     interface HTMLPossiblyHiddenSelectElement extends Components.PossiblyHiddenSelect, HTMLStencilElement {
     }
@@ -116,56 +100,39 @@ declare global {
         prototype: HTMLPowerThePollsFormElement;
         new (): HTMLPowerThePollsFormElement;
     };
-    interface HTMLStateInfoElement extends Components.StateInfo, HTMLStencilElement {
+    interface HTMLPtpInfoJurisdictionElement extends Components.PtpInfoJurisdiction, HTMLStencilElement {
     }
-    var HTMLStateInfoElement: {
-        prototype: HTMLStateInfoElement;
-        new (): HTMLStateInfoElement;
+    var HTMLPtpInfoJurisdictionElement: {
+        prototype: HTMLPtpInfoJurisdictionElement;
+        new (): HTMLPtpInfoJurisdictionElement;
+    };
+    interface HTMLPtpInfoPollWorkerElement extends Components.PtpInfoPollWorker, HTMLStencilElement {
+    }
+    var HTMLPtpInfoPollWorkerElement: {
+        prototype: HTMLPtpInfoPollWorkerElement;
+        new (): HTMLPtpInfoPollWorkerElement;
+    };
+    interface HTMLPtpInfoStateElement extends Components.PtpInfoState, HTMLStencilElement {
+    }
+    var HTMLPtpInfoStateElement: {
+        prototype: HTMLPtpInfoStateElement;
+        new (): HTMLPtpInfoStateElement;
     };
     interface HTMLElementTagNameMap {
         "address-input": HTMLAddressInputElement;
-        "jurisdiction-info": HTMLJurisdictionInfoElement;
         "loading-spinner": HTMLLoadingSpinnerElement;
-        "poll-worker-info": HTMLPollWorkerInfoElement;
         "possibly-hidden-select": HTMLPossiblyHiddenSelectElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
-        "state-info": HTMLStateInfoElement;
+        "ptp-info-jurisdiction": HTMLPtpInfoJurisdictionElement;
+        "ptp-info-poll-worker": HTMLPtpInfoPollWorkerElement;
+        "ptp-info-state": HTMLPtpInfoStateElement;
     }
 }
 declare namespace LocalJSX {
     interface AddressInput {
     }
-    interface JurisdictionInfo {
-        /**
-          * Props possibly passed in from the form
-         */
-        "addtl"?: AdditionalFormData;
-        /**
-          * ID of jurisdiction for Work Elections
-         */
-        "jurisdictionId"?: string | number;
-    }
     interface LoadingSpinner {
         "dark"?: boolean;
-    }
-    interface PollWorkerInfo {
-        /**
-          * City for matching to location
-         */
-        "city"?: string;
-        /**
-          * County for matching to location
-         */
-        "county"?: string;
-        /**
-          * Complete form data, if available
-         */
-        "formData"?: AdditionalFormData;
-        "history"?: RouterHistory;
-        /**
-          * State for matching to location
-         */
-        "state"?: string;
     }
     interface PossiblyHiddenSelect {
         "fieldLabel"?: string;
@@ -200,24 +167,49 @@ declare namespace LocalJSX {
          */
         "smartyStreetsApiKey"?: string;
     }
-    interface StateInfo {
+    interface PtpInfoJurisdiction {
+        /**
+          * Props possibly passed in from the form
+         */
+        "addtl"?: PtpFormData;
+        /**
+          * ID of jurisdiction for Work Elections
+         */
+        "jurisdictionId"?: string | number;
+    }
+    interface PtpInfoPollWorker {
+        /**
+          * City for matching to location
+         */
+        "city"?: string;
+        /**
+          * County for matching to location
+         */
+        "county"?: string;
+        /**
+          * Complete form data, if available
+         */
+        "formData"?: PtpFormData;
+        "history"?: RouterHistory;
+        /**
+          * State for matching to location
+         */
+        "state"?: string;
+    }
+    interface PtpInfoState {
         /**
           * State abbreviation
          */
         "state"?: string;
-        /**
-          * State id in work elections
-         */
-        "stateId"?: number | null;
     }
     interface IntrinsicElements {
         "address-input": AddressInput;
-        "jurisdiction-info": JurisdictionInfo;
         "loading-spinner": LoadingSpinner;
-        "poll-worker-info": PollWorkerInfo;
         "possibly-hidden-select": PossiblyHiddenSelect;
         "power-the-polls-form": PowerThePollsForm;
-        "state-info": StateInfo;
+        "ptp-info-jurisdiction": PtpInfoJurisdiction;
+        "ptp-info-poll-worker": PtpInfoPollWorker;
+        "ptp-info-state": PtpInfoState;
     }
 }
 export { LocalJSX as JSX };
@@ -225,12 +217,12 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "address-input": LocalJSX.AddressInput & JSXBase.HTMLAttributes<HTMLAddressInputElement>;
-            "jurisdiction-info": LocalJSX.JurisdictionInfo & JSXBase.HTMLAttributes<HTMLJurisdictionInfoElement>;
             "loading-spinner": LocalJSX.LoadingSpinner & JSXBase.HTMLAttributes<HTMLLoadingSpinnerElement>;
-            "poll-worker-info": LocalJSX.PollWorkerInfo & JSXBase.HTMLAttributes<HTMLPollWorkerInfoElement>;
             "possibly-hidden-select": LocalJSX.PossiblyHiddenSelect & JSXBase.HTMLAttributes<HTMLPossiblyHiddenSelectElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
-            "state-info": LocalJSX.StateInfo & JSXBase.HTMLAttributes<HTMLStateInfoElement>;
+            "ptp-info-jurisdiction": LocalJSX.PtpInfoJurisdiction & JSXBase.HTMLAttributes<HTMLPtpInfoJurisdictionElement>;
+            "ptp-info-poll-worker": LocalJSX.PtpInfoPollWorker & JSXBase.HTMLAttributes<HTMLPtpInfoPollWorkerElement>;
+            "ptp-info-state": LocalJSX.PtpInfoState & JSXBase.HTMLAttributes<HTMLPtpInfoStateElement>;
         }
     }
 }

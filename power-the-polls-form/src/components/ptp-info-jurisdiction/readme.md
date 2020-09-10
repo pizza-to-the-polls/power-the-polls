@@ -1,4 +1,4 @@
-# jurisdiction-info
+# ptp-info-jurisdiction
 
 
 
@@ -17,7 +17,7 @@
 
 ### Used by
 
- - [poll-worker-info](../poll-worker-info)
+ - [ptp-info-poll-worker](../ptp-info-poll-worker)
 
 ### Depends on
 
@@ -26,9 +26,9 @@
 ### Graph
 ```mermaid
 graph TD;
-  jurisdiction-info --> loading-spinner
-  poll-worker-info --> jurisdiction-info
-  style jurisdiction-info fill:#f9f,stroke:#333,stroke-width:4px
+  ptp-info-jurisdiction --> loading-spinner
+  ptp-info-poll-worker --> ptp-info-jurisdiction
+  style ptp-info-jurisdiction fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

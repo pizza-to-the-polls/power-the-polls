@@ -1,9 +1,127 @@
 import { Component, Event, EventEmitter, h, Host, Method, Prop, State } from "@stencil/core";
+import { FunctionalComponent } from "@stencil/router/dist/types/stencil.core";
 
 import { States } from "../../data";
-import { AdditionalFormData, Fragment, NextSteps, PtpLink } from "../../util";
+import { FormSubmissionThankYou, Fragment, PtpFormData, PtpLink } from "../../util";
 
 import { submitToActionKit } from "./ActionKit";
+
+/**
+ * Michigan requires additional info be collected.
+ * @see
+ */
+const MichiganAdditionalInfoForm: FunctionalComponent<{ data: PtpFormData, formSubmitted: boolean, onSubmit: () => void }> = ( { data, formSubmitted, onSubmit } ) => {
+
+   const michiganSubmitForm = ( e: Event ) => {
+      try {
+         // gather up all the form data
+         // TODO: Clean this up
+         const form = e.target as HTMLFormElement;
+         const elements = [
+            ...form.getElementsByTagName( "input" ),
+            ...form.getElementsByTagName( "select" ),
+         ];
+         submitToActionKit( elements.reduce(
+            ( x, el ) => { x[el.name] = el.value; return x; },
+            ( {} as any ),
+         ) )
+            .then( result => {
+               if( result !== true ) {
+                  console.error( result );
+               }
+            } );
+         onSubmit();
+      } catch( e ) {
+         console.error( e );
+      } finally {
+         e.preventDefault();
+         return false;
+      }
+   };
+
+   const languages = [
+      "English only",
+      "Spanish",
+      "Arabic",
+      "Tagalog",
+      "Chinese",
+      "Creole",
+      "Vietnamese",
+      "Navajo",
+      "Korean",
+      "French",
+      "Other", // TODO: provide an input and let user enter their own value
+   ];
+
+   const travelOptions = [
+      "Not willing to travel",
+      "Less than 10 miles",
+      "Less than 50 miles",
+      "I'll go wherever I'm needed",
+   ];
+
+   return data.state === "MI" && !formSubmitted ? ( <Fragment>
+
+      <p>We just need a few more pieces of information from you to help with your application:</p>
+
+      <form onSubmit={michiganSubmitForm} style={{ padding: "0" }}>
+
+         <input
+            type="hidden"
+            name="city"
+            value={data?.city}
+         />
+         <input
+            type="hidden"
+            name="state"
+            value={data?.state}
+         />
+         <input
+            type="hidden"
+            name="zip"
+            value={data?.zip}
+         />
+         <label>
+            Street address
+            <input
+               type="text"
+               required
+               name="address1"
+            />
+         </label>
+
+         <label>
+            Are you fluent in a language besides English?
+            <select name="user_additional_language" required>
+               {languages.map( x => <option value={x}>{x}</option> )}
+            </select>
+         </label>
+
+         <label>
+            In Michigan, eligible poll workers can serve anywhere in the state. Are you willing to travel, and if so, how far can you travel?
+            <select name="user_mi_travel" required>
+               {travelOptions.map( x => <option value={x}>{x}</option> )}
+            </select>
+         </label>
+
+         <input type="hidden" name="page" value="mi-extra" />
+         <input
+            type="hidden"
+            name="email"
+            value={data?.email}
+         />
+
+         <button
+            type="submit"
+            class="button"
+         >Submit</button>
+
+      </form>
+
+      <hr />
+
+   </Fragment> ) : null;
+};
 
 /**
  * The Power the Polls sign-up form.
@@ -58,7 +176,7 @@ export class PowerThePollsForm {
    } ) public submitError!: EventEmitter<any>;
 
    @State() private formStatus: "incomplete" | "submitting" | "completed";
-   @State() private formData: AdditionalFormData;
+   @State() private formData: PtpFormData;
    @State() private michiganFormSubmitted: boolean;
 
    constructor() {
@@ -159,58 +277,11 @@ export class PowerThePollsForm {
                () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
             ];
 
-      const michiganSubmitForm = ( e: Event ) => {
-         try {
-            // TODO: Remove this duplicate code with the form
-            // gather up all the form data
-            const form = e.target as HTMLFormElement;
-            const elements = [
-               ...form.getElementsByTagName( "input" ),
-               ...form.getElementsByTagName( "select" ),
-            ];
-            const data: any = elements.reduce(
-               ( x, el ) => { x[el.name] = el.value; return x; },
-               ( {} as any ),
-            );
-            submitToActionKit( data )
-               .then( result => {
-                  if( result !== true ) {
-                     console.error( result );
-                  }
-               } );
-            this.michiganFormSubmitted = true;
-         } catch( e ) {
-            console.error( e );
-         } finally {
-            e.preventDefault();
-            return false;
-         }
-      };
-      const michiganLanguages = [
-         "English only",
-         "Spanish",
-         "Arabic",
-         "Tagalog",
-         "Chinese",
-         "Creole",
-         "Vietnamese",
-         "Navajo",
-         "Korean",
-         "French",
-         "Other", // TODO: provide an input and let user enter their own value
-      ];
-      const michiganTravelOptions = [
-         "Not willing to travel",
-         "Less than 10 miles",
-         "Less than 50 miles",
-         "I'll go wherever I'm needed",
-      ];
-
       return ( <Host>
          {this.formStatus === "completed" ? (
             <article>
-               <NextSteps stateInfo={stateInfo} />
-               <poll-worker-info
+               <FormSubmissionThankYou stateInfo={stateInfo} />
+               <ptp-info-poll-worker
                   city={this.formData.city}
                   county={this.formData.county}
                   state={this.formData.state}
@@ -227,68 +298,14 @@ export class PowerThePollsForm {
                            ) )}
                         </div>
                         <hr />
-                        {this.formData.state === "MI" ? ( <Fragment>
-                           <p>We just need a few more pieces of information from you to help with your application:</p>
-
-                           {!this.michiganFormSubmitted &&
-                              <form onSubmit={michiganSubmitForm} style={{ padding: "0" }}>
-
-                                 <input
-                                    type="hidden"
-                                    name="city"
-                                    value={this.formData?.city}
-                                 />
-                                 <input
-                                    type="hidden"
-                                    name="state"
-                                    value={this.formData?.state}
-                                 />
-                                 <input
-                                    type="hidden"
-                                    name="zip"
-                                    value={this.formData?.zip}
-                                 />
-                                 <label>
-                                    Street address
-                                 <input
-                                       type="text"
-                                       required
-                                       name="address1"
-                                    />
-                                 </label>
-
-                                 <label>
-                                    Are you fluent in a language besides English?
-                                 <select name="user_additional_language" required>
-                                       {michiganLanguages.map( x => <option value={x}>{x}</option> )}
-                                    </select>
-                                 </label>
-
-                                 <label>
-                                    In Michigan, eligible poll workers can serve anywhere in the state. Are you willing to travel, and if so, how far can you travel?
-                                 <select name="user_mi_travel" required>
-                                       {michiganTravelOptions.map( x => <option value={x}>{x}</option> )}
-                                    </select>
-                                 </label>
-
-                                 <input type="hidden" name="page" value="mi-extra" />
-                                 <input
-                                    type="hidden"
-                                    name="email"
-                                    value={this.formData?.email}
-                                 />
-
-                                 <button
-                                    type="submit"
-                                    class="button"
-                                 >Submit</button>
-
-                              </form>
-                           }
-                        </Fragment> ) : null}
+                        <MichiganAdditionalInfoForm
+                           formSubmitted={this.michiganFormSubmitted}
+                           data={this.formData}
+                           onSubmit={() => this.michiganFormSubmitted = true}
+                        />
                      </div>
                   )}
-               </poll-worker-info>
+               </ptp-info-poll-worker>
             </article>
          ) : ( <Fragment>
             <h3>Help your community and sign up to Power the Polls!</h3>

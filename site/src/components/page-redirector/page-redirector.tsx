@@ -14,7 +14,7 @@ export class PageRedirector {
       const stateInfo = state != null && state in data.States ? data.States[state] : null;
 
       return ( <Host>
-         <poll-worker-info city={city} county={county} state={state} />
+         <ptp-info-poll-worker city={city} county={county} state={state} />
          {stateInfo != null && stateInfo.noPollWorkersNeeded && <util.NextSteps stateInfo={stateInfo} />}
       </Host> );
    }

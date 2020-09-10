@@ -13,18 +13,18 @@
 
 ### Depends on
 
-- poll-worker-info
+- ptp-info-poll-worker
 - address-input
 
 ### Graph
 ```mermaid
 graph TD;
-  no-capture-form --> poll-worker-info
+  no-capture-form --> ptp-info-poll-worker
   no-capture-form --> address-input
-  poll-worker-info --> jurisdiction-info
-  poll-worker-info --> state-info
-  jurisdiction-info --> loading-spinner
-  state-info --> loading-spinner
+  ptp-info-poll-worker --> ptp-info-jurisdiction
+  ptp-info-poll-worker --> ptp-info-state
+  ptp-info-jurisdiction --> loading-spinner
+  ptp-info-state --> loading-spinner
   address-input --> possibly-hidden-select
   page-search --> no-capture-form
   style no-capture-form fill:#f9f,stroke:#333,stroke-width:4px

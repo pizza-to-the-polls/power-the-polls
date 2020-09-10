@@ -1,8 +1,8 @@
 import { FunctionalComponent, h } from "@stencil/core";
 
-import { AdditionalFormData } from "./types";
+import { PtpFormData } from "./types";
 
-const TextInput: FunctionalComponent<{ data: AdditionalFormData, field: keyof AdditionalFormData }> = ( { data, field } ) => {
+const TextInput: FunctionalComponent<{ data: PtpFormData, field: keyof PtpFormData }> = ( { data, field } ) => {
    return (
       <input
          type="text"

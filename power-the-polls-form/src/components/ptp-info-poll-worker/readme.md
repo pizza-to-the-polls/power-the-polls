@@ -24,18 +24,18 @@
 
 ### Depends on
 
-- [jurisdiction-info](../jurisdiction-info)
-- [state-info](../state-info)
+- [ptp-info-jurisdiction](../ptp-info-jurisdiction)
+- [ptp-info-state](../ptp-info-state)
 
 ### Graph
 ```mermaid
 graph TD;
-  poll-worker-info --> jurisdiction-info
-  poll-worker-info --> state-info
-  jurisdiction-info --> loading-spinner
-  state-info --> loading-spinner
-  power-the-polls-form --> poll-worker-info
-  style poll-worker-info fill:#f9f,stroke:#333,stroke-width:4px
+  ptp-info-poll-worker --> ptp-info-jurisdiction
+  ptp-info-poll-worker --> ptp-info-state
+  ptp-info-jurisdiction --> loading-spinner
+  ptp-info-state --> loading-spinner
+  power-the-polls-form --> ptp-info-poll-worker
+  style ptp-info-poll-worker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

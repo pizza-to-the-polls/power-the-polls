@@ -1,7 +1,8 @@
 import { Component, h, Host, Prop, State } from "@stencil/core";
+import { FunctionalComponent } from "@stencil/router/dist/types/stencil.core";
 
 import { JurisdictionInfo } from "../../data/States";
-import { AdditionalFormData, Fragment, PtpLink, TextInput } from "../../util";
+import { Fragment, PtpFormData, PtpLink, TextInput } from "../../util";
 import { fetchJurisdictionInfo } from "../../util/WorkElections";
 
 const VoterRegistrationReqs = ( j: JurisdictionInfo ) => (
@@ -71,11 +72,86 @@ const CompleteApplicationButton = ( j: JurisdictionInfo ) => {
 };
 
 /**
+ * Email application that will only render if there is no application link for the jurisdiction
+ */
+const MailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo, data: PtpFormData }> = ( { jurisdiction, data } ) => {
+
+   const j = jurisdiction;
+   if( j?.application != null && j.application !== "" ) {
+      return;
+   }
+
+   const submitForm = ( e: Event ) => {
+      try {
+         console.log( "Format into email or submit to some backend functions which will do that", data );
+      } finally {
+         // make sure we cancel the submit so the browser doesn't do anything
+         e.preventDefault();
+         return false;
+      }
+   };
+
+   const ages = [
+      "18 and under",
+      "19 to 25",
+      "26 to 35",
+      "36 to 50",
+      "51 to 64",
+      "65 and older",
+   ];
+
+   return ( <Fragment>
+      <p>
+         To complete your application, e-mail your poll administrator: <a href={`mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`} target="_blank">{j.email}</a>.
+         Be sure to include your first and last name, city and county of residence, email, phone number, age, and any additional languages you speak other than English.
+      </p>
+      <p>Or you can fill out and submit the application below and we will email the poll administrator on your behalf:</p>
+      <form onSubmit={submitForm}>
+         <label>
+            Name
+            <TextInput data={data} field="name" />
+         </label>
+         <label>
+            City
+            <TextInput data={data} field="city" />
+         </label>
+         <label>
+            County
+            <TextInput data={data} field="county" />
+         </label>
+         <label>
+            Email
+            <TextInput data={data} field="email" />
+         </label>
+         <label>
+            Phone Number
+            <TextInput data={data} field="phone" />
+         </label>
+         <label>
+            What languages do you speak other than English?
+            <TextInput data={data} field="languages" />
+         </label>
+         <label>
+            Age
+            <select name="age">
+               <option>Please select</option>
+               {ages.map( a => <option value={a} selected={data.age === a}>{a}</option> )}
+            </select>
+         </label>
+         <button
+            type="submit"
+            class="button"
+         >Send Email</button>
+      </form>
+   </Fragment> );
+};
+
+/**
  * Component to render work elections jurisdiction data.
  */
 @Component( {
-   tag: "jurisdiction-info",
-   styleUrl: "jurisdiction-info.scss",
+   tag: "ptp-info-jurisdiction",
+   styleUrl: "ptp-info-jurisdiction.scss",
    shadow: false,
 } )
 export class JurisdictionInfoComponent {
@@ -88,11 +164,11 @@ export class JurisdictionInfoComponent {
    /**
     * Props possibly passed in from the form
     */
-   @Prop() public addtl?: AdditionalFormData;
+   @Prop() public addtl?: PtpFormData;
 
    @State() public jurisdiction?: JurisdictionInfo;
 
-   @State() private formData: AdditionalFormData = {};
+   @State() private formData: PtpFormData = {};
 
    public componentWillLoad() {
       this.formData = this.addtl || {};
@@ -126,25 +202,6 @@ export class JurisdictionInfoComponent {
          </Host> );
       }
 
-      const submitForm = ( e: Event ) => {
-         try {
-            console.log( "Format into email or submit to some backend functions which will do that", this.formData );
-         } finally {
-            // make sure we cancel the submit so the browser doesn't do anything
-            e.preventDefault();
-            return false;
-         }
-      };
-
-      const ages = [
-         "18 and under",
-         "19 to 25",
-         "26 to 35",
-         "36 to 50",
-         "51 to 64",
-         "65 and older",
-      ];
-
       return (
          <Host>
             <h2>{j.name}, {j.state.alpha}</h2>
@@ -157,52 +214,7 @@ export class JurisdictionInfoComponent {
 
             <CompleteApplicationButton {...j} />
 
-            {j?.application == null || j?.application === "" ?
-               <Fragment>
-                  <p>
-                     To complete your application, e-mail your poll administrator: <a href={`mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`} target="_blank">{j.email}</a>.
-                     Be sure to include your first and last name, city and county of residence, email, phone number, age, and any additional languages you speak other than English.
-                  </p>
-                  <p>Or you can fill out and submit the application below and we will email the poll administrator on your behalf:</p>
-                  <form onSubmit={submitForm}>
-                     <label>
-                        Name
-                        <TextInput data={this.formData} field="name" />
-                     </label>
-                     <label>
-                        City
-                        <TextInput data={this.formData} field="city" />
-                     </label>
-                     <label>
-                        County
-                        <TextInput data={this.formData} field="county" />
-                     </label>
-                     <label>
-                        Email
-                        <TextInput data={this.formData} field="email" />
-                     </label>
-                     <label>
-                        Phone Number
-                        <TextInput data={this.formData} field="phone" />
-                     </label>
-                     <label>
-                        What languages do you speak other than English?
-                        <TextInput data={this.formData} field="languages" />
-                     </label>
-                     <label>
-                        Age
-                        <select name="age">
-                           <option>Please select</option>
-                           {ages.map( a => <option value={a} selected={this.formData.age === a}>{a}</option> )}
-                        </select>
-                     </label>
-                     <button
-                        type="submit"
-                        class="button"
-                     >Send Email</button>
-                  </form>
-               </Fragment>
-               : null}
+            <MailApplicationForm jurisdiction={j} data={this.formData} />
 
             <slot />
 

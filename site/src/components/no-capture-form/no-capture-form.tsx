@@ -34,7 +34,7 @@ export class NoCaptureForm {
     return (
       <Host>
          {this.state
-            ? (<poll-worker-info state={this.state} county={this.county} city={this.city} />)
+            ? (<ptp-info-poll-worker state={this.state} county={this.county} city={this.city} />)
             : (<form onSubmit={submitForm}>
                      <h1>Find My Local Info</h1>
                      <p>Need more info about poll working in your local jurisdiction? Look it up here</p>

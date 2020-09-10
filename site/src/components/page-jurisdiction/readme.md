@@ -16,13 +16,13 @@
 
 ### Depends on
 
-- jurisdiction-info
+- ptp-info-jurisdiction
 
 ### Graph
 ```mermaid
 graph TD;
-  page-jurisdiction --> jurisdiction-info
-  jurisdiction-info --> loading-spinner
+  page-jurisdiction --> ptp-info-jurisdiction
+  ptp-info-jurisdiction --> loading-spinner
   style page-jurisdiction fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
