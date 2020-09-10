@@ -392,7 +392,7 @@ const data: { [state: string]: StateInfo } = {
          "Teller County": 177,
          "Washington County": 178,
          "Weld County": 179,
-         "Yuma County": 180
+         "Yuma County": 180,
       }
    },
    "CT": {
@@ -2374,7 +2374,7 @@ const data: { [state: string]: StateInfo } = {
          "Pershing County": 376,
          "Storey County": 377,
          "Washoe County": 378,
-         "White Pine County": 379
+         "White Pine County": 379,
       }
    },
    "NH": {
@@ -2624,7 +2624,7 @@ const data: { [state: string]: StateInfo } = {
          "Windham (Town)": 7189,
          "Windsor (Town)": 7190,
          "Wolfeboro (Town)": 7191,
-         "Woodstock (Town)": 7192
+         "Woodstock (Town)": 7192,
       }
    },
    "NJ": {
@@ -3176,7 +3176,7 @@ const data: { [state: string]: StateInfo } = {
          "Wayne County": 3735,
          "Westmoreland County": 3920,
          "Wyoming County": 5608,
-         "York County": 3736
+         "York County": 3736,
       }
    },
    "RI": {
@@ -3221,7 +3221,7 @@ const data: { [state: string]: StateInfo } = {
          "Westerly (Town)": 5934,
          "West Greenwich (Town)": 5935,
          "West Warwick (Town)": 5936,
-         "Woonsocket (City)": 5937
+         "Woonsocket (City)": 5937,
       }
    },
    "SC": {
@@ -3741,7 +3741,7 @@ const data: { [state: string]: StateInfo } = {
          "Wasatch County": 3846,
          "Washington County": 5451,
          "Wayne County": 5028,
-         "Weber County": 5786
+         "Weber County": 5786,
       }
    },
    "VT": {
@@ -4193,7 +4193,7 @@ const data: { [state: string]: StateInfo } = {
          "Wetzel County": 5680,
          "Wirt County": 5622,
          "Wood County": 5861,
-         "Wyoming County": 3975
+         "Wyoming County": 3975,
       }
    },
    "WI": {
