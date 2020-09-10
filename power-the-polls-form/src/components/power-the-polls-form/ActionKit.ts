@@ -1,4 +1,4 @@
-import toQueryString from "./toQueryString";
+import toQueryString from "../../util/toQueryString";
 
 export const submitToActionKit = async ( data: { [key: string]: string })
    : Promise<true | {

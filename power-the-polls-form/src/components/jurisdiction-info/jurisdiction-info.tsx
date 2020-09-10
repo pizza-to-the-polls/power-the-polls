@@ -1,13 +1,10 @@
-import { Component, FunctionalComponent, h, Host, Prop, State } from "@stencil/core";
+import { Component, h, Host, Prop, State } from "@stencil/core";
 
-import { Jurisdiction } from "../../data/States";
-import { AdditionalFormData, TextInput } from "../../util";
-import { PtpLink } from "../../util/PtpLink";
-import { fetchJurisdiction } from "../../util/WorkElections";
+import { JurisdictionInfo } from "../../data/States";
+import { AdditionalFormData, Fragment, PtpLink, TextInput } from "../../util";
+import { fetchJurisdictionInfo } from "../../util/WorkElections";
 
-const Fragment: FunctionalComponent<{}> = ( _, children ) => children;
-
-const VoterRegistrationReqs = ( j: Jurisdiction ) => (
+const VoterRegistrationReqs = ( j: JurisdictionInfo ) => (
    j.registration_status.length < 1
       ? null
       : (
@@ -24,7 +21,7 @@ const VoterRegistrationReqs = ( j: Jurisdiction ) => (
       )
 );
 
-const HoursAndCompensation = ( j: Jurisdiction ) => j && (
+const HoursAndCompensation = ( j: JurisdictionInfo ) => j && (
    <div>
       <h4>Hours and Compensation</h4>
       <ul>
@@ -38,7 +35,7 @@ const HoursAndCompensation = ( j: Jurisdiction ) => j && (
    </div>
 );
 
-const WorkReqs = ( j: Jurisdiction ) => j && (
+const WorkReqs = ( j: JurisdictionInfo ) => j && (
    <div>
       <h4>Work Requirements</h4>
       <ul>
@@ -53,7 +50,7 @@ const WorkReqs = ( j: Jurisdiction ) => j && (
    </div>
 );
 
-const ContactInfo = ( j: Jurisdiction ) => j && (
+const ContactInfo = ( j: JurisdictionInfo ) => j && (
    <div>
       <h4>Contact Information</h4>
       <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>
@@ -63,7 +60,7 @@ const ContactInfo = ( j: Jurisdiction ) => j && (
    </div>
 );
 
-const CompleteApplicationButton = ( j: Jurisdiction ) => {
+const CompleteApplicationButton = ( j: JurisdictionInfo ) => {
    return j?.application && j?.application !== "" && (
       <a
          class="poll-worker-action cta"
@@ -81,7 +78,7 @@ const CompleteApplicationButton = ( j: Jurisdiction ) => {
    styleUrl: "jurisdiction-info.scss",
    shadow: false,
 } )
-export class JurisdictionInfo {
+export class JurisdictionInfoComponent {
 
    /**
      * ID of jurisdiction for Work Elections
@@ -93,14 +90,14 @@ export class JurisdictionInfo {
     */
    @Prop() public addtl?: AdditionalFormData;
 
-   @State() public jurisdiction?: Jurisdiction;
+   @State() public jurisdiction?: JurisdictionInfo;
 
    @State() private formData: AdditionalFormData = {};
 
    public componentWillLoad() {
       this.formData = this.addtl || {};
       if( this.jurisdictionId ) {
-         fetchJurisdiction( this.jurisdictionId ).then( x => this.jurisdiction = x );
+         fetchJurisdictionInfo( this.jurisdictionId ).then( x => this.jurisdiction = x );
       }
    }
 

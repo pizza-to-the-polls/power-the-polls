@@ -1,5 +1,5 @@
 import { States } from "../data";
-import { Jurisdiction, StateInfo } from "../data/States";
+import { JurisdictionInfo, StateInfo } from "../data/States";
 
 /**
  * Asynchronous function for returning data from WE
@@ -12,14 +12,14 @@ const fetchFromWE = async ( path: string ) => {
    return await data.json();
 };
 
-export const fetchState = ( stateId: number ): Promise<StateInfo> => {
+export const fetchStateInfo = ( stateId: number ): Promise<StateInfo> => {
    return fetchFromWE( `/states/${stateId}/` );
 };
 
-export const fetchJurisdiction = ( jurisdictionId: number | string ): Promise<Jurisdiction> => {
+export const fetchJurisdictionInfo = ( jurisdictionId: number | string ): Promise<JurisdictionInfo> => {
    return fetchFromWE( `/jurisdictions/${jurisdictionId}/` );
 };
-export const fetchStateJurisdictionsList = ( stateId: number ): Promise<Jurisdiction[]> => {
+export const fetchStateJurisdictionsList = ( stateId: number ): Promise<JurisdictionInfo[]> => {
    return fetchFromWE( `/jurisdictions/?summary=true&state_id=${stateId}` );
 };
 

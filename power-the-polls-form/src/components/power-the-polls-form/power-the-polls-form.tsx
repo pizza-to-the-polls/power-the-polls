@@ -1,15 +1,9 @@
-import { Component, Event, EventEmitter, FunctionalComponent, h, Host, Method, Prop, State } from "@stencil/core";
+import { Component, Event, EventEmitter, h, Host, Method, Prop, State } from "@stencil/core";
 
 import { States } from "../../data";
-import { AdditionalFormData } from "../../util";
-import { submitToActionKit } from "../../util/ActionKit";
-import NextSteps from "../../util/NextSteps";
-import { PtpLink } from "../../util/PtpLink";
+import { AdditionalFormData, Fragment, NextSteps, PtpLink } from "../../util";
 
-/**
- * Empty container element, i.e.: `<></>`
- **/
-const Fragment: FunctionalComponent<{}> = ( _, children ) => children;
+import { submitToActionKit } from "./ActionKit";
 
 /**
  * The Power the Polls sign-up form.
@@ -65,11 +59,13 @@ export class PowerThePollsForm {
 
    @State() private formStatus: "incomplete" | "submitting" | "completed";
    @State() private formData: AdditionalFormData;
+   @State() private michiganFormSubmitted: boolean;
 
    constructor() {
       this.formStatus = "incomplete";
       this.formData = {};
       this.optUserOutOfChase = false;
+      this.michiganFormSubmitted = false;
    }
 
    @Method()
@@ -182,6 +178,7 @@ export class PowerThePollsForm {
                      console.error( result );
                   }
                } );
+            this.michiganFormSubmitted = true;
          } catch( e ) {
             console.error( e );
          } finally {
@@ -233,59 +230,61 @@ export class PowerThePollsForm {
                         {this.formData.state === "MI" ? ( <Fragment>
                            <p>We just need a few more pieces of information from you to help with your application:</p>
 
-                           <form onSubmit={michiganSubmitForm}>
+                           {!this.michiganFormSubmitted &&
+                              <form onSubmit={michiganSubmitForm} style={{ padding: "0" }}>
 
-                              <input
-                                 type="hidden"
-                                 name="city"
-                                 value={this.formData?.city}
-                              />
-                              <input
-                                 type="hidden"
-                                 name="state"
-                                 value={this.formData?.state}
-                              />
-                              <input
-                                 type="hidden"
-                                 name="zip"
-                                 value={this.formData?.zip}
-                              />
-                              <label>
-                                 Street address
                                  <input
-                                    type="text"
-                                    required
-                                    name="address1"
+                                    type="hidden"
+                                    name="city"
+                                    value={this.formData?.city}
                                  />
-                              </label>
+                                 <input
+                                    type="hidden"
+                                    name="state"
+                                    value={this.formData?.state}
+                                 />
+                                 <input
+                                    type="hidden"
+                                    name="zip"
+                                    value={this.formData?.zip}
+                                 />
+                                 <label>
+                                    Street address
+                                 <input
+                                       type="text"
+                                       required
+                                       name="address1"
+                                    />
+                                 </label>
 
-                              <label>
-                                 Are you fluent in a language besides English?
+                                 <label>
+                                    Are you fluent in a language besides English?
                                  <select name="user_additional_language" required>
-                                    {michiganLanguages.map( x => <option value={x}>{x}</option> )}
-                                 </select>
-                              </label>
+                                       {michiganLanguages.map( x => <option value={x}>{x}</option> )}
+                                    </select>
+                                 </label>
 
-                              <label>
-                                 In Michigan, eligible poll workers can serve anywhere in the state. Are you willing to travel, and if so, how far can you travel?
+                                 <label>
+                                    In Michigan, eligible poll workers can serve anywhere in the state. Are you willing to travel, and if so, how far can you travel?
                                  <select name="user_mi_travel" required>
-                                    {michiganTravelOptions.map( x => <option value={x}>{x}</option> )}
-                                 </select>
-                              </label>
+                                       {michiganTravelOptions.map( x => <option value={x}>{x}</option> )}
+                                    </select>
+                                 </label>
 
-                              <input type="hidden" name="page" value="mi-extra" />
-                              <input
-                                 type="hidden"
-                                 name="email"
-                                 value={this.formData?.email}
-                              />
+                                 <input type="hidden" name="page" value="mi-extra" />
+                                 <input
+                                    type="hidden"
+                                    name="email"
+                                    value={this.formData?.email}
+                                 />
 
-                              <button
-                                 type="submit"
-                                 class="button"
-                              >Submit</button>
+                                 <button
+                                    type="submit"
+                                    class="button"
+                                 >Submit</button>
 
-                           </form>
+                              </form>
+                           }
                         </Fragment> ) : null}
                      </div>
                   )}

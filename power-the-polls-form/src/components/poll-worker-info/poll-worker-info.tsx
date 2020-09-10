@@ -43,7 +43,9 @@ export class PollWorkerInfo {
       const jurisdictionId = state ? findJurisdictionId( state, county, city ) : null;
       const stateId = state ? findStateId( state ) : null;
 
-      if( !state && this.history ) { return this.history.replace( "/search" ); }
+      if( !state && this.history ) {
+         return this.history.replace( "/search" );
+      }
 
       if( state === "ME" ) {
          return ( <Host>

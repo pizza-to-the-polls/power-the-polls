@@ -16,7 +16,7 @@ export interface StateInfo {
    jurisdictions: { [jurisdiction: string]: number };
 }
 
-export interface Jurisdiction {
+export interface JurisdictionInfo {
    id: number;
    state: { alpha: string; };
    jurisdiction_link?: { id: number, name: string };

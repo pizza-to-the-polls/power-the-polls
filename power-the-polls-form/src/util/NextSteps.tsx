@@ -2,10 +2,7 @@ import { FunctionalComponent, h } from "@stencil/core";
 
 import { StateInfo } from "../data/States";
 
-/**
- * Empty container element, i.e.: `<></>`
- **/
-const Fragment: FunctionalComponent<{}> = ( _, children ) => children;
+import Fragment from "./Fragment";
 
 const NextSteps: FunctionalComponent<{ stateInfo: StateInfo | null }> = ( { stateInfo } ) => (
    stateInfo != null && stateInfo.noPollWorkersNeeded ? (
