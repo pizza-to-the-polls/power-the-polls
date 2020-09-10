@@ -103,7 +103,7 @@ const MailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo,
 
    return ( <Fragment>
       <h3>Complete your application</h3>
-      <p>This form generates an email that is sent to your local election administrator on your behalf.</p>
+      <p>You need to email your local jurisdiction directly in order to apply to be a poll worker. This form generates an email that is sent to your local election administrator on your behalf.</p>
       <form onSubmit={submitForm} style={{ padding: "0" }}>
          <label>
             Name

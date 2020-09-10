@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
+import { MatchResults, RouterHistory } from "@stencil/router";
 import { Partner } from "./data/PartnerList";
 export namespace Components {
     interface AppRoot {
@@ -15,8 +15,6 @@ export namespace Components {
     interface H3Bar {
     }
     interface ImpactBox {
-    }
-    interface NoCaptureForm {
     }
     interface PageAbout {
     }
@@ -48,6 +46,7 @@ export namespace Components {
     interface PageRedirector {
     }
     interface PageSearch {
+        "history"?: RouterHistory;
     }
     interface SocialShare {
         /**
@@ -96,12 +95,6 @@ declare global {
     var HTMLImpactBoxElement: {
         prototype: HTMLImpactBoxElement;
         new (): HTMLImpactBoxElement;
-    };
-    interface HTMLNoCaptureFormElement extends Components.NoCaptureForm, HTMLStencilElement {
-    }
-    var HTMLNoCaptureFormElement: {
-        prototype: HTMLNoCaptureFormElement;
-        new (): HTMLNoCaptureFormElement;
     };
     interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
     }
@@ -168,7 +161,6 @@ declare global {
         "component-list": HTMLComponentListElement;
         "h3-bar": HTMLH3BarElement;
         "impact-box": HTMLImpactBoxElement;
-        "no-capture-form": HTMLNoCaptureFormElement;
         "page-about": HTMLPageAboutElement;
         "page-contact": HTMLPageContactElement;
         "page-faq": HTMLPageFaqElement;
@@ -189,8 +181,6 @@ declare namespace LocalJSX {
     interface H3Bar {
     }
     interface ImpactBox {
-    }
-    interface NoCaptureForm {
     }
     interface PageAbout {
     }
@@ -222,6 +212,7 @@ declare namespace LocalJSX {
     interface PageRedirector {
     }
     interface PageSearch {
+        "history"?: RouterHistory;
     }
     interface SocialShare {
         /**
@@ -250,7 +241,6 @@ declare namespace LocalJSX {
         "component-list": ComponentList;
         "h3-bar": H3Bar;
         "impact-box": ImpactBox;
-        "no-capture-form": NoCaptureForm;
         "page-about": PageAbout;
         "page-contact": PageContact;
         "page-faq": PageFaq;
@@ -271,7 +261,6 @@ declare module "@stencil/core" {
             "component-list": LocalJSX.ComponentList & JSXBase.HTMLAttributes<HTMLComponentListElement>;
             "h3-bar": LocalJSX.H3Bar & JSXBase.HTMLAttributes<HTMLH3BarElement>;
             "impact-box": LocalJSX.ImpactBox & JSXBase.HTMLAttributes<HTMLImpactBoxElement>;
-            "no-capture-form": LocalJSX.NoCaptureForm & JSXBase.HTMLAttributes<HTMLNoCaptureFormElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
             "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;

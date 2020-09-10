@@ -1,6 +1,9 @@
 import { Component, h, Prop } from "@stencil/core";
 import { MatchResults } from "@stencil/router";
 
+/**
+ * Directly match a jurisdiction ID
+ */
 @Component( {
    tag: "page-jurisdiction",
    styleUrl: "page-jurisdiction.scss",

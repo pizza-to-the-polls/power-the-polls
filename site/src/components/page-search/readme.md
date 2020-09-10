@@ -9,14 +9,14 @@
 
 ### Depends on
 
-- [no-capture-form](../no-capture-form)
+- ptp-info-poll-worker
+- address-input
 
 ### Graph
 ```mermaid
 graph TD;
-  page-search --> no-capture-form
-  no-capture-form --> ptp-info-poll-worker
-  no-capture-form --> address-input
+  page-search --> ptp-info-poll-worker
+  page-search --> address-input
   ptp-info-poll-worker --> ptp-info-jurisdiction
   ptp-info-poll-worker --> ptp-info-state
   ptp-info-jurisdiction --> loading-spinner
