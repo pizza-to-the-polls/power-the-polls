@@ -3,6 +3,9 @@ import { Component, h, Host } from "@stencil/core";
 
 import { getParams } from "../../util";
 
+/**
+ * Render poll worker info for the jurisdiction as parsed from the querystring or hash
+ */
 @Component( {
    tag: "page-info",
    shadow: false,

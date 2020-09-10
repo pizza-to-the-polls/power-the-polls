@@ -12,7 +12,7 @@ import { RouterHistory } from "@stencil/router";
 } )
 export class PageSearch {
 
-   @Prop() public history?: RouterHistory;
+   @Prop() public history!: RouterHistory;
 
    public render() {
       const submitForm = ( e: Event ) => {
@@ -23,7 +23,7 @@ export class PageSearch {
             return input ? input.value : null;
          } );
 
-         this.history!.push( "/info?" + util.toQueryString( { city, county, state } ) );
+         this.history.push( "/info?" + util.toQueryString( { city, county, state } ) );
 
          e.preventDefault();
          return false;

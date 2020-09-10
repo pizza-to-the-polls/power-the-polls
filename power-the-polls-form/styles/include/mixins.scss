@@ -2,8 +2,72 @@
 // This file is injected into all scss files -- global and component. See stencil.config.js
 //
 
-@mixin on-mobile()
-{
-   @media only screen and (max-width: $max-width) { @content; }
+@mixin on-mobile() {
+   @media only screen and (max-width: $max-width) {
+      @content;
+   }
 }
 
+@mixin form-defaults() {
+   button {
+      border: 0;
+      padding: 0.5em 1em;
+      width: 100%;
+      text-transform: uppercase;
+      background-color: $color-highlight;
+      color: $color-font-highlight;
+      font-size: 1.2rem;
+      letter-spacing: 0.05rem;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover {
+         opacity: 0.8;
+      }
+      &:focus {
+         opacity: 0.6;
+      }
+      &:active {
+         opacity: 0.4;
+      }
+   }
+
+   form {
+      font-size: 1rem;
+      padding: 1em 0;
+      letter-spacing: 0;
+
+      input,
+      select {
+         width: 100%;
+         padding: 0.5em 0.75em;
+         display: block;
+      }
+
+      select {
+         padding: 0.75em;
+         height: auto;
+      }
+
+      label {
+         margin-bottom: 0.75em;
+         display: block;
+         font-size: 0.9rem;
+
+         .checkbox {
+            display: flex;
+            align-items: center;
+
+            &:first-of-type {
+               margin-top: 1.5em;
+            }
+
+            input {
+               transform: scale(1.5);
+               flex: 0 1 1.5em;
+               margin-right: 0.5em;
+               z-index: -1;
+            }
+         }
+      }
+   }
+}

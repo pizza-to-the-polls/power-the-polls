@@ -46,7 +46,7 @@ export namespace Components {
     interface PagePrivacy {
     }
     interface PageSearch {
-        "history"?: RouterHistory;
+        "history": RouterHistory;
     }
     interface SocialShare {
         /**
@@ -212,7 +212,7 @@ declare namespace LocalJSX {
     interface PagePrivacy {
     }
     interface PageSearch {
-        "history"?: RouterHistory;
+        "history": RouterHistory;
     }
     interface SocialShare {
         /**
