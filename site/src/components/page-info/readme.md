@@ -1,4 +1,4 @@
-# page-redirector
+# page-info
 
 
 
@@ -9,17 +9,19 @@
 
 ### Depends on
 
+- stencil-router-redirect
 - ptp-info-poll-worker
 
 ### Graph
 ```mermaid
 graph TD;
-  page-redirector --> ptp-info-poll-worker
+  page-info --> stencil-router-redirect
+  page-info --> ptp-info-poll-worker
   ptp-info-poll-worker --> ptp-info-jurisdiction
   ptp-info-poll-worker --> ptp-info-state
   ptp-info-jurisdiction --> loading-spinner
   ptp-info-state --> loading-spinner
-  style page-redirector fill:#f9f,stroke:#333,stroke-width:4px
+  style page-info fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

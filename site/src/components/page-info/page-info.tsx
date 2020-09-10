@@ -4,10 +4,10 @@ import { Component, h, Host } from "@stencil/core";
 import { getParams } from "../../util";
 
 @Component( {
-   tag: "page-redirector",
+   tag: "page-info",
    shadow: false,
 } )
-export class PageRedirector {
+export class PageInfo {
    public render() {
 
       const query = getParams();

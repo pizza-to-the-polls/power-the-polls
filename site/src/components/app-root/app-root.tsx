@@ -100,7 +100,11 @@ export class AppRoot {
          },
          {
             url: "/redirector",
-            component: "page-redirector",
+            component: "page-info",
+         },
+         {
+            url: "/info",
+            component: "page-info",
          },
          {
             url: "/jurisdiction/:id",

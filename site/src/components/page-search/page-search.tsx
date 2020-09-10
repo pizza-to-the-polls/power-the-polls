@@ -23,7 +23,7 @@ export class PageSearch {
             return input ? input.value : null;
          } );
 
-         this.history!.push( "/redirector?" + util.toQueryString( { city, county, state } ) );
+         this.history!.push( "/info?" + util.toQueryString( { city, county, state } ) );
 
          e.preventDefault();
          return false;
@@ -33,7 +33,7 @@ export class PageSearch {
          <form onSubmit={submitForm}>
             <h1>Find My Local Info</h1>
             <p>Need more info about poll working in your local jurisdiction? Look it up here.</p>
-            <p><strong>And don't forget to <stencil-route-link url="/#form">SIGN UP</stencil-route-link> to be a poll worker in your jurisdiction!</strong></p>
+            <p><strong>And don't forget to <stencil-route-link url="/#form">SIGN UP</stencil-route-link> to be a poll worker!</strong></p>
             <address-input />
             <button type="submit" class="button">Lookup</button>
          </form>

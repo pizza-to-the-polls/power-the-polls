@@ -32,6 +32,8 @@ export namespace Components {
          */
         "partnerId"?: string;
     }
+    interface PageInfo {
+    }
     interface PageJurisdiction {
         "match"?: MatchResults;
     }
@@ -42,8 +44,6 @@ export namespace Components {
         "partners"?: Partner[];
     }
     interface PagePrivacy {
-    }
-    interface PageRedirector {
     }
     interface PageSearch {
         "history"?: RouterHistory;
@@ -120,6 +120,12 @@ declare global {
         prototype: HTMLPageFormElement;
         new (): HTMLPageFormElement;
     };
+    interface HTMLPageInfoElement extends Components.PageInfo, HTMLStencilElement {
+    }
+    var HTMLPageInfoElement: {
+        prototype: HTMLPageInfoElement;
+        new (): HTMLPageInfoElement;
+    };
     interface HTMLPageJurisdictionElement extends Components.PageJurisdiction, HTMLStencilElement {
     }
     var HTMLPageJurisdictionElement: {
@@ -137,12 +143,6 @@ declare global {
     var HTMLPagePrivacyElement: {
         prototype: HTMLPagePrivacyElement;
         new (): HTMLPagePrivacyElement;
-    };
-    interface HTMLPageRedirectorElement extends Components.PageRedirector, HTMLStencilElement {
-    }
-    var HTMLPageRedirectorElement: {
-        prototype: HTMLPageRedirectorElement;
-        new (): HTMLPageRedirectorElement;
     };
     interface HTMLPageSearchElement extends Components.PageSearch, HTMLStencilElement {
     }
@@ -165,10 +165,10 @@ declare global {
         "page-contact": HTMLPageContactElement;
         "page-faq": HTMLPageFaqElement;
         "page-form": HTMLPageFormElement;
+        "page-info": HTMLPageInfoElement;
         "page-jurisdiction": HTMLPageJurisdictionElement;
         "page-partners": HTMLPagePartnersElement;
         "page-privacy": HTMLPagePrivacyElement;
-        "page-redirector": HTMLPageRedirectorElement;
         "page-search": HTMLPageSearchElement;
         "social-share": HTMLSocialShareElement;
     }
@@ -198,6 +198,8 @@ declare namespace LocalJSX {
          */
         "partnerId"?: string;
     }
+    interface PageInfo {
+    }
     interface PageJurisdiction {
         "match"?: MatchResults;
     }
@@ -208,8 +210,6 @@ declare namespace LocalJSX {
         "partners"?: Partner[];
     }
     interface PagePrivacy {
-    }
-    interface PageRedirector {
     }
     interface PageSearch {
         "history"?: RouterHistory;
@@ -245,10 +245,10 @@ declare namespace LocalJSX {
         "page-contact": PageContact;
         "page-faq": PageFaq;
         "page-form": PageForm;
+        "page-info": PageInfo;
         "page-jurisdiction": PageJurisdiction;
         "page-partners": PagePartners;
         "page-privacy": PagePrivacy;
-        "page-redirector": PageRedirector;
         "page-search": PageSearch;
         "social-share": SocialShare;
     }
@@ -265,10 +265,10 @@ declare module "@stencil/core" {
             "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
             "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;
             "page-form": LocalJSX.PageForm & JSXBase.HTMLAttributes<HTMLPageFormElement>;
+            "page-info": LocalJSX.PageInfo & JSXBase.HTMLAttributes<HTMLPageInfoElement>;
             "page-jurisdiction": LocalJSX.PageJurisdiction & JSXBase.HTMLAttributes<HTMLPageJurisdictionElement>;
             "page-partners": LocalJSX.PagePartners & JSXBase.HTMLAttributes<HTMLPagePartnersElement>;
             "page-privacy": LocalJSX.PagePrivacy & JSXBase.HTMLAttributes<HTMLPagePrivacyElement>;
-            "page-redirector": LocalJSX.PageRedirector & JSXBase.HTMLAttributes<HTMLPageRedirectorElement>;
             "page-search": LocalJSX.PageSearch & JSXBase.HTMLAttributes<HTMLPageSearchElement>;
             "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;
         }
