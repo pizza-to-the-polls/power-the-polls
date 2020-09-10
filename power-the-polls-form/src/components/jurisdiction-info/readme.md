@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property         | Attribute         | Description                           | Type                            | Default     |
-| ---------------- | ----------------- | ------------------------------------- | ------------------------------- | ----------- |
-| `jurisdictionId` | `jurisdiction-id` | ID of jurisdiction for Work Elections | `number \| string \| undefined` | `undefined` |
+| Property         | Attribute         | Description                            | Type                                                                                                                                                                                                                                                                                   | Default     |
+| ---------------- | ----------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `addtl`          | --                | Props possibly passed in from the form | `undefined \| { name?: string \| undefined; city?: string \| undefined; county?: string \| undefined; zip?: string \| undefined; state?: string \| undefined; email?: string \| undefined; phone?: string \| undefined; languages?: string \| undefined; age?: string \| undefined; }` | `undefined` |
+| `jurisdictionId` | `jurisdiction-id` | ID of jurisdiction for Work Elections  | `number \| string \| undefined`                                                                                                                                                                                                                                                        | `undefined` |
 
 
 ## Dependencies
