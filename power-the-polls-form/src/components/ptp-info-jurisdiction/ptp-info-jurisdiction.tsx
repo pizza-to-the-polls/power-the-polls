@@ -78,12 +78,13 @@ const MailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo,
 
    const j = jurisdiction;
    if( j?.application != null && j.application !== "" ) {
+      // jurisdiction has an application link, do not show the e-mail form
       return;
    }
 
    const submitForm = ( e: Event ) => {
       try {
-         console.log( "Format into email or submit to some backend functions which will do that", data );
+         console.log( "Format into email or submit to some backend functions which will do that", j.email, data );
       } finally {
          // make sure we cancel the submit so the browser doesn't do anything
          e.preventDefault();
@@ -101,12 +102,9 @@ const MailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo,
    ];
 
    return ( <Fragment>
-      <p>
-         To complete your application, e-mail your poll administrator: <a href={`mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`} target="_blank">{j.email}</a>.
-         Be sure to include your first and last name, city and county of residence, email, phone number, age, and any additional languages you speak other than English.
-      </p>
-      <p>Or you can fill out and submit the application below and we will email the poll administrator on your behalf:</p>
-      <form onSubmit={submitForm}>
+      <h3>Complete your application</h3>
+      <p>This form generates an email that is sent to your local election administrator on your behalf.</p>
+      <form onSubmit={submitForm} style={{ padding: "0" }}>
          <label>
             Name
             <TextInput data={data} field="name" />
@@ -138,11 +136,26 @@ const MailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo,
                {ages.map( a => <option value={a} selected={data.age === a}>{a}</option> )}
             </select>
          </label>
+
+         <input type="hidden" value={data.state} name="state" />
+
          <button
             type="submit"
             class="button"
-         >Send Email</button>
+         >Submit Application</button>
       </form>
+
+      <p>
+         Or you can send an email yourself to <a href={`mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`} target="_blank">{j.email}</a>.
+         Be sure to include your first and last name, city and county of residence, email, phone number, age, and any additional languages you speak other than English.
+      </p>
+      <a
+         class="poll-worker-action"
+         href={`mailto:${j.email}?subject=Becoming%20a%20Poll%20Worker`}
+         target="_blank"
+      >Email your poll administrator directly</a>
+
+      <hr />
    </Fragment> );
 };
 
@@ -166,8 +179,7 @@ export class JurisdictionInfoComponent {
     */
    @Prop() public addtl?: PtpFormData;
 
-   @State() public jurisdiction?: JurisdictionInfo;
-
+   @State() private jurisdiction?: JurisdictionInfo;
    @State() private formData: PtpFormData = {};
 
    public componentWillLoad() {
@@ -196,8 +208,8 @@ export class JurisdictionInfoComponent {
                at this time
             </p>
             <p>
-               Please contact <a href="mailto:info@powerthepolls.org">info@powerthepolls.org</a>{" "}
-               and let us know the zip code you've entered and jurisdiction (#{this.jurisdictionId}).
+               Please contact <a href={`mailto:info@powerthepolls.org?subject=Error%20with%20jurisdiction%20${this.jurisdictionId}`}>info@powerthepolls.org</a>{" "}
+               and let us know the zip code you've entered.
             </p>
          </Host> );
       }
