@@ -144,6 +144,10 @@ const data: Partner[] = [
       optUserOutOfChase: true,
    },
    {
+      partnerId: "alliancebernstein",
+      name: "Alliance Bernstein",
+   },
+   {
       partnerId: "allin",
       name: "All In",
       logo: "all-in.svg",
@@ -187,7 +191,7 @@ const data: Partner[] = [
       logo: "american-promise.png",
    },
    {
-      partnerId: "American Sustainable Business Council",
+      partnerId: "american-sustainable-business-council",
       name: "American Sustainable Business Council",
       logo: "american-sustainable-business-council.png",
       logoIsDark: true,
@@ -355,6 +359,12 @@ const data: Partner[] = [
       logo: "the-change-agentcy.png",
    },
    {
+      partnerId: "ClevelandVotes",
+      name: "Cleveland Votes",
+      logo: "cleveland-votes.png",
+      logoIsDark: true,
+   },
+   {
       name: "Color Farm Media",
       partnerId: "colorfarmmedia",
       logo: "color-farm-media.png",
@@ -476,6 +486,7 @@ const data: Partner[] = [
    {
       partnerId: "floridavotes",
       name: "Florida Votes",
+      additionalVanityUrls: ["florida"],
    },
    {
       name: "General Assembly",
@@ -610,6 +621,12 @@ const data: Partner[] = [
       name: "Lyft",
       partnerId: "lyft",
       logo: "lyft.png",
+      logoIsDark: true,
+   },
+   {
+      partnerId: "MLS",
+      name: "Major League Soccer",
+      logoAppearsOnLandingPage: true,
       logoIsDark: true,
    },
    {
@@ -824,6 +841,8 @@ const data: Partner[] = [
    {
       partnerId: "PWP",
       name: "The Poll Workers Project",
+      logoAppearsOnLandingPage: true,
+      logo: "pwp.png",
    },
    {
       partnerId: "PublicCitizen",
@@ -924,6 +943,11 @@ const data: Partner[] = [
       name: "theSkimm",
    },
    {
+      partnerId: "SMARTElections",
+      name: "SMART Elections",
+      logo: "smart-elections.png",
+   },
+   {
       name: "Spiro",
       partnerId: "Spiro",
       logo: "spiro.jpg",
@@ -944,6 +968,10 @@ const data: Partner[] = [
       // duplicate for starbucks to differentiate the form widget on customer and employee portals
       partnerId: "starbucks-customer",
       name: "Starbucks",
+   },
+   {
+      partnerId: "target",
+      name: "Target",
    },
    {
       partnerId: "teamsters",
@@ -1045,6 +1073,13 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "votunteer",
+      name: "Votunteer",
+      logo: "votunteer.jpg",
+      logoAppearsOnLandingPage: true,
+      logoIsDark: true,
+   },
+   {
       partnerId: "Vote411",
       name: "League of Women Voters",
       logo: "lwv.jpg",
@@ -1059,6 +1094,11 @@ const data: Partner[] = [
       partnerId: "VAI",
       name: "Veterans for American Ideals",
       logo: "vets-for-american-ideals.jpg",
+   },
+   {
+      partnerId: "VRL",
+      name: "Veterans for Responsible Leadership",
+      logo: "vrl.jpg",
    },
    {
       name: "Warby Parker",
