@@ -37,7 +37,7 @@ Include the latest version of the scripts (use module and non-module to support 
 > 
 > ```html
 > <script type="module" src="https://src.powerthepolls.org/assets/scripts/power-the-polls-form/power-the-polls-form.esm.js"></script>
-> <script nomodule src="https://powerthepolls.org/assets/scripts/power-the-polls-form/power-the-polls-form.js"></script>
+> <script nomodule src="https://src.powerthepolls.org/assets/scripts/power-the-polls-form/power-the-polls-form.js"></script>
 > ```
 
 ### How to embed in React
