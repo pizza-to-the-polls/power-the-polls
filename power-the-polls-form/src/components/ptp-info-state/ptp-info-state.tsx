@@ -50,7 +50,7 @@ export class StateInfoComponent {
 
             <h4>Work Requirements</h4>
             <ul>
-               <li><strong>Minimum Age: </strong> 17 years of age</li>
+               <li><strong>Minimum Age:</strong> 17 years of age</li>
                <li>Candidates and family members of candidates cannot be poll workers</li>
             </ul>
 
@@ -102,7 +102,6 @@ export class StateInfoComponent {
 
    private resetState() {
       this.stateId = this.state ? findStateId( this.state ) : null;
-      // load data if given a valid state (and componentWillLoad will wait to render if async so don't `await`)
       if( this.stateId ) {
          fetchStateJurisdictionsList( this.stateId ).then( x => this.stateJurisdictions = x );
          fetchStateInfo( this.stateId ).then( x => this.stateInfo = x );

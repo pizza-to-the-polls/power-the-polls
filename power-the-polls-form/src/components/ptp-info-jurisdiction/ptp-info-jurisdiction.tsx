@@ -74,7 +74,7 @@ const CompleteApplicationButton = ( j: JurisdictionInfo ) => {
 /**
  * Email application that will only render if there is no application link for the jurisdiction
  */
-const MailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo, data: PtpFormData }> = ( { jurisdiction, data } ) => {
+const MailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo, data: PtpFormData, onComplete: () => void }> = ( { jurisdiction, data, onComplete } ) => {
 
    const j = jurisdiction;
    if( j?.application != null && j.application !== "" ) {
@@ -84,9 +84,19 @@ const MailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo,
 
    const submitForm = ( e: Event ) => {
       try {
-         console.log( "Format into email or submit to some backend functions which will do that", j.email, data );
+         fetch( "https://smartystreet.powerthepolls.org/dev/electmail", {
+            method: "POST",
+            body: JSON.stringify( data ),
+            headers: {
+               "Content-Type": "application/json",
+            },
+         } )
+            .then( result => {
+               console.log( `Email sending ${result.statusText} (${result.status})` );
+               onComplete();
+            } )
+            .catch( err => console.error( err ) );
       } finally {
-         // make sure we cancel the submit so the browser doesn't do anything
          e.preventDefault();
          return false;
       }
@@ -107,31 +117,31 @@ const MailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo,
       <form onSubmit={submitForm} style={{ padding: "0" }}>
          <label>
             Name
-            <TextInput data={data} field="name" />
+            <TextInput data={data} field="name" required />
          </label>
          <label>
             City
-            <TextInput data={data} field="city" />
+            <TextInput data={data} field="city" required />
          </label>
          <label>
             County
-            <TextInput data={data} field="county" />
+            <TextInput data={data} field="county" required />
          </label>
          <label>
             Email
-            <TextInput data={data} field="email" />
+            <TextInput data={data} field="email" required />
          </label>
          <label>
             Phone Number
-            <TextInput data={data} field="phone" />
+            <TextInput data={data} field="phone" required />
          </label>
          <label>
             What languages do you speak other than English?
-            <TextInput data={data} field="languages" />
+            <TextInput data={data} field="languages" initialValue="English only" required />
          </label>
          <label>
             Age
-            <select name="age">
+            <select name="age" required>
                <option>Please select</option>
                {ages.map( a => <option value={a} selected={data.age === a}>{a}</option> )}
             </select>
@@ -181,6 +191,11 @@ export class JurisdictionInfoComponent {
 
    @State() private jurisdiction?: JurisdictionInfo;
    @State() private formData: PtpFormData = {};
+   @State() private mailToFormComplete: boolean;
+
+   constructor() {
+      this.mailToFormComplete = false;
+   }
 
    public componentWillLoad() {
       this.formData = this.addtl || {};
@@ -226,7 +241,9 @@ export class JurisdictionInfoComponent {
 
             <CompleteApplicationButton {...j} />
 
-            <MailApplicationForm jurisdiction={j} data={this.formData} />
+            {!this.mailToFormComplete &&
+               <MailApplicationForm jurisdiction={j} data={this.formData} onComplete={() => this.mailToFormComplete = true} />
+            }
 
             <slot />
 

@@ -9,4 +9,5 @@ export type PtpFormData = {
    phone?: string;
    languages?: string;
    age?: string;
+   jurisdictionId?: string;
 };
