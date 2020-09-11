@@ -27,6 +27,10 @@ export namespace Components {
           * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
          */
         "data"?: { question: string, answer: string }[];
+        /**
+          * The page's title
+         */
+        "page_title"?: string;
     }
     interface PageForm {
         /**
@@ -201,6 +205,10 @@ declare namespace LocalJSX {
           * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
          */
         "data"?: { question: string, answer: string }[];
+        /**
+          * The page's title
+         */
+        "page_title"?: string;
     }
     interface PageForm {
         /**
