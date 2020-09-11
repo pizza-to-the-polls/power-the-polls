@@ -1,6 +1,6 @@
 import { Component, FunctionalComponent, h, State } from "@stencil/core";
 
-import { FaqData, PartnerList, Social } from "../../data";
+import { FaqData, FaqESData, PartnerList, Social } from "../../data";
 import { Partner } from "../../data/PartnerList";
 import { shuffle } from "../../util";
 import getParams from "../../util/getParams";
@@ -81,6 +81,15 @@ export class AppRoot {
             component: "page-faq",
             componentProps: {
                data: FaqData,
+               page_title: "Frequently Asked Questions about Poll Working",
+            },
+         },
+         {
+            url: "/faq-es",
+            component: "page-faq",
+            componentProps: {
+               data: FaqESData,
+               page_title: "Preguntas más frecuentes",
             },
          },
          {
