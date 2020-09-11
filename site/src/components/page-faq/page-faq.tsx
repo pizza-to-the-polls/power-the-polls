@@ -24,7 +24,7 @@ export class PageFaq {
    public render() {
       const data = this.data || [];
       return ( <Host>
-         <h1>{ this.page_title || '' }</h1>
+         <h1>{ this.page_title || "" }</h1>
          {data.map( ( item, index ) => (
             <Fragment>
                <div class="number">{index + 1 < 10 ? "0" : ""}{index + 1}</div>
