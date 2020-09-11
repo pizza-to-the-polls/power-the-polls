@@ -1,7 +1,7 @@
 import { data, util } from "@ptp-us/power-the-polls-form";
 import { Component, h, Host } from "@stencil/core";
 
-import { getParams } from "../../util";
+import { parseQueryString } from "../../util";
 
 /**
  * Render poll worker info for the jurisdiction as parsed from the querystring or hash
@@ -13,9 +13,9 @@ import { getParams } from "../../util";
 export class PageInfo {
    public render() {
 
-      const query = getParams();
+      const query = parseQueryString();
       const hash = document.location.hash?.replace( "#", "" ) || query.source || "";
-      let [state, county, city] = hash.split( "?" )[0].split( "-" ).map( el => unescape( el ) );
+      let [state, county, city] = hash.split( "?" )[0].split( "-" ).map( x => unescape( x ) );
       if( !state ) {
          state = query.state;
          county = query.county;
