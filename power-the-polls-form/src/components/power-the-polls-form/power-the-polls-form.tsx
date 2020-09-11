@@ -39,20 +39,6 @@ const MichiganAdditionalInfoForm: FunctionalComponent<{ data: PtpFormData, formS
       }
    };
 
-   const languages = [
-      "English only",
-      "Spanish",
-      "Arabic",
-      "Tagalog",
-      "Chinese",
-      "Creole",
-      "Vietnamese",
-      "Navajo",
-      "Korean",
-      "French",
-      "Other", // TODO: provide an input and let user enter their own value
-   ];
-
    const travelOptions = [
       "Not willing to travel",
       "Less than 10 miles",
@@ -62,7 +48,10 @@ const MichiganAdditionalInfoForm: FunctionalComponent<{ data: PtpFormData, formS
 
    return data.state === "MI" && !formSubmitted ? ( <Fragment>
 
-      <p>We just need a few more pieces of information from you to help with your application:</p>
+      <p>
+         We are sharing your information with election administrators and our state partners who will follow up to help you be placed as a poll worker!&nbsp;
+         <strong>We just need a few more pieces of information from you to help with your application:</strong>
+      </p>
 
       <form onSubmit={michiganSubmitForm} style={{ padding: "0" }}>
 
@@ -92,9 +81,12 @@ const MichiganAdditionalInfoForm: FunctionalComponent<{ data: PtpFormData, formS
 
          <label>
             Are you fluent in a language besides English?
-            <select name="user_additional_language" required>
-               {languages.map( x => <option value={x}>{x}</option> )}
-            </select>
+            <input
+               type="text"
+               required
+               name="user_additional_language"
+               value="English only"
+            />
          </label>
 
          <label>
@@ -114,7 +106,7 @@ const MichiganAdditionalInfoForm: FunctionalComponent<{ data: PtpFormData, formS
          <button
             type="submit"
             class="button"
-         >Submit</button>
+         >Complete application</button>
 
       </form>
 
@@ -262,7 +254,6 @@ export class PowerThePollsForm {
          : this.formData.state === "MI" ?
             [
                () => <Fragment>
-                  We are sharing your information with election administrators and our state partners who will follow up to help you be placed as a poll worker!&nbsp;
                   <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
                </Fragment>,
                () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
@@ -287,8 +278,13 @@ export class PowerThePollsForm {
                   state={this.formData.state}
                   formData={this.formData}
                >
-                  {( stateInfo == null || !stateInfo.noPollWorkersNeeded ) && (
+                  {stateInfo?.noPollWorkersNeeded !== true && (
                      <div>
+                        <MichiganAdditionalInfoForm
+                           formSubmitted={this.michiganFormSubmitted}
+                           data={this.formData}
+                           onSubmit={() => this.michiganFormSubmitted = true}
+                        />
                         <div class="next-steps">
                            {nextSteps.map( ( x, i ) => (
                               <p>
@@ -298,11 +294,6 @@ export class PowerThePollsForm {
                            ) )}
                         </div>
                         <hr />
-                        <MichiganAdditionalInfoForm
-                           formSubmitted={this.michiganFormSubmitted}
-                           data={this.formData}
-                           onSubmit={() => this.michiganFormSubmitted = true}
-                        />
                      </div>
                   )}
                </ptp-info-poll-worker>
@@ -311,7 +302,7 @@ export class PowerThePollsForm {
             <h3>Help your community and sign up to Power the Polls!</h3>
             <form onSubmit={submitForm}>
                <label>
-                  Name <span class="required">*</span>
+                  Name
                   <input
                      type="text"
                      required
@@ -320,7 +311,7 @@ export class PowerThePollsForm {
                </label>
 
                <label>
-                  Email address <span class="required">*</span>
+                  Email address
                   <input
                      type="email"
                      required
@@ -329,7 +320,7 @@ export class PowerThePollsForm {
                </label>
 
                <label>
-                  Mobile phone <span class="required">*</span>
+                  Mobile phone
                   <input
                      type="tel"
                      required

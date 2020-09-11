@@ -393,7 +393,7 @@ const data: { [state: string]: StateInfo } = {
          "Washington County": 178,
          "Weld County": 179,
          "Yuma County": 180,
-      }
+      },
    },
    "CT": {
       "id": 9,
@@ -568,7 +568,7 @@ const data: { [state: string]: StateInfo } = {
          "Woodbridge (Town)": 7957,
          "Woodbury (Town)": 7958,
          "Woodstock (Town)": 7959,
-      }
+      },
    },
    "DE": {
       "id": 10,
@@ -1497,8 +1497,8 @@ const data: { [state: string]: StateInfo } = {
          "West Baton Rouge Parish": 4709,
          "West Carroll Parish": 3943,
          "West Feliciana Parish": 4369,
-         "Winn Parish": 3591
-      }
+         "Winn Parish": 3591,
+      },
    },
    "MD": {
       "id": 24,
@@ -1886,7 +1886,7 @@ const data: { [state: string]: StateInfo } = {
          "Worthington (Town)": 7541,
          "Wrentham (Town)": 7542,
          "Yarmouth (Town)": 7543,
-      }
+      },
    },
    "MN": {
       "id": 27,
@@ -2375,7 +2375,7 @@ const data: { [state: string]: StateInfo } = {
          "Storey County": 377,
          "Washoe County": 378,
          "White Pine County": 379,
-      }
+      },
    },
    "NH": {
       "id": 33,
@@ -2625,7 +2625,7 @@ const data: { [state: string]: StateInfo } = {
          "Windsor (Town)": 7190,
          "Wolfeboro (Town)": 7191,
          "Woodstock (Town)": 7192,
-      }
+      },
    },
    "NJ": {
       "id": 34,
@@ -3177,7 +3177,7 @@ const data: { [state: string]: StateInfo } = {
          "Westmoreland County": 3920,
          "Wyoming County": 5608,
          "York County": 3736,
-      }
+      },
    },
    "RI": {
       "id": 44,
@@ -3222,7 +3222,7 @@ const data: { [state: string]: StateInfo } = {
          "West Greenwich (Town)": 5935,
          "West Warwick (Town)": 5936,
          "Woonsocket (City)": 5937,
-      }
+      },
    },
    "SC": {
       "id": 45,
@@ -3742,7 +3742,7 @@ const data: { [state: string]: StateInfo } = {
          "Washington County": 5451,
          "Wayne County": 5028,
          "Weber County": 5786,
-      }
+      },
    },
    "VT": {
       "id": 50,
@@ -3994,7 +3994,7 @@ const data: { [state: string]: StateInfo } = {
          "Woodford (Town)": 7788,
          "Woodstock (Town)": 7789,
          "Worcester (Town)": 7790,
-      }
+      },
    },
    "VA": {
       "id": 51,
@@ -4194,7 +4194,7 @@ const data: { [state: string]: StateInfo } = {
          "Wirt County": 5622,
          "Wood County": 5861,
          "Wyoming County": 3975,
-      }
+      },
    },
    "WI": {
       "id": 55,
