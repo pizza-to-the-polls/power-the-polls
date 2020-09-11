@@ -2,10 +2,10 @@ import { Component, Event, EventEmitter, h, Host, Method, Prop, State } from "@s
 
 import { States } from "../../data";
 import { FormSubmissionThankYou, Fragment, PtpFormData, PtpLink } from "../../util";
+import { findJurisdictionId } from "../../util/WorkElections";
 
 import { submitToActionKit } from "./ActionKit";
 import MichiganAdditionalInfoForm from "./MichiganAdditionalInfoForm";
-import { findJurisdictionId } from "../../util/WorkElections";
 
 /**
  * The Power the Polls sign-up form.
