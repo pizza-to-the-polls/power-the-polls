@@ -77,8 +77,8 @@ const CompleteApplicationButton = ( j: JurisdictionInfo ) => {
 const MailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo, data: PtpFormData, onComplete: () => void }> = ( { jurisdiction, data, onComplete } ) => {
 
    const j = jurisdiction;
-   if( j?.application != null && j.application !== "" ) {
-      // jurisdiction has an application link, do not show the e-mail form
+   if( ( j?.application != null && j.application !== "" ) || ( j?.email == null || j.email === "" ) ) {
+      // jurisdiction has an application link, do not show the e-mail form, and similarly if there is no email
       return;
    }
 
