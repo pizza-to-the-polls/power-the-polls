@@ -2,9 +2,8 @@ import { Component, Event, EventEmitter, FunctionalComponent, h, Host, Method, P
 
 import { States } from "../../data";
 import { toQueryString } from "../../util";
-import { PtpLink } from "../../util/PtpLink";
-
 import NextSteps from "../../util/NextSteps";
+import { PtpLink } from "../../util/PtpLink";
 
 /**
  * Empty container element, i.e.: `<></>`

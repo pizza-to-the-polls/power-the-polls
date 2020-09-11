@@ -16,10 +16,15 @@ export class PageFaq {
     */
    @Prop() public data?: { question: string, answer: string }[];
 
+   /**
+    * The page's title
+    */
+   @Prop() public page_title?: string;
+
    public render() {
       const data = this.data || [];
       return ( <Host>
-         <h1>Frequently Asked Questions about Poll Working</h1>
+         <h1>{ this.page_title || '' }</h1>
          {data.map( ( item, index ) => (
             <Fragment>
                <div class="number">{index + 1 < 10 ? "0" : ""}{index + 1}</div>
