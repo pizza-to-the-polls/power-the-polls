@@ -4,7 +4,7 @@ import { Component, h, Prop } from "@stencil/core";
  * Render a `<select>` if `options` has values, else render `<input type="hidden">` with `selected` as the value.
  */
 @Component( {
-   tag: "possibly-hidden-select",
+   tag: "input-possibly-hidden-select",
    shadow: false,
 } )
 export class PossiblyHiddenSelect {

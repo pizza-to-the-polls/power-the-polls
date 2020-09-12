@@ -10,6 +10,7 @@ log.txt
 
 dist/
 build/
+www/
 node_modules/
 $RECYCLE.BIN/
 .stencil/

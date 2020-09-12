@@ -81,7 +81,7 @@ export class StateInfoComponent {
       }
 
       return info == null ?
-         <loading-spinner dark={true} /> :
+         <ui-loading-spinner dark={true} /> :
          (
             <div>
                <h2>{info.name}</h2>

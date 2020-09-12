@@ -7,7 +7,7 @@ import ZipGeocode from "./zipGeocoding";
  * the user's input to allow the user to select from.
  */
 @Component( {
-   tag: "address-input",
+   tag: "input-address",
    shadow: false,
 } )
 export class AddressInput {
@@ -68,21 +68,21 @@ export class AddressInput {
             />
          </label>
 
-         <possibly-hidden-select
+         <input-possibly-hidden-select
             fieldLabel="City"
             name="city"
             selected={this.cityValue}
             options={this.cityOptions}
          />
 
-         <possibly-hidden-select
+         <input-possibly-hidden-select
             fieldLabel="County"
             name="user_county"
             selected={this.countyValue}
             options={this.countyOptions}
          />
 
-         <possibly-hidden-select
+         <input-possibly-hidden-select
             fieldLabel="State"
             name="state"
             selected={this.stateValue}

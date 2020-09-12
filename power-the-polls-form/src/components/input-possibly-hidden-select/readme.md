@@ -1,4 +1,4 @@
-# possibly-hidden-select
+# input-possibly-hidden-select
 
 
 
@@ -19,13 +19,13 @@
 
 ### Used by
 
- - [address-input](../address-input)
+ - [input-address](../input-address)
 
 ### Graph
 ```mermaid
 graph TD;
-  address-input --> possibly-hidden-select
-  style possibly-hidden-select fill:#f9f,stroke:#333,stroke-width:4px
+  input-address --> input-possibly-hidden-select
+  style input-possibly-hidden-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

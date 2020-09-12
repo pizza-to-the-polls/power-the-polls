@@ -44,19 +44,16 @@ export class PollWorkerInfo {
          return this.history.replace( "/search" );
       }
 
-      if( jurisdictionId != null ) {
-         return (
-            <ptp-info-jurisdiction jurisdictionId={jurisdictionId} addtl={this.formData}>
+      return jurisdictionId != null ?
+         (
+            <ptp-info-jurisdiction jurisdictionId={jurisdictionId} addtl={this.formData || { city, state, county, jurisdictionId: jurisdictionId + "" }}>
                <slot />
             </ptp-info-jurisdiction>
+         ) : (
+            <ptp-info-state state={state}>
+               <slot />
+            </ptp-info-state>
          );
-      }
-
-      return (
-         <ptp-info-state state={state}>
-            <slot />
-         </ptp-info-state>
-      );
    }
 }
 

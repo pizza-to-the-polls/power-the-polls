@@ -8,12 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PtpFormData } from "./util";
 import { RouterHistory } from "@stencil/router";
 export namespace Components {
-    interface AddressInput {
+    interface InputAddress {
     }
-    interface LoadingSpinner {
-        "dark": boolean;
-    }
-    interface PossiblyHiddenSelect {
+    interface InputPossiblyHiddenSelect {
         "fieldLabel": string;
         "name": string;
         "options": Map<string, string> | Set<string>;
@@ -74,25 +71,22 @@ export namespace Components {
          */
         "state"?: string;
     }
+    interface UiLoadingSpinner {
+        "dark": boolean;
+    }
 }
 declare global {
-    interface HTMLAddressInputElement extends Components.AddressInput, HTMLStencilElement {
+    interface HTMLInputAddressElement extends Components.InputAddress, HTMLStencilElement {
     }
-    var HTMLAddressInputElement: {
-        prototype: HTMLAddressInputElement;
-        new (): HTMLAddressInputElement;
+    var HTMLInputAddressElement: {
+        prototype: HTMLInputAddressElement;
+        new (): HTMLInputAddressElement;
     };
-    interface HTMLLoadingSpinnerElement extends Components.LoadingSpinner, HTMLStencilElement {
+    interface HTMLInputPossiblyHiddenSelectElement extends Components.InputPossiblyHiddenSelect, HTMLStencilElement {
     }
-    var HTMLLoadingSpinnerElement: {
-        prototype: HTMLLoadingSpinnerElement;
-        new (): HTMLLoadingSpinnerElement;
-    };
-    interface HTMLPossiblyHiddenSelectElement extends Components.PossiblyHiddenSelect, HTMLStencilElement {
-    }
-    var HTMLPossiblyHiddenSelectElement: {
-        prototype: HTMLPossiblyHiddenSelectElement;
-        new (): HTMLPossiblyHiddenSelectElement;
+    var HTMLInputPossiblyHiddenSelectElement: {
+        prototype: HTMLInputPossiblyHiddenSelectElement;
+        new (): HTMLInputPossiblyHiddenSelectElement;
     };
     interface HTMLPowerThePollsFormElement extends Components.PowerThePollsForm, HTMLStencilElement {
     }
@@ -118,23 +112,26 @@ declare global {
         prototype: HTMLPtpInfoStateElement;
         new (): HTMLPtpInfoStateElement;
     };
+    interface HTMLUiLoadingSpinnerElement extends Components.UiLoadingSpinner, HTMLStencilElement {
+    }
+    var HTMLUiLoadingSpinnerElement: {
+        prototype: HTMLUiLoadingSpinnerElement;
+        new (): HTMLUiLoadingSpinnerElement;
+    };
     interface HTMLElementTagNameMap {
-        "address-input": HTMLAddressInputElement;
-        "loading-spinner": HTMLLoadingSpinnerElement;
-        "possibly-hidden-select": HTMLPossiblyHiddenSelectElement;
+        "input-address": HTMLInputAddressElement;
+        "input-possibly-hidden-select": HTMLInputPossiblyHiddenSelectElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
         "ptp-info-jurisdiction": HTMLPtpInfoJurisdictionElement;
         "ptp-info-poll-worker": HTMLPtpInfoPollWorkerElement;
         "ptp-info-state": HTMLPtpInfoStateElement;
+        "ui-loading-spinner": HTMLUiLoadingSpinnerElement;
     }
 }
 declare namespace LocalJSX {
-    interface AddressInput {
+    interface InputAddress {
     }
-    interface LoadingSpinner {
-        "dark"?: boolean;
-    }
-    interface PossiblyHiddenSelect {
+    interface InputPossiblyHiddenSelect {
         "fieldLabel"?: string;
         "name"?: string;
         "options"?: Map<string, string> | Set<string>;
@@ -202,27 +199,30 @@ declare namespace LocalJSX {
          */
         "state"?: string;
     }
+    interface UiLoadingSpinner {
+        "dark"?: boolean;
+    }
     interface IntrinsicElements {
-        "address-input": AddressInput;
-        "loading-spinner": LoadingSpinner;
-        "possibly-hidden-select": PossiblyHiddenSelect;
+        "input-address": InputAddress;
+        "input-possibly-hidden-select": InputPossiblyHiddenSelect;
         "power-the-polls-form": PowerThePollsForm;
         "ptp-info-jurisdiction": PtpInfoJurisdiction;
         "ptp-info-poll-worker": PtpInfoPollWorker;
         "ptp-info-state": PtpInfoState;
+        "ui-loading-spinner": UiLoadingSpinner;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "address-input": LocalJSX.AddressInput & JSXBase.HTMLAttributes<HTMLAddressInputElement>;
-            "loading-spinner": LocalJSX.LoadingSpinner & JSXBase.HTMLAttributes<HTMLLoadingSpinnerElement>;
-            "possibly-hidden-select": LocalJSX.PossiblyHiddenSelect & JSXBase.HTMLAttributes<HTMLPossiblyHiddenSelectElement>;
+            "input-address": LocalJSX.InputAddress & JSXBase.HTMLAttributes<HTMLInputAddressElement>;
+            "input-possibly-hidden-select": LocalJSX.InputPossiblyHiddenSelect & JSXBase.HTMLAttributes<HTMLInputPossiblyHiddenSelectElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;
             "ptp-info-jurisdiction": LocalJSX.PtpInfoJurisdiction & JSXBase.HTMLAttributes<HTMLPtpInfoJurisdictionElement>;
             "ptp-info-poll-worker": LocalJSX.PtpInfoPollWorker & JSXBase.HTMLAttributes<HTMLPtpInfoPollWorkerElement>;
             "ptp-info-state": LocalJSX.PtpInfoState & JSXBase.HTMLAttributes<HTMLPtpInfoStateElement>;
+            "ui-loading-spinner": LocalJSX.UiLoadingSpinner & JSXBase.HTMLAttributes<HTMLUiLoadingSpinnerElement>;
         }
     }
 }

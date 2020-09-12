@@ -34,7 +34,7 @@ export class PageSearch {
             <h1>Find My Local Info</h1>
             <p>Need more info about poll working in your local jurisdiction? Look it up here.</p>
             <p><strong>And don't forget to <stencil-route-link url="/#form">SIGN UP</stencil-route-link> to be a poll worker!</strong></p>
-            <address-input />
+            <input-address />
             <button type="submit" class="button">Lookup</button>
          </form>
       );

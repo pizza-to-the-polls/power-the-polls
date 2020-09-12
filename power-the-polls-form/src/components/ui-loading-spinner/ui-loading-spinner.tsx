@@ -1,8 +1,8 @@
 import { Component, h, Prop } from "@stencil/core";
 
 @Component( {
-   tag: "loading-spinner",
-   styleUrl: "loading-spinner.scss",
+   tag: "ui-loading-spinner",
+   styleUrl: "ui-loading-spinner.scss",
    shadow: true,
 } )
 export class LoadingSpinner {

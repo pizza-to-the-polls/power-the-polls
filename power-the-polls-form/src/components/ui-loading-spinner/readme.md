@@ -1,4 +1,4 @@
-# loading-spinner
+# ui-loading-spinner
 
 
 
@@ -22,9 +22,9 @@
 ### Graph
 ```mermaid
 graph TD;
-  ptp-info-jurisdiction --> loading-spinner
-  ptp-info-state --> loading-spinner
-  style loading-spinner fill:#f9f,stroke:#333,stroke-width:4px
+  ptp-info-jurisdiction --> ui-loading-spinner
+  ptp-info-state --> ui-loading-spinner
+  style ui-loading-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

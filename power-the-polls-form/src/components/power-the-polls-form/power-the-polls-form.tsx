@@ -97,7 +97,7 @@ export class PowerThePollsForm {
                ( x, el ) => { x[el.name] = el.value; return x; },
                ( {} as any ),
             );
-            // hacky way to get the data from address-input without wiring up events or callbacks
+            // hacky way to get the data from input-address without wiring up events or callbacks
             const city = data.city || "";
             const county = data.user_county || "";
             const state = data.state || "";
@@ -232,7 +232,7 @@ export class PowerThePollsForm {
                   </label>
                ) : null )}
 
-               <address-input />
+               <input-address />
 
                <input
                   type="hidden"
