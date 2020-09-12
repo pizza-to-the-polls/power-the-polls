@@ -204,7 +204,7 @@ export class AppRoot {
                      formPath={formPath}
                      partnerId={this.source?.partner?.partnerId}
                   />
-                  {social.map( service => <social-share {...service} /> )}
+                  {social.map( service => <ui-social-share {...service} /> )}
                </div>
             </aside>
 

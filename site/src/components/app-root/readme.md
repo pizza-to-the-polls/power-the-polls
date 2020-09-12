@@ -10,7 +10,7 @@
 ### Depends on
 
 - stencil-route-link
-- [social-share](../social-share)
+- [ui-social-share](../ui-social-share)
 - stencil-router
 - stencil-route-switch
 - stencil-route
@@ -19,7 +19,7 @@
 ```mermaid
 graph TD;
   app-root --> stencil-route-link
-  app-root --> social-share
+  app-root --> ui-social-share
   app-root --> stencil-router
   app-root --> stencil-route-switch
   app-root --> stencil-route

@@ -1,4 +1,4 @@
-# social-share
+# ui-social-share
 
 
 
@@ -26,9 +26,9 @@
 ### Graph
 ```mermaid
 graph TD;
-  app-root --> social-share
-  component-list --> social-share
-  style social-share fill:#f9f,stroke:#333,stroke-width:4px
+  app-root --> ui-social-share
+  component-list --> ui-social-share
+  style ui-social-share fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

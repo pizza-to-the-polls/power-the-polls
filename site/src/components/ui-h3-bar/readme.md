@@ -1,4 +1,4 @@
-# h3-bar
+# ui-h3-bar
 
 
 
@@ -16,10 +16,10 @@
 ### Graph
 ```mermaid
 graph TD;
-  component-list --> h3-bar
-  page-contact --> h3-bar
-  page-partners --> h3-bar
-  style h3-bar fill:#f9f,stroke:#333,stroke-width:4px
+  component-list --> ui-h3-bar
+  page-contact --> ui-h3-bar
+  page-partners --> ui-h3-bar
+  style ui-h3-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

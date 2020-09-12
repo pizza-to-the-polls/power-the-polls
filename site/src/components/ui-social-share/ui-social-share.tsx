@@ -4,8 +4,8 @@ import { SocialInfo } from "../../data/types";
 import analytics from "../../util/Analytics";
 
 @Component( {
-   tag: "social-share",
-   styleUrl: "social-share.scss",
+   tag: "ui-social-share",
+   styleUrl: "ui-social-share.scss",
    shadow: false,
 } )
 /**

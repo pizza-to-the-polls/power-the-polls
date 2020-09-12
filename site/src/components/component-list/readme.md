@@ -9,16 +9,16 @@
 
 ### Depends on
 
-- [h3-bar](../h3-bar)
-- [social-share](../social-share)
-- [impact-box](../impact-box)
+- [ui-h3-bar](../ui-h3-bar)
+- [ui-social-share](../ui-social-share)
+- [ui-impact-box](../ui-impact-box)
 
 ### Graph
 ```mermaid
 graph TD;
-  component-list --> h3-bar
-  component-list --> social-share
-  component-list --> impact-box
+  component-list --> ui-h3-bar
+  component-list --> ui-social-share
+  component-list --> ui-impact-box
   style component-list fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

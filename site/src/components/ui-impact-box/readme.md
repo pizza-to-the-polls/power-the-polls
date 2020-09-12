@@ -1,4 +1,4 @@
-# impact-box
+# ui-impact-box
 
 
 
@@ -14,8 +14,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  component-list --> impact-box
-  style impact-box fill:#f9f,stroke:#333,stroke-width:4px
+  component-list --> ui-impact-box
+  style ui-impact-box fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

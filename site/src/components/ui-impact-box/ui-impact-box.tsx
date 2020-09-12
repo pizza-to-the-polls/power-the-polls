@@ -1,8 +1,8 @@
 import { Component, h, Host } from "@stencil/core";
 
 @Component( {
-   tag: "impact-box",
-   styleUrl: "impact-box.scss",
+   tag: "ui-impact-box",
+   styleUrl: "ui-impact-box.scss",
    shadow: false,
 } )
 export class ImpactBox {
