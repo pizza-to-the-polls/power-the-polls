@@ -8,8 +8,8 @@
 @import "reset.css";
 // @import "./include/variables.css"; // see stencil.config.js
 
-$hamburger-padding-x           : 0; // we handle padding not the component
-$hamburger-padding-y           : 0; // we handle padding not the component
+$hamburger-padding-x           : 0; // we handle padding, not the component
+$hamburger-padding-y           : 0; // we handle padding, not the component
 $hamburger-layer-width         : 30px;
 $hamburger-layer-height        : 4px;
 $hamburger-layer-spacing       : 4px;

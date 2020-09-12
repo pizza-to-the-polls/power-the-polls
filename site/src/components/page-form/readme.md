@@ -22,12 +22,12 @@
 ```mermaid
 graph TD;
   page-form --> power-the-polls-form
-  power-the-polls-form --> poll-worker-info
+  power-the-polls-form --> ptp-info-poll-worker
   power-the-polls-form --> address-input
-  poll-worker-info --> jurisdiction-info
-  poll-worker-info --> state-info
-  jurisdiction-info --> loading-spinner
-  state-info --> loading-spinner
+  ptp-info-poll-worker --> ptp-info-jurisdiction
+  ptp-info-poll-worker --> ptp-info-state
+  ptp-info-jurisdiction --> loading-spinner
+  ptp-info-state --> loading-spinner
   address-input --> possibly-hidden-select
   style page-form fill:#f9f,stroke:#333,stroke-width:4px
 ```

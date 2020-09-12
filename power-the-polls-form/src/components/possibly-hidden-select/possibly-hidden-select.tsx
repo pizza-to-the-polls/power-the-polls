@@ -1,9 +1,12 @@
-import {Component, h, Prop} from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 
-@Component({
+/**
+ * Render a `<select>` if `options` has values, else render `<input type="hidden">` with `selected` as the value.
+ */
+@Component( {
    tag: "possibly-hidden-select",
    shadow: false,
-})
+} )
 export class PossiblyHiddenSelect {
    @Prop() public fieldLabel: string;
    @Prop() public name: string;
@@ -18,16 +21,16 @@ export class PossiblyHiddenSelect {
    }
 
    public render() {
-      if (this.options.size <= 1) {
+      if( this.options.size <= 1 ) {
          return <input name={this.name} type="hidden" value={this.selected} />;
       } else {
          return (
             <label>
-               { this.fieldLabel }*
+               {this.fieldLabel}
                <select name={this.name} required>
                   {
-                     [...this.options.entries()].map(([value, label]) =>
-                        <option value={value} selected={this.selected === value}>{ label }</option>)
+                     [...this.options.entries()].map( ( [value, label] ) =>
+                        <option value={value} selected={this.selected === value}>{label}</option> )
                   }
                </select>
             </label>

@@ -41,22 +41,18 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [poll-worker-info](../poll-worker-info)
+- [ptp-info-poll-worker](../ptp-info-poll-worker)
 - [address-input](../address-input)
-- stencil-route-link
 
 ### Graph
 ```mermaid
 graph TD;
-  power-the-polls-form --> poll-worker-info
+  power-the-polls-form --> ptp-info-poll-worker
   power-the-polls-form --> address-input
-  power-the-polls-form --> stencil-route-link
-  poll-worker-info --> jurisdiction-info
-  poll-worker-info --> state-info
-  jurisdiction-info --> loading-spinner
-  jurisdiction-info --> stencil-route-link
-  state-info --> loading-spinner
-  state-info --> stencil-route-link
+  ptp-info-poll-worker --> ptp-info-jurisdiction
+  ptp-info-poll-worker --> ptp-info-state
+  ptp-info-jurisdiction --> loading-spinner
+  ptp-info-state --> loading-spinner
   address-input --> possibly-hidden-select
   style power-the-polls-form fill:#f9f,stroke:#333,stroke-width:4px
 ```

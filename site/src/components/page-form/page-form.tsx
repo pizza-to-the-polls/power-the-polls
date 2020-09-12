@@ -2,8 +2,8 @@ import "@ptp-us/power-the-polls-form";
 import { Component, h, Host, Prop, State } from "@stencil/core";
 
 import { PartnerList } from "../../data";
+import { Fragment } from "../../util";
 import analytics from "../../util/Analytics";
-import { Fragment } from "../../util/Fragment";
 
 /**
  * The power-the-polls-form for the main site because there are a few additional bits of text and branding that

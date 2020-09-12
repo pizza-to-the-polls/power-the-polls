@@ -5,22 +5,25 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property  | Attribute | Description | Type                         | Default     |
+| --------- | --------- | ----------- | ---------------------------- | ----------- |
+| `history` | --        |             | `RouterHistory \| undefined` | `undefined` |
+
+
 ## Dependencies
 
 ### Depends on
 
-- [no-capture-form](../no-capture-form)
+- stencil-route-link
+- address-input
 
 ### Graph
 ```mermaid
 graph TD;
-  page-search --> no-capture-form
-  no-capture-form --> poll-worker-info
-  no-capture-form --> address-input
-  poll-worker-info --> jurisdiction-info
-  poll-worker-info --> state-info
-  jurisdiction-info --> loading-spinner
-  state-info --> loading-spinner
+  page-search --> stencil-route-link
+  page-search --> address-input
   address-input --> possibly-hidden-select
   style page-search fill:#f9f,stroke:#333,stroke-width:4px
 ```

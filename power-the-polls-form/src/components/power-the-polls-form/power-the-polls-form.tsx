@@ -1,14 +1,11 @@
-import { Component, Event, EventEmitter, FunctionalComponent, h, Host, Method, Prop, State } from "@stencil/core";
+import { Component, Event, EventEmitter, h, Host, Method, Prop, State } from "@stencil/core";
 
 import { States } from "../../data";
-import { toQueryString } from "../../util";
-import NextSteps from "../../util/NextSteps";
-import { PtpLink } from "../../util/PtpLink";
+import { FormSubmissionThankYou, Fragment, PtpFormData, PtpLink } from "../../util";
+import { findJurisdictionId } from "../../util/WorkElections";
 
-/**
- * Empty container element, i.e.: `<></>`
- **/
-const Fragment: FunctionalComponent<{}> = ( _, children ) => children;
+import { submitToActionKit } from "./ActionKit";
+import MichiganAdditionalInfoForm from "./MichiganAdditionalInfoForm";
 
 /**
  * The Power the Polls sign-up form.
@@ -62,28 +59,21 @@ export class PowerThePollsForm {
       cancelable: false,
    } ) public submitError!: EventEmitter<any>;
 
-   /**
-    * The URL where the form data will be submitted
-    */
-   private destination?: string;
-
    @State() private formStatus: "incomplete" | "submitting" | "completed";
-   @State() private city?: string;
-   @State() private county?: string;
-   @State() private state?: string;
+   @State() private formData: PtpFormData;
+   @State() private michiganFormSubmitted: boolean;
 
    constructor() {
       this.formStatus = "incomplete";
+      this.formData = {};
       this.optUserOutOfChase = false;
-      this.destination = "https" + "://ptp.actionkit.com/rest/v1/action/";
+      this.michiganFormSubmitted = false;
    }
 
    @Method()
    public reset() {
       this.formStatus = "incomplete";
-      this.city = undefined;
-      this.county = undefined;
-      this.state = undefined;
+      this.formData = {};
       return Promise.resolve();
    }
 
@@ -91,8 +81,7 @@ export class PowerThePollsForm {
       const source = this.partnerId;
       const chase = this.optUserOutOfChase === true || ( this.optUserOutOfChase as any ) === "true" ? false : true;
       const partnerField = this.customFormFieldLabel;
-      const submissionUrl = this.destination;
-      const stateInfo = this.state && this.state in States ? States[this.state] : null;
+      const stateInfo = this.formData.state && this.formData.state in States ? States[this.formData.state] : null;
       // Adapted from https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
       const phoneValidationRegex = "(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}";
 
@@ -112,32 +101,23 @@ export class PowerThePollsForm {
             const city = data.city || "";
             const county = data.user_county || "";
             const state = data.state || "";
+            const name = data.name || "";
+            const email = data.email || "";
+            const phone = data.mobile_phone || "";
+            const zip = data.zip || "";
 
             this.formStatus = "submitting";
 
-            // submit to actionkit
-            fetch( form.action, {
-               method: form.method,
-               body: toQueryString( data ),
-               mode: "no-cors",
-               headers: {
-                  "Content-Type": "application/x-www-form-urlencoded",
-               },
-            } )
+            submitToActionKit( data )
                .then( ( response ) => {
-                  if( response.status === 200 || response.status === 201
-                     || response.status === 0 /*we're currently making a simple no-cors request and can't get the status; presume success*/ ) {
+                  if( response === true ) {
                      let evt = this.submitCompleted.emit();
                      if( !evt.defaultPrevented ) {
                         this.formStatus = "completed";
-                        this.city = city;
-                        this.county = county;
-                        this.state = state;
+                        this.formData = { ...this.formData, city, county, state, name, email, phone, zip, jurisdictionId: findJurisdictionId( state, county, city ) + "" };
                      }
                   } else {
-                     response.json()
-                        .then( json => this.submitError.emit( { statusText: response.statusText, status: response.status, data: json } ) )
-                        .catch( e2 => console.error( e2 ) );
+                     this.submitError.emit( response );
                   }
                } )
                .catch( err => {
@@ -155,16 +135,19 @@ export class PowerThePollsForm {
       //
       // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
       //
-      const nextSteps = this.state === "ME" ?
+      const nextSteps = this.formData.state === "ME" ?
          [
             () => <Fragment>
-               We are sharing your information with our state partners who will be following up to help you connect with your local administrators. <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Maine.
+               We are sharing your information with our state partners who will be following up to help you connect with your local administrators.&nbsp;
+               <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Maine.
             </Fragment>,
             () => "In the meantime, please review the state requirements and compensation below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
          ]
-         : this.state === "MI" ?
+         : this.formData.state === "MI" ?
             [
-               () => <Fragment>We are sharing your information with election administrators and our state partners who will follow up to help you be placed as a poll worker! <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.</Fragment>,
+               () => <Fragment>
+                  <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
+               </Fragment>,
                () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
             ] :
             [
@@ -180,14 +163,20 @@ export class PowerThePollsForm {
       return ( <Host>
          {this.formStatus === "completed" ? (
             <article>
-               <NextSteps stateInfo={stateInfo} />
-               <poll-worker-info
-                  city={this.city}
-                  county={this.county}
-                  state={this.state}
+               <FormSubmissionThankYou stateInfo={stateInfo} />
+               <ptp-info-poll-worker
+                  city={this.formData.city}
+                  county={this.formData.county}
+                  state={this.formData.state}
+                  formData={this.formData}
                >
-                  {stateInfo == null || !stateInfo.noPollWorkersNeeded && (
+                  {stateInfo?.noPollWorkersNeeded !== true && (
                      <div>
+                        <MichiganAdditionalInfoForm
+                           formSubmitted={this.michiganFormSubmitted}
+                           data={this.formData}
+                           onSubmit={() => this.michiganFormSubmitted = true}
+                        />
                         <div class="next-steps">
                            {nextSteps.map( ( x, i ) => (
                               <p>
@@ -199,17 +188,13 @@ export class PowerThePollsForm {
                         <hr />
                      </div>
                   )}
-               </poll-worker-info>
+               </ptp-info-poll-worker>
             </article>
          ) : ( <Fragment>
             <h3>Help your community and sign up to Power the Polls!</h3>
-            <form
-               method="POST"
-               action={submissionUrl}
-               onSubmit={submitForm}
-            >
+            <form onSubmit={submitForm}>
                <label>
-                  Name<span class="required">*</span>
+                  Name
                   <input
                      type="text"
                      required
@@ -218,7 +203,7 @@ export class PowerThePollsForm {
                </label>
 
                <label>
-                  Email address<span class="required">*</span>
+                  Email address
                   <input
                      type="email"
                      required
@@ -227,7 +212,7 @@ export class PowerThePollsForm {
                </label>
 
                <label>
-                  Mobile phone<span class="required">*</span>
+                  Mobile phone
                   <input
                      type="tel"
                      required
@@ -270,11 +255,12 @@ export class PowerThePollsForm {
                <button
                   type="submit"
                   class="button"
+                  disabled={this.formStatus !== "incomplete"}
                >Sign Up To Get Started</button>
 
                <p class="disclaimer">
                   By signing up, you agree to receive occasional emails or text messages from Power the Polls
-                  and{!chase && this.partnerName && ` ${this.partnerName} and`}&nbsp;
+                  and {!chase && this.partnerName && `${this.partnerName} and `}
                   accept our <PtpLink path="/privacy">Privacy Policy</PtpLink>. You can unsubscribe
                   at any time. For texts, message and data rates may apply. Text HELP for Info. Text STOP to quit.
                </p>

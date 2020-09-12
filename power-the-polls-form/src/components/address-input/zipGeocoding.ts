@@ -1,22 +1,18 @@
 import { StateCode, USZipCode } from "./SmartyStreets";
 
-declare namespace ZipGeocoding {
-   interface Result {
-      zip: string;
-      cities: Set<string>;
-      counties: Set<string>;
-      states: Map<StateCode, string>;
-   }
-
-   interface Error {
-      error: string;
-   }
+export interface ZipGeocodingResult {
+   zip: string;
+   cities: Set<string>;
+   counties: Set<string>;
+   states: Map<StateCode, string>;
 }
 
-const smartyApiURL = "https://smartystreet.powerthepolls.org/dev/zip";
+export interface ZipGeocodingError {
+   error: string;
+}
 
-export default async ( zipcode: string ): Promise<ZipGeocoding.Result | ZipGeocoding.Error> => {
-   const url = new URL( smartyApiURL );
+export default async ( zipcode: string ): Promise<ZipGeocodingResult | ZipGeocodingError> => {
+   const url = new URL( "https" + "://smartystreet.powerthepolls.org/dev/zip" );
    url.searchParams.append( "zipcode", zipcode );
    return fetch( url.toString() ).
       then(

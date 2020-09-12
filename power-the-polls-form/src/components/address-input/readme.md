@@ -5,27 +5,22 @@
 <!-- Auto Generated Below -->
 
 
-## Properties
-
-| Property     | Attribute     | Description | Type                                 | Default     |
-| ------------ | ------------- | ----------- | ------------------------------------ | ----------- |
-| `fieldLabel` | `field-label` |             | `string`                             | `undefined` |
-| `name`       | `name`        |             | `string`                             | `undefined` |
-| `options`    | --            |             | `Map<string, string> \| Set<string>` | `undefined` |
-| `selected`   | `selected`    |             | `string`                             | `undefined` |
-
-
 ## Dependencies
 
 ### Used by
 
- - [address-input](.)
+ - [power-the-polls-form](../power-the-polls-form)
+
+### Depends on
+
+- [possibly-hidden-select](../possibly-hidden-select)
 
 ### Graph
 ```mermaid
 graph TD;
   address-input --> possibly-hidden-select
-  style possibly-hidden-select fill:#f9f,stroke:#333,stroke-width:4px
+  power-the-polls-form --> address-input
+  style address-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

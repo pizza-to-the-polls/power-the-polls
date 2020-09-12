@@ -2,12 +2,13 @@ import { FunctionalComponent, h } from "@stencil/core";
 
 import { StateInfo } from "../data/States";
 
-/**
- * Empty container element, i.e.: `<></>`
- **/
-const Fragment: FunctionalComponent<{}> = ( _, children ) => children;
+import Fragment from "./Fragment";
 
-const NextSteps: FunctionalComponent<{ stateInfo: StateInfo | null }> = ( { stateInfo } ) => (
+/**
+ * Display thank you and "here are next steps" to the user unless they are in a jurisdiction that no longer needs poll workers, in which case
+ * tell them as much and as they share.
+ */
+const FormSubmissionThankYou: FunctionalComponent<{ stateInfo: StateInfo | null }> = ( { stateInfo } ) => (
    stateInfo != null && stateInfo.noPollWorkersNeeded ? (
       <Fragment>
          <h1>Thank you so much for your interest in being a poll worker!</h1>
@@ -35,4 +36,4 @@ const NextSteps: FunctionalComponent<{ stateInfo: StateInfo | null }> = ( { stat
          </Fragment>
       )
 );
-export default NextSteps;
+export default FormSubmissionThankYou;

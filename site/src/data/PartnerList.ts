@@ -153,6 +153,14 @@ const data: Partner[] = [
       logo: "all-in.svg",
    },
    {
+      partnerId: "allinforvoting",
+      name: "All In For Voting // All In: The Fight for Democracy (Film)",
+      logo: "allinforvoting.jpg",
+      logoAppearsOnLandingPage: true,
+      excludeFromPartnerList: true,
+      logoIsDark: true,
+   },
+   {
       partnerId: "AlphaPhiAlpha",
       name: "Alpha Phi Alpha Fraternity, Inc (ΑΦΑ)",
       logo: "alpha-phi-alpha.png",

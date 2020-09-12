@@ -14,14 +14,7 @@ Visit https://powerthepolls.org to sign-up and learn more.
 
 ### How to embed in HTML
 
-Include the latest version:
-
-```html
-<script type="module" src="https://unpkg.com/@ptp-us/power-the-polls-form@latest/power-the-polls-form/power-the-polls-form.esm.js"></script>
-<script nomodule src="https://unpkg.com/@ptp-us/power-the-polls-form@latest/power-the-polls-form/power-the-polls-form.js"></script>
-```
-
-Reference it like any other HTML element:
+Include the latest version of the scripts (use module and non-module to support down to IE11) and then use the `<power-the-polls-form>` element like any other HTML element:
 
 ```html
 <html>
@@ -34,14 +27,18 @@ Reference it like any other HTML element:
 </head>
 
 <body>
-   <power-the-polls-form
-      partner-id="your-ptp-partner-id"
-      custom-form-field-label="Label for your own custom field here"
-   />
+   <power-the-polls-form partner-id="your-ptp-partner-id" />
 </body>
 
 </html>
 ```
+
+> NOTE: If you aren't able to include Javascript from unpkg.com for security policy reasons, you can reference it from the powerthepolls.org domain:
+> 
+> ```html
+> <script type="module" src="https://src.powerthepolls.org/assets/scripts/power-the-polls-form/power-the-polls-form.esm.js"></script>
+> <script nomodule src="https://src.powerthepolls.org/assets/scripts/power-the-polls-form/power-the-polls-form.js"></script>
+> ```
 
 ### How to embed in React
 

@@ -2,8 +2,7 @@ import { Component, FunctionalComponent, h, State } from "@stencil/core";
 
 import { FaqData, FaqESData, PartnerList, Social } from "../../data";
 import { Partner } from "../../data/PartnerList";
-import { shuffle } from "../../util";
-import getParams from "../../util/getParams";
+import { parseQueryString, shuffle } from "../../util";
 
 type NavProps = {
    onSelectNavItem?: () => void,
@@ -109,7 +108,11 @@ export class AppRoot {
          },
          {
             url: "/redirector",
-            component: "page-redirector",
+            component: "page-info",
+         },
+         {
+            url: "/info",
+            component: "page-info",
          },
          {
             url: "/jurisdiction/:id",
@@ -131,7 +134,7 @@ export class AppRoot {
       const isNavRoute = path.length > 0 && this.isNavRoute( path[0] );
       const urlParam = path.length > 0 && !isNavRoute ? path[0] : "";
       // we also allow manually specifying a source value in the querystring
-      const queryStringParam = getParams()?.source;
+      const queryStringParam = parseQueryString()?.source;
       const partnerIdMatch = urlParam.toLowerCase() || queryStringParam?.toLowerCase();
       const partner = partnerIdMatch != null
          ? ( PartnerList.filter(
