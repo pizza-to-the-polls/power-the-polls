@@ -11,6 +11,7 @@
 
 - stencil-route-link
 - [ui-social-share](../ui-social-share)
+- [ui-menu-button](../ui-menu-button)
 - stencil-router
 - stencil-route-switch
 - stencil-route
@@ -20,6 +21,7 @@
 graph TD;
   app-root --> stencil-route-link
   app-root --> ui-social-share
+  app-root --> ui-menu-button
   app-root --> stencil-router
   app-root --> stencil-route-switch
   app-root --> stencil-route

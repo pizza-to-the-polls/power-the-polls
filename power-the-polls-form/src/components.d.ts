@@ -72,7 +72,6 @@ export namespace Components {
         "state"?: string;
     }
     interface UiLoadingSpinner {
-        "dark": boolean;
     }
 }
 declare global {
@@ -200,7 +199,6 @@ declare namespace LocalJSX {
         "state"?: string;
     }
     interface UiLoadingSpinner {
-        "dark"?: boolean;
     }
     interface IntrinsicElements {
         "input-address": InputAddress;

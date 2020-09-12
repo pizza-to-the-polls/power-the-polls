@@ -13,12 +13,20 @@ ui-social-share {
       text-decoration: none;
 
       &:hover {
-         color: $color-font-accent-contrast;
+         color: $color-font-primary;
          text-decoration: none;
       }
 
       span {
          margin: 0 0 0 1em;
+      }
+   }
+
+   &.invert a {
+      background-color: transparent;
+      color: $color-font-primary;
+      &:hover {
+         color: $color-accent;
       }
    }
 }

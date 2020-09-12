@@ -52,6 +52,13 @@ export namespace Components {
     }
     interface UiImpactBox {
     }
+    interface UiMenuButton {
+        "isActive"?: boolean;
+        /**
+          * aria-label
+         */
+        "label"?: string;
+    }
     interface UiSocialShare {
         /**
           * The displayed call-to-action text
@@ -65,6 +72,10 @@ export namespace Components {
           * Image to use from `assets/images/social/*`
          */
         "image"?: string;
+        /**
+          * If `true`, the share icons will be light in color
+         */
+        "invertColors"?: boolean;
         /**
           * The full name of the social network. Used as the link title text.
          */
@@ -154,6 +165,12 @@ declare global {
         prototype: HTMLUiImpactBoxElement;
         new (): HTMLUiImpactBoxElement;
     };
+    interface HTMLUiMenuButtonElement extends Components.UiMenuButton, HTMLStencilElement {
+    }
+    var HTMLUiMenuButtonElement: {
+        prototype: HTMLUiMenuButtonElement;
+        new (): HTMLUiMenuButtonElement;
+    };
     interface HTMLUiSocialShareElement extends Components.UiSocialShare, HTMLStencilElement {
     }
     var HTMLUiSocialShareElement: {
@@ -174,6 +191,7 @@ declare global {
         "page-search": HTMLPageSearchElement;
         "ui-h3-bar": HTMLUiH3BarElement;
         "ui-impact-box": HTMLUiImpactBoxElement;
+        "ui-menu-button": HTMLUiMenuButtonElement;
         "ui-social-share": HTMLUiSocialShareElement;
     }
 }
@@ -222,6 +240,14 @@ declare namespace LocalJSX {
     }
     interface UiImpactBox {
     }
+    interface UiMenuButton {
+        "isActive"?: boolean;
+        /**
+          * aria-label
+         */
+        "label"?: string;
+        "onToggle"?: (event: CustomEvent<UiMenuButton>) => void;
+    }
     interface UiSocialShare {
         /**
           * The displayed call-to-action text
@@ -235,6 +261,10 @@ declare namespace LocalJSX {
           * Image to use from `assets/images/social/*`
          */
         "image"?: string;
+        /**
+          * If `true`, the share icons will be light in color
+         */
+        "invertColors"?: boolean;
         /**
           * The full name of the social network. Used as the link title text.
          */
@@ -258,6 +288,7 @@ declare namespace LocalJSX {
         "page-search": PageSearch;
         "ui-h3-bar": UiH3Bar;
         "ui-impact-box": UiImpactBox;
+        "ui-menu-button": UiMenuButton;
         "ui-social-share": UiSocialShare;
     }
 }
@@ -278,6 +309,7 @@ declare module "@stencil/core" {
             "page-search": LocalJSX.PageSearch & JSXBase.HTMLAttributes<HTMLPageSearchElement>;
             "ui-h3-bar": LocalJSX.UiH3Bar & JSXBase.HTMLAttributes<HTMLUiH3BarElement>;
             "ui-impact-box": LocalJSX.UiImpactBox & JSXBase.HTMLAttributes<HTMLUiImpactBoxElement>;
+            "ui-menu-button": LocalJSX.UiMenuButton & JSXBase.HTMLAttributes<HTMLUiMenuButtonElement>;
             "ui-social-share": LocalJSX.UiSocialShare & JSXBase.HTMLAttributes<HTMLUiSocialShareElement>;
         }
     }

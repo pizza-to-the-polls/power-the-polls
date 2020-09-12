@@ -233,18 +233,15 @@ export class AppRoot {
                            />
                         </stencil-route-link>
                      </h1>
-                     <button
-                        class={{
-                           "hamburger": true,
-                           "hamburger--spin": true,
-                           "is-active": this.menuIsActive,
+                     <ui-menu-button
+                        isActive={this.menuIsActive}
+                        onToggle={( e ) => {
+                           window.location.hash = "";
+                           toggleMenu();
+                           e.preventDefault();
                         }}
-                        type="button"
-                        onClick={() => { window.location.hash = ""; toggleMenu(); }}
-                        aria-label="Show navigation menu"
-                     >
-                        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
-                     </button>
+                        label="Show navigation menu"
+                     />
                   </div>
                   <Nav
                      onSelectNavItem={toggleMenu}

@@ -5,11 +5,11 @@
 <!-- Auto Generated Below -->
 
 
-## Properties
+## Shadow Parts
 
-| Property | Attribute | Description | Type      | Default |
-| -------- | --------- | ----------- | --------- | ------- |
-| `dark`   | `dark`    |             | `boolean` | `false` |
+| Part     | Description |
+| -------- | ----------- |
+| `"cube"` |             |
 
 
 ## Dependencies

@@ -38,8 +38,13 @@ export class SocialShare implements Partial<SocialInfo> {
     */
    @Prop() public eventKey?: string;
 
+   /**
+    * If `true`, the share icons will be light in color
+    */
+   @Prop() public invertColors?: boolean;
+
    public render() {
-      return ( <Host>
+      return ( <Host class={{ "invert": this.invertColors || false }}>
          <a
             href={this.url}
             title={`Share on ${this.name}`}
@@ -49,7 +54,7 @@ export class SocialShare implements Partial<SocialInfo> {
          >
             <img
                alt={this.name}
-               src={`/assets/images/social/${this.image}`}
+               src={this.invertColors ? `/assets/images/social/inverted-${this.image}` : `/assets/images/social/${this.image}`}
                width="41"
                height="41"
             />

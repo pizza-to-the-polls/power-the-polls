@@ -57,7 +57,7 @@ export class JurisdictionInfoComponent {
       if( j == null ) {
          return ( <Host>
             <slot />
-            <ui-loading-spinner dark={true} />
+            <ui-loading-spinner />
          </Host> );
       }
 

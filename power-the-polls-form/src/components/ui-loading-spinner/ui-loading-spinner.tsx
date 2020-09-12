@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h } from "@stencil/core";
 
 @Component( {
    tag: "ui-loading-spinner",
@@ -6,15 +6,11 @@ import { Component, h, Prop } from "@stencil/core";
    shadow: true,
 } )
 export class LoadingSpinner {
-
-   @Prop() public dark: boolean = false;
-
    public render() {
       return (
-         <div class={{ "sk-cube-grid": true, "dark": this.dark }}>
-            {[...new Array( 9 ).keys()].map( x => <div class={`sk-cube sk-cube${x}`}></div> )}
+         <div class={{ "sk-cube-grid": true }}>
+            {[...new Array( 9 ).keys()].map( x => <div class={`sk-cube sk-cube${x}`} part="cube"></div> )}
          </div>
       );
    }
-
 }
