@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from "@stencil/core";
 
-import { SocialInfo } from "../../data/Social";
+import { SocialInfo } from "../../data/types";
 import analytics from "../../util/Analytics";
 
 @Component( {

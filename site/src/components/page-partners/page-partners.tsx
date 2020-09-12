@@ -1,6 +1,6 @@
 import { Component, FunctionalComponent, h, Host, Listen, Prop, State } from "@stencil/core";
 
-import { Partner } from "../../data/PartnerList";
+import { Partner } from "../../data/types";
 
 const PartnerImage: FunctionalComponent<{ partner: Partner, chosenPartner?: string }> = ( { partner, chosenPartner } ) => (
    <div

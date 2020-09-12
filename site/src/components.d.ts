@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory } from "@stencil/router";
-import { Partner } from "./data/PartnerList";
+import { Partner } from "./data/types";
 export namespace Components {
     interface AppRoot {
     }

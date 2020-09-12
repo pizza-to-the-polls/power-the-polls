@@ -1,7 +1,7 @@
 import { Component, FunctionalComponent, h, State } from "@stencil/core";
 
 import { FaqData, FaqESData, PartnerList, Social } from "../../data";
-import { Partner } from "../../data/PartnerList";
+import { Partner } from "../../data/types";
 import { parseQueryString, shuffle } from "../../util";
 
 type NavProps = {

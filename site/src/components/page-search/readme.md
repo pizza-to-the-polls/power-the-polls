@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type                         | Default     |
-| --------- | --------- | ----------- | ---------------------------- | ----------- |
-| `history` | --        |             | `RouterHistory \| undefined` | `undefined` |
+| Property               | Attribute | Description | Type            | Default     |
+| ---------------------- | --------- | ----------- | --------------- | ----------- |
+| `history` _(required)_ | --        |             | `RouterHistory` | `undefined` |
 
 
 ## Dependencies
