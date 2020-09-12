@@ -11,7 +11,6 @@ require( "dotenv" ).config();
 export const config: Config = {
    globalStyle: "styles/main.scss",
    globalScript: "src/app-init.ts",
-   taskQueue: "async",
    srcDir: "src", // "src" is the default; just here for clarity
    plugins: [
       replace( {
@@ -46,4 +45,12 @@ export const config: Config = {
          footer: "", // supports markdown
       },
    ],
+   // support IE11 and Safari
+   buildEs5: "prod",
+   extras: {
+      cssVarsShim: true,
+      dynamicImportShim: true,
+      safari10: true,
+      shadowDomShim: true,
+   },
 };
