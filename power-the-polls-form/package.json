@@ -16,9 +16,8 @@
       "dev": "stencil build --dev --watch --serve",
       "dev:site": "npm run clean && stencil build --watch",
       "build": "npm run lint && stencil build --prod --docs --no-cache && terser ./dist/full/index.js -o ./dist/full/index.js",
-      "build:copy": "copyfiles -u 1 ./dist/**/* ../dist/power-the-polls-form/ && copyfiles package.json ../dist/power-the-polls-form/ && copyfiles Readme.md ../dist/power-the-polls-form/",
       "build:clean": "npm run clean-all && npm run build",
-      "package": "npm run build:copy && replace \"dist/\" \"\" ../dist/power-the-polls-form/package.json",
+      "package": "copyfiles -u 1 ./dist/**/* ../dist/power-the-polls-form/ && copyfiles package.json Readme.md ../dist/power-the-polls-form/ && replace \"dist/\" \"\" ../dist/power-the-polls-form/package.json",
       "deploy": "cd ../dist/power-the-polls-form && npm publish && cd ../power-the-polls-form",
       "deploy:beta": "cd ../dist/power-the-polls-form && npm publish --tag beta && cd ../power-the-polls-form",
       "release": "npm whoami && npm run test && npm run clean-all && npm run build && npm run package && npm run deploy",
@@ -28,8 +27,10 @@
       "lint": "tslint --project .",
       "lint:fix": "tslint --fix --force --project .",
       "test": "stencil test --spec --e2e",
-      "test.watch": "stencil test --spec --e2e --watchAll",
-      "generate": "stencil generate"
+      "test:watch": "stencil test --spec --e2e --watchAll",
+      "generate": "stencil generate",
+      "util:check-updates": "npm-check-updates",
+      "util:perform-updates": "npm-check-updates -u"
    },
    "dependencies": {
       "@stencil/core": "^1.17.3",
@@ -48,6 +49,7 @@
       "dotenv": "^8.2.0",
       "jest": "26.0.1",
       "jest-cli": "26.0.1",
+      "npm-check-updates": "^9.0.1",
       "puppeteer": "2.1.1",
       "replace": "^1.2.0",
       "rimraf": "^3.0.2",
