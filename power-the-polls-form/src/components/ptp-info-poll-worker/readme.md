@@ -33,6 +33,7 @@ graph TD;
   ptp-info-poll-worker --> ptp-info-jurisdiction
   ptp-info-poll-worker --> ptp-info-state
   ptp-info-jurisdiction --> ui-loading-spinner
+  ptp-info-jurisdiction --> ui-geojson-to-svg
   ptp-info-state --> ui-loading-spinner
   power-the-polls-form --> ptp-info-poll-worker
   style ptp-info-poll-worker fill:#f9f,stroke:#333,stroke-width:4px

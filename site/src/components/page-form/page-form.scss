@@ -8,6 +8,7 @@ page-form {
    @include on-mobile() {
       margin-top: auto; // not on mobile though
    }
+
    h1 {
       margin-top: 150px;
       @include on-mobile() {

@@ -27,7 +27,7 @@ export class ComponentList {
             example: <ui-social-share image="icon-fb.png" name="SocialNetworkName" cta="Social Share" url="#" />,
          },
          {
-            tag: "ui-social-share.invertColors",
+            tag: "ui-social-share invertColors=true",
             example: <ui-social-share invertColors={true} image="icon-fb.png" name="SocialNetworkName" cta="Social Share" url="#" />,
          },
          {
@@ -41,7 +41,7 @@ export class ComponentList {
          <dl>
             {items.map( item => ( <Fragment>
                <dt>&lt;{item.tag}&gt;</dt>
-               <dd> {item.example}</dd>
+               <dd>{item.example}</dd>
             </Fragment> ) )}
          </dl>
          <div style={{ clear: "both" }}></div>

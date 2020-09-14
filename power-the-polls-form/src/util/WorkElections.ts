@@ -1,3 +1,5 @@
+import { MultiPolygon } from "geojson";
+
 import { States } from "../data";
 import { JurisdictionInfo, StateInfo } from "../data/States";
 
@@ -5,6 +7,7 @@ import { JurisdictionInfo, StateInfo } from "../data/States";
  * Asynchronous function for returning data from WE
  */
 const fetchFromWE = async ( path: string ) => {
+   console.log( path );
    const data = await fetch( "https" + `://workelections.powerthepolls.org${path}`, {
       method: "GET",
       mode: "cors",
@@ -21,6 +24,9 @@ export const fetchJurisdictionInfo = ( jurisdictionId: number | string ): Promis
 };
 export const fetchStateJurisdictionsList = ( stateId: number ): Promise<JurisdictionInfo[]> => {
    return fetchFromWE( `/jurisdictions/?summary=true&state_id=${stateId}` );
+};
+export const fetchJurisdictionGeoJson = ( jurisdictionId: number | string ): Promise<MultiPolygon> => {
+   return fetchFromWE( `/jurisdictions/${jurisdictionId}/geojson/` );
 };
 
 /**

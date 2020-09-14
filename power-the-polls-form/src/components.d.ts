@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PtpFormData } from "./util";
 import { RouterHistory } from "@stencil/router";
+import { GeoJSON } from "geojson";
+import { Options } from "./components/ui-geojson-to-svg/types";
 export namespace Components {
     interface InputAddress {
     }
@@ -71,6 +73,12 @@ export namespace Components {
          */
         "state"?: string;
     }
+    interface UiGeojsonToSvg {
+        "geoJson"?: GeoJSON;
+        "height": number;
+        "options"?: Options;
+        "width": number;
+    }
     interface UiLoadingSpinner {
     }
 }
@@ -111,6 +119,12 @@ declare global {
         prototype: HTMLPtpInfoStateElement;
         new (): HTMLPtpInfoStateElement;
     };
+    interface HTMLUiGeojsonToSvgElement extends Components.UiGeojsonToSvg, HTMLStencilElement {
+    }
+    var HTMLUiGeojsonToSvgElement: {
+        prototype: HTMLUiGeojsonToSvgElement;
+        new (): HTMLUiGeojsonToSvgElement;
+    };
     interface HTMLUiLoadingSpinnerElement extends Components.UiLoadingSpinner, HTMLStencilElement {
     }
     var HTMLUiLoadingSpinnerElement: {
@@ -124,6 +138,7 @@ declare global {
         "ptp-info-jurisdiction": HTMLPtpInfoJurisdictionElement;
         "ptp-info-poll-worker": HTMLPtpInfoPollWorkerElement;
         "ptp-info-state": HTMLPtpInfoStateElement;
+        "ui-geojson-to-svg": HTMLUiGeojsonToSvgElement;
         "ui-loading-spinner": HTMLUiLoadingSpinnerElement;
     }
 }
@@ -198,6 +213,12 @@ declare namespace LocalJSX {
          */
         "state"?: string;
     }
+    interface UiGeojsonToSvg {
+        "geoJson"?: GeoJSON;
+        "height"?: number;
+        "options"?: Options;
+        "width"?: number;
+    }
     interface UiLoadingSpinner {
     }
     interface IntrinsicElements {
@@ -207,6 +228,7 @@ declare namespace LocalJSX {
         "ptp-info-jurisdiction": PtpInfoJurisdiction;
         "ptp-info-poll-worker": PtpInfoPollWorker;
         "ptp-info-state": PtpInfoState;
+        "ui-geojson-to-svg": UiGeojsonToSvg;
         "ui-loading-spinner": UiLoadingSpinner;
     }
 }
@@ -220,6 +242,7 @@ declare module "@stencil/core" {
             "ptp-info-jurisdiction": LocalJSX.PtpInfoJurisdiction & JSXBase.HTMLAttributes<HTMLPtpInfoJurisdictionElement>;
             "ptp-info-poll-worker": LocalJSX.PtpInfoPollWorker & JSXBase.HTMLAttributes<HTMLPtpInfoPollWorkerElement>;
             "ptp-info-state": LocalJSX.PtpInfoState & JSXBase.HTMLAttributes<HTMLPtpInfoStateElement>;
+            "ui-geojson-to-svg": LocalJSX.UiGeojsonToSvg & JSXBase.HTMLAttributes<HTMLUiGeojsonToSvgElement>;
             "ui-loading-spinner": LocalJSX.UiLoadingSpinner & JSXBase.HTMLAttributes<HTMLUiLoadingSpinnerElement>;
         }
     }
