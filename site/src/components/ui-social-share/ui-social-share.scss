@@ -1,0 +1,32 @@
+ui-social-share {
+   a {
+      background-color: $color-accent;
+      color: $color-font-accent-contrast;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 1em 0;
+
+      font-size: 1.1em;
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+         color: $color-font-primary;
+         text-decoration: none;
+      }
+
+      span {
+         margin: 0 0 0 1em;
+      }
+   }
+
+   &.invert a {
+      background-color: transparent;
+      color: $color-font-primary;
+      &:hover {
+         color: $color-accent;
+      }
+   }
+}

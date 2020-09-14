@@ -20,12 +20,12 @@
 
 ### Depends on
 
-- [loading-spinner](../loading-spinner)
+- [ui-loading-spinner](../ui-loading-spinner)
 
 ### Graph
 ```mermaid
 graph TD;
-  ptp-info-state --> loading-spinner
+  ptp-info-state --> ui-loading-spinner
   ptp-info-poll-worker --> ptp-info-state
   style ptp-info-state fill:#f9f,stroke:#333,stroke-width:4px
 ```

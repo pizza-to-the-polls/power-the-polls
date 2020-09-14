@@ -6,15 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory } from "@stencil/router";
-import { Partner } from "./data/PartnerList";
+import { Partner } from "./data/types";
 export namespace Components {
     interface AppRoot {
     }
     interface ComponentList {
-    }
-    interface H3Bar {
-    }
-    interface ImpactBox {
     }
     interface PageAbout {
     }
@@ -52,7 +48,18 @@ export namespace Components {
     interface PageSearch {
         "history": RouterHistory;
     }
-    interface SocialShare {
+    interface UiH3Bar {
+    }
+    interface UiImpactBox {
+    }
+    interface UiMenuButton {
+        "isActive"?: boolean;
+        /**
+          * aria-label
+         */
+        "label"?: string;
+    }
+    interface UiSocialShare {
         /**
           * The displayed call-to-action text
          */
@@ -65,6 +72,10 @@ export namespace Components {
           * Image to use from `assets/images/social/*`
          */
         "image"?: string;
+        /**
+          * If `true`, the share icons will be light in color
+         */
+        "invertColors"?: boolean;
         /**
           * The full name of the social network. Used as the link title text.
          */
@@ -87,18 +98,6 @@ declare global {
     var HTMLComponentListElement: {
         prototype: HTMLComponentListElement;
         new (): HTMLComponentListElement;
-    };
-    interface HTMLH3BarElement extends Components.H3Bar, HTMLStencilElement {
-    }
-    var HTMLH3BarElement: {
-        prototype: HTMLH3BarElement;
-        new (): HTMLH3BarElement;
-    };
-    interface HTMLImpactBoxElement extends Components.ImpactBox, HTMLStencilElement {
-    }
-    var HTMLImpactBoxElement: {
-        prototype: HTMLImpactBoxElement;
-        new (): HTMLImpactBoxElement;
     };
     interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
     }
@@ -154,17 +153,33 @@ declare global {
         prototype: HTMLPageSearchElement;
         new (): HTMLPageSearchElement;
     };
-    interface HTMLSocialShareElement extends Components.SocialShare, HTMLStencilElement {
+    interface HTMLUiH3BarElement extends Components.UiH3Bar, HTMLStencilElement {
     }
-    var HTMLSocialShareElement: {
-        prototype: HTMLSocialShareElement;
-        new (): HTMLSocialShareElement;
+    var HTMLUiH3BarElement: {
+        prototype: HTMLUiH3BarElement;
+        new (): HTMLUiH3BarElement;
+    };
+    interface HTMLUiImpactBoxElement extends Components.UiImpactBox, HTMLStencilElement {
+    }
+    var HTMLUiImpactBoxElement: {
+        prototype: HTMLUiImpactBoxElement;
+        new (): HTMLUiImpactBoxElement;
+    };
+    interface HTMLUiMenuButtonElement extends Components.UiMenuButton, HTMLStencilElement {
+    }
+    var HTMLUiMenuButtonElement: {
+        prototype: HTMLUiMenuButtonElement;
+        new (): HTMLUiMenuButtonElement;
+    };
+    interface HTMLUiSocialShareElement extends Components.UiSocialShare, HTMLStencilElement {
+    }
+    var HTMLUiSocialShareElement: {
+        prototype: HTMLUiSocialShareElement;
+        new (): HTMLUiSocialShareElement;
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "component-list": HTMLComponentListElement;
-        "h3-bar": HTMLH3BarElement;
-        "impact-box": HTMLImpactBoxElement;
         "page-about": HTMLPageAboutElement;
         "page-contact": HTMLPageContactElement;
         "page-faq": HTMLPageFaqElement;
@@ -174,17 +189,16 @@ declare global {
         "page-partners": HTMLPagePartnersElement;
         "page-privacy": HTMLPagePrivacyElement;
         "page-search": HTMLPageSearchElement;
-        "social-share": HTMLSocialShareElement;
+        "ui-h3-bar": HTMLUiH3BarElement;
+        "ui-impact-box": HTMLUiImpactBoxElement;
+        "ui-menu-button": HTMLUiMenuButtonElement;
+        "ui-social-share": HTMLUiSocialShareElement;
     }
 }
 declare namespace LocalJSX {
     interface AppRoot {
     }
     interface ComponentList {
-    }
-    interface H3Bar {
-    }
-    interface ImpactBox {
     }
     interface PageAbout {
     }
@@ -222,7 +236,19 @@ declare namespace LocalJSX {
     interface PageSearch {
         "history": RouterHistory;
     }
-    interface SocialShare {
+    interface UiH3Bar {
+    }
+    interface UiImpactBox {
+    }
+    interface UiMenuButton {
+        "isActive"?: boolean;
+        /**
+          * aria-label
+         */
+        "label"?: string;
+        "onToggle"?: (event: CustomEvent<UiMenuButton>) => void;
+    }
+    interface UiSocialShare {
         /**
           * The displayed call-to-action text
          */
@@ -236,6 +262,10 @@ declare namespace LocalJSX {
          */
         "image"?: string;
         /**
+          * If `true`, the share icons will be light in color
+         */
+        "invertColors"?: boolean;
+        /**
           * The full name of the social network. Used as the link title text.
          */
         "name"?: string;
@@ -247,8 +277,6 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-root": AppRoot;
         "component-list": ComponentList;
-        "h3-bar": H3Bar;
-        "impact-box": ImpactBox;
         "page-about": PageAbout;
         "page-contact": PageContact;
         "page-faq": PageFaq;
@@ -258,7 +286,10 @@ declare namespace LocalJSX {
         "page-partners": PagePartners;
         "page-privacy": PagePrivacy;
         "page-search": PageSearch;
-        "social-share": SocialShare;
+        "ui-h3-bar": UiH3Bar;
+        "ui-impact-box": UiImpactBox;
+        "ui-menu-button": UiMenuButton;
+        "ui-social-share": UiSocialShare;
     }
 }
 export { LocalJSX as JSX };
@@ -267,8 +298,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "component-list": LocalJSX.ComponentList & JSXBase.HTMLAttributes<HTMLComponentListElement>;
-            "h3-bar": LocalJSX.H3Bar & JSXBase.HTMLAttributes<HTMLH3BarElement>;
-            "impact-box": LocalJSX.ImpactBox & JSXBase.HTMLAttributes<HTMLImpactBoxElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
             "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;
@@ -278,7 +307,10 @@ declare module "@stencil/core" {
             "page-partners": LocalJSX.PagePartners & JSXBase.HTMLAttributes<HTMLPagePartnersElement>;
             "page-privacy": LocalJSX.PagePrivacy & JSXBase.HTMLAttributes<HTMLPagePrivacyElement>;
             "page-search": LocalJSX.PageSearch & JSXBase.HTMLAttributes<HTMLPageSearchElement>;
-            "social-share": LocalJSX.SocialShare & JSXBase.HTMLAttributes<HTMLSocialShareElement>;
+            "ui-h3-bar": LocalJSX.UiH3Bar & JSXBase.HTMLAttributes<HTMLUiH3BarElement>;
+            "ui-impact-box": LocalJSX.UiImpactBox & JSXBase.HTMLAttributes<HTMLUiImpactBoxElement>;
+            "ui-menu-button": LocalJSX.UiMenuButton & JSXBase.HTMLAttributes<HTMLUiMenuButtonElement>;
+            "ui-social-share": LocalJSX.UiSocialShare & JSXBase.HTMLAttributes<HTMLUiSocialShareElement>;
         }
     }
 }

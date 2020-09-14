@@ -1,13 +1,8 @@
-export interface SocialInfo {
-   readonly name: string;
-   readonly cta: string;
-   readonly image: string;
-   readonly url: string;
-   readonly eventKey: string;
-}
+import { SocialInfo } from "./types";
+
 /**
  * Social share links for the left nav
- * see: social-share.tsx
+ * see: ui-social-share.tsx
  * see: app-root.tsx
  */
 const data: SocialInfo[] = [

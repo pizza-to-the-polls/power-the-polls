@@ -14,28 +14,34 @@ export class ComponentList {
 
    public render() {
       const items = [
+         {tag: "ui-menu-button", example: <ui-menu-button />},
          { tag: "h1", example: <h1>Aliquam vel felis mauris</h1> },
          { tag: "h2", example: <h2>Aliquam vel felis mauris</h2> },
          { tag: "h3", example: <h3>Aliquam vel felis mauris</h3> },
-         { tag: "h3-bar", example: <h3-bar>Aliquam vel felis mauris</h3-bar> },
+         { tag: "ui-h3-bar", example: <ui-h3-bar>Aliquam vel felis mauris</ui-h3-bar> },
          { tag: "h4", example: <h4>Aliquam vel felis mauris</h4> },
          { tag: "hr", example: <hr /> },
          { tag: "p", example: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros luctus, ultricies nisl in, semper justo. Praesent egestas ante non est semper suscipit.</p> },
          {
-            tag: "social-share",
-            example: <social-share image="icon-fb.png" name="SocialNetworkName" cta="Social Share" url="#" />,
+            tag: "ui-social-share",
+            example: <ui-social-share image="icon-fb.png" name="SocialNetworkName" cta="Social Share" url="#" />,
          },
          {
-            tag: "impact-box",
-            example: <impact-box><h2>h2 heading</h2><p>Lorem ipsum dolor sit amet</p></impact-box>,
+            tag: "ui-social-share invertColors=true",
+            example: <ui-social-share invertColors={true} image="icon-fb.png" name="SocialNetworkName" cta="Social Share" url="#" />,
          },
+         {
+            tag: "ui-impact-box",
+            example: <ui-impact-box><h2>h2 heading</h2><p>Lorem ipsum dolor sit amet</p></ui-impact-box>,
+         },
+         {tag: "ui-loading-spinner", example: <ui-loading-spinner />},
          // {tag: "AAAA", example: FOOOO},
       ];
       return ( <Host>
          <dl>
             {items.map( item => ( <Fragment>
                <dt>&lt;{item.tag}&gt;</dt>
-               <dd> {item.example}</dd>
+               <dd>{item.example}</dd>
             </Fragment> ) )}
          </dl>
          <div style={{ clear: "both" }}></div>

@@ -21,12 +21,14 @@
 
 ### Depends on
 
-- [loading-spinner](../loading-spinner)
+- [ui-loading-spinner](../ui-loading-spinner)
+- [ui-geojson-to-svg](../ui-geojson-to-svg)
 
 ### Graph
 ```mermaid
 graph TD;
-  ptp-info-jurisdiction --> loading-spinner
+  ptp-info-jurisdiction --> ui-loading-spinner
+  ptp-info-jurisdiction --> ui-geojson-to-svg
   ptp-info-poll-worker --> ptp-info-jurisdiction
   style ptp-info-jurisdiction fill:#f9f,stroke:#333,stroke-width:4px
 ```

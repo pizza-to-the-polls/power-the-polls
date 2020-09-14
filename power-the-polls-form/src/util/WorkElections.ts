@@ -1,3 +1,5 @@
+import { MultiPolygon } from "geojson";
+
 import { States } from "../data";
 import { JurisdictionInfo, StateInfo } from "../data/States";
 
@@ -21,6 +23,9 @@ export const fetchJurisdictionInfo = ( jurisdictionId: number | string ): Promis
 };
 export const fetchStateJurisdictionsList = ( stateId: number ): Promise<JurisdictionInfo[]> => {
    return fetchFromWE( `/jurisdictions/?summary=true&state_id=${stateId}` );
+};
+export const fetchJurisdictionGeoJson = ( jurisdictionId: number | string ): Promise<MultiPolygon> => {
+   return fetchFromWE( `/jurisdictions/${jurisdictionId}/geojson/` );
 };
 
 /**

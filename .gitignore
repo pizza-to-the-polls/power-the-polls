@@ -1,8 +1,3 @@
-dist/
-build/
-!www/favicon.ico
-www/
-
 *~
 *.sw[mnpcod]
 *.log
@@ -13,23 +8,27 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 
-.stencil/
-.idea/
-.vscode/
-.sass-cache/
-.versions/
+dist/
+build/
+www/
 node_modules/
 $RECYCLE.BIN/
+.stencil/
+.idea/
+.sass-cache/
+.versions/
+.vscode/*
+!.vscode/settings.json
 
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+tsconfig.tsbuildinfo
 
 /power-the-polls-form/src/**/*.js.map
 /power-the-polls-form/src/**/*.js
 /power-the-polls-form/src/**/*.d.ts
-tsconfig.tsbuildinfo
-/scripts/enrich-actionkit-data/*.js
 
+/scripts/enrich-actionkit-data/*.js
 /scripts/**/*.csv

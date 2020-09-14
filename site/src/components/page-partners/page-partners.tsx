@@ -1,6 +1,6 @@
 import { Component, FunctionalComponent, h, Host, Listen, Prop, State } from "@stencil/core";
 
-import { Partner } from "../../data/PartnerList";
+import { Partner } from "../../data/types";
 
 const PartnerImage: FunctionalComponent<{ partner: Partner, chosenPartner?: string }> = ( { partner, chosenPartner } ) => (
    <div
@@ -70,7 +70,7 @@ export class PagePartners {
             <a href="https://twitter.com/TheDailyShow/status/1283099189568626690?ref_src=twsrc%5Etfw">July 14, 2020</a>
          </blockquote>
 
-         <h3-bar>Founding Partners</h3-bar>
+         <ui-h3-bar>Founding Partners</ui-h3-bar>
          <p>
             Power the Polls is a collaboration between nonprofit organizations and businesses:
          </p>
@@ -80,7 +80,7 @@ export class PagePartners {
             ) ) )}
          </div>
 
-         <h3-bar>Partners</h3-bar>
+         <ui-h3-bar>Partners</ui-h3-bar>
          <div class="partner-logos">
             {partners.map( partner => ( !partner.isFoundingPartner && !partner.excludeFromPartnerList && partner.logo && (
                <PartnerImage partner={partner} chosenPartner={chosenPartner} />

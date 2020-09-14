@@ -22,7 +22,7 @@
 ```mermaid
 graph TD;
   page-jurisdiction --> ptp-info-jurisdiction
-  ptp-info-jurisdiction --> loading-spinner
+  ptp-info-jurisdiction --> ui-loading-spinner
   style page-jurisdiction fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

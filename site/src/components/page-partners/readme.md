@@ -16,12 +16,12 @@
 
 ### Depends on
 
-- [h3-bar](../h3-bar)
+- [ui-h3-bar](../ui-h3-bar)
 
 ### Graph
 ```mermaid
 graph TD;
-  page-partners --> h3-bar
+  page-partners --> ui-h3-bar
   style page-partners fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
