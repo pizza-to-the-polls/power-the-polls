@@ -74,9 +74,20 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "Amply",
+      "name": "Amply",
+      "logo": "amply.png"
+   },
+   {
       "name": "The Andrew Goodman Foundation",
       "partnerId": "AndrewGoodmanFoundation",
       "logo": "andrew-goodman-foundation.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "AscendantAthlete",
+      "name": "Ascendant Athlete",
+      "logo": "ascendant-athlete.jpg",
       "logoIsDark": true
    },
    {
@@ -99,6 +110,11 @@
       "name": "CamelsVote",
       "logo": "camels-vote.png",
       "logoIsDark": true
+   },
+   {
+      "name": "Candaleria",
+      "partnerId": "Candaleria",
+      "logo": "candelaria.png"
    },
    {
       "partnerId": "Civic",
@@ -141,6 +157,11 @@
       "logo": "vsa.png"
    },
    {
+      "name": "DEMSW",
+      "partnerId": "DEMSW",
+      "logo": "dem-sw.png"
+   },
+   {
       "partnerId": "DemLabs",
       "name": "DemLabs",
       "logo": "demlabs.png",
@@ -169,6 +190,18 @@
       "isFoundingPartner": true
    },
    {
+      "name": "FindSpark",
+      "partnerId": "FindSpark",
+      "logo": "find-spark.png",
+      "logoIsDark": true
+   },
+   {
+      "name": "GreenKey",
+      "partnerId": "GreenKey",
+      "logo": "green-key.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "HRC",
       "name": "Human Rights Campaign Foundation",
       "logo": "hrc.png",
@@ -183,6 +216,16 @@
       "name": "HeadCount",
       "logo": "head-count.png",
       "logoIsDark": true
+   },
+   {
+      "name": "Impossible",
+      "partnerId": "Impossible",
+      "logo": "impossible.png"
+   },
+   {
+      "name": "Intermix",
+      "partnerId": "Intermix",
+      "logo": "intermix.png"
    },
    {
       "partnerId": "LCV",
@@ -300,6 +343,11 @@
       "isFoundingPartner": true
    },
    {
+      "name": "Pond Lehocky",
+      "partnerId": "PondLehocky",
+      "logo": "pond-lehocky.png"
+   },
+   {
       "name": "Pro Georgia",
       "partnerId": "ProGeorgia"
    },
@@ -373,6 +421,11 @@
       "logo": "time-to-vote.png",
       "name": "Time to Vote",
       "isFoundingPartner": true
+   },
+   {
+      "partnerId": "Travel Cat",
+      "name": "travelcat",
+      "logo": "travel-cat.png"
    },
    {
       "partnerId": "Twitter",
@@ -456,6 +509,12 @@
       "partnerId": "actionbutton",
       "name": "Action Button",
       "logo": "action-button.png"
+   },
+   {
+      "partnerId": "aledade",
+      "name": "Aledade",
+      "logo": "aledade.gif",
+      "logoIsDark": true
    },
    {
       "partnerId": "alliance-students-at-the-polls",
@@ -650,6 +709,11 @@
       "logoIsDark": true
    },
    {
+      "name": "Duo Security",
+      "partnerId": "duo",
+      "logo": "duo.jpg"
+   },
+   {
       "partnerId": "evc",
       "logo": "every-vote-counts.png",
       "name": "Every Vote Counts"
@@ -726,6 +790,11 @@
       "logoIsDark": true
    },
    {
+      "name": "Hotel Tango",
+      "logo": "hotel-tango.png",
+      "partnerId": "hoteltango"
+   },
+   {
       "name": "iCitizen",
       "partnerId": "icitizen",
       "logo": "icitizen.jpg",
@@ -741,6 +810,11 @@
       "partnerId": "invision",
       "name": "InVision",
       "logo": "invision.jpg"
+   },
+   {
+      "name": "Interpublic group",
+      "partnerId": "ipg",
+      "logo": "ipg.png"
    },
    {
       "partnerId": "jolt",
@@ -1098,6 +1172,12 @@
       "name": "Warby Parker",
       "partnerId": "warbyparker",
       "logo": "warby-parker.png"
+   },
+   {
+      "name": "Wayfair",
+      "partnerId": "wayfair",
+      "logo": "wayfair.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "weslayan-engaged",
