@@ -7,7 +7,6 @@ import { JurisdictionInfo, StateInfo } from "../data/States";
  * Asynchronous function for returning data from WE
  */
 const fetchFromWE = async ( path: string ) => {
-   console.log( path );
    const data = await fetch( "https" + `://workelections.powerthepolls.org${path}`, {
       method: "GET",
       mode: "cors",

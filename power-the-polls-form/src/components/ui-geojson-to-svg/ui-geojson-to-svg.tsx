@@ -123,7 +123,7 @@ export class UiGeojsonToSvg {
    }
 
    /**
-    * Scale to apply to the rendered image to fit it in the desired space
+    * Determine scale to apply to the rendered image to fit it in the desired space
     */
    private calculateScale( bounds: BoundsRectangle, viewportSize: Size, fitTo?: "width" | "height" | "larger" | "smaller" ): number {
       let xScale = viewportSize.width / Math.abs( bounds.xMax - bounds.xMin );
