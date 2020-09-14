@@ -90,6 +90,10 @@ export class JurisdictionInfoComponent {
 
          <CompleteApplicationButton {...j} />
 
+         {!this.mailToFormComplete &&
+            <EmailApplicationForm jurisdiction={j} data={this.formData} onComplete={() => this.mailToFormComplete = true} />
+         }
+
          <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
             <ui-geojson-to-svg
                geoJson={this.jurisdictionShape}
@@ -97,10 +101,6 @@ export class JurisdictionInfoComponent {
                width={300}
             />
          </div>
-
-         {!this.mailToFormComplete &&
-            <EmailApplicationForm jurisdiction={j} data={this.formData} onComplete={() => this.mailToFormComplete = true} />
-         }
 
          <slot />
 
