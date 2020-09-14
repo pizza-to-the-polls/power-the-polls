@@ -71,9 +71,32 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      partnerId: "AARP",
+      name: "AARP",
+      logoAppearsOnLandingPage: true,
+      logo: "aarp.png",
+   },
+   {
       partnerId: "AALDEF",
       name: "Asian American Legal Defense and Education Fund",
       logo: "aaldef.png",
+   },
+   {
+      name: "Aledade",
+      partnerId: "aledade",
+      logo: "aledade.gif",
+      logoIsDark: true,
+   },
+   {
+      name: "Amply",
+      partnerId: "Amply",
+      logo: "amply.png",
+   },
+   {
+      name: "Ascendant Athlete",
+      partnerId: "AscendantAthlete",
+      logo: "ascendant-athlete.jpg",
+      logoIsDark: true,
    },
    {
       partnerId: "APALA",
@@ -81,12 +104,6 @@ const data: Partner[] = [
       logoAppearsOnLandingPage: true,
       logo: "apala.png",
       logoIsDark: true,
-   },
-   {
-      partnerId: "AARP",
-      name: "AARP",
-      logoAppearsOnLandingPage: true,
-      logo: "aarp.png",
    },
    {
       name: "AMC Theaters",
@@ -342,6 +359,11 @@ const data: Partner[] = [
       logoIsDark: true,
    },
    {
+      name: "Candaleria",
+      partnerId: "Candaleria",
+      logo: "candelaria.png",
+   },
+   {
       name: "Compass Coffee",
       partnerId: "compasscoffee",
       logo: "compass-coffee.png",
@@ -436,6 +458,11 @@ const data: Partner[] = [
       partnerId: "DemocracyNC",
    },
    {
+      name: "DEMSW",
+      partnerId: "DEMSW",
+      logo: "dem-sw.png",
+   },
+   {
       partnerId: "defendourfuture",
       name: "Defend Our Future",
       logo: "defend-our-future.png",
@@ -445,6 +472,11 @@ const data: Partner[] = [
       name: "Discovery Inc.",
       logo: "discovery.png",
       logoIsDark: true,
+   },
+   {
+      name: "Duo Security",
+      partnerId: "duo",
+      logo: "duo.jpg",
    },
    {
       partnerId: "evc",
@@ -488,6 +520,12 @@ const data: Partner[] = [
       logo: "ferrara.png",
    },
    {
+      name: "FindSpark",
+      partnerId: "FindSpark",
+      logo: "find-spark.png",
+      logoIsDark: true,
+   },
+   {
       partnerId: "floridavoices",
       name: "Florida Voices",
    },
@@ -519,6 +557,12 @@ const data: Partner[] = [
       logo: "good-fear-content.svg",
    },
    {
+      name: "GreenKey",
+      partnerId: "GreenKey",
+      logo: "green-key.jpg",
+      logoIsDark: true,
+   },
+   {
       name: "Harry's",
       partnerId: "harrys",
       logo: "harrys.jpg",
@@ -529,6 +573,11 @@ const data: Partner[] = [
       name: "HeadCount",
       logo: "head-count.png",
       logoIsDark: true,
+   },
+   {
+      name: "Hotel Tango",
+      logo: "hotel-tango.png",
+      partnerId: "hoteltango",
    },
    {
       partnerId: "HRC",
@@ -554,6 +603,21 @@ const data: Partner[] = [
       name: "Impactual",
       logo: "impactual.png",
       logoIsDark: true,
+   },
+   {
+      name: "Impossible",
+      partnerId: "Impossible",
+      logo: "impossible.png",
+   },
+   {
+      name: "Intermix",
+      partnerId: "Intermix",
+      logo: "intermix.png",
+   },
+   {
+      name: "Interpublic group",
+      partnerId: "ipg",
+      logo: "ipg.png",
    },
    {
       partnerId: "jolt",
@@ -853,6 +917,11 @@ const data: Partner[] = [
       logo: "pwp.png",
    },
    {
+      name: "Pond Lehocky",
+      partnerId: "PondLehocky",
+      logo: "pond-lehocky.png",
+   },
+   {
       partnerId: "PublicCitizen",
       name: "Public Citizen MOU",
    },
@@ -1024,6 +1093,11 @@ const data: Partner[] = [
       isFoundingPartner: true,
    },
    {
+      partnerId: "Travel Cat",
+      name: "travelcat",
+      logo: "travel-cat.png",
+   },
+   {
       partnerId: "Twitter",
       name: "Twitter",
       logo: "twitter.png",
@@ -1112,6 +1186,12 @@ const data: Partner[] = [
       name: "Warby Parker",
       partnerId: "warbyparker",
       logo: "warby-parker.png",
+   },
+   {
+      name: "Wayfair",
+      partnerId: "wayfair",
+      logo: "wayfair.jpg",
+      logoIsDark: true,
    },
    {
       partnerId: "WeCanVote",
