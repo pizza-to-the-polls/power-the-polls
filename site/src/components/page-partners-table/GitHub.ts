@@ -123,7 +123,7 @@ export const loadPartnerData = async ( progress: ( message: string, progress: nu
          branch: modifiedPartners.find( y => y.partnerId === x.partnerId ),
       } ) ),
       ...newPartners.map( x => ( {
-         master: { partnerId: x.partnerId, name: x.partnerId },
+         master: { partnerId: x.partnerId, name: x.name },
          search: calculatePartnerSearchValue( x ),
          branch: x,
       } ) )]
