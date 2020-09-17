@@ -1,0 +1,98 @@
+ui-partner-image {
+   margin: 3em 3em 3em 1em;
+   max-width: 140px;
+   width: 100%;
+   @include on-mobile() {
+      margin: 2em 2em 2em 0.5em;
+      max-width: 120px;
+   }
+
+   & > div {
+      &.background {
+         padding: 8px;
+         background: white;
+         border-radius: 4px;
+      }
+
+      &.chosen-partner {
+         animation: pulse 1s infinite;
+      }
+
+      img {
+         width: 100%;
+      }
+
+      // anchor link, hide and bump it up so it doesn't scroll the user directly to the top of the image
+      .anchor {
+         display: block;
+         position: relative;
+         top: -10em;
+         visibility: hidden;
+      }
+   }
+
+   .loading {
+      width: 40px;
+      height: 40px;
+
+      position: relative;
+      margin: 100px auto;
+
+      .double-bounce1,
+      .double-bounce2 {
+         width: 100%;
+         height: 100%;
+         position: absolute;
+         top: 0;
+         left: 0;
+         animation: long-pulse 2s infinite ease-in-out;
+
+         border-radius: 50%;
+         background-color: #fff;
+         opacity: 0.6;
+      }
+
+      .double-bounce2 {
+         animation-delay: -1s;
+      }
+
+      &.dark {
+         .double-bounce1,
+         .double-bounce2 {
+            background-color: #333;
+         }
+      }
+   }
+}
+
+@keyframes pulse {
+   0% {
+      transform: scale(1);
+   }
+
+   20% {
+      transform: scale(1.05);
+   }
+
+   40% {
+      transform: scale(0.95);
+   }
+
+   60% {
+      transform: scale(1.05);
+   }
+
+   80% {
+      transform: scale(1);
+   }
+}
+
+@keyframes long-pulse {
+   0%,
+   100% {
+      transform: scale(0);
+   }
+   50% {
+      transform: scale(1);
+   }
+}

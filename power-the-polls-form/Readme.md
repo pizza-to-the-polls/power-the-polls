@@ -1,5 +1,7 @@
 # [Power the Polls](https://powerthepolls.org)
 
+https://www.npmjs.com/package/@ptp-us/power-the-polls-form
+
 This is a custom web component that allows our partners to embed the Power the Polls signup form on their own web sites and intranets. Contact info@powerthepolls.org to discuss any partnerships.
 
 ## America is facing a record shortage of poll workers

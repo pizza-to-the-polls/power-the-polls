@@ -99,6 +99,11 @@ export class AppRoot {
             },
          },
          {
+            // FYI this is short-circuited and rendered as the entire page, not used in the router switch
+            url: "/partners-table",
+            component: "page-partners-table",
+         },
+         {
             url: "/privacy",
             component: "page-privacy",
          },
@@ -163,7 +168,7 @@ export class AppRoot {
             window.history.replaceState( {}, "", "/" + path[0] + "#" + partner.partnerId );
          } else {
             // else we've matched the partner on their vanity URL, so make sure it is normalized in case and URL type (vanity vs partnerId)
-            if( ( partner.additionalVanityUrls && partner.additionalVanityUrls.filter( x => x === urlParam ).length === 0 ) || ( partner.additionalVanityUrls == null && urlParam !== partner.partnerId ) ) {
+            if( ( partner.additionalVanityUrls && partner.additionalVanityUrls.filter( x => x === urlParam ).length === 0 ) || urlParam !== partner.partnerId ) {
                window.history.replaceState( {}, "", "/" + ( partner.additionalVanityUrls != null ? partner.additionalVanityUrls[0] : partner.partnerId ) );
             }
          }
@@ -173,6 +178,7 @@ export class AppRoot {
    public render() {
       const social = Social;
       const { source } = this;
+
       // get the proper path to the signup form considering the incoming partner or source
       const formPath = source == null ? SIGNUP_PATH
          : source.partner == null
@@ -185,9 +191,15 @@ export class AppRoot {
          this.menuIsActive = !this.menuIsActive;
       };
 
+      // short-circuit for the partners table
+      if( document.location.pathname.split( "/" ).filter( x => x !== "" )[0] === "partners-table" ) {
+         return <page-partners-table />;
+      }
+
       return (
          <div class="container">
             <a class="u_visually-hidden" href="#main-content">Skip to main content</a>
+
 
             <aside class="sidebar">
                <div class="container">
@@ -258,11 +270,11 @@ export class AppRoot {
                   <stencil-router>
                      <stencil-route-switch scrollTopOffset={1}>
                         {this.routes.map( route => {
-                           // add partnerId to props of all components, if no found partner, use whatever source was given
                            return ( <stencil-route {...{
                               ...route,
                               componentProps: {
                                  ...route.componentProps,
+                                 // Add partnerId to props of all components. If no found partner, use whatever source was given.
                                  partnerId: this.source?.partner?.partnerId || source?.value,
                               },
                            }} /> );
