@@ -266,12 +266,7 @@
    {
       "partnerId": "campusvote",
       "name": "Campus Vote Project",
-      "additionalVanityUrls": [
-         "CVP",
-         "CVPE",
-         "CVPM",
-         "CVPS"
-      ],
+      "additionalVanityUrls": [],
       "logo": "campus-vote-project.png"
    },
    {
@@ -358,6 +353,22 @@
       "partnerId": "curriculum-associates",
       "name": "Curriculum Associates",
       "logo": "curriculum-associates.png"
+   },
+   {
+      "partnerId": "CVP",
+      "name": "Campus Vote Project - CVP alias"
+   },
+   {
+      "partnerId": "CVPE",
+      "name": "Campus Vote Project - CVPE alias"
+   },
+   {
+      "partnerId": "CVPM",
+      "name": "Campus Vote Project - CVPM alias"
+   },
+   {
+      "partnerId": "CVPS",
+      "name": "Campus Vote Project - CVPS alias"
    },
    {
       "partnerId": "defendourfuture",
