@@ -545,6 +545,12 @@
       "excludeFromPartnerList": true
    },
    {
+      "partnerId": "IATSE",
+      "name": "IATSE",
+      "logo": "iatse.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "icitizen",
       "name": "iCitizen",
       "logo": "icitizen.jpg",
