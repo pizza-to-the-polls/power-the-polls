@@ -33,6 +33,10 @@ const Checkbox: FunctionalComponent<{
    </Fragment> );
 };
 
+/**
+ * Displays the given `fieldName` and possible the former such value if it has been modified. Presumes the value
+ * to be a string.
+ */
 const EditableText: FunctionalComponent<{
    partner: PartnerTableData,
    fieldName: keyof Partner,
@@ -65,41 +69,50 @@ export class PagePartnersTable {
    private static readonly FILTER_REFRESH_DELAY: number = 300/*milliseconds*/;
 
    @State() private partners: PartnerTableData[];
-   @State() private filterValue?: string;
-   @State() private filterValueSplit?: string[];
    @State() private loading?: [message: string, progress: number];
+   @State() private filterValue?: string;
+   /**
+    * `filterValue` split on whitespace. This is what is actually used to filter `partners`
+    */
+   @State() private filterParams?: string[];
+   /**
+    * The value of the auth token as the user is entering it in the login/auth input box. It is cleared
+    * on successful auth and does NOT reflect the current authenticated user's token
+    */
    @State() private tokenValue: string;
 
-   private updateFilter: ( val?: string ) => void;
+   private updateFilterParams: ( val?: string ) => void;
 
    constructor() {
       this.partners = [];
       this.tokenValue = "";
       this.loading = ["Loading partner data", 0];
-      this.updateFilter = debounce( ( val?: string ) => {
-         this.filterValueSplit = val?.split( " " ).map( x => x.toLowerCase() );
+      // we don't want to update this on every single keypress, so debounce to save on too many renders
+      this.updateFilterParams = debounce( ( val?: string ) => {
+         this.filterParams = val?.split( " " ).map( x => x.toLowerCase() );
       }, PagePartnersTable.FILTER_REFRESH_DELAY );
    }
 
    public componentWillLoad() {
-      this.loadPartnerData();
+      this.refreshPartnerData();
    }
 
-   public loadPartnerData( type: string = "Loading" ) {
-      loadPartnerData().then( x => {
+   public refreshPartnerData( type: "Loading" | "Refreshing" = "Loading" ) {
+      loadPartnerData( ( message, progress ) => this.loading = [message, progress * 0.9], type ).then( x => {
          this.partners = x;
-         this.loading = [`${type} partner data`, 0.9];
+         // set progress to 90% and introduce a delay before hiding the loading screen since it will take a bit to render all 200+ partners and the images and components
+         this.loading = ["Rendering", 0.9];
          setTimeout( () => this.loading = undefined, 2000 );
       } );
    }
 
    @Watch( "filterValue" )
-   public onSearchChange( n?: string ) {
-      this.updateFilter( n );
+   public onFilterValueChanged( newVal?: string ) {
+      this.updateFilterParams( newVal );
    }
 
    public render() {
-      const { partners, filterValue, filterValueSplit } = this;
+      const { partners, filterValue, filterParams } = this;
 
       const onSearch = ( e: Event ) => {
          this.filterValue = ( e.target as HTMLInputElement ).value;
@@ -195,9 +208,7 @@ export class PagePartnersTable {
 
       const save = async () => {
          this.loading = ["Saving", 0];
-         await saveChanges( this.partners, ( message, progress ) => {
-            this.loading = [message, progress];
-         } );
+         await saveChanges( this.partners, ( message, progress ) => this.loading = [message, progress] );
          this.loading = ["Refreshing", 0];
          setTimeout( () => window.location.reload(), 1000 );
       };
@@ -277,7 +288,7 @@ export class PagePartnersTable {
                <div>Custom form field</div>
             </div>
             {partners
-               .filter( x => filterValueSplit == null || filterValueSplit.every( param => x.search.includes( param ) ) )
+               .filter( x => filterParams == null || filterParams.every( param => x.search.includes( param ) ) )
                .map( partner => (
                   <div key={partner.master.partnerId} id={partner.master.partnerId}>
                      <div>

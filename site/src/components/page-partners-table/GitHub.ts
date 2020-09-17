@@ -54,8 +54,9 @@ export const setToken = async ( authToken?: string, user?: string ) => {
    }
 };
 
-export const loadPartnerData = async (): Promise<PartnerTableData[]> => {
+export const loadPartnerData = async ( progress: ( message: string, progress: number ) => void = () => ( {} ), type: "Loading" | "Refreshing" = "Loading" ): Promise<PartnerTableData[]> => {
 
+   progress( `${type} user`, 0.1 );
    await setToken( localStorage.getItem( "token" ) || undefined );
 
    const master = await request( "GET /repos/:owner/:repo/branches/:branch", {
@@ -63,6 +64,7 @@ export const loadPartnerData = async (): Promise<PartnerTableData[]> => {
       branch: "master",
    } );
 
+   progress( `${type} partner data`, 0.2 );
    // get the partner list data from the master branch
    const masterTreeSha = master.data.commit.commit.tree.sha;
    const masterTree = await getTree( masterTreeSha, true );
@@ -76,6 +78,7 @@ export const loadPartnerData = async (): Promise<PartnerTableData[]> => {
    }
    // console.log( masterTree.data );
 
+   progress( `${type} changes`, 0.6 );
    let modifiedPartners: Partner[] = [];
    // get the partner data from the partner updates branch and calculate the diff
    try {
@@ -108,6 +111,7 @@ export const loadPartnerData = async (): Promise<PartnerTableData[]> => {
    } catch {
       // no-op. Branch doesn't exist. We'll just create it on commit.
    }
+   progress( `${type} partner data`, 1 );
 
    return partners.map( x => ( {
       master: x,
@@ -149,6 +153,11 @@ export const createBlobFromJson = async ( json: string ): Promise<string> => {
    return result.data.sha;
 };
 
+/**
+ * Create a new blob whose bytes will be the provided base-64-encoded string
+ * @param base64 Base64-encoded binary data
+ * @returns THe SHA of the new blob
+ */
 export const createBlobFromBase64 = async ( base64: string ): Promise<string> => {
    // console.log( "createBlobFromBase64", base64 );
    const result = await request( "POST /repos/:owner/:repo/git/blobs", {
@@ -160,12 +169,12 @@ export const createBlobFromBase64 = async ( base64: string ): Promise<string> =>
    return result.data.sha;
 };
 
-export const modifyTree = async ( tree: GitCreateTreeTreeItem[], base: string ) => {
+export const modifyTree = async ( tree: GitCreateTreeTreeItem[], baseTreeHash: string ) => {
    // console.log( "modifyTree", tree );
    const result = await request( "POST /repos/:owner/:repo/git/trees", {
       ...defaultArgs(),
       tree: tree,
-      base_tree: base,
+      base_tree: baseTreeHash,
    } );
    // console.log( "modifyTree", result );
    return result.data.sha;
@@ -195,13 +204,13 @@ export const getBlobInTree = async ( treeSha: string, path?: string ) => {
    throw new Error( `Unable to find file ${path} in tree with SHA ${treeSha}` );
 };
 
-export const createCommmit = async ( treeHash: string, parent: string ): Promise<[hash: string, commitMessage: string]> => {
+export const createCommmit = async ( treeHash: string, parentHash: string ): Promise<[hash: string, commitMessage: string]> => {
    const commitMessage = "Partner updates " + new Date( Date.now() ).toISOString() + ( committingUser !== undefined ? " by " + committingUser : "" );
    const result = await request( "POST /repos/:owner/:repo/git/commits", {
       ...defaultArgs(),
       message: commitMessage,
       tree: treeHash,
-      parents: [parent],
+      parents: [parentHash],
    } );
    // console.log( "createCommmit", result );
    return [result.data.sha, commitMessage];
@@ -217,12 +226,13 @@ export const updateBranch = async ( commitHash: string, branchName: string ) => 
    return result.data.object.sha;
 };
 
-export const saveChanges = async ( newData: PartnerTableData[], progress: ( message: string, progress: number ) => void ) => {
+export const saveChanges = async ( newData: PartnerTableData[], progress: ( message: string, progress: number ) => void = () => ( {} ) ) => {
    const parent = parents;
    if( parent == null ) {
       throw new Error( "Call init first" );
    }
 
+   progress( "Uploading images", 0.1 );
    const partners = newData
       // get the most up-to-date changes
       .map( x => x.local !== undefined ? x.local : x.branch !== undefined ? x.branch : x.master )
@@ -242,14 +252,12 @@ export const saveChanges = async ( newData: PartnerTableData[], progress: ( mess
       // and sort by partnerId
       .sort( ( l, r ) => l.partnerId.toLowerCase() > r.partnerId.toLowerCase() ? 1 : -1 );
 
-   progress( "Uploading images...", 0.1 );
-
    // pull out any new images and upload them
    let images = partners.filter( x => x.logo?.startsWith( "data:" ) );
    let imageHashes: GitCreateTreeTreeItem[] = [];
    let count = 1;
    for( let partner of images ) {
-      progress( `Uploading image ${count} of ${images.length}`, 0.1 + ( 0.5 * ( count / images.length ) ) );
+      progress( `Uploading image ${count} of ${images.length}`, 0.1 + ( 0.5 * ( ( count - 1 ) / images.length ) ) );
       imageHashes.push( {
          sha: await createBlobFromBase64( partner.logo!.replace( "data:image/png;base64,", "" ).replace( "data:image/jpg;base64,", "" ) ),
          path: "site/public/assets/images/partners/" + partner.partnerId.toLowerCase() + ( partner.logo!.startsWith( "data:image/png" ) ? ".png" : ".jpg" ),
@@ -259,7 +267,7 @@ export const saveChanges = async ( newData: PartnerTableData[], progress: ( mess
       count += 1;
    }
 
-   progress( "Uploading partner JSON", 0.7 );
+   progress( "Uploading partner JSON", 0.6 );
    const partnerJsonHash = await createBlobFromJson( JSON.stringify(
       partners.map( x => x.logo?.startsWith( "data:" )
          ? {
@@ -270,8 +278,7 @@ export const saveChanges = async ( newData: PartnerTableData[], progress: ( mess
       undefined,
       3 ) );
 
-   progress( "Uploading new commit", 0.8 );
-
+   progress( "Creating new commit", 0.8 );
    const treeHash = await modifyTree( [
       {
          sha: partnerJsonHash,
@@ -282,10 +289,10 @@ export const saveChanges = async ( newData: PartnerTableData[], progress: ( mess
       ...imageHashes,
    ], parent.tree );
 
-   progress( "Uploading new commit", 0.9 );
-
+   progress( "Creating new commit", 0.85 );
    const [commitHash, commitMessage] = await createCommmit( treeHash, parent.commit );
 
+   progress( "Updating branch", 0.9 );
    // make sure there is a PR, but don't error if it fails since we can easily do this manually
    try {
       await request( "POST /repos/:owner/:repo/pulls", {
@@ -300,10 +307,12 @@ export const saveChanges = async ( newData: PartnerTableData[], progress: ( mess
       console.log( "This is probably not an error", e );
    }
 
-   progress( "Changes saved", 1 );
+   progress( "Updating branch", 0.95 );
+   const newHead = await updateBranch( commitHash, "partner-updates" );
 
+   progress( "Changes saved", 1 );
    parents = {
-      commit: await updateBranch( commitHash, "partner-updates" ),
+      commit: newHead,
       tree: treeHash,
    };
 };
