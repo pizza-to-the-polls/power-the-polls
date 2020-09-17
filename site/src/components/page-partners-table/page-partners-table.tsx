@@ -224,7 +224,7 @@ export class PagePartnersTable {
       };
 
       const deleteToken = async () => {
-         if( await setToken( undefined ) ) {
+         if( confirm( "Are you sure you want to logout?" ) && await setToken( undefined ) ) {
             this.tokenValue = "";
             window.location.reload();
          }
@@ -256,10 +256,17 @@ export class PagePartnersTable {
                   </Fragment>
                   :
                   <Fragment>
-                     <input placeholder="auth token" value={this.tokenValue} onInput={( e ) => this.tokenValue = ( e.target as HTMLInputElement ).value} />
+                     <input
+                        placeholder="Auth token"
+                        value={this.tokenValue}
+                        onInput={( e ) => this.tokenValue = ( e.target as HTMLInputElement ).value}
+                        title="A developer will provide you with this auth token. Contact one of us over Slack."
+                     />
                      <button
                         onClick={saveToken}
                      >Login</button>
+                     {" "}
+                     <a href="https://github.com/settings/tokens/new" target="_blank" title="Select 'repo'">create token</a>
                   </Fragment>
                }
             </div>
