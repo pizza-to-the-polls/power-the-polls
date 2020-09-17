@@ -63,3 +63,20 @@ export const findDuplicates = ( partners: PartnerTableData[], partnerId: string 
    } );
    return existing;
 };
+
+export const isValidImageBytes = ( base64WithHeader: string ): boolean =>
+   base64WithHeader.startsWith( "data:image/png;base64," ) ||
+   base64WithHeader.startsWith( "data:image/jpg;base64," ) ||
+   base64WithHeader.startsWith( "data:image/jpeg;base64," ) ||
+   base64WithHeader.startsWith( "data:image/svg+xml;base64," );
+
+export const cleanImageData = ( base64WithHeader: string ): string => base64WithHeader
+   .replace( "data:image/png;base64,", "" )
+   .replace( "data:image/jpg;base64,", "" )
+   .replace( "data:image/jpeg;base64,", "" )
+   .replace( "data:image/svg+xml;base64,", "" );
+
+export const createImageFilename = ( partner: Partner ) => partner.partnerId.toLowerCase() +
+   ( partner.logo!.startsWith( "data:image/png" ) ? ".png"
+      : partner.logo!.startsWith( "data:image/svg" ) ? ".svg"
+         : ".jpg" );

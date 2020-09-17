@@ -5,7 +5,7 @@ import { debounce, equals } from "../../util";
 
 import { getAuthenticatedUserName, getCommittingUserName, loadPartnerData, saveChanges, setToken } from "./GitHub";
 import { PartnerTableData } from "./types";
-import { calculatePartnerSearchValue, findDuplicates, getField, getLatest, isFieldModified } from "./utils";
+import { calculatePartnerSearchValue, findDuplicates, getField, getLatest, isFieldModified, isValidImageBytes } from "./utils";
 
 const Checkbox: FunctionalComponent<{
    partner: PartnerTableData,
@@ -199,7 +199,11 @@ export class PagePartnersTable {
             reader.onload = function ( evt ) {
                let imageData = evt.target?.result as string;
                if( imageData != null ) {
-                  modify( p, "logo", () => imageData );
+                  if( isValidImageBytes( imageData ) ) {
+                     modify( p, "logo", () => imageData );
+                  } else {
+                     alert( "This image format is not valid.\n\nImages must be PNG, JPG, or SVG" );
+                  }
                }
             };
             reader.readAsDataURL( file );
@@ -387,7 +391,7 @@ export class PagePartnersTable {
                                  <input
                                     type="file"
                                     id={`upload-logo-for-${partner.master.partnerId}`}
-                                    accept="image/png, image/jpg, image/jpeg"
+                                    accept="image/png,image/jpg,image/jpeg,image/svg+xml"
                                     style={{ position: "relative", left: "-9999px" }}
                                     onInput={onImageAdded( partner )}
                                  />

@@ -6,7 +6,7 @@ import { equals } from "../../util";
 import { REPO_NAME, REPO_ORG } from "../../util/constants";
 
 import { GitCreateTreeTreeItem, PartnerTableData } from "./types";
-import { calculatePartnerSearchValue } from "./utils";
+import { calculatePartnerSearchValue, cleanImageData, createImageFilename } from "./utils";
 
 const orgName = REPO_ORG;
 const repoName = REPO_NAME;
@@ -268,8 +268,8 @@ export const saveChanges = async ( newData: PartnerTableData[], progress: ( mess
    let count = 1;
    for( let partner of images ) {
       progress( `Uploading image ${count} of ${images.length}`, 0.1 + ( 0.5 * ( ( count - 1 ) / images.length ) ) );
-      const imageBytes = partner.logo!.replace( "data:image/png;base64,", "" ).replace( "data:image/jpg;base64,", "" ).replace( "data:image/jpeg;base64,", "" );
-      const imageName = partner.partnerId.toLowerCase() + ( partner.logo!.startsWith( "data:image/png" ) ? ".png" : ".jpg" );
+      const imageBytes = cleanImageData( partner.logo! );
+      const imageName = createImageFilename( partner );
       imageHashes.push( {
          sha: await createBlobFromBase64( imageBytes ),
          path: "site/public/assets/images/partners/" + imageName,
