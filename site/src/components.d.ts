@@ -66,7 +66,7 @@ export namespace Components {
         "excludeAnchor": boolean;
         "partner": Partner;
         /**
-          * IF `true` the image will not be loaded from the deployed assets but from the `partner-updates` branch on GitHub (https://raw.githubusercontent.com/pizza-to-the-polls/power-the-polls/partner-updates/site/public/assets/images/partners/aclugeorgia.png)
+          * If `true` the image will not be loaded from the deployed assets but from the `partner-updates` branch on GitHub
          */
         "sourceFromDevBranch": boolean;
     }
@@ -280,7 +280,7 @@ declare namespace LocalJSX {
         "excludeAnchor"?: boolean;
         "partner"?: Partner;
         /**
-          * IF `true` the image will not be loaded from the deployed assets but from the `partner-updates` branch on GitHub (https://raw.githubusercontent.com/pizza-to-the-polls/power-the-polls/partner-updates/site/public/assets/images/partners/aclugeorgia.png)
+          * If `true` the image will not be loaded from the deployed assets but from the `partner-updates` branch on GitHub
          */
         "sourceFromDevBranch"?: boolean;
     }

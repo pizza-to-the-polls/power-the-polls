@@ -3,12 +3,13 @@ import { request } from "@octokit/request";
 
 import { Partner } from "../../data/types";
 import { equals } from "../../util";
+import { REPO_NAME, REPO_ORG } from "../../util/constants";
 
 import { GitCreateTreeTreeItem, PartnerTableData } from "./types";
 import { calculatePartnerSearchValue } from "./utils";
 
-const orgName = "pizza-to-the-polls";
-const repoName = "power-the-polls";
+const orgName = REPO_ORG;
+const repoName = REPO_NAME;
 
 /**
  * Some nice global state for the parent of the next commit when `saveChanges` is called
