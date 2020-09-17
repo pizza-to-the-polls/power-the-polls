@@ -111,7 +111,8 @@
    {
       "partnerId": "angel-med-flight",
       "name": "AngelMedFlight",
-      "logo": "angel-med-flight.png"
+      "logo": "angel-med-flight.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "anonymouscontent",
@@ -414,7 +415,8 @@
    {
       "partnerId": "eventbrite",
       "name": "EventBrite",
-      "logo": "eventbrite.jpg"
+      "logo": "eventbrite.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "expediagroup",
@@ -562,7 +564,8 @@
    {
       "partnerId": "ipg",
       "name": "Interpublic group",
-      "logo": "ipg.png"
+      "logo": "ipg.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "jolt",
@@ -686,7 +689,8 @@
    {
       "partnerId": "livenation",
       "name": "LiveNation",
-      "logo": "live-nation.png"
+      "logo": "live-nation.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "LULAC",
@@ -715,7 +719,8 @@
    {
       "partnerId": "major-league-baseball",
       "name": "Major League Baseball",
-      "logo": "mlb.jpg"
+      "logo": "mlb.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "mcn",
@@ -1115,7 +1120,8 @@
    {
       "partnerId": "thornburg-investment",
       "name": "Thornburg Investment",
-      "logo": "thornburg.jpg"
+      "logo": "thornburg.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "timberwolves",
