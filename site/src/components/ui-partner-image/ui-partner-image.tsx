@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Prop, State } from "@stencil/core";
 
 import { Partner } from "../../data/types";
 import { REPO_NAME, REPO_ORG } from "../../util/constants";
@@ -23,10 +23,13 @@ export class UiPartnerImage {
     */
    @Prop() public sourceFromDevBranch: boolean;
 
+   @State() private loading: boolean;
+
    constructor() {
       this.partner = UiPartnerImage.InvalidPartner;
       this.excludeAnchor = false;
       this.sourceFromDevBranch = false;
+      this.loading = true;
    }
 
    public render() {
@@ -34,7 +37,7 @@ export class UiPartnerImage {
       return (
          <div
             class={{
-               "dark": partner.logoIsDark ?? false,
+               "background": partner.logoIsDark ?? false,
                "chosen-partner": chosenPartner === partner.partnerId,
             }}>
             {!this.excludeAnchor &&
@@ -45,7 +48,14 @@ export class UiPartnerImage {
                   ? partner.logo
                   : ( this.sourceFromDevBranch ? `https://raw.githubusercontent.com/${REPO_ORG}/${REPO_NAME}/partner-updates/site/public` : "" ) + `/assets/images/partners/${partner.logo}`}
                title={partner.name}
+               onLoad={() => this.loading = false}
             />
+            {this.loading &&
+               <div class={{ "loading": true, "dark": partner.logoIsDark ?? false }}>
+                  <div class="double-bounce1"></div>
+                  <div class="double-bounce2"></div>
+               </div>
+            }
          </div>
       );
    }
