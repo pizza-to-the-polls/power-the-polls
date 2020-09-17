@@ -5,7 +5,7 @@ import { debounce, equals } from "../../util";
 
 import { getAuthenticatedUserName, getCommittingUserName, loadPartnerData, saveChanges, setToken } from "./GitHub";
 import { PartnerTableData } from "./types";
-import { calculatePartnerSearchValue, findDuplicates, getField, getLatest, isFieldModified, isValidImageBytes } from "./utils";
+import { calculatePartnerSearchValue as calculatePartnerSearchString, findDuplicates, getField, getLatest, isFieldModified, isValidImageBytes } from "./utils";
 
 const Checkbox: FunctionalComponent<{
    partner: PartnerTableData,
@@ -129,12 +129,13 @@ export class PagePartnersTable {
             return;
          }
 
+         const newPartnerData = {
+            ...existingData,
+            [field]: newVal,
+         };
          const updatedPartner: PartnerTableData = {
             ...partner,
-            local: {
-               ...existingData,
-               [field]: newVal,
-            },
+            local: newPartnerData,
          };
 
          // if the modified data is equal to our original, then just clear the modifications
@@ -143,6 +144,9 @@ export class PagePartnersTable {
             || ( updatedPartner.branch === undefined && equals( updatedPartner.master, updatedPartner.local ) ) ) {
             updatedPartner.local = undefined;
          }
+
+         // if the changes are legit, make sure we capture them in the filter value
+         updatedPartner.search = calculatePartnerSearchString( existingData ) + "|" + calculatePartnerSearchString( newPartnerData );
 
          // insert our new data in place of the old one
          const idx = this.partners.indexOf( partner );
@@ -182,7 +186,7 @@ export class PagePartnersTable {
          const partner = { partnerId, name: partnerId };
          this.partners = [...this.partners, {
             master: { partnerId, name: "" },
-            search: calculatePartnerSearchValue( partner ),
+            search: calculatePartnerSearchString( partner ),
             local: partner,
          }];
          setTimeout( () => window.location.hash = partnerId, 500 );
