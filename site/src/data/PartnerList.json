@@ -1266,6 +1266,13 @@
       "name": "Work Elections"
    },
    {
+      "partnerId": "workingamerica",
+      "name": "Working America",
+      "logo": "workingamerica.jpg",
+      "logoAppearsOnLandingPage": true,
+      "excludeFromPartnerList": true
+   },
+   {
       "partnerId": "YMCA",
       "name": "YMCA",
       "logo": "ymca.png"
