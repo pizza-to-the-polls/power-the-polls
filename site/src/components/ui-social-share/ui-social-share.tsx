@@ -54,7 +54,7 @@ export class SocialShare implements Partial<SocialInfo> {
          >
             <img
                alt={this.name}
-               src={this.invertColors ? `/assets/images/social/inverted-${this.image}` : `/assets/images/social/${this.image}`}
+               src={this.invertColors ? `/assets/images/social/invert-${this.image}` : `/assets/images/social/${this.image}`}
                width="41"
                height="41"
             />
