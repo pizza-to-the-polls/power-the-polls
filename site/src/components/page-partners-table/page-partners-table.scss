@@ -39,7 +39,7 @@ page-partners-table {
          display: grid;
          grid-template-columns: 15% 25% 15% 15% 5% 5% 5% 5% 10%;
          &:nth-child(2n + 2) {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
          }
 
          & > div {
@@ -263,6 +263,13 @@ page-partners-table {
             &.modified:after {
                color: $color-accent; // !important;
             }
+            &.modified:before {
+               border-width: 3px;
+               border-color: $color-accent;
+            }
+            &:hover:before {
+               border-color: $color-highlight;
+            }
          }
       }
       &:not(:checked) + label:after {
@@ -277,14 +284,14 @@ page-partners-table {
       &:disabled:not(:checked) + label:before,
       &:disabled:checked + label:before {
          box-shadow: none;
-         border-color: #bbb;
-         background-color: #ddd;
+         border-color: #aaa !important;
+         background-color: #ccc !important;
       }
       &:disabled:checked + label:after {
-         color: #999;
+         color: #666 !important;
       }
       &:disabled + label {
-         color: #aaa;
+         color: #666 !important;
       }
 
       // accessibility
@@ -292,15 +299,5 @@ page-partners-table {
       &:not(:checked):focus + label:before {
          border: 2px dotted $color-highlight;
       }
-   }
-
-   label.modified:before {
-      border-width: 3px !important;
-      border-color: $color-accent !important;
-   }
-
-   /* hover style just for information */
-   label:hover:before {
-      border-color: $color-highlight !important;
    }
 }

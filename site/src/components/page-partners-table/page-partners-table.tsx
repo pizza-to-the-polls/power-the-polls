@@ -13,7 +13,8 @@ const Checkbox: FunctionalComponent<{
    onInput: () => void,
    invert?: boolean,
    label?: string,
-}> = ( { partner, fieldName, onInput, invert, label } ) => {
+   disabled?: boolean,
+}> = ( { partner, fieldName, onInput, invert, label, disabled } ) => {
    let checked = !!getField( partner, fieldName );
    if( invert === true ) {
       checked = !checked;
@@ -21,13 +22,14 @@ const Checkbox: FunctionalComponent<{
    return ( <Fragment>
       <input
          type="checkbox"
+         disabled={disabled || false}
          checked={checked}
          name={fieldName}
       />
       <label
          class={{ "modified": isFieldModified( partner, fieldName ) }}
          htmlFor={fieldName}
-         onClick={_ => onInput()}>
+         onClick={_ => disabled !== true && onInput()}>
          {label}
       </label>
    </Fragment> );
@@ -402,6 +404,7 @@ export class PagePartnersTable {
                            partner={partner}
                            fieldName="excludeFromPartnerList"
                            invert
+                           disabled={getField( partner, "logo" ) == null}
                            onInput={() => toggleBool( partner, "excludeFromPartnerList" )}
                         />
                      </div>
@@ -409,6 +412,7 @@ export class PagePartnersTable {
                         <Checkbox
                            partner={partner}
                            fieldName="logoAppearsOnLandingPage"
+                           disabled={getField( partner, "logo" ) == null}
                            onInput={() => toggleBool( partner, "logoAppearsOnLandingPage" )}
                         />
                      </div>
