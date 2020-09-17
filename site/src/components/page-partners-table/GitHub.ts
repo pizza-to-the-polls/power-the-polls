@@ -80,6 +80,7 @@ export const loadPartnerData = async ( progress: ( message: string, progress: nu
 
    progress( `${type} changes`, 0.6 );
    let modifiedPartners: Partner[] = [];
+   let newPartners: Partner[] = [];
    // get the partner data from the partner updates branch and calculate the diff
    try {
       const branch = await request( "GET /repos/:owner/:repo/branches/:branch", {
@@ -103,21 +104,30 @@ export const loadPartnerData = async ( progress: ( message: string, progress: nu
       // find modified and new partners since master
       for( let partner of branchPartners ) {
          const match = partners.find( y => y.partnerId === partner.partnerId );
-         if( match == null || !equals( partner, match ) ) {
+         if( match == null ) {
+            newPartners.push( partner );
+         } else if( !equals( partner, match ) ) {
             modifiedPartners.push( partner );
          }
       }
-      // console.log( branchTree.data, "modifiedPartners", modifiedPartners );
+      // console.log( branchTree.data, "modifiedPartners", modifiedPartners, "newPartners", newPartners );
    } catch {
       // no-op. Branch doesn't exist. We'll just create it on commit.
    }
    progress( `${type} partner data`, 1 );
 
-   return partners.map( x => ( {
-      master: x,
-      search: calculatePartnerSearchValue( x ),
-      branch: modifiedPartners.find( y => y.partnerId === x.partnerId ),
-   } ) );
+   return [
+      ...partners.map( x => ( {
+         master: x,
+         search: calculatePartnerSearchValue( x ),
+         branch: modifiedPartners.find( y => y.partnerId === x.partnerId ),
+      } ) ),
+      ...newPartners.map( x => ( {
+         master: { partnerId: x.partnerId, name: x.partnerId },
+         search: calculatePartnerSearchValue( x ),
+         branch: x,
+      } ) )]
+      .sort( ( l, r ) => l.master.partnerId.toLowerCase() > r.master.partnerId.toLowerCase() ? 1 : -1 );
 };
 
 export const getCommit = async ( sha: string ) => {
@@ -258,9 +268,11 @@ export const saveChanges = async ( newData: PartnerTableData[], progress: ( mess
    let count = 1;
    for( let partner of images ) {
       progress( `Uploading image ${count} of ${images.length}`, 0.1 + ( 0.5 * ( ( count - 1 ) / images.length ) ) );
+      const imageBytes = partner.logo!.replace( "data:image/png;base64,", "" ).replace( "data:image/jpg;base64,", "" ).replace( "data:image/jpeg;base64,", "" );
+      const imageName = partner.partnerId.toLowerCase() + ( partner.logo!.startsWith( "data:image/png" ) ? ".png" : ".jpg" );
       imageHashes.push( {
-         sha: await createBlobFromBase64( partner.logo!.replace( "data:image/png;base64,", "" ).replace( "data:image/jpg;base64,", "" ) ),
-         path: "site/public/assets/images/partners/" + partner.partnerId.toLowerCase() + ( partner.logo!.startsWith( "data:image/png" ) ? ".png" : ".jpg" ),
+         sha: await createBlobFromBase64( imageBytes ),
+         path: "site/public/assets/images/partners/" + imageName,
          mode: "100644",
          type: "blob",
       } );

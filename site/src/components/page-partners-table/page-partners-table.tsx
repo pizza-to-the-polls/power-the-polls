@@ -387,7 +387,7 @@ export class PagePartnersTable {
                                  <input
                                     type="file"
                                     id={`upload-logo-for-${partner.master.partnerId}`}
-                                    accept="image/png, image/jpeg"
+                                    accept="image/png, image/jpg, image/jpeg"
                                     style={{ position: "relative", left: "-9999px" }}
                                     onInput={onImageAdded( partner )}
                                  />
