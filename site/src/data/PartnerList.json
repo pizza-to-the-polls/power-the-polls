@@ -1113,6 +1113,11 @@
       "logoIsDark":true
    },
    {
+      "name":"Thornburg Investment",
+      "partnerId":"thornburg-investment",
+      "logo":"thornburg.jpg"
+   },
+   {
       "name":"Timber Wolves and Lynx",
       "partnerId":"timberwolves",
       "logo":"timber-wolves-and-lynx.png"
