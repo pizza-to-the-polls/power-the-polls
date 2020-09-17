@@ -109,6 +109,11 @@
       "logoIsDark": true
    },
    {
+      "name": "AngelMedFlight",
+      "partnerId": "angel-med-flight",
+      "logo": "angel-med-flight.png" 
+   },
+   {
       "name": "Anonymous Content",
       "partnerId": "anonymouscontent",
       "logo": "anonymous-content.png"
@@ -350,6 +355,11 @@
       "logo": "crossover-collective.png"
    },
    {
+      "name":"Curriculum Associates",
+      "partnerId":"curriculum-associates",
+      "logo":"curriculum-associates.png"
+   },
+   {
       "partnerId": "defendourfuture",
       "name": "Defend Our Future",
       "logo": "defend-our-future.png"
@@ -391,6 +401,16 @@
       "name": "Duo Security",
       "partnerId": "duo",
       "logo": "duo.jpg"
+   },
+   {
+      "name":"Encore Renewable Energy",
+      "partnerId":"encore-renewable-energy",
+      "logo":"encore.png"
+   },
+   {
+      "name":"EventBrite",
+      "partnerId":"eventbrite",
+      "logo":"eventbrite.jpg"
    },
    {
       "partnerId": "evc",
@@ -520,6 +540,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId":"Imperfect Foods",
+      "name":"imperfect-foods",
+      "logo":"imperfect-foods.png",
+      "logoIsDark":true
+   },
+   {
       "name": "Impossible",
       "partnerId": "Impossible",
       "logo": "impossible.png"
@@ -545,6 +571,11 @@
       "name": "Jolt Action",
       "logo": "jolt.png",
       "logoIsDark": true
+   },
+   {
+      "partnerId":"kansas-city-royals",
+      "name":"Kansas City Royals",
+      "logo":"kansas-city-royals.png"
    },
    {
       "partnerId": "labor-aflcio",
@@ -655,6 +686,11 @@
       "logoIsDark": true
    },
    {
+      "name":"LiveNation",
+      "partnerId":"livenation",
+      "logo":"live-nation.png"
+   },
+   {
       "name": "League of United Latin American Citizens",
       "partnerId": "LULAC"
    },
@@ -677,6 +713,11 @@
    {
       "partnerId": "mainevoices",
       "name": "Maine Voices"
+   },
+   {
+      "partnerId":"major-league-baseball",
+      "name":"Major League Baseball",
+      "logo":"mlb.jpg"
    },
    {
       "partnerId": "mcn",
@@ -870,6 +911,11 @@
       "logo": "paypal.png"
    },
    {
+      "name":"Philadelphia Eagles",
+      "partnerId":"philadelphia-eagles",
+      "logo":"eagles.png"
+   },
+   {
       "partnerId": "Pizza",
       "logo": "pizza-to-the-polls.png",
       "name": "Pizza to the Polls",
@@ -926,6 +972,11 @@
       "logoIsDark": true
    },
    {
+      "name":"Rinse",
+      "partnerId":"rinse",
+      "logo":"rinse.png"
+   },
+   {
       "partnerId": "Salesforce",
       "name": "Salesforce",
       "logo": "salesforce.png"
@@ -978,6 +1029,11 @@
       "name": "Socially Driven Music",
       "logo": "socially-driven-music.png",
       "customSignupFormField": "Name of Local Artist that Referred You"
+   },
+   {
+      "partnerId":"Sofar Sounds",
+      "name":"Sofar Sounds",
+      "logo":"sofar-sounds.png"
    },
    {
       "name": "Solve",
@@ -1057,6 +1113,11 @@
       "logo": "the-voter-project.png",
       "logoAppearsOnLandingPage": true,
       "logoIsDark": true
+   },
+   {
+      "name":"Thornburg Investment",
+      "partnerId":"thornburg-investment",
+      "logo":"thornburg.jpg"
    },
    {
       "name": "Timber Wolves and Lynx",
@@ -1194,6 +1255,11 @@
    {
       "partnerId": "work-elections",
       "name": "Work Elections"
+   },
+   {
+      "partnerId":"work",
+      "name":"Work",
+      "logo":"work.png"
    },
    {
       "partnerId": "YMCA",
