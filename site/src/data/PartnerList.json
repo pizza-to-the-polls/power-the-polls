@@ -419,6 +419,11 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "everytown",
+      "name": "Everytown for Gun Safety / Moms Demand Action for Gun Sense in America",
+      "logo": "everytown.jpg"
+   },
+   {
       "partnerId": "expediagroup",
       "name": "Expedia",
       "additionalVanityUrls": [
