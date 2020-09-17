@@ -183,7 +183,6 @@ export class PagePartnersTable {
             search: calculatePartnerSearchValue( partner ),
             local: partner,
          }];
-         this.filterValue = "";
          setTimeout( () => window.location.hash = partnerId, 500 );
       };
 
