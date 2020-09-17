@@ -212,8 +212,12 @@ export class PagePartnersTable {
       };
 
       const save = async () => {
+         const message = prompt( "Save these changes?\n\nAdd an optional message indicating what you changed here:" )?.trim();
+         if( message == null ) {
+            return;
+         }
          this.loading = ["Saving", 0];
-         await saveChanges( this.partners, ( message, progress ) => this.loading = [message, progress] );
+         await saveChanges( this.partners, message, ( m, progress ) => this.loading = [m, progress] );
          this.loading = ["Refreshing", 0];
          setTimeout( () => window.location.reload(), 1000 );
       };

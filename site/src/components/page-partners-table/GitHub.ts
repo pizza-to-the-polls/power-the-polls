@@ -214,8 +214,10 @@ export const getBlobInTree = async ( treeSha: string, path?: string ) => {
    throw new Error( `Unable to find file ${path} in tree with SHA ${treeSha}` );
 };
 
-export const createCommmit = async ( treeHash: string, parentHash: string ): Promise<[hash: string, commitMessage: string]> => {
-   const commitMessage = "Partner updates " + new Date( Date.now() ).toISOString() + ( committingUser !== undefined ? " by " + committingUser : "" );
+export const createCommmit = async ( treeHash: string, parentHash: string, message?: string ): Promise<[hash: string, commitMessage: string]> => {
+   const commitMessage = "Partner updates " + new Date( Date.now() ).toISOString() +
+      ( committingUser !== undefined ? " by " + committingUser : "" ) +
+      ( message != null ? ": " + message : "" );
    const result = await request( "POST /repos/:owner/:repo/git/commits", {
       ...defaultArgs(),
       message: commitMessage,
@@ -236,7 +238,7 @@ export const updateBranch = async ( commitHash: string, branchName: string ) => 
    return result.data.object.sha;
 };
 
-export const saveChanges = async ( newData: PartnerTableData[], progress: ( message: string, progress: number ) => void = () => ( {} ) ) => {
+export const saveChanges = async ( newData: PartnerTableData[], message?: string, progress: ( message: string, progress: number ) => void = () => ( {} ) ) => {
    const parent = parents;
    if( parent == null ) {
       throw new Error( "Call init first" );
@@ -302,7 +304,7 @@ export const saveChanges = async ( newData: PartnerTableData[], progress: ( mess
    ], parent.tree );
 
    progress( "Creating new commit", 0.85 );
-   const [commitHash, commitMessage] = await createCommmit( treeHash, parent.commit );
+   const [commitHash, commitMessage] = await createCommmit( treeHash, parent.commit, message );
 
    progress( "Updating branch", 0.9 );
    // make sure there is a PR, but don't error if it fails since we can easily do this manually
