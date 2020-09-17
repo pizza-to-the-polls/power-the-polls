@@ -293,6 +293,7 @@ export const saveChanges = async ( newData: PartnerTableData[], progress: ( mess
          title: commitMessage,
          head: "partner-updates",
          base: "master",
+         body: "This PR was created by the partner editor tool",
       } );
    } catch( e ) {
       // the PR probably already exists
