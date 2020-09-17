@@ -6,56 +6,5 @@ page-partners {
       align-items: center;
       align-content: stretch;
       justify-content: space-between;
-      div {
-         margin: 3em 3em 3em 1em;
-         max-width: 140px;
-         width: 100%;
-         @include on-mobile() {
-            margin: 2em 2em 2em 0.5em;
-            max-width: 120px;
-         }
-         img {
-            width: 100%;
-         }
-         &.dark {
-            padding: 8px;
-            background: white;
-            border-radius: 4px;
-         }
-      }
-
-      // anchor link for partners, hide and bump it up so it doesn't scroll the user directly to the top of the image
-      .anchor {
-         display: block;
-         position: relative;
-         top: -10em;
-         visibility: hidden;
-      }
-   }
-
-   .chosen-partner {
-      animation: pulse 1s infinite;
-   }
-}
-
-@keyframes pulse {
-   0% {
-      transform: scale(1);
-   }
-
-   20% {
-      transform: scale(1.05);
-   }
-
-   40% {
-      transform: scale(0.95);
-   }
-
-   60% {
-      transform: scale(1.05);
-   }
-
-   80% {
-      transform: scale(1);
    }
 }

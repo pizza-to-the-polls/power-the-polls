@@ -1,20 +1,6 @@
-import { Component, FunctionalComponent, h, Host, Listen, Prop, State } from "@stencil/core";
+import { Component, h, Host, Listen, Prop, State } from "@stencil/core";
 
 import { Partner } from "../../data/types";
-
-const PartnerImage: FunctionalComponent<{ partner: Partner, chosenPartner?: string }> = ( { partner, chosenPartner } ) => (
-   <div
-      class={{
-         "dark": partner.logoIsDark ?? false,
-         "chosen-partner": chosenPartner === partner.partnerId,
-      }}>
-      <span id={partner.partnerId} class="anchor"></span>
-      <img
-         src={`/assets/images/partners/${partner.logo}`}
-         title={partner.name}
-      />
-   </div>
-);
 
 @Component( {
    tag: "page-partners",
@@ -40,7 +26,7 @@ export class PagePartners {
    }
 
    public render() {
-      const partners = (this.partners || []);
+      const partners = ( this.partners || [] );
       const chosenPartner = this.highlightedPartner;
       return ( <Host>
          <h1>Power the Polls Partners</h1>
@@ -76,14 +62,14 @@ export class PagePartners {
          </p>
          <div class="partner-logos">
             {partners.map( partner => ( partner.isFoundingPartner && !partner.excludeFromPartnerList && partner.logo && (
-               <PartnerImage partner={partner} chosenPartner={chosenPartner} />
+               <ui-partner-image partner={partner} chosenPartner={chosenPartner} />
             ) ) )}
          </div>
 
          <ui-h3-bar>Partners</ui-h3-bar>
          <div class="partner-logos">
             {partners.map( partner => ( !partner.isFoundingPartner && !partner.excludeFromPartnerList && partner.logo && (
-               <PartnerImage partner={partner} chosenPartner={chosenPartner} />
+               <ui-partner-image partner={partner} chosenPartner={chosenPartner} />
             ) ) )}
          </div>
       </Host> );
