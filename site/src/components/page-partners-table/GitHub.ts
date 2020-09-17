@@ -217,7 +217,7 @@ export const getBlobInTree = async ( treeSha: string, path?: string ) => {
 export const createCommmit = async ( treeHash: string, parentHash: string, message?: string ): Promise<[hash: string, commitMessage: string]> => {
    const commitMessage = "Partner updates " + new Date( Date.now() ).toISOString() +
       ( committingUser !== undefined ? " by " + committingUser : "" ) +
-      ( message != null ? ": " + message : "" );
+      ( message != null ? "\n\n" + message : "" );
    const result = await request( "POST /repos/:owner/:repo/git/commits", {
       ...defaultArgs(),
       message: commitMessage,
