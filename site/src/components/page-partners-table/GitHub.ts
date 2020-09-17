@@ -7,7 +7,7 @@ import { equals } from "../../util";
 import { GitCreateTreeTreeItem, PartnerTableData } from "./types";
 import { calculatePartnerSearchValue } from "./utils";
 
-const orgName = "nexussays"; // "pizza-to-the-polls";
+const orgName = "pizza-to-the-polls";
 const repoName = "power-the-polls";
 
 /**
