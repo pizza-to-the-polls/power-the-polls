@@ -23,7 +23,7 @@ export namespace Components {
           * The label for an additional field to be displayed on the signup form. If undefined, no additional field will be displayed.
          */
         "customFormFieldLabel"?: string;
-        "optUserOutOfChase": boolean;
+        "optUserOutOfChase"?: boolean;
         /**
           * To display custom text and images for a specific Power the Polls partner, enter their ID here.
          */
@@ -37,6 +37,10 @@ export namespace Components {
           * The API key to access SmartyStreets which is used for address lookup.
          */
         "smartyStreetsApiKey"?: string;
+        /**
+          * The version of this `power-the-polls-form` component
+         */
+        "version": () => Promise<string>;
     }
     interface PtpInfoJurisdiction {
         /**
