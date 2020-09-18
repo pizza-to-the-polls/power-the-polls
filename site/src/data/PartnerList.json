@@ -492,6 +492,10 @@
       ]
    },
    {
+      "partnerId": "ForOurFuture",
+      "name": "For Our Future"
+   },
+   {
       "partnerId": "generalassembly",
       "name": "General Assembly",
       "logo": "general-assembly.png",
@@ -552,6 +556,10 @@
       "name": "IATSE",
       "logo": "iatse.png",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "IBEW",
+      "name": "International Brotherhood of Electrical Workers"
    },
    {
       "partnerId": "icitizen",
@@ -1299,6 +1307,10 @@
       "logo": "workingamerica.jpg",
       "logoAppearsOnLandingPage": true,
       "excludeFromPartnerList": true
+   },
+   {
+      "partnerId": "WorkingWomen",
+      "name": "AFL-CIO Committee on Working Women"
    },
    {
       "partnerId": "YMCA",
