@@ -13,8 +13,8 @@
    {
       "partnerId": "AARP",
       "name": "AARP",
-      "logoAppearsOnLandingPage": true,
-      "logo": "aarp.png"
+      "logo": "aarp.png",
+      "logoAppearsOnLandingPage": true
    },
    {
       "partnerId": "ACLUGeorgia",
@@ -56,27 +56,27 @@
       "partnerId": "allinforvoting",
       "name": "All In For Voting // All In: The Fight for Democracy (Film)",
       "logo": "allinforvoting.jpg",
+      "logoIsDark": true,
       "logoAppearsOnLandingPage": true,
-      "excludeFromPartnerList": true,
-      "logoIsDark": true
+      "excludeFromPartnerList": true
    },
    {
       "partnerId": "AlphaPhiAlpha",
-      "name": "Alpha Phi Alpha Fraternity, Inc (ΑΦΑ)",
+      "name": "Alpha Phi Alpha Fraternity, Inc",
       "logo": "alpha-phi-alpha.png",
       "logoIsDark": true
    },
    {
-      "name": "AMC Theaters",
       "partnerId": "amctheaters",
+      "name": "AMC Theaters",
       "logo": "amc-theaters.png"
    },
    {
       "partnerId": "american-constitution-society",
+      "name": "American Constitution Society",
       "additionalVanityUrls": [
          "acs"
       ],
-      "name": "American Constitution Society",
       "logo": "acs.png"
    },
    {
@@ -94,8 +94,8 @@
       "partnerId": "AmericorpsAlumni",
       "name": "AmericorpsAlumni",
       "logo": "americorps-alumni.jpg",
-      "logoAppearsOnLandingPage": true,
-      "logoIsDark": true
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
    },
    {
       "partnerId": "Amply",
@@ -103,27 +103,28 @@
       "logo": "amply.png"
    },
    {
-      "name": "The Andrew Goodman Foundation",
       "partnerId": "AndrewGoodmanFoundation",
+      "name": "The Andrew Goodman Foundation",
       "logo": "andrew-goodman-foundation.png",
       "logoIsDark": true
    },
    {
-      "name": "AngelMedFlight",
       "partnerId": "angel-med-flight",
-      "logo": "angel-med-flight.png" 
+      "name": "AngelMedFlight",
+      "logo": "angel-med-flight.png",
+      "logoIsDark": true
    },
    {
-      "name": "Anonymous Content",
       "partnerId": "anonymouscontent",
+      "name": "Anonymous Content",
       "logo": "anonymous-content.png"
    },
    {
       "partnerId": "APALA",
       "name": "Asian Pacific American Labor Alliance, AFL-CIO",
-      "logoAppearsOnLandingPage": true,
       "logo": "apala.png",
-      "logoIsDark": true
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
    },
    {
       "partnerId": "APBCO",
@@ -131,8 +132,8 @@
       "customSignupFormField": "Are You a Lawyer?"
    },
    {
-      "name": "App Dynamics",
       "partnerId": "appdynamics",
+      "name": "App Dynamics",
       "logo": "app-dynamics.png"
    },
    {
@@ -159,12 +160,12 @@
    {
       "partnerId": "AYO",
       "name": "Alliance for Youth Organizing",
-      "logo": "alliance-for-youth-organizing.png",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "alliance-for-youth-organizing.png"
    },
    {
-      "name": "Arizona",
-      "partnerId": "azadvocacy"
+      "partnerId": "azadvocacy",
+      "name": "Arizona"
    },
    {
       "partnerId": "BAC",
@@ -172,8 +173,8 @@
       "logo": "bac.png"
    },
    {
-      "name": "Bad Robot",
       "partnerId": "BadRobot",
+      "name": "Bad Robot",
       "logo": "bad-robot.png",
       "logoIsDark": true
    },
@@ -198,9 +199,9 @@
       "name": "Billie Eilish"
    },
    {
+      "partnerId": "birdstone",
       "name": "Bird + Stone",
-      "logo": "bird-stone.png",
-      "partnerId": "birdstone"
+      "logo": "bird-stone.png"
    },
    {
       "partnerId": "blk",
@@ -242,8 +243,8 @@
    {
       "partnerId": "caa",
       "name": "CAA Foundation",
-      "logo": "caa-foundation.png",
       "isFoundingPartner": true,
+      "logo": "caa-foundation.png",
       "logoIsDark": true
    },
    {
@@ -253,8 +254,8 @@
       "logoIsDark": true
    },
    {
-      "name": "Campbell Ewald",
       "partnerId": "campbellewald",
+      "name": "Campbell Ewald",
       "logo": "campbell-ewald.png"
    },
    {
@@ -265,17 +266,12 @@
    {
       "partnerId": "campusvote",
       "name": "Campus Vote Project",
-      "additionalVanityUrls": [
-         "CVP",
-         "CVPE",
-         "CVPM",
-         "CVPS"
-      ],
+      "additionalVanityUrls": [],
       "logo": "campus-vote-project.png"
    },
    {
-      "name": "Candaleria",
       "partnerId": "Candaleria",
+      "name": "Candaleria",
       "logo": "candelaria.png",
       "logoIsDark": true
    },
@@ -290,17 +286,17 @@
    },
    {
       "partnerId": "civic-georgia",
+      "name": "Civic Georgia",
       "additionalVanityUrls": [
          "civicgeorgia"
       ],
-      "logo": "civi-georgia.png",
-      "name": "Civic Georgia"
+      "logo": "civi-georgia.png"
    },
    {
       "partnerId": "CivicAlliance",
       "name": "Civic Alliance",
-      "logo": "civic-alliance.png",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "civic-alliance.png"
    },
    {
       "partnerId": "civil-review-board",
@@ -316,31 +312,31 @@
    },
    {
       "partnerId": "CollectiveImpact",
+      "name": "Collective Impact",
       "additionalVanityUrls": [
          "2020",
          "hero",
          "now"
-      ],
-      "name": "Collective Impact"
+      ]
    },
    {
-      "name": "Color Farm Media",
       "partnerId": "colorfarmmedia",
+      "name": "Color Farm Media",
       "logo": "color-farm-media.png",
       "logoIsDark": true
    },
    {
       "partnerId": "ComedyCentral",
+      "name": "Comedy Central",
+      "isFoundingPartner": true,
       "additionalVanityUrls": [
          "cc"
       ],
-      "name": "Comedy Central",
-      "logo": "comedy-central.png",
-      "isFoundingPartner": true
+      "logo": "comedy-central.png"
    },
    {
-      "name": "Compass Coffee",
       "partnerId": "compasscoffee",
+      "name": "Compass Coffee",
       "logo": "compass-coffee.png",
       "logoIsDark": true
    },
@@ -350,14 +346,30 @@
       "logo": "vsa.png"
    },
    {
-      "name": "Crossover Collective",
       "partnerId": "crossovercollective",
+      "name": "Crossover Collective",
       "logo": "crossover-collective.png"
    },
    {
-      "name":"Curriculum Associates",
-      "partnerId":"curriculum-associates",
-      "logo":"curriculum-associates.png"
+      "partnerId": "curriculum-associates",
+      "name": "Curriculum Associates",
+      "logo": "curriculum-associates.png"
+   },
+   {
+      "partnerId": "CVP",
+      "name": "Campus Vote Project - CVP alias"
+   },
+   {
+      "partnerId": "CVPE",
+      "name": "Campus Vote Project - CVPE alias"
+   },
+   {
+      "partnerId": "CVPM",
+      "name": "Campus Vote Project - CVPM alias"
+   },
+   {
+      "partnerId": "CVPS",
+      "name": "Campus Vote Project - CVPS alias"
    },
    {
       "partnerId": "defendourfuture",
@@ -374,21 +386,21 @@
       "partnerId": "DemocracyInitiative",
       "name": "Democracy Initiative",
       "logo": "democracy-initiative.png",
-      "excludeFromPartnerList": true,
+      "logoIsDark": true,
       "logoAppearsOnLandingPage": true,
-      "logoIsDark": true
+      "excludeFromPartnerList": true
    },
    {
-      "name": "Democracy Maine",
-      "partnerId": "DemocracyMaine"
+      "partnerId": "DemocracyMaine",
+      "name": "Democracy Maine"
    },
    {
-      "name": "Democracy North Carolina",
-      "partnerId": "DemocracyNC"
+      "partnerId": "DemocracyNC",
+      "name": "Democracy North Carolina"
    },
    {
-      "name": "DEMSW",
       "partnerId": "DEMSW",
+      "name": "DEMSW",
       "logo": "dem-sw.png"
    },
    {
@@ -398,38 +410,44 @@
       "logoIsDark": true
    },
    {
-      "name": "Duo Security",
       "partnerId": "duo",
+      "name": "Duo Security",
       "logo": "duo.jpg"
    },
    {
-      "name":"Encore Renewable Energy",
-      "partnerId":"encore-renewable-energy",
-      "logo":"encore.png"
-   },
-   {
-      "name":"EventBrite",
-      "partnerId":"eventbrite",
-      "logo":"eventbrite.jpg"
+      "partnerId": "encore-renewable-energy",
+      "name": "Encore Renewable Energy",
+      "logo": "encore.png"
    },
    {
       "partnerId": "evc",
-      "logo": "every-vote-counts.png",
-      "name": "Every Vote Counts"
+      "name": "Every Vote Counts",
+      "logo": "every-vote-counts.png"
+   },
+   {
+      "partnerId": "eventbrite",
+      "name": "EventBrite",
+      "logo": "eventbrite.jpg",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "everytown",
+      "name": "Everytown for Gun Safety / Moms Demand Action for Gun Sense in America",
+      "logo": "everytown.svg"
    },
    {
       "partnerId": "expediagroup",
+      "name": "Expedia",
       "additionalVanityUrls": [
          "expediagroupvotes2020"
       ],
-      "name": "Expedia",
       "logo": "expedia-group.png"
    },
    {
       "partnerId": "FairElections",
-      "logo": "fair-elections-center.png",
       "name": "Fair Elections Center",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "fair-elections-center.png"
    },
    {
       "partnerId": "fairfight",
@@ -440,8 +458,8 @@
    },
    {
       "partnerId": "feministmajority",
-      "logo": "feminist-majority-foundation.png",
       "name": "Feminist Majority Foundation",
+      "logo": "feminist-majority-foundation.png",
       "logoIsDark": true
    },
    {
@@ -451,13 +469,13 @@
       "logoIsDark": true
    },
    {
-      "name": "Ferrara",
       "partnerId": "ferrara",
+      "name": "Ferrara",
       "logo": "ferrara.png"
    },
    {
-      "name": "FindSpark",
       "partnerId": "FindSpark",
+      "name": "FindSpark",
       "logo": "find-spark.png",
       "logoIsDark": true
    },
@@ -473,15 +491,15 @@
       ]
    },
    {
-      "name": "General Assembly",
       "partnerId": "generalassembly",
+      "name": "General Assembly",
       "logo": "general-assembly.png",
       "logoIsDark": true
    },
    {
+      "partnerId": "github.png",
       "name": "GitHub",
-      "logo": "github.png",
-      "partnerId": "github.png"
+      "logo": "github.png"
    },
    {
       "partnerId": "global-black-caucus",
@@ -490,19 +508,19 @@
       "logoIsDark": true
    },
    {
-      "name": "Good Fear Content",
       "partnerId": "goodfearcontent",
+      "name": "Good Fear Content",
       "logo": "good-fear-content.svg"
    },
    {
-      "name": "GreenKey",
       "partnerId": "GreenKey",
+      "name": "GreenKey",
       "logo": "green-key.jpg",
       "logoIsDark": true
    },
    {
-      "name": "Harry's",
       "partnerId": "harrys",
+      "name": "Harry's",
       "logo": "harrys.jpg",
       "logoIsDark": true
    },
@@ -513,23 +531,29 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "hoteltango",
       "name": "Hotel Tango",
-      "logo": "hotel-tango.png",
-      "partnerId": "hoteltango"
+      "logo": "hotel-tango.png"
    },
    {
       "partnerId": "HRC",
       "name": "Human Rights Campaign Foundation",
-      "logo": "hrc.png",
-      "logoAppearsOnLandingPage": true,
-      "excludeFromPartnerList": true,
       "additionalVanityUrls": [
          "HRCFoundation"
-      ]
+      ],
+      "logo": "hrc.png",
+      "logoAppearsOnLandingPage": true,
+      "excludeFromPartnerList": true
    },
    {
-      "name": "iCitizen",
+      "partnerId": "IATSE",
+      "name": "IATSE",
+      "logo": "iatse.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "icitizen",
+      "name": "iCitizen",
       "logo": "icitizen.jpg",
       "logoIsDark": true
    },
@@ -540,19 +564,19 @@
       "logoIsDark": true
    },
    {
-      "partnerId":"Imperfect Foods",
-      "name":"imperfect-foods",
-      "logo":"imperfect-foods.png",
-      "logoIsDark":true
+      "partnerId": "Imperfect Foods",
+      "name": "imperfect-foods",
+      "logo": "imperfect-foods.png",
+      "logoIsDark": true
    },
    {
-      "name": "Impossible",
       "partnerId": "Impossible",
+      "name": "Impossible",
       "logo": "impossible.png"
    },
    {
-      "name": "Intermix",
       "partnerId": "Intermix",
+      "name": "Intermix",
       "logo": "intermix.png"
    },
    {
@@ -561,8 +585,8 @@
       "logo": "invision.jpg"
    },
    {
-      "name": "Interpublic group",
       "partnerId": "ipg",
+      "name": "Interpublic group",
       "logo": "ipg.png",
       "logoIsDark": true
    },
@@ -573,56 +597,56 @@
       "logoIsDark": true
    },
    {
-      "partnerId":"kansas-city-royals",
-      "name":"Kansas City Royals",
-      "logo":"kansas-city-royals.png"
+      "partnerId": "kansas-city-royals",
+      "name": "Kansas City Royals",
+      "logo": "kansas-city-royals.png"
    },
    {
       "partnerId": "labor-aflcio",
+      "name": "AFL-CIO",
       "additionalVanityUrls": [
          "aflcio"
       ],
-      "name": "AFL-CIO",
-      "optUserOutOfChase": true,
-      "customSignupFormField": "Union Name",
       "logo": "aflcio.svg",
-      "logoAppearsOnLandingPage": true
+      "logoAppearsOnLandingPage": true,
+      "optUserOutOfChase": true,
+      "customSignupFormField": "Union Name"
    },
    {
       "partnerId": "labor-afscme",
+      "name": "AFSCME",
       "additionalVanityUrls": [
          "afscme"
       ],
-      "name": "AFSCME",
       "logo": "afscme.png",
-      "optUserOutOfChase": true,
-      "logoAppearsOnLandingPage": true
+      "logoAppearsOnLandingPage": true,
+      "optUserOutOfChase": true
    },
    {
       "partnerId": "labor-aft",
+      "name": "AFT",
       "additionalVanityUrls": [
          "aft"
       ],
-      "name": "AFT",
       "optUserOutOfChase": true
    },
    {
       "partnerId": "labor-nea",
+      "name": "NEA",
       "additionalVanityUrls": [
          "nea"
       ],
-      "name": "NEA",
       "optUserOutOfChase": true
    },
    {
       "partnerId": "labor-seiu",
+      "name": "SEIU",
       "additionalVanityUrls": [
          "seiu"
       ],
-      "name": "SEIU",
-      "optUserOutOfChase": true,
       "logo": "seiu.jpg",
-      "logoAppearsOnLandingPage": true
+      "logoAppearsOnLandingPage": true,
+      "optUserOutOfChase": true
    },
    {
       "partnerId": "LCV",
@@ -664,49 +688,50 @@
    },
    {
       "partnerId": "levis",
-      "logo": "levi-strauss.png",
       "name": "Levi's",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "levi-strauss.png"
    },
    {
-      "name": "Lime",
       "partnerId": "lime",
+      "name": "Lime",
       "logo": "lime.png"
    },
    {
-      "name": "LinkedIn",
       "partnerId": "linkedin",
+      "name": "LinkedIn",
       "logo": "linkedin.png",
       "logoIsDark": true
    },
    {
-      "name": "Litify",
       "partnerId": "litify",
+      "name": "Litify",
       "logo": "litify.jpeg",
       "logoIsDark": true
    },
    {
-      "name":"LiveNation",
-      "partnerId":"livenation",
-      "logo":"live-nation.png"
+      "partnerId": "livenation",
+      "name": "LiveNation",
+      "logo": "live-nation.png",
+      "logoIsDark": true
    },
    {
-      "name": "League of United Latin American Citizens",
-      "partnerId": "LULAC"
+      "partnerId": "LULAC",
+      "name": "League of United Latin American Citizens"
    },
    {
-      "name": "Lush",
       "partnerId": "lush",
+      "name": "Lush",
       "logo": "lush.png",
       "logoIsDark": true
    },
    {
-      "name": "League of Women Voters Maine",
-      "partnerId": "LVWME"
+      "partnerId": "LVWME",
+      "name": "League of Women Voters Maine"
    },
    {
-      "name": "Lyft",
       "partnerId": "lyft",
+      "name": "Lyft",
       "logo": "lyft.png",
       "logoIsDark": true
    },
@@ -715,9 +740,10 @@
       "name": "Maine Voices"
    },
    {
-      "partnerId":"major-league-baseball",
-      "name":"Major League Baseball",
-      "logo":"mlb.jpg"
+      "partnerId": "major-league-baseball",
+      "name": "Major League Baseball",
+      "logo": "mlb.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "mcn",
@@ -750,8 +776,8 @@
    {
       "partnerId": "MLS",
       "name": "Major League Soccer",
-      "logoAppearsOnLandingPage": true,
-      "logoIsDark": true
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
    },
    {
       "partnerId": "Motivote",
@@ -763,13 +789,13 @@
       "name": "MoveTexas"
    },
    {
-      "name": "More Than A Vote",
       "partnerId": "MTAV",
+      "name": "More Than A Vote",
       "logo": "more-than-a-vote.jpg"
    },
    {
-      "name": "LDF and MTAV",
       "partnerId": "MTAVxLDF",
+      "name": "LDF and MTAV",
       "logo": "more-than-a-vote-x-legal-defense-fund.png",
       "logoAppearsOnLandingPage": true,
       "excludeFromPartnerList": true,
@@ -777,9 +803,9 @@
    },
    {
       "partnerId": "mtv",
-      "logo": "mtv.png",
       "name": "MTV",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "mtv.png"
    },
    {
       "partnerId": "mweg",
@@ -833,13 +859,13 @@
    },
    {
       "partnerId": "NDRN",
-      "logo": "nrdn.png",
       "name": "National Disability Rights Network",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "nrdn.png"
    },
    {
-      "name": "Neu",
       "partnerId": "neu",
+      "name": "Neu",
       "logo": "neu.png",
       "logoIsDark": true
    },
@@ -849,17 +875,17 @@
    },
    {
       "partnerId": "NRDCA",
+      "name": "Natural Resources Defense Council",
       "additionalVanityUrls": [
          "nrdcactionfund"
       ],
-      "name": "Natural Resources Defense Council",
       "logo": "nrdc.jpg",
       "logoIsDark": true,
       "logoAppearsOnLandingPage": true
    },
    {
-      "name": "Nucleus",
       "partnerId": "nucleus",
+      "name": "Nucleus",
       "logo": "nucleus.png",
       "logoIsDark": true
    },
@@ -870,16 +896,16 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "oldnavy",
       "name": "Old Navy",
       "logo": "old-navy.png",
-      "partnerId": "oldnavy",
       "logoIsDark": true,
       "logoAppearsOnLandingPage": true
    },
    {
+      "partnerId": "oldnavyfam",
       "name": "Old Navy Fam",
       "logo": "old-navy.png",
-      "partnerId": "oldnavyfam",
       "logoIsDark": true,
       "logoAppearsOnLandingPage": true,
       "excludeFromPartnerList": true
@@ -895,44 +921,44 @@
       "logo": "otherwise-incorporated.png"
    },
    {
-      "name": "PagerDuty",
       "partnerId": "pagerduty",
+      "name": "PagerDuty",
       "logo": "pagerduty.svg"
    },
    {
       "partnerId": "patagonia",
-      "logo": "patagonia.png",
       "name": "Patagonia",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "patagonia.png"
    },
    {
-      "name": "PayPal",
       "partnerId": "paypal",
+      "name": "PayPal",
       "logo": "paypal.png"
    },
    {
-      "name":"Philadelphia Eagles",
-      "partnerId":"philadelphia-eagles",
-      "logo":"eagles.png"
+      "partnerId": "philadelphia-eagles",
+      "name": "Philadelphia Eagles",
+      "logo": "eagles.png"
    },
    {
       "partnerId": "Pizza",
-      "logo": "pizza-to-the-polls.png",
       "name": "Pizza to the Polls",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "pizza-to-the-polls.png"
    },
    {
-      "name": "Pond Lehocky",
       "partnerId": "PondLehocky",
+      "name": "Pond Lehocky",
       "logo": "pond-lehocky.png"
    },
    {
-      "name": "Pro Georgia",
-      "partnerId": "ProGeorgia"
+      "partnerId": "ProGeorgia",
+      "name": "Pro Georgia"
    },
    {
-      "name": "Protect Democracy",
       "partnerId": "ProtectDemocracy",
+      "name": "Protect Democracy",
       "customSignupFormField": "School"
    },
    {
@@ -941,24 +967,24 @@
    },
    {
       "partnerId": "publicwise",
-      "logo": "public-wise.png",
-      "name": "Public Wise"
+      "name": "Public Wise",
+      "logo": "public-wise.png"
    },
    {
       "partnerId": "PWP",
       "name": "The Poll Workers Project",
-      "logoAppearsOnLandingPage": true,
-      "logo": "pwp.png"
+      "logo": "pwp.png",
+      "logoAppearsOnLandingPage": true
    },
    {
-      "name": "Reddit",
       "partnerId": "reddit",
+      "name": "Reddit",
       "logo": "reddit.png"
    },
    {
       "partnerId": "repairtheworld",
-      "logo": "repair-the-world.png",
-      "name": "Repair The World"
+      "name": "Repair The World",
+      "logo": "repair-the-world.png"
    },
    {
       "partnerId": "represent-us",
@@ -966,15 +992,15 @@
       "logo": "represent-us.png"
    },
    {
-      "name": "Richer Poorer",
       "partnerId": "richerpoorer",
+      "name": "Richer Poorer",
       "logo": "richer-poorer.png",
       "logoIsDark": true
    },
    {
-      "name":"Rinse",
-      "partnerId":"rinse",
-      "logo":"rinse.png"
+      "partnerId": "rinse",
+      "name": "Rinse",
+      "logo": "rinse.png"
    },
    {
       "partnerId": "Salesforce",
@@ -994,22 +1020,22 @@
       "logoAppearsOnLandingPage": true
    },
    {
-      "name": "Nevada",
-      "partnerId": "silverstatevoices"
+      "partnerId": "silverstatevoices",
+      "name": "Nevada"
    },
    {
       "partnerId": "skimm",
+      "name": "theSkimm",
       "additionalVanityUrls": [
          "theSkimm"
       ],
-      "logo": "the-skimm.png",
-      "name": "theSkimm"
+      "logo": "the-skimm.png"
    },
    {
       "partnerId": "SLSV",
-      "logo": "slsv.png",
       "name": "Students Learn Students Vote",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "slsv.png"
    },
    {
       "partnerId": "SMARTElections",
@@ -1023,21 +1049,21 @@
    },
    {
       "partnerId": "socially-driven-music",
+      "name": "Socially Driven Music",
       "additionalVanityUrls": [
          "SociallyDrivenMusic"
       ],
-      "name": "Socially Driven Music",
       "logo": "socially-driven-music.png",
       "customSignupFormField": "Name of Local Artist that Referred You"
    },
    {
-      "partnerId":"Sofar Sounds",
-      "name":"Sofar Sounds",
-      "logo":"sofar-sounds.png"
+      "partnerId": "Sofar Sounds",
+      "name": "Sofar Sounds",
+      "logo": "sofar-sounds.png"
    },
    {
-      "name": "Solve",
       "partnerId": "solve",
+      "name": "Solve",
       "logo": "solve.png",
       "logoIsDark": true
    },
@@ -1090,16 +1116,16 @@
       "logoIsDark": true
    },
    {
-      "name": "The Change Agentcy",
       "partnerId": "thechangeagentcy",
+      "name": "The Change Agentcy",
       "logo": "the-change-agentcy.png"
    },
    {
       "partnerId": "TheDailyShow",
+      "name": "The Daily Show",
       "additionalVanityUrls": [
          "tds"
-      ],
-      "name": "The Daily Show"
+      ]
    },
    {
       "partnerId": "TheFlow",
@@ -1108,27 +1134,28 @@
       "logoIsDark": true
    },
    {
-      "name": "The Vote Project",
       "partnerId": "thevoterproject",
+      "name": "The Vote Project",
       "logo": "the-voter-project.png",
-      "logoAppearsOnLandingPage": true,
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
+   },
+   {
+      "partnerId": "thornburg-investment",
+      "name": "Thornburg Investment",
+      "logo": "thornburg.jpg",
       "logoIsDark": true
    },
    {
-      "name":"Thornburg Investment",
-      "partnerId":"thornburg-investment",
-      "logo":"thornburg.jpg"
-   },
-   {
-      "name": "Timber Wolves and Lynx",
       "partnerId": "timberwolves",
+      "name": "Timber Wolves and Lynx",
       "logo": "timber-wolves-and-lynx.png"
    },
    {
       "partnerId": "TimeToVote",
-      "logo": "time-to-vote.png",
       "name": "Time to Vote",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "time-to-vote.png"
    },
    {
       "partnerId": "town-hall-project",
@@ -1147,9 +1174,9 @@
    },
    {
       "partnerId": "Uber",
-      "logo": "uber.png",
       "name": "Uber",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "uber.png"
    },
    {
       "partnerId": "UFCW",
@@ -1159,15 +1186,15 @@
    },
    {
       "partnerId": "UnitedWay",
-      "logo": "unitedway.png",
       "name": "United Way",
       "isFoundingPartner": true,
+      "logo": "unitedway.png",
       "logoIsDark": true
    },
    {
       "partnerId": "UniteHere",
-      "logo": "unite-here.png",
       "name": "Unite Here!",
+      "logo": "unite-here.png",
       "optUserOutOfChase": true
    },
    {
@@ -1185,16 +1212,16 @@
       "logo": "vets-for-american-ideals.jpg"
    },
    {
-      "name": "Verizon Media",
       "partnerId": "verizonmedia",
+      "name": "Verizon Media",
       "logo": "verizon-media.png",
       "logoIsDark": true
    },
    {
       "partnerId": "ViacomCBS",
       "name": "ViacomCBS",
-      "logo": "viacomcbs.png",
       "isFoundingPartner": true,
+      "logo": "viacomcbs.png",
       "logoIsDark": true
    },
    {
@@ -1207,8 +1234,8 @@
       "partnerId": "votunteer",
       "name": "Votunteer",
       "logo": "votunteer.jpg",
-      "logoAppearsOnLandingPage": true,
-      "logoIsDark": true
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
    },
    {
       "partnerId": "VPC",
@@ -1221,21 +1248,21 @@
       "logo": "vrl.jpg"
    },
    {
-      "name": "Warby Parker",
       "partnerId": "warbyparker",
+      "name": "Warby Parker",
       "logo": "warby-parker.png"
    },
    {
-      "name": "Wayfair",
       "partnerId": "wayfair",
+      "name": "Wayfair",
       "logo": "wayfair.jpg",
       "logoIsDark": true
    },
    {
       "partnerId": "WeCanVote",
-      "logo": "wecanvote.png",
       "name": "We Can Vote",
-      "isFoundingPartner": true
+      "isFoundingPartner": true,
+      "logo": "wecanvote.png"
    },
    {
       "partnerId": "weslayan-engaged",
@@ -1245,21 +1272,28 @@
    },
    {
       "partnerId": "when-we-all-vote",
-      "logo": "when-we-all-vote.png",
-      "name": "When We All Vote"
+      "name": "When We All Vote",
+      "logo": "when-we-all-vote.png"
    },
    {
       "partnerId": "wivoices",
       "name": "Wisconsin"
    },
    {
+      "partnerId": "work",
+      "name": "Work",
+      "logo": "work.png"
+   },
+   {
       "partnerId": "work-elections",
       "name": "Work Elections"
    },
    {
-      "partnerId":"work",
-      "name":"Work",
-      "logo":"work.png"
+      "partnerId": "workingamerica",
+      "name": "Working America",
+      "logo": "workingamerica.jpg",
+      "logoAppearsOnLandingPage": true,
+      "excludeFromPartnerList": true
    },
    {
       "partnerId": "YMCA",
@@ -1267,8 +1301,8 @@
       "logo": "ymca.png"
    },
    {
-      "name": "Zillow",
       "partnerId": "zillow",
+      "name": "Zillow",
       "logo": "zillow.png",
       "logoIsDark": true
    }
