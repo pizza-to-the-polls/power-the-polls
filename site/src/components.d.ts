@@ -43,6 +43,8 @@ export namespace Components {
          */
         "partners"?: Partner[];
     }
+    interface PagePartnersTable {
+    }
     interface PagePrivacy {
     }
     interface PageSearch {
@@ -58,6 +60,15 @@ export namespace Components {
           * aria-label
          */
         "label"?: string;
+    }
+    interface UiPartnerImage {
+        "chosenPartner"?: string;
+        "excludeAnchor": boolean;
+        "partner": Partner;
+        /**
+          * If `true` the image will not be loaded from the deployed assets but from the `partner-updates` branch on GitHub
+         */
+        "sourceFromDevBranch": boolean;
     }
     interface UiSocialShare {
         /**
@@ -141,6 +152,12 @@ declare global {
         prototype: HTMLPagePartnersElement;
         new (): HTMLPagePartnersElement;
     };
+    interface HTMLPagePartnersTableElement extends Components.PagePartnersTable, HTMLStencilElement {
+    }
+    var HTMLPagePartnersTableElement: {
+        prototype: HTMLPagePartnersTableElement;
+        new (): HTMLPagePartnersTableElement;
+    };
     interface HTMLPagePrivacyElement extends Components.PagePrivacy, HTMLStencilElement {
     }
     var HTMLPagePrivacyElement: {
@@ -171,6 +188,12 @@ declare global {
         prototype: HTMLUiMenuButtonElement;
         new (): HTMLUiMenuButtonElement;
     };
+    interface HTMLUiPartnerImageElement extends Components.UiPartnerImage, HTMLStencilElement {
+    }
+    var HTMLUiPartnerImageElement: {
+        prototype: HTMLUiPartnerImageElement;
+        new (): HTMLUiPartnerImageElement;
+    };
     interface HTMLUiSocialShareElement extends Components.UiSocialShare, HTMLStencilElement {
     }
     var HTMLUiSocialShareElement: {
@@ -187,11 +210,13 @@ declare global {
         "page-info": HTMLPageInfoElement;
         "page-jurisdiction": HTMLPageJurisdictionElement;
         "page-partners": HTMLPagePartnersElement;
+        "page-partners-table": HTMLPagePartnersTableElement;
         "page-privacy": HTMLPagePrivacyElement;
         "page-search": HTMLPageSearchElement;
         "ui-h3-bar": HTMLUiH3BarElement;
         "ui-impact-box": HTMLUiImpactBoxElement;
         "ui-menu-button": HTMLUiMenuButtonElement;
+        "ui-partner-image": HTMLUiPartnerImageElement;
         "ui-social-share": HTMLUiSocialShareElement;
     }
 }
@@ -231,6 +256,8 @@ declare namespace LocalJSX {
          */
         "partners"?: Partner[];
     }
+    interface PagePartnersTable {
+    }
     interface PagePrivacy {
     }
     interface PageSearch {
@@ -247,6 +274,15 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         "onToggle"?: (event: CustomEvent<UiMenuButton>) => void;
+    }
+    interface UiPartnerImage {
+        "chosenPartner"?: string;
+        "excludeAnchor"?: boolean;
+        "partner"?: Partner;
+        /**
+          * If `true` the image will not be loaded from the deployed assets but from the `partner-updates` branch on GitHub
+         */
+        "sourceFromDevBranch"?: boolean;
     }
     interface UiSocialShare {
         /**
@@ -284,11 +320,13 @@ declare namespace LocalJSX {
         "page-info": PageInfo;
         "page-jurisdiction": PageJurisdiction;
         "page-partners": PagePartners;
+        "page-partners-table": PagePartnersTable;
         "page-privacy": PagePrivacy;
         "page-search": PageSearch;
         "ui-h3-bar": UiH3Bar;
         "ui-impact-box": UiImpactBox;
         "ui-menu-button": UiMenuButton;
+        "ui-partner-image": UiPartnerImage;
         "ui-social-share": UiSocialShare;
     }
 }
@@ -305,11 +343,13 @@ declare module "@stencil/core" {
             "page-info": LocalJSX.PageInfo & JSXBase.HTMLAttributes<HTMLPageInfoElement>;
             "page-jurisdiction": LocalJSX.PageJurisdiction & JSXBase.HTMLAttributes<HTMLPageJurisdictionElement>;
             "page-partners": LocalJSX.PagePartners & JSXBase.HTMLAttributes<HTMLPagePartnersElement>;
+            "page-partners-table": LocalJSX.PagePartnersTable & JSXBase.HTMLAttributes<HTMLPagePartnersTableElement>;
             "page-privacy": LocalJSX.PagePrivacy & JSXBase.HTMLAttributes<HTMLPagePrivacyElement>;
             "page-search": LocalJSX.PageSearch & JSXBase.HTMLAttributes<HTMLPageSearchElement>;
             "ui-h3-bar": LocalJSX.UiH3Bar & JSXBase.HTMLAttributes<HTMLUiH3BarElement>;
             "ui-impact-box": LocalJSX.UiImpactBox & JSXBase.HTMLAttributes<HTMLUiImpactBoxElement>;
             "ui-menu-button": LocalJSX.UiMenuButton & JSXBase.HTMLAttributes<HTMLUiMenuButtonElement>;
+            "ui-partner-image": LocalJSX.UiPartnerImage & JSXBase.HTMLAttributes<HTMLUiPartnerImageElement>;
             "ui-social-share": LocalJSX.UiSocialShare & JSXBase.HTMLAttributes<HTMLUiSocialShareElement>;
         }
     }

@@ -272,7 +272,8 @@
    {
       "partnerId": "Candaleria",
       "name": "Candaleria",
-      "logo": "candelaria.png"
+      "logo": "candelaria.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "cbs",
