@@ -69,7 +69,8 @@
    {
       "partnerId": "amctheaters",
       "name": "AMC Theaters",
-      "logo": "amc-theaters.png"
+      "logo": "amc-theaters.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "american-constitution-society",
@@ -510,7 +511,8 @@
    {
       "partnerId": "goodfearcontent",
       "name": "Good Fear Content",
-      "logo": "good-fear-content.svg"
+      "logo": "good-fear-content.svg",
+      "logoIsDark": true
    },
    {
       "partnerId": "GreenKey",
@@ -572,7 +574,8 @@
    {
       "partnerId": "Impossible",
       "name": "Impossible",
-      "logo": "impossible.png"
+      "logo": "impossible.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "Intermix",
@@ -599,7 +602,8 @@
    {
       "partnerId": "kansas-city-royals",
       "name": "Kansas City Royals",
-      "logo": "kansas-city-royals.png"
+      "logo": "kansas-city-royals.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "labor-aflcio",
@@ -939,7 +943,8 @@
    {
       "partnerId": "philadelphia-eagles",
       "name": "Philadelphia Eagles",
-      "logo": "eagles.png"
+      "logo": "eagles.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "Pizza",
