@@ -69,7 +69,8 @@
    {
       "partnerId": "amctheaters",
       "name": "AMC Theaters",
-      "logo": "amc-theaters.png"
+      "logo": "amc-theaters.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "american-constitution-society",
@@ -433,7 +434,9 @@
    {
       "partnerId": "everytown",
       "name": "Everytown for Gun Safety / Moms Demand Action for Gun Sense in America",
-      "logo": "everytown.svg"
+      "logo": "everytown.svg",
+      "logoAppearsOnLandingPage": true,
+      "excludeFromPartnerList": true
    },
    {
       "partnerId": "expediagroup",
@@ -491,6 +494,10 @@
       ]
    },
    {
+      "partnerId": "ForOurFuture",
+      "name": "For Our Future"
+   },
+   {
       "partnerId": "generalassembly",
       "name": "General Assembly",
       "logo": "general-assembly.png",
@@ -510,7 +517,8 @@
    {
       "partnerId": "goodfearcontent",
       "name": "Good Fear Content",
-      "logo": "good-fear-content.svg"
+      "logo": "good-fear-content.svg",
+      "logoIsDark": true
    },
    {
       "partnerId": "GreenKey",
@@ -549,7 +557,12 @@
       "partnerId": "IATSE",
       "name": "IATSE",
       "logo": "iatse.png",
-      "logoIsDark": true
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
+   },
+   {
+      "partnerId": "IBEW",
+      "name": "International Brotherhood of Electrical Workers"
    },
    {
       "partnerId": "icitizen",
@@ -572,7 +585,8 @@
    {
       "partnerId": "Impossible",
       "name": "Impossible",
-      "logo": "impossible.png"
+      "logo": "impossible.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "Intermix",
@@ -599,7 +613,8 @@
    {
       "partnerId": "kansas-city-royals",
       "name": "Kansas City Royals",
-      "logo": "kansas-city-royals.png"
+      "logo": "kansas-city-royals.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "labor-aflcio",
@@ -939,7 +954,8 @@
    {
       "partnerId": "philadelphia-eagles",
       "name": "Philadelphia Eagles",
-      "logo": "eagles.png"
+      "logo": "eagles.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "Pizza",
@@ -1294,6 +1310,10 @@
       "logo": "workingamerica.jpg",
       "logoAppearsOnLandingPage": true,
       "excludeFromPartnerList": true
+   },
+   {
+      "partnerId": "WorkingWomen",
+      "name": "AFL-CIO Committee on Working Women"
    },
    {
       "partnerId": "YMCA",
