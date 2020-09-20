@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from "@stencil/core";
+import { Component, h, Host, Prop, State } from "@stencil/core";
 
 @Component( {
    tag: "page-faq",
@@ -19,8 +19,20 @@ export class PageFaq {
     */
    @Prop() public page_title?: string;
 
+   @State() private isModalOpen: boolean = false;
+
+   private handleOnClose() {
+     this.isModalOpen = false;
+     console.log(this.isModalOpen);
+   } 
+
+    private handleOpen(){
+       this.isModalOpen = true;
+    }
+
    public render() {
       const data = this.data || [];
+      const isModalOpen = this.isModalOpen;
    
       return ( 
       <Host>
@@ -41,6 +53,8 @@ export class PageFaq {
             <br />
             For press inquiries, please contact <a href="press@powerthepolls.org">press@powerthepolls.org</a>.
          </p>
+         <button class="cta" onClick={() => this.handleOpen()}>contact us</button>
+         <contact-modal isOpen={isModalOpen} onClose={() => this.handleOnClose()} />
       </Host> 
       );
    }

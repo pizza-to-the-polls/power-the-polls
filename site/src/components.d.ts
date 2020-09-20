@@ -12,6 +12,14 @@ export namespace Components {
     }
     interface ComponentList {
     }
+    interface ContactForm {
+        "formError": boolean;
+        "submitForm"?: (e: Event) => void;
+    }
+    interface ContactModal {
+        "isOpen": boolean;
+        "onClose"?: () => void;
+    }
     interface PageAbout {
     }
     interface PageContact {
@@ -114,6 +122,18 @@ declare global {
         prototype: HTMLComponentListElement;
         new (): HTMLComponentListElement;
     };
+    interface HTMLContactFormElement extends Components.ContactForm, HTMLStencilElement {
+    }
+    var HTMLContactFormElement: {
+        prototype: HTMLContactFormElement;
+        new (): HTMLContactFormElement;
+    };
+    interface HTMLContactModalElement extends Components.ContactModal, HTMLStencilElement {
+    }
+    var HTMLContactModalElement: {
+        prototype: HTMLContactModalElement;
+        new (): HTMLContactModalElement;
+    };
     interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
     }
     var HTMLPageAboutElement: {
@@ -213,6 +233,8 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "component-list": HTMLComponentListElement;
+        "contact-form": HTMLContactFormElement;
+        "contact-modal": HTMLContactModalElement;
         "page-about": HTMLPageAboutElement;
         "page-contact": HTMLPageContactElement;
         "page-faq": HTMLPageFaqElement;
@@ -235,6 +257,14 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface ComponentList {
+    }
+    interface ContactForm {
+        "formError"?: boolean;
+        "submitForm"?: (e: Event) => void;
+    }
+    interface ContactModal {
+        "isOpen"?: boolean;
+        "onClose"?: () => void;
     }
     interface PageAbout {
     }
@@ -328,6 +358,8 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-root": AppRoot;
         "component-list": ComponentList;
+        "contact-form": ContactForm;
+        "contact-modal": ContactModal;
         "page-about": PageAbout;
         "page-contact": PageContact;
         "page-faq": PageFaq;
@@ -352,6 +384,8 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "component-list": LocalJSX.ComponentList & JSXBase.HTMLAttributes<HTMLComponentListElement>;
+            "contact-form": LocalJSX.ContactForm & JSXBase.HTMLAttributes<HTMLContactFormElement>;
+            "contact-modal": LocalJSX.ContactModal & JSXBase.HTMLAttributes<HTMLContactModalElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
             "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;

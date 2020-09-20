@@ -20,4 +20,13 @@ page-faq {
       cursor: pointer;  
       float: right;
    }
+
+   button.cta {
+      border: 0;
+      background-color: $color-font-highlight-contrast;
+      padding: 0.8em 1em;
+      width: 75%;
+      text-transform: uppercase;
+      font-weight: bold;
+   }
 }
