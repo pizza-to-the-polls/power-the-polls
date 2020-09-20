@@ -1,17 +1,23 @@
 page-faq {
-   .number {
-      margin: 1em 0 0.5em 0;
-      border: 2px solid $color-accent;
-      padding: 0.25em;
-      display: inline-block;
-      width: 2.2em;
-      text-align: center;
-      color: $color-accent;
-      font-size: 1.6em;
-      font-weight: bold;
-      font-family: $font-heading;
-   }
    h3 {
       margin-top: 0em;
+   }
+   .section-title {
+      color: #FF5554;
+      margin-bottom: .5em;
+   }
+   h3 > a {
+      fill: #FF5554;
+      float: right;
+      background-color: white;
+      margin-right: .5em;
+   }
+
+   .toggle {
+      background-color: Transparent;
+      outline: none;
+      border: none;
+      cursor: pointer;  
+      float: right;
    }
 }

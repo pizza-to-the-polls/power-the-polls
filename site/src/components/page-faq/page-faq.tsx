@@ -1,7 +1,5 @@
 import { Component, h, Host, Prop } from "@stencil/core";
 
-import { Fragment } from "../../util";
-
 @Component( {
    tag: "page-faq",
    styleUrl: "page-faq.scss",
@@ -14,7 +12,7 @@ export class PageFaq {
     * see: FaqData.ts
     * see: app-root.tsx
     */
-   @Prop() public data?: { question: string, answer: string }[];
+   @Prop() public data?: {sectionTitle: string,  questions:{ question: string, answer: () => string }[]}[];
 
    /**
     * The page's title
@@ -23,17 +21,28 @@ export class PageFaq {
 
    public render() {
       const data = this.data || [];
-      return ( <Host>
+   
+      return ( 
+      <Host>
          <h1>{ this.page_title || "" }</h1>
-         {data.map( ( item, index ) => (
-            <Fragment>
-               <div class="number">{index + 1 < 10 ? "0" : ""}{index + 1}</div>
-               <h3>{item.question}</h3>
-               <hr />
-               <p>{item.answer}</p>
-            </Fragment>
+         <p>
+            Due to the high volume of emails we receive, 
+            we recommend taking a look at our FAQ before to see if the answer to your question is there!
+            If you have questions specific to your local area, 
+            contact your local election administrators by entering your zip at <a href="https://www.powerthepolls.org/search">https://www.powerthepolls.org/search</a>
+         </p>
+         {data.map(({sectionTitle, questions}) => (
+            <question-section sectionTitle={sectionTitle} questions={questions}/>   
          ) )}
-      </Host> );
+         <hr />
+         <h3>Still can’t find the answer to your question?</h3>
+         <p> 
+            Although we can’t guarantee a response to every email due to volume, selecting the appropriate category will help make sure the right person receives your inquiry.
+            <br />
+            For press inquiries, please contact <a href="press@powerthepolls.org">press@powerthepolls.org</a>.
+         </p>
+      </Host> 
+      );
    }
 
 }
