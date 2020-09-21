@@ -568,7 +568,10 @@
    },
    {
       "partnerId": "IBEW",
-      "name": "International Brotherhood of Electrical Workers"
+      "name": "International Brotherhood of Electrical Workers",
+      "logo": "ibew.jpg",
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
    },
    {
       "partnerId": "icitizen",
