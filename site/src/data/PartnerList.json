@@ -416,6 +416,12 @@
       "logo": "duo.jpg"
    },
    {
+      "partnerId": "EAB",
+      "name": "EAB",
+      "logo": "eab.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "encore-renewable-energy",
       "name": "Encore Renewable Energy",
       "logo": "encore.png"
