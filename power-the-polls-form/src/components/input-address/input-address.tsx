@@ -35,7 +35,6 @@ export class AddressInput {
 
       const onZipInputChange = ( event: Event ) => {
          this.zipValue = ( event.target as HTMLInputElement ).value;
-
          if( zipValidationRegex.test( this.zipValue ) ) {
             ZipGeocode( this.zipValue )
                .then( ( result ) => {

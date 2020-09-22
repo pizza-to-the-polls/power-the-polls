@@ -39,7 +39,7 @@ export class PowerThePollsForm {
     */
    @Prop() public customFormFieldLabel?: string;
 
-   @Prop() public optUserOutOfChase: boolean;
+   @Prop() public optUserOutOfChase?: boolean;
 
    /**
     * Dispatched when the user has submitted the form and it has successfully POSTed to `destination`
@@ -66,7 +66,6 @@ export class PowerThePollsForm {
    constructor() {
       this.formStatus = "incomplete";
       this.formData = {};
-      this.optUserOutOfChase = false;
       this.michiganFormSubmitted = false;
    }
 
@@ -74,7 +73,16 @@ export class PowerThePollsForm {
    public reset() {
       this.formStatus = "incomplete";
       this.formData = {};
+      this.michiganFormSubmitted = false;
       return Promise.resolve();
+   }
+
+   /**
+    * The version of this `power-the-polls-form` component
+    */
+   @Method()
+   public version() {
+      return Promise.resolve( "CURRENT_VERSION" );
    }
 
    public render() {
