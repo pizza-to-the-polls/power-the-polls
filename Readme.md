@@ -1,4 +1,4 @@
-# Power the Polls - diff
+# Power the Polls
 
 There are two projects in this repository:
 
