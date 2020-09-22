@@ -416,6 +416,12 @@
       "logo": "duo.jpg"
    },
    {
+      "partnerId": "EAB",
+      "name": "EAB",
+      "logo": "eab.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "encore-renewable-energy",
       "name": "Encore Renewable Energy",
       "logo": "encore.png"
@@ -562,7 +568,10 @@
    },
    {
       "partnerId": "IBEW",
-      "name": "International Brotherhood of Electrical Workers"
+      "name": "International Brotherhood of Electrical Workers",
+      "logo": "ibew.jpg",
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
    },
    {
       "partnerId": "icitizen",
@@ -1108,6 +1117,10 @@
    {
       "partnerId": "starbucks-customer",
       "name": "Starbucks"
+   },
+   {
+      "partnerId": "StateVoices",
+      "name": "State Voices"
    },
    {
       "partnerId": "sva",
