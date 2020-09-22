@@ -24,7 +24,12 @@ export class PageFaq {
    public render() {
       const data = this.data || [];
       return ( <Host>
-         <h1>{ this.page_title || "" }</h1>
+         <h1>{this.page_title || ""}</h1>
+         <p>
+            <stencil-route-link url="/faq">English</stencil-route-link>
+            {" / "}
+            <stencil-route-link url="/faq-es">Español</stencil-route-link>
+         </p>
          {data.map( ( item, index ) => (
             <Fragment>
                <div class="number">{index + 1 < 10 ? "0" : ""}{index + 1}</div>
