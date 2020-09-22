@@ -172,13 +172,13 @@ export class PowerThePollsForm {
          {this.formStatus === "completed" ? (
             <article>
                <FormSubmissionThankYou stateInfo={stateInfo} />
-               <ptp-info-poll-worker
-                  city={this.formData.city}
-                  county={this.formData.county}
-                  state={this.formData.state}
-                  formData={this.formData}
-               >
-                  {stateInfo?.noPollWorkersNeeded !== true && (
+               {stateInfo?.noPollWorkersNeeded !== true && (
+                  <ptp-info-poll-worker
+                     city={this.formData.city}
+                     county={this.formData.county}
+                     state={this.formData.state}
+                     formData={this.formData}
+                  >
                      <div>
                         <MichiganAdditionalInfoForm
                            formSubmitted={this.michiganFormSubmitted}
@@ -195,8 +195,8 @@ export class PowerThePollsForm {
                         </div>
                         <hr />
                      </div>
-                  )}
-               </ptp-info-poll-worker>
+                  </ptp-info-poll-worker>
+               )}
             </article>
          ) : ( <Fragment>
             <h3>Help your community and sign up to Power the Polls!</h3>
