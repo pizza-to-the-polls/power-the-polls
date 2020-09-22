@@ -71,6 +71,10 @@ a {
    &:hover {
       color: $color-accent;
    }
+   &.link-active {
+      color: $color-accent;
+      text-decoration: none;
+   }
 }
 
 ui-loading-spinner::part(cube) {

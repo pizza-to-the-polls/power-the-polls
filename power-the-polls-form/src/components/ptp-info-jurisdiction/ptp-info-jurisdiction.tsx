@@ -2,7 +2,7 @@ import { Component, h, Host, Prop, State } from "@stencil/core";
 import { MultiPolygon } from "geojson";
 
 import { JurisdictionInfo } from "../../data/States";
-import { PtpFormData, PtpLink } from "../../util";
+import { allNullOrEmpty, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
 import { fetchJurisdictionGeoJson, fetchJurisdictionInfo } from "../../util/WorkElections";
 
 import EmailApplicationForm from "./EmailApplicationForm";
@@ -80,6 +80,15 @@ export class JurisdictionInfoComponent {
       }
 
       return ( <Host>
+
+         <div style={{ display: "flex", alignItems: "start", flexDirection: "column" }}>
+            <ui-geojson-to-svg
+               geoJson={this.jurisdictionShape}
+               height={180}
+               width={250}
+            />
+         </div>
+
          <h2>{j.name}, {j.state.alpha}</h2>
          {j.jurisdiction_link_text && j.jurisdiction_link &&
             ( <p>
@@ -94,31 +103,25 @@ export class JurisdictionInfoComponent {
             <EmailApplicationForm jurisdiction={j} data={this.formData} onComplete={() => this.mailToFormComplete = true} />
          }
 
-         <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
-            <ui-geojson-to-svg
-               geoJson={this.jurisdictionShape}
-               height={250}
-               width={300}
-            />
-         </div>
-
          <slot />
 
          <section>
             <h4>Hours and Compensation</h4>
-            <ul>
-               {j.hours_start && ( <li><strong>Start Time: </strong>{j.hours_start}</li> )}
-               {j.hours_end && ( <li><strong>End Time: </strong>{j.hours_end}</li> )}
-               {j.compensation && ( <li><strong>Compensation: </strong>{j.compensation}</li> )}
-               {j.full_day_req === "Y" ? <li>You must work the full day</li> : null}
-               {j.full_day_req === "N" && ( <li>Part-day poll worker shifts are available.</li> )}
-               {j.full_day_req.length > 1 && ( <li>{j.full_day_req}</li> )}
-            </ul>
+            {!allNullOrEmpty( j?.hours_start, j?.hours_end, j?.compensation, j?.full_day_req )
+               ? (
+                  <ul>
+                     {j.hours_start && ( <li><strong>Start Time: </strong>{j.hours_start}</li> )}
+                     {j.hours_end && ( <li><strong>End Time: </strong>{j.hours_end}</li> )}
+                     {j.compensation && ( <li><strong>Compensation: </strong>{j.compensation}</li> )}
+                     {j.full_day_req === "Y" ? <li>You must work the full day</li> : null}
+                     {j.full_day_req === "N" && ( <li>Part-day poll worker shifts are available.</li> )}
+                     {j.full_day_req.length > 1 && ( <li>{j.full_day_req}</li> )}
+                  </ul>
+               ) : <p>Please contact your local election official for more information</p>}
          </section>
 
-         { j.registration_status.length < 1
-            ? null
-            : (
+         {!isNullOrEmpty( j.registration_status )
+            ? (
                <section>
                   <h4>Voter Registration Requirements</h4>
                   <ul>
@@ -129,35 +132,57 @@ export class JurisdictionInfoComponent {
                            : j.registration_status}</li>
                   </ul>
                </section>
-            )}
+            ) : null}
 
          <section>
             <h4>Work Requirements</h4>
-            <ul>
-               {j.minimum_age && ( <li><strong>Minimum Age: </strong>{j.minimum_age}</li> )}
-               {j.training === "Y" && ( <li>You must attend a training session.</li> )}
-               {j.training.length > 1 && ( <li>{j.training}</li> )}
-               {j.complete_training === "Y" && ( <li>You must work the full day.</li> )}
-               {j.complete_training === "N" && ( <li>Part-day poll worker shifts are available.</li> )}
-               {j.complete_training.length > 1 && ( <li>{j.complete_training}</li> )}
-               {j.training_note && ( <li><strong>Training Details: </strong>{j.training_note}</li> )}
-            </ul>
+            {!allNullOrEmpty( j?.minimum_age, j?.training, j?.complete_training, j?.training_note )
+               ? (
+                  <ul>
+                     {j.minimum_age && ( <li><strong>Minimum Age: </strong>{j.minimum_age}</li> )}
+                     {j.training === "Y" && ( <li>You must attend a training session.</li> )}
+                     {j.training.length > 1 && ( <li>{j.training}</li> )}
+                     {j.complete_training === "Y" && ( <li>You must work the full day.</li> )}
+                     {j.complete_training === "N" && ( <li>Part-day poll worker shifts are available.</li> )}
+                     {j.complete_training.length > 1 && ( <li>{j.complete_training}</li> )}
+                     {j.training_note && ( <li><strong>Training Details: </strong>{j.training_note}</li> )}
+                  </ul>
+               ) : <p>Please contact your local election official for more information</p>}
          </section>
 
-         {j.further_notes && (
-            <section>
-               <h4>Further Notes</h4>
-               <p>{j.further_notes}</p>
-            </section>
-         )}
+         {!allNullOrEmpty( j?.further_notes, j?.trusted_notes )
+            ? (
+               <section>
+                  <h4>Further Notes</h4>
+                  <p>{j.further_notes}</p>
+                  {j.trusted_notes && ( // "trusted"
+                     <div>
+                        <iframe
+                           sandbox="allow-popups"
+                           width="100%"
+                           height="100%"
+                           frameBorder="0"
+                           srcDoc={
+                              // hacky way to add styles to the iframe
+                              '<head><link href="/build/app.css" rel="stylesheet"></head><body>' +
+                              j.trusted_notes.replace( /\<a/g, "<a target=\"_blank\"" ) +
+                              "</body>"
+                           } />
+                     </div>
+                  )}
+               </section>
+            ) : null}
 
-         <section>
-            <h4>Contact Information</h4>
-            <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>
-            <p><strong>Email: </strong><a href={`mailto:${j.email}`}>{j.email}</a></p>
-            {j?.office_address &&
-               <p><strong>Office Address: </strong><a target="_blank" href={`https://www.google.com/maps/search/${encodeURIComponent( j?.office_address )}`}>{j?.office_address}</a></p>}
-         </section>
+         {!allNullOrEmpty( j?.telephone, j?.email, j?.office_address )
+            ? (
+               <section>
+                  <h4>Contact Information</h4>
+                  <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>
+                  <p><strong>Email: </strong><a href={`mailto:${j.email}`}>{j.email}</a></p>
+                  {j?.office_address &&
+                     <p><strong>Office Address: </strong><a target="_blank" href={`https://www.google.com/maps/search/${encodeURIComponent( j?.office_address )}`}>{j?.office_address}</a></p>}
+               </section>
+            ) : null}
 
          {j.website && ( <a
             class="poll-worker-action"
