@@ -162,7 +162,12 @@ export class JurisdictionInfoComponent {
                            width="100%"
                            height="100%"
                            frameBorder="0"
-                           srcDoc={j.trusted_notes.replace( /\<a/g, "<a target=\"_blank\"" )} />
+                           srcDoc={
+                              // hacky way to add styles to the iframe
+                              '<head><link href="/build/app.css" rel="stylesheet"></head><body>' +
+                              j.trusted_notes.replace( /\<a/g, "<a target=\"_blank\"" ) +
+                              "</body>"
+                           } />
                      </div>
                   )}
                </section>
