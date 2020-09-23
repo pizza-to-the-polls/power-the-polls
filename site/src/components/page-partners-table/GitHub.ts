@@ -314,14 +314,14 @@ export const saveChanges = async ( newData: PartnerTableData[], message?: string
    ], parent.tree );
 
    progress( "Creating new commit", 0.85 );
-   const [commitHash, commitMessage] = await createCommmit( treeHash, parent.commit, message );
+   const [commitHash] = await createCommmit( treeHash, parent.commit, message );
 
    progress( "Updating branch", 0.9 );
    // make sure there is a PR, but don't error if it fails since we can easily do this manually
    try {
       await request( "POST /repos/:owner/:repo/pulls", {
          ...defaultArgs(),
-         title: commitMessage,
+         title: "Partner updates",
          head: "partner-updates",
          base: "master",
          body: "This PR was created by the partner editor tool",
