@@ -1002,6 +1002,10 @@
       "logoAppearsOnLandingPage": true
    },
    {
+      "partnerId": "ready",
+      "name": "Collective Impact (FB Alias)"
+   },
+   {
       "partnerId": "reddit",
       "name": "Reddit",
       "logo": "reddit.png"
