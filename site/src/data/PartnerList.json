@@ -598,6 +598,10 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "influencer",
+      "name": "PtP Influencer Engagement"
+   },
+   {
       "partnerId": "Intermix",
       "name": "Intermix",
       "logo": "intermix.png"
@@ -1002,6 +1006,10 @@
       "logoAppearsOnLandingPage": true
    },
    {
+      "partnerId": "ready",
+      "name": "Collective Impact (FB Alias)"
+   },
+   {
       "partnerId": "reddit",
       "name": "Reddit",
       "logo": "reddit.png"
@@ -1117,6 +1125,10 @@
    {
       "partnerId": "starbucks-customer",
       "name": "Starbucks"
+   },
+   {
+      "partnerId": "state-challenge",
+      "name": "PtP State Challenge / OneTeam Partners"
    },
    {
       "partnerId": "StateVoices",
