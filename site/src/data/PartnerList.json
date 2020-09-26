@@ -674,7 +674,8 @@
       ],
       "logo": "seiu.jpg",
       "logoAppearsOnLandingPage": true,
-      "optUserOutOfChase": true
+      "optUserOutOfChase": true,
+      "customSignupFormField": "Do you speak any languages in addition to English? (Yes / No)"
    },
    {
       "partnerId": "LCV",
@@ -1057,6 +1058,15 @@
       "logoAppearsOnLandingPage": true
    },
    {
+      "partnerId": "seiu-ads",
+      "name": "SEIU",
+      "logo": "seiu-ads.jpg",
+      "logoAppearsOnLandingPage": true,
+      "excludeFromPartnerList": true,
+      "optUserOutOfChase": true,
+      "customSignupFormField": "Do you speak any languages in addition to English? (Yes / No)"
+   },
+   {
       "partnerId": "silverstatevoices",
       "name": "Nevada"
    },
@@ -1343,6 +1353,11 @@
    {
       "partnerId": "WorkingWomen",
       "name": "AFL-CIO Committee on Working Women"
+   },
+   {
+      "partnerId": "workpollsNC",
+      "name": "SEIU",
+      "customSignupFormField": "Do you speak any languages in addition to English? (Yes / No)"
    },
    {
       "partnerId": "YMCA",
