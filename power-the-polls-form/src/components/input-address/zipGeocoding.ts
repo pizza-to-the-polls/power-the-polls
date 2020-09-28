@@ -14,11 +14,12 @@ export interface ZipGeocodingError {
 export default async ( zipcode: string ): Promise<ZipGeocodingResult | ZipGeocodingError> => {
    const url = new URL( "https" + "://smartystreet.powerthepolls.org/dev/zip" );
    url.searchParams.append( "zipcode", zipcode );
-   return fetch( url.toString() ).
-      then(
+   return fetch( url.toString() )
+      .then(
          response => response.json(),
          error => console.log( "SmartyStreets Error:", error ),
-      ).then( ( response: USZipCode.QueryResult ) => {
+      )
+      .then( ( response: USZipCode.QueryResult ) => {
          let result: USZipCode.QueryResultItem = response[0];
 
          if( result.reason ) {

@@ -39,7 +39,7 @@ export class PowerThePollsForm {
     */
    @Prop() public customFormFieldLabel?: string;
 
-   @Prop() public optUserOutOfChase: boolean;
+   @Prop() public optUserOutOfChase?: boolean;
 
    /**
     * Dispatched when the user has submitted the form and it has successfully POSTed to `destination`
@@ -66,7 +66,6 @@ export class PowerThePollsForm {
    constructor() {
       this.formStatus = "incomplete";
       this.formData = {};
-      this.optUserOutOfChase = false;
       this.michiganFormSubmitted = false;
    }
 
@@ -74,7 +73,16 @@ export class PowerThePollsForm {
    public reset() {
       this.formStatus = "incomplete";
       this.formData = {};
+      this.michiganFormSubmitted = false;
       return Promise.resolve();
+   }
+
+   /**
+    * The version of this `power-the-polls-form` component
+    */
+   @Method()
+   public version() {
+      return Promise.resolve( "CURRENT_VERSION" );
    }
 
    public render() {
@@ -164,13 +172,13 @@ export class PowerThePollsForm {
          {this.formStatus === "completed" ? (
             <article>
                <FormSubmissionThankYou stateInfo={stateInfo} />
-               <ptp-info-poll-worker
-                  city={this.formData.city}
-                  county={this.formData.county}
-                  state={this.formData.state}
-                  formData={this.formData}
-               >
-                  {stateInfo?.noPollWorkersNeeded !== true && (
+               {stateInfo?.noPollWorkersNeeded !== true && (
+                  <ptp-info-poll-worker
+                     city={this.formData.city}
+                     county={this.formData.county}
+                     state={this.formData.state}
+                     formData={this.formData}
+                  >
                      <div>
                         <MichiganAdditionalInfoForm
                            formSubmitted={this.michiganFormSubmitted}
@@ -187,8 +195,8 @@ export class PowerThePollsForm {
                         </div>
                         <hr />
                      </div>
-                  )}
-               </ptp-info-poll-worker>
+                  </ptp-info-poll-worker>
+               )}
             </article>
          ) : ( <Fragment>
             <h3>Help your community and sign up to Power the Polls!</h3>

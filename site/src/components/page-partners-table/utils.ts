@@ -8,17 +8,23 @@ export const calculatePartnerSearchValue = ( partner: Partner ) => {
 };
 
 /**
- * Try to ge tthe first non-null of local and branch, then default to master
+ * Try to get the first non-null value between local and partner-updates branch, if both are null, default to master
  */
 export const getLatest = ( partner: PartnerTableData ): Partner => {
    const { local, branch, master } = partner;
    return local !== undefined ? local : branch !== undefined ? branch : master;
 };
 
+/**
+ * Get the value of `field` from the latest copy of partner (local, branch, then master)
+ */
 export const getField = <T extends keyof Partner>( partner: PartnerTableData, field: T ): Partner[T] => {
    return getLatest( partner )[field];
 };
 
+/**
+ * `true` if `partner` has any local or branch changes that differ from master
+ */
 export const isModified = ( partner: PartnerTableData ): boolean => {
    const { local, branch } = partner;
    return local !== undefined || branch !== undefined;
@@ -70,12 +76,18 @@ export const isValidImageBytes = ( base64WithHeader: string ): boolean =>
    base64WithHeader.startsWith( "data:image/jpeg;base64," ) ||
    base64WithHeader.startsWith( "data:image/svg+xml;base64," );
 
+/**
+ * Remove the "data:image/..." prefix and return pure base-64 encoded data
+ */
 export const cleanImageData = ( base64WithHeader: string ): string => base64WithHeader
    .replace( "data:image/png;base64,", "" )
    .replace( "data:image/jpg;base64,", "" )
    .replace( "data:image/jpeg;base64,", "" )
    .replace( "data:image/svg+xml;base64,", "" );
 
+/**
+ * Adds the proper file extension for the image
+ */
 export const createImageFilename = ( partner: Partner ) => partner.partnerId.toLowerCase() +
    ( partner.logo!.startsWith( "data:image/png" ) ? ".png"
       : partner.logo!.startsWith( "data:image/svg" ) ? ".svg"

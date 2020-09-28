@@ -416,6 +416,12 @@
       "logo": "duo.jpg"
    },
    {
+      "partnerId": "EAB",
+      "name": "EAB",
+      "logo": "eab.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "encore-renewable-energy",
       "name": "Encore Renewable Energy",
       "logo": "encore.png"
@@ -562,7 +568,10 @@
    },
    {
       "partnerId": "IBEW",
-      "name": "International Brotherhood of Electrical Workers"
+      "name": "International Brotherhood of Electrical Workers",
+      "logo": "ibew.jpg",
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
    },
    {
       "partnerId": "icitizen",
@@ -587,6 +596,10 @@
       "name": "Impossible",
       "logo": "impossible.png",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "influencer",
+      "name": "PtP Influencer Engagement"
    },
    {
       "partnerId": "Intermix",
@@ -661,7 +674,8 @@
       ],
       "logo": "seiu.jpg",
       "logoAppearsOnLandingPage": true,
-      "optUserOutOfChase": true
+      "optUserOutOfChase": true,
+      "customSignupFormField": "Do you speak any languages in addition to English? (Yes / No)"
    },
    {
       "partnerId": "LCV",
@@ -749,6 +763,10 @@
       "name": "Lyft",
       "logo": "lyft.png",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "mainepeoplesalliance",
+      "name": "Maine People's Alliance"
    },
    {
       "partnerId": "mainevoices",
@@ -993,6 +1011,10 @@
       "logoAppearsOnLandingPage": true
    },
    {
+      "partnerId": "ready",
+      "name": "Collective Impact (FB Alias)"
+   },
+   {
       "partnerId": "reddit",
       "name": "Reddit",
       "logo": "reddit.png"
@@ -1034,6 +1056,15 @@
       "name": "Southeast Asia Resource Action Center",
       "logo": "searac.png",
       "logoAppearsOnLandingPage": true
+   },
+   {
+      "partnerId": "seiu-ads",
+      "name": "SEIU",
+      "logo": "seiu-ads.jpg",
+      "logoAppearsOnLandingPage": true,
+      "excludeFromPartnerList": true,
+      "optUserOutOfChase": true,
+      "customSignupFormField": "Do you speak any languages in addition to English? (Yes / No)"
    },
    {
       "partnerId": "silverstatevoices",
@@ -1108,6 +1139,14 @@
    {
       "partnerId": "starbucks-customer",
       "name": "Starbucks"
+   },
+   {
+      "partnerId": "state-challenge",
+      "name": "PtP State Challenge / OneTeam Partners"
+   },
+   {
+      "partnerId": "StateVoices",
+      "name": "State Voices"
    },
    {
       "partnerId": "sva",
@@ -1314,6 +1353,11 @@
    {
       "partnerId": "WorkingWomen",
       "name": "AFL-CIO Committee on Working Women"
+   },
+   {
+      "partnerId": "workpollsNC",
+      "name": "SEIU",
+      "customSignupFormField": "Do you speak any languages in addition to English? (Yes / No)"
    },
    {
       "partnerId": "YMCA",

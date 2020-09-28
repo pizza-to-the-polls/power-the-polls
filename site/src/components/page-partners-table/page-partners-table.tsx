@@ -61,6 +61,9 @@ const EditableText: FunctionalComponent<{
    </div> );
 };
 
+/**
+ * Mini-CMS to edit /src/data/PartnersList.json in the partner-updates branch in GitHub and commit the changes
+ */
 @Component( {
    tag: "page-partners-table",
    styleUrl: "page-partners-table.scss",
@@ -102,7 +105,8 @@ export class PagePartnersTable {
    public refreshPartnerData( type: "Loading" | "Refreshing" = "Loading" ) {
       loadPartnerData( ( message, progress ) => this.loading = [message, progress * 0.9], type ).then( x => {
          this.partners = x;
-         // set progress to 90% and introduce a delay before hiding the loading screen since it will take a bit to render all 200+ partners and the images and components
+         // set progress to 90% and introduce a delay before hiding the loading screen since it will
+         // take a bit to render all 200+ partners and the images and components
          this.loading = ["Rendering", 0.9];
          setTimeout( () => this.loading = undefined, 2000 );
       } );
@@ -116,7 +120,7 @@ export class PagePartnersTable {
    public render() {
       const { partners, filterValue, filterParams } = this;
 
-      const onSearch = ( e: Event ) => {
+      const onFilterChange = ( e: Event ) => {
          this.filterValue = ( e.target as HTMLInputElement ).value;
       };
 
@@ -252,7 +256,7 @@ export class PagePartnersTable {
          <div class="controls">
             <div class="search">
                Filter:&nbsp;
-               <input value={filterValue} onInput={onSearch} />
+               <input value={filterValue} onInput={onFilterChange} />
                <button onClick={() => this.filterValue = ""} class="icon">❌</button>
             </div>
             <div class="create">
@@ -279,7 +283,7 @@ export class PagePartnersTable {
                         onClick={saveToken}
                      >Login</button>
                      {" "}
-                     <a href="https://github.com/settings/tokens/new" target="_blank" title="Select 'repo'">create token</a>
+                     <a href="https://github.com/settings/tokens/new" target="_blank" title="Select 'repo'">create&nbsp;token</a>
                   </Fragment>
                }
             </div>
@@ -304,7 +308,7 @@ export class PagePartnersTable {
                <div>Logo on /partners list?</div>
                <div>Logo on landing page?</div>
                <div>Is founding partner?</div>
-               <div>Control user chase?</div>
+               <div>Partner name in privacy clause?</div>
                <div>Custom form field</div>
             </div>
             {partners
@@ -345,8 +349,15 @@ export class PagePartnersTable {
                            ) )}
                            <li>
                               <button
+                                 class="icon"
+                                 title="Add a new vanity URL"
                                  onClick={_ => {
-                                    const newVanityUrl = prompt( `New vanity URL for ${partner.master.partnerId}` )?.trim();
+                                    const newVanityUrl = prompt(
+                                       `Add a new vanity URL for ${getLatest( partner ).name}\n\nThey currently have:\n` +
+                                       `https://powerthepolls.org/${partner.master.partnerId}\n` +
+                                       `${getLatest( partner ).additionalVanityUrls?.map( x => "https://powerthepolls.org/" + x )?.join( "\n" ) || ""}` +
+                                       "\n\n\nno spaces",
+                                    )?.trim()?.replace( /\s+/g, "" );
                                     if( newVanityUrl == null || newVanityUrl === "" ) {
                                        return;
                                     }
@@ -356,7 +367,7 @@ export class PagePartnersTable {
                                        return;
                                     }
                                     modify( partner, "additionalVanityUrls", ( existing: string[] ) => [...( existing || [] ), newVanityUrl] );
-                                 }}>add</button>
+                                 }}>➕</button>
                            </li>
                         </ul>
                      </div>
@@ -373,7 +384,7 @@ export class PagePartnersTable {
                                     <form class={{ "modified": isFieldModified( partner, "logoIsDark" ) }}>
                                        <label>
                                           light
-                                       <input
+                                          <input
                                              type="radio"
                                              name="logoIsDark"
                                              value="true"
@@ -383,7 +394,7 @@ export class PagePartnersTable {
                                        </label>
                                        <label>
                                           dark
-                                       <input
+                                          <input
                                              type="radio"
                                              name="logoIsDark"
                                              value="false"

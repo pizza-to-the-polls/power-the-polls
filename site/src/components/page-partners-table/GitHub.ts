@@ -1,5 +1,4 @@
 import { request } from "@octokit/request";
-// import { ReposGetBranchResponseData } from "@octokit/types";
 
 import { Partner } from "../../data/types";
 import { equals } from "../../util";
@@ -31,6 +30,11 @@ const defaultArgs = () => ( {
 export const getAuthenticatedUserName = () => authenticatedUser;
 export const getCommittingUserName = () => committingUser;
 
+/**
+ * Set the auth token and persist it to local storage
+ * @param authToken see https://github.com/settings/tokens, the token just needs "repo" permissions
+ * @param user The committing user, if different from the user who owns `authToken`
+ */
 export const setToken = async ( authToken?: string, user?: string ) => {
    token = authToken;
    if( token == null ) {
@@ -54,7 +58,14 @@ export const setToken = async ( authToken?: string, user?: string ) => {
    }
 };
 
-export const loadPartnerData = async ( progress: ( message: string, progress: number ) => void = () => ( {} ), type: "Loading" | "Refreshing" = "Loading" ): Promise<PartnerTableData[]> => {
+/**
+ * This is the initialization function, basically. It loads any existing token and pulls down the master and
+ * parter-update branch data.
+ */
+export const loadPartnerData = async (
+   progress: ( message: string, progress: number ) => void = () => ( {} ),
+   type: "Loading" | "Refreshing" = "Loading",
+): Promise<PartnerTableData[]> => {
 
    progress( `${type} user`, 0.1 );
    await setToken( localStorage.getItem( "token" ) || undefined );
@@ -63,6 +74,11 @@ export const loadPartnerData = async ( progress: ( message: string, progress: nu
       ...defaultArgs(),
       branch: "master",
    } );
+   // this will be updated to the branch sha below if the branch exists
+   parents = {
+      commit: master.data.commit.sha,
+      tree: master.data.commit.commit.tree.sha,
+   };
 
    progress( `${type} partner data`, 0.2 );
    // get the partner list data from the master branch
@@ -76,7 +92,6 @@ export const loadPartnerData = async ( progress: ( message: string, progress: nu
          break;
       }
    }
-   // console.log( masterTree.data );
 
    progress( `${type} changes`, 0.6 );
    let modifiedPartners: Partner[] = [];
@@ -91,6 +106,7 @@ export const loadPartnerData = async ( progress: ( message: string, progress: nu
          commit: branch.data.commit.sha,
          tree: branch.data.commit.commit.tree.sha,
       };
+
       const branchTreeSha = branch.data.commit.commit.tree.sha;
       const branchTree = await getTree( branchTreeSha, true );
       let branchPartners: Partner[] = [];
@@ -101,6 +117,7 @@ export const loadPartnerData = async ( progress: ( message: string, progress: nu
             break;
          }
       }
+
       // find modified and new partners since master
       for( let partner of branchPartners ) {
          const match = partners.find( y => y.partnerId === partner.partnerId );
@@ -110,7 +127,6 @@ export const loadPartnerData = async ( progress: ( message: string, progress: nu
             modifiedPartners.push( partner );
          }
       }
-      // console.log( branchTree.data, "modifiedPartners", modifiedPartners, "newPartners", newPartners );
    } catch {
       // no-op. Branch doesn't exist. We'll just create it on commit.
    }
@@ -153,13 +169,13 @@ export const getBlob = async ( sha: string ) => {
 };
 
 export const createBlobFromJson = async ( json: string ): Promise<string> => {
-   // console.log( "createBlobFromJson", json );
    const result = await request( "POST /repos/:owner/:repo/git/blobs", {
       ...defaultArgs(),
       content: json,
+      // FIXME: UTF-8 doesn't actually work because when we pull it down again, the base64 encoding GitHub uses loses codepoints > 2 bytes. So juse use ASCII in practice.
       encoding: "utf-8",
    } );
-   // console.log( "createBlobFromJson", result );
+
    return result.data.sha;
 };
 
@@ -169,24 +185,20 @@ export const createBlobFromJson = async ( json: string ): Promise<string> => {
  * @returns THe SHA of the new blob
  */
 export const createBlobFromBase64 = async ( base64: string ): Promise<string> => {
-   // console.log( "createBlobFromBase64", base64 );
    const result = await request( "POST /repos/:owner/:repo/git/blobs", {
       ...defaultArgs(),
       content: base64,
       encoding: "base64",
    } );
-   // console.log( "createBlobFromBase64", result );
    return result.data.sha;
 };
 
 export const modifyTree = async ( tree: GitCreateTreeTreeItem[], baseTreeHash: string ) => {
-   // console.log( "modifyTree", tree );
    const result = await request( "POST /repos/:owner/:repo/git/trees", {
       ...defaultArgs(),
       tree: tree,
       base_tree: baseTreeHash,
    } );
-   // console.log( "modifyTree", result );
    return result.data.sha;
 };
 
@@ -224,7 +236,6 @@ export const createCommmit = async ( treeHash: string, parentHash: string, messa
       tree: treeHash,
       parents: [parentHash],
    } );
-   // console.log( "createCommmit", result );
    return [result.data.sha, commitMessage];
 };
 
@@ -234,7 +245,6 @@ export const updateBranch = async ( commitHash: string, branchName: string ) => 
       ref: `heads/${branchName}`,
       sha: commitHash,
    } );
-   // console.log( "updateBranch", result );
    return result.data.object.sha;
 };
 
@@ -304,14 +314,14 @@ export const saveChanges = async ( newData: PartnerTableData[], message?: string
    ], parent.tree );
 
    progress( "Creating new commit", 0.85 );
-   const [commitHash, commitMessage] = await createCommmit( treeHash, parent.commit, message );
+   const [commitHash] = await createCommmit( treeHash, parent.commit, message );
 
    progress( "Updating branch", 0.9 );
    // make sure there is a PR, but don't error if it fails since we can easily do this manually
    try {
       await request( "POST /repos/:owner/:repo/pulls", {
          ...defaultArgs(),
-         title: commitMessage,
+         title: "Partner updates",
          head: "partner-updates",
          base: "master",
          body: "This PR was created by the partner editor tool",

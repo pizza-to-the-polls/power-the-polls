@@ -38,6 +38,11 @@ export class PageFaq {
       <Host>
          <h1>{ this.page_title || "" }</h1>
          <p>
+            <stencil-route-link url="/faq">English</stencil-route-link>
+            {" / "}
+            <stencil-route-link url="/faq-es">Español</stencil-route-link>
+         </p>
+         <p>
             Due to the high volume of emails we receive, 
             we recommend taking a look at our FAQ before to see if the answer to your question is there!
             If you have questions specific to your local area, 

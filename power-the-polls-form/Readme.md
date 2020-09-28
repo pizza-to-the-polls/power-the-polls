@@ -23,9 +23,9 @@ Include the latest version of the scripts (use module and non-module to support 
 
 <head>
    <script type="module"
-      src="https://unpkg.com/@ptp-us/power-the-polls-form@latest/power-the-polls-form/power-the-polls-form.esm.js"></script>
+      src="https://unpkg.com/@ptp-us/power-the-polls-form/power-the-polls-form/power-the-polls-form.esm.js"></script>
    <script nomodule
-      src="https://unpkg.com/@ptp-us/power-the-polls-form@latest/power-the-polls-form/power-the-polls-form.js"></script>
+      src="https://unpkg.com/@ptp-us/power-the-polls-form/power-the-polls-form/power-the-polls-form.js"></script>
 </head>
 
 <body>

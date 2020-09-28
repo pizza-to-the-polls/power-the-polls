@@ -28,7 +28,6 @@ tsconfig.tsbuildinfo
 
 /power-the-polls-form/src/**/*.js.map
 /power-the-polls-form/src/**/*.js
-/power-the-polls-form/src/**/*.d.ts
 
 /scripts/enrich-actionkit-data/*.js
 /scripts/**/*.csv
