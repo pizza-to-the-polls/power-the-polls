@@ -48,7 +48,7 @@ export class ContactModal {
 
         return (
             <Fragment>
-                <div class={this.isOpen ? "wrapper visible" : "wrapper"}>
+                <div class={this.isOpen ? "modal-wrapper visible" : "modal-wrapper"}>
                     <div class="modal">
                         <button class="close-button" onClick={this.onClose}>
                                 <img
