@@ -1051,6 +1051,12 @@
       "logoAppearsOnLandingPage": true
    },
    {
+      "partnerId": "QuestTrust",
+      "name": "QuestTrust",
+      "logo": "questtrust.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "ready",
       "name": "Collective Impact (FB Alias)"
    },
