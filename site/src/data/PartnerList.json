@@ -478,7 +478,8 @@
    },
    {
       "partnerId": "FCB",
-      "name": "FCB"
+      "name": "FCB",
+      "logo": "fcb.png"
    },
    {
       "partnerId": "feministmajority",
