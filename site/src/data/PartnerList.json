@@ -287,6 +287,12 @@
       "name": "CBS"
    },
    {
+      "partnerId": "ChadCollesian",
+      "name": "ChadCollesian",
+      "logo": "chadcollesian.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "ChowNow",
       "name": "ChowNow",
       "logo": "chownow.png"
