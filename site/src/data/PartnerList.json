@@ -191,6 +191,12 @@
       "logo": "bbyo.png"
    },
    {
+      "partnerId": "Belk",
+      "name": "Belk",
+      "logo": "belk.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "big-tent-usa",
       "name": "Big Tent USA",
       "logo": "big-tent-usa.jpeg"
