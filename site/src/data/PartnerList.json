@@ -819,6 +819,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "MatchGroup",
+      "name": "MatchGroup",
+      "logo": "matchgroup.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "mcn",
       "name": "Master Clinician Network",
       "logo": "mcn.png",
