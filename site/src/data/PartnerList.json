@@ -1239,6 +1239,11 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "TexasLegends",
+      "name": "TexasLegends",
+      "logo": "texaslegends.png"
+   },
+   {
       "partnerId": "thechangeagentcy",
       "name": "The Change Agentcy",
       "logo": "the-change-agentcy.png"
