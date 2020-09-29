@@ -664,6 +664,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "KiteString",
+      "name": "KiteString",
+      "logo": "kitestring.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "labor-aflcio",
       "name": "AFL-CIO",
       "additionalVanityUrls": [
