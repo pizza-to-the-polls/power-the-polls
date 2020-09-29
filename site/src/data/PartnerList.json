@@ -847,6 +847,12 @@
       "logoAppearsOnLandingPage": true
    },
    {
+      "partnerId": "MondelezIntl",
+      "name": "MondelezIntl",
+      "logo": "mondelezintl.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "motivate",
       "name": "motivate",
       "logo": "motivate.jpg",
