@@ -1187,6 +1187,12 @@
       "logo": "sva.png"
    },
    {
+      "partnerId": "TampaBayRays",
+      "name": "TampaBayRays",
+      "logo": "tampabayrays.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "target",
       "name": "Target"
    },
