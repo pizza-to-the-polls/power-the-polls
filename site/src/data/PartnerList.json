@@ -472,6 +472,10 @@
       "excludeFromPartnerList": true
    },
    {
+      "partnerId": "FCB",
+      "name": "FCB"
+   },
+   {
       "partnerId": "feministmajority",
       "name": "Feminist Majority Foundation",
       "logo": "feminist-majority-foundation.png",
@@ -633,6 +637,12 @@
       "partnerId": "kansas-city-royals",
       "name": "Kansas City Royals",
       "logo": "kansas-city-royals.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "Kearney",
+      "name": "Kearney",
+      "logo": "kearney.png",
       "logoIsDark": true
    },
    {
