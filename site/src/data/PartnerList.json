@@ -744,6 +744,12 @@
       "logo": "lead-mn.jpg"
    },
    {
+      "partnerId": "LevenfeldPearlsteing",
+      "name": "LevenfeldPearlsteing",
+      "logo": "levenfeldpearlsteing.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "levis",
       "name": "Levi's",
       "isFoundingPartner": true,
