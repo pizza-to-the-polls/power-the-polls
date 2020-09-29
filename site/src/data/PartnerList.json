@@ -287,6 +287,11 @@
       "name": "CBS"
    },
    {
+      "partnerId": "ChowNow",
+      "name": "ChowNow",
+      "logo": "chownow.png"
+   },
+   {
       "partnerId": "Civic",
       "name": "Civic",
       "logo": "civic.png"
