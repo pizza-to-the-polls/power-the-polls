@@ -1448,5 +1448,10 @@
       "name": "zipcar",
       "logo": "zipcar.jpg",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "zuora",
+      "name": "zuora",
+      "logo": "zuora.png"
    }
 ]
