@@ -646,6 +646,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "KCTool",
+      "name": "KCTool",
+      "logo": "kctool.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "Kearney",
       "name": "Kearney",
       "logo": "kearney.png",
