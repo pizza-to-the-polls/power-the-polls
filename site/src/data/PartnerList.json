@@ -359,6 +359,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "coqual",
+      "name": "coqual",
+      "logo": "coqual.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "CrookedMedia",
       "name": "Crooked Media",
       "logo": "vsa.png"
