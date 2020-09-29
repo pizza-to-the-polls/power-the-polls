@@ -1408,5 +1408,11 @@
       "name": "Zillow",
       "logo": "zillow.png",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "zipcar",
+      "name": "zipcar",
+      "logo": "zipcar.jpg",
+      "logoIsDark": true
    }
 ]
