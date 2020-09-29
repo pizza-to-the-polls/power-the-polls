@@ -1367,6 +1367,13 @@
       "optUserOutOfChase": true
    },
    {
+      "partnerId": "unfkus",
+      "name": "unfkus",
+      "logo": "unfkus.jpg",
+      "logoAppearsOnLandingPage": true,
+      "excludeFromPartnerList": true
+   },
+   {
       "partnerId": "UnitedWay",
       "name": "United Way",
       "isFoundingPartner": true,
