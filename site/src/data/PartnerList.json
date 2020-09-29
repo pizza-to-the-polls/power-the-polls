@@ -1003,6 +1003,12 @@
       "logo": "pond-lehocky.png"
    },
    {
+      "partnerId": "Premier-Lacrosse-League",
+      "name": "Premier-Lacrosse-League",
+      "logo": "premier-lacrosse-league.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "ProGeorgia",
       "name": "Pro Georgia"
    },
