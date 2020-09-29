@@ -822,6 +822,12 @@
       "name": "Microsoft"
    },
    {
+      "partnerId": "MissionTaqueria",
+      "name": "MissionTaqueria",
+      "logo": "missiontaqueria.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "mitzvote",
       "name": "Mitz Vote",
       "logo": "mitz-vote.png",
