@@ -1156,6 +1156,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "SDL",
+      "name": "SDL",
+      "logo": "sdl.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "SEARAC",
       "name": "Southeast Asia Resource Action Center",
       "logo": "searac.png",
