@@ -438,6 +438,12 @@
       "logo": "encore.png"
    },
    {
+      "partnerId": "EnvisionHealthcare",
+      "name": "EnvisionHealthcare",
+      "logo": "envisionhealthcare.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "evc",
       "name": "Every Vote Counts",
       "logo": "every-vote-counts.png"
