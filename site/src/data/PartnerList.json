@@ -841,6 +841,12 @@
       "logoAppearsOnLandingPage": true
    },
    {
+      "partnerId": "motivate",
+      "name": "motivate",
+      "logo": "motivate.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "Motivote",
       "name": "Motivote",
       "logo": "motivote.png"
