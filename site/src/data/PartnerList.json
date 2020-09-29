@@ -1252,6 +1252,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "TangerOutlets",
+      "name": "TangerOutlets",
+      "logo": "tangeroutlets.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "target",
       "name": "Target"
    },
