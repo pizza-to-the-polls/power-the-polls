@@ -988,6 +988,11 @@
       "logo": "otherwise-incorporated.png"
    },
    {
+      "partnerId": "OutCast",
+      "name": "OutCast",
+      "logo": "outcast.jpg"
+   },
+   {
       "partnerId": "pagerduty",
       "name": "PagerDuty",
       "logo": "pagerduty.svg"
