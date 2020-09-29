@@ -943,6 +943,11 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "nextdoor",
+      "name": "nextdoor",
+      "logo": "nextdoor.png"
+   },
+   {
       "partnerId": "nhvotes",
       "name": "New Hampshire"
    },
