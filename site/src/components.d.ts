@@ -28,7 +28,7 @@ export namespace Components {
         /**
           * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
          */
-        "data"?: {sectionTitle: string,  questions:{ question: string, answer: () => string }[]}[];
+        "data"?: {sectionTitle: string,  questions: { question: string, answer: () => string }[]}[];
         /**
           * The page's title
          */
@@ -274,7 +274,7 @@ declare namespace LocalJSX {
         /**
           * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
          */
-        "data"?: {sectionTitle: string,  questions:{ question: string, answer: () => string }[]}[];
+        "data"?: {sectionTitle: string,  questions: { question: string, answer: () => string }[]}[];
         /**
           * The page's title
          */
