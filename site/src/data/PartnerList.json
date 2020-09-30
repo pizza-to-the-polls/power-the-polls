@@ -191,6 +191,12 @@
       "logo": "bbyo.png"
    },
    {
+      "partnerId": "Belk",
+      "name": "Belk",
+      "logo": "belk.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "big-tent-usa",
       "name": "Big Tent USA",
       "logo": "big-tent-usa.jpeg"
@@ -281,6 +287,17 @@
       "name": "CBS"
    },
    {
+      "partnerId": "ChadCollesian",
+      "name": "ChadCollesian",
+      "logo": "chadcollesian.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "ChowNow",
+      "name": "ChowNow",
+      "logo": "chownow.png"
+   },
+   {
       "partnerId": "Civic",
       "name": "Civic",
       "logo": "civic.png"
@@ -339,6 +356,12 @@
       "partnerId": "compasscoffee",
       "name": "Compass Coffee",
       "logo": "compass-coffee.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "coqual",
+      "name": "coqual",
+      "logo": "coqual.jpg",
       "logoIsDark": true
    },
    {
@@ -427,6 +450,12 @@
       "logo": "encore.png"
    },
    {
+      "partnerId": "EnvisionHealthcare",
+      "name": "EnvisionHealthcare",
+      "logo": "envisionhealthcare.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "evc",
       "name": "Every Vote Counts",
       "logo": "every-vote-counts.png"
@@ -464,6 +493,11 @@
       "logo": "fairfight.png",
       "logoAppearsOnLandingPage": true,
       "excludeFromPartnerList": true
+   },
+   {
+      "partnerId": "FCB",
+      "name": "FCB",
+      "logo": "fcb.png"
    },
    {
       "partnerId": "feministmajority",
@@ -630,6 +664,24 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "KCTool",
+      "name": "KCTool",
+      "logo": "kctool.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "Kearney",
+      "name": "Kearney",
+      "logo": "kearney.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "KiteString",
+      "name": "KiteString",
+      "logo": "kitestring.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "labor-aflcio",
       "name": "AFL-CIO",
       "additionalVanityUrls": [
@@ -716,6 +768,12 @@
       "logo": "lead-mn.jpg"
    },
    {
+      "partnerId": "LevenfeldPearlsteing",
+      "name": "LevenfeldPearlsteing",
+      "logo": "levenfeldpearlsteing.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "levis",
       "name": "Levi's",
       "isFoundingPartner": true,
@@ -779,6 +837,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "MatchGroup",
+      "name": "MatchGroup",
+      "logo": "matchgroup.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "mcn",
       "name": "Master Clinician Network",
       "logo": "mcn.png",
@@ -801,6 +865,12 @@
       "name": "Microsoft"
    },
    {
+      "partnerId": "MissionTaqueria",
+      "name": "MissionTaqueria",
+      "logo": "missiontaqueria.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "mitzvote",
       "name": "Mitz Vote",
       "logo": "mitz-vote.png",
@@ -811,6 +881,18 @@
       "name": "Major League Soccer",
       "logoIsDark": true,
       "logoAppearsOnLandingPage": true
+   },
+   {
+      "partnerId": "MondelezIntl",
+      "name": "MondelezIntl",
+      "logo": "mondelezintl.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "motivate",
+      "name": "motivate",
+      "logo": "motivate.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "Motivote",
@@ -903,6 +985,11 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "nextdoor",
+      "name": "nextdoor",
+      "logo": "nextdoor.png"
+   },
+   {
       "partnerId": "nhvotes",
       "name": "New Hampshire"
    },
@@ -954,6 +1041,11 @@
       "logo": "otherwise-incorporated.png"
    },
    {
+      "partnerId": "OutCast",
+      "name": "OutCast",
+      "logo": "outcast.jpg"
+   },
+   {
       "partnerId": "pagerduty",
       "name": "PagerDuty",
       "logo": "pagerduty.svg"
@@ -987,6 +1079,12 @@
       "logo": "pond-lehocky.png"
    },
    {
+      "partnerId": "Premier-Lacrosse-League",
+      "name": "Premier-Lacrosse-League",
+      "logo": "premier-lacrosse-league.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "ProGeorgia",
       "name": "Pro Georgia"
    },
@@ -1009,6 +1107,12 @@
       "name": "The Poll Workers Project",
       "logo": "pwp.png",
       "logoAppearsOnLandingPage": true
+   },
+   {
+      "partnerId": "QuestTrust",
+      "name": "QuestTrust",
+      "logo": "questtrust.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "ready",
@@ -1049,6 +1153,12 @@
       "partnerId": "scholars-strategy-network",
       "name": "Scholars Strategy Network",
       "logo": "scholars-strategy-network.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "SDL",
+      "name": "SDL",
+      "logo": "sdl.png",
       "logoIsDark": true
    },
    {
@@ -1154,6 +1264,18 @@
       "logo": "sva.png"
    },
    {
+      "partnerId": "TampaBayRays",
+      "name": "TampaBayRays",
+      "logo": "tampabayrays.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "TangerOutlets",
+      "name": "TangerOutlets",
+      "logo": "tangeroutlets.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "target",
       "name": "Target"
    },
@@ -1169,6 +1291,11 @@
       "name": "Texas LBJ School",
       "logo": "texas-lbj-school.png",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "TexasLegends",
+      "name": "TexasLegends",
+      "logo": "texaslegends.png"
    },
    {
       "partnerId": "thechangeagentcy",
@@ -1369,5 +1496,16 @@
       "name": "Zillow",
       "logo": "zillow.png",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "zipcar",
+      "name": "zipcar",
+      "logo": "zipcar.jpg",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "zuora",
+      "name": "zuora",
+      "logo": "zuora.png"
    }
 ]
