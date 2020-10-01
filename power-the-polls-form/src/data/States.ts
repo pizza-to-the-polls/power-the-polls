@@ -1,6 +1,11 @@
 export interface StateInfo {
    id: number;
    noPollWorkersNeeded?: boolean;
+   /**
+    * We do not support this jurisdiction.
+    * (Make sure`noPollWorkersNeeded` is also set to true for these states)
+    */
+   notSupported?: boolean;
    partner?: boolean;
    /**
     * Can't think of a better term
@@ -66,6 +71,13 @@ const data: { [state: string]: StateInfo } = {
       "id": -2,
       "name": "Oregon",
       "noPollWorkersNeeded": true,
+      "jurisdictions": {},
+   },
+   "PR": {
+      "id": -1,
+      "name": "Puerto Rico",
+      "noPollWorkersNeeded": true,
+      "notSupported": true,
       "jurisdictions": {},
    },
    "WA": {
