@@ -21,8 +21,8 @@ const Nav: FunctionalComponent<NavProps> = ( { onSelectNavItem, formPath, partne
          </li>
          <li>
             <stencil-route-link
-               url="/faq"
-               urlMatch={["/faq", "/faq-es"]}
+               url="/contact-faq"
+               urlMatch={["/faq", "/faq-es", "/contact", "faq-contact"]}
                onClick={onSelectNavItem}
             >FAQ & Contact</stencil-route-link>
          </li>
@@ -73,6 +73,24 @@ export class AppRoot {
             component: "page-about",
          },
          {
+            url: "/faq-contact",
+            component: "page-faq",
+            componentProps: {
+               data: FaqData,
+               page_title: "Frequently Asked Questions about Poll Working",
+            },
+         },
+         {
+            // legacy route
+            url: "/contact",
+            component: "page-faq",
+            componentProps: {
+               data: FaqData,
+               page_title: "Frequently Asked Questions about Poll Working",
+            },
+         },
+         {
+            // legacy route
             url: "/faq",
             component: "page-faq",
             componentProps: {
