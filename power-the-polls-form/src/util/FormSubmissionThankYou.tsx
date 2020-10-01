@@ -9,7 +9,14 @@ import Fragment from "./Fragment";
  * tell them as much and as they share.
  */
 const FormSubmissionThankYou: FunctionalComponent<{ stateInfo: StateInfo | null }> = ( { stateInfo } ) => (
-   stateInfo != null && stateInfo.noPollWorkersNeeded ? (
+   stateInfo != null && stateInfo.notSupported ? (
+      <Fragment>
+         <h1>Thank you so much for your interest in being a poll worker!</h1>
+         <p>
+            Unfortunately we are unable to support poll worker placement in {stateInfo.name}. You can still help power the polls by voting in this upcoming election, and encouraging your friends and family across the country to register to vote and &mdash; for those who live in other parts of the U.S. &mdash; signing up to be poll workers.
+         </p>
+      </Fragment>
+   ) : stateInfo != null && stateInfo.noPollWorkersNeeded ? (
       <Fragment>
          <h1>Thank you so much for your interest in being a poll worker!</h1>
          <p>
@@ -29,11 +36,11 @@ const FormSubmissionThankYou: FunctionalComponent<{ stateInfo: StateInfo | null 
          </p>
       </Fragment>
    ) : (
-         <Fragment>
-            <h1>You’re one step closer to Powering the Polls!</h1>
-            <h2>What’s next?</h2>
-            <hr />
-         </Fragment>
-      )
+            <Fragment>
+               <h1>You’re one step closer to Powering the Polls!</h1>
+               <h2>What’s next?</h2>
+               <hr />
+            </Fragment>
+         )
 );
 export default FormSubmissionThankYou;
