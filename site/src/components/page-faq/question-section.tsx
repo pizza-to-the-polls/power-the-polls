@@ -19,7 +19,7 @@ export class QuestionSection {
     @State() private isOpen: boolean = false;
 
     @Listen("click")
-    handleClick() {
+    public handleClick() {
       this.isOpen = !this.isOpen;
     }
 
