@@ -24,7 +24,7 @@ const Nav: FunctionalComponent<NavProps> = ( { onSelectNavItem, formPath, partne
                url="/faq"
                urlMatch={["/faq", "/faq-es"]}
                onClick={onSelectNavItem}
-            >FAQ</stencil-route-link>
+            >FAQ & Contact</stencil-route-link>
          </li>
          <li>
             <stencil-route-link
@@ -32,9 +32,6 @@ const Nav: FunctionalComponent<NavProps> = ( { onSelectNavItem, formPath, partne
                urlMatch={["/partners", "/partners#*"]}
                onClick={onSelectNavItem}
             >Partners</stencil-route-link>
-         </li>
-         <li>
-            <stencil-route-link url="/contact" onClick={onSelectNavItem}>Contact</stencil-route-link>
          </li>
       </ul>
    </nav>
@@ -74,10 +71,6 @@ export class AppRoot {
          {
             url: "/about",
             component: "page-about",
-         },
-         {
-            url: "/contact",
-            component: "page-contact",
          },
          {
             url: "/faq",
@@ -309,7 +302,7 @@ export class AppRoot {
    }
 
    /**
-    * Returns `true` if the provided `firstPathSection` is one of the app's nav routes (e.g., /partners, /contact etc).
+    * Returns `true` if the provided `firstPathSection` is one of the app's nav routes (e.g., /partners ).
     * This will check with and without a leading '/' so you don't need to add or trim it.
     */
    private isNavRoute( firstPathSection: string ) {

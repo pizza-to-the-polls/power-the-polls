@@ -97,7 +97,7 @@ export class ContactModal {
             <div>
                 <h3>Contact us</h3>
                 <p>
-                    For Press inquiries, contact us at press@powerthepolls.org.
+                    For Press inquiries, contact us at <a href="mailto:press@powerthepolls.org">press@powerthepolls.org</a>.
                     For all other inquiries, please select the appropriate category below.
                 </p>
                 <div>

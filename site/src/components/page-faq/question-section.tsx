@@ -18,8 +18,8 @@ export class QuestionSection {
 
     @State() private isOpen: boolean = false;
 
-    @Listen("click", { capture: true })
-    public handleClick() {
+    @Listen("click")
+    handleClick() {
       this.isOpen = !this.isOpen;
     }
 
@@ -27,27 +27,32 @@ export class QuestionSection {
         const sectionTitle = this.sectionTitle || "";
         const questions = this.questions || [];
         const isOpen = this.isOpen;
-        const handleClick = this.handleClick;
 
         return (
             <Fragment>
-                 <hr />
-                <h3 class="section-title">
-                    { sectionTitle }
-                    <button class="toggle" onClick={handleClick}>
-                        <img
-                            alt={`toggle ${isOpen ? "open" : "close"}`}
-                            src={`/assets/images/${isOpen ? "icon_arrow-up.svg" : "icon_arrow-down.svg"}`}
-                            width="25" />
-                    </button>
-                </h3>
-                {isOpen && questions.map(({question, answer}) => (
-                    <div>
-                        <h4>{question}</h4>
-                        <p>{answer()}</p>
-                    </div>
-                    ))
-                }
+                <div>
+                    <hr />
+                    <header>
+                        <a onClick={this.handleClick}>
+                        <h3 class="section-title">
+                            { sectionTitle }
+                            <img
+                                alt={`toggle ${isOpen ? "open" : "close"}`}
+                                src={`/assets/images/${isOpen ? "icon_arrow-up.svg" : "icon_arrow-down.svg"}`}
+                                width="25" />
+                        </h3>
+                        </a>
+                    </header>
+                    <section>
+                    {isOpen && questions.map(({question, answer}) => (
+                        <div>
+                            <h4>{question}</h4>
+                            <p>{answer()}</p>
+                        </div>
+                        ))
+                    }
+                    </section>
+                </div>
             </Fragment>
         );
     }

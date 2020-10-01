@@ -22,8 +22,6 @@ export namespace Components {
     }
     interface PageAbout {
     }
-    interface PageContact {
-    }
     interface PageFaq {
         /**
           * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
@@ -140,12 +138,6 @@ declare global {
         prototype: HTMLPageAboutElement;
         new (): HTMLPageAboutElement;
     };
-    interface HTMLPageContactElement extends Components.PageContact, HTMLStencilElement {
-    }
-    var HTMLPageContactElement: {
-        prototype: HTMLPageContactElement;
-        new (): HTMLPageContactElement;
-    };
     interface HTMLPageFaqElement extends Components.PageFaq, HTMLStencilElement {
     }
     var HTMLPageFaqElement: {
@@ -236,7 +228,6 @@ declare global {
         "contact-form": HTMLContactFormElement;
         "contact-modal": HTMLContactModalElement;
         "page-about": HTMLPageAboutElement;
-        "page-contact": HTMLPageContactElement;
         "page-faq": HTMLPageFaqElement;
         "page-form": HTMLPageFormElement;
         "page-info": HTMLPageInfoElement;
@@ -267,8 +258,6 @@ declare namespace LocalJSX {
         "onClose"?: () => void;
     }
     interface PageAbout {
-    }
-    interface PageContact {
     }
     interface PageFaq {
         /**
@@ -361,7 +350,6 @@ declare namespace LocalJSX {
         "contact-form": ContactForm;
         "contact-modal": ContactModal;
         "page-about": PageAbout;
-        "page-contact": PageContact;
         "page-faq": PageFaq;
         "page-form": PageForm;
         "page-info": PageInfo;
@@ -387,7 +375,6 @@ declare module "@stencil/core" {
             "contact-form": LocalJSX.ContactForm & JSXBase.HTMLAttributes<HTMLContactFormElement>;
             "contact-modal": LocalJSX.ContactModal & JSXBase.HTMLAttributes<HTMLContactModalElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
-            "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
             "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;
             "page-form": LocalJSX.PageForm & JSXBase.HTMLAttributes<HTMLPageFormElement>;
             "page-info": LocalJSX.PageInfo & JSXBase.HTMLAttributes<HTMLPageInfoElement>;

@@ -48,7 +48,7 @@ export class PageFaq {
          <p>
             Although we can’t guarantee a response to every email due to volume, selecting the appropriate category will help make sure the right person receives your inquiry.
             <br />
-            For press inquiries, please contact <a href="press@powerthepolls.org">press@powerthepolls.org</a>.
+            For press inquiries, please contact <a href="mailto:press@powerthepolls.org">press@powerthepolls.org</a>.
          </p>
          <button class="cta" onClick={() => this.handleOpen()}>contact us</button>
          <contact-modal isOpen={isModalOpen} onClose={() => this.handleOnClose()} />
