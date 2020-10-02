@@ -18,10 +18,14 @@ export class QuestionSection {
 
     @State() private isOpen: boolean = false;
 
-    @Listen("click")
     public handleClick() {
       this.isOpen = !this.isOpen;
     }
+
+    constructor() {
+        this.handleClick = this.handleClick.bind(this);  
+        this.isOpen = false;
+     }
 
     public render() {
         const sectionTitle = this.sectionTitle || "";
