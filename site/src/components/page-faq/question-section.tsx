@@ -1,4 +1,4 @@
-import { Component, h, Listen, Prop, State } from "@stencil/core";
+import { Component, h, Prop, State, Listen } from "@stencil/core";
 
 import { Fragment } from "../../util";
 
@@ -8,7 +8,7 @@ import { Fragment } from "../../util";
 */
 @Component( {
     tag: "question-section",
-    styleUrl: "page-faq.scss",
+    styleUrl: "question-section.scss",
     shadow: false,
  })
 export class QuestionSection {
