@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Watch } from "@stencil/core";
+import { Component, h, Prop, State } from "@stencil/core";
 
 import { Fragment } from "../../util";
 
@@ -39,7 +39,6 @@ export class ContactModal {
     @State()
     private submitResponseState = "";
 
-    @Watch("isOpen")
     public render() {
 
         const submitForm = (e: Event) => {

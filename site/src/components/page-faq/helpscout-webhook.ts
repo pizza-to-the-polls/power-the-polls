@@ -11,7 +11,7 @@ export const submitToHelpScout = async ( data: Object)
    const response = await fetch( "https" + "://hooks.zapier.com/hooks/catch/8459352/ow03eoe/", {
       method: "POST",
       body: JSON.stringify(data),
-      mode: "no-cors",
+      mode: "cors",
       headers: {
          "Content-Type": "application/json",
       },
