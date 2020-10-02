@@ -1,7 +1,8 @@
 .section-title {
     color: $color-accent;
     margin-bottom: .5em;
- }
+}
+
 
 .header-click-wrapper {
     display: flex;
@@ -20,3 +21,12 @@ img {
     border: none;
     cursor: pointer;  
  }
+
+ //subsection 
+.subquestion-title {
+    color: $color-accent;
+}
+
+.subquestion {
+    padding-bottom: 10px;
+}

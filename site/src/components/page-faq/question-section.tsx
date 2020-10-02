@@ -38,9 +38,9 @@ export class QuestionSection {
                     <hr />
                     <header>
                         <a class="header-click-wrapper"onClick={this.handleClick}>
-                            <h3 class="section-title">
+                            <h2 class="section-title">
                                 { sectionTitle }
-                            </h3>
+                            </h2>
                             <div class="icon-wrapper">
                                 <img
                                     alt={`toggle ${isOpen ? "open" : "close"}`}
@@ -51,8 +51,8 @@ export class QuestionSection {
                     </header>
                     <section>
                     {isOpen && questions.map(({question, answer}) => (
-                        <div>
-                            <h4>{question}</h4>
+                        <div class="subquestion">
+                            <h4 class="subquestion-title">{question}</h4>
                             <p>{answer()}</p>
                         </div>
                         ))
