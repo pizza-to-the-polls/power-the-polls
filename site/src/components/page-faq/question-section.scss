@@ -3,12 +3,20 @@
     margin-bottom: .5em;
  }
 
- .section-title > img {
+.header-click-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-wrapper{
+    align-self: center;
+}
+
+img {
     fill: $color-accent;
     margin-right: .5em;
     background-color: Transparent;
     outline: none;
     border: none;
     cursor: pointer;  
-    float: right;
  }

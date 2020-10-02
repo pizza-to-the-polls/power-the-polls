@@ -37,14 +37,16 @@ export class QuestionSection {
                 <div>
                     <hr />
                     <header>
-                        <a onClick={this.handleClick}>
-                        <h3 class="section-title">
-                            { sectionTitle }
-                            <img
-                                alt={`toggle ${isOpen ? "open" : "close"}`}
-                                src={`/assets/images/${isOpen ? "icon_arrow-up.svg" : "icon_arrow-down.svg"}`}
-                                width="25" />
-                        </h3>
+                        <a class="header-click-wrapper"onClick={this.handleClick}>
+                            <h3 class="section-title">
+                                { sectionTitle }
+                            </h3>
+                            <div class="icon-wrapper">
+                                <img
+                                    alt={`toggle ${isOpen ? "open" : "close"}`}
+                                    src={`/assets/images/${isOpen ? "icon_arrow-up.svg" : "icon_arrow-down.svg"}`}
+                                    width="25" />
+                            </div>
                         </a>
                     </header>
                     <section>
