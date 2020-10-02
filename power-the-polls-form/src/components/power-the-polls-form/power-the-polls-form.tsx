@@ -59,7 +59,7 @@ export class PowerThePollsForm {
       cancelable: false,
    } ) public submitError!: EventEmitter<any>;
 
-   @State() private formStatus: "incomplete" | "submitting" | "completed";
+   @State() private formStatus: "incomplete" | "processing" | "completed";
    @State() private formData: PtpFormData;
    @State() private michiganFormSubmitted: boolean;
 
@@ -94,6 +94,11 @@ export class PowerThePollsForm {
       const phoneValidationRegex = "(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}";
 
       const submitForm = ( e: Event ) => {
+         if( this.formStatus !== "incomplete" ) {
+            e.preventDefault();
+            return false;
+         }
+
          try {
             // gather up all the form data
             const form = e.target as HTMLFormElement;
@@ -114,7 +119,7 @@ export class PowerThePollsForm {
             const phone = data.mobile_phone || "";
             const zip = data.zip || "";
 
-            this.formStatus = "submitting";
+            this.formStatus = "processing";
 
             submitToActionKit( data )
                .then( ( response ) => {
@@ -240,7 +245,7 @@ export class PowerThePollsForm {
                   </label>
                ) : null )}
 
-               <input-address />
+               <input-address onLookup={x => this.formStatus = x.detail === "STARTED" ? "processing" : "incomplete"} />
 
                <input
                   type="hidden"
@@ -264,7 +269,12 @@ export class PowerThePollsForm {
                   type="submit"
                   class="button"
                   disabled={this.formStatus !== "incomplete"}
-               >Sign Up To Get Started</button>
+               >
+                  {this.formStatus !== "incomplete" ?
+                     <ui-loading-spinner small={true} style={{ padding: "0 0.5em" }} />
+                     : null}
+                  Sign Up To Get Started
+               </button>
 
                <p class="disclaimer">
                   By signing up, you agree to receive occasional emails or text messages from Power the Polls

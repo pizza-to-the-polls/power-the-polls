@@ -11,6 +11,7 @@ import { GeoJSON } from "geojson";
 import { Options } from "./components/ui-geojson-to-svg/types";
 export namespace Components {
     interface InputAddress {
+        "state": () => Promise<"STARTED" | "COMPLETED">;
     }
     interface InputPossiblyHiddenSelect {
         "fieldLabel": string;
@@ -84,6 +85,7 @@ export namespace Components {
         "width": number;
     }
     interface UiLoadingSpinner {
+        "small": boolean;
     }
 }
 declare global {
@@ -148,6 +150,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface InputAddress {
+        "onLookup"?: (event: CustomEvent<"STARTED" | "COMPLETED">) => void;
     }
     interface InputPossiblyHiddenSelect {
         "fieldLabel"?: string;
@@ -224,6 +227,7 @@ declare namespace LocalJSX {
         "width"?: number;
     }
     interface UiLoadingSpinner {
+        "small"?: boolean;
     }
     interface IntrinsicElements {
         "input-address": InputAddress;
