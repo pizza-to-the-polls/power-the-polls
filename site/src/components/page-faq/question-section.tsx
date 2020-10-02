@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Listen } from "@stencil/core";
+import { Component, h, Listen, Prop, State } from "@stencil/core";
 
 import { Fragment } from "../../util";
 
