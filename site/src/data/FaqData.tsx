@@ -19,7 +19,6 @@ const data: { sectionTitle: string, questions: { question: string, answer: () =>
             question: "Can I be a poll worker in a state I don’t live in/am not registered in?",
             answer: () => <p>
                While, some jurisdictions allow individuals to travel and work the polls even if they are not registered to vote in that location, for the most part, individuals are only allowed to serve in the state where they reside.
-               If you want to look up the requirements for a state other than where you live, you can enter your desired zip code <a href="https://www.powerthepolls.org/search">here</a> and reach out the elections administrator directly for more information
                </p>,
          },
          {
@@ -51,6 +50,14 @@ const data: { sectionTitle: string, questions: { question: string, answer: () =>
       sectionTitle: "Poll worker responsibilities",
       questions: [
          {
+            question: "Is a poll worker the same as a poll watcher?",
+            answer: () => <p>
+               No, poll workers work for election administrators to help administer the election. They do things like check in voters, fix voting machines, and troubleshoot any other issues at polling sites. 
+               Poll watchers, which are sometimes also known as poll observers and poll monitors, are volunteers or staff from a political party or campaign that are certified to observe and monitor election administration. In most states, only political parties, candidates and ballot issue committees can appoint poll watchers. 
+               Organizations and civic groups can also appoint poll watchers in some states.
+               </p>,
+         },
+         {
             question: "What do poll workers do?",
             answer: () => <p>
                There are many kinds of jobs for poll workers to do, including helping voters maintain physical distance in lines, wiping down machines and equipment, and helping voters check in, understand their ballots, and cast their vote. With absentee and mail voting, poll workers also help open and count mailed ballots.
@@ -60,6 +67,8 @@ const data: { sectionTitle: string, questions: { question: string, answer: () =>
             question: "Do poll workers need training?",
             answer: () => <p>
                Local jurisdictions will often have mandatory trainings, and provide poll workers with all the necessary information and skills they need prior to Election Day.
+               You can look up information about trainings <a href="http://www.powerthepolls.org/search">here</a> - and if nothing is posted, 
+               reach out to your election administrator directly to ask when trainings are and how to schedule yourself to attend. 
                </p>,
          },
          {
@@ -95,7 +104,7 @@ const data: { sectionTitle: string, questions: { question: string, answer: () =>
             question: "What do I do after I complete my application?",
             answer: () => <p>
                We will be in touch to help you through the process, but also be sure to be on the lookout for any communication from your local election administrators! If you want to reach out to them directly, you can look up their zip code <a href="https://act.powerthepolls.org/signup/application-completed/">here</a>.
-               We'll reach out to remind you to check in on trainings as they are posted, and to provide other helpful resources.
+               We'll reach out to remind you to check in on trainings, and to provide other helpful resources, but it’s also important to reach out to your administrators directly for more information to move along in the process.
                </p>,
          },
          {
@@ -117,7 +126,7 @@ const data: { sectionTitle: string, questions: { question: string, answer: () =>
                      If you've already <a href="https://www.powerthepolls.org/signup#form">applied</a>, you can check in to see if your local administrator has posted new training information.
                      Enter your zip code <a href="http://www.powerthepolls.org/search">here</a> to look up poll worker trainings in your community. In some places, there are online trainings you can start immediately.
                   </p>
-                  <p>If there is no information about trainings online, it is likely that it will be posted soon. Power the Polls will have upcoming sessions to provide you with more information about the application process and what to expect when you become a poll worker, so be on the lookout for more information from us.</p>
+                  <p>If there is no information about trainings online, reach out to your election administrator directly to ask when trainings are and how to schedule yourself to attend.</p>
                </div>,
          },
          {
@@ -133,7 +142,8 @@ const data: { sectionTitle: string, questions: { question: string, answer: () =>
                      Most election administrators accept applications on a rolling basis, so we do not have a set deadline nationwide or even state-by-state. However, we would like to recruit as many poll workers as possible by the end of September so they are first in line for trainings and placement.
                   </p>
                   <p>
-                     In most jurisdictions, administrators do require that poll workers complete training sessions which are scheduled between September and October (there is lots of variation among jurisdictions), so applying as early as possible is important. Furthermore, administrators make decisions about the number of polling locations they plan to open based on the number of poll workers they have, so getting applications in as early as possible is important to help administrators in their planning.
+                     In most jurisdictions, administrators do require that poll workers complete training sessions which are scheduled between September and October (there is lots of variation among jurisdictions), 
+                     so applying as early as possible is important. Furthermore, administrators make decisions about the number of polling locations they plan to open based on the number of poll workers they have, so getting applications in as early as possible is important to help administrators in their planning.
                   </p>
                   <p>
                      If you’re ready to get started, please begin your signup process <a href="https://www.powerthepolls.org/signup#form">here</a>.
@@ -143,8 +153,10 @@ const data: { sectionTitle: string, questions: { question: string, answer: () =>
          {
             question: "My elections administrator told me I wasn’t needed.",
             answer: () => <div>
-                  <p>With so many complications around how elections will be administered this year, some administrators are having difficulty identifying areas of need. In many of the primary elections that have taken place since the start of the pandemic, we’ve seen that election administrators don’t identify a major gap until the final weeks before the Election.</p>
-                  <p>So while you may not have been picked today, it’s possible that election administrators will be sending out a call for poll workers in your area as we get closer to November. We encourage you to complete any of the required training so you’re ready to go to meet that call.</p>
+                  <p>With so many complications around how elections will be administered this year, some administrators are having difficulty identifying areas of need. 
+                     In many of the primary elections that have taken place since the start of the pandemic, we’ve seen that election administrators don’t identify a major gap until the final weeks before the Election.</p>
+                  <p>So while you may not have been picked today, it’s possible that election administrators will be sending out a call for poll workers in your area as we get closer to November. 
+                     Ask if you can be put on a waitlist to fill in if someone else is not able to make it. We encourage you to complete any of the required training so you’re ready to go to meet that call.</p>
                </div>,
          },
          {
@@ -195,12 +207,6 @@ const data: { sectionTitle: string, questions: { question: string, answer: () =>
                </p>,
          },
          {
-            question: "I’m from Oregon/Washington/Hawaii/Maryland. Can I still help?",
-            answer: () => <p>
-               The great news is that your state has indicated they have all the election workers they need this year. The bad news is that means we won’t have a place for you to serve as a poll worker, since your state is all set and jurisdiction requirements unfortunately mean you won’t be eligible to serve in another state. You can still help power the polls by voting in this upcoming election, and encouraging your friends and family across the country to register to vote and, for those who live in other states to sign up to be poll workers.
-               </p>,
-         },
-         {
             question: "If I’m working the polls, when do I vote?",
             answer: () => <p>
                Poll workers usually cast their votes early or by mail, but some cast their votes on Election Day. Certain jurisdictions may require poll workers to vote early or via absentee ballot. Please contact your local elections official for details about how poll workers cast their ballots.
@@ -213,13 +219,7 @@ const data: { sectionTitle: string, questions: { question: string, answer: () =>
                </p>,
          },
          {
-            question: "What are the greatest areas of need?",
-            answer: () => <p>
-               We are continuously surveying states and individual jurisdictions, but this is a list of states we currently know have higher need: Arizona, California, Florida, Georgia, Kentucky, Maine, Maryland, Michigan, Minnesota, Nevada, New Hampshire, North Carolina, Pennsylvania, Wisconsin. We also prioritize recruitment where in-person voting is the preferred option for most voters - so in areas where there are more young voters, first time voters, and voters of color.
-            </p>,
-         },
-         {
-            question: "Who started/funds this organization?",
+            question: "Who started this organization?",
             answer: () => <p>
                The initiative was launched by nonprofit organizations and businesses including the Civic Alliance, Comedy Central, Fair Elections Center, Center for Secure and Modern Elections Levi Strauss & Co, MTV, Patagonia, Pizza to the Polls, Time To Vote, Uber, and We Can Vote.
                </p>,
