@@ -13,6 +13,19 @@
 | `page_title` | `page_title` | The page's title                                                          | `string \| undefined`                                  | `undefined` |
 
 
+## Dependencies
+
+### Depends on
+
+- stencil-route-link
+
+### Graph
+```mermaid
+graph TD;
+  page-faq --> stencil-route-link
+  style page-faq fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 

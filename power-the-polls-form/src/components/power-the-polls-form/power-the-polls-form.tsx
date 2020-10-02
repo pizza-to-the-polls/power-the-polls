@@ -1,7 +1,7 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop, State } from "@stencil/core";
+import { Component, Event, EventEmitter, Fragment, h, Host, Method, Prop, State } from "@stencil/core";
 
 import { States } from "../../data";
-import { FormSubmissionThankYou, Fragment, PtpFormData, PtpLink } from "../../util";
+import { FormSubmissionThankYou, PtpFormData, PtpLink } from "../../util";
 import { findJurisdictionId } from "../../util/WorkElections";
 
 import { submitToActionKit } from "./ActionKit";

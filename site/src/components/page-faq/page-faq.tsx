@@ -1,6 +1,4 @@
-import { Component, h, Host, Prop } from "@stencil/core";
-
-import { Fragment } from "../../util";
+import { Component, Fragment, h, Host, Prop } from "@stencil/core";
 
 @Component( {
    tag: "page-faq",

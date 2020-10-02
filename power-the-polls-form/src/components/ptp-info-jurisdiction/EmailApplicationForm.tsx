@@ -1,8 +1,8 @@
-import { h } from "@stencil/core";
+import { Fragment, h } from "@stencil/core";
 import { FunctionalComponent } from "@stencil/router/dist/types/stencil.core";
 
 import { JurisdictionInfo } from "../../data/States";
-import { Fragment, PtpFormData, TextInput } from "../../util";
+import { PtpFormData, TextInput } from "../../util";
 
 /**
  * Email application that will only render if there is no application link for the jurisdiction
