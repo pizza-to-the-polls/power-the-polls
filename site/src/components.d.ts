@@ -12,15 +12,21 @@ export namespace Components {
     }
     interface ComponentList {
     }
-    interface PageAbout {
+    interface ContactForm {
+        "formError": boolean;
+        "submitForm"?: (e: Event) => void;
     }
-    interface PageContact {
+    interface ContactModal {
+        "isOpen": boolean;
+        "onClose"?: () => void;
+    }
+    interface PageAbout {
     }
     interface PageFaq {
         /**
           * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
          */
-        "data"?: { question: string, answer: string }[];
+        "data"?: {sectionTitle: string,  questions: { question: string, answer: () => string }[]}[];
         /**
           * The page's title
          */
@@ -49,6 +55,10 @@ export namespace Components {
     }
     interface PageSearch {
         "history": RouterHistory;
+    }
+    interface QuestionSection {
+        "questions"?: { question: string, answer: () => string }[];
+        "sectionTitle"?: string;
     }
     interface UiH3Bar {
     }
@@ -110,17 +120,23 @@ declare global {
         prototype: HTMLComponentListElement;
         new (): HTMLComponentListElement;
     };
+    interface HTMLContactFormElement extends Components.ContactForm, HTMLStencilElement {
+    }
+    var HTMLContactFormElement: {
+        prototype: HTMLContactFormElement;
+        new (): HTMLContactFormElement;
+    };
+    interface HTMLContactModalElement extends Components.ContactModal, HTMLStencilElement {
+    }
+    var HTMLContactModalElement: {
+        prototype: HTMLContactModalElement;
+        new (): HTMLContactModalElement;
+    };
     interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
     }
     var HTMLPageAboutElement: {
         prototype: HTMLPageAboutElement;
         new (): HTMLPageAboutElement;
-    };
-    interface HTMLPageContactElement extends Components.PageContact, HTMLStencilElement {
-    }
-    var HTMLPageContactElement: {
-        prototype: HTMLPageContactElement;
-        new (): HTMLPageContactElement;
     };
     interface HTMLPageFaqElement extends Components.PageFaq, HTMLStencilElement {
     }
@@ -170,6 +186,12 @@ declare global {
         prototype: HTMLPageSearchElement;
         new (): HTMLPageSearchElement;
     };
+    interface HTMLQuestionSectionElement extends Components.QuestionSection, HTMLStencilElement {
+    }
+    var HTMLQuestionSectionElement: {
+        prototype: HTMLQuestionSectionElement;
+        new (): HTMLQuestionSectionElement;
+    };
     interface HTMLUiH3BarElement extends Components.UiH3Bar, HTMLStencilElement {
     }
     var HTMLUiH3BarElement: {
@@ -203,8 +225,9 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "component-list": HTMLComponentListElement;
+        "contact-form": HTMLContactFormElement;
+        "contact-modal": HTMLContactModalElement;
         "page-about": HTMLPageAboutElement;
-        "page-contact": HTMLPageContactElement;
         "page-faq": HTMLPageFaqElement;
         "page-form": HTMLPageFormElement;
         "page-info": HTMLPageInfoElement;
@@ -213,6 +236,7 @@ declare global {
         "page-partners-table": HTMLPagePartnersTableElement;
         "page-privacy": HTMLPagePrivacyElement;
         "page-search": HTMLPageSearchElement;
+        "question-section": HTMLQuestionSectionElement;
         "ui-h3-bar": HTMLUiH3BarElement;
         "ui-impact-box": HTMLUiImpactBoxElement;
         "ui-menu-button": HTMLUiMenuButtonElement;
@@ -225,15 +249,21 @@ declare namespace LocalJSX {
     }
     interface ComponentList {
     }
-    interface PageAbout {
+    interface ContactForm {
+        "formError"?: boolean;
+        "submitForm"?: (e: Event) => void;
     }
-    interface PageContact {
+    interface ContactModal {
+        "isOpen"?: boolean;
+        "onClose"?: () => void;
+    }
+    interface PageAbout {
     }
     interface PageFaq {
         /**
           * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
          */
-        "data"?: { question: string, answer: string }[];
+        "data"?: {sectionTitle: string,  questions: { question: string, answer: () => string }[]}[];
         /**
           * The page's title
          */
@@ -262,6 +292,10 @@ declare namespace LocalJSX {
     }
     interface PageSearch {
         "history": RouterHistory;
+    }
+    interface QuestionSection {
+        "questions"?: { question: string, answer: () => string }[];
+        "sectionTitle"?: string;
     }
     interface UiH3Bar {
     }
@@ -313,8 +347,9 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-root": AppRoot;
         "component-list": ComponentList;
+        "contact-form": ContactForm;
+        "contact-modal": ContactModal;
         "page-about": PageAbout;
-        "page-contact": PageContact;
         "page-faq": PageFaq;
         "page-form": PageForm;
         "page-info": PageInfo;
@@ -323,6 +358,7 @@ declare namespace LocalJSX {
         "page-partners-table": PagePartnersTable;
         "page-privacy": PagePrivacy;
         "page-search": PageSearch;
+        "question-section": QuestionSection;
         "ui-h3-bar": UiH3Bar;
         "ui-impact-box": UiImpactBox;
         "ui-menu-button": UiMenuButton;
@@ -336,8 +372,9 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "component-list": LocalJSX.ComponentList & JSXBase.HTMLAttributes<HTMLComponentListElement>;
+            "contact-form": LocalJSX.ContactForm & JSXBase.HTMLAttributes<HTMLContactFormElement>;
+            "contact-modal": LocalJSX.ContactModal & JSXBase.HTMLAttributes<HTMLContactModalElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
-            "page-contact": LocalJSX.PageContact & JSXBase.HTMLAttributes<HTMLPageContactElement>;
             "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;
             "page-form": LocalJSX.PageForm & JSXBase.HTMLAttributes<HTMLPageFormElement>;
             "page-info": LocalJSX.PageInfo & JSXBase.HTMLAttributes<HTMLPageInfoElement>;
@@ -346,6 +383,7 @@ declare module "@stencil/core" {
             "page-partners-table": LocalJSX.PagePartnersTable & JSXBase.HTMLAttributes<HTMLPagePartnersTableElement>;
             "page-privacy": LocalJSX.PagePrivacy & JSXBase.HTMLAttributes<HTMLPagePrivacyElement>;
             "page-search": LocalJSX.PageSearch & JSXBase.HTMLAttributes<HTMLPageSearchElement>;
+            "question-section": LocalJSX.QuestionSection & JSXBase.HTMLAttributes<HTMLQuestionSectionElement>;
             "ui-h3-bar": LocalJSX.UiH3Bar & JSXBase.HTMLAttributes<HTMLUiH3BarElement>;
             "ui-impact-box": LocalJSX.UiImpactBox & JSXBase.HTMLAttributes<HTMLUiImpactBoxElement>;
             "ui-menu-button": LocalJSX.UiMenuButton & JSXBase.HTMLAttributes<HTMLUiMenuButtonElement>;
