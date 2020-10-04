@@ -1,3 +1,4 @@
+
 /**
  * function to submit form data to helpscout via zapier webhook
  */
@@ -7,14 +8,18 @@ export const submitToHelpScout = async ( data: Object)
       status: number;
       data?: any;
    }> => {
+   const headers =  new Headers({
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+      "Content-Type": "application/json"
+   });
    // link to associated zap https://zapier.com/app/zap/100408573
    const response = await fetch( "https" + "://hooks.zapier.com/hooks/catch/8459352/ow03eoe/", {
       method: "POST",
       body: JSON.stringify(data),
       mode: "cors",
-      headers: {
-         "Content-Type": "application/json",
-      },
+      headers: headers,
    } );
 
 
