@@ -1,5 +1,5 @@
 /**
- * This page will be diffrent from the regular faq until we can get the translations back 
+ * This page will be diffrent from the regular faq until we can get the translations back
  */
 
 import { Component, h, Host, Prop } from "@stencil/core";

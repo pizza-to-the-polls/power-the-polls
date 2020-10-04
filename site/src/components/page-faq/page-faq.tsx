@@ -20,17 +20,17 @@ export class PageFaq {
    @Prop() public page_title?: string;
 
    @State() private isModalOpen: boolean = false;
-   @State() private openQuesionSection: string = '';
+   @State() private openQuesionSection: string = "";
 
    constructor() {
       this.handleSectionClick = this.handleSectionClick.bind(this);
-      this.openQuesionSection = '';
+      this.openQuesionSection = "";
    }
 
   public handleSectionClick(sectionTitle: string) {
-   if(this.openQuesionSection === sectionTitle){
-      this.openQuesionSection = '';
-   }else{
+   if(this.openQuesionSection === sectionTitle) {
+      this.openQuesionSection = "";
+   } else {
       this.openQuesionSection = sectionTitle;
    }
   }

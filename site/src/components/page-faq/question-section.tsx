@@ -16,7 +16,7 @@ export class QuestionSection {
     @Prop() public sectionTitle?: string;
     @Prop() public questions?: { question: string, answer: () => string }[];
     @Prop() public isSectionOpen: boolean = false;
-    @Prop() public handleSectionClick: (sectionTitle: string) => void = () => {};
+    @Prop() public handleSectionClick: (sectionTitle: string) => void = () => undefined;
 
     public render() {
         const sectionTitle = this.sectionTitle || "";
@@ -41,7 +41,7 @@ export class QuestionSection {
                             </div>
                         </a>
                     </header>
-                    <section class={isSectionOpen ? 'open' : 'close'}>
+                    <section class={isSectionOpen ? "open" : "close"}>
                     {questions.map(({question, answer}) => (
                         <div class="subquestion">
                             <h4 class="subquestion-title">{question}</h4>
