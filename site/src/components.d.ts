@@ -32,6 +32,16 @@ export namespace Components {
          */
         "page_title"?: string;
     }
+    interface PageFaqEs {
+        /**
+          * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
+         */
+        "data"?: { question: string, answer: string }[];
+        /**
+          * The page's title
+         */
+        "page_title"?: string;
+    }
     interface PageForm {
         /**
           * Optional partnerId/source parameter to use when submitting the form. If the partnerId exists in `/data/PartnerList.ts` then additional partner data will be looked up.
@@ -57,6 +67,8 @@ export namespace Components {
         "history": RouterHistory;
     }
     interface QuestionSection {
+        "handleSectionClick": (sectionTitle: string) => void;
+        "isSectionOpen": boolean;
         "questions"?: { question: string, answer: () => string }[];
         "sectionTitle"?: string;
     }
@@ -144,6 +156,12 @@ declare global {
         prototype: HTMLPageFaqElement;
         new (): HTMLPageFaqElement;
     };
+    interface HTMLPageFaqEsElement extends Components.PageFaqEs, HTMLStencilElement {
+    }
+    var HTMLPageFaqEsElement: {
+        prototype: HTMLPageFaqEsElement;
+        new (): HTMLPageFaqEsElement;
+    };
     interface HTMLPageFormElement extends Components.PageForm, HTMLStencilElement {
     }
     var HTMLPageFormElement: {
@@ -229,6 +247,7 @@ declare global {
         "contact-modal": HTMLContactModalElement;
         "page-about": HTMLPageAboutElement;
         "page-faq": HTMLPageFaqElement;
+        "page-faq-es": HTMLPageFaqEsElement;
         "page-form": HTMLPageFormElement;
         "page-info": HTMLPageInfoElement;
         "page-jurisdiction": HTMLPageJurisdictionElement;
@@ -269,6 +288,16 @@ declare namespace LocalJSX {
          */
         "page_title"?: string;
     }
+    interface PageFaqEs {
+        /**
+          * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
+         */
+        "data"?: { question: string, answer: string }[];
+        /**
+          * The page's title
+         */
+        "page_title"?: string;
+    }
     interface PageForm {
         /**
           * Optional partnerId/source parameter to use when submitting the form. If the partnerId exists in `/data/PartnerList.ts` then additional partner data will be looked up.
@@ -294,6 +323,8 @@ declare namespace LocalJSX {
         "history": RouterHistory;
     }
     interface QuestionSection {
+        "handleSectionClick"?: (sectionTitle: string) => void;
+        "isSectionOpen"?: boolean;
         "questions"?: { question: string, answer: () => string }[];
         "sectionTitle"?: string;
     }
@@ -351,6 +382,7 @@ declare namespace LocalJSX {
         "contact-modal": ContactModal;
         "page-about": PageAbout;
         "page-faq": PageFaq;
+        "page-faq-es": PageFaqEs;
         "page-form": PageForm;
         "page-info": PageInfo;
         "page-jurisdiction": PageJurisdiction;
@@ -376,6 +408,7 @@ declare module "@stencil/core" {
             "contact-modal": LocalJSX.ContactModal & JSXBase.HTMLAttributes<HTMLContactModalElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-faq": LocalJSX.PageFaq & JSXBase.HTMLAttributes<HTMLPageFaqElement>;
+            "page-faq-es": LocalJSX.PageFaqEs & JSXBase.HTMLAttributes<HTMLPageFaqEsElement>;
             "page-form": LocalJSX.PageForm & JSXBase.HTMLAttributes<HTMLPageFormElement>;
             "page-info": LocalJSX.PageInfo & JSXBase.HTMLAttributes<HTMLPageInfoElement>;
             "page-jurisdiction": LocalJSX.PageJurisdiction & JSXBase.HTMLAttributes<HTMLPageJurisdictionElement>;

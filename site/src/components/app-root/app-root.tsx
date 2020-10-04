@@ -100,7 +100,7 @@ export class AppRoot {
          },
          {
             url: "/faq-es",
-            component: "page-faq",
+            component: "page-faq-es",
             componentProps: {
                data: FaqESData,
                page_title: "Preguntas más frecuentes",
