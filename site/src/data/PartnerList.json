@@ -1064,8 +1064,7 @@
    {
       "partnerId": "philadelphia-eagles",
       "name": "Philadelphia Eagles",
-      "logo": "eagles.png",
-      "logoIsDark": true
+      "logo": "eagles.png"
    },
    {
       "partnerId": "Pizza",
@@ -1365,6 +1364,13 @@
       "name": "United Food & Commercial Workers Intl Union",
       "logo": "ufcw.png",
       "optUserOutOfChase": true
+   },
+   {
+      "partnerId": "unfkus",
+      "name": "unfkus",
+      "logo": "unfkus.jpg",
+      "logoAppearsOnLandingPage": true,
+      "excludeFromPartnerList": true
    },
    {
       "partnerId": "UnitedWay",
