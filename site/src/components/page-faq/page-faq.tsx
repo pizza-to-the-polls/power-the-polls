@@ -1,6 +1,4 @@
-import { Component, h, Host, Prop } from "@stencil/core";
-
-import { Fragment } from "../../util";
+import { Component, h, Host, Prop, State } from "@stencil/core";
 
 @Component( {
    tag: "page-faq",
@@ -14,31 +12,56 @@ export class PageFaq {
     * see: FaqData.ts
     * see: app-root.tsx
     */
-   @Prop() public data?: { question: string, answer: string }[];
+   @Prop() public data?: {sectionTitle: string,  questions: { question: string, answer: () => string }[]}[];
 
    /**
     * The page's title
     */
    @Prop() public page_title?: string;
 
+   @State() private isModalOpen: boolean = false;
+
    public render() {
       const data = this.data || [];
-      return ( <Host>
-         <h1>{this.page_title || ""}</h1>
-         <p>
+      const isModalOpen = this.isModalOpen;
+
+      return (
+      <Host>
+         <h1>{ this.page_title || "" }</h1>
+         {/* //Temporarily disable until I can create a faq es page that matches this new format
+            <p>
             <stencil-route-link url="/faq">English</stencil-route-link>
             {" / "}
             <stencil-route-link url="/faq-es">Español</stencil-route-link>
+         </p> */}
+         <p>
+            Due to the high volume of emails we receive,
+            we recommend taking a look at our FAQ before to see if the answer to your question is there!
+            If you have questions specific to your local area,
+            contact your local election administrators by entering your zip at <a href="https://www.powerthepolls.org/search">https://www.powerthepolls.org/search</a>
          </p>
-         {data.map( ( item, index ) => (
-            <Fragment>
-               <div class="number">{index + 1 < 10 ? "0" : ""}{index + 1}</div>
-               <h3>{item.question}</h3>
-               <hr />
-               <p>{item.answer}</p>
-            </Fragment>
+         {data.map(({sectionTitle, questions}) => (
+            <question-section sectionTitle={sectionTitle} questions={questions}/>
          ) )}
-      </Host> );
+         <hr />
+         <h3>Still can’t find the answer to your question?</h3>
+         <p>
+            Although we can’t guarantee a response to every email due to volume, selecting the appropriate category will help make sure the right person receives your inquiry.
+            <br />
+            For press inquiries, please contact <a href="mailto:press@powerthepolls.org">press@powerthepolls.org</a>.
+         </p>
+         <button class="cta" onClick={() => this.handleOpen()}>contact us</button>
+         <contact-modal isOpen={isModalOpen} onClose={() => this.handleOnClose()} />
+      </Host>
+      );
    }
+
+   private handleOnClose() {
+     this.isModalOpen = false;
+   }
+
+    private handleOpen() {
+       this.isModalOpen = true;
+    }
 
 }

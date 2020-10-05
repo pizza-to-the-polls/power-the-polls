@@ -1,0 +1,32 @@
+.section-title {
+    color: $color-accent;
+    margin-bottom: .5em;
+}
+
+
+.header-click-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-wrapper{
+    align-self: center;
+}
+
+img {
+    fill: $color-accent;
+    margin-right: .5em;
+    background-color: Transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;  
+ }
+
+ //subsection 
+.subquestion-title {
+    color: $color-accent;
+}
+
+.subquestion {
+    padding-bottom: 10px;
+}
