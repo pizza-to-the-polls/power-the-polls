@@ -18,7 +18,6 @@ export namespace Components {
     }
     interface ContactModal {
         "isOpen": boolean;
-        "onClose"?: () => void;
     }
     interface PageAbout {
     }
@@ -255,7 +254,7 @@ declare namespace LocalJSX {
     }
     interface ContactModal {
         "isOpen"?: boolean;
-        "onClose"?: () => void;
+        "onClose"?: (event: CustomEvent<any>) => void;
     }
     interface PageAbout {
     }

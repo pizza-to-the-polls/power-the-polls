@@ -1,6 +1,4 @@
-import { Component, h, Prop, State } from "@stencil/core";
-
-import { Fragment } from "../../util";
+import { Component, Fragment, h, Prop, State } from "@stencil/core";
 
 /**
  * Contact form holds the form inputs for the faq contact modal

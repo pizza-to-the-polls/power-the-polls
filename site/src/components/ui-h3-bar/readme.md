@@ -10,14 +10,12 @@
 ### Used by
 
  - [component-list](../component-list)
- - [page-contact](../page-contact)
  - [page-partners](../page-partners)
 
 ### Graph
 ```mermaid
 graph TD;
   component-list --> ui-h3-bar
-  page-contact --> ui-h3-bar
   page-partners --> ui-h3-bar
   style ui-h3-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```
