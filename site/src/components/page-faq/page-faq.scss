@@ -1,17 +1,18 @@
 page-faq {
-   .number {
-      margin: 1em 0 0.5em 0;
-      border: 2px solid $color-accent;
-      padding: 0.25em;
-      display: inline-block;
-      width: 2.2em;
-      text-align: center;
-      color: $color-accent;
-      font-size: 1.6em;
-      font-weight: bold;
-      font-family: $font-heading;
-   }
-   h3 {
+   a > h3 {
       margin-top: 0em;
+   }
+
+   header > a {
+      text-decoration: none;
+   }
+    
+   button.cta {
+      border: 0;
+      background-color: $color-font-highlight-contrast;
+      padding: 0.8em 1em;
+      width: 75%;
+      text-transform: uppercase;
+      font-weight: bold;
    }
 }
