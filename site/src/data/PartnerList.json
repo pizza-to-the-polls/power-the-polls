@@ -555,6 +555,10 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "globalcitizen",
+      "name": "Global Citizen"
+   },
+   {
       "partnerId": "goodfearcontent",
       "name": "Good Fear Content",
       "logo": "good-fear-content.svg",
