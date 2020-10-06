@@ -1,0 +1,17 @@
+page-faq-es {
+    .number {
+       margin: 1em 0 0.5em 0;
+       border: 2px solid $color-accent;
+       padding: 0.25em;
+       display: inline-block;
+       width: 2.2em;
+       text-align: center;
+       color: $color-accent;
+       font-size: 1.6em;
+       font-weight: bold;
+       font-family: $font-heading;
+    }
+    h3 {
+       margin-top: 0em;
+    }
+ }

@@ -1,5 +1,6 @@
 .section-title {
     color: $color-accent;
+    margin-top: .5em;
     margin-bottom: .5em;
 }
 
@@ -13,13 +14,29 @@
     align-self: center;
 }
 
+section { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.25s ease-in-out;
+
+    &.open { 
+        max-height: 5000px; 
+    } 
+}
+
 img {
+    transition: transform 0.25s;
     fill: $color-accent;
     margin-right: .5em;
     background-color: Transparent;
     outline: none;
     border: none;
     cursor: pointer;  
+
+    &.open {
+        transform: rotate(180deg);
+        transition:  .25s;
+    }
  }
 
  //subsection 
