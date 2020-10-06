@@ -20,20 +20,6 @@ export class PageFaq {
    @Prop() public page_title?: string;
 
    @State() private isModalOpen: boolean = false;
-   @State() private openQuesionSection: string = "";
-
-   constructor() {
-      this.handleSectionClick = this.handleSectionClick.bind(this);
-      this.openQuesionSection = "";
-   }
-
-  public handleSectionClick(sectionTitle: string) {
-   if(this.openQuesionSection === sectionTitle) {
-      this.openQuesionSection = "";
-   } else {
-      this.openQuesionSection = sectionTitle;
-   }
-  }
 
    public render() {
       const data = this.data || [];
@@ -54,7 +40,7 @@ export class PageFaq {
             contact your local election administrators by entering your zip at <a href="https://www.powerthepolls.org/search">https://www.powerthepolls.org/search</a>
          </p>
          {data.map(({sectionTitle, questions}) => (
-            <question-section sectionTitle={sectionTitle} questions={questions} isSectionOpen={this.openQuesionSection === sectionTitle} handleSectionClick={this.handleSectionClick} />
+            <question-section sectionTitle={sectionTitle} questions={questions} />
          ) )}
          <hr />
          <h3>Still can’t find the answer to your question?</h3>

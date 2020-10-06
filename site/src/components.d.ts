@@ -67,8 +67,6 @@ export namespace Components {
         "history": RouterHistory;
     }
     interface QuestionSection {
-        "handleSectionClick": (sectionTitle: string) => void;
-        "isSectionOpen": boolean;
         "questions"?: { question: string, answer: () => string }[];
         "sectionTitle"?: string;
     }
@@ -323,8 +321,6 @@ declare namespace LocalJSX {
         "history": RouterHistory;
     }
     interface QuestionSection {
-        "handleSectionClick"?: (sectionTitle: string) => void;
-        "isSectionOpen"?: boolean;
         "questions"?: { question: string, answer: () => string }[];
         "sectionTitle"?: string;
     }
