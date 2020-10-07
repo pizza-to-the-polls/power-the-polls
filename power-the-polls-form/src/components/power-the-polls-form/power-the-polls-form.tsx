@@ -165,11 +165,9 @@ export class PowerThePollsForm {
                         <div class="next-steps">
                            {( // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
                               this.formData.state === "ME" ? [
-                                 () => <Fragment>
-                                       We are sharing your information with our state partners who will be following up to help you connect with your local administrators.&nbsp;
-                                    <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Maine.
-                                 </Fragment>,
-                                 () => "In the meantime, please review the state requirements and compensation below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
+                                 () => <Fragment><strong>Complete your community's application by calling the number above!</strong> Learn more about hours, compensation, and requirements for your community below.</Fragment>,
+                                 () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction.",
+                                 () => "Please encourage your friends and family to sign up to help ensure a safe and fair election!",
                               ]
                                  : this.formData.state === "MI" ? [
                                     () => <Fragment>

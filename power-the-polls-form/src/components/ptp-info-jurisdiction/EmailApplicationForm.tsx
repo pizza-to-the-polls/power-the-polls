@@ -1,6 +1,7 @@
 import { Fragment, h } from "@stencil/core";
 import { FunctionalComponent } from "@stencil/router/dist/types/stencil.core";
 
+import { States } from "../../data";
 import { JurisdictionInfo } from "../../data/States";
 import { PtpFormData, TextInput } from "../../util";
 
@@ -10,8 +11,24 @@ import { PtpFormData, TextInput } from "../../util";
 const EmailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo, data: PtpFormData, onComplete: () => void }> = ( { jurisdiction, data, onComplete } ) => {
 
    const j = jurisdiction;
-   if( ( j?.application != null && j.application !== "" ) || ( j?.email == null || j.email === "" ) ) {
-      // jurisdiction has an application link, do not show the e-mail form, and similarly if there is no email
+   if( ( j?.application != null && j.application !== "" ) ) {
+      // jurisdiction has an application link, do not show the e-mail form
+      return;
+   }
+
+   if( States[j.state.alpha].usePhoneInsteadOfEmailForFormFallback ) {
+      return ( <Fragment>
+         <p>{States[j.state.alpha].name} is looking to quickly place poll workers in the coming weeks ahead of Election Day on November 3rd. <strong>In order to expedite placement, call your local election administrator directly to express your interest in being a poll worker.</strong></p>
+         <p>To complete your application, call {j.telephone}.</p>
+         <a
+            class="poll-worker-action cta"
+            href={`tel:${j.telephone}`}
+         >Call {j.telephone} to finish applying</a>
+      </Fragment> );
+   }
+
+   if( ( j?.email == null || j.email === "" ) ) {
+      // jurisdiction has no email, do not show the e-mail form
       return;
    }
 

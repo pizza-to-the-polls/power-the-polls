@@ -100,7 +100,11 @@ export class JurisdictionInfoComponent {
          <CompleteApplicationButton {...j} />
 
          {!this.mailToFormComplete &&
-            <EmailApplicationForm jurisdiction={j} data={this.formData} onComplete={() => this.mailToFormComplete = true} />
+            <EmailApplicationForm
+               jurisdiction={j}
+               data={this.formData}
+               onComplete={() => this.mailToFormComplete = true}
+            />
          }
 
          <slot />
