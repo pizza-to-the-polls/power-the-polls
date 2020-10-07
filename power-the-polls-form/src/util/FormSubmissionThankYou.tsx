@@ -1,8 +1,6 @@
-import { FunctionalComponent, h } from "@stencil/core";
+import { Fragment, FunctionalComponent, h } from "@stencil/core";
 
 import { StateInfo } from "../data/States";
-
-import Fragment from "./Fragment";
 
 /**
  * Display thank you and "here are next steps" to the user unless they are in a jurisdiction that no longer needs poll workers, in which case

@@ -8,11 +8,24 @@ It has a contact modal with a form that feeds directly to helpscout via zapier w
 
 ## Properties
 
-| Property     | Attribute    | Description                                                               | Type                                                   | Default     |
-| ------------ | ------------ | ------------------------------------------------------------------------- | ------------------------------------------------------ | ----------- |
-| `data`       | --           | A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx | `undefined \| { question: string; answer: string; }[]` | `undefined` |
-| `page_title` | `page_title` | The page's title                                                          | `string \| undefined`                                  | `undefined` |
+| Property       | Attribute       | Description | Type                                                           | Default     |
+| -------------- | --------------- | ----------- | -------------------------------------------------------------- | ----------- |
+| `questions`    | --              |             | `undefined \| ({ question: string; answer: () => string; }[])` | `undefined` |
+| `sectionTitle` | `section-title` |             | `string \| undefined`                                          | `undefined` |
 
+
+## Dependencies
+
+### Used by
+
+ - [page-faq](.)
+
+### Graph
+```mermaid
+graph TD;
+  page-faq --> question-section
+  style question-section fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

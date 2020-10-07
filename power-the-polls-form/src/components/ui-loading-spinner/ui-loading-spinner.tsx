@@ -1,4 +1,4 @@
-import { Component, h } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 
 @Component( {
    tag: "ui-loading-spinner",
@@ -6,11 +6,21 @@ import { Component, h } from "@stencil/core";
    shadow: true,
 } )
 export class LoadingSpinner {
+
+   @Prop() public small: boolean;
+
+   constructor() {
+      this.small = false;
+   }
+
    public render() {
-      return (
-         <div class={{ "sk-cube-grid": true }}>
-            {[...new Array( 9 ).keys()].map( x => <div class={`sk-cube sk-cube${x}`} part="cube"></div> )}
-         </div>
-      );
+      return this.small ?
+         (
+            <div class="spinner"></div>
+         ) : (
+            <div class={{ "cube-grid": true }}>
+               {[...new Array( 9 ).keys()].map( x => <div class={`cube cube${x}`} part="cube"></div> )}
+            </div>
+         );
    }
 }

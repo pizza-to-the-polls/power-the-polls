@@ -45,7 +45,6 @@ export const setToken = async ( authToken?: string, user?: string ) => {
    } else {
       try {
          const r = await request( "GET /user", { ...defaultArgs() } );
-         // console.log( "setToken", r );
          authenticatedUser = "@" + r.data.login;
          localStorage.setItem( "token", token );
          if( user !== undefined ) {
@@ -53,6 +52,7 @@ export const setToken = async ( authToken?: string, user?: string ) => {
          }
          return true;
       } catch {
+         setToken( undefined );
          return false;
       }
    }

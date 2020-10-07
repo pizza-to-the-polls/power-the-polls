@@ -5,6 +5,26 @@
 <!-- Auto Generated Below -->
 
 
+## Events
+
+| Event    | Description | Type                                    |
+| -------- | ----------- | --------------------------------------- |
+| `lookup` |             | `CustomEvent<"COMPLETED" \| "STARTED">` |
+
+
+## Methods
+
+### `state() => Promise<"STARTED" | "COMPLETED">`
+
+
+
+#### Returns
+
+Type: `Promise<"STARTED" | "COMPLETED">`
+
+
+
+
 ## Dependencies
 
 ### Used by
