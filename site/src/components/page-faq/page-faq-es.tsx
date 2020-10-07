@@ -2,9 +2,7 @@
  * This page will be diffrent from the regular faq until we can get the translations back
  */
 
-import { Component, h, Host, Prop } from "@stencil/core";
-
-import { Fragment } from "../../util";
+import { Component, Fragment, h, Host, Prop } from "@stencil/core";
 
 @Component( {
    tag: "page-faq-es",
