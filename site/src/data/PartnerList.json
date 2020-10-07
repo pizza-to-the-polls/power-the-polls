@@ -450,6 +450,10 @@
       "logo": "encore.png"
    },
    {
+      "partnerId": "EntrepreneursforDemocracy",
+      "name": "EntrepreneursforDemocracy"
+   },
+   {
       "partnerId": "EnvisionHealthcare",
       "name": "EnvisionHealthcare",
       "logo": "envisionhealthcare.png",
@@ -553,6 +557,10 @@
       "name": "Global Black Caucus",
       "logo": "global-black-caucus.jpg",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "globalcitizen",
+      "name": "Global Citizen"
    },
    {
       "partnerId": "goodfearcontent",
