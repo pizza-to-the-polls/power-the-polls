@@ -1030,6 +1030,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "NWHL",
+      "name": "National Womens Hockey League",
+      "logo": "nwhl.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "oldnavy",
       "name": "Old Navy",
       "logo": "old-navy.png",
