@@ -293,6 +293,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "chobani",
+      "name": "chobani",
+      "logo": "chobani.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "ChowNow",
       "name": "ChowNow",
       "logo": "chownow.png"
