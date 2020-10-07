@@ -6,7 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PtpFormData } from "./util";
-import { RouterHistory } from "@stencil/router";
 import { GeoJSON } from "geojson";
 import { Options } from "./components/ui-geojson-to-svg/types";
 export namespace Components {
@@ -66,7 +65,6 @@ export namespace Components {
           * Complete form data, if available
          */
         "formData"?: PtpFormData;
-        "history"?: RouterHistory;
         /**
           * State for matching to location
          */
@@ -208,7 +206,6 @@ declare namespace LocalJSX {
           * Complete form data, if available
          */
         "formData"?: PtpFormData;
-        "history"?: RouterHistory;
         /**
           * State for matching to location
          */

@@ -1,5 +1,4 @@
 import { Component, h, Prop } from "@stencil/core";
-import { injectHistory, RouterHistory } from "@stencil/router";
 
 import { PtpFormData } from "../../util";
 import { findJurisdictionId } from "../../util/WorkElections";
@@ -34,15 +33,9 @@ export class PollWorkerInfo {
     */
    @Prop() public formData?: PtpFormData;
 
-   @Prop() public history?: RouterHistory;
-
    public render() {
       const { state, county, city } = this;
       const jurisdictionId = state ? findJurisdictionId( state, county, city ) : null;
-
-      if( !state && this.history ) {
-         return this.history.replace( "/search" );
-      }
 
       return jurisdictionId != null ?
          (
@@ -56,5 +49,3 @@ export class PollWorkerInfo {
          );
    }
 }
-
-injectHistory( PollWorkerInfo );
