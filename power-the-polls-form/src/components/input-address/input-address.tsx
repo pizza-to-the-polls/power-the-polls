@@ -1,4 +1,4 @@
-import { Component, h, Host, State } from "@stencil/core";
+import { Component, Event, EventEmitter, h, Host, Method, State } from "@stencil/core";
 
 import ZipGeocode from "./zipGeocoding";
 
@@ -12,6 +12,12 @@ import ZipGeocode from "./zipGeocoding";
 } )
 export class AddressInput {
 
+   @Event( {
+      eventName: "lookup",
+      composed: true,
+      cancelable: false,
+   } ) public onLookup!: EventEmitter<"STARTED" | "COMPLETED">;
+
    @State() private cityValue: string;
    @State() private countyValue: string;
    @State() private stateValue: string;
@@ -19,6 +25,7 @@ export class AddressInput {
    @State() private cityOptions: Set<string>;
    @State() private countyOptions: Set<string>;
    @State() private stateOptions: Map<string, string>;
+   private m_state: "STARTED" | "COMPLETED" = "COMPLETED";
 
    constructor() {
       this.zipValue = "";
@@ -30,12 +37,19 @@ export class AddressInput {
       this.stateOptions = new Map();
    }
 
+   @Method()
+   public state() {
+      return Promise.resolve( this.m_state );
+   }
+
    public render() {
       const zipValidationRegex = /^\d{5}$/;
 
       const onZipInputChange = ( event: Event ) => {
          this.zipValue = ( event.target as HTMLInputElement ).value;
          if( zipValidationRegex.test( this.zipValue ) ) {
+            this.m_state = "STARTED";
+            this.onLookup.emit( this.m_state );
             ZipGeocode( this.zipValue )
                .then( ( result ) => {
                   if( "error" in result ) {
@@ -48,6 +62,8 @@ export class AddressInput {
                      this.stateOptions = result.states;
                      this.stateValue = this.stateOptions.keys().next().value;
                   }
+                  this.m_state = "COMPLETED";
+                  this.onLookup.emit( this.m_state );
                } );
          }
       };

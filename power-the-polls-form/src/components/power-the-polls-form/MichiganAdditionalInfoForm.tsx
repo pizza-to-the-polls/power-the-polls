@@ -1,7 +1,7 @@
-import { h } from "@stencil/core";
+import { Fragment, h } from "@stencil/core";
 import { FunctionalComponent } from "@stencil/router/dist/types/stencil.core";
 
-import { Fragment, PtpFormData } from "../../util";
+import { PtpFormData } from "../../util";
 
 import { submitToActionKit } from "./ActionKit";
 

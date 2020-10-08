@@ -1,7 +1,7 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop, State } from "@stencil/core";
+import { Component, Event, EventEmitter, Fragment, h, Host, Method, Prop, State } from "@stencil/core";
 
 import { States } from "../../data";
-import { FormSubmissionThankYou, Fragment, PtpFormData, PtpLink } from "../../util";
+import { FormSubmissionThankYou, PtpFormData, PtpLink } from "../../util";
 import { findJurisdictionId } from "../../util/WorkElections";
 
 import { submitToActionKit } from "./ActionKit";
@@ -59,7 +59,7 @@ export class PowerThePollsForm {
       cancelable: false,
    } ) public submitError!: EventEmitter<any>;
 
-   @State() private formStatus: "incomplete" | "submitting" | "completed";
+   @State() private formStatus: "incomplete" | "processing" | "completed";
    @State() private formData: PtpFormData;
    @State() private michiganFormSubmitted: boolean;
 
@@ -94,6 +94,11 @@ export class PowerThePollsForm {
       const phoneValidationRegex = "(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}";
 
       const submitForm = ( e: Event ) => {
+         if( this.formStatus !== "incomplete" ) {
+            e.preventDefault();
+            return false;
+         }
+
          try {
             // gather up all the form data
             const form = e.target as HTMLFormElement;
@@ -114,7 +119,7 @@ export class PowerThePollsForm {
             const phone = data.mobile_phone || "";
             const zip = data.zip || "";
 
-            this.formStatus = "submitting";
+            this.formStatus = "processing";
 
             submitToActionKit( data )
                .then( ( response ) => {
@@ -140,34 +145,6 @@ export class PowerThePollsForm {
          }
       };
 
-      //
-      // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
-      //
-      const nextSteps = this.formData.state === "ME" ?
-         [
-            () => <Fragment>
-               We are sharing your information with our state partners who will be following up to help you connect with your local administrators.&nbsp;
-               <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Maine.
-            </Fragment>,
-            () => "In the meantime, please review the state requirements and compensation below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
-         ]
-         : this.formData.state === "MI" ?
-            [
-               () => <Fragment>
-                  <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
-               </Fragment>,
-               () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
-            ] :
-            [
-               () => <Fragment><strong>Complete your official application to be a poll worker!</strong> Learn more about hours, compensation, and requirements for your community below and be sure to complete your official application!</Fragment>,
-
-               ( stateInfo == null || !stateInfo.semiPartner ) ?
-                  () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction."
-                  : () => "We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application so we can help you become a poll worker. Be on the lookout for a call from our team!",
-
-               () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
-            ];
-
       return ( <Host>
          {this.formStatus === "completed" ? (
             <article>
@@ -186,12 +163,33 @@ export class PowerThePollsForm {
                            onSubmit={() => this.michiganFormSubmitted = true}
                         />
                         <div class="next-steps">
-                           {nextSteps.map( ( x, i ) => (
-                              <p>
-                                 <span class="number">{i + 1}</span>
-                                 {x()}
-                              </p>
-                           ) )}
+                           {( // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
+                              this.formData.state === "ME" ? [
+                                 () => <Fragment>
+                                       We are sharing your information with our state partners who will be following up to help you connect with your local administrators.&nbsp;
+                                    <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Maine.
+                                 </Fragment>,
+                                 () => "In the meantime, please review the state requirements and compensation below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
+                              ]
+                                 : this.formData.state === "MI" ? [
+                                    () => <Fragment>
+                                       <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
+                                    </Fragment>,
+                                    () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
+                                 ] : [
+                                       () => <Fragment><strong>Complete your official application to be a poll worker!</strong> Learn more about hours, compensation, and requirements for your community below and be sure to complete your official application!</Fragment>,
+
+                                       ( stateInfo == null || !stateInfo.semiPartner ) ?
+                                          () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction."
+                                          : () => "We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application so we can help you become a poll worker. Be on the lookout for a call from our team!",
+
+                                       () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
+                                    ] ).map( ( x, i ) => (
+                                       <p>
+                                          <span class="number">{i + 1}</span>
+                                          {x()}
+                                       </p>
+                                    ) )}
                         </div>
                         <hr />
                      </div>
@@ -240,7 +238,7 @@ export class PowerThePollsForm {
                   </label>
                ) : null )}
 
-               <input-address />
+               <input-address onLookup={x => this.formStatus = x.detail === "STARTED" ? "processing" : "incomplete"} />
 
                <input
                   type="hidden"
@@ -264,7 +262,12 @@ export class PowerThePollsForm {
                   type="submit"
                   class="button"
                   disabled={this.formStatus !== "incomplete"}
-               >Sign Up To Get Started</button>
+               >
+                  {this.formStatus !== "incomplete" ?
+                     <ui-loading-spinner small={true} style={{ padding: "0 0.5em" }} />
+                     : null}
+                  Sign Up To Get Started
+               </button>
 
                <p class="disclaimer">
                   By signing up, you agree to receive occasional emails or text messages from Power the Polls

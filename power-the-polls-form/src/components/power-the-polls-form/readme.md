@@ -53,12 +53,14 @@ Type: `Promise<string>`
 
 - [ptp-info-poll-worker](../ptp-info-poll-worker)
 - [input-address](../input-address)
+- [ui-loading-spinner](../ui-loading-spinner)
 
 ### Graph
 ```mermaid
 graph TD;
   power-the-polls-form --> ptp-info-poll-worker
   power-the-polls-form --> input-address
+  power-the-polls-form --> ui-loading-spinner
   ptp-info-poll-worker --> ptp-info-jurisdiction
   ptp-info-poll-worker --> ptp-info-state
   ptp-info-jurisdiction --> ui-loading-spinner

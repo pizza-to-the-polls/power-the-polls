@@ -61,14 +61,35 @@ export interface JurisdictionInfo {
 }
 
 const data: { [state: string]: StateInfo } = {
+   "AS": {
+      "id": -1,
+      "name": "American Samoa",
+      "noPollWorkersNeeded": true,
+      "notSupported": true,
+      "jurisdictions": {},
+   },
+   "GU": {
+      "id": -1,
+      "name": "Guam",
+      "noPollWorkersNeeded": true,
+      "notSupported": true,
+      "jurisdictions": {},
+   },
    "HI": {
       "id": -1,
       "name": "Hawaii",
       "noPollWorkersNeeded": true,
       "jurisdictions": {},
    },
+   "MP": {
+      "id": -1,
+      "name": "Northern Mariana Islands",
+      "noPollWorkersNeeded": true,
+      "notSupported": true,
+      "jurisdictions": {},
+   },
    "OR": {
-      "id": -2,
+      "id": -1,
       "name": "Oregon",
       "noPollWorkersNeeded": true,
       "jurisdictions": {},
@@ -81,9 +102,16 @@ const data: { [state: string]: StateInfo } = {
       "jurisdictions": {},
    },
    "WA": {
-      "id": -3,
+      "id": -1,
       "name": "Washington",
       "noPollWorkersNeeded": true,
+      "jurisdictions": {},
+   },
+   "VI": {
+      "id": -3,
+      "name": "Virgin Islands",
+      "noPollWorkersNeeded": true,
+      "notSupported": true,
       "jurisdictions": {},
    },
    "AL": {
