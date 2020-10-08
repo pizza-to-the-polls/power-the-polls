@@ -10,8 +10,9 @@ import { PtpFormData, TextInput } from "../../util";
 const EmailApplicationForm: FunctionalComponent<{ jurisdiction: JurisdictionInfo, data: PtpFormData, onComplete: () => void }> = ( { jurisdiction, data, onComplete } ) => {
 
    const j = jurisdiction;
-   if( ( j?.application != null && j.application !== "" ) || ( j?.email == null || j.email === "" ) ) {
-      // jurisdiction has an application link, do not show the e-mail form, and similarly if there is no email
+   if(
+      // if jurisdiction has no email, do not show the e-mail form
+       ( j?.email == null || j.email === "" ) ) {
       return;
    }
 

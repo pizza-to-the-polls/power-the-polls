@@ -7,7 +7,7 @@ import { Coordinate } from "./types";
  */
 const explode = <G extends MultiPoint | MultiLineString | MultiPolygon>( g: G )
    : ( G extends MultiPoint ? Point : G extends MultiLineString ? LineString : Polygon )[] =>
-   g && ( g.coordinates as Coordinate[]/*or Coordinates[][], etc but it doesn't matter*/ )
+   g && g.coordinates && ( g.coordinates as Coordinate[]/*or Coordinates[][], etc but it doesn't matter*/ )
       .map( ( part ) => ( {
          type: g.type.replace( "Multi", "" ),
          coordinates: part,
