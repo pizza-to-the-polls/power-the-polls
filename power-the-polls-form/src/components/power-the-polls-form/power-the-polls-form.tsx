@@ -155,42 +155,13 @@ export class PowerThePollsForm {
                      county={this.formData.county}
                      state={this.formData.state}
                      formData={this.formData}
+                     showNextSteps={true}
                   >
-                     <div>
-                        <MichiganAdditionalInfoForm
-                           formSubmitted={this.michiganFormSubmitted}
-                           data={this.formData}
-                           onSubmit={() => this.michiganFormSubmitted = true}
-                        />
-                        <div class="next-steps">
-                           {( // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
-                              this.formData.state === "ME" ? [
-                                 () => <Fragment><strong>Complete your community's application by calling the number above!</strong> Learn more about hours, compensation, and requirements for your community below.</Fragment>,
-                                 () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction.",
-                                 () => "Please encourage your friends and family to sign up to help ensure a safe and fair election!",
-                              ]
-                                 : this.formData.state === "MI" ? [
-                                    () => <Fragment>
-                                       <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
-                                    </Fragment>,
-                                    () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
-                                 ] : [
-                                       () => <Fragment><strong>Complete your official application to be a poll worker!</strong> Learn more about hours, compensation, and requirements for your community below and be sure to complete your official application!</Fragment>,
-
-                                       ( stateInfo == null || !stateInfo.semiPartner ) ?
-                                          () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction."
-                                          : () => "We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application so we can help you become a poll worker. Be on the lookout for a call from our team!",
-
-                                       () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
-                                    ] ).map( ( x, i ) => (
-                                       <p>
-                                          <span class="number">{i + 1}</span>
-                                          {x()}
-                                       </p>
-                                    ) )}
-                        </div>
-                        <hr />
-                     </div>
+                     <MichiganAdditionalInfoForm
+                        formSubmitted={this.michiganFormSubmitted}
+                        data={this.formData}
+                        onSubmit={() => this.michiganFormSubmitted = true}
+                     />
                   </ptp-info-poll-worker>
                )}
             </article>

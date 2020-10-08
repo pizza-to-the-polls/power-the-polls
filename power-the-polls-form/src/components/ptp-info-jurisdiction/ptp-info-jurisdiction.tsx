@@ -1,6 +1,7 @@
-import { Component, h, Host, Prop, State } from "@stencil/core";
+import { Component, Fragment, h, Host, Prop, State } from "@stencil/core";
 import { MultiPolygon } from "geojson";
 
+import { States } from "../../data";
 import { JurisdictionInfo } from "../../data/States";
 import { allNullOrEmpty, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
 import { fetchJurisdictionGeoJson, fetchJurisdictionInfo } from "../../util/WorkElections";
@@ -33,21 +34,27 @@ export class JurisdictionInfoComponent {
    @Prop() public jurisdictionId?: string | number;
 
    /**
-    * Props possibly passed in from the form
+    * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
     */
-   @Prop() public addtl?: PtpFormData;
+   @Prop() public showNextSteps: boolean;
+
+   /**
+    * Props possibly passed in from the main form
+    */
+   @Prop() public initialFormData?: PtpFormData;
 
    @State() private jurisdiction?: JurisdictionInfo;
    @State() private jurisdictionShape?: MultiPolygon;
    @State() private formData: PtpFormData = {};
-   @State() private mailToFormComplete: boolean;
+   @State() private isMailToFormComplete: boolean;
 
    constructor() {
-      this.mailToFormComplete = false;
+      this.isMailToFormComplete = false;
+      this.showNextSteps = false;
    }
 
    public componentWillLoad() {
-      this.formData = this.addtl || {};
+      this.formData = this.initialFormData || {};
       if( this.jurisdictionId ) {
          fetchJurisdictionInfo( this.jurisdictionId ).then( x => this.jurisdiction = x );
          fetchJurisdictionGeoJson( this.jurisdictionId ).then( x => this.jurisdictionShape = x );
@@ -79,6 +86,7 @@ export class JurisdictionInfoComponent {
          </Host> );
       }
 
+      const jurisdictionInfo = States[j.state.alpha];
       return ( <Host>
 
          <div style={{ display: "flex", alignItems: "start", flexDirection: "column" }}>
@@ -101,13 +109,42 @@ export class JurisdictionInfoComponent {
 
          {!this.mailToFormComplete &&
             <EmailApplicationForm
-               jurisdiction={j}
-               data={this.formData}
+                     jurisdiction={j}
+                     data={this.formData}
                onComplete={() => this.mailToFormComplete = true}
             />
          }
 
          <slot />
+         {this.showNextSteps ? (
+            <Fragment>
+               <div class="next-steps">
+                  {( // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
+                     this.formData.state === "MI" ? [
+                        () => <Fragment>
+                           <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
+                                    </Fragment>,
+                        () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
+                     ] : ( j?.application == null || j?.application === "" ) && jurisdictionInfo && jurisdictionInfo.usePhoneInsteadOfEmailForFormFallback ? [
+                        () => <Fragment><strong>Complete your community's application by calling the number above!</strong> Learn more about hours, compensation, and requirements for your community below.</Fragment>,
+                        () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction.",
+                        () => "Please encourage your friends and family to sign up to help ensure a safe and fair election!",
+                     ] : [
+                        () => <Fragment><strong>Complete your official application to be a poll worker!</strong> Learn more about hours, compensation, and requirements for your community below and be sure to complete your official application!</Fragment>,
+                        ( jurisdictionInfo == null || !jurisdictionInfo.semiPartner )
+                           ? () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction."
+                           : () => "We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application so we can help you become a poll worker. Be on the lookout for a call from our team!",
+                        () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
+                     ] ).map( ( x, i ) => (
+                        <p>
+                           <span class="number">{i + 1}</span>
+                           {x()}
+                        </p>
+                     ) )}
+               </div>
+               <hr />
+            </Fragment> )
+            : null}
 
          <section>
             <h4>Hours and Compensation</h4>
