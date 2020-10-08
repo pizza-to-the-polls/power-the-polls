@@ -293,6 +293,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "chobani",
+      "name": "chobani",
+      "logo": "chobani.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "ChowNow",
       "name": "ChowNow",
       "logo": "chownow.png"
@@ -1024,6 +1030,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "NWHL",
+      "name": "National Womens Hockey League",
+      "logo": "nwhl.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "oldnavy",
       "name": "Old Navy",
       "logo": "old-navy.png",
@@ -1139,6 +1151,12 @@
       "partnerId": "represent-us",
       "name": "Represent US",
       "logo": "represent-us.png"
+   },
+   {
+      "partnerId": "rga",
+      "name": "rga",
+      "logo": "rga.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "richerpoorer",
