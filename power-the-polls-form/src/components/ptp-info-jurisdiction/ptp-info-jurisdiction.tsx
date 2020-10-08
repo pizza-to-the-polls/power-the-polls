@@ -6,17 +6,9 @@ import { JurisdictionInfo } from "../../data/States";
 import { allNullOrEmpty, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
 import { fetchJurisdictionGeoJson, fetchJurisdictionInfo } from "../../util/WorkElections";
 
+import CallToApplyButton from "./CallToApplyButton";
+import CompleteApplicationButton from "./CompleteApplicationButton";
 import EmailApplicationForm from "./EmailApplicationForm";
-
-const CompleteApplicationButton = ( j: JurisdictionInfo ) => {
-   return j?.application && j?.application !== "" && (
-      <a
-         class="poll-worker-action cta"
-         href={j.application}
-         target="_blank"
-      >Complete your application</a>
-   );
-};
 
 /**
  * Component to render work elections jurisdiction data.
@@ -105,14 +97,25 @@ export class JurisdictionInfoComponent {
                <PtpLink path={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</PtpLink>.
             </p> )}
 
-         <CompleteApplicationButton {...j} />
+         <CompleteApplicationButton jurisdiction={j} />
 
-         {!this.mailToFormComplete &&
-            <EmailApplicationForm
+         {  // if jurisdiction has an application link, do not show the e-mail form
+            ( j?.application == null || j?.application === "" )
+               // use phone if specified to do so, else show email form
+               ? jurisdictionInfo.usePhoneInsteadOfEmailForFormFallback
+                  ? ( <Fragment>
+                     <p>{jurisdictionInfo.name} is looking to quickly place poll workers in the coming weeks ahead of Election Day on November 3rd. <strong>In order to expedite placement, call your local election administrator directly to express your interest in being a poll worker.</strong></p>
+                     <p>To complete your application, call {j.telephone}.</p>
+                     <CallToApplyButton jurisdiction={j} />
+                  </Fragment> )
+                  // show email form unless it's already complete
+                  : ( !this.isMailToFormComplete && <EmailApplicationForm
                      jurisdiction={j}
                      data={this.formData}
-               onComplete={() => this.mailToFormComplete = true}
-            />
+                     onComplete={() => this.isMailToFormComplete = true}
+                  /> )
+               // jurisdiction has an application link, no need for special email or phone section
+               : null
          }
 
          <slot />
@@ -237,7 +240,12 @@ export class JurisdictionInfoComponent {
             href={j.student_website}
             target="_blank"
          >Student Poll Worker Information</a> )}
-         {j?.application !== "" && <CompleteApplicationButton {...j} />}
+
+         {j?.application !== null && j?.application !== ""
+            ? <CompleteApplicationButton jurisdiction={j} />
+            : jurisdictionInfo.usePhoneInsteadOfEmailForFormFallback
+               ? <CallToApplyButton jurisdiction={j} />
+               : null}
 
       </Host> );
    }
