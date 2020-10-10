@@ -37,6 +37,8 @@ export class JurisdictionInfoComponent {
     */
    @Prop() public addtl?: PtpFormData;
 
+   @Prop() public isJurisdictionFilled: boolean = false;
+
    @State() private jurisdiction?: JurisdictionInfo;
    @State() private jurisdictionShape?: MultiPolygon;
    @State() private formData: PtpFormData = {};
@@ -173,8 +175,8 @@ export class JurisdictionInfoComponent {
                </section>
             ) : null}
 
-         {!allNullOrEmpty( j?.telephone, j?.email, j?.office_address )
-            ? (
+         {!allNullOrEmpty( j?.telephone, j?.email, j?.office_address ) && !this.isJurisdictionFilled
+             ? (
                <section>
                   <h4>Contact Information</h4>
                   <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>

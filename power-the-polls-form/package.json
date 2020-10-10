@@ -39,7 +39,9 @@
    "dependencies": {
       "@stencil/core": "^2.0.3",
       "@stencil/router": "^1.0.1",
-      "@types/geojson": "^7946.0.7"
+      "@types/geojson": "^7946.0.7",
+      "@types/object.fromentries": "^2.0.0",
+      "object.fromentries": "^2.0.2"
    },
    "devDependencies": {
       "@rollup/plugin-replace": "^2.3.3",

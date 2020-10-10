@@ -36,6 +36,8 @@ export class PollWorkerInfo {
 
    @Prop() public history?: RouterHistory;
 
+   @Prop() public isJurisdictionFilled: boolean = false;
+
    public render() {
       const { state, county, city } = this;
       const jurisdictionId = state ? findJurisdictionId( state, county, city ) : null;
@@ -46,7 +48,7 @@ export class PollWorkerInfo {
 
       return jurisdictionId != null ?
          (
-            <ptp-info-jurisdiction jurisdictionId={jurisdictionId} addtl={this.formData || { city, state, county, jurisdictionId: jurisdictionId + "" }}>
+            <ptp-info-jurisdiction isJurisdictionFilled={this.isJurisdictionFilled} jurisdictionId={jurisdictionId} addtl={this.formData || { city, state, county, jurisdictionId: jurisdictionId + "" }}>
                <slot />
             </ptp-info-jurisdiction>
          ) : (

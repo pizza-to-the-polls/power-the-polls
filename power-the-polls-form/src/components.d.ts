@@ -48,6 +48,7 @@ export namespace Components {
           * Props possibly passed in from the form
          */
         "addtl"?: PtpFormData;
+        "isJurisdictionFilled": boolean;
         /**
           * ID of jurisdiction for Work Elections
          */
@@ -67,6 +68,7 @@ export namespace Components {
          */
         "formData"?: PtpFormData;
         "history"?: RouterHistory;
+        "isJurisdictionFilled": boolean;
         /**
           * State for matching to location
          */
@@ -190,6 +192,7 @@ declare namespace LocalJSX {
           * Props possibly passed in from the form
          */
         "addtl"?: PtpFormData;
+        "isJurisdictionFilled"?: boolean;
         /**
           * ID of jurisdiction for Work Elections
          */
@@ -209,6 +212,7 @@ declare namespace LocalJSX {
          */
         "formData"?: PtpFormData;
         "history"?: RouterHistory;
+        "isJurisdictionFilled"?: boolean;
         /**
           * State for matching to location
          */

@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, Fragment, h, Host, Method, Prop, State } from "@stencil/core";
 
 import { States } from "../../data";
-import { FormSubmissionThankYou, PtpFormData, PtpLink } from "../../util";
+import { FormSubmissionThankYou, PtpFormData, PtpLink, findIfJurisdictionFilled } from "../../util";
 import { findJurisdictionId } from "../../util/WorkElections";
 
 import { submitToActionKit } from "./ActionKit";
@@ -144,17 +144,20 @@ export class PowerThePollsForm {
             return false;
          }
       };
+   
+      const isJurisdictionFilled = findIfJurisdictionFilled(this.formData);
 
-      return ( <Host>
+return ( <Host>
          {this.formStatus === "completed" ? (
             <article>
-               <FormSubmissionThankYou stateInfo={stateInfo} />
+               <FormSubmissionThankYou stateInfo={stateInfo} isJurisdictionFilled={isJurisdictionFilled}/>
                {stateInfo?.noPollWorkersNeeded !== true && (
                   <ptp-info-poll-worker
                      city={this.formData.city}
                      county={this.formData.county}
                      state={this.formData.state}
                      formData={this.formData}
+                     isJurisdictionFilled={isJurisdictionFilled}
                   >
                      <div>
                         <MichiganAdditionalInfoForm
@@ -163,7 +166,7 @@ export class PowerThePollsForm {
                            onSubmit={() => this.michiganFormSubmitted = true}
                         />
                         <div class="next-steps">
-                           {( // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
+                           { !isJurisdictionFilled && ( // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
                               this.formData.state === "ME" ? [
                                  () => <Fragment>
                                        We are sharing your information with our state partners who will be following up to help you connect with your local administrators.&nbsp;
@@ -176,7 +179,8 @@ export class PowerThePollsForm {
                                        <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
                                     </Fragment>,
                                     () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
-                                 ] : [
+                                 ] : 
+                                 [
                                        () => <Fragment><strong>Complete your official application to be a poll worker!</strong> Learn more about hours, compensation, and requirements for your community below and be sure to complete your official application!</Fragment>,
 
                                        ( stateInfo == null || !stateInfo.semiPartner ) ?
@@ -184,7 +188,9 @@ export class PowerThePollsForm {
                                           : () => "We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application so we can help you become a poll worker. Be on the lookout for a call from our team!",
 
                                        () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
-                                    ] ).map( ( x, i ) => (
+                                    ]
+                                   
+                                    ).map( ( x, i ) => (
                                        <p>
                                           <span class="number">{i + 1}</span>
                                           {x()}
