@@ -1,21 +1,14 @@
-import { Component, h, Host, Prop, State } from "@stencil/core";
+import { Component, Fragment, h, Host, Prop, State } from "@stencil/core";
 import { MultiPolygon } from "geojson";
 
+import { States } from "../../data";
 import { JurisdictionInfo } from "../../data/States";
 import { allNullOrEmpty, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
 import { fetchJurisdictionGeoJson, fetchJurisdictionInfo } from "../../util/WorkElections";
 
+import CallToApplyButton from "./CallToApplyButton";
+import CompleteApplicationButton from "./CompleteApplicationButton";
 import EmailApplicationForm from "./EmailApplicationForm";
-
-const CompleteApplicationButton = ( j: JurisdictionInfo ) => {
-   return j?.application && j?.application !== "" && (
-      <a
-         class="poll-worker-action cta"
-         href={j.application}
-         target="_blank"
-      >Complete your application</a>
-   );
-};
 
 /**
  * Component to render work elections jurisdiction data.
@@ -33,23 +26,29 @@ export class JurisdictionInfoComponent {
    @Prop() public jurisdictionId?: string | number;
 
    /**
-    * Props possibly passed in from the form
+    * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
     */
-   @Prop() public addtl?: PtpFormData;
+   @Prop() public showNextSteps: boolean;
+
+   /**
+    * Props possibly passed in from the main form
+    */
+   @Prop() public initialFormData?: PtpFormData;
 
    @Prop() public isJurisdictionFilled: boolean = false;
 
    @State() private jurisdiction?: JurisdictionInfo;
    @State() private jurisdictionShape?: MultiPolygon;
    @State() private formData: PtpFormData = {};
-   @State() private mailToFormComplete: boolean;
+   @State() private isMailToFormComplete: boolean;
 
    constructor() {
-      this.mailToFormComplete = false;
+      this.isMailToFormComplete = false;
+      this.showNextSteps = false;
    }
 
    public componentWillLoad() {
-      this.formData = this.addtl || {};
+      this.formData = this.initialFormData || {};
       if( this.jurisdictionId ) {
          fetchJurisdictionInfo( this.jurisdictionId ).then( x => this.jurisdiction = x );
          fetchJurisdictionGeoJson( this.jurisdictionId ).then( x => this.jurisdictionShape = x );
@@ -81,6 +80,7 @@ export class JurisdictionInfoComponent {
          </Host> );
       }
 
+      const jurisdictionInfo = States[j.state.alpha];
       return ( <Host>
 
          <div style={{ display: "flex", alignItems: "start", flexDirection: "column" }}>
@@ -99,13 +99,57 @@ export class JurisdictionInfoComponent {
                <PtpLink path={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</PtpLink>.
             </p> )}
 
-         <CompleteApplicationButton {...j} />
+         <CompleteApplicationButton jurisdiction={j} />
 
-         {!this.mailToFormComplete &&
-            <EmailApplicationForm jurisdiction={j} data={this.formData} onComplete={() => this.mailToFormComplete = true} />
+         {  // if jurisdiction has an application link, do not show the e-mail form
+            ( j?.application == null || j?.application === "" )
+               // use phone if specified to do so, else show email form
+               ? jurisdictionInfo.usePhoneInsteadOfEmailForFormFallback
+                  ? ( <Fragment>
+                     <p>{jurisdictionInfo.name} is looking to quickly place poll workers in the coming weeks ahead of Election Day on November 3rd. <strong>In order to expedite placement, call your local election administrator directly to express your interest in being a poll worker.</strong></p>
+                     <p>To complete your application, call {j.telephone}.</p>
+                     <CallToApplyButton jurisdiction={j} />
+                  </Fragment> )
+                  // show email form unless it's already complete
+                  : ( !this.isMailToFormComplete && <EmailApplicationForm
+                     jurisdiction={j}
+                     data={this.formData}
+                     onComplete={() => this.isMailToFormComplete = true}
+                  /> )
+               // jurisdiction has an application link, no need for special email or phone section
+               : null
          }
 
          <slot />
+         {this.showNextSteps ? (
+            <Fragment>
+               <div class="next-steps">
+                  {( // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
+                     this.formData.state === "MI" ? [
+                        () => <Fragment>
+                           <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
+                                    </Fragment>,
+                        () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
+                     ] : ( j?.application == null || j?.application === "" ) && jurisdictionInfo && jurisdictionInfo.usePhoneInsteadOfEmailForFormFallback ? [
+                        () => <Fragment><strong>Complete your community's application by calling the number above!</strong> Learn more about hours, compensation, and requirements for your community below.</Fragment>,
+                        () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction.",
+                        () => "Please encourage your friends and family to sign up to help ensure a safe and fair election!",
+                     ] : [
+                        () => <Fragment><strong>Complete your official application to be a poll worker!</strong> Learn more about hours, compensation, and requirements for your community below and be sure to complete your official application!</Fragment>,
+                        ( jurisdictionInfo == null || !jurisdictionInfo.semiPartner )
+                           ? () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction."
+                           : () => "We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application so we can help you become a poll worker. Be on the lookout for a call from our team!",
+                        () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
+                     ] ).map( ( x, i ) => (
+                        <p>
+                           <span class="number">{i + 1}</span>
+                           {x()}
+                        </p>
+                     ) )}
+               </div>
+               <hr />
+            </Fragment> )
+            : null}
 
          <section>
             <h4>Hours and Compensation</h4>
@@ -179,8 +223,10 @@ export class JurisdictionInfoComponent {
              ? (
                <section>
                   <h4>Contact Information</h4>
-                  <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>
-                  <p><strong>Email: </strong><a href={`mailto:${j.email}`}>{j.email}</a></p>
+                  {j?.telephone &&
+                     <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>}
+                  {j?.email &&
+                     <p><strong>Email: </strong><a href={`mailto:${j.email}`}>{j.email}</a></p>}
                   {j?.office_address &&
                      <p><strong>Office Address: </strong><a target="_blank" href={`https://www.google.com/maps/search/${encodeURIComponent( j?.office_address )}`}>{j?.office_address}</a></p>}
                </section>
@@ -196,7 +242,12 @@ export class JurisdictionInfoComponent {
             href={j.student_website}
             target="_blank"
          >Student Poll Worker Information</a> )}
-         {j?.application !== "" && <CompleteApplicationButton {...j} />}
+
+         {j?.application !== null && j?.application !== ""
+            ? <CompleteApplicationButton jurisdiction={j} />
+            : jurisdictionInfo.usePhoneInsteadOfEmailForFormFallback
+               ? <CallToApplyButton jurisdiction={j} />
+               : null}
 
       </Host> );
    }

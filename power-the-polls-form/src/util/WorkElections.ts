@@ -50,6 +50,9 @@ export const findJurisdictionId = ( state: string, county?: string, city?: strin
          `${city} (Town), ${county} County`,
          `${county} County`,
          `${county} Parish`,
+         `${county} Plantation`,
+         `${city}`,
+         `${county}`,
       ].find( type => stateData.jurisdictions[type] );
 
       if( found ) {

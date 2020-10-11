@@ -1,6 +1,8 @@
 import { Component, h, Host, Prop, State, Watch } from "@stencil/core";
 import { GeoJSON, MultiPolygon, Polygon } from "geojson";
 
+import { isNullOrEmpty } from "../../util";
+
 import explode from "./explode";
 import GeoJsonRenderer from "./GeoJsonRenderer";
 import mercator from "./mercator";
@@ -92,16 +94,24 @@ export class UiGeojsonToSvg {
     */
    private updateProjectedGeoJson() {
       const json = this.geoJson;
-      if( json != null ) {
-         const data = explode( json as MultiPolygon )[0];
-         const coords = data.coordinates[0];
-         for( let x = 0; x < coords.length; x++ ) {
-            const long = coords[x][0];
-            const lat = coords[x][1];
-            let pt = mercator( long, lat );
-            coords[x] = [pt.x, pt.y];
+      if( !isNullOrEmpty( json ) ) {
+         try {
+            const data = explode( json as MultiPolygon )[0];
+            const coords = data.coordinates[0];
+            for( let x = 0; x < coords.length; x++ ) {
+               const long = coords[x][0];
+               const lat = coords[x][1];
+               let pt = mercator( long, lat );
+               coords[x] = [pt.x, pt.y];
+            }
+            this.projectedGeoJson = data;
+         } catch( e ) {
+            console.log( {
+               status: "ERROR",
+               data: json,
+               error: e,
+            } );
          }
-         this.projectedGeoJson = data;
       }
    }
 
