@@ -4,6 +4,6 @@ export { default as isNullOrEmpty } from "./isNullOrEmpty";
 export { default as PtpLink } from "./PtpLink";
 export { default as TextInput } from "./TextInput";
 export { default as toQueryString } from "./toQueryString";
-export { default as findIfJurisdictionFilled } from './findIfJurisdictionFilled'
+export { default as findIfJurisdictionFilled } from "./findIfJurisdictionFilled";
 export * as WorkElections from "./WorkElections";
 export * from "./types";

@@ -26,8 +26,8 @@ export class PageInfo {
       if( !state ) {
          return <stencil-router-redirect url="/search" />;
       }
-      
-      // TODO: CHECK JURISDICTION INFO HERE TOO 
+
+      // TODO: CHECK JURISDICTION INFO HERE TOO
       return ( <Host>
          {stateInfo != null && stateInfo.noPollWorkersNeeded
             ? <util.FormSubmissionThankYou stateInfo={stateInfo} isJurisdictionFilled={false}/>

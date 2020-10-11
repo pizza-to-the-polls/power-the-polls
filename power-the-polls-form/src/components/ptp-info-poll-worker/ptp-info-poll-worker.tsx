@@ -38,11 +38,11 @@ export class PollWorkerInfo {
     */
    @Prop() public showNextSteps: boolean;
 
+   @Prop() public isJurisdictionFilled: boolean = false;
+
    constructor() {
       this.showNextSteps = false;
    }
-
-   @Prop() public isJurisdictionFilled: boolean = false;
 
    public render() {
       const { state, county, city } = this;

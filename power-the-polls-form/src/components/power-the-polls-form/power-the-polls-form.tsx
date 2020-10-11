@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, Fragment, h, Host, Method, Prop, State } from "@stencil/core";
 
 import { States } from "../../data";
-import { FormSubmissionThankYou, PtpFormData, PtpLink, findIfJurisdictionFilled } from "../../util";
+import { findIfJurisdictionFilled, FormSubmissionThankYou, PtpFormData, PtpLink } from "../../util";
 import { findJurisdictionId } from "../../util/WorkElections";
 
 import { submitToActionKit } from "./ActionKit";
@@ -144,7 +144,7 @@ export class PowerThePollsForm {
             return false;
          }
       };
-   
+
       const isJurisdictionFilled = findIfJurisdictionFilled(this.formData);
 
 return ( <Host>
