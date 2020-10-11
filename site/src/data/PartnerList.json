@@ -1108,6 +1108,12 @@
       "name": "Pro Georgia"
    },
    {
+      "partnerId": "ProjectN95",
+      "name": "ProjectN95",
+      "logo": "projectn95.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "ProtectDemocracy",
       "name": "Protect Democracy",
       "customSignupFormField": "School"
