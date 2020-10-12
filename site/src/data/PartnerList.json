@@ -414,6 +414,12 @@
       "name": "Campus Vote Project - CVPS alias"
    },
    {
+      "partnerId": "Daake",
+      "name": "Daake",
+      "logo": "daake.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "defendourfuture",
       "name": "Defend Our Future",
       "logo": "defend-our-future.png"
