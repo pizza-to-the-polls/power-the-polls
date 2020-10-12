@@ -1519,6 +1519,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "WayUp",
+      "name": "WayUp",
+      "logo": "wayup.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "WeCanVote",
       "name": "We Can Vote",
       "isFoundingPartner": true,
