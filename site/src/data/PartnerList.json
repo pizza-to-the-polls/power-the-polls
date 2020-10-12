@@ -1358,6 +1358,11 @@
       "name": "Target"
    },
    {
+      "partnerId": "TCGplayer",
+      "name": "TCGplayer",
+      "logo": "tcgplayer.png"
+   },
+   {
       "partnerId": "teamsters",
       "name": "International Brotherhood of Teamsters",
       "logo": "teamsters.png",
