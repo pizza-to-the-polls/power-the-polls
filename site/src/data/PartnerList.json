@@ -1004,6 +1004,11 @@
       "logo": "nextdoor.png"
    },
    {
+      "partnerId": "NFL",
+      "name": "NFL",
+      "logo": "nfl.png"
+   },
+   {
       "partnerId": "nhvotes",
       "name": "New Hampshire"
    },
