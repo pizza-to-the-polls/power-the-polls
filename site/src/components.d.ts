@@ -14,7 +14,7 @@ export namespace Components {
     }
     interface ContactForm {
         "formError": boolean;
-        "submitForm"?: (e: Event) => void;
+        "submitForm"?: ( e: Event ) => void;
     }
     interface ContactModal {
         "isOpen": boolean;
@@ -25,11 +25,11 @@ export namespace Components {
         /**
           * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
          */
-        "data"?: {sectionTitle: string,  questions: { question: string, answer: () => string }[]}[];
+        "data"?: { sectionTitle: string, questions: { question: string, answer: () => string }[] }[];
         /**
           * The page's title
          */
-        "page_title"?: string;
+        "pageTitle"?: string;
     }
     interface PageFaqEs {
         /**
@@ -39,7 +39,7 @@ export namespace Components {
         /**
           * The page's title
          */
-        "page_title"?: string;
+        "pageTitle"?: string;
     }
     interface PageForm {
         /**
@@ -62,6 +62,8 @@ export namespace Components {
     }
     interface PagePrivacy {
     }
+    interface PageResources {
+    }
     interface PageSearch {
         "history": RouterHistory;
     }
@@ -81,11 +83,21 @@ export namespace Components {
         "label"?: string;
     }
     interface UiPartnerImage {
-        "chosenPartner"?: string;
+        /**
+          * If this value matches the `partner` ID then the image will have the `chosen-partner` class added which currently pulses the image.
+         */
+        "chosenPartnerId"?: string;
+        /**
+          * By default, an empty <span> with an id set to the partnerId is added to this component. If you don't want to pollute the ID space, you can exclude that span by setting this to `true`
+         */
         "excludeAnchor": boolean;
-        "partner": Partner;
+        /**
+          * A `Partner` object or partnerID string
+         */
+        "partner": Partner | string;
         /**
           * If `true` the image will not be loaded from the deployed assets but from the `partner-updates` branch on GitHub
+          * @see page-partners-table
          */
         "sourceFromDevBranch": boolean;
     }
@@ -195,6 +207,12 @@ declare global {
         prototype: HTMLPagePrivacyElement;
         new (): HTMLPagePrivacyElement;
     };
+    interface HTMLPageResourcesElement extends Components.PageResources, HTMLStencilElement {
+    }
+    var HTMLPageResourcesElement: {
+        prototype: HTMLPageResourcesElement;
+        new (): HTMLPageResourcesElement;
+    };
     interface HTMLPageSearchElement extends Components.PageSearch, HTMLStencilElement {
     }
     var HTMLPageSearchElement: {
@@ -251,6 +269,7 @@ declare global {
         "page-partners": HTMLPagePartnersElement;
         "page-partners-table": HTMLPagePartnersTableElement;
         "page-privacy": HTMLPagePrivacyElement;
+        "page-resources": HTMLPageResourcesElement;
         "page-search": HTMLPageSearchElement;
         "question-section": HTMLQuestionSectionElement;
         "ui-h3-bar": HTMLUiH3BarElement;
@@ -267,7 +286,7 @@ declare namespace LocalJSX {
     }
     interface ContactForm {
         "formError"?: boolean;
-        "submitForm"?: (e: Event) => void;
+        "submitForm"?: ( e: Event ) => void;
     }
     interface ContactModal {
         "isOpen"?: boolean;
@@ -279,11 +298,11 @@ declare namespace LocalJSX {
         /**
           * A list of entries to display in the FAQ see: FaqData.ts see: app-root.tsx
          */
-        "data"?: {sectionTitle: string,  questions: { question: string, answer: () => string }[]}[];
+        "data"?: { sectionTitle: string, questions: { question: string, answer: () => string }[] }[];
         /**
           * The page's title
          */
-        "page_title"?: string;
+        "pageTitle"?: string;
     }
     interface PageFaqEs {
         /**
@@ -293,7 +312,7 @@ declare namespace LocalJSX {
         /**
           * The page's title
          */
-        "page_title"?: string;
+        "pageTitle"?: string;
     }
     interface PageForm {
         /**
@@ -316,6 +335,8 @@ declare namespace LocalJSX {
     }
     interface PagePrivacy {
     }
+    interface PageResources {
+    }
     interface PageSearch {
         "history": RouterHistory;
     }
@@ -336,11 +357,21 @@ declare namespace LocalJSX {
         "onToggle"?: (event: CustomEvent<UiMenuButton>) => void;
     }
     interface UiPartnerImage {
-        "chosenPartner"?: string;
+        /**
+          * If this value matches the `partner` ID then the image will have the `chosen-partner` class added which currently pulses the image.
+         */
+        "chosenPartnerId"?: string;
+        /**
+          * By default, an empty <span> with an id set to the partnerId is added to this component. If you don't want to pollute the ID space, you can exclude that span by setting this to `true`
+         */
         "excludeAnchor"?: boolean;
-        "partner"?: Partner;
+        /**
+          * A `Partner` object or partnerID string
+         */
+        "partner"?: Partner | string;
         /**
           * If `true` the image will not be loaded from the deployed assets but from the `partner-updates` branch on GitHub
+          * @see page-partners-table
          */
         "sourceFromDevBranch"?: boolean;
     }
@@ -384,6 +415,7 @@ declare namespace LocalJSX {
         "page-partners": PagePartners;
         "page-partners-table": PagePartnersTable;
         "page-privacy": PagePrivacy;
+        "page-resources": PageResources;
         "page-search": PageSearch;
         "question-section": QuestionSection;
         "ui-h3-bar": UiH3Bar;
@@ -410,6 +442,7 @@ declare module "@stencil/core" {
             "page-partners": LocalJSX.PagePartners & JSXBase.HTMLAttributes<HTMLPagePartnersElement>;
             "page-partners-table": LocalJSX.PagePartnersTable & JSXBase.HTMLAttributes<HTMLPagePartnersTableElement>;
             "page-privacy": LocalJSX.PagePrivacy & JSXBase.HTMLAttributes<HTMLPagePrivacyElement>;
+            "page-resources": LocalJSX.PageResources & JSXBase.HTMLAttributes<HTMLPageResourcesElement>;
             "page-search": LocalJSX.PageSearch & JSXBase.HTMLAttributes<HTMLPageSearchElement>;
             "question-section": LocalJSX.QuestionSection & JSXBase.HTMLAttributes<HTMLQuestionSectionElement>;
             "ui-h3-bar": LocalJSX.UiH3Bar & JSXBase.HTMLAttributes<HTMLUiH3BarElement>;

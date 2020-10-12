@@ -6,7 +6,7 @@ page-faq {
    header > a {
       text-decoration: none;
    }
-    
+
    button.cta {
       border: 0;
       background-color: $color-font-highlight-contrast;
@@ -14,5 +14,6 @@ page-faq {
       width: 75%;
       text-transform: uppercase;
       font-weight: bold;
+      cursor: pointer;
    }
 }
