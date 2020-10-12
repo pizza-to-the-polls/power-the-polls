@@ -191,6 +191,12 @@
       "logo": "bbyo.png"
    },
    {
+      "partnerId": "Bearaby",
+      "name": "Bearaby",
+      "logo": "bearaby.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "Belk",
       "name": "Belk",
       "logo": "belk.png",
