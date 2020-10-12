@@ -744,6 +744,12 @@
       "customSignupFormField": "Do you speak any languages in addition to English? (Yes / No)"
    },
    {
+      "partnerId": "Lalo",
+      "name": "Lalo",
+      "logo": "lalo.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "LCV",
       "name": "League of Conservation Voters",
       "logo": "lcv.jpg",
