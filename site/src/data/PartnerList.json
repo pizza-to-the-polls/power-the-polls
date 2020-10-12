@@ -623,6 +623,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "HelpScout",
+      "name": "HelpScout",
+      "logo": "helpscout.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "hoteltango",
       "name": "Hotel Tango",
       "logo": "hotel-tango.png"
