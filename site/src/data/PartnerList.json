@@ -1267,6 +1267,12 @@
       "logo": "spread-the-vote.png"
    },
    {
+      "partnerId": "spye",
+      "name": "spye",
+      "logo": "spye.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "StandUpAmerica",
       "name": "Stand Up America",
       "logo": "sua.png"
@@ -1523,6 +1529,12 @@
       "partnerId": "workpollsNC",
       "name": "SEIU",
       "customSignupFormField": "Do you speak any languages in addition to English? (Yes / No)"
+   },
+   {
+      "partnerId": "yasso",
+      "name": "yasso",
+      "logo": "yasso.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "YMCA",
