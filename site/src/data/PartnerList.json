@@ -475,6 +475,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "ElektraLabs",
+      "name": "ElektraLabs",
+      "logo": "elektralabs.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "encore-renewable-energy",
       "name": "Encore Renewable Energy",
       "logo": "encore.png"
