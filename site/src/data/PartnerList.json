@@ -1271,6 +1271,11 @@
       "name": "Nevada"
    },
    {
+      "partnerId": "SimonData",
+      "name": "SimonData",
+      "logo": "simondata.png"
+   },
+   {
       "partnerId": "skimm",
       "name": "theSkimm",
       "additionalVanityUrls": [
