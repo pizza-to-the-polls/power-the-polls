@@ -4,6 +4,11 @@ import { PartnerList } from "../../data";
 import { Partner } from "../../data/types";
 import { REPO_NAME, REPO_ORG } from "../../util/constants";
 
+/**
+ * Buffer, in px, that extends the viewport for images to load
+ */
+const SCROLL_BUFFER = 200;
+
 @Component( {
    tag: "ui-partner-image",
    styleUrl: "ui-partner-image.scss",
@@ -36,14 +41,21 @@ export class UiPartnerImage {
     */
    @Prop() public sourceFromDevBranch: boolean;
 
+   @Element() private el!: HTMLElement;
+
    @State() private loading: boolean;
    @State() private partnerData!: Partner | null;
+   /**
+    * Used to lazy-load the image by not rendering it until visible in the viewport
+    */
+   @State() private passedThroughViewport: boolean;
 
    constructor() {
       this.partner = UiPartnerImage.InvalidPartner;
       this.excludeAnchor = false;
       this.sourceFromDevBranch = false;
       this.loading = true;
+      this.passedThroughViewport = false;
    }
 
    public componentWillLoad() {
@@ -55,6 +67,16 @@ export class UiPartnerImage {
       this.setPartnerData( newVal );
    }
 
+   @Listen( "scroll", { target: "window" } )
+   public onScroll() {
+      if( this.passedThroughViewport ) {
+         return;
+      }
+      const rect = this.el.getBoundingClientRect();
+      if( this.el.offsetHeight + rect.top > 0 && rect.bottom < ( window.innerHeight || document.documentElement.clientHeight ) + SCROLL_BUFFER ) {
+         this.passedThroughViewport = true;
+      }
+   }
 
    public render() {
       const {
@@ -62,6 +84,7 @@ export class UiPartnerImage {
          loading,
          excludeAnchor,
          chosenPartnerId,
+         passedThroughViewport,
          sourceFromDevBranch } = this;
 
       if( partnerData === null ) {
@@ -81,6 +104,7 @@ export class UiPartnerImage {
             {!excludeAnchor &&
                <span id={partnerData.partnerId} class="anchor"></span>
             }
+            {passedThroughViewport &&
                <img
                   src={partnerData.logo?.startsWith( "data:" )
                      ? partnerData.logo
@@ -89,6 +113,7 @@ export class UiPartnerImage {
                   title={partnerData.name}
                   onLoad={() => this.loading = false}
                />
+            }
             {loading &&
                <div class={{ "loading": true, "dark": partnerData.logoIsDark ?? false }}>
                   <div class="double-bounce1"></div>
