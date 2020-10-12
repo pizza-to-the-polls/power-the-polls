@@ -893,7 +893,7 @@
    {
       "partnerId": "MLS",
       "name": "Major League Soccer",
-      "logoIsDark": true,
+      "logo": "mls.png",
       "logoAppearsOnLandingPage": true
    },
    {
