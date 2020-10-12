@@ -1231,6 +1231,12 @@
       "logo": "slsv.png"
    },
    {
+      "partnerId": "Small-Door-Vet",
+      "name": "Small-Door-Vet",
+      "logo": "small-door-vet.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "SMARTElections",
       "name": "SMART Elections",
       "logo": "smart-elections.png"
