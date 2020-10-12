@@ -613,6 +613,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "GigaSheet",
+      "name": "GigaSheet",
+      "logo": "gigasheet.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "github.png",
       "name": "GitHub",
       "logo": "github.png"
