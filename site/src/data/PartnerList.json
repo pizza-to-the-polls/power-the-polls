@@ -1383,6 +1383,12 @@
       "logoAppearsOnLandingPage": true
    },
    {
+      "partnerId": "Thirty-Madison",
+      "name": "Thirty-Madison",
+      "logo": "thirty-madison.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "thornburg-investment",
       "name": "Thornburg Investment",
       "logo": "thornburg.jpg",
