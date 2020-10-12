@@ -1515,6 +1515,12 @@
       "optUserOutOfChase": true
    },
    {
+      "partnerId": "Umbrella",
+      "name": "Umbrella",
+      "logo": "umbrella.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "unfkus",
       "name": "unfkus",
       "logo": "unfkus.jpg",
