@@ -310,6 +310,12 @@
       "logo": "chownow.png"
    },
    {
+      "partnerId": "Cityblock-Health",
+      "name": "Cityblock-Health",
+      "logo": "cityblock-health.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "Civic",
       "name": "Civic",
       "logo": "civic.png"
