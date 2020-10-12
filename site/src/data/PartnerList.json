@@ -249,6 +249,12 @@
       "logo": "breakout.png"
    },
    {
+      "partnerId": "Burrow",
+      "name": "Burrow",
+      "logo": "burrow.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "burton",
       "name": "Burton",
       "logo": "burton.png"
@@ -338,6 +344,12 @@
       "partnerId": "civil-review-board",
       "name": "Civil Review Board",
       "logo": "civil-review-board.jpg",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "CleanChoice-Energy",
+      "name": "CleanChoice-Energy",
+      "logo": "cleanchoice-energy.png",
       "logoIsDark": true
    },
    {
@@ -1128,6 +1140,12 @@
       "name": "Patagonia",
       "isFoundingPartner": true,
       "logo": "patagonia.png"
+   },
+   {
+      "partnerId": "Payability",
+      "name": "Payability",
+      "logo": "payability.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "paypal",
