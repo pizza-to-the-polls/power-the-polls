@@ -233,6 +233,12 @@
       "logo": "block-power.png"
    },
    {
+      "partnerId": "Bloomreach",
+      "name": "Bloomreach",
+      "logo": "bloomreach.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "blueapron",
       "name": "Blue Apron",
       "logo": "blue-apron.png",
