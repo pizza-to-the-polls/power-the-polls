@@ -1429,6 +1429,11 @@
       "optUserOutOfChase": true
    },
    {
+      "partnerId": "User-Interviews",
+      "name": "User-Interviews",
+      "logo": "user-interviews.png"
+   },
+   {
       "partnerId": "USW",
       "name": "United Steel Workers"
    },
