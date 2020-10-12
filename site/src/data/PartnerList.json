@@ -386,6 +386,11 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "Columbia-Sportswear",
+      "name": "Columbia-Sportswear",
+      "logo": "columbia-sportswear.png"
+   },
+   {
       "partnerId": "ComedyCentral",
       "name": "Comedy Central",
       "isFoundingPartner": true,
