@@ -451,6 +451,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "Eden-Health",
+      "name": "Eden-Health",
+      "logo": "eden-health.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "encore-renewable-energy",
       "name": "Encore Renewable Energy",
       "logo": "encore.png"
