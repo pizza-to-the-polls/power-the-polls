@@ -1223,6 +1223,12 @@
       "logo": "rinse.png"
    },
    {
+      "partnerId": "Robotters",
+      "name": "Robotters",
+      "logo": "robotters.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "Salesforce",
       "name": "Salesforce",
       "logo": "salesforce.png"
