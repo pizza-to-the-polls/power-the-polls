@@ -1047,6 +1047,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "Numina",
+      "name": "Numina",
+      "logo": "numina.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "NWHL",
       "name": "National Womens Hockey League",
       "logo": "nwhl.png",
