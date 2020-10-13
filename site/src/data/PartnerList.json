@@ -737,6 +737,13 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "IsiahThomas",
+      "name": "IsiahThomas",
+      "logo": "isiahthomas.png",
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
+   },
+   {
       "partnerId": "jolt",
       "name": "Jolt Action",
       "logo": "jolt.png",
