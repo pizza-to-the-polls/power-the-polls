@@ -27,10 +27,10 @@ export class PageInfo {
          return <stencil-router-redirect url="/search" />;
       }
 
-      // TODO: CHECK JURISDICTION INFO HERE TOO
+      const isJurisdictionFilled = data.FullJurisdictions[state].includes(county);
       return ( <Host>
          {stateInfo != null && stateInfo.noPollWorkersNeeded
-            ? <util.FormSubmissionThankYou stateInfo={stateInfo} isJurisdictionFilled={false}/>
+            ? <util.FormSubmissionThankYou stateInfo={stateInfo} isJurisdictionFilled={isJurisdictionFilled}/>
             : <ptp-info-poll-worker city={city} county={county} state={state} />
          }
       </Host> );
