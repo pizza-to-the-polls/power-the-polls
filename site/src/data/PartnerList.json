@@ -191,6 +191,18 @@
       "logo": "bbyo.png"
    },
    {
+      "partnerId": "Bearaby",
+      "name": "Bearaby",
+      "logo": "bearaby.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "Beatycounter",
+      "name": "Beatycounter",
+      "logo": "beatycounter.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "Belk",
       "name": "Belk",
       "logo": "belk.png",
@@ -221,6 +233,12 @@
       "logo": "block-power.png"
    },
    {
+      "partnerId": "Bloomreach",
+      "name": "Bloomreach",
+      "logo": "bloomreach.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "blueapron",
       "name": "Blue Apron",
       "logo": "blue-apron.png",
@@ -241,6 +259,12 @@
       "partnerId": "breakout",
       "name": "Breakout",
       "logo": "breakout.png"
+   },
+   {
+      "partnerId": "Burrow",
+      "name": "Burrow",
+      "logo": "burrow.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "burton",
@@ -304,6 +328,12 @@
       "logo": "chownow.png"
    },
    {
+      "partnerId": "Cityblock-Health",
+      "name": "Cityblock-Health",
+      "logo": "cityblock-health.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "Civic",
       "name": "Civic",
       "logo": "civic.png"
@@ -329,6 +359,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "CleanChoice-Energy",
+      "name": "CleanChoice-Energy",
+      "logo": "cleanchoice-energy.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "ClevelandVotes",
       "name": "Cleveland Votes",
       "logo": "cleveland-votes.png",
@@ -348,6 +384,11 @@
       "name": "Color Farm Media",
       "logo": "color-farm-media.png",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "Columbia-Sportswear",
+      "name": "Columbia-Sportswear",
+      "logo": "columbia-sportswear.png"
    },
    {
       "partnerId": "ComedyCentral",
@@ -402,6 +443,12 @@
       "name": "Campus Vote Project - CVPS alias"
    },
    {
+      "partnerId": "Daake",
+      "name": "Daake",
+      "logo": "daake.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "defendourfuture",
       "name": "Defend Our Future",
       "logo": "defend-our-future.png"
@@ -448,6 +495,18 @@
       "partnerId": "EAB",
       "name": "EAB",
       "logo": "eab.jpg",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "Eden-Health",
+      "name": "Eden-Health",
+      "logo": "eden-health.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "ElektraLabs",
+      "name": "ElektraLabs",
+      "logo": "elektralabs.png",
       "logoIsDark": true
    },
    {
@@ -554,6 +613,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "GigaSheet",
+      "name": "GigaSheet",
+      "logo": "gigasheet.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "github.png",
       "name": "GitHub",
       "logo": "github.png"
@@ -590,6 +655,12 @@
       "partnerId": "HeadCount",
       "name": "HeadCount",
       "logo": "head-count.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "HelpScout",
+      "name": "HelpScout",
+      "logo": "helpscout.png",
       "logoIsDark": true
    },
    {
@@ -744,6 +815,12 @@
       "customSignupFormField": "Do you speak any languages in addition to English? (Yes / No)"
    },
    {
+      "partnerId": "Lalo",
+      "name": "Lalo",
+      "logo": "lalo.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "LCV",
       "name": "League of Conservation Voters",
       "logo": "lcv.jpg",
@@ -893,7 +970,7 @@
    {
       "partnerId": "MLS",
       "name": "Major League Soccer",
-      "logoIsDark": true,
+      "logo": "mls.png",
       "logoAppearsOnLandingPage": true
    },
    {
@@ -1004,6 +1081,11 @@
       "logo": "nextdoor.png"
    },
    {
+      "partnerId": "NFL",
+      "name": "NFL",
+      "logo": "nfl.png"
+   },
+   {
       "partnerId": "nhvotes",
       "name": "New Hampshire"
    },
@@ -1027,6 +1109,12 @@
       "partnerId": "nuifc",
       "name": "National Urban Indian Family Coalition",
       "logo": "nuifc.png",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "Numina",
+      "name": "Numina",
+      "logo": "numina.jpg",
       "logoIsDark": true
    },
    {
@@ -1077,6 +1165,12 @@
       "logo": "patagonia.png"
    },
    {
+      "partnerId": "Payability",
+      "name": "Payability",
+      "logo": "payability.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "paypal",
       "name": "PayPal",
       "logo": "paypal.png"
@@ -1108,6 +1202,12 @@
       "name": "Pro Georgia"
    },
    {
+      "partnerId": "ProjectN95",
+      "name": "ProjectN95",
+      "logo": "projectn95.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "ProtectDemocracy",
       "name": "Protect Democracy",
       "customSignupFormField": "School"
@@ -1126,6 +1226,12 @@
       "name": "The Poll Workers Project",
       "logo": "pwp.png",
       "logoAppearsOnLandingPage": true
+   },
+   {
+      "partnerId": "pymetrics",
+      "name": "pymetrics",
+      "logo": "pymetrics.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "QuestTrust",
@@ -1170,6 +1276,12 @@
       "logo": "rinse.png"
    },
    {
+      "partnerId": "Robotters",
+      "name": "Robotters",
+      "logo": "robotters.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "Salesforce",
       "name": "Salesforce",
       "logo": "salesforce.png"
@@ -1206,6 +1318,11 @@
       "name": "Nevada"
    },
    {
+      "partnerId": "SimonData",
+      "name": "SimonData",
+      "logo": "simondata.png"
+   },
+   {
       "partnerId": "skimm",
       "name": "theSkimm",
       "additionalVanityUrls": [
@@ -1218,6 +1335,12 @@
       "name": "Students Learn Students Vote",
       "isFoundingPartner": true,
       "logo": "slsv.png"
+   },
+   {
+      "partnerId": "Small-Door-Vet",
+      "name": "Small-Door-Vet",
+      "logo": "small-door-vet.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "SMARTElections",
@@ -1259,6 +1382,12 @@
       "partnerId": "SpreadTheVote",
       "name": "Spread the Vote",
       "logo": "spread-the-vote.png"
+   },
+   {
+      "partnerId": "spye",
+      "name": "spye",
+      "logo": "spye.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "StandUpAmerica",
@@ -1305,6 +1434,11 @@
       "name": "Target"
    },
    {
+      "partnerId": "TCGplayer",
+      "name": "TCGplayer",
+      "logo": "tcgplayer.png"
+   },
+   {
       "partnerId": "teamsters",
       "name": "International Brotherhood of Teamsters",
       "logo": "teamsters.png",
@@ -1346,6 +1480,12 @@
       "logo": "the-voter-project.png",
       "logoIsDark": true,
       "logoAppearsOnLandingPage": true
+   },
+   {
+      "partnerId": "Thirty-Madison",
+      "name": "Thirty-Madison",
+      "logo": "thirty-madison.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "thornburg-investment",
@@ -1392,6 +1532,12 @@
       "optUserOutOfChase": true
    },
    {
+      "partnerId": "Umbrella",
+      "name": "Umbrella",
+      "logo": "umbrella.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "unfkus",
       "name": "unfkus",
       "logo": "unfkus.jpg",
@@ -1410,6 +1556,11 @@
       "name": "Unite Here!",
       "logo": "unite-here.png",
       "optUserOutOfChase": true
+   },
+   {
+      "partnerId": "User-Interviews",
+      "name": "User-Interviews",
+      "logo": "user-interviews.png"
    },
    {
       "partnerId": "USW",
@@ -1473,6 +1624,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "WayUp",
+      "name": "WayUp",
+      "logo": "wayup.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "WeCanVote",
       "name": "We Can Vote",
       "isFoundingPartner": true,
@@ -1517,6 +1674,12 @@
       "partnerId": "workpollsNC",
       "name": "SEIU",
       "customSignupFormField": "Do you speak any languages in addition to English? (Yes / No)"
+   },
+   {
+      "partnerId": "yasso",
+      "name": "yasso",
+      "logo": "yasso.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "YMCA",
