@@ -5,7 +5,7 @@ const data: VideoGroup[] = [
       videos: [
          {
             name: "Be a Hero this Election",
-            url: "https://src.powerthepolls.org/assets/AVL_HERO_16x9_1003.mp4",
+            url: "https://src.powerthepolls.org/assets/HERO_16x9.mp4",
          },
       ],
    },
@@ -13,8 +13,8 @@ const data: VideoGroup[] = [
       category: "Getting from Signup to Election Day",
       videos: [
          {
-            name: "What happens after you've signed up to be a poll worker?",
-            url: null,
+            name: "You're a poll worker, now what?",
+            url: "https://src.powerthepolls.org/assets/NOW_WHAT_16x9.mp4",
          },
       ],
    },
