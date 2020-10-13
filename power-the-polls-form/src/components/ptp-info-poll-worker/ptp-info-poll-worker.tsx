@@ -1,5 +1,4 @@
 import { Component, h, Prop } from "@stencil/core";
-import { injectHistory, RouterHistory } from "@stencil/router";
 
 import { PtpFormData } from "../../util";
 import { findJurisdictionId } from "../../util/WorkElections";
@@ -34,27 +33,32 @@ export class PollWorkerInfo {
     */
    @Prop() public formData?: PtpFormData;
 
-   @Prop() public history?: RouterHistory;
+   /**
+    * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+    */
+   @Prop() public showNextSteps: boolean;
+
+   constructor() {
+      this.showNextSteps = false;
+   }
 
    public render() {
       const { state, county, city } = this;
       const jurisdictionId = state ? findJurisdictionId( state, county, city ) : null;
 
-      if( !state && this.history ) {
-         return this.history.replace( "/search" );
-      }
-
       return jurisdictionId != null ?
          (
-            <ptp-info-jurisdiction jurisdictionId={jurisdictionId} addtl={this.formData || { city, state, county, jurisdictionId: jurisdictionId + "" }}>
+            <ptp-info-jurisdiction
+               jurisdictionId={jurisdictionId}
+               initialFormData={this.formData || { city, state, county, jurisdictionId: jurisdictionId + "" }}
+               showNextSteps={this.showNextSteps}
+            >
                <slot />
             </ptp-info-jurisdiction>
          ) : (
             <ptp-info-state state={state}>
-               <slot />
+               <div style={{ display: "none" }}><slot /></div>
             </ptp-info-state>
          );
    }
 }
-
-injectHistory( PollWorkerInfo );

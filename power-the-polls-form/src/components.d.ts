@@ -6,7 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PtpFormData } from "./util";
-import { RouterHistory } from "@stencil/router";
 import { GeoJSON } from "geojson";
 import { Options } from "./components/ui-geojson-to-svg/types";
 export namespace Components {
@@ -45,13 +44,17 @@ export namespace Components {
     }
     interface PtpInfoJurisdiction {
         /**
-          * Props possibly passed in from the form
+          * Props possibly passed in from the main form
          */
-        "addtl"?: PtpFormData;
+        "initialFormData"?: PtpFormData;
         /**
           * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: string | number;
+        /**
+          * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+         */
+        "showNextSteps": boolean;
     }
     interface PtpInfoPollWorker {
         /**
@@ -66,7 +69,10 @@ export namespace Components {
           * Complete form data, if available
          */
         "formData"?: PtpFormData;
-        "history"?: RouterHistory;
+        /**
+          * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+         */
+        "showNextSteps": boolean;
         /**
           * State for matching to location
          */
@@ -187,13 +193,17 @@ declare namespace LocalJSX {
     }
     interface PtpInfoJurisdiction {
         /**
-          * Props possibly passed in from the form
+          * Props possibly passed in from the main form
          */
-        "addtl"?: PtpFormData;
+        "initialFormData"?: PtpFormData;
         /**
           * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: string | number;
+        /**
+          * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+         */
+        "showNextSteps"?: boolean;
     }
     interface PtpInfoPollWorker {
         /**
@@ -208,7 +218,10 @@ declare namespace LocalJSX {
           * Complete form data, if available
          */
         "formData"?: PtpFormData;
-        "history"?: RouterHistory;
+        /**
+          * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+         */
+        "showNextSteps"?: boolean;
         /**
           * State for matching to location
          */
