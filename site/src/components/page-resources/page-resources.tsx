@@ -22,11 +22,14 @@ const Video: FunctionalComponent<{ video: VideoInfo }> =
       );
 
 
-const AdditionalNote: FunctionalComponent<{ image: string, background?: boolean }> =
-   ( { image, background }, children: VNode[] ) => (
+const AdditionalNote: FunctionalComponent<{ image: string, background?: boolean, title?: string }> =
+   ( { image, background, title }, children: VNode[] ) => (
       <div class="additional-note">
          <img src={image} class={{ "background": background || false }} />
-         <p>{children}</p>
+         <p>
+            {title && <Fragment><strong>{title}</strong><br /></Fragment>}
+            {children}
+         </p>
       </div>
    );
 
@@ -70,18 +73,27 @@ export class PageResources {
                   </Fragment>
             ) )}
             <ui-h3-bar>Additional Resources</ui-h3-bar>
-            <AdditionalNote image="/assets/images/logo-blue.svg" background>
-               You can also visit <a href="https://www.trainthepolls.com" target="_blank">www.trainthepolls.com</a> to find additional resources, including some state-specific one-pagers and other guides.
+            <AdditionalNote
+               image="/assets/images/pdf_10_questions.png"
+               title="10 questions you may want to ask to help you prepare to be a poll worker"
+            >
+               As you’re heading into your official training with your local elections office, here are ten questions you may want to ask to help you prepare to be a poll worker.
+               <br />
+               <a href="https://allvotingislocal.org/wp-content/uploads/2020/10/20_CAA_AVL_10Questions.pdf" target="_blank">Download PDF</a>
             </AdditionalNote>
-            <AdditionalNote image="/assets/images/logo-blue.svg" background>
-               As you’re heading into your official training with your local elections office, here are <a href="https://allvotingislocal.org/wp-content/uploads/2020/10/20_CAA_AVL_10Questions.pdf" target="_blank">ten questions you may want to ask (PDF)</a> to help you prepare to be a poll worker.
+            <AdditionalNote
+               image="/assets/images/pdf_implicit_bias.png"
+               title="How our explicit and implicit biases may impact how we treat different individuals at the polls"
+            >
+               Check out this short guide to help you provide the same level of assistance and support to every voter.
+               <br />
+               <a href="https://allvotingislocal.org/wp-content/uploads/2020/10/20_CAA_AVL_ImplicitBias-1.pdf" target="_blank">Download PDF</a>
             </AdditionalNote>
             <AdditionalNote image="/assets/images/avil.svg" background>
-               There are many ways that our explicit and implicit biases may impact how we treat different individuals at the polls.
-               Check out <a href="https://allvotingislocal.org/wp-content/uploads/2020/10/20_CAA_AVL_ImplicitBias-1.pdf" target="_blank">this short guide (PDF)</a> to help you provide the same level of assistance and support to every voter.
+               Visit <a href="https://www.trainthepolls.com" target="_blank">www.trainthepolls.com</a> to find additional resources, including some state-specific one-pagers and other guides.
             </AdditionalNote>
-            <AdditionalNote image="/assets/images/partners/fair-elections-center.png">
-               Finally, our partners at the Fair Elections Center have put together <a href="https://www.fairelectionscenter.org/state-specific-resources" target="_blank">voting guides for every state</a>.
+            <AdditionalNote image="/assets/images/fairelections.png" background>
+               Our partners at the Fair Elections Center have put together <a href="https://www.fairelectionscenter.org/state-specific-resources" target="_blank">voting guides for every state</a>.
                Brush up on your local laws so you feel more confident about how to answer common voter questions on Election Day.
             </AdditionalNote>
          </Host>
