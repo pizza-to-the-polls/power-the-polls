@@ -42,7 +42,7 @@ export class PageResources {
                That’s why we’ve partnered with All Voting Is Local and the International Well Building Institute to put together this series of short videos to help you get ready.
             </p>
             {ResourceVideos.map( group => (
-               group.videos.length === 1 ?
+               group.category == null && group.videos.length === 1 ?
                   <Fragment>
                      <Video video={group.videos[0]} />
                   </Fragment>
@@ -64,6 +64,17 @@ export class PageResources {
             <ui-h3-bar>Additional Resources</ui-h3-bar>
             <p>
                You can also visit <a href="https://www.trainthepolls.com" target="_blank">www.trainthepolls.com</a> to find additional resources, including some state-specific one-pagers and other guides.
+            </p>
+            <p>
+               As you’re heading into your official training with your local elections office, here are <a href="https://allvotingislocal.org/wp-content/uploads/2020/10/20_CAA_AVL_10Questions.pdf" target="_blank">ten questions you may want to ask (PDF)</a> to help you prepare to be a poll worker.
+            </p>
+            <p>
+               There are many ways that our explicit and implicit biases may impact how we treat different individuals at the polls.
+               Check out <a href="https://allvotingislocal.org/wp-content/uploads/2020/10/20_CAA_AVL_ImplicitBias-1.pdf" target="_blank">this short guide (PDF)</a> to help you provide the same level of assistance and support to every voter.
+            </p>
+            <p>
+               Finally, our partners at the Fair Elections Center have put together <a href="https://www.fairelectionscenter.org/state-specific-resources" target="_blank">voting guides for every state</a>.
+               Brush up on your local laws so you feel more confident about how to answer common voter questions on Election Day.
             </p>
          </Host>
       );

@@ -13,10 +13,6 @@ const data: VideoGroup[] = [
       category: "Getting from Signup to Election Day",
       videos: [
          {
-            name: "Thank you for being a poll worker",
-            url: null,
-         },
-         {
             name: "What happens after you've signed up to be a poll worker?",
             url: null,
          },
