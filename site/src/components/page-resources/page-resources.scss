@@ -47,4 +47,31 @@ page-resources {
       height: 100%;
       cursor: pointer;
    }
+
+   .additional-note {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      column-gap: 1.5em;
+      justify-content: start;
+      margin: 2em 0;
+      @include on-mobile() {
+         display: flex;
+         flex-direction: column;
+         & > img {
+            margin-bottom: 1em !important;
+            max-height: 120px;
+         }
+      }
+      & > img {
+         margin: auto;
+         &.background {
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+         }
+      }
+      & > p {
+         margin: 0;
+      }
+   }
 }

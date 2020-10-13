@@ -1,11 +1,11 @@
 import { FunctionalComponent } from "@ptp-us/power-the-polls-form/types/stencil-public-runtime";
-import { Component, Fragment, h, Host } from "@stencil/core";
+import { Component, Fragment, h, Host, VNode } from "@stencil/core";
 
 import { ResourceVideos } from "../../data";
 import { VideoInfo } from "../../data/types";
 
-const Video: FunctionalComponent<{ video: VideoInfo }> = ( { video } ) => {
-   return video.url == null
+const Video: FunctionalComponent<{ video: VideoInfo }> =
+   ( { video } ) => video.url == null
       ? (
          <div class="placeholder">
             <div class="box"></div>
@@ -20,7 +20,15 @@ const Video: FunctionalComponent<{ video: VideoInfo }> = ( { video } ) => {
             Sorry, your browser doesn't support embedded videos.
          </video>
       );
-};
+
+
+const AdditionalNote: FunctionalComponent<{ image: string, background?: boolean }> =
+   ( { image, background }, children: VNode[] ) => (
+      <div class="additional-note">
+         <img src={image} class={{ "background": background || false }} />
+         <p>{children}</p>
+      </div>
+   );
 
 @Component( {
    tag: "page-resources",
@@ -62,20 +70,20 @@ export class PageResources {
                   </Fragment>
             ) )}
             <ui-h3-bar>Additional Resources</ui-h3-bar>
-            <p>
+            <AdditionalNote image="/assets/images/logo-blue.svg" background>
                You can also visit <a href="https://www.trainthepolls.com" target="_blank">www.trainthepolls.com</a> to find additional resources, including some state-specific one-pagers and other guides.
-            </p>
-            <p>
+            </AdditionalNote>
+            <AdditionalNote image="/assets/images/logo-blue.svg" background>
                As you’re heading into your official training with your local elections office, here are <a href="https://allvotingislocal.org/wp-content/uploads/2020/10/20_CAA_AVL_10Questions.pdf" target="_blank">ten questions you may want to ask (PDF)</a> to help you prepare to be a poll worker.
-            </p>
-            <p>
+            </AdditionalNote>
+            <AdditionalNote image="/assets/images/avil.svg" background>
                There are many ways that our explicit and implicit biases may impact how we treat different individuals at the polls.
                Check out <a href="https://allvotingislocal.org/wp-content/uploads/2020/10/20_CAA_AVL_ImplicitBias-1.pdf" target="_blank">this short guide (PDF)</a> to help you provide the same level of assistance and support to every voter.
-            </p>
-            <p>
+            </AdditionalNote>
+            <AdditionalNote image="/assets/images/partners/fair-elections-center.png">
                Finally, our partners at the Fair Elections Center have put together <a href="https://www.fairelectionscenter.org/state-specific-resources" target="_blank">voting guides for every state</a>.
                Brush up on your local laws so you feel more confident about how to answer common voter questions on Election Day.
-            </p>
+            </AdditionalNote>
          </Host>
       );
    }

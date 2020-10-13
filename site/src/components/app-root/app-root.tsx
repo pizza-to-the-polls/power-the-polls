@@ -304,20 +304,18 @@ export class AppRoot {
                   </stencil-router>
 
                   <footer>
+                     <a
+                        href="https://www.workelections.com/"
+                        target="_blank"
+                        rel="noopener"
+                     >
+                        <img
+                           src="/assets/images/partners/work-elections.png"
+                           alt="Work Elections"
+                           width="100"
+                        />
+                     </a>
                      <p>Powered by Work Elections.</p>
-                     <p>
-                        <a
-                           href="https://www.workelections.com/"
-                           target="_blank"
-                           rel="noopener"
-                        >
-                           <img
-                              src="/assets/images/partners/work-elections.png"
-                              alt="Work Elections"
-                              width="100"
-                           />
-                        </a>
-                     </p>
                   </footer>
                </div>
             </main>
