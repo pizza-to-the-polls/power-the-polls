@@ -1,5 +1,3 @@
-import  fromEntries from "object.fromentries";
-
 import { FullJurisdictions } from "../data";
 import { States } from "../data";
 
@@ -40,7 +38,7 @@ const findIfJurisdictionFilled = (formData: PtpFormData) => {
         const jurisdictions = stateInfo.jurisdictions;
         // create entries like <jurisdictionId: Jurisdiction Name>  without identifier (county, parish, ect)
         const mapped = new Map(Object.keys(jurisdictions).map((key) => [jurisdictions[key], removeAdditionalInfo(key)]));
-        const stateJurisctionNameIdMap = fromEntries(mapped);
+        const stateJurisctionNameIdMap = [...mapped.entries()].reduce( ( obj, tuple ) => obj[tuple[0]] = tuple[1], ( {} as any ) );
         // find jurisdiction name by id
         const formJurisdiction = stateJurisctionNameIdMap[formData.jurisdictionId];
         // check that form jurisdiction is included in the the full poll jurisdictions for that state
