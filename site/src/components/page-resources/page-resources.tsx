@@ -90,7 +90,7 @@ export class PageResources {
                <a href="https://allvotingislocal.org/wp-content/uploads/2020/10/20_CAA_AVL_ImplicitBias-1.pdf" target="_blank">Download PDF</a>
             </AdditionalNote>
             <AdditionalNote image="/assets/images/avil.svg" background>
-               Visit <a href="https://www.trainthepolls.com" target="_blank">www.trainthepolls.com</a> to find additional resources, including some state-specific one-pagers and other guides.
+               Visit <a href="http://www.trainthepolls.com" target="_blank">www.trainthepolls.com</a> to find additional resources, including some state-specific one-pagers and other guides.
             </AdditionalNote>
             <AdditionalNote image="/assets/images/fairelections.png" background>
                Our partners at the Fair Elections Center have put together <a href="https://www.fairelectionscenter.org/state-specific-resources" target="_blank">voting guides for every state</a>.
