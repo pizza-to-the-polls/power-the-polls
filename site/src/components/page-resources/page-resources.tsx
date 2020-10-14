@@ -47,7 +47,7 @@ export class PageResources {
             <h2>You’ve signed up to be a poll worker! Now it’s time to do some homework so you’re ready to serve!</h2>
             <hr />
             <p>
-               <strong>Being a poll worker is an important job -- and we’re so grateful you stepped up! And preparing to fulfill your duties is critical.</strong>
+               <strong>Being a poll worker is an important job &mdash; and we’re so grateful you stepped up! And preparing to fulfill your duties is critical.</strong>
             </p>
             <p>
                That’s why we’ve partnered with All Voting Is Local and the International Well Building Institute to put together this series of short videos to help you get ready.
