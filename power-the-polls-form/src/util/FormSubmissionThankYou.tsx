@@ -37,7 +37,7 @@ const FormSubmissionThankYou: FunctionalComponent<{ stateInfo: StateInfo | null,
       </Fragment>
    ) : (
             <Fragment>
-               <h1>{isJurisdictionFilled ? "You’re one step closer to Powering the Polls!" : "Thank you so much for your interest in being a poll worker!"}</h1>
+               <h1>{!isJurisdictionFilled ? "You’re one step closer to Powering the Polls!" : "Thank you so much for your interest in being a poll worker!"}</h1>
                {!isJurisdictionFilled && <h2>What’s next?</h2>}
                <hr />
             </Fragment>

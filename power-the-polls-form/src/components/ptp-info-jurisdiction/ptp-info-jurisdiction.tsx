@@ -121,7 +121,7 @@ export class JurisdictionInfoComponent {
          }
 
          <slot />
-         {this.showNextSteps ? (
+         {this.showNextSteps && !this.isJurisdictionFilled ? (
             <Fragment>
                <div class="next-steps">
                   {( // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
