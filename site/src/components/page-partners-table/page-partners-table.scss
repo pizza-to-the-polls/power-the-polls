@@ -128,6 +128,9 @@ page-partners-table {
 
    ui-partner-image {
       margin: 0;
+      & > div {
+         padding: 8px; // use padding for backgroudn in all cases so there is no jump when it is switched on or off
+      }
    }
 
    button {
@@ -207,11 +210,26 @@ page-partners-table {
    }
 
    label {
+      svg {
+         path {
+            fill: $color-font-primary;
+         }
+      }
       &:hover {
          color: $color-highlight;
+         svg {
+            path {
+               fill: $color-highlight;
+            }
+         }
       }
       &.modified {
          color: $color-accent; // !important;
+         svg {
+            path {
+               fill: $color-accent;
+            }
+         }
       }
    }
 
@@ -223,6 +241,11 @@ page-partners-table {
       &.modified {
          label {
             color: $color-accent; // !important
+            svg {
+               path {
+                  fill: $color-accent;
+               }
+            }
          }
       }
    }

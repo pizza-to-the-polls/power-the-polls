@@ -382,25 +382,15 @@ export class PagePartnersTable {
                                  />
                                  <div class="logo-settings">
                                     <form class={{ "modified": isFieldModified( partner, "logoIsDark" ) }}>
-                                       <label>
-                                          light
-                                          <input
-                                             type="radio"
-                                             name="logoIsDark"
-                                             value="true"
-                                             checked={!!getField( partner, "logoIsDark" )}
-                                             onClick={() => setBool( partner, "logoIsDark", true )}
-                                          />
-                                       </label>
-                                       <label>
-                                          dark
-                                          <input
-                                             type="radio"
-                                             name="logoIsDark"
-                                             value="false"
-                                             checked={!!!getField( partner, "logoIsDark" )}
-                                             onClick={() => setBool( partner, "logoIsDark", undefined )}
-                                          />
+                                       <label onClick={() => setBool( partner, "logoIsDark", !!getField( partner, "logoIsDark" ) ? undefined : true )}>
+                                          background
+                                          <svg xmlns="http://www.w3.org/2000/svg" baseProfile="full" width="28" height="28">
+                                             {!!getField( partner, "logoIsDark" )
+                                                // paths for selected-filled and de-selected-outline MaterialUI-esque switches
+                                                ? <path d="M17 7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h10c2.76 0 5-2.24 5-5s-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
+                                                : <path d="M7 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm10-3c2.76 0 5 2.24 5 5s-2.24 5-5 5H7c-2.76 0-5-2.24-5-5s2.24-5 5-5h10zM7 9a3 3 0 0 0 0 6h10a3 3 0 0 0 0-6H7z" />
+                                             }
+                                          </svg>
                                        </label>
                                     </form>
                                  </div>
