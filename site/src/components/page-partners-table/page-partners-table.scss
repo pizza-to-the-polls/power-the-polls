@@ -31,6 +31,25 @@ page-partners-table {
       }
    }
 
+   .production-data-warning {
+      position: fixed;
+      z-index: 5;
+      top: 5px;
+      right: 5px;
+      left: 5px;
+      bottom: 5px;
+      border: 3px solid #ff0;
+      border-radius: 15px;
+      pointer-events: none;
+      span {
+         display: inline-block;
+         color: $color-background-app;
+         border-radius: 5px;
+         background-color: #ff0;
+         padding: 0.25em 0.5em;
+      }
+   }
+
    .table {
       display: grid;
       padding-top: $header-margin;
