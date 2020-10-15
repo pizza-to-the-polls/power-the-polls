@@ -487,6 +487,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "DJM-Capital",
+      "name": "DJM-Capital",
+      "logo": "djm-capital.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "duo",
       "name": "Duo Security",
       "logo": "duo.jpg"
@@ -575,6 +581,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "Fender-Music",
+      "name": "Fender-Music",
+      "logo": "fender-music.jpg",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "fenwick",
       "name": "Fenwick & West",
       "logo": "fenwick.png",
@@ -643,6 +655,12 @@
       "partnerId": "GreenKey",
       "name": "GreenKey",
       "logo": "green-key.jpg",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "Harbor-Freight",
+      "name": "Harbor-Freight",
+      "logo": "harbor-freight.jpg",
       "logoIsDark": true
    },
    {
@@ -735,6 +753,21 @@
       "name": "Interpublic group",
       "logo": "ipg.png",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "IsiahThomas",
+      "name": "IsiahThomas",
+      "additionalVanityUrls": [
+         "thomas"
+      ],
+      "logo": "isiahthomas.png",
+      "logoIsDark": true,
+      "logoAppearsOnLandingPage": true
+   },
+   {
+      "partnerId": "Jane-Please",
+      "name": "Jane-Please",
+      "logo": "jane-please.png"
    },
    {
       "partnerId": "jolt",
@@ -888,6 +921,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "LiveAuctioneers",
+      "name": "LiveAuctioneers",
+      "logo": "liveauctioneers.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "livenation",
       "name": "LiveNation",
       "logo": "live-nation.png",
@@ -978,6 +1017,11 @@
       "name": "MondelezIntl",
       "logo": "mondelezintl.png",
       "logoIsDark": true
+   },
+   {
+      "partnerId": "Morningstar",
+      "name": "Morningstar",
+      "logo": "morningstar.png"
    },
    {
       "partnerId": "motivate",
@@ -1679,6 +1723,12 @@
       "partnerId": "yasso",
       "name": "yasso",
       "logo": "yasso.jpg",
+      "logoIsDark": true
+   },
+   {
+      "partnerId": "Yieldmo",
+      "name": "Yieldmo",
+      "logo": "yieldmo.png",
       "logoIsDark": true
    },
    {

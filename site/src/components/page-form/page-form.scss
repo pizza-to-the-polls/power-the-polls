@@ -155,6 +155,15 @@ page-form {
          }
       }
 
+      ptp-info-jurisdiction {
+         form {
+            label {
+               text-transform: none;
+               font-weight: 500;
+            }
+         }
+      }
+
       button {
          background-color: $color-highlight;
          color: $color-font-primary;

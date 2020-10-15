@@ -1,14 +1,45 @@
-import { Component, Fragment, h, Host, Prop, State } from "@stencil/core";
+import { Component, Fragment, FunctionalComponent, h, Host, Prop, State } from "@stencil/core";
 import { MultiPolygon } from "geojson";
 
 import { States } from "../../data";
-import { JurisdictionInfo } from "../../data/States";
+import { JurisdictionInfo, StateInfo } from "../../data/States";
 import { allNullOrEmpty, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
 import { fetchJurisdictionGeoJson, fetchJurisdictionInfo } from "../../util/WorkElections";
 
 import CallToApplyButton from "./CallToApplyButton";
 import CompleteApplicationButton from "./CompleteApplicationButton";
 import EmailApplicationForm from "./EmailApplicationForm";
+import MichiganAdditionalInfoForm from "./MichiganAdditionalInfoForm";
+
+const NextSteps: FunctionalComponent<{ state: string, stateInfo?: StateInfo, jurisdictionInfo?: JurisdictionInfo }> =
+   ( { state, stateInfo, jurisdictionInfo } ) => (
+      <Fragment>
+         <div class="next-steps">
+            {( // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
+               state === "MI" ? [
+                  () => <Fragment>
+                     <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
+                           </Fragment>,
+                  () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
+               ] : ( !!jurisdictionInfo?.application === false ) && stateInfo && stateInfo.usePhoneInsteadOfEmailForFormFallback ? [
+                  () => <Fragment><strong>Complete your community's application by calling the number above!</strong> Learn more about hours, compensation, and requirements for your community below.</Fragment>,
+                  () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction.",
+                  () => "Please encourage your friends and family to sign up to help ensure a safe and fair election!",
+               ] : [
+                        () => <Fragment><strong>Complete your official application to be a poll worker!</strong> Learn more about hours, compensation, and requirements for your community below and be sure to complete your official application!</Fragment>,
+                        ( stateInfo == null || !stateInfo.semiPartner )
+                           ? () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction."
+                           : () => "We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application so we can help you become a poll worker. Be on the lookout for a call from our team!",
+                        () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
+                     ] ).map( ( x, i ) => (
+                        <p>
+                           <span class="number">{i + 1}</span>
+                           {x()}
+                        </p>
+                     ) )}
+         </div>
+         <hr />
+      </Fragment> );
 
 /**
  * Component to render work elections jurisdiction data.
@@ -41,10 +72,12 @@ export class JurisdictionInfoComponent {
    @State() private jurisdictionShape?: MultiPolygon;
    @State() private formData: PtpFormData = {};
    @State() private isMailToFormComplete: boolean;
+   @State() private isAdditionalInfoFormSubmitted: boolean;
 
    constructor() {
       this.isMailToFormComplete = false;
       this.showNextSteps = false;
+      this.isAdditionalInfoFormSubmitted = false;
    }
 
    public componentWillLoad() {
@@ -56,8 +89,36 @@ export class JurisdictionInfoComponent {
    }
 
    public render() {
-      const j = this.jurisdiction;
 
+      if( this.formData.state === "MI" ) {
+         return ( <Host>
+            <h2>Michigan</h2>
+
+            {!this.isAdditionalInfoFormSubmitted &&
+               <MichiganAdditionalInfoForm
+                  data={this.formData}
+                  onSubmit={() => this.isAdditionalInfoFormSubmitted = true}
+               />
+            }
+
+            {this.showNextSteps && <NextSteps state={this.formData.state!} />}
+
+            <h4>Requirements</h4>
+            <p>
+               Requirements vary and are determined by cities and towns in Michigan, but all poll workers must be a registered Michigan voter or 16 or 17 years old residing in Michigan.
+               While you can vote with a felony record, you cannot serve as a poll worker in Michigan if you have a felony or any infraction related to voting.
+            </p>
+
+            <h4>Hours &amp; Compensation</h4>
+            <ul>
+               <li>Serving as a poll worker is a paid position with a flat daily rate. Many cities are also providing hazard pay for poll workers who serve during the 2020 election.</li>
+               <li>While hours vary, both by city and by position worked, most poll workers should expect to work long days, beginning before polls open at 7am and concluding after polls close at 8pm.</li>
+            </ul>
+
+         </Host> );
+      }
+
+      const j = this.jurisdiction;
       if( j == null ) {
          return ( <Host>
             <slot />
@@ -80,7 +141,7 @@ export class JurisdictionInfoComponent {
          </Host> );
       }
 
-      const jurisdictionInfo = States[j.state.alpha];
+      const stateInfo = States[j.state.alpha];
       return ( <Host>
 
          <div style={{ display: "flex", alignItems: "start", flexDirection: "column" }}>
@@ -104,9 +165,9 @@ export class JurisdictionInfoComponent {
          {  // if jurisdiction has an application link, do not show the e-mail form
             ( j?.application == null || j?.application === "" )
                // use phone if specified to do so, else show email form
-               ? jurisdictionInfo.usePhoneInsteadOfEmailForFormFallback
+               ? stateInfo.usePhoneInsteadOfEmailForFormFallback
                   ? ( <Fragment>
-                     <p>{jurisdictionInfo.name} is looking to quickly place poll workers in the coming weeks ahead of Election Day on November 3rd. <strong>In order to expedite placement, call your local election administrator directly to express your interest in being a poll worker.</strong></p>
+                     <p>{stateInfo.name} is looking to quickly place poll workers in the coming weeks ahead of Election Day on November 3rd. <strong>In order to expedite placement, call your local election administrator directly to express your interest in being a poll worker.</strong></p>
                      <p>To complete your application, call {j.telephone}.</p>
                      <CallToApplyButton jurisdiction={j} />
                   </Fragment> )
@@ -120,36 +181,7 @@ export class JurisdictionInfoComponent {
                : null
          }
 
-         <slot />
-         {this.showNextSteps && !this.isJurisdictionFilled ? (
-            <Fragment>
-               <div class="next-steps">
-                  {( // see: https://docs.google.com/document/d/10ngLtEP5wv48aNry3OzCgFhmzguBoSPNJtQfRS4Xn8Y/edit
-                     this.formData.state === "MI" ? [
-                        () => <Fragment>
-                           <strong>You'll hear from a partner in the next week</strong> about how you can help serve as a poll worker in Michigan.
-                                    </Fragment>,
-                        () => "In the meantime, learn more about hours, compensation, and requirements for your community below and encourage your friends and family to sign up to be poll workers and help ensure a safe and fair election!",
-                     ] : ( j?.application == null || j?.application === "" ) && jurisdictionInfo && jurisdictionInfo.usePhoneInsteadOfEmailForFormFallback ? [
-                        () => <Fragment><strong>Complete your community's application by calling the number above!</strong> Learn more about hours, compensation, and requirements for your community below.</Fragment>,
-                        () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction.",
-                        () => "Please encourage your friends and family to sign up to help ensure a safe and fair election!",
-                     ] : [
-                        () => <Fragment><strong>Complete your official application to be a poll worker!</strong> Learn more about hours, compensation, and requirements for your community below and be sure to complete your official application!</Fragment>,
-                        ( jurisdictionInfo == null || !jurisdictionInfo.semiPartner )
-                           ? () => "In the weeks leading up to the election, you will hear back from your local election administrators if you were selected to be a worker in your jurisdiction."
-                           : () => "We’ll be reaching out in the next week to answer any questions you have and make sure you’ve completed your application so we can help you become a poll worker. Be on the lookout for a call from our team!",
-                        () => "Help us recruit more poll workers! Please encourage your friends and family to sign up to help ensure a safe and fair election!",
-                     ] ).map( ( x, i ) => (
-                        <p>
-                           <span class="number">{i + 1}</span>
-                           {x()}
-                        </p>
-                     ) )}
-               </div>
-               <hr />
-            </Fragment> )
-            : null}
+         {this.showNextSteps && <NextSteps jurisdictionInfo={j} stateInfo={stateInfo} state={this.formData.state || j.state.alpha} />}
 
          <section>
             <h4>Hours and Compensation</h4>
@@ -245,7 +277,7 @@ export class JurisdictionInfoComponent {
 
          {j?.application !== null && j?.application !== ""
             ? <CompleteApplicationButton jurisdiction={j} />
-            : jurisdictionInfo.usePhoneInsteadOfEmailForFormFallback
+            : stateInfo.usePhoneInsteadOfEmailForFormFallback
                ? <CallToApplyButton jurisdiction={j} />
                : null}
 

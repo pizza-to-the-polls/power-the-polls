@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, State, Watch } from "@stencil/core";
+import { Component, h, Prop, State, Watch } from "@stencil/core";
 
 import { JurisdictionInfo, StateInfo } from "../../data/States";
 import { PtpLink } from "../../util";
@@ -33,29 +33,7 @@ export class StateInfoComponent {
    }
 
    public render() {
-      const state = this.state;
       const info = this.stateInfo;
-
-      if( state === "MI" ) {
-         return ( <Host>
-            <h2>Michigan</h2>
-
-            <slot />
-
-            <h4>Requirements</h4>
-            <p>
-               Requirements vary and are determined by cities and towns in Michigan, but all poll workers must be a registered Michigan voter or 16 or 17 years old residing in Michigan.
-               While you can vote with a felony record, you cannot serve as a poll worker in Michigan if you have a felony or any infraction related to voting.
-            </p>
-
-            <h4>Hours &amp; Compensation</h4>
-            <ul>
-               <li>Serving as a poll worker is a paid position with a flat daily rate. Many cities are also providing hazard pay for poll workers who serve during the 2020 election.</li>
-               <li>While hours vary, both by city and by position worked, most poll workers should expect to work long days, beginning before polls open at 7am and concluding after polls close at 8pm.</li>
-            </ul>
-
-         </Host> );
-      }
 
       return info == null ?
          <ui-loading-spinner /> :

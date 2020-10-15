@@ -5,7 +5,6 @@ import { findIfJurisdictionFilled, FormSubmissionThankYou, PtpFormData, PtpLink 
 import { findJurisdictionId } from "../../util/WorkElections";
 
 import { submitToActionKit } from "./ActionKit";
-import MichiganAdditionalInfoForm from "./MichiganAdditionalInfoForm";
 
 /**
  * The Power the Polls sign-up form.
@@ -61,19 +60,16 @@ export class PowerThePollsForm {
 
    @State() private formStatus: "incomplete" | "processing" | "completed";
    @State() private formData: PtpFormData;
-   @State() private michiganFormSubmitted: boolean;
 
    constructor() {
       this.formStatus = "incomplete";
       this.formData = {};
-      this.michiganFormSubmitted = false;
    }
 
    @Method()
    public reset() {
       this.formStatus = "incomplete";
       this.formData = {};
-      this.michiganFormSubmitted = false;
       return Promise.resolve();
    }
 
@@ -159,13 +155,7 @@ return ( <Host>
                      formData={this.formData}
                      showNextSteps={true}
                      isJurisdictionFilled={isJurisdictionFilled}
-                  >
-                     <MichiganAdditionalInfoForm
-                        formSubmitted={this.michiganFormSubmitted}
-                        data={this.formData}
-                        onSubmit={() => this.michiganFormSubmitted = true}
-                     />
-                  </ptp-info-poll-worker>
+                  />
                )}
             </article>
          ) : ( <Fragment>
