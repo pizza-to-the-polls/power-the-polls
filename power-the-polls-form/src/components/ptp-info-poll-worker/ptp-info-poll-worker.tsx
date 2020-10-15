@@ -38,6 +38,8 @@ export class PollWorkerInfo {
     */
    @Prop() public showNextSteps: boolean;
 
+   @Prop() public isJurisdictionFilled: boolean = false;
+
    constructor() {
       this.showNextSteps = false;
    }
@@ -49,6 +51,7 @@ export class PollWorkerInfo {
       return jurisdictionId != null || state === "MI" ?
          (
             <ptp-info-jurisdiction
+               isJurisdictionFilled={this.isJurisdictionFilled}
                jurisdictionId={jurisdictionId || -1}
                initialFormData={this.formData || { city, state, county, jurisdictionId: jurisdictionId + "" }}
                showNextSteps={this.showNextSteps}
