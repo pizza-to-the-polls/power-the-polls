@@ -36,7 +36,7 @@ const findIfJurisdictionFilled = (formData: PtpFormData) => {
 
    const stateInfo = States[formData.state];
 
-   if(stateInfo.id === -1) { //state never needed any pollworkers
+   if(stateInfo.id === -1) { // state never needed any pollworkers
       return false;
    }
 
