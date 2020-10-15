@@ -1704,6 +1704,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "Yieldmo",
+      "name": "Yieldmo",
+      "logo": "yieldmo.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "YMCA",
       "name": "YMCA",
       "logo": "ymca.png"
