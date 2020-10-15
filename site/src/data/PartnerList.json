@@ -1002,6 +1002,11 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "Morningstar",
+      "name": "Morningstar",
+      "logo": "morningstar.png"
+   },
+   {
       "partnerId": "motivate",
       "name": "motivate",
       "logo": "motivate.jpg",
