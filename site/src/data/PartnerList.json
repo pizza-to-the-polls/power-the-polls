@@ -659,7 +659,9 @@
    },
    {
       "partnerId": "Harbor-Freight",
-      "name": "Harbor-Freight"
+      "name": "Harbor-Freight",
+      "logo": "harbor-freight.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "harrys",
