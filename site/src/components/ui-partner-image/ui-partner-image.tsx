@@ -9,6 +9,9 @@ import { REPO_NAME, REPO_ORG } from "../../util/constants";
  */
 const SCROLL_BUFFER = 200;
 
+/**
+ * Lazily-loaded partner image with a loading animation. Adds a white background if partner logo is dark.
+ */
 @Component( {
    tag: "ui-partner-image",
    styleUrl: "ui-partner-image.scss",
@@ -25,16 +28,19 @@ export class UiPartnerImage {
     * A `Partner` object or partnerID string
     */
    @Prop() public partner: Partner | string;
+
    /**
     * If this value matches the `partner` ID then the image will have the `chosen-partner` class added which
     * currently pulses the image.
     */
    @Prop() public chosenPartnerId?: string;
+
    /**
     * By default, an empty <span> with an id set to the partnerId is added to this component. If you don't want to
     * pollute the ID space, you can exclude that span by setting this to `true`
     */
    @Prop() public excludeAnchor: boolean;
+
    /**
     * If `true` the image will not be loaded from the deployed assets but from the `partner-updates` branch on GitHub
     * @see page-partners-table
@@ -62,6 +68,11 @@ export class UiPartnerImage {
       this.setPartnerData();
    }
 
+   public componentDidLoad() {
+      // setTimeout here because getBoundingClientRect is all zeroes here; presumably a stencil bug as this is the last lifecycle method
+      setTimeout(() => this.checkForViewportIntersection(), 100);
+   }
+
    @Watch( "partner" )
    public onPartnerChange( newVal: Partner | string ) {
       this.setPartnerData( newVal );
@@ -69,13 +80,7 @@ export class UiPartnerImage {
 
    @Listen( "scroll", { target: "window" } )
    public onScroll() {
-      if( this.passedThroughViewport ) {
-         return;
-      }
-      const rect = this.el.getBoundingClientRect();
-      if( this.el.offsetHeight + rect.top > 0 && rect.bottom < ( window.innerHeight || document.documentElement.clientHeight ) + SCROLL_BUFFER ) {
-         this.passedThroughViewport = true;
-      }
+      this.checkForViewportIntersection();
    }
 
    public render() {
@@ -122,6 +127,16 @@ export class UiPartnerImage {
             }
          </div>
       );
+   }
+
+   private checkForViewportIntersection() {
+      if( this.passedThroughViewport ) {
+         return;
+      }
+      const rect = this.el.getBoundingClientRect();
+      if( this.el.offsetHeight + rect.top > 0 && rect.bottom < ( window.innerHeight || document.documentElement.clientHeight ) + SCROLL_BUFFER ) {
+         this.passedThroughViewport = true;
+      }
    }
 
    private setPartnerData( data?: string | Partner ) {
