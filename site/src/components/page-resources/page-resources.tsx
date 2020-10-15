@@ -12,9 +12,9 @@ const Video: FunctionalComponent<{ video: VideoInfo }> =
             <div class="text">Coming Soon</div>
          </div>
       ) : (
-         <video controls>
+         <video controls preload="metadata">
             <source
-               src={video.url}
+               src={video.url + ( video.startFrom != null ? "#t=" + video.startFrom : "" )}
                type={video.mimeType || "video/mp4"}
             />
             Sorry, your browser doesn't support embedded videos.
