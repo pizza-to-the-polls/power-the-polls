@@ -68,3 +68,22 @@ export interface SocialInfo {
    readonly url: string;
    readonly eventKey: string;
 }
+
+
+export interface VideoGroup {
+   category?: string;
+   videos: VideoInfo[];
+}
+
+export interface VideoInfo {
+   name: string;
+   url: string | null;
+   /**
+    * Seconds into video to start, this will also be the frame that is used as the thumbnail
+    */
+   startFrom?: number;
+   /**
+    * If `undefined`, should be treated as video/mp4
+    */
+   mimeType?: string;
+}

@@ -21,10 +21,10 @@ const Nav: FunctionalComponent<NavProps> = ( { onSelectNavItem, formPath, partne
          </li>
          <li>
             <stencil-route-link
-               url="/faq-contact"
+               url="/faq"
                urlMatch={["/faq", "/faq-es", "/contact", "/faq-contact"]}
                onClick={onSelectNavItem}
-            >FAQ & Contact</stencil-route-link>
+            >FAQ &amp; Contact</stencil-route-link>
          </li>
          <li>
             <stencil-route-link
@@ -32,6 +32,9 @@ const Nav: FunctionalComponent<NavProps> = ( { onSelectNavItem, formPath, partne
                urlMatch={["/partners", "/partners#*"]}
                onClick={onSelectNavItem}
             >Partners</stencil-route-link>
+         </li>
+         <li>
+            <stencil-route-link url="/resources" onClick={onSelectNavItem}>Resources</stencil-route-link>
          </li>
       </ul>
    </nav>
@@ -73,29 +76,16 @@ export class AppRoot {
             component: "page-about",
          },
          {
-            url: "/faq-contact",
-            component: "page-faq",
-            componentProps: {
-               data: FaqData,
-               page_title: "Frequently Asked Questions about Poll Working",
-            },
+            // display all the components in the app in one pace
+            url: "/dev",
+            component: "component-list",
          },
          {
-            // legacy route
-            url: "/contact",
-            component: "page-faq",
-            componentProps: {
-               data: FaqData,
-               page_title: "Frequently Asked Questions about Poll Working",
-            },
-         },
-         {
-            // legacy route
             url: "/faq",
             component: "page-faq",
             componentProps: {
                data: FaqData,
-               page_title: "Frequently Asked Questions about Poll Working",
+               pageTitle: "Frequently Asked Questions about Poll Working",
             },
          },
          {
@@ -103,32 +93,8 @@ export class AppRoot {
             component: "page-faq-es",
             componentProps: {
                data: FaqESData,
-               page_title: "Preguntas más frecuentes",
+               pageTitle: "Preguntas más frecuentes",
             },
-         },
-         {
-            url: "/partners",
-            component: "page-partners",
-            componentProps: {
-               partners: shuffle( PartnerList ),
-            },
-         },
-         {
-            // FYI this is short-circuited and rendered as the entire page, not used in the router switch
-            url: "/partners-table",
-            component: "page-partners-table",
-         },
-         {
-            url: "/privacy",
-            component: "page-privacy",
-         },
-         {
-            url: "/search",
-            component: "page-search",
-         },
-         {
-            url: "/redirector",
-            component: "page-info",
          },
          {
             url: "/info",
@@ -139,9 +105,50 @@ export class AppRoot {
             component: "page-jurisdiction",
          },
          {
-            url: "/dev",
-            component: "component-list",
+            url: "/partners",
+            component: "page-partners",
+            componentProps: {
+               partners: shuffle( PartnerList ),
+            },
          },
+         {
+            // FYI this is short-circuited and rendered as the entire page, not used in the router switch, but it needs
+            // to be here so we know that it's a navigation route and not a partner's vanity URL
+            url: "/partners-table",
+            component: "page-partners-table",
+         },
+         {
+            url: "/privacy",
+            component: "page-privacy",
+         },
+         {
+            url: "/resources",
+            component: "page-resources",
+         },
+         {
+            url: "/search",
+            component: "page-search",
+         },
+
+         /*
+          * legacy routes
+          */
+         {
+            url: "/contact",
+            component: "page-faq",
+            componentProps: {
+               data: FaqData,
+               pageTitle: "Frequently Asked Questions about Poll Working",
+            },
+         },
+         {
+            url: "/redirector",
+            component: "page-info",
+         },
+
+         /*
+          * fallback route (render the form)
+          */
          {
             component: "page-form",
          },
@@ -281,7 +288,6 @@ export class AppRoot {
                   id="main-content"
                   tabindex="-1"
                >
-
                   <stencil-router>
                      <stencil-route-switch scrollTopOffset={1}>
                         {this.routes.map( route => {
@@ -298,20 +304,18 @@ export class AppRoot {
                   </stencil-router>
 
                   <footer>
+                     <a
+                        href="https://www.workelections.com/"
+                        target="_blank"
+                        rel="noopener"
+                     >
+                        <img
+                           src="/assets/images/partners/work-elections.png"
+                           alt="Work Elections"
+                           width="100"
+                        />
+                     </a>
                      <p>Powered by Work Elections.</p>
-                     <p>
-                        <a
-                           href="https://www.workelections.com/"
-                           target="_blank"
-                           rel="noopener"
-                        >
-                           <img
-                              src="/assets/images/partners/work-elections.png"
-                              alt="Work Elections"
-                              width="100"
-                           />
-                        </a>
-                     </p>
                   </footer>
                </div>
             </main>
