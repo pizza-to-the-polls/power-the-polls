@@ -487,6 +487,12 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "DJM-Capital",
+      "name": "DJM-Capital",
+      "logo": "djm-capital.png",
+      "logoIsDark": true
+   },
+   {
       "partnerId": "duo",
       "name": "Duo Security",
       "logo": "duo.jpg"
