@@ -739,6 +739,9 @@
    {
       "partnerId": "IsiahThomas",
       "name": "IsiahThomas",
+      "additionalVanityUrls": [
+         "thomas"
+      ],
       "logo": "isiahthomas.png",
       "logoIsDark": true,
       "logoAppearsOnLandingPage": true
