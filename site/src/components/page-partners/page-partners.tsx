@@ -27,7 +27,7 @@ export class PagePartners {
 
    public render() {
       const partners = ( this.partners || [] );
-      const chosenPartner = this.highlightedPartner;
+      const { highlightedPartner } = this;
       return ( <Host>
          <h1>Power the Polls Partners</h1>
          <p>
@@ -62,16 +62,16 @@ export class PagePartners {
          </p>
          <div class="partner-logos">
             {partners.map( partner => ( partner.isFoundingPartner && !partner.excludeFromPartnerList && partner.logo && (
-               <ui-partner-image partner={partner} chosenPartner={chosenPartner} />
+               <ui-partner-image partner={partner} chosenPartnerId={highlightedPartner} />
             ) ) )}
          </div>
 
          <ui-h3-bar>Partners</ui-h3-bar>
          <div class="partner-logos">
             {partners.map( partner => ( !partner.isFoundingPartner && !partner.excludeFromPartnerList && partner.logo && (
-               <ui-partner-image partner={partner} chosenPartner={chosenPartner} />
+               <ui-partner-image partner={partner} chosenPartnerId={highlightedPartner} />
             ) ) )}
          </div>
-      </Host> );
+      </Host > );
    }
 }
