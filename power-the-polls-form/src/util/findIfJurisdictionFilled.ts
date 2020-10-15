@@ -30,13 +30,13 @@ const findIfJurisdictionFilled = (formData: PtpFormData) => {
       return false;
    }
 
-   if(FullJurisdictions[formData.state] === undefined){ //no full jurisdictions for that state
+   if(FullJurisdictions[formData.state] === undefined) { // no full jurisdictions for that state
       return false;
    }
 
    const stateInfo = States[formData.state];
 
-   if(stateInfo.id === -1){
+   if(stateInfo.id === -1) { //state never needed any pollworkers
       return false;
    }
 
