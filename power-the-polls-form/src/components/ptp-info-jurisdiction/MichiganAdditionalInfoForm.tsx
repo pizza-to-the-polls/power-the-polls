@@ -21,7 +21,6 @@ const SelectOptions: FunctionalComponent<{ choices: string[], inputName: string 
 
 /**
  * Michigan requires additional info be collected.
- * @see
  */
 const MichiganAdditionalInfoForm: FunctionalComponent<{ data: PtpFormData, onSubmit: () => void }> = ( { data, onSubmit } ) => {
 
