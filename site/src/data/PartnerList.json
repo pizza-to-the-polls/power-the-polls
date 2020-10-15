@@ -898,6 +898,10 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "LiveAuctioneers",
+      "name": "LiveAuctioneers"
+   },
+   {
       "partnerId": "livenation",
       "name": "LiveNation",
       "logo": "live-nation.png",
