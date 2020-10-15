@@ -25,7 +25,7 @@
    },
    "include": [
       "src",
-      "types/jsx.d.ts", "../scripts/github-actions/getFullJurisdictions.ts"
+      "types/jsx.d.ts",
    ],
    "exclude": [
       "node_modules"
