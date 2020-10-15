@@ -30,7 +30,16 @@ const findIfJurisdictionFilled = (formData: PtpFormData) => {
       return false;
    }
 
+   if(FullJurisdictions[formData.state] === undefined){ //no full jurisdictions for that state
+      return false;
+   }
+
    const stateInfo = States[formData.state];
+
+   if(stateInfo.id === -1){
+      return false;
+   }
+
    let isJurisdictionFilled = false;
 
     if( stateInfo?.jurisdictions) {
@@ -38,8 +47,7 @@ const findIfJurisdictionFilled = (formData: PtpFormData) => {
         const jurisdictions = stateInfo.jurisdictions;
         // create entries like <jurisdictionId: Jurisdiction Name>  without identifier (county, parish, ect)
         const mapped = new Map(Object.keys(jurisdictions).map((key) => [jurisdictions[key], removeAdditionalInfo(key)]));
-        const stateJurisctionNameIdMap = [...mapped.entries()].reduce( ( obj, tuple ) => obj[tuple[0]] = tuple[1], ( {} as any ) );
-        // find jurisdiction name by id
+        const stateJurisctionNameIdMap = [...mapped.entries()].reduce( ( obj, tuple ) => { obj[tuple[0]] = tuple[1]; return obj; }, ( {} as any ) );        // find jurisdiction name by id
         const formJurisdiction = stateJurisctionNameIdMap[formData.jurisdictionId];
         // check that form jurisdiction is included in the the full poll jurisdictions for that state
         isJurisdictionFilled = FullJurisdictions[formData.state].includes(formJurisdiction) || false;
