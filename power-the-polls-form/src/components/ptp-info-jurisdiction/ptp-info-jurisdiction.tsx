@@ -181,7 +181,7 @@ export class JurisdictionInfoComponent {
                : null
          }
 
-         {this.showNextSteps && <NextSteps jurisdictionInfo={j} stateInfo={stateInfo} state={this.formData.state || j.state.alpha} />}
+         {this.showNextSteps && !this.isJurisdictionFilled && <NextSteps jurisdictionInfo={j} stateInfo={stateInfo} state={this.formData.state || j.state.alpha} />}
 
          <section>
             <h4>Hours and Compensation</h4>
