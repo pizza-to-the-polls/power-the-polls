@@ -66,7 +66,7 @@ export namespace Components {
          */
         "county"?: string;
         /**
-          * Complete form data, if available
+          * Complete form data, if available, for `ptp-info-jurisdiction`
          */
         "formData"?: PtpFormData;
         /**
@@ -215,7 +215,7 @@ declare namespace LocalJSX {
          */
         "county"?: string;
         /**
-          * Complete form data, if available
+          * Complete form data, if available, for `ptp-info-jurisdiction`
          */
         "formData"?: PtpFormData;
         /**
