@@ -14,7 +14,7 @@ export type PtpLinkProps = Partial<Components.StencilRouteLink> & {
  * the form is hosted on powerthepolls.org
  */
 const PtpLink: FunctionalComponent<PtpLinkProps> = ( { path, ...props }, children ) => {
-   const isPtpDotOrg = window.location.hostname === "powerthepolls.org" || window.location.hostname === "localhost";
+   const isPtpDotOrg = window.location.hostname === "powerthepolls.org" || window.location.hostname === "www.powerthepolls.org" || window.location.hostname === "localhost";
    return isPtpDotOrg ? (
       <stencil-route-link url={path} {...props}>{children}</stencil-route-link>
    ) : (
