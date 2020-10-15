@@ -33,6 +33,7 @@ export class ComponentList {
             example: <ui-impact-box><h2>h2 heading</h2><p>Lorem ipsum dolor sit amet</p></ui-impact-box>,
          },
          { tag: "ui-loading-spinner", example: <ui-loading-spinner /> },
+         { tag: "ui-partner-image partner=\"Pizza\"", example: <ui-partner-image partner="Pizza" /> },
          // {tag: "AAAA", example: FOOOO},
       ];
       return ( <Host>

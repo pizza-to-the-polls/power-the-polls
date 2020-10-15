@@ -21,14 +21,14 @@ export class PageFaqES {
    /**
     * The page's title
     */
-   @Prop() public page_title?: string;
+   @Prop() public pageTitle?: string;
 
    public render() {
       const data = this.data || [];
       return ( <Host>
-         <h1>{this.page_title || ""}</h1>
+         <h1>{this.pageTitle || ""}</h1>
          <p>
-            <stencil-route-link url="/faq-contact">English</stencil-route-link>
+            <stencil-route-link url="/faq">English</stencil-route-link>
             {" / "}
             <stencil-route-link url="/faq-es">Español</stencil-route-link>
          </p>

@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Fragment, h, Prop, State } from "@stencil/core";
+import { Component, Event, EventEmitter, Fragment, h, Listen, Prop, State } from "@stencil/core";
 
 import { submitToHelpScout } from "./helpscout-webhook";
 
@@ -7,14 +7,6 @@ import { submitToHelpScout } from "./helpscout-webhook";
  * Contains logic to submit form information to helpscout via webhook
  * Also has logic to show the message submit state and change content based on submit state
  */
-
-const SUBMIT_SUCCESS = "SUCCESS";
-const SUBMIT_FAILURE = "FAILURE";
-
-const NOT_SUBMITTED = "NOT_SUBMITTED";
-const SUBMITTING = "SUBMITTING";
-const SUBMITTED = "SUBMITTED";
-
 @Component( {
    tag: "contact-modal",
    styleUrl: "contact-modal.scss",
@@ -22,10 +14,7 @@ const SUBMITTED = "SUBMITTED";
 } )
 export class ContactModal {
 
-   @Prop( {
-      mutable: true,
-      reflect: true,
-   } )
+   @Prop()
    public isOpen: boolean = false;
 
    @Event( {
@@ -35,15 +24,19 @@ export class ContactModal {
    } ) public onClose!: EventEmitter;
 
    @State()
-   private submittedState = NOT_SUBMITTED;
+   private submittedState: "NOT_SUBMITTED" | "SUBMITTING" | "SUBMIT_SUCCESS" | "SUBMIT_FAILURE" = "NOT_SUBMITTED";
 
-   @State()
-   private submitResponseState = "";
+   @Listen( "keyup", { target: "document" } )
+   public onKeyPress( ev: KeyboardEvent ) {
+      if( ev.key === "Escape" ) {
+         this.onClose.emit();
+      }
+   }
 
    public render() {
 
       const submitForm = ( e: Event ) => {
-         this.submittedState = SUBMITTING;
+         this.submittedState = "SUBMITTING";
          const form = e.target as HTMLFormElement;
          const elements = [
             ...form.getElementsByTagName( "input" ),
@@ -56,64 +49,19 @@ export class ContactModal {
          );
 
          try {
-            this.submittedState = SUBMITTED;
             submitToHelpScout( data )
                .then( ( response ) => {
-                  if( response === true ) {
-                     this.submitResponseState = SUBMIT_SUCCESS;
-                  } else {
-                     this.submitResponseState = SUBMIT_FAILURE;
-                  }
+                  this.submittedState = response === true ? "SUBMIT_SUCCESS" : "SUBMIT_FAILURE";
                } )
                .catch( err => {
                   console.warn( "Error submitting faq form", err );
-                  this.submitResponseState = SUBMIT_FAILURE;
+                  this.submittedState = "SUBMIT_FAILURE";
                } );
          } catch( e ) {
-            this.submitResponseState = SUBMIT_FAILURE;
+            this.submittedState = "SUBMIT_FAILURE";
          } finally {
             e.preventDefault();
          }
-      };
-
-      const successMessage = ( <div>
-         <h3>Your Message was sent</h3>
-         <div>
-            Thank you for your email! While we can’t guarantee a response to every email due to volume, we will try to get back to you as soon as possible.
-                For a faster response, please review our <a href="#" onClick={() => this.onClose.emit()}>FAQ</a> or
-                contact your <a href="https://www.powerthepolls.org/search">local election administrator directly</a>.
-            </div>
-      </div> );
-
-      const failureMessage = ( <div>
-         <h3>Uh oh!</h3>
-         <div>
-            We're unable to process your request. Please email us at <a href="mailto:info@powerthepolls.org">info@powerthepolls.org</a>,
-                or <a href="https://www.powerthepolls.org/search">contact your local election administrator directly</a>.
-            </div>
-      </div> );
-
-      const mainContent = (
-         <div>
-            <h3>Contact us</h3>
-            <p>
-               For Press inquiries, contact us at <a href="mailto:press@powerthepolls.org">press@powerthepolls.org</a>.
-                    For all other inquiries, please select the appropriate category below.
-                </p>
-            <div>
-               <contact-form submitForm={e => submitForm( e )} />
-            </div>
-         </div>
-      );
-
-      const findContent = () => {
-         if( this.submittedState === SUBMITTED && this.submitResponseState === SUBMIT_SUCCESS ) {
-            return successMessage;
-         } else if( this.submittedState === SUBMITTED && this.submitResponseState === SUBMIT_FAILURE ) {
-            return failureMessage;
-         }
-
-         return mainContent;
       };
 
       return (
@@ -127,7 +75,37 @@ export class ContactModal {
                         width="25"
                      />
                   </button>
-                  {findContent()}
+                  {this.submittedState === "SUBMIT_SUCCESS"
+                     ? (
+                        <div>
+                           <h3>Your Message was sent</h3>
+                           <div>
+                              Thank you for your email! While we can’t guarantee a response to every email due to volume, we will try to get back to you as soon as possible.
+                              For a faster response, please review our <a href="#" onClick={() => this.onClose.emit()}>FAQ</a> or
+                              contact your <a href="https://www.powerthepolls.org/search">local election administrator directly</a>.
+                           </div>
+                        </div>
+                     ) : this.submittedState === "SUBMIT_FAILURE"
+                        ? (
+                           <div>
+                              <h3>Uh oh!</h3>
+                              <div>
+                                 We're unable to process your request. Please email us at <a href="mailto:info@powerthepolls.org">info@powerthepolls.org</a>,
+                                 or <a href="https://www.powerthepolls.org/search">contact your local election administrator directly</a>.
+                              </div>
+                           </div>
+                        ) : (
+                           <div>
+                              <h3>Contact us</h3>
+                              <p>
+                                 For Press inquiries, contact us at <a href="mailto:press@powerthepolls.org">press@powerthepolls.org</a>.
+                                 For all other inquiries, please select the appropriate category below.
+                              </p>
+                              <div>
+                                 <contact-form submitForm={e => submitForm( e )} />
+                              </div>
+                           </div>
+                        )}
                </div>
             </div>
          </Fragment>
