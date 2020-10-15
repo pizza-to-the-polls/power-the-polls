@@ -576,7 +576,9 @@
    },
    {
       "partnerId": "Fender-Music",
-      "name": "Fender-Music"
+      "name": "Fender-Music",
+      "logo": "fender-music.jpg",
+      "logoIsDark": true
    },
    {
       "partnerId": "fenwick",
