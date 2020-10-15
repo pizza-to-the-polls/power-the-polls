@@ -658,6 +658,10 @@
       "logoIsDark": true
    },
    {
+      "partnerId": "Harbor-Freight",
+      "name": "Harbor-Freight"
+   },
+   {
       "partnerId": "harrys",
       "name": "Harry's",
       "logo": "harrys.jpg",
