@@ -899,7 +899,9 @@
    },
    {
       "partnerId": "LiveAuctioneers",
-      "name": "LiveAuctioneers"
+      "name": "LiveAuctioneers",
+      "logo": "liveauctioneers.png",
+      "logoIsDark": true
    },
    {
       "partnerId": "livenation",
