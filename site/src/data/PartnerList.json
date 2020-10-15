@@ -765,6 +765,11 @@
       "logoAppearsOnLandingPage": true
    },
    {
+      "partnerId": "Jane-Please",
+      "name": "Jane-Please",
+      "logo": "jane-please.png"
+   },
+   {
       "partnerId": "jolt",
       "name": "Jolt Action",
       "logo": "jolt.png",
