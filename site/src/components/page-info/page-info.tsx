@@ -28,7 +28,7 @@ export class PageInfo {
       }
       let isJurisdictionFilled = false;
 
-      if(!!data.FullJurisdictions[state] && !!county){
+      if(!!data.FullJurisdictions[state] && !!county) {
          isJurisdictionFilled = data.FullJurisdictions[state].includes(county);
       }
 
