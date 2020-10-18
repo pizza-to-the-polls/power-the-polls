@@ -74,7 +74,8 @@ export class PagePartnersTable {
    private static readonly FILTER_REFRESH_DELAY: number = 300/*milliseconds*/;
 
    @State() private partners: PartnerTableData[];
-   @State() private loading?: [message: string, progress: number];
+   @State() private isLoading?: [message: string, progress: number];
+   @State() private isNotProduction: boolean;
    @State() private filterValue?: string;
    /**
     * `filterValue` split on whitespace. This is what is actually used to filter `partners`
@@ -91,7 +92,8 @@ export class PagePartnersTable {
    constructor() {
       this.partners = [];
       this.tokenValue = "";
-      this.loading = ["Loading partner data", 0];
+      this.isNotProduction = !( window.location.hostname === "powerthepolls.org" || window.location.hostname === "www.powerthepolls.org" );
+      this.isLoading = ["Loading partner data", 0];
       // we don't want to update this on every single keypress, so debounce to save on too many renders
       this.updateFilterParams = debounce( ( val?: string ) => {
          this.filterParams = val?.split( " " ).map( x => x.toLowerCase() );
@@ -103,12 +105,12 @@ export class PagePartnersTable {
    }
 
    public refreshPartnerData( type: "Loading" | "Refreshing" = "Loading" ) {
-      loadPartnerData( ( message, progress ) => this.loading = [message, progress * 0.9], type ).then( x => {
+      loadPartnerData( ( message, progress ) => this.isLoading = [message, progress * 0.9], type ).then( x => {
          this.partners = x;
          // set progress to 90% and introduce a delay before hiding the loading screen since it will
          // take a bit to render all 200+ partners and the images and components
-         this.loading = ["Rendering", 0.9];
-         setTimeout( () => this.loading = undefined, 2000 );
+         this.isLoading = ["Rendering", 0.9];
+         setTimeout( () => this.isLoading = undefined, 2000 );
       } );
    }
 
@@ -224,9 +226,9 @@ export class PagePartnersTable {
          if( message == null ) {
             return;
          }
-         this.loading = ["Saving", 0];
-         await saveChanges( this.partners, message, ( m, progress ) => this.loading = [m, progress] );
-         this.loading = ["Refreshing", 0];
+         this.isLoading = ["Saving", 0];
+         await saveChanges( this.partners, message, ( m, progress ) => this.isLoading = [m, progress] );
+         this.isLoading = ["Refreshing", 0];
          setTimeout( () => window.location.reload(), 1000 );
       };
 
@@ -382,25 +384,15 @@ export class PagePartnersTable {
                                  />
                                  <div class="logo-settings">
                                     <form class={{ "modified": isFieldModified( partner, "logoIsDark" ) }}>
-                                       <label>
-                                          light
-                                          <input
-                                             type="radio"
-                                             name="logoIsDark"
-                                             value="true"
-                                             checked={!!getField( partner, "logoIsDark" )}
-                                             onClick={() => setBool( partner, "logoIsDark", true )}
-                                          />
-                                       </label>
-                                       <label>
-                                          dark
-                                          <input
-                                             type="radio"
-                                             name="logoIsDark"
-                                             value="false"
-                                             checked={!!!getField( partner, "logoIsDark" )}
-                                             onClick={() => setBool( partner, "logoIsDark", undefined )}
-                                          />
+                                       <label onClick={() => setBool( partner, "logoIsDark", !!getField( partner, "logoIsDark" ) ? undefined : true )}>
+                                          background
+                                          <svg xmlns="http://www.w3.org/2000/svg" baseProfile="full" width="28" height="28">
+                                             {!!getField( partner, "logoIsDark" )
+                                                // paths for selected-filled and de-selected-outline MaterialUI-esque switches
+                                                ? <path d="M17 7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h10c2.76 0 5-2.24 5-5s-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
+                                                : <path d="M7 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm10-3c2.76 0 5 2.24 5 5s-2.24 5-5 5H7c-2.76 0-5-2.24-5-5s2.24-5 5-5h10zM7 9a3 3 0 0 0 0 6h10a3 3 0 0 0 0-6H7z" />
+                                             }
+                                          </svg>
                                        </label>
                                     </form>
                                  </div>
@@ -459,12 +451,17 @@ export class PagePartnersTable {
                   </div>
                ) )}
          </div>
-         {this.loading &&
+         {this.isNotProduction &&
+            <div class="production-data-warning">
+               <span>This is pointing to production data &mdash; don't save unless you mean it!</span>
+            </div>
+         }
+         {this.isLoading &&
             <div class="loading-screen">
                <ui-loading-spinner style={{ margin: "-80px auto" }} />
                <h1>Working...</h1>
-               <h2>{this.loading[0]}</h2>
-               <hr style={{ width: Math.floor( this.loading[1] * 100 ) + "%" }} />
+               <h2>{this.isLoading[0]}</h2>
+               <hr style={{ width: Math.floor( this.isLoading[1] * 100 ) + "%" }} />
             </div>
          }
       </Host > );
