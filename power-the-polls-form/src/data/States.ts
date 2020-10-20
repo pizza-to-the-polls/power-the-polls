@@ -372,6 +372,7 @@ const data: { [state: string]: StateInfo } = {
    "CO": {
       "id": 8,
       "name": "Colorado",
+      "noPollWorkersNeeded": true,
       "jurisdictions": {
          "Adams County": 117,
          "Alamosa County": 118,
@@ -4554,6 +4555,7 @@ const data: { [state: string]: StateInfo } = {
    "VA": {
       "id": 51,
       "name": "Virginia",
+      "noPollWorkersNeeded": true,
       "jurisdictions": {
          "Accomack County": 602,
          "Albemarle County": 603,
