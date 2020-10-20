@@ -15,7 +15,7 @@ type validationOptions = {
  */
 
 @Component( {
-   tag: "EmailApplicationForm",
+   tag: "email-application-form",
    // styleUrl: "power-the-polls-form.scss",
    shadow: false,
 })
