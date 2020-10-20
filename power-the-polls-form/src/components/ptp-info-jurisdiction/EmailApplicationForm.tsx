@@ -1,5 +1,4 @@
-import { Fragment, h, Prop, State } from "@stencil/core";
-
+import { Fragment, h, Prop, State, Component } from "@stencil/core";
 import { JurisdictionInfo } from "../../data/States";
 import { PtpFormData, TextInput } from "../../util";
 
@@ -14,7 +13,14 @@ type validationOptions = {
 /**
  * Email application that will only render if there is no application link for the jurisdiction
  */
-export class EmailApplicationForm {
+
+@Component( {
+   tag: "EmailApplicationForm",
+   // styleUrl: "power-the-polls-form.scss",
+   shadow: false,
+})
+
+class EmailApplicationForm {
 
    @Prop()
    public jurisdiction: JurisdictionInfo;
