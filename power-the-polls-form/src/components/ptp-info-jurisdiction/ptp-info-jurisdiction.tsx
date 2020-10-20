@@ -173,7 +173,7 @@ export class JurisdictionInfoComponent {
                   : ( !this.isMailToFormComplete && <EmailApplicationForm
                      jurisdiction={j}
                      data={this.formData}
-                     onComplete={() => this.isMailToFormComplete = true}
+                     onComplete={() => {this.isMailToFormComplete = true}}
                   /> )
                // jurisdiction has an application link, no need for special email or phone section
                : null
