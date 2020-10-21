@@ -20,11 +20,6 @@ const Video: FunctionalComponent<{ video: VideoInfo }> =
                />
                Sorry, your browser doesn't support embedded videos.
             </video>
-            {video.additionalInfoLink &&
-               <a href={video.additionalInfoLink.link} target="_blank">
-                  {video.additionalInfoLink.text}
-               </a>
-            }
          </div>
       );
 
@@ -74,6 +69,11 @@ export class PageResources {
                            <div>
                               <Video video={video} />
                               <p>{video.name}</p>
+                              {video.additionalInfoLink &&
+                                    <a href={video.additionalInfoLink.link} target="_blank">
+                                       {video.additionalInfoLink.text}
+                                    </a>
+                                 }
                            </div>
                         ) )}
                      </div>
