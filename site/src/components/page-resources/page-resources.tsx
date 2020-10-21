@@ -93,7 +93,7 @@ export class PageResources {
                Visit <a href="http://www.trainthepolls.com" target="_blank">www.trainthepolls.com</a> to find additional resources, including some state-specific one-pagers and other guides.
             </AdditionalNote>
             <AdditionalNote image="/assets/images/well_certified.png">
-               Visit <a href="http://www.wellcertified.com/vote" target="_blank">www.wellcertified.com/vote</a> to find additional Election Day health and safety resources.               
+               Visit <a href="http://www.wellcertified.com/vote" target="_blank">www.wellcertified.com/vote</a> to find additional Election Day health and safety resources.
             </AdditionalNote>
             <AdditionalNote image="/assets/images/fairelections.png" background>
                Our partners at the Fair Elections Center have put together <a href="https://www.fairelectionscenter.org/state-specific-resources" target="_blank">voting guides for every state</a>.
