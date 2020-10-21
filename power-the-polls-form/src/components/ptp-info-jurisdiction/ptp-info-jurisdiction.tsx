@@ -8,7 +8,6 @@ import { fetchJurisdictionGeoJson, fetchJurisdictionInfo } from "../../util/Work
 
 import CallToApplyButton from "./CallToApplyButton";
 import CompleteApplicationButton from "./CompleteApplicationButton";
-// import EmailApplicationForm from "./EmailApplicationForm";
 import MichiganAdditionalInfoForm from "./MichiganAdditionalInfoForm";
 
 const NextSteps: FunctionalComponent<{ state: string, stateInfo?: StateInfo, jurisdictionInfo?: JurisdictionInfo }> =

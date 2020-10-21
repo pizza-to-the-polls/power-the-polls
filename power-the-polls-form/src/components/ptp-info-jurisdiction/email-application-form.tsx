@@ -2,10 +2,6 @@ import { Fragment, h, Prop, State, Component } from "@stencil/core";
 import { JurisdictionInfo } from "../../data/States";
 import { PtpFormData, TextInput } from "../../util";
 
-const emailValidationRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const phoneValidationRegex = /(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}/;
-const nonEmptyStringRegex = /^(?=.*\S).+$/;
-
 type validationOptions = {
    [key: string]: boolean,
 };
@@ -20,10 +16,10 @@ type validationOptions = {
    shadow: false,
 })
 
-class EmailApplicationForm {
+export class EmailApplicationForm {
 
    @Prop()
-   public jurisdiction: JurisdictionInfo;
+   public jurisdiction?: JurisdictionInfo;
 
    @Prop()
    public data: PtpFormData;
@@ -41,14 +37,21 @@ class EmailApplicationForm {
       languages: true
    };
 
-   constructor(jurisdiction: JurisdictionInfo, data: PtpFormData, onComplete: () => void) {
-      this.jurisdiction = jurisdiction;
-      this.data = data;
-      this.onComplete = onComplete;
+   constructor() {
+      this.data = {};
+      this.onComplete = () => {};
    }
 
    public render() {
+      const emailValidationRegex = RegExp('^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+      const phoneValidationRegex =  RegExp('(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}');
+
+      if(!!!this.jurisdiction) {
+         return;
+      }
+
       const j = this.jurisdiction;
+      const isEmpty = (inputVal: string) => inputVal.trim() === "";
 
       if(
          // if jurisdiction has no email, do not show the e-mail form
@@ -58,17 +61,17 @@ class EmailApplicationForm {
 
       const validateEmail = (e: Event) => {
          const inputValue =  ( e.target as HTMLInputElement ).value;
-         this.fieldValidState.email = emailValidationRegex.test(inputValue);
+         this.fieldValidState.email = emailValidationRegex.test(inputValue) || !isEmpty(inputValue);
       };
 
       const validatePhone = (e: Event) => {
          const inputValue =  ( e.target as HTMLInputElement ).value;
-         this.fieldValidState.email = phoneValidationRegex.test(inputValue);
+         this.fieldValidState.email = phoneValidationRegex.test(inputValue) || !isEmpty(inputValue);;
       };
 
       const validateNotEmpty = (e: Event, fieldName: string) => {
          const inputValue =  ( e.target as HTMLInputElement ).value;
-         this.fieldValidState[fieldName] = nonEmptyStringRegex.test(inputValue);
+         this.fieldValidState[fieldName] = !isEmpty(inputValue);;
       };
 
       const submitForm = ( e: Event ) => {
@@ -100,8 +103,9 @@ class EmailApplicationForm {
          "65 and older",
       ];
 
-      const IsFormValid = Object.values(this.fieldValidState).every(value => value === true);
-
+      const isFormValid = Object.values(this.fieldValidState).every(value => value === true);
+      console.log('isFormValid', isFormValid);
+      console.log('state values', this.fieldValidState);
       return (
          <Fragment>
          <h3>Send statement of interest</h3>
@@ -109,7 +113,7 @@ class EmailApplicationForm {
          <form onSubmit={submitForm} style={{ padding: "0" }}>
             <label>
                Name
-               <TextInput data={this.data} field="name" required onChange={ (e: Event) => validateNotEmpty(e, "name")} />            <span>Please enter valid city</span>
+               <TextInput data={this.data} field="name" required onChange={ (e: Event) => validateNotEmpty(e, "name")} />           
                {!this.fieldValidState.name && <span>Please fill out required field</span>}
             </label>
             <label>
@@ -148,7 +152,7 @@ class EmailApplicationForm {
             <input type="hidden" value={this.data.state} name="state" />
 
             <button
-               disabled={!IsFormValid}
+               disabled={!isFormValid}
                type="submit"
                class="button"
             >Send statement of interest
@@ -171,6 +175,3 @@ class EmailApplicationForm {
       );
    }
 }
-
-
-export default EmailApplicationForm;
