@@ -1,4 +1,5 @@
-import { Fragment, h, Prop, State, Component } from "@stencil/core";
+import { Component, Fragment, h, Prop, State } from "@stencil/core";
+
 import { JurisdictionInfo } from "../../data/States";
 import { PtpFormData, TextInput } from "../../util";
 
@@ -35,7 +36,7 @@ export class EmailApplicationForm {
       phone: true,
       city: true,
       languages: true,
-      ages: false
+      ages: false,
    };
 
    @State()
@@ -43,12 +44,12 @@ export class EmailApplicationForm {
 
    constructor() {
       this.data = {};
-      this.onComplete = () => {};
+      this.onComplete = () => { return; };
    }
 
    public render() {
       const emailValidationRegex = RegExp('^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
-      const phoneValidationRegex =  RegExp('(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}');
+      const phoneValidationRegex =  RegExp("(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}");
 
       if(!!!this.jurisdiction) {
          return;
@@ -59,9 +60,9 @@ export class EmailApplicationForm {
 
       const findIfFormIsValid = (fieldValidState: validationOptions, fieldVal: string, newValue: boolean) => {
          const copy  = {...fieldValidState};
-         copy[fieldVal] =  newValue
+         copy[fieldVal] =  newValue;
          return Object.values(copy).every(value => value === true);
-      }
+      };
 
       if(
          // if jurisdiction has no email, do not show the e-mail form
@@ -72,29 +73,29 @@ export class EmailApplicationForm {
       const validateEmail = (e: Event) => {
          const inputValue =  ( e.target as HTMLInputElement ).value;
          const isValid = emailValidationRegex.test(inputValue) && !isEmpty(inputValue);
-         this.fieldValidState.email = isValid;        
-         this.isFormValid = findIfFormIsValid(this.fieldValidState, 'email', isValid);
+         this.fieldValidState.email = isValid;
+         this.isFormValid = findIfFormIsValid(this.fieldValidState, "email", isValid);
       };
 
       const validateAge = (e: Event) => {
          const inputValue =  ( e.target as HTMLSelectElement ).value;
-         console.log('stuff', inputValue);
-         const isValid = inputValue !== 'Please select'
-         this.fieldValidState.ages = isValid;        
-         this.isFormValid = findIfFormIsValid(this.fieldValidState, 'age', isValid);
+         console.log("stuff", inputValue);
+         const isValid = inputValue !== "Please select";
+         this.fieldValidState.ages = isValid;
+         this.isFormValid = findIfFormIsValid(this.fieldValidState, "age", isValid);
       };
 
       const validatePhone = (e: Event) => {
          const inputValue =  ( e.target as HTMLInputElement ).value;
-         const isValid = phoneValidationRegex.test(inputValue) && !isEmpty(inputValue);;
-         this.fieldValidState.email = isValid
-         this.isFormValid = findIfFormIsValid(this.fieldValidState, 'phone', isValid);
+         const isValid = phoneValidationRegex.test(inputValue) && !isEmpty(inputValue);
+         this.fieldValidState.email = isValid;
+         this.isFormValid = findIfFormIsValid(this.fieldValidState, "phone", isValid);
       };
 
       const validateNotEmpty = (e: Event, fieldName: string) => {
          const inputValue =  ( e.target as HTMLInputElement ).value;
          const isValid = !isEmpty(inputValue);
-         this.fieldValidState[fieldName] = isValid
+         this.fieldValidState[fieldName] = isValid;
          this.isFormValid = findIfFormIsValid(this.fieldValidState, fieldName, isValid);
 
       };
@@ -128,8 +129,8 @@ export class EmailApplicationForm {
          "65 and older",
       ];
 
-      console.log('this.isFormValid', this.isFormValid);
-      console.log('state values', this.fieldValidState);
+      console.log("this.isFormValid", this.isFormValid);
+      console.log("state values", this.fieldValidState);
       return (
          <Fragment>
          <h3>Send statement of interest</h3>
@@ -137,7 +138,7 @@ export class EmailApplicationForm {
          <form onSubmit={submitForm} style={{ padding: "0" }}>
             <label>
                Name
-               <TextInput data={this.data} field="name" required onChange={ (e: Event) => validateNotEmpty(e, "name")} />           
+               <TextInput data={this.data} field="name" required onChange={ (e: Event) => validateNotEmpty(e, "name")} />
             </label>
             {!this.fieldValidState.name && <span class="invalid">Please fill out required field</span>}
             <label>
