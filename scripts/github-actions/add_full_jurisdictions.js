@@ -1,23 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -54,14 +35,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 exports.__esModule = true;
-var fs = __importStar(require("fs"));
-var path = __importStar(require("path"));
 var data_1 = require("../../power-the-polls-form/src/data");
-var object_fromentries_1 = __importDefault(require("object.fromentries"));
 var fetch = require("node-fetch");
 /**
  * Google sheet with all full jurisdictions that is santized from sensitive info
@@ -82,13 +57,20 @@ var getSheet = function (worksheet) { return __awaiter(void 0, void 0, void 0, f
         }
     });
 }); };
-/** Take state name and replace with Abbreviation. Washington ->  WA */
+/** Take state name and replace with Abbreviation. Find output is object pairs WA -> Washington */
 var normalizeStates = function () {
-    var abbrevationToName = new Map(Object.entries(data_1.States).map(function (_a) {
+    var abbrevationToNameArr = Object.entries(data_1.States).map(function (_a) {
         var key = _a[0], value = _a[1];
+        console.log({ stuff: value.name, key: key });
         return [value.name, key];
-    }));
-    return object_fromentries_1["default"](abbrevationToName);
+    });
+    var abbrevationToNameObj = {};
+    abbrevationToNameArr.forEach(function (data) {
+        if (!!data[0] && !!data[1]) {
+            abbrevationToNameObj[data[0]] = data[1];
+        }
+    });
+    return abbrevationToNameObj;
 };
 var getJurisdictionsByState = function () { return __awaiter(void 0, void 0, void 0, function () {
     var nameToAbb, all, keyByState;
@@ -98,7 +80,10 @@ var getJurisdictionsByState = function () { return __awaiter(void 0, void 0, voi
                 nameToAbb = normalizeStates();
                 return [4 /*yield*/, getSheet("1")];
             case 1:
-                all = (_a.sent()).map(function (el) { return ({ state: nameToAbb[el.title], jurisdiction: el.content.split(": ")[1] }); });
+                all = (_a.sent()).map(function (el) {
+                    // console.log('meee', nameToAbb[el.title], {thing: el.title})
+                    return { state: nameToAbb[el.title], jurisdiction: el.content.split(": ")[1] };
+                });
                 keyByState = {};
                 all.forEach(function (item) {
                     if (!!!keyByState[item.state]) {
@@ -116,20 +101,12 @@ var getJurisdictionsByState = function () { return __awaiter(void 0, void 0, voi
     });
 }); };
 var run = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var jurisdictions, toBeWritten, file;
+    var jurisdictions;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, getJurisdictionsByState()];
             case 1:
                 jurisdictions = _a.sent();
-                toBeWritten = { data: jurisdictions };
-                file = path.resolve(__dirname, '../../power-the-polls-form/src/data/full-jurisdictions.json');
-                fs.writeFile(file, JSON.stringify(toBeWritten), function (err) {
-                    if (err) {
-                        console.log(err);
-                        throw err;
-                    }
-                });
                 return [2 /*return*/];
         }
     });
