@@ -24,12 +24,14 @@
 
 - [ui-loading-spinner](../ui-loading-spinner)
 - [ui-geojson-to-svg](../ui-geojson-to-svg)
+- [email-application-form](.)
 
 ### Graph
 ```mermaid
 graph TD;
   ptp-info-jurisdiction --> ui-loading-spinner
   ptp-info-jurisdiction --> ui-geojson-to-svg
+  ptp-info-jurisdiction --> email-application-form
   ptp-info-poll-worker --> ptp-info-jurisdiction
   style ptp-info-jurisdiction fill:#f9f,stroke:#333,stroke-width:4px
 ```
