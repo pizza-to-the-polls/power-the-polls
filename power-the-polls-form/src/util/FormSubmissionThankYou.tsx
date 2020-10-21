@@ -3,12 +3,9 @@ import { Fragment, FunctionalComponent, h } from "@stencil/core";
 import { StateInfo } from "../data/States";
 
 /**
- * Display thank you and "here are next steps" to the user unless they are in a jurisdiction that no longer needs poll workers, in which case
- * tell them as much and as they share.
+ * Display thank you to the user with varying messages depending on whether the jurisdiction needs poll workers.
  */
-const FormSubmissionThankYou: FunctionalComponent<{ stateInfo: StateInfo | null, isJurisdictionFilled: boolean | false }> = ( { stateInfo, isJurisdictionFilled } ) => {
-
-   return (
+const FormSubmissionThankYou: FunctionalComponent<{ stateInfo: StateInfo | null, isJurisdictionFilled: boolean | false }> = ( { stateInfo, isJurisdictionFilled } ) => (
    stateInfo != null && stateInfo.notSupported ? (
       <Fragment>
          <h1>Thank you so much for your interest in being a poll worker!</h1>
@@ -36,13 +33,11 @@ const FormSubmissionThankYou: FunctionalComponent<{ stateInfo: StateInfo | null,
          </p>
       </Fragment>
    ) : (
-            <Fragment>
-               <h1>{!isJurisdictionFilled ? "You’re one step closer to Powering the Polls!" : "Thank you so much for your interest in being a poll worker!"}</h1>
-               {!isJurisdictionFilled && <h2>What’s next?</h2>}
-               <hr />
-            </Fragment>
-         )
+      <Fragment>
+         <h1>{!isJurisdictionFilled ? "You’re one step closer to Powering the Polls!" : "Thank you so much for your interest in being a poll worker!"}</h1>
+         {!isJurisdictionFilled && <h2>What’s next?</h2>}
+         <hr />
+      </Fragment>
+   )
 );
-}
-;
 export default FormSubmissionThankYou;
