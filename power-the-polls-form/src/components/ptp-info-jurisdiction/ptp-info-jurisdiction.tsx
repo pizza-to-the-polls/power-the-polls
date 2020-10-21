@@ -65,6 +65,8 @@ export class JurisdictionInfoComponent {
     */
    @Prop() public initialFormData?: PtpFormData;
 
+   @Prop() public isJurisdictionFilled: boolean = false;
+
    @State() private jurisdiction?: JurisdictionInfo;
    @State() private jurisdictionShape?: MultiPolygon;
    @State() private formData: PtpFormData = {};
@@ -178,7 +180,7 @@ export class JurisdictionInfoComponent {
                : null
          }
 
-         {this.showNextSteps && <NextSteps jurisdictionInfo={j} stateInfo={stateInfo} state={this.formData.state || j.state.alpha} />}
+         {this.showNextSteps && !this.isJurisdictionFilled && <NextSteps jurisdictionInfo={j} stateInfo={stateInfo} state={this.formData.state || j.state.alpha} />}
 
          <section>
             <h4>Hours and Compensation</h4>
@@ -248,8 +250,8 @@ export class JurisdictionInfoComponent {
                </section>
             ) : null}
 
-         {!allNullOrEmpty( j?.telephone, j?.email, j?.office_address )
-            ? (
+         {!allNullOrEmpty( j?.telephone, j?.email, j?.office_address ) && !this.isJurisdictionFilled
+             ? (
                <section>
                   <h4>Contact Information</h4>
                   {j?.telephone &&

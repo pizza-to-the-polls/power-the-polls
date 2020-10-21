@@ -26,10 +26,15 @@ export class PageInfo {
       if( !state ) {
          return <stencil-router-redirect url="/search" />;
       }
+      let isJurisdictionFilled = false;
+
+      if(!!data.FullJurisdictions[state] && !!county) {
+         isJurisdictionFilled = data.FullJurisdictions[state].includes(county);
+      }
 
       return ( <Host>
          {stateInfo != null && stateInfo.noPollWorkersNeeded
-            ? <util.FormSubmissionThankYou stateInfo={stateInfo} />
+            ? <util.FormSubmissionThankYou stateInfo={stateInfo} isJurisdictionFilled={isJurisdictionFilled}/>
             : <ptp-info-poll-worker city={city} county={county} state={state} />
          }
       </Host> );

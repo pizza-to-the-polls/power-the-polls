@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, Fragment, h, Host, Method, Prop, State } from "@stencil/core";
 
 import { States } from "../../data";
-import { FormSubmissionThankYou, PtpFormData, PtpLink } from "../../util";
+import { findIfJurisdictionFilled, FormSubmissionThankYou, PtpFormData, PtpLink } from "../../util";
 import { findJurisdictionId } from "../../util/WorkElections";
 
 import { submitToActionKit } from "./ActionKit";
@@ -141,10 +141,12 @@ export class PowerThePollsForm {
          }
       };
 
-      return ( <Host>
+      const isJurisdictionFilled = findIfJurisdictionFilled(this.formData);
+
+return ( <Host>
          {this.formStatus === "completed" ? (
             <article>
-               <FormSubmissionThankYou stateInfo={stateInfo} />
+               <FormSubmissionThankYou stateInfo={stateInfo} isJurisdictionFilled={isJurisdictionFilled}/>
                {stateInfo?.noPollWorkersNeeded !== true && (
                   <ptp-info-poll-worker
                      city={this.formData.city}
@@ -152,6 +154,7 @@ export class PowerThePollsForm {
                      state={this.formData.state}
                      formData={this.formData}
                      showNextSteps={true}
+                     isJurisdictionFilled={isJurisdictionFilled}
                   />
                )}
             </article>
