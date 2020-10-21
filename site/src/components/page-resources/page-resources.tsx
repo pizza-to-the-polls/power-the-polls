@@ -12,13 +12,20 @@ const Video: FunctionalComponent<{ video: VideoInfo }> =
             <div class="text">Coming Soon</div>
          </div>
       ) : (
-         <video controls preload="metadata">
-            <source
-               src={video.url + ( video.startFrom != null ? "#t=" + video.startFrom : "" )}
-               type={video.mimeType || "video/mp4"}
-            />
-            Sorry, your browser doesn't support embedded videos.
-         </video>
+         <div>
+            <video controls preload="metadata">
+               <source
+                  src={video.url + ( video.startFrom != null ? "#t=" + video.startFrom : "" )}
+                  type={video.mimeType || "video/mp4"}
+               />
+               Sorry, your browser doesn't support embedded videos.
+            </video>
+            {video.additionalInfoLink &&
+               <a href={video.additionalInfoLink.link} target="_blank">
+                  {video.additionalInfoLink.text}
+               </a>
+            }
+         </div>
       );
 
 
