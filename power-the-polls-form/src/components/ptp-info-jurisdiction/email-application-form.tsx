@@ -34,8 +34,12 @@ export class EmailApplicationForm {
       county: true,
       phone: true,
       city: true,
-      languages: true
+      languages: true,
+      ages: false
    };
+
+   @State()
+   private isFormValid: boolean = false;
 
    constructor() {
       this.data = {};
@@ -53,6 +57,12 @@ export class EmailApplicationForm {
       const j = this.jurisdiction;
       const isEmpty = (inputVal: string) => inputVal.trim() === "";
 
+      const findIfFormIsValid = (fieldValidState: validationOptions, fieldVal: string, newValue: boolean) => {
+         const copy  = {...fieldValidState};
+         copy[fieldVal] =  newValue
+         return Object.values(copy).every(value => value === true);
+      }
+
       if(
          // if jurisdiction has no email, do not show the e-mail form
          ( j?.email == null || j.email === "" ) ) {
@@ -61,17 +71,32 @@ export class EmailApplicationForm {
 
       const validateEmail = (e: Event) => {
          const inputValue =  ( e.target as HTMLInputElement ).value;
-         this.fieldValidState.email = emailValidationRegex.test(inputValue) || !isEmpty(inputValue);
+         const isValid = emailValidationRegex.test(inputValue) && !isEmpty(inputValue);
+         this.fieldValidState.email = isValid;        
+         this.isFormValid = findIfFormIsValid(this.fieldValidState, 'email', isValid);
+      };
+
+      const validateAge = (e: Event) => {
+         const inputValue =  ( e.target as HTMLSelectElement ).value;
+         console.log('stuff', inputValue);
+         const isValid = inputValue !== 'Please select'
+         this.fieldValidState.ages = isValid;        
+         this.isFormValid = findIfFormIsValid(this.fieldValidState, 'age', isValid);
       };
 
       const validatePhone = (e: Event) => {
          const inputValue =  ( e.target as HTMLInputElement ).value;
-         this.fieldValidState.email = phoneValidationRegex.test(inputValue) || !isEmpty(inputValue);;
+         const isValid = phoneValidationRegex.test(inputValue) && !isEmpty(inputValue);;
+         this.fieldValidState.email = isValid
+         this.isFormValid = findIfFormIsValid(this.fieldValidState, 'phone', isValid);
       };
 
       const validateNotEmpty = (e: Event, fieldName: string) => {
          const inputValue =  ( e.target as HTMLInputElement ).value;
-         this.fieldValidState[fieldName] = !isEmpty(inputValue);;
+         const isValid = !isEmpty(inputValue);
+         this.fieldValidState[fieldName] = isValid
+         this.isFormValid = findIfFormIsValid(this.fieldValidState, fieldName, isValid);
+
       };
 
       const submitForm = ( e: Event ) => {
@@ -103,8 +128,7 @@ export class EmailApplicationForm {
          "65 and older",
       ];
 
-      const isFormValid = Object.values(this.fieldValidState).every(value => value === true);
-      console.log('isFormValid', isFormValid);
+      console.log('this.isFormValid', this.isFormValid);
       console.log('state values', this.fieldValidState);
       return (
          <Fragment>
@@ -114,45 +138,46 @@ export class EmailApplicationForm {
             <label>
                Name
                <TextInput data={this.data} field="name" required onChange={ (e: Event) => validateNotEmpty(e, "name")} />           
-               {!this.fieldValidState.name && <span>Please fill out required field</span>}
             </label>
+            {!this.fieldValidState.name && <span class="invalid">Please fill out required field</span>}
             <label>
                City
                <TextInput data={this.data} field="city" required  onChange={(e: Event) => validateNotEmpty(e, "city")}/>
-               {!this.fieldValidState.city && <span>Please fill out required field</span>}
             </label>
+            {!this.fieldValidState.city && <span class="invalid">Please fill out required field</span>}
             <label>
                County
                <TextInput data={this.data} field="county" required onChange={(e: Event) => validateNotEmpty(e, "county")}/>
-               {!this.fieldValidState.county && <span>Please fill out required field</span>}
             </label>
+            {!this.fieldValidState.county && <span class="invalid">Please fill out required field</span>}
             <label>
                Email
                <TextInput data={this.data} field="email" required  onChange={validateEmail}/>
-               {!this.fieldValidState.email && <span>Please enter valid email address</span>}
             </label>
+            {!this.fieldValidState.email && <span class="invalid">Please enter valid email address</span>}
             <label>
                Phone Number
                <TextInput data={this.data} field="phone" required onChange={validatePhone}/>
-               {!this.fieldValidState.phone && <span>Please enter valid phone number</span>}
             </label>
+            {!this.fieldValidState.phone && <span class="invalid">Please enter valid phone number</span>}
             <label>
                What languages do you speak other than English?
-               <TextInput data={this.data} field="languages" initialValue="English only" required onChange={(e: Event) => validateNotEmpty(e, "county")} />
-               {!this.fieldValidState.languages && <span>Please fill out required field</span>}
+               <TextInput data={this.data} field="languages" initialValue="English only" required onChange={(e: Event) => validateNotEmpty(e, "languages")} />
             </label>
+            {!this.fieldValidState.languages && <span class="invalid">Please fill out required field</span>}
             <label>
                Age
-               <select name="age" required>
+               <select name="age" required onChange={validateAge}>
                   <option>Please select</option>
                   {ages.map( a => <option value={a} selected={this.data.age === a}>{a}</option> )}
                </select>
+               {!this.fieldValidState.ages && <span class="invalid">Please fill out required field</span>}
             </label>
 
             <input type="hidden" value={this.data.state} name="state" />
 
             <button
-               disabled={!isFormValid}
+               disabled={!this.isFormValid}
                type="submit"
                class="button"
             >Send statement of interest

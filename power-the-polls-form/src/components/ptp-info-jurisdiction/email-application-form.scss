@@ -1,0 +1,8 @@
+email-application-form {
+    @include form-defaults();
+    
+    .invalid {
+        color: $color-font-highlight-contrast
+    }
+ }
+ 
