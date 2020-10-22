@@ -27,9 +27,9 @@ export class PageInfo {
          return <stencil-router-redirect url="/search" />;
       }
       let isJurisdictionFilled = false;
-
-      if(!!data.FullJurisdictions[state] && !!county) {
-         isJurisdictionFilled = data.FullJurisdictions[state].includes(county);
+      
+      if(!!data.FullJurisdictionsInfo.data[state] && !!county) {
+         isJurisdictionFilled = data.FullJurisdictionsInfo.data[state].includes(county);
       }
 
       return ( <Host>
