@@ -52,7 +52,7 @@ page-resources {
       display: grid;
       grid-template-columns: 30% 70%;
       column-gap: 1.5em;
-      justify-content: start;
+      justify-content: flex-start;
       margin: 2em 0;
       @include on-mobile() {
          display: flex;

@@ -121,7 +121,7 @@ page-partners-table {
          margin: 0;
          justify-self: center;
          &:first-child {
-            justify-self: start;
+            justify-self: flex-start;
          }
          &:last-child {
             justify-self: end;
