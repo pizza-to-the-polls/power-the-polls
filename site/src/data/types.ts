@@ -86,4 +86,8 @@ export interface VideoInfo {
     * If `undefined`, should be treated as video/mp4
     */
    mimeType?: string;
+   /**
+    * Link to related information about the video
+    */
+   additionalInfoLink?: {text: string, link: string };
 }
