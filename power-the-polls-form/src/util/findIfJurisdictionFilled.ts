@@ -1,5 +1,4 @@
 import { FullJurisdictionsInfo, States } from "../data";
-
 import { PtpFormData } from "./types";
 
 

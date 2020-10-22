@@ -27,7 +27,6 @@ const normalizeStates = () => {
       abbrevationToNameObj[data[0]] = data[1];
     }
   });
-
   return abbrevationToNameObj;
 };
 
@@ -35,7 +34,14 @@ const getJurisdictionsByState = async () => {
   // Key value pairs of State names to Abbreviations
   const nameToAbb = normalizeStates();
   // Array of objects {state: "AZ", jurisdiction: "something"}
-  const all = (await getSheet("1")).map(el => ({state: nameToAbb[el.title], jurisdiction: el.content.split(": ")[1]}));
+  let all: {state: string, jurisdiction: string}[] = [];
+  (await getSheet("1")).forEach(el => {
+    if(!!nameToAbb[el.title]){
+      return all.push({state: nameToAbb[el.title], jurisdiction: el.content.split(": ")[1]})
+    }else{
+      console.warn('State Not Found', {stateName: el.title, jurisdiction: el.content.split(": ")[1]})
+    }
+  });
 
   const keyByState: ({[key: string]: string[]}) = {};
   all.forEach(item =>  {
