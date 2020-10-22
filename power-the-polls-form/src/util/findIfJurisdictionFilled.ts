@@ -1,5 +1,4 @@
-import { FullJurisdictionData, States } from "../data";
-import FullJurisdictionsInfo  from "../data/full-jurisdictions.json";
+import { FullJurisdictionsInfo, States } from "../data";
 
 import { PtpFormData } from "./types";
 
@@ -27,8 +26,7 @@ const removeAdditionalInfo = (jurisdictionName: string) => {
  * */
 const findIfJurisdictionFilled = (formData: PtpFormData) => {
 
-   const fullJurisdictionObj = FullJurisdictionsInfo as FullJurisdictionData;
-   const FullJurisdictions = fullJurisdictionObj.data;
+   const FullJurisdictions = FullJurisdictionsInfo.data;
 
    if(!formData.state || !formData.jurisdictionId) {
       return false;
