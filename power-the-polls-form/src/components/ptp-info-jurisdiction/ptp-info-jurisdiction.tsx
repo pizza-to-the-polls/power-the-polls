@@ -145,7 +145,7 @@ export class JurisdictionInfoComponent {
       const stateInfo = States[j.state.alpha];
       return ( <Host>
 
-         <div style={{ display: "flex", alignItems: "start", flexDirection: "column" }}>
+         <div style={{ display: "flex", alignItems: "flex-start", flexDirection: "column" }}>
             <ui-geojson-to-svg
                geoJson={this.jurisdictionShape}
                height={180}
