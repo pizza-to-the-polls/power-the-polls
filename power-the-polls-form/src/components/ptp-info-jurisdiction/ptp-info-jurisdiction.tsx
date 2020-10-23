@@ -3,7 +3,7 @@ import { MultiPolygon } from "geojson";
 
 import { States } from "../../data";
 import { JurisdictionInfo } from "../../data/States";
-import { allNullOrEmpty, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
+import { allNullOrEmpty, findIfJurisdictionFilled, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
 import { fetchJurisdictionGeoJson, fetchJurisdictionInfo } from "../../util/WorkElections";
 
 import AdditionalInfoForm from "./AdditionalInfoForm";
@@ -27,7 +27,7 @@ export class JurisdictionInfoComponent {
    @Prop() public jurisdictionId?: string | number;
 
    /**
-    * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+    * If `true`, this component should show next steps and any additional form data
     */
    @Prop() public showNextSteps: boolean;
 
@@ -35,8 +35,6 @@ export class JurisdictionInfoComponent {
     * Props possibly passed in from the main form
     */
    @Prop() public initialFormData?: PtpFormData;
-
-   @Prop() public isJurisdictionFilled: boolean = false;
 
    @State() private jurisdiction?: JurisdictionInfo;
    @State() private jurisdictionShape?: MultiPolygon;
@@ -75,11 +73,12 @@ export class JurisdictionInfoComponent {
       if( this.formData.state === "MI" ) {
          return ( <Host>
             <h2>Michigan</h2>
-            {this.additionalInfoFormStatus === "submitting"
+            {this.showNextSteps && this.additionalInfoFormStatus === "submitting"
                ?
                <ui-loading-spinner />
-               : this.additionalInfoFormStatus === "pending"
-                  ? <AdditionalInfoForm
+               : this.showNextSteps && this.additionalInfoFormStatus === "pending"
+                  ?
+                  <AdditionalInfoForm
                      data={this.formData}
                      onSubmit={() => this.additionalInfoFormStatus = "submitting"}
                   />
@@ -90,14 +89,14 @@ export class JurisdictionInfoComponent {
                            <div class="next-steps">
                               <p>
                                  <span class="number">1</span>
-                              We are sharing your information with election administrators and our state partners who will follow up to help you
-                              be placed as a poll worker!
-                           </p>
+                                 We are sharing your information with election administrators and our state partners who will follow up to help you
+                                 be placed as a poll worker!
+                              </p>
                               <p>
                                  <span class="number">2</span>
-                              Since we are so close to Election Day, you will likely only hear back from your local
-                              elections office if you are selected. Be sure to answer your phone since it is unlikely that they’ll leave messages.
-                           </p>
+                                 Since we are so close to Election Day, you will likely only hear back from your local
+                                 elections office if you are selected. Be sure to answer your phone since it is unlikely that they’ll leave messages.
+                              </p>
                            </div>
                            <hr />
                         </Fragment>
@@ -108,7 +107,7 @@ export class JurisdictionInfoComponent {
                         Requirements vary and are determined by cities and towns in Michigan, but all poll workers must be a registered Michigan voter
                         or 16 or 17 years old residing in Michigan. While you can vote with a felony record, you cannot serve as a poll worker in
                         Michigan if you have a felony or any infraction related to voting.
-                  </p>
+                     </p>
 
                      <h4>Hours &amp; Compensation</h4>
                      <ul>
@@ -143,6 +142,7 @@ export class JurisdictionInfoComponent {
       }
 
       const stateInfo = States[j.state.alpha];
+      const isJurisdictionFilled = findIfJurisdictionFilled( this.formData );
       return ( <Host>
 
          <div style={{ display: "flex", alignItems: "flex-start", flexDirection: "column" }}>
@@ -155,9 +155,9 @@ export class JurisdictionInfoComponent {
 
          <h2>{j.name}, {j.state.alpha}</h2>
 
-         {stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "submitting"
+         {this.showNextSteps && stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "submitting"
             ? <ui-loading-spinner />
-            : stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "pending"
+            : this.showNextSteps && stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "pending"
                ?
                <AdditionalInfoForm
                   data={this.formData}
@@ -193,7 +193,7 @@ export class JurisdictionInfoComponent {
                         : null
                   }
 
-                  {this.showNextSteps && !this.isJurisdictionFilled &&
+                  {!isJurisdictionFilled && this.showNextSteps &&
                      <Fragment>
                         <div class="next-steps">
                            {( // see: https://docs.google.com/document/d/1b-mPTB1nGmOoziqxAZRhx9UUgvcWqsZtNXqfijXtgrY/edit
@@ -286,7 +286,7 @@ export class JurisdictionInfoComponent {
                         </section>
                      ) : null}
 
-                  {!allNullOrEmpty( j?.telephone, j?.email, j?.office_address ) && !this.isJurisdictionFilled
+                  {!isJurisdictionFilled && !allNullOrEmpty( j?.telephone, j?.email, j?.office_address )
                      ? (
                         <section>
                            <h4>Contact Information</h4>

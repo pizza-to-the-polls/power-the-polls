@@ -66,12 +66,17 @@ export class PageResources {
                         {group.videos.map( video => (
                            <div>
                               <Video video={video} />
-                              <p>{video.name}</p>
-                              {video.additionalInfoLink &&
-                                 <a href={video.additionalInfoLink.link} target="_blank">
-                                    {video.additionalInfoLink.text}
-                                 </a>
-                              }
+                              <p>
+                                 {video.name}
+                                 {video.additionalInfoLink &&
+                                    <Fragment>
+                                       <br />
+                                       <a href={video.additionalInfoLink.link} target="_blank">
+                                          {video.additionalInfoLink.text}
+                                       </a>
+                                    </Fragment>
+                                 }
+                              </p>
                            </div>
                         ) )}
                      </div>
