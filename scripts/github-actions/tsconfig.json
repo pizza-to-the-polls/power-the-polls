@@ -3,7 +3,7 @@
       "strict": true,
       "alwaysStrict": true,
       "allowJs": false,
-      "composite": true,
+      "composite": false,
       "target": "es2017",
       "module": "esnext",
       "moduleResolution": "node",
@@ -12,8 +12,10 @@
          "dom.iterable",
          "es2017"
       ],
+      "esModuleInterop": true,
       "sourceMap": true,
-      "declaration": true,
+      "declaration": false,
+      "resolveJsonModule": true,
       "allowSyntheticDefaultImports": true,
       "forceConsistentCasingInFileNames": true,
       "allowUnreachableCode": false,
@@ -21,14 +23,10 @@
       "noUnusedLocals": true,
       "noUnusedParameters": true,
       "jsx": "react",
-      "jsxFactory": "h",
-      "resolveJsonModule": true,
-      "esModuleInterop": true
+      "jsxFactory": "h"
    },
    "include": [
-      "src",
-      "types/jsx.d.ts",
-      "src/data/full-jurisdictions.json"
+      ".",
    ],
    "exclude": [
       "node_modules"
