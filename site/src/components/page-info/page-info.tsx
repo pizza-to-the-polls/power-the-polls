@@ -28,8 +28,8 @@ export class PageInfo {
       }
       let isJurisdictionFilled = false;
 
-      if(!!data.FullJurisdictions[state] && !!county) {
-         isJurisdictionFilled = data.FullJurisdictions[state].includes(county);
+      if(!!data.FullJurisdictionsInfo.data[state] && !!county) {
+         isJurisdictionFilled = data.FullJurisdictionsInfo.data[state].includes(county);
       }
 
       return ( <Host>
