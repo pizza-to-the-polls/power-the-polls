@@ -3,7 +3,7 @@ import { MultiPolygon } from "geojson";
 
 import { States } from "../../data";
 import { JurisdictionInfo } from "../../data/States";
-import { allNullOrEmpty, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
+import { allNullOrEmpty, findIfJurisdictionFilled, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
 import { fetchJurisdictionGeoJson, fetchJurisdictionInfo } from "../../util/WorkElections";
 
 import AdditionalInfoForm from "./AdditionalInfoForm";
@@ -27,7 +27,7 @@ export class JurisdictionInfoComponent {
    @Prop() public jurisdictionId?: string | number;
 
    /**
-    * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+    * If `true`, this component should show next steps and any additional form data
     */
    @Prop() public showNextSteps: boolean;
 
@@ -35,8 +35,6 @@ export class JurisdictionInfoComponent {
     * Props possibly passed in from the main form
     */
    @Prop() public initialFormData?: PtpFormData;
-
-   @Prop() public isJurisdictionFilled: boolean = false;
 
    @State() private jurisdiction?: JurisdictionInfo;
    @State() private jurisdictionShape?: MultiPolygon;
@@ -144,6 +142,7 @@ export class JurisdictionInfoComponent {
       }
 
       const stateInfo = States[j.state.alpha];
+      const isJurisdictionFilled = findIfJurisdictionFilled( this.formData );
       return ( <Host>
 
          <div style={{ display: "flex", alignItems: "flex-start", flexDirection: "column" }}>
@@ -194,7 +193,7 @@ export class JurisdictionInfoComponent {
                         : null
                   }
 
-                  {this.showNextSteps && !this.isJurisdictionFilled &&
+                  {!isJurisdictionFilled && this.showNextSteps &&
                      <Fragment>
                         <div class="next-steps">
                            {( // see: https://docs.google.com/document/d/1b-mPTB1nGmOoziqxAZRhx9UUgvcWqsZtNXqfijXtgrY/edit
@@ -287,7 +286,7 @@ export class JurisdictionInfoComponent {
                         </section>
                      ) : null}
 
-                  {!allNullOrEmpty( j?.telephone, j?.email, j?.office_address ) && !this.isJurisdictionFilled
+                  {!isJurisdictionFilled && !allNullOrEmpty( j?.telephone, j?.email, j?.office_address )
                      ? (
                         <section>
                            <h4>Contact Information</h4>

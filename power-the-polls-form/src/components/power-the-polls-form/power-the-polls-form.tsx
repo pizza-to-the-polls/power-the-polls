@@ -141,12 +141,10 @@ export class PowerThePollsForm {
          }
       };
 
-      const isJurisdictionFilled = findIfJurisdictionFilled(this.formData);
-
-return ( <Host>
+      return ( <Host>
          {this.formStatus === "completed" ? (
             <article>
-               <FormSubmissionThankYou stateInfo={stateInfo} isJurisdictionFilled={isJurisdictionFilled}/>
+               <FormSubmissionThankYou stateInfo={stateInfo} isJurisdictionFilled={findIfJurisdictionFilled( this.formData )} />
                {stateInfo?.noPollWorkersNeeded !== true && (
                   <ptp-info-poll-worker
                      city={this.formData.city}
@@ -154,7 +152,6 @@ return ( <Host>
                      state={this.formData.state}
                      formData={this.formData}
                      showNextSteps={true}
-                     isJurisdictionFilled={isJurisdictionFilled}
                   />
                )}
             </article>
