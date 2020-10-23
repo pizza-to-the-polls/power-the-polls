@@ -256,9 +256,9 @@ export class JurisdictionInfoComponent {
                <section>
                   <h4>Contact Information</h4>
                   {j?.telephone &&
-                     <p><strong>Phone: </strong><a href={`tel:${j.telephone}`}>{j.telephone}</a></p>}
+                     <p><strong>Phone: </strong><a href={`tel:${j.telephone}`} target="_blank">{j.telephone}</a></p>}
                   {j?.email &&
-                     <p><strong>Email: </strong><a href={`mailto:${j.email}`}>{j.email}</a></p>}
+                     <p><strong>Email: </strong><a href={`mailto:${j.email}`} target="_blank">{j.email}</a></p>}
                   {j?.office_address &&
                      <p><strong>Office Address: </strong><a target="_blank" href={`https://www.google.com/maps/search/${encodeURIComponent( j?.office_address )}`}>{j?.office_address}</a></p>}
                </section>
