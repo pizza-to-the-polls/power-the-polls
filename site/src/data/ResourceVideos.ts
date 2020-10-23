@@ -23,6 +23,7 @@ const data: VideoGroup[] = [
             name: "Oct 15th Poll Worker Prep Rally",
             url: "https://src.powerthepolls.org/assets/PREP_RALLY_16x9.mp4",
             startFrom: 205,
+            additionalInfoLink: {text: "Download Slides", link: "/assets/documents/prep-rally-slides.pdf"},
          },
       ],
    },
