@@ -75,11 +75,12 @@ export class JurisdictionInfoComponent {
       if( this.formData.state === "MI" ) {
          return ( <Host>
             <h2>Michigan</h2>
-            {this.additionalInfoFormStatus === "submitting"
+            {this.showNextSteps && this.additionalInfoFormStatus === "submitting"
                ?
                <ui-loading-spinner />
-               : this.additionalInfoFormStatus === "pending"
-                  ? <AdditionalInfoForm
+               : this.showNextSteps && this.additionalInfoFormStatus === "pending"
+                  ?
+                  <AdditionalInfoForm
                      data={this.formData}
                      onSubmit={() => this.additionalInfoFormStatus = "submitting"}
                   />
@@ -90,14 +91,14 @@ export class JurisdictionInfoComponent {
                            <div class="next-steps">
                               <p>
                                  <span class="number">1</span>
-                              We are sharing your information with election administrators and our state partners who will follow up to help you
-                              be placed as a poll worker!
-                           </p>
+                                 We are sharing your information with election administrators and our state partners who will follow up to help you
+                                 be placed as a poll worker!
+                              </p>
                               <p>
                                  <span class="number">2</span>
-                              Since we are so close to Election Day, you will likely only hear back from your local
-                              elections office if you are selected. Be sure to answer your phone since it is unlikely that they’ll leave messages.
-                           </p>
+                                 Since we are so close to Election Day, you will likely only hear back from your local
+                                 elections office if you are selected. Be sure to answer your phone since it is unlikely that they’ll leave messages.
+                              </p>
                            </div>
                            <hr />
                         </Fragment>
@@ -108,7 +109,7 @@ export class JurisdictionInfoComponent {
                         Requirements vary and are determined by cities and towns in Michigan, but all poll workers must be a registered Michigan voter
                         or 16 or 17 years old residing in Michigan. While you can vote with a felony record, you cannot serve as a poll worker in
                         Michigan if you have a felony or any infraction related to voting.
-                  </p>
+                     </p>
 
                      <h4>Hours &amp; Compensation</h4>
                      <ul>
@@ -155,9 +156,9 @@ export class JurisdictionInfoComponent {
 
          <h2>{j.name}, {j.state.alpha}</h2>
 
-         {stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "submitting"
+         {this.showNextSteps && stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "submitting"
             ? <ui-loading-spinner />
-            : stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "pending"
+            : this.showNextSteps && stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "pending"
                ?
                <AdditionalInfoForm
                   data={this.formData}
