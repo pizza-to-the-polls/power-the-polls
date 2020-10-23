@@ -13,7 +13,6 @@ export namespace Components {
     interface EmailApplicationForm {
         "data": PtpFormData;
         "jurisdiction"?: JurisdictionInfo;
-        "onComplete": () => void;
     }
     interface InputAddress {
         "state": () => Promise<"STARTED" | "COMPLETED">;
@@ -173,7 +172,7 @@ declare namespace LocalJSX {
     interface EmailApplicationForm {
         "data"?: PtpFormData;
         "jurisdiction"?: JurisdictionInfo;
-        "onComplete"?: () => void;
+        "onSubmitted"?: (event: CustomEvent<any>) => void;
     }
     interface InputAddress {
         "onLookup"?: (event: CustomEvent<"STARTED" | "COMPLETED">) => void;

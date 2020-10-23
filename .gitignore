@@ -30,4 +30,6 @@ tsconfig.tsbuildinfo
 /power-the-polls-form/src/**/*.js
 
 /scripts/enrich-actionkit-data/*.js
+/scripts/github-actions/*.js
+
 /scripts/**/*.csv
