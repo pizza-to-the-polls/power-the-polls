@@ -11,10 +11,6 @@ export interface StateInfo {
     * For Maine. see: EmailApplicationForm.tsx
     */
    usePhoneInsteadOfEmailForFormFallback?: boolean;
-   /**
-    * Can't think of a better term
-    */
-   semiPartner?: boolean;
    name?: string;
    alpha?: string;
    pollworker_website?: string;
@@ -205,7 +201,6 @@ const data: { [state: string]: StateInfo } = {
    "AZ": {
       "id": 4,
       "name": "Arizona",
-      "semiPartner": true,
       "jurisdictions": {
          "Apache County": 17,
          "Cochise County": 18,
@@ -634,7 +629,6 @@ const data: { [state: string]: StateInfo } = {
    "FL": {
       "id": 12,
       "name": "Florida",
-      "semiPartner": true,
       "jurisdictions": {
          "Alachua County": 228,
          "Baker County": 229,
@@ -708,7 +702,6 @@ const data: { [state: string]: StateInfo } = {
    "GA": {
       "id": 13,
       "name": "Georgia",
-      "semiPartner": true,
       "jurisdictions": {
          "Appling County": 3781,
          "Atkinson County": 4161,
@@ -2447,7 +2440,6 @@ const data: { [state: string]: StateInfo } = {
    "MN": {
       "id": 27,
       "name": "Minnesota",
-      "semiPartner": true,
       "jurisdictions": {
          "Aitkin County": 4431,
          "Anoka County": 5644,
@@ -2912,7 +2904,6 @@ const data: { [state: string]: StateInfo } = {
    "NV": {
       "id": 32,
       "name": "Nevada",
-      "semiPartner": true,
       "jurisdictions": {
          "Carson City": 363,
          "Churchill County": 364,
@@ -3321,7 +3312,6 @@ const data: { [state: string]: StateInfo } = {
    "NC": {
       "id": 37,
       "name": "North Carolina",
-      "semiPartner": true,
       "jurisdictions": {
          "Alamance County": 468,
          "Alexander County": 469,
@@ -3664,7 +3654,6 @@ const data: { [state: string]: StateInfo } = {
    "PA": {
       "id": 42,
       "name": "Pennsylvania",
-      "semiPartner": true,
       "jurisdictions": {
          "Adams County": 4513,
          "Allegheny County": 3726,
