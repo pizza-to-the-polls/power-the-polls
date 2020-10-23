@@ -171,11 +171,12 @@ export class JurisdictionInfoComponent {
                      <CallToApplyButton jurisdiction={j} />
                   </Fragment> )
                   // show email form unless it's already complete
-                  : ( !this.isMailToFormComplete && <email-application-form
-                     jurisdiction={j}
-                     data={this.formData}
-                     onComplete={() => {this.isMailToFormComplete = true; }}
-                  /> )
+                  : ( !this.isMailToFormComplete &&
+                     <email-application-form
+                        jurisdiction={j}
+                        data={this.formData}
+                        onSubmitted={() => this.isMailToFormComplete = true}
+                     /> )
                // jurisdiction has an application link, no need for special email or phone section
                : null
          }
@@ -251,7 +252,7 @@ export class JurisdictionInfoComponent {
             ) : null}
 
          {!allNullOrEmpty( j?.telephone, j?.email, j?.office_address ) && !this.isJurisdictionFilled
-             ? (
+            ? (
                <section>
                   <h4>Contact Information</h4>
                   {j?.telephone &&
