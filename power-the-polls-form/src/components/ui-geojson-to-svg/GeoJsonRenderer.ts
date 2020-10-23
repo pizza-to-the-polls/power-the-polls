@@ -129,6 +129,9 @@ class GeoJsonRenderer {
    }
 }
 
+/**
+ * Checks if there is a function in `GeoJsonToPath.ts` that matches this geometry `Type`
+ */
 function isDrawable( geom: Geometry ): geom is DrawableGeometry {
    return geom.type in GeoJsonToPath;
 }

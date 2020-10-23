@@ -25,7 +25,7 @@ export class UiGeojsonToSvg {
    /**
     * `geoJson` after running through a mercator projection and converting to a single Polygon
     */
-   @State() private projectedGeoJson?: Polygon;
+   @State() private projectedGeoJson?: MultiPolygon;
 
    constructor() {
       this.width = 200;
@@ -39,12 +39,14 @@ export class UiGeojsonToSvg {
    }
 
    public render() {
+      const data = this.projectedGeoJson;
       try {
-         let json = this.projectedGeoJson;
-         return json && <Host
-            innerHTML={`<svg xmlns="http://www.w3.org/2000/svg" width="${this.width}" height="${this.height}">
-            ${this.renderer.convert( json, this.options ).join( "\n" )}
-         </svg>`}
+         return data && <Host
+            innerHTML={
+               `<svg xmlns="http://www.w3.org/2000/svg" width="${this.width}" height="${this.height}">
+                  ${this.renderer.convert( data, this.options ).join( "\n" )}
+               </svg>`
+            }
          />;
       } catch( e ) {
          console.error( e );
@@ -77,9 +79,13 @@ export class UiGeojsonToSvg {
     * Create a new renderer if any relevant properties have changed
     */
    private resetRenderer() {
-      let data = this.projectedGeoJson;
+      const data = this.projectedGeoJson;
       if( data != null ) {
-         const bounds = this.getBoundingBox( data );
+         const bounds = this.getBoundingBox( explode( data )
+            // hacky way to try to find the largest polygon without getting the bounding box of all of them, because in all my
+            // testing when I do this there is some extra polygon that shouldn't be there and it messes up the bounds
+            .reduce( ( p, x ) => p == null || x.coordinates[0].length > p.coordinates[0].length ? x : p, ( null as Polygon | null ) )!,
+         );
          const scale = this.calculateScale( bounds, { width: this.width, height: this.height } );
          this.renderer = new GeoJsonRenderer( {
             ...this.options,
@@ -90,21 +96,22 @@ export class UiGeojsonToSvg {
    }
 
    /**
-    * When we load the data, scale the points to account for the mercator projection. Also trim out the excess since we know it will always just be a single Polygon
+    * When we load the data, scale the points to account for the mercator projection.
     */
    private updateProjectedGeoJson() {
       const json = this.geoJson;
       if( !isNullOrEmpty( json ) ) {
          try {
-            const data = explode( json as MultiPolygon )[0];
-            const coords = data.coordinates[0];
-            for( let x = 0; x < coords.length; x++ ) {
-               const long = coords[x][0];
-               const lat = coords[x][1];
-               let pt = mercator( long, lat );
-               coords[x] = [pt.x, pt.y];
-            }
-            this.projectedGeoJson = data;
+            this.projectedGeoJson = {
+               ...( json as MultiPolygon ),
+               coordinates: ( json as MultiPolygon ).coordinates.map( polygons => (
+                  polygons.map(
+                     coordinates => coordinates
+                        .map( pos => mercator( pos[0], pos[1] ) )
+                        .map( pt => ( [pt.x, pt.y] as GeoJSON.Position ) ),
+                  )
+               ) ),
+            };
          } catch( e ) {
             console.log( {
                status: "ERROR",
