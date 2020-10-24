@@ -75,6 +75,10 @@ export namespace Components {
          */
         "formData"?: PtpFormData;
         /**
+          * ID of jurisdiction for Work Elections. Use in place of `state`, `county`, and `city`
+         */
+        "jurisdictionId"?: string | number;
+        /**
           * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
          */
         "showNextSteps": boolean;
@@ -235,6 +239,10 @@ declare namespace LocalJSX {
           * Complete form data, if available, for `ptp-info-jurisdiction`
          */
         "formData"?: PtpFormData;
+        /**
+          * ID of jurisdiction for Work Elections. Use in place of `state`, `county`, and `city`
+         */
+        "jurisdictionId"?: string | number;
         /**
           * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
          */

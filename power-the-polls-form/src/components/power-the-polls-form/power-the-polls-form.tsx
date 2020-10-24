@@ -1,7 +1,6 @@
 import { Component, Event, EventEmitter, Fragment, h, Host, Method, Prop, State } from "@stencil/core";
 
-import { States } from "../../data";
-import { findIfJurisdictionFilled, FormSubmissionThankYou, PtpFormData, PtpLink } from "../../util";
+import { PtpFormData, PtpLink } from "../../util";
 import { findJurisdictionId } from "../../util/WorkElections";
 
 import { submitToActionKit } from "./ActionKit";
@@ -85,7 +84,6 @@ export class PowerThePollsForm {
       const source = this.partnerId;
       const chase = this.optUserOutOfChase === true || ( this.optUserOutOfChase as any ) === "true" ? false : true;
       const partnerField = this.customFormFieldLabel;
-      const stateInfo = this.formData.state && this.formData.state in States ? States[this.formData.state] : null;
       // Adapted from https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html
       const phoneValidationRegex = "(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}";
 
@@ -144,16 +142,13 @@ export class PowerThePollsForm {
       return ( <Host>
          {this.formStatus === "completed" ? (
             <article>
-               <FormSubmissionThankYou stateInfo={stateInfo} isJurisdictionFilled={findIfJurisdictionFilled( this.formData )} />
-               {stateInfo?.noPollWorkersNeeded !== true && (
-                  <ptp-info-poll-worker
-                     city={this.formData.city}
-                     county={this.formData.county}
-                     state={this.formData.state}
-                     formData={this.formData}
-                     showNextSteps={true}
-                  />
-               )}
+               <ptp-info-poll-worker
+                  city={this.formData.city}
+                  county={this.formData.county}
+                  state={this.formData.state}
+                  formData={this.formData}
+                  showNextSteps={true}
+               />
             </article>
          ) : ( <Fragment>
             <h3>Help your community and sign up to Power the Polls!</h3>

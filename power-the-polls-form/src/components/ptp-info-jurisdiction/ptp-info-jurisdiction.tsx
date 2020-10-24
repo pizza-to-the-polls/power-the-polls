@@ -3,7 +3,7 @@ import { MultiPolygon } from "geojson";
 
 import { States } from "../../data";
 import { JurisdictionInfo } from "../../data/States";
-import { allNullOrEmpty, findIfJurisdictionFilled, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
+import { allNullOrEmpty, isNullOrEmpty, PtpFormData, PtpLink } from "../../util";
 import { fetchJurisdictionGeoJson, fetchJurisdictionInfo } from "../../util/WorkElections";
 
 import AdditionalInfoForm from "./AdditionalInfoForm";
@@ -49,7 +49,7 @@ export class JurisdictionInfoComponent {
 
    public componentWillLoad() {
       this.formData = this.initialFormData || {};
-      if( this.jurisdictionId ) {
+      if( this.jurisdictionId && this.jurisdictionId !== -1 ) {
          fetchJurisdictionInfo( this.jurisdictionId ).then( x => this.jurisdiction = x );
          fetchJurisdictionGeoJson( this.jurisdictionId ).then( x => this.jurisdictionShape = x );
       }
@@ -65,7 +65,6 @@ export class JurisdictionInfoComponent {
    }
 
    public render() {
-
       //
       // Michigan is a special-case
       //
@@ -120,9 +119,9 @@ export class JurisdictionInfoComponent {
 
       const j = this.jurisdiction;
       if( j == null ) {
-         return ( <Host>
-            <ui-loading-spinner />
-         </Host> );
+         return this.jurisdictionId + "" === "-1"
+            ? null // don't show loading spinner if we have nothing to load
+            : <ui-loading-spinner />;
       }
 
       if( !j.name ) {
@@ -141,7 +140,8 @@ export class JurisdictionInfoComponent {
       }
 
       const stateInfo = States[j.state.alpha];
-      const isJurisdictionFilled = stateInfo.noPollWorkersNeeded === true || findIfJurisdictionFilled( this.formData );
+      const hasApplication = !( j?.application == null || j?.application === "" );
+
       return ( <Host>
 
          <div style={{ display: "flex", alignItems: "flex-start", flexDirection: "column" }}>
@@ -154,9 +154,9 @@ export class JurisdictionInfoComponent {
 
          <h2>{j.name}, {j.state.alpha}</h2>
 
-         {this.showNextSteps && !isJurisdictionFilled && this.additionalInfoFormStatus === "submitting"
+         { this.showNextSteps && hasApplication && this.additionalInfoFormStatus === "submitting"
             ? <ui-loading-spinner />
-            : this.showNextSteps && !isJurisdictionFilled && this.additionalInfoFormStatus === "pending"
+            : this.showNextSteps && hasApplication && this.additionalInfoFormStatus === "pending"
                ?
                <AdditionalInfoForm
                   data={this.formData}
@@ -173,8 +173,8 @@ export class JurisdictionInfoComponent {
 
                   <CompleteApplicationButton jurisdiction={j} />
 
-                  {  // if jurisdiction has an application link, do not show the e-mail form
-                     ( j?.application == null || j?.application === "" )
+                  {  // if jurisdiction has no application link,show the e-mail form
+                     !hasApplication
                         // use phone if specified to do so, else show email form
                         ? stateInfo.usePhoneInsteadOfEmailForFormFallback
                            ? (
@@ -195,11 +195,11 @@ export class JurisdictionInfoComponent {
                         : null
                   }
 
-                  {!isJurisdictionFilled && this.showNextSteps &&
+                  {this.showNextSteps &&
                      <Fragment>
                         <div class="next-steps">
                            {( // see: https://docs.google.com/document/d/1b-mPTB1nGmOoziqxAZRhx9UUgvcWqsZtNXqfijXtgrY/edit
-                              !!j?.application === false && stateInfo && stateInfo.usePhoneInsteadOfEmailForFormFallback
+                              !hasApplication && stateInfo && stateInfo.usePhoneInsteadOfEmailForFormFallback
                                  ? [
                                     () => <Fragment><strong>Complete your community's application by calling the number above! Election Day is right around the corner, so don’t waste any time getting your application in.</strong> Learn more about hours, compensation, and requirements for your community below.</Fragment>,
                                     () => "Since we are so close to Election Day, you will likely only hear back from your local elections office if you are selected. Be sure to answer your phone since it is unlikely that they’ll leave messages.",
@@ -288,7 +288,7 @@ export class JurisdictionInfoComponent {
                         </section>
                      ) : null}
 
-                  {!isJurisdictionFilled && !allNullOrEmpty( j?.telephone, j?.email, j?.office_address )
+                  {!allNullOrEmpty( j?.telephone, j?.email, j?.office_address )
                      ? (
                         <section>
                            <h4>Contact Information</h4>
@@ -312,7 +312,7 @@ export class JurisdictionInfoComponent {
                      target="_blank"
                   >Student Poll Worker Information</a> )}
 
-                  {j?.application !== null && j?.application !== ""
+                  {hasApplication
                      ? <CompleteApplicationButton jurisdiction={j} />
                      : stateInfo.usePhoneInsteadOfEmailForFormFallback
                         ? <CallToApplyButton jurisdiction={j} />

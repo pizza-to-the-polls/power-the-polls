@@ -77,7 +77,6 @@ export class EmailApplicationForm {
 
       const validateAge = ( e: Event ) => {
          const inputValue = ( e.target as HTMLSelectElement ).value;
-         console.log( "stuff", inputValue );
          const isValid = inputValue !== "Please select";
          this.fieldValidState.ages = isValid;
          this.isFormValid = findIfFormIsValid( this.fieldValidState, "age", isValid );
@@ -126,8 +125,6 @@ export class EmailApplicationForm {
          "65 and older",
       ];
 
-      console.log( "this.isFormValid", this.isFormValid );
-      console.log( "state values", this.fieldValidState );
       return (
          <Fragment>
             <h3>Send statement of interest</h3>

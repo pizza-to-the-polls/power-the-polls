@@ -10,12 +10,14 @@ import { MatchResults } from "@stencil/router";
    shadow: false,
 } )
 export class PageJurisdiction {
+
    @Prop() public match?: MatchResults;
 
    public render() {
       const id = this.match ? this.match.params.id : null;
-
-      return id && ( <ptp-info-jurisdiction jurisdictionId={id} /> );
+      return !id
+         ? <stencil-router-redirect url="/search" />
+         : <ptp-info-poll-worker jurisdictionId={id} />;
    }
 
 }
