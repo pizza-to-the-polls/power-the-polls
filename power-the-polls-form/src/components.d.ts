@@ -5,10 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { JurisdictionInfo } from "./data/States";
 import { PtpFormData } from "./util";
 import { GeoJSON } from "geojson";
 import { Options } from "./components/ui-geojson-to-svg/types";
 export namespace Components {
+    interface EmailApplicationForm {
+        "data": PtpFormData;
+        "jurisdiction"?: JurisdictionInfo;
+    }
     interface InputAddress {
         "state": () => Promise<"STARTED" | "COMPLETED">;
     }
@@ -47,13 +52,12 @@ export namespace Components {
           * Props possibly passed in from the main form
          */
         "initialFormData"?: PtpFormData;
-        "isJurisdictionFilled": boolean;
         /**
           * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: string | number;
         /**
-          * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+          * If `true`, this component should show next steps and any additional form data
          */
         "showNextSteps": boolean;
     }
@@ -70,7 +74,6 @@ export namespace Components {
           * Complete form data, if available, for `ptp-info-jurisdiction`
          */
         "formData"?: PtpFormData;
-        "isJurisdictionFilled": boolean;
         /**
           * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
          */
@@ -97,6 +100,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLEmailApplicationFormElement extends Components.EmailApplicationForm, HTMLStencilElement {
+    }
+    var HTMLEmailApplicationFormElement: {
+        prototype: HTMLEmailApplicationFormElement;
+        new (): HTMLEmailApplicationFormElement;
+    };
     interface HTMLInputAddressElement extends Components.InputAddress, HTMLStencilElement {
     }
     var HTMLInputAddressElement: {
@@ -146,6 +155,7 @@ declare global {
         new (): HTMLUiLoadingSpinnerElement;
     };
     interface HTMLElementTagNameMap {
+        "email-application-form": HTMLEmailApplicationFormElement;
         "input-address": HTMLInputAddressElement;
         "input-possibly-hidden-select": HTMLInputPossiblyHiddenSelectElement;
         "power-the-polls-form": HTMLPowerThePollsFormElement;
@@ -157,6 +167,11 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface EmailApplicationForm {
+        "data"?: PtpFormData;
+        "jurisdiction"?: JurisdictionInfo;
+        "onSubmitted"?: (event: CustomEvent<any>) => void;
+    }
     interface InputAddress {
         "onLookup"?: (event: CustomEvent<"STARTED" | "COMPLETED">) => void;
     }
@@ -198,13 +213,12 @@ declare namespace LocalJSX {
           * Props possibly passed in from the main form
          */
         "initialFormData"?: PtpFormData;
-        "isJurisdictionFilled"?: boolean;
         /**
           * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: string | number;
         /**
-          * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+          * If `true`, this component should show next steps and any additional form data
          */
         "showNextSteps"?: boolean;
     }
@@ -221,7 +235,6 @@ declare namespace LocalJSX {
           * Complete form data, if available, for `ptp-info-jurisdiction`
          */
         "formData"?: PtpFormData;
-        "isJurisdictionFilled"?: boolean;
         /**
           * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
          */
@@ -247,6 +260,7 @@ declare namespace LocalJSX {
         "small"?: boolean;
     }
     interface IntrinsicElements {
+        "email-application-form": EmailApplicationForm;
         "input-address": InputAddress;
         "input-possibly-hidden-select": InputPossiblyHiddenSelect;
         "power-the-polls-form": PowerThePollsForm;
@@ -261,6 +275,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "email-application-form": LocalJSX.EmailApplicationForm & JSXBase.HTMLAttributes<HTMLEmailApplicationFormElement>;
             "input-address": LocalJSX.InputAddress & JSXBase.HTMLAttributes<HTMLInputAddressElement>;
             "input-possibly-hidden-select": LocalJSX.InputPossiblyHiddenSelect & JSXBase.HTMLAttributes<HTMLInputPossiblyHiddenSelectElement>;
             "power-the-polls-form": LocalJSX.PowerThePollsForm & JSXBase.HTMLAttributes<HTMLPowerThePollsFormElement>;

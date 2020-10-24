@@ -6,6 +6,7 @@ const CallToApplyButton: FunctionalComponent<{ jurisdiction: JurisdictionInfo }>
    <a
       class="poll-worker-action cta"
       href={`tel:${j.telephone}`}
+      target="_blank"
    >
       <svg width="16" height="16" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
