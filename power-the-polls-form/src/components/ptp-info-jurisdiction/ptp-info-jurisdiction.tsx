@@ -9,7 +9,6 @@ import { fetchJurisdictionGeoJson, fetchJurisdictionInfo } from "../../util/Work
 import AdditionalInfoForm from "./AdditionalInfoForm";
 import CallToApplyButton from "./CallToApplyButton";
 import CompleteApplicationButton from "./CompleteApplicationButton";
-import EmailApplicationForm from "./EmailApplicationForm";
 
 /**
  * Component to render work elections jurisdiction data.
@@ -142,7 +141,7 @@ export class JurisdictionInfoComponent {
       }
 
       const stateInfo = States[j.state.alpha];
-      const isJurisdictionFilled = findIfJurisdictionFilled( this.formData );
+      const isJurisdictionFilled = stateInfo.noPollWorkersNeeded === true || findIfJurisdictionFilled( this.formData );
       return ( <Host>
 
          <div style={{ display: "flex", alignItems: "flex-start", flexDirection: "column" }}>
@@ -155,9 +154,9 @@ export class JurisdictionInfoComponent {
 
          <h2>{j.name}, {j.state.alpha}</h2>
 
-         {this.showNextSteps && stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "submitting"
+         {this.showNextSteps && !isJurisdictionFilled && this.additionalInfoFormStatus === "submitting"
             ? <ui-loading-spinner />
-            : this.showNextSteps && stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "pending"
+            : this.showNextSteps && !isJurisdictionFilled && this.additionalInfoFormStatus === "pending"
                ?
                <AdditionalInfoForm
                   data={this.formData}
@@ -178,17 +177,20 @@ export class JurisdictionInfoComponent {
                      ( j?.application == null || j?.application === "" )
                         // use phone if specified to do so, else show email form
                         ? stateInfo.usePhoneInsteadOfEmailForFormFallback
-                           ? ( <Fragment>
-                              <p>{stateInfo.name} is looking to quickly place poll workers in the coming weeks ahead of Election Day on November 3rd. In order to expedite placement, call your local election administrator directly to express your interest in being a poll worker.</p>
-                              <p>To complete your application, call {j.telephone}.</p>
-                              <CallToApplyButton jurisdiction={j} />
-                           </Fragment> )
+                           ? (
+                              <Fragment>
+                                 <p>{stateInfo.name} is looking to quickly place poll workers in the coming weeks ahead of Election Day on November 3rd. In order to expedite placement, call your local election administrator directly to express your interest in being a poll worker.</p>
+                                 <p>To complete your application, call {j.telephone}.</p>
+                                 <CallToApplyButton jurisdiction={j} />
+                              </Fragment>
+                           )
                            // show email form unless it's already complete
-                           : ( !this.isMailToFormComplete && <EmailApplicationForm
-                              jurisdiction={j}
-                              data={this.formData}
-                              onComplete={() => this.isMailToFormComplete = true}
-                           /> )
+                           : ( !this.isMailToFormComplete &&
+                              <email-application-form
+                                 jurisdiction={j}
+                                 data={this.formData}
+                                 onSubmitted={() => this.isMailToFormComplete = true}
+                              /> )
                         // jurisdiction has an application link, no need for special email or phone section
                         : null
                   }
