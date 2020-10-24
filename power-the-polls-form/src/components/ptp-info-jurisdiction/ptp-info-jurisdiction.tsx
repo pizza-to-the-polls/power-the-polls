@@ -141,7 +141,7 @@ export class JurisdictionInfoComponent {
       }
 
       const stateInfo = States[j.state.alpha];
-      const isJurisdictionFilled = findIfJurisdictionFilled( this.formData );
+      const isJurisdictionFilled = stateInfo.noPollWorkersNeeded === true || findIfJurisdictionFilled( this.formData );
       return ( <Host>
 
          <div style={{ display: "flex", alignItems: "flex-start", flexDirection: "column" }}>
@@ -154,9 +154,9 @@ export class JurisdictionInfoComponent {
 
          <h2>{j.name}, {j.state.alpha}</h2>
 
-         {this.showNextSteps && stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "submitting"
+         {this.showNextSteps && !isJurisdictionFilled && this.additionalInfoFormStatus === "submitting"
             ? <ui-loading-spinner />
-            : this.showNextSteps && stateInfo.noPollWorkersNeeded !== true && this.additionalInfoFormStatus === "pending"
+            : this.showNextSteps && !isJurisdictionFilled && this.additionalInfoFormStatus === "pending"
                ?
                <AdditionalInfoForm
                   data={this.formData}
