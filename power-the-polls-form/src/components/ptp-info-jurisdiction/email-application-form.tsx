@@ -16,7 +16,6 @@ const phoneValidationRegex = RegExp( "(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]
 
 @Component( {
    tag: "email-application-form",
-   // styleUrl: "power-the-polls-form.scss",
    shadow: false,
 } )
 export class EmailApplicationForm {
