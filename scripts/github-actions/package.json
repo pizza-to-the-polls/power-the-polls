@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "fetchFullJurisdictions": "rimraf *.js && tsc --esModuleInterop --resolveJsonModule add_full_jurisdictions.ts && node add_full_jurisdictions.js",
+    "fetchFullJurisdictions": "rimraf *.js && tsc --esModuleInterop --resolveJsonModule add_full_jurisdictions.ts && node add_full_jurisdictions.js && npx prettier --write \"../../power-the-polls-form/src/data/*.json\"",
     "lint": "tslint --project .",
     "lint:fix": "tslint --fix --force --project ."
   },
