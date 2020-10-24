@@ -52,13 +52,12 @@ export namespace Components {
           * Props possibly passed in from the main form
          */
         "initialFormData"?: PtpFormData;
-        "isJurisdictionFilled": boolean;
         /**
           * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: string | number;
         /**
-          * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+          * If `true`, this component should show next steps and any additional form data
          */
         "showNextSteps": boolean;
     }
@@ -75,7 +74,6 @@ export namespace Components {
           * Complete form data, if available, for `ptp-info-jurisdiction`
          */
         "formData"?: PtpFormData;
-        "isJurisdictionFilled": boolean;
         /**
           * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
          */
@@ -215,13 +213,12 @@ declare namespace LocalJSX {
           * Props possibly passed in from the main form
          */
         "initialFormData"?: PtpFormData;
-        "isJurisdictionFilled"?: boolean;
         /**
           * ID of jurisdiction for Work Elections
          */
         "jurisdictionId"?: string | number;
         /**
-          * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+          * If `true`, this component should show next steps and any additional form data
          */
         "showNextSteps"?: boolean;
     }
@@ -238,7 +235,6 @@ declare namespace LocalJSX {
           * Complete form data, if available, for `ptp-info-jurisdiction`
          */
         "formData"?: PtpFormData;
-        "isJurisdictionFilled"?: boolean;
         /**
           * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
          */

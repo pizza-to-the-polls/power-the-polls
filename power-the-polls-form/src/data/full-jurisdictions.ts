@@ -1,4 +1,3 @@
-
 import fullJurisdictions from "./full-jurisdictions.json";
 import { FullJurisdictionData } from "./types";
 
