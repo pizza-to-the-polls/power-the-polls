@@ -33,7 +33,6 @@ export const fetchJurisdictionGeoJson = ( jurisdictionId: number | string ): Pro
  **/
 export const findJurisdictionId = ( state: string, county?: string, city?: string ): number | null => {
    const stateData = States[state];
-   // stateData.partner
    if( stateData ) {
       const found = [
          `${city} charter township, ${county} County`,
