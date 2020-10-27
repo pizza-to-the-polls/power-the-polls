@@ -42,11 +42,13 @@ const data: VideoGroup[] = [
          },
          {
             name: "Problem-solving on Election Day",
-            url: null,
+            url: "https://src.powerthepolls.org/assets/PROBLEMS_AT_THE_POLLS_16x9.mp4",
+            startFrom: 1,
          },
          {
             name: "Addressing conflict at the polling place",
-            url: null,
+            url: "https://src.powerthepolls.org/assets/HANDLING_TOUGH_SITUATIONS_16x9.mp4",
+            startFrom: 1,
          },
       ],
    },
