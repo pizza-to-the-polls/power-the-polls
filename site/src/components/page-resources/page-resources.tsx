@@ -64,7 +64,7 @@ export class PageResources {
             <p>
                That’s why we’ve partnered with All Voting Is Local and the International Well Building Institute to put together this series of short videos to help you get ready.
             </p>
-            { ResourceVideos.map( group => (
+            {ResourceVideos.map( group => (
                group.category == null && group.videos.length === 1 ?
                   <Fragment>
                      <Video video={group.videos[0]} />

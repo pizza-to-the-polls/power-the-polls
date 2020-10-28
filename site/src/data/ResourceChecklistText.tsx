@@ -3,8 +3,8 @@ import { h } from "@stencil/core";
 const CheckListText: HTMLElement[] = [
     <p>
         <b>Make sure you have your assignment and know when and where you are supposed to show up on Election Day! </b>
-        Make sure you’re ready to wake up on time and arrive at your assigned polling location early. 
-        If you’re late, that could mean polling locations don’t open on time, so be sure you set an extra alarm! 
+        Make sure you’re ready to wake up on time and arrive at your assigned polling location early.
+        If you’re late, that could mean polling locations don’t open on time, so be sure you set an extra alarm!
         Make sure you’ve got everything you need for the day - whether that’s extra snacks, phone charger, comfortable shoes - or all of the above!
     </p>,
     <p>
@@ -17,14 +17,14 @@ const CheckListText: HTMLElement[] = [
     </p>,
     <p>
         <b>Make sure you’re ready to ensure your safety and the safety of voters by reviewing your local election office’s COVID safety information. </b>
-        If you need to pick up your PPE early, be sure you are ready! 
+        If you need to pick up your PPE early, be sure you are ready!
         You can also check out the CDC elections guidance page here.
     </p>,
     <p>
         <b>Share your story on social media to inspire other poll workers and voters! </b>
-        Let us know why you are so excited to serve and share with others. 
+        Let us know why you are so excited to serve and share with others.
         It may not be legal to take photos in your polling location (check first),
-        and you’ll be pretty busy working, so think about posting a photo before your shift starts or in the weekend leading up to Election Day! 
+        and you’ll be pretty busy working, so think about posting a photo before your shift starts or in the weekend leading up to Election Day!
         Use the hashtag #PowerThePolls and tag @powerthepolls!
     </p>,
 ];
