@@ -16,14 +16,20 @@
 
 ### Depends on
 
-- ptp-info-jurisdiction
+- stencil-router-redirect
+- ptp-info-poll-worker
 
 ### Graph
 ```mermaid
 graph TD;
-  page-jurisdiction --> ptp-info-jurisdiction
+  page-jurisdiction --> stencil-router-redirect
+  page-jurisdiction --> ptp-info-poll-worker
+  ptp-info-poll-worker --> ptp-info-jurisdiction
+  ptp-info-poll-worker --> ptp-info-state
   ptp-info-jurisdiction --> ui-loading-spinner
   ptp-info-jurisdiction --> ui-geojson-to-svg
+  ptp-info-jurisdiction --> email-application-form
+  ptp-info-state --> ui-loading-spinner
   style page-jurisdiction fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

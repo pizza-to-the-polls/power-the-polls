@@ -1,7 +1,7 @@
 import { FunctionalComponent } from "@ptp-us/power-the-polls-form/types/stencil-public-runtime";
 import { Component, Fragment, h, Host, VNode } from "@stencil/core";
 
-import { ResourceVideos } from "../../data";
+import { ResourceChecklistText, ResourceVideos } from "../../data";
 import { VideoInfo } from "../../data/types";
 
 const Video: FunctionalComponent<{ video: VideoInfo }> =
@@ -45,7 +45,19 @@ export class PageResources {
          <Host>
             <h1>Resources</h1>
             <h2>You’ve signed up to be a poll worker! Now it’s time to do some homework so you’re ready to serve!</h2>
-            <hr />
+            <hr/>
+            <div class="checklist">
+               <h4>Election Day Poll Worker Checklist</h4>
+               {
+                  ResourceChecklistText.map(( info, index ) => (
+                        <div class="checklist-item" key={`checklist-item-${index}`}>
+                           <div class="number">{index + 1 < 10 ? "0" : ""}{index + 1}</div>
+                           {info}
+                        </div>
+                  ))
+               }
+            </div>
+            <ui-h3-bar>Resources videos</ui-h3-bar>
             <p>
                <strong>Being a poll worker is an important job &mdash; and we’re so grateful you stepped up! And preparing to fulfill your duties is critical.</strong>
             </p>
@@ -82,7 +94,8 @@ export class PageResources {
                      </div>
                   </Fragment>
             ) )}
-            <ui-h3-bar>Additional Resources</ui-h3-bar>
+            <hr/>
+            <h4>Additional Resources</h4>
             <AdditionalNote
                image="/assets/images/pdf_10_questions.png"
                title="10 questions you may want to ask to help you prepare to be a poll worker"
