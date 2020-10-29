@@ -18,7 +18,7 @@ const CheckListText: HTMLElement[] = [
     <p>
         <b>Make sure you’re ready to ensure your safety and the safety of voters by reviewing your local election office’s COVID safety information. </b>
         If you need to pick up your PPE early, be sure you are ready!
-        You can also check out the CDC elections guidance page here.
+        You can also check out the CDC elections guidance page <a href=" https://www.cdc.gov/coronavirus/2019-ncov/community/election-polling-locations.html" target="_blank">here.</a>
     </p>,
     <p>
         <b>Share your story on social media to inspire other poll workers and voters! </b>
