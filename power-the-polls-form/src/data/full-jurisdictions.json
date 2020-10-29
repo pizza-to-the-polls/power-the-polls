@@ -33,7 +33,8 @@
       "Teton",
       "Phillips",
       "Meagher",
-      "Park"
+      "Park",
+      "Prairie"
    ],
    "MA": [
       "North Andover",
@@ -53,7 +54,8 @@
       "Bolton",
       "Ipswich",
       "Hull",
-      "Cambridge"
+      "Cambridge",
+      "Amherst"
    ],
    "FL": ["Leon", "Orange", "Collier", "Charlotte", "Pasco"],
    "CA": [
@@ -76,14 +78,15 @@
       "Mariposa",
       "San Joaquin",
       "Lake",
-      "Glenn"
+      "Glenn",
+      "Fresno"
    ],
    "GA": ["Fulton", "Bryan", "White", "Grady"],
-   "NM": ["Santa Fe"],
+   "NM": ["Santa Fe", "Bernalillo"],
    "CT": ["Griswold", "Stamford", "Clinton", "Simsbury"],
    "MS": ["Hinds"],
    "TX": ["Navarro", "Comal", "Walker", "Wise", "Tyler", "Harris"],
-   "UT": ["Salt Lake"],
+   "UT": ["Salt Lake", "Davis"],
    "ID": [
       "Gem",
       "Twin Falls",
@@ -159,15 +162,21 @@
       "Marion",
       "Horry",
       "Georgetown",
-      "Williamsburg"
+      "Williamsburg",
+      "Lancaster",
+      "Darlington",
+      "Charleston",
+      "Greenville"
    ],
    "WY": ["Teton"],
    "NH": ["Brookline", "Berlin", "Moultonborough"],
-   "MN": ["Wright", "Sherburne"],
+   "MN": ["Wright", "Sherburne", "Ramsey"],
    "NJ": ["Morris"],
    "OK": ["Tulsa", "Oklahoma"],
-   "VT": ["Ludlow"],
+   "VT": ["Ludlow", "Burlington"],
    "ME": ["Brunswick", "Auburn"],
-   "AL": ["Jefferson"],
-   "IL": ["Sangamon", "Macon"]
+   "AL": ["Jefferson", "Madison", "Montogmery"],
+   "IL": ["Sangamon", "Macon", "Ford"],
+   "KS": ["Johnson"],
+   "IN": ["Porter"]
 }
