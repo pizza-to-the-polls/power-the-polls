@@ -112,6 +112,11 @@ export class JurisdictionInfoComponent {
                         <li>Serving as a poll worker is a paid position with a flat daily rate. Many cities are also providing hazard pay for poll workers who serve during the 2020 election.</li>
                         <li>While hours vary, both by city and by position worked, most poll workers should expect to work long days, beginning before polls open at 7am and concluding after polls close at 8pm.</li>
                      </ul>
+
+                     <h4>Contact</h4>
+                     <p>
+                        If you have any questions about eligibility, compensation, or placement, reach out to our local partners at <a  href="mailto:pollworkers@michiganvoting.org">pollworkers@michiganvoting.org</a> and they can help you get the answer to your questions.
+                     </p>
                   </Fragment>
             }
          </Host> );
