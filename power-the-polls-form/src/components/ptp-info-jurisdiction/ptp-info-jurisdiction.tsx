@@ -82,6 +82,11 @@ export class JurisdictionInfoComponent {
                   />
                   :
                   <Fragment>
+                     <p>
+                        Many local jurisdictions in your state have indicated that they are set with poll workers for this year. However, you should
+                        still apply in case they have a last minute-shortage, or if you would like to serve in a future election.
+                     </p>
+
                      {this.showNextSteps &&
                         <Fragment>
                            <div class="next-steps">
@@ -115,7 +120,7 @@ export class JurisdictionInfoComponent {
 
                      <h4>Contact</h4>
                      <p>
-                        If you have any questions about eligibility, compensation, or placement, reach out to our local partners at <a  href="mailto:pollworkers@michiganvoting.org">pollworkers@michiganvoting.org</a> and they can help you get the answer to your questions.
+                        If you have any questions about eligibility, compensation, or placement, reach out to our local partners at <a href="mailto:pollworkers@michiganvoting.org">pollworkers@michiganvoting.org</a> and they can help you get the answer to your questions.
                      </p>
                   </Fragment>
             }
@@ -175,6 +180,11 @@ export class JurisdictionInfoComponent {
                         {" "}
                         <PtpLink path={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</PtpLink>.
                      </p> )}
+
+                  <p>
+                     Many local jurisdictions in your state have indicated that they are set with poll workers for this year. However, you should
+                     still apply in case they have a last minute-shortage, or if you would like to serve in a future election.
+                  </p>
 
                   <CompleteApplicationButton jurisdiction={j} />
 

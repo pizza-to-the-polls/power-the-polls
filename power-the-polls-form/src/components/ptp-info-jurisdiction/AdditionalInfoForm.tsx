@@ -99,8 +99,12 @@ const AdditionalInfoForm: FunctionalComponent<{ data: PtpFormData, onSubmit: () 
    return ( <Fragment>
 
       <p>
-         We are sharing your information with election administrators and our state partners who will follow up to help you be placed as a poll worker!&nbsp;
-        <strong>We just need a few more pieces of information from you to help with your application:</strong>
+         We’re going to ask for some information that will be helpful to verify your eligibility to serve as a poll worker, and
+         provide some information that will be helpful for election administrators.
+      </p>
+      <p>
+         Many local jurisdictions in your state have indicated that they are set with poll workers for this year. However, you should
+         still apply in case they have a last minute-shortage, or if you would like to serve in a future election.
       </p>
 
       <hr />
