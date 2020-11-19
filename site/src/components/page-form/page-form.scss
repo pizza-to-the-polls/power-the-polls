@@ -101,20 +101,6 @@ page-form {
       text-transform: uppercase;
    }
 
-   .hide-mobile {
-      @include on-mobile() {
-         display: none;
-      }
-   }
-
-   .hide-desktop {
-      display: none;
-
-      @include on-mobile() {
-         display: block;
-      }
-   }
-
    power-the-polls-form {
       footer {
          display: none;

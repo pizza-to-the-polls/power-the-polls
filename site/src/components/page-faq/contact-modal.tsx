@@ -82,7 +82,7 @@ export class ContactModal {
                            <div>
                               Thank you for your email! While we can’t guarantee a response to every email due to volume, we will try to get back to you as soon as possible.
                               For a faster response, please review our <a href="#" onClick={() => this.onClose.emit()}>FAQ</a> or
-                              contact your <a href="https://www.powerthepolls.org/search">local election administrator directly</a>.
+                              contact your <stencil-route-link url="/search">local election administrator directly</stencil-route-link>.
                            </div>
                         </div>
                      ) : this.submittedState === "SUBMIT_FAILURE"
@@ -91,7 +91,7 @@ export class ContactModal {
                               <h3>Uh oh!</h3>
                               <div>
                                  We're unable to process your request. Please email us at <a href="mailto:info@powerthepolls.org">info@powerthepolls.org</a>,
-                                 or <a href="https://www.powerthepolls.org/search">contact your local election administrator directly</a>.
+                                 or <stencil-route-link url="/search">contact your local election administrator directly</stencil-route-link>.
                               </div>
                            </div>
                         ) : (
