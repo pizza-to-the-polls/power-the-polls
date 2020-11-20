@@ -37,7 +37,7 @@ export class PageFaq {
                Due to the high volume of emails we receive,
                we recommend taking a look at our FAQ before to see if the answer to your question is there!
                If you have questions specific to your local area,
-               contact your local election administrators by entering your zip at <stencil-route-link url="/search">https://www.powerthepolls.org/search</stencil-route-link>
+               contact your local election administrators.
             </p>
             {data.map( ( { sectionTitle, questions } ) => (
                <question-section

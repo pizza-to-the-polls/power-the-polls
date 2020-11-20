@@ -1,7 +1,7 @@
 import { Component, Fragment, h, Prop, State } from "@stencil/core";
 
 /**
-* Component to take groups of faq questions and display them property
+* Component to take groups of faq questions and display them.
 * Also holds logic to toggle section open and closed
 */
 @Component( {

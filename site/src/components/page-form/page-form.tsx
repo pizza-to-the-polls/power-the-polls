@@ -63,13 +63,10 @@ export class PageForm {
                   />
                )}
                <h1 class={{ "partner": partner?.logoAppearsOnLandingPage ?? false }}>Help staff your local polling place</h1>
-               <p class="hide-mobile">
-                  America is facing a record shortage of poll workers this year due to the coronavirus. Our democracy depends on
-                  ordinary people who make sure elections run smoothly and everyone's vote is counted. You can make sure we have
-                  a safe, fair, efficient election for all.
-               </p>
-               <p class="hide-desktop">
-                  America is facing an unprecedented shortage of poll workers, meaning closed polling places and long delays.
+               <p>
+                  In 2020, America faced a record shortage of poll workers due to the coronavirus, and over 700,000 people stepped up to help
+                  Power the Polls meet that challenge. That was just the beginning. Our democracy depends on ordinary people who make sure every
+                  election runs smoothly and everyone's vote is counted. You can make sure we have a safe, fair, efficient election for all.
                </p>
 
                <div class="incentive-container">
