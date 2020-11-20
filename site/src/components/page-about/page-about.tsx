@@ -14,7 +14,7 @@ export class PageAbout {
                Power the Polls is a first-of-its-kind initiative to recruit poll workers to ensure a safe, fair election for all voters.
             </p>
             <p>
-               This is a critical moment. In 2020, America faceda nationwide poll worker shortage.
+               This is a critical moment. In 2020, America faced a nationwide poll worker shortage.
             </p>
             <p>
                Most poll workers are over the age of 60 and, in the era of uncertainty caused by the coronavirus, fewer are signing up
