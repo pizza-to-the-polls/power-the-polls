@@ -63,7 +63,7 @@ export class PollWorkerInfo {
                   and encouraging your friends and family across the country to register to vote and &mdash; for those who live in other parts of the U.S. &mdash; signing up to be poll workers.
                </p>
             </Fragment>
-         ) : isFull ?
+         ) : isFull && false ? // added `&& false` to disable full check on 2020-12-05
             (
                <Fragment>
                   <h1>Thank you so much for your interest in being a poll worker!</h1>
@@ -90,7 +90,7 @@ export class PollWorkerInfo {
                            showNextSteps={this.showNextSteps}
                         />
                      ) : (
-                        // if we can't find a jurisdiction ID and this state still needs poll workers, show the state selection
+                        // if we can't find a jurisdiction ID and this state is not full, show the state selection
                         <ptp-info-state state={state} />
                      )}
                </Fragment>

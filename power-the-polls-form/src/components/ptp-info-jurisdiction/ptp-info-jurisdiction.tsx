@@ -182,10 +182,19 @@ export class JurisdictionInfoComponent {
                         <PtpLink path={`/jurisdiction/${j.jurisdiction_link.id}`} >click here</PtpLink>.
                      </p> )}
 
-                  <p>
-                     Many local jurisdictions in your state have indicated that they are set with poll workers for this year. However, you should
-                     still apply in case they have a last minute-shortage, or if you would like to serve in a future election.
-                  </p>
+                  {j.state.alpha === "GA"
+                     ? (
+                        <p>
+                           Thank you so much for your interest in being a poll worker. Poll workers are needed for the upcoming runoff elections so be sure to complete your application &amp;
+                           reach out to your local election administrator to learn more about training and other official application procedures for poll workers.
+                        </p>
+                     )
+                     : (
+                        <p>
+                           Thank you so much for your interest in being a poll worker. Please be sure to reach out to your local election administrator to learn more about their needs for
+                           upcoming elections, as well as official application procedures for poll workers.
+                        </p>
+                     )}
 
                   <CompleteApplicationButton jurisdiction={j} />
 
@@ -195,7 +204,10 @@ export class JurisdictionInfoComponent {
                         ? stateInfo.usePhoneInsteadOfEmailForFormFallback
                            ? (
                               <Fragment>
-                                 <p>{stateInfo.name} is looking to quickly place poll workers in the coming weeks ahead of Election Day on November 3rd. In order to expedite placement, call your local election administrator directly to express your interest in being a poll worker.</p>
+                                 <p>
+                                    {stateInfo.name} is looking to quickly place poll workers in the coming weeks ahead of Election Day on November 3rd. In order to expedite placement,
+                                    call your local election administrator directly to express your interest in being a poll worker.
+                                 </p>
                                  <p>To complete your application, call {j.telephone}.</p>
                                  <CallToApplyButton jurisdiction={j} />
                               </Fragment>
