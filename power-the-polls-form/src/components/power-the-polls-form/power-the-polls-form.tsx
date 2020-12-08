@@ -5,6 +5,8 @@ import { findJurisdictionId } from "../../util/WorkElections";
 
 import { submitToActionKit } from "./ActionKit";
 
+const SHOW_NEXT_STEPS_AFTER_SUBMISSION = false; // disabling this post-election
+
 /**
  * The Power the Polls sign-up form.
  */
@@ -147,7 +149,7 @@ export class PowerThePollsForm {
                   county={this.formData.county}
                   state={this.formData.state}
                   formData={this.formData}
-                  showNextSteps={true}
+                  showNextSteps={SHOW_NEXT_STEPS_AFTER_SUBMISSION}
                />
             </article>
          ) : ( <Fragment>
