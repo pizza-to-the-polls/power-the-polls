@@ -1,5 +1,4 @@
-import { FunctionalComponent } from "@ptp-us/power-the-polls-form/types/stencil-public-runtime";
-import { Component, Fragment, h, Host, VNode } from "@stencil/core";
+import { Component, Fragment, h, Host, VNode, FunctionalComponent } from "@stencil/core";
 
 import { ResourceChecklistText, ResourceVideos } from "../../data";
 import { VideoInfo } from "../../data/types";
