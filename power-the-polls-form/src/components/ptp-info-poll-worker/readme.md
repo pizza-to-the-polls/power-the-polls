@@ -1,9 +1,6 @@
 # work-elections
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -16,12 +13,11 @@
 | `showNextSteps`  | `show-next-steps` | If `true`, this component will lso render 1-3 bullet items indicating next steps for the user | `boolean`                                                                                                                                                                                                                                                                                                                                                    | `undefined` |
 | `state`          | `state`           | State for matching to location                                                                | `string \| undefined`                                                                                                                                                                                                                                                                                                                                        | `undefined` |
 
-
 ## Dependencies
 
 ### Used by
 
- - [power-the-polls-form](../power-the-polls-form)
+- [power-the-polls-form](../power-the-polls-form)
 
 ### Depends on
 
@@ -29,6 +25,7 @@
 - [ptp-info-state](../ptp-info-state)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ptp-info-poll-worker --> ptp-info-jurisdiction
@@ -41,6 +38,4 @@ graph TD;
   style ptp-info-poll-worker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

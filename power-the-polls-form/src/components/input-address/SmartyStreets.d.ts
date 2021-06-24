@@ -1,9 +1,73 @@
-export declare type StateCode = ( 'AK' | 'AL' | 'AR' | 'AZ' | 'CA' | 'CO' | 'CT' | 'DC' | 'DE' | 'FL' | 'GA' | 'GU' | 'HI' | 'IA' | 'ID' | 'IL' | 'IN' | 'KS' | 'KY' | 'LA' | 'MA' | 'MD' | 'ME' | 'MI' | 'MN' | 'MO' | 'MS' | 'MT' | 'NC' | 'ND' | 'NE' | 'NH' | 'NJ' | 'NM' | 'NV' | 'NY' | 'OH' | 'OK' | 'OR' | 'PA' | 'PR' | 'RI' | 'SC' | 'SD' | 'TN' | 'TX' | 'UT' | 'VA' | 'VT' | 'WA' | 'WI' | 'WV' | 'WY' );
+export declare type StateCode =
+   | "AK"
+   | "AL"
+   | "AR"
+   | "AZ"
+   | "CA"
+   | "CO"
+   | "CT"
+   | "DC"
+   | "DE"
+   | "FL"
+   | "GA"
+   | "GU"
+   | "HI"
+   | "IA"
+   | "ID"
+   | "IL"
+   | "IN"
+   | "KS"
+   | "KY"
+   | "LA"
+   | "MA"
+   | "MD"
+   | "ME"
+   | "MI"
+   | "MN"
+   | "MO"
+   | "MS"
+   | "MT"
+   | "NC"
+   | "ND"
+   | "NE"
+   | "NH"
+   | "NJ"
+   | "NM"
+   | "NV"
+   | "NY"
+   | "OH"
+   | "OK"
+   | "OR"
+   | "PA"
+   | "PR"
+   | "RI"
+   | "SC"
+   | "SD"
+   | "TN"
+   | "TX"
+   | "UT"
+   | "VA"
+   | "VT"
+   | "WA"
+   | "WI"
+   | "WV"
+   | "WY";
 export interface GeoCoordinates {
    latitude?: number;
    longitude?: number;
 }
-export declare type GeoPrecision = "Unknown" | "None" | "State" | "SolutionArea" | "City" | "Zip5" | "Zip6" | "Zip7" | "Zip8" | "Zip9" | "Structure";
+export declare type GeoPrecision =
+   | "Unknown"
+   | "None"
+   | "State"
+   | "SolutionArea"
+   | "City"
+   | "Zip5"
+   | "Zip6"
+   | "Zip7"
+   | "Zip8"
+   | "Zip9"
+   | "Structure";
 export interface GeoCoordinatesWithPrecision extends GeoCoordinates {
    precision?: GeoPrecision;
 }
@@ -179,7 +243,13 @@ export declare namespace InternationalStreetAddress {
       post_box_type?: string;
       post_box_number?: string;
    }
-   type GeocodePrecision = "None" | "AdministrativeArea" | "Locality" | "Thoroughfare" | "Premise" | "DeliveryPoint";
+   type GeocodePrecision =
+      | "None"
+      | "AdministrativeArea"
+      | "Locality"
+      | "Thoroughfare"
+      | "Premise"
+      | "DeliveryPoint";
    interface Metadata {
       latitude?: number;
       longitude?: number;
@@ -188,7 +258,13 @@ export declare namespace InternationalStreetAddress {
       address_format?: string;
    }
    type VerificationStatus = "None" | "Partial" | "Ambiguous" | "Verified";
-   type AddressPrecision = "None" | "AdministrativeArea" | "Locality" | "Thoroughfare" | "Premise" | "DeliveryPoint";
+   type AddressPrecision =
+      | "None"
+      | "AdministrativeArea"
+      | "Locality"
+      | "Thoroughfare"
+      | "Premise"
+      | "DeliveryPoint";
    interface Analysis {
       verification_status?: VerificationStatus;
       address_precision?: AddressPrecision;
@@ -237,7 +313,12 @@ export declare namespace USZipCode {
       precision: CoordinatesPrecision;
       alternate_counties?: AlternateCounty[];
    }
-   type ResultStatus = "blank" | "invalid_state" | "invalid_city" | "invalid_zipcode" | "conflict";
+   type ResultStatus =
+      | "blank"
+      | "invalid_state"
+      | "invalid_city"
+      | "invalid_zipcode"
+      | "conflict";
    interface QueryResultItem {
       input_index?: number;
       input_id?: string;
