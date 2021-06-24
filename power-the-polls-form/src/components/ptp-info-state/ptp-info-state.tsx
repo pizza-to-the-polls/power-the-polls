@@ -1,11 +1,11 @@
 import { Component, h, Prop, State, Watch } from "@stencil/core";
 
-import { JurisdictionInfo, StateInfo } from "../../data/States";
+import { JurisdictionShort, StateInfo } from "../../data/States";
 import { PtpLink } from "../../util";
 import {
    fetchStateInfo,
-   fetchStateJurisdictionsList,
    findStateId,
+   findStateJurisdictionsList,
 } from "../../util/WorkElections";
 
 /**
@@ -23,7 +23,7 @@ export class StateInfoComponent {
    @Prop() public state?: string;
 
    @State() private stateId: number | null = null;
-   @State() private stateJurisdictions: JurisdictionInfo[] = [];
+   @State() private stateJurisdictions: JurisdictionShort[] = [];
    @State() private stateInfo?: StateInfo;
 
    public componentWillLoad() {
@@ -61,9 +61,7 @@ export class StateInfoComponent {
    private resetState() {
       this.stateId = this.state ? findStateId(this.state) : null;
       if (this.stateId) {
-         fetchStateJurisdictionsList(this.stateId).then(
-            (x) => (this.stateJurisdictions = x),
-         );
+         this.stateJurisdictions =  findStateJurisdictionsList(this.state || "");
          fetchStateInfo(this.stateId).then((x) => (this.stateInfo = x));
       } else {
          this.stateInfo = undefined;

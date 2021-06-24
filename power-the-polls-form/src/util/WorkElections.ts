@@ -1,7 +1,7 @@
 import { MultiPolygon } from "geojson";
 
 import { States } from "../data";
-import { JurisdictionInfo, StateInfo } from "../data/States";
+import { JurisdictionInfo, JurisdictionShort, Slugs, StateInfo } from "../data/States";
 
 /**
  * Asynchronous function for returning data from WE
@@ -17,21 +17,28 @@ const fetchFromWE = async (path: string) => {
    return await data.json();
 };
 
-export const fetchStateInfo = (stateId: number): Promise<StateInfo> => {
-   return fetchFromWE(`/states/${stateId}/`);
+export const fetchStateInfo = async (stateId: number): Promise<StateInfo> => {
+   const { id, slug, acf } = await fetchFromWE(`/wp-json/wp/v2/state/${stateId}/`);
+
+   return {
+      id,
+      slug,
+      ...acf,
+   }
 };
 
 export const fetchJurisdictionInfo = async (
    jurisdictionId: number | string,
 ): Promise<JurisdictionInfo> => {
-   const { id, acf, title: { rendered }, link } = await fetchFromWE(`/wp-json/wp/v2/jurisdiction/${jurisdictionId}/`);
+   const { id, slug, acf, link, title: { rendered } } = await fetchFromWE(`/wp-json/wp/v2/jurisdiction/${jurisdictionId}/`);
 
    const alpha = link.replace("https://workelections.com/jurisdiction/", "").toUpperCase().split("/")[0];
 
    return {
       id,
-      name: rendered,
+      slug,
       ...acf,
+      name: rendered,
       state: { alpha },
    };
 };
@@ -40,6 +47,10 @@ export const fetchStateJurisdictionsList = (
 ): Promise<JurisdictionInfo[]> => {
    return fetchFromWE(`/jurisdictions/?summary=true&state_id=${stateId}`);
 };
+
+/**
+ * Currently unsupported by the API
+ **/
 export const fetchJurisdictionGeoJson = (
    jurisdictionId: number | string,
 ): Promise<MultiPolygon> => {
@@ -77,16 +88,30 @@ export const findJurisdictionId = (
       ].find((type) => stateData.jurisdictions[type]);
 
       if (found) {
-         return stateData.jurisdictions[found];
+         return stateData.jurisdictions[found].id;
       }
    }
    return null;
 };
 
 /**
- * Return the URL of the Work Election's state
+ * Return the id for the URL of the Work Election's state
  **/
 export const findStateId = (state: string): number | null => {
    const stateData = States[state];
    return stateData ? stateData.id : null;
 };
+/**
+ * Return the jurisdictions for the Work Election's State
+ **/
+export const findStateJurisdictionsList = (state: string): JurisdictionShort[] => {
+   const stateData = States[state];
+   return stateData ? Object.values(stateData.jurisdictions) : [];
+};
+
+/**
+ * Return the jurisdiction for a given slug
+ **/
+export const idFromSlug = (slugOrId: string | number | undefined): string | number | undefined => (
+   (slugOrId && Slugs[slugOrId]) || slugOrId
+);

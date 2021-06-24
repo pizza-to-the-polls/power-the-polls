@@ -2,7 +2,7 @@ import { Component, Fragment, h, Prop } from "@stencil/core";
 
 import { States } from "../../data";
 import { isJurisdictionFilled, PtpFormData } from "../../util";
-import { findJurisdictionId } from "../../util/WorkElections";
+import { findJurisdictionId, idFromSlug } from "../../util/WorkElections";
 
 /**
  * Display state or specific jurisdiction information for poll workers based on whether
@@ -29,9 +29,9 @@ export class PollWorkerInfo {
    @Prop() public city?: string;
 
    /**
-    * ID of jurisdiction for Work Elections. Use in place of `state`, `county`, and `city`
+    * ID or Slug of jurisdiction for Work Elections. Use in place of `state`, `county`, and `city`
     */
-   @Prop() public jurisdictionId?: string | number;
+   @Prop() public jurisdictionIdOrSlug?: string | number;
 
    /**
     * Complete form data, if available, for `ptp-info-jurisdiction`
@@ -50,7 +50,7 @@ export class PollWorkerInfo {
    public render() {
       const { state, county, city } = this;
       const jurisdictionId =
-         this.jurisdictionId ||
+         idFromSlug(this.jurisdictionIdOrSlug) ||
          (state && findJurisdictionId(state, county, city)) ||
          undefined;
       const stateInfo = (state && state in States && States[state]) || null;
