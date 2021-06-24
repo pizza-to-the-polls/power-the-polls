@@ -1,4 +1,4 @@
-import { Component, Fragment, h, Host, VNode, FunctionalComponent } from "@stencil/core";
+import { Component, Fragment, FunctionalComponent, h, Host, VNode } from "@stencil/core";
 
 import { ResourceChecklistText, ResourceVideos } from "../../data";
 import { VideoInfo } from "../../data/types";
