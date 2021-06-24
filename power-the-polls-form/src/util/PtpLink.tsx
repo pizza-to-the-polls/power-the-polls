@@ -1,6 +1,5 @@
-import { h } from "@stencil/core";
+import { FunctionalComponent, h } from "@stencil/core";
 import { Components } from "@stencil/router";
-import { FunctionalComponent } from "@stencil/router/dist/types/stencil.core";
 
 export type PtpLinkProps = Partial<Components.StencilRouteLink> & {
    /**

@@ -1,7 +1,7 @@
 import { Component, h, Prop, State, Watch } from "@stencil/core";
 
 import { JurisdictionShort, StateInfo } from "../../data/States";
-import { PtpLink } from "../../util";
+import { PtpHtml, PtpLink } from "../../util";
 import {
    fetchStateInfo,
    findStateId,
@@ -43,7 +43,7 @@ export class StateInfoComponent {
       ) : (
          <div>
             <h2>{info.name}</h2>
-            {info.notes && <p>{info.notes}</p>}
+            {info.notes && (<PtpHtml html={info.notes} />)}
             <div class="jurisdictions">
                {this.stateJurisdictions.map(({ id, name }) => (
                   <PtpLink

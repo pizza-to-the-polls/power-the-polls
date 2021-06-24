@@ -15,6 +15,7 @@ import {
    allNullOrEmpty,
    isNullOrEmpty,
    PtpFormData,
+   PtpHtml,
 } from "../../util";
 import { fetchJurisdictionInfo } from "../../util/WorkElections";
 
@@ -243,28 +244,7 @@ export class JurisdictionInfoComponent {
                />
             ) : (
                <Fragment>
-                  {j.disambiguation_notice && (
-                     <div>
-                        <iframe
-                           sandbox="allow-popups"
-                           width="100%"
-                           height="100%"
-                           frameBorder="0"
-                           srcDoc={
-                              // hacky way to add styles to the iframe
-                              '<head><link href="/build/app.css" rel="stylesheet"></head><body>' +
-                              j.disambiguation_notice.replace(
-                                 /\<a/g,
-                                 '<a target="_blank"',
-                              ).replace(
-                                 /\"https\:\/\/workelections\.com\/jurisdiction\//g,
-                                 '"https://powerthepolls.org/jurisdiction/',
-                              ) +
-                              "</body>"
-                           }
-                        />
-                     </div>
-                  )}
+                  {j.disambiguation_notice && (<PtpHtml html={j.disambiguation_notice} />)}
 
                   <p>
                      Thank you so much for your interest in being a poll
@@ -449,23 +429,7 @@ export class JurisdictionInfoComponent {
                            {j.training_note && (
                               <li>
                                  <strong>Training Details: </strong>
-                                 <div>
-                                    <iframe
-                                       sandbox="allow-popups"
-                                       width="100%"
-                                       height="100%"
-                                       frameBorder="0"
-                                       srcDoc={
-                                          // hacky way to add styles to the iframe
-                                          '<head><link href="/build/app.css" rel="stylesheet"></head><body>' +
-                                          j.training_note.replace(
-                                             /\<a/g,
-                                             '<a target="_blank"',
-                                          ) +
-                                          "</body>"
-                                       }
-                                    />
-                                 </div>
+                                 <PtpHtml html={j.training_note} />
                               </li>
                            )}
                         </ul>
@@ -481,25 +445,7 @@ export class JurisdictionInfoComponent {
                      <section>
                         <h4>Further Notes</h4>
                         <p>{j.further_notes}</p>
-                        {j.notes && ( // "trusted"
-                           <div>
-                              <iframe
-                                 sandbox="allow-popups"
-                                 width="100%"
-                                 height="100%"
-                                 frameBorder="0"
-                                 srcDoc={
-                                    // hacky way to add styles to the iframe
-                                    '<head><link href="/build/app.css" rel="stylesheet"></head><body>' +
-                                    j.notes.replace(
-                                       /\<a/g,
-                                       '<a target="_blank"',
-                                    ) +
-                                    "</body>"
-                                 }
-                              />
-                           </div>
-                        )}
+                        {j.notes && (<PtpHtml html={j.notes} />)}
                      </section>
                   ) : null}
 
