@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property          | Attribute         | Description                                                                   | Type                                                                                                                                                                                                                                                                                                                                                         | Default     |
@@ -10,11 +11,12 @@
 | `jurisdictionId`  | `jurisdiction-id` | ID of jurisdiction for Work Elections                                         | `number \| string \| undefined`                                                                                                                                                                                                                                                                                                                              | `undefined` |
 | `showNextSteps`   | `show-next-steps` | If `true`, this component should show next steps and any additional form data | `boolean`                                                                                                                                                                                                                                                                                                                                                    | `undefined` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [ptp-info-poll-worker](../ptp-info-poll-worker)
+ - [ptp-info-poll-worker](../ptp-info-poll-worker)
 
 ### Depends on
 
@@ -23,7 +25,6 @@
 - [email-application-form](.)
 
 ### Graph
-
 ```mermaid
 graph TD;
   ptp-info-jurisdiction --> ui-loading-spinner
@@ -33,4 +34,6 @@ graph TD;
   style ptp-info-jurisdiction fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

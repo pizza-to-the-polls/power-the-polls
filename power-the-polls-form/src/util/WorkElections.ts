@@ -24,7 +24,7 @@ export const fetchStateInfo = async (stateId: number): Promise<StateInfo> => {
       id,
       slug,
       ...acf,
-   }
+   };
 };
 
 export const fetchJurisdictionInfo = async (

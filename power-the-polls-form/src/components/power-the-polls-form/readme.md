@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property               | Attribute                 | Description                                                                                                                | Type                   | Default     |
@@ -12,6 +13,7 @@
 | `partnerName`          | `partner-name`            | Optional name displayed in privacy policy disclaimer when `optUserOutOfChase` is true                                      | `string \| undefined`  | `undefined` |
 | `smartyStreetsApiKey`  | `smarty-streets-api-key`  | The API key to access SmartyStreets which is used for address lookup.                                                      | `string \| undefined`  | `undefined` |
 
+
 ## Events
 
 | Event             | Description                                                                                     | Type               |
@@ -19,13 +21,18 @@
 | `submitCompleted` | Dispatched when the user has submitted the form and it has successfully POSTed to `destination` | `CustomEvent<any>` |
 | `submitError`     | Dispatched when there is an error submitting the form to `destination`                          | `CustomEvent<any>` |
 
+
 ## Methods
 
 ### `reset() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `version() => Promise<string>`
 
@@ -34,6 +41,9 @@ The version of this `power-the-polls-form` component
 #### Returns
 
 Type: `Promise<string>`
+
+
+
 
 ## Dependencies
 
@@ -44,7 +54,6 @@ Type: `Promise<string>`
 - [ui-loading-spinner](../ui-loading-spinner)
 
 ### Graph
-
 ```mermaid
 graph TD;
   power-the-polls-form --> ptp-info-poll-worker
@@ -60,4 +69,6 @@ graph TD;
   style power-the-polls-form fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

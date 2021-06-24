@@ -9,6 +9,7 @@ http://mikefowler.me/journal/2014/06/10/drawing-geojson-in-a-canvas
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property  | Attribute | Description | Type                                                                                                                                                                                                                                                                                     | Default     |
@@ -18,18 +19,20 @@ http://mikefowler.me/journal/2014/06/10/drawing-geojson-in-a-canvas
 | `options` | --        |             | `undefined \| { bounds?: BoundsRectangle \| undefined; scale: number; attributes?: any[] \| { [key: string]: string; } \| undefined; pointAsCircle?: boolean \| undefined; output?: "svg" \| "paths" \| undefined; explode?: boolean \| undefined; pointRadius?: number \| undefined; }` | `undefined` |
 | `width`   | `width`   |             | `number`                                                                                                                                                                                                                                                                                 | `undefined` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [ptp-info-jurisdiction](../ptp-info-jurisdiction)
+ - [ptp-info-jurisdiction](../ptp-info-jurisdiction)
 
 ### Graph
-
 ```mermaid
 graph TD;
   ptp-info-jurisdiction --> ui-geojson-to-svg
   style ui-geojson-to-svg fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+
