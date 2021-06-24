@@ -15,10 +15,7 @@ export const config: Config = {
    plugins: [
       replace( {
          exclude: "node_modules/**",
-         values: {
-            // replace SMARTY_STREETS_KEY with actual env vars present in the environment during build, else leave it as-is
-            "process.env.SMARTY_STREETS_KEY": process.env.SMARTY_STREETS_KEY ? `"${process.env.SMARTY_STREETS_KEY}"` : "process.env.SMARTY_STREETS_KEY",
-         },
+         values: {},
       } ),
       sass( {
          // scss files will automatically have these added
