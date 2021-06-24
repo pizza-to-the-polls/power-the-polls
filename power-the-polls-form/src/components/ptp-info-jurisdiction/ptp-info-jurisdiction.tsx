@@ -258,7 +258,7 @@ export class JurisdictionInfoComponent {
                                  '<a target="_blank"',
                               ).replace(
                                  /\"https\:\/\/workelections\.com\/jurisdiction\//g,
-                                 '"https://powerthepolls.org/jurisdiction',
+                                 '"https://powerthepolls.org/jurisdiction/',
                               ) +
                               "</body>"
                            }
