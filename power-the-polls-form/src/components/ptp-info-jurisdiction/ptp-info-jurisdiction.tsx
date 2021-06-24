@@ -15,12 +15,8 @@ import {
    allNullOrEmpty,
    isNullOrEmpty,
    PtpFormData,
-   PtpLink,
 } from "../../util";
-import {
-   fetchJurisdictionGeoJson,
-   fetchJurisdictionInfo,
-} from "../../util/WorkElections";
+import { fetchJurisdictionInfo } from "../../util/WorkElections";
 
 import AdditionalInfoForm from "./AdditionalInfoForm";
 import CallToApplyButton from "./CallToApplyButton";
@@ -70,11 +66,10 @@ export class JurisdictionInfoComponent {
       this.formData = this.initialFormData || {};
       if (this.jurisdictionId && this.jurisdictionId !== -1) {
          fetchJurisdictionInfo(this.jurisdictionId).then(
-            (x) => (this.jurisdiction = x)
+            (x) => (this.jurisdiction = x),
          );
-         fetchJurisdictionGeoJson(this.jurisdictionId).then(
-            (x) => (this.jurisdictionShape = x)
-         );
+         // Not currently supported by WE
+         // fetchJurisdictionGeoJson( this.jurisdictionId ).then( x => this.jurisdictionShape = x );
       }
    }
 
@@ -210,9 +205,8 @@ export class JurisdictionInfoComponent {
             </Host>
          );
       }
-
       const stateInfo = States[j.state.alpha];
-      const hasApplication = !(j?.application == null || j?.application === "");
+      const hasApplication = !(j?.online_application == null || j?.online_application === "");
 
       return (
          <Host>
@@ -249,36 +243,13 @@ export class JurisdictionInfoComponent {
                />
             ) : (
                <Fragment>
-                  {j.jurisdiction_link_text && j.jurisdiction_link && (
-                     <p>
-                        {j.jurisdiction_link_text}{" "}
-                        <PtpLink
-                           path={`/jurisdiction/${j.jurisdiction_link.id}`}
-                        >
-                           click here
-                        </PtpLink>
-                        .
-                     </p>
-                  )}
-
-                  {j.state.alpha === "GA" ? (
-                     <p>
-                        Thank you so much for your interest in being a poll
-                        worker. Poll workers are needed for the upcoming runoff
-                        elections so be sure to complete your application &amp;
-                        reach out to your local election administrator to learn
-                        more about training and other official application
-                        procedures for poll workers.
-                     </p>
-                  ) : (
-                     <p>
-                        Thank you so much for your interest in being a poll
-                        worker. Please be sure to reach out to your local
-                        election administrator to learn more about their needs
-                        for upcoming elections, as well as official application
-                        procedures for poll workers.
-                     </p>
-                  )}
+                  <p>
+                     Thank you so much for your interest in being a poll
+                     worker. Please be sure to reach out to your local
+                     election administrator to learn more about their needs
+                     for upcoming elections, as well as official application
+                     procedures for poll workers.
+                  </p>
 
                   <CompleteApplicationButton jurisdiction={j} />
 
@@ -378,8 +349,8 @@ export class JurisdictionInfoComponent {
                      {!allNullOrEmpty(
                         j?.hours_start,
                         j?.hours_end,
-                        j?.compensation,
-                        j?.full_day_req
+                        j?.compensation_for_the_day,
+                        j?.full_day_required,
                      ) ? (
                         <ul>
                            {j.hours_start && (
@@ -394,22 +365,22 @@ export class JurisdictionInfoComponent {
                                  {j.hours_end}
                               </li>
                            )}
-                           {j.compensation && (
+                           {j.compensation_for_the_day && (
                               <li>
                                  <strong>Compensation: </strong>
-                                 {j.compensation}
+                                 {j.compensation_for_the_day}
                               </li>
                            )}
-                           {j.full_day_req === "Y" ? (
+                           {j.full_day_required === "Y" ? (
                               <li>You must work the full day</li>
                            ) : null}
-                           {j.full_day_req === "N" && (
+                           {j.full_day_required === "N" && (
                               <li>
                                  Part-day poll worker shifts are available.
                               </li>
                            )}
-                           {j.full_day_req.length > 1 && (
-                              <li>{j.full_day_req}</li>
+                           {j.full_day_required.length > 1 && (
+                              <li>{j.full_day_required}</li>
                            )}
                         </ul>
                      ) : (
@@ -439,9 +410,8 @@ export class JurisdictionInfoComponent {
                      <h4>Work Requirements</h4>
                      {!allNullOrEmpty(
                         j?.minimum_age,
-                        j?.training,
-                        j?.complete_training,
-                        j?.training_note
+                        j?.training_required,
+                        j?.training_note,
                      ) ? (
                         <ul>
                            {j.minimum_age && (
@@ -450,25 +420,29 @@ export class JurisdictionInfoComponent {
                                  {j.minimum_age}
                               </li>
                            )}
-                           {j.training === "Y" && (
+                           {j.training_required && (
                               <li>You must attend a training session.</li>
-                           )}
-                           {j.training.length > 1 && <li>{j.training}</li>}
-                           {j.complete_training === "Y" && (
-                              <li>You must work the full day.</li>
-                           )}
-                           {j.complete_training === "N" && (
-                              <li>
-                                 Part-day poll worker shifts are available.
-                              </li>
-                           )}
-                           {j.complete_training.length > 1 && (
-                              <li>{j.complete_training}</li>
                            )}
                            {j.training_note && (
                               <li>
                                  <strong>Training Details: </strong>
-                                 {j.training_note}
+                                 <div>
+                                    <iframe
+                                       sandbox="allow-popups"
+                                       width="100%"
+                                       height="100%"
+                                       frameBorder="0"
+                                       srcDoc={
+                                          // hacky way to add styles to the iframe
+                                          '<head><link href="/build/app.css" rel="stylesheet"></head><body>' +
+                                          j.training_note.replace(
+                                             /\<a/g,
+                                             '<a target="_blank"',
+                                          ) +
+                                          "</body>"
+                                       }
+                                    />
+                                 </div>
                               </li>
                            )}
                         </ul>
@@ -480,11 +454,11 @@ export class JurisdictionInfoComponent {
                      )}
                   </section>
 
-                  {!allNullOrEmpty(j?.further_notes, j?.trusted_notes) ? (
+                  {!allNullOrEmpty(j?.further_notes, j?.notes) ? (
                      <section>
                         <h4>Further Notes</h4>
                         <p>{j.further_notes}</p>
-                        {j.trusted_notes && ( // "trusted"
+                        {j.notes && ( // "trusted"
                            <div>
                               <iframe
                                  sandbox="allow-popups"
@@ -494,9 +468,9 @@ export class JurisdictionInfoComponent {
                                  srcDoc={
                                     // hacky way to add styles to the iframe
                                     '<head><link href="/build/app.css" rel="stylesheet"></head><body>' +
-                                    j.trusted_notes.replace(
+                                    j.notes.replace(
                                        /\<a/g,
-                                       '<a target="_blank"'
+                                       '<a target="_blank"',
                                     ) +
                                     "</body>"
                                  }
@@ -509,7 +483,7 @@ export class JurisdictionInfoComponent {
                   {!allNullOrEmpty(
                      j?.telephone,
                      j?.email,
-                     j?.office_address
+                     j?.office_address,
                   ) ? (
                      <section>
                         <h4>Contact Information</h4>
@@ -531,7 +505,7 @@ export class JurisdictionInfoComponent {
                               <a
                                  target="_blank"
                                  href={`https://www.google.com/maps/search/${encodeURIComponent(
-                                    j?.office_address
+                                    j?.office_address,
                                  )}`}
                               >
                                  {j?.office_address}
@@ -541,10 +515,11 @@ export class JurisdictionInfoComponent {
                      </section>
                   ) : null}
 
-                  {j.website && (
+
+                  {j.info_website && (
                      <a
                         class="poll-worker-action"
-                        href={j.website}
+                        href={j.info_website}
                         target="_blank"
                      >
                         Poll Worker Information

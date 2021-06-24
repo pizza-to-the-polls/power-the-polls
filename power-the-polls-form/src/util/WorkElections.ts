@@ -12,7 +12,7 @@ const fetchFromWE = async (path: string) => {
       {
          method: "GET",
          mode: "cors",
-      }
+      },
    );
    return await data.json();
 };
@@ -21,18 +21,27 @@ export const fetchStateInfo = (stateId: number): Promise<StateInfo> => {
    return fetchFromWE(`/states/${stateId}/`);
 };
 
-export const fetchJurisdictionInfo = (
-   jurisdictionId: number | string
+export const fetchJurisdictionInfo = async (
+   jurisdictionId: number | string,
 ): Promise<JurisdictionInfo> => {
-   return fetchFromWE(`/jurisdictions/${jurisdictionId}/`);
+   const { id, acf, title: { rendered }, link } = await fetchFromWE(`/wp-json/wp/v2/jurisdiction/${jurisdictionId}/`);
+
+   const alpha = link.replace("https://workelections.com/jurisdiction/", "").toUpperCase().split("/")[0];
+
+   return {
+      id,
+      name: rendered,
+      ...acf,
+      state: { alpha },
+   };
 };
 export const fetchStateJurisdictionsList = (
-   stateId: number
+   stateId: number,
 ): Promise<JurisdictionInfo[]> => {
    return fetchFromWE(`/jurisdictions/?summary=true&state_id=${stateId}`);
 };
 export const fetchJurisdictionGeoJson = (
-   jurisdictionId: number | string
+   jurisdictionId: number | string,
 ): Promise<MultiPolygon> => {
    return fetchFromWE(`/jurisdictions/${jurisdictionId}/geojson/`);
 };
@@ -43,7 +52,7 @@ export const fetchJurisdictionGeoJson = (
 export const findJurisdictionId = (
    state: string,
    county?: string,
-   city?: string
+   city?: string,
 ): number | null => {
    const stateData = States[state];
    if (stateData) {
