@@ -16,10 +16,10 @@ type validationOptions = {
 };
 
 const emailValidationRegex = RegExp(
-   '^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$'
+   '^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$',
 );
 const phoneValidationRegex = RegExp(
-   "(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}"
+   "(?:\\+1)?[-.\\s]?\\(?([0-9]{3})\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}",
 );
 
 /**
@@ -69,7 +69,7 @@ export class EmailApplicationForm {
       const findIfFormIsValid = (
          fieldValidState: validationOptions,
          fieldVal: string,
-         newValue: boolean
+         newValue: boolean,
       ) => {
          const copy = { ...fieldValidState };
          copy[fieldVal] = newValue;
@@ -92,7 +92,7 @@ export class EmailApplicationForm {
          this.isFormValid = findIfFormIsValid(
             this.fieldValidState,
             "email",
-            isValid
+            isValid,
          );
       };
 
@@ -103,7 +103,7 @@ export class EmailApplicationForm {
          this.isFormValid = findIfFormIsValid(
             this.fieldValidState,
             "age",
-            isValid
+            isValid,
          );
       };
 
@@ -115,7 +115,7 @@ export class EmailApplicationForm {
          this.isFormValid = findIfFormIsValid(
             this.fieldValidState,
             "phone",
-            isValid
+            isValid,
          );
       };
 
@@ -126,7 +126,7 @@ export class EmailApplicationForm {
          this.isFormValid = findIfFormIsValid(
             this.fieldValidState,
             fieldName,
-            isValid
+            isValid,
          );
       };
 
@@ -141,7 +141,7 @@ export class EmailApplicationForm {
             })
                .then((result) => {
                   console.log(
-                     `Email sending ${result.statusText} (${result.status})`
+                     `Email sending ${result.statusText} (${result.status})`,
                   );
                   this.submitted.emit();
                })

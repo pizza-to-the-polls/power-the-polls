@@ -75,7 +75,7 @@ export class JurisdictionInfoComponent {
 
    @Watch("additionalInfoFormStatus")
    public onAdditionalInfoFormStatusChanged(
-      val: "pending" | "submitting" | "submitted"
+      val: "pending" | "submitting" | "submitted",
    ) {
       // fake some loading so the user gets feedback
       if (val === "submitting") {
@@ -166,7 +166,7 @@ export class JurisdictionInfoComponent {
                      <p>
                         If you have any questions about eligibility,
                         compensation, or placement, reach out to our local
-                        partners at 
+                        partners at
                         <a href="mailto:pollworkers@michiganvoting.org">
                            pollworkers@michiganvoting.org
                         </a>

@@ -5,7 +5,7 @@ import { FullJurisdictionsInfo as FullJurisdictions, States } from "../data";
  */
 const isJurisdictionFilled = (
    state: string | null,
-   jurisdictionId: string | null
+   jurisdictionId: string | null,
 ) => {
    if (state == null || !(state in States)) {
       return [false, "Unknown"];
@@ -29,14 +29,14 @@ const isJurisdictionFilled = (
       // find the matching jurisdiction name by its ID
       const jurisdictionName =
          Object.keys(stateJurisdictions).find(
-            (key) => stateJurisdictions[key] + "" === jurisdictionId
+            (key) => stateJurisdictions[key] + "" === jurisdictionId,
          ) || "";
       return [
          // strip out any extraneous county name suffixes that aren't in the full jurisdiction name
          FullJurisdictions[state].includes(
             jurisdictionName
                .replace(/(County|\(Town\)|\(City\)|Parish|Plantation)$/, "")
-               .trim()
+               .trim(),
          ),
          jurisdictionName,
       ];

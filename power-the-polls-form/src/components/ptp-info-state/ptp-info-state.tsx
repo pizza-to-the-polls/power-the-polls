@@ -62,7 +62,7 @@ export class StateInfoComponent {
       this.stateId = this.state ? findStateId(this.state) : null;
       if (this.stateId) {
          fetchStateJurisdictionsList(this.stateId).then(
-            (x) => (this.stateJurisdictions = x)
+            (x) => (this.stateJurisdictions = x),
          );
          fetchStateInfo(this.stateId).then((x) => (this.stateInfo = x));
       } else {

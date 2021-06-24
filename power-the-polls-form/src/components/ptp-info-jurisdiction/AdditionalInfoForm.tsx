@@ -11,7 +11,7 @@ type OptionProps = {
 };
 const Options: FunctionalComponent<OptionProps> = (
    { choices, inputName, type },
-   children
+   children,
 ) =>
    type === "select" ? (
       <label>
@@ -89,7 +89,7 @@ const AdditionalInfoForm: FunctionalComponent<{
                email: data?.email,
                // Needs to match to a Page in ActionKit or it will return 400
                page: "mi-extra",
-            } as any
+            } as any,
          );
 
          submitToActionKit(toActionKit).then((result) => {

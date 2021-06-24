@@ -12,14 +12,14 @@ export interface ZipGeocodingError {
 }
 
 export default async (
-   zipcode: string
+   zipcode: string,
 ): Promise<ZipGeocodingResult | ZipGeocodingError> => {
    const url = new URL("https" + "://smartystreet.powerthepolls.org/dev/zip");
    url.searchParams.append("zipcode", zipcode);
    return fetch(url.toString())
       .then(
          (response) => response.json(),
-         (error) => console.log("SmartyStreets Error:", error)
+         (error) => console.log("SmartyStreets Error:", error),
       )
       .then((response: USZipCode.QueryResult) => {
          let result: USZipCode.QueryResultItem = response[0];
@@ -36,14 +36,14 @@ export default async (
 
          if (result.city_states) {
             result.city_states.forEach((city: USZipCode.CityState) =>
-               cities.add(city.city)
+               cities.add(city.city),
             );
          }
 
          counties.add(defaultCityState.county_name);
          states.set(
             defaultCityState.state_abbreviation,
-            defaultCityState.state
+            defaultCityState.state,
          );
 
          if (defaultCityState.alternate_counties) {
@@ -51,7 +51,7 @@ export default async (
                (county: USZipCode.AlternateCounty) => {
                   counties.add(county.county_name);
                   states.set(county.state_abbreviation, county.state);
-               }
+               },
             );
          }
 

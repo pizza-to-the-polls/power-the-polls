@@ -18,7 +18,7 @@ import { BoundsRectangle, Coordinate, Options } from "./types";
 function convertCoordinatesToPathString(
    coords: Coordinate[],
    res: number,
-   bounds: BoundsRectangle
+   bounds: BoundsRectangle,
 ) {
    return translateCoordinates(coords, res, bounds)
       .map((coord) => coord[0] + "," + coord[1])
@@ -29,14 +29,14 @@ export function Point(
    geom: GJPoint,
    res: number,
    bounds: BoundsRectangle,
-   opt?: Options
+   opt?: Options,
 ): string[] {
    const r = opt && opt.pointRadius ? opt.pointRadius : 1;
    const pointAsCircle = !!(opt && opt.pointAsCircle);
    const coords = convertCoordinatesToPathString(
       [geom.coordinates as Coordinate],
       res,
-      bounds
+      bounds,
    );
    return pointAsCircle
       ? [coords]
@@ -69,11 +69,11 @@ export function MultiPoint(
    geom: GJMultiPoint,
    res: number,
    bounds: BoundsRectangle,
-   opt?: Options
+   opt?: Options,
 ): string[] {
    const exploded = !!(opt && opt.explode);
    const paths = explode(geom).map(
-      (single) => Point(single, res, bounds, opt)[0]
+      (single) => Point(single, res, bounds, opt)[0],
    );
    return !exploded ? [paths.join(" ")] : paths;
 }
@@ -82,14 +82,14 @@ export function LineString(
    geom: GJLineString,
    res: number,
    bounds: BoundsRectangle,
-   _?: any
+   _?: any,
 ): string[] {
    return [
       "M" +
          convertCoordinatesToPathString(
             geom.coordinates as Coordinate[],
             res,
-            bounds
+            bounds,
          ),
    ];
 }
@@ -98,11 +98,11 @@ export function MultiLineString(
    geom: GJMultiLineString,
    res: number,
    bounds: BoundsRectangle,
-   opt?: { explode?: boolean }
+   opt?: { explode?: boolean },
 ): string[] {
    const exploded = !!(opt && opt.explode);
    const paths = explode(geom).map(
-      (single) => LineString(single, res, bounds)[0]
+      (single) => LineString(single, res, bounds)[0],
    );
    return !exploded ? [paths.join(" ")] : paths;
 }
@@ -111,12 +111,12 @@ export function Polygon(
    geom: GJPolygon,
    res: number,
    bounds: BoundsRectangle,
-   _?: any
+   _?: any,
 ): string[] {
    let result = convertCoordinatesToPathString(
       geom.coordinates[0] as Coordinate[],
       res,
-      bounds
+      bounds,
    );
    if (geom.coordinates.length > 1) {
       let holes = geom.coordinates.slice(1, geom.coordinates.length);
@@ -127,7 +127,7 @@ export function Polygon(
                convertCoordinatesToPathString(
                   holes[i] as Coordinate[],
                   res,
-                  bounds
+                  bounds,
                );
          }
       }
@@ -139,7 +139,7 @@ export function MultiPolygon(
    geom: GJMultiPolygon,
    res: number,
    bounds: BoundsRectangle,
-   opt?: { explode?: boolean }
+   opt?: { explode?: boolean },
 ): string[] {
    let exploded = !!(opt && opt.explode);
    let paths = explode(geom).map((single) => {

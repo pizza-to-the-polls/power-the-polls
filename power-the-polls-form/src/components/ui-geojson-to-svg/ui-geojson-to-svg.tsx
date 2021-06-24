@@ -94,8 +94,8 @@ export class UiGeojsonToSvg {
                      x.coordinates[0].length > p.coordinates[0].length
                         ? x
                         : p,
-                  null as Polygon | null
-               )!
+                  null as Polygon | null,
+               )!,
          );
          const scale = this.calculateScale(bounds, {
             width: this.width,
@@ -127,8 +127,8 @@ export class UiGeojsonToSvg {
                   polygons.map((coordinates) =>
                      coordinates
                         .map((pos) => mercator(pos[0], pos[1]))
-                        .map((pt) => [pt.x, pt.y] as GeoJSON.Position)
-                  )
+                        .map((pt) => [pt.x, pt.y] as GeoJSON.Position),
+                  ),
                ),
             };
          } catch (e) {
@@ -169,7 +169,7 @@ export class UiGeojsonToSvg {
    private calculateScale(
       bounds: BoundsRectangle,
       viewportSize: Size,
-      fitTo?: "width" | "height" | "larger" | "smaller"
+      fitTo?: "width" | "height" | "larger" | "smaller",
    ): number {
       let xScale = viewportSize.width / Math.abs(bounds.xMax - bounds.xMin);
       let yScale = viewportSize.height / Math.abs(bounds.yMax - bounds.yMin);

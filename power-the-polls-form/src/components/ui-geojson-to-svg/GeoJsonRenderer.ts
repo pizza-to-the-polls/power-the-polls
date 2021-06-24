@@ -59,7 +59,7 @@ class GeoJsonRenderer {
 
    private convertFeature<G extends Geometry = Geometry>(
       feature: Feature<G, GeoJsonProperties>,
-      options?: Options
+      options?: Options,
    ) {
       const featureGeometry = feature?.geometry;
       if (featureGeometry == null) {
@@ -126,7 +126,7 @@ class GeoJsonRenderer {
             geom as any /*FIXME*/,
             this.options.scale,
             this.options.bounds!,
-            opt
+            opt,
          );
          if (output === "svg") {
             const svgJsons = paths.map(function (path) {
@@ -155,7 +155,7 @@ function pathToSvgJson(
    path: string,
    type: GeoJsonTypes,
    attributes: any,
-   opt?: Options
+   opt?: Options,
 ) {
    let svg: any = {};
    let pointAsCircle = !!(opt && opt.pointAsCircle);
@@ -198,7 +198,7 @@ function valueAt(obj: any, path: string) {
          return x[prop];
       } else {
          throw new Error(
-            arr.slice(0, i + 1).join(".") + " is not a valid property path"
+            arr.slice(0, i + 1).join(".") + " is not a valid property path",
          );
       }
    }, obj);
