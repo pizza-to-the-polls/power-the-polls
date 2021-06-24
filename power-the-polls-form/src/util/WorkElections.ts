@@ -78,6 +78,8 @@ export const findJurisdictionId = (
          `${city} (Township)`,
          `${city} City`,
          `${city}, ${county} County`,
+         `${city} Village, ${county} County`,
+         `${city} Township, ${county} County`,
          `${city} (City), ${county} County`,
          `${city} (Town), ${county} County`,
          `${county} County`,
