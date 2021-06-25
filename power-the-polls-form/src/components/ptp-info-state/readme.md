@@ -1,7 +1,5 @@
 # ptp-info-state
 
-
-
 <!-- Auto Generated Below -->
 
 

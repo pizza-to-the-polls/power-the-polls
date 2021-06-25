@@ -17,7 +17,7 @@ export class PageJurisdiction {
       const id = this.match ? this.match.params.id : null;
       return !id
          ? <stencil-router-redirect url="/search" />
-         : <ptp-info-poll-worker jurisdictionId={id} />;
+         : <ptp-info-poll-worker jurisdictionIdOrSlug={id} />;
    }
 
 }

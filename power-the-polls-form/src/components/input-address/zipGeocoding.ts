@@ -11,18 +11,20 @@ export interface ZipGeocodingError {
    error: string;
 }
 
-export default async ( zipcode: string ): Promise<ZipGeocodingResult | ZipGeocodingError> => {
-   const url = new URL( "https" + "://smartystreet.powerthepolls.org/dev/zip" );
-   url.searchParams.append( "zipcode", zipcode );
-   return fetch( url.toString() )
+export default async (
+   zipcode: string,
+): Promise<ZipGeocodingResult | ZipGeocodingError> => {
+   const url = new URL("https" + "://smartystreet.powerthepolls.org/dev/zip");
+   url.searchParams.append("zipcode", zipcode);
+   return fetch(url.toString())
       .then(
-         response => response.json(),
-         error => console.log( "SmartyStreets Error:", error ),
+         (response) => response.json(),
+         (error) => console.log("SmartyStreets Error:", error),
       )
-      .then( ( response: USZipCode.QueryResult ) => {
+      .then((response: USZipCode.QueryResult) => {
          let result: USZipCode.QueryResultItem = response[0];
 
-         if( result.reason ) {
+         if (result.reason) {
             return { error: result.reason };
          }
 
@@ -30,20 +32,27 @@ export default async ( zipcode: string ): Promise<ZipGeocodingResult | ZipGeocod
          let counties = new Set<string>();
          let states = new Map<StateCode, string>(); // Abbreviation to full name
 
-         let defaultCityState = ( result.zipcodes as USZipCode.ZipCode[] )[0];
+         let defaultCityState = (result.zipcodes as USZipCode.ZipCode[])[0];
 
-         if( result.city_states ) {
-            result.city_states.forEach( ( city: USZipCode.CityState ) => cities.add( city.city ) );
+         if (result.city_states) {
+            result.city_states.forEach((city: USZipCode.CityState) =>
+               cities.add(city.city),
+            );
          }
 
-         counties.add( defaultCityState.county_name );
-         states.set( defaultCityState.state_abbreviation, defaultCityState.state );
+         counties.add(defaultCityState.county_name);
+         states.set(
+            defaultCityState.state_abbreviation,
+            defaultCityState.state,
+         );
 
-         if( defaultCityState.alternate_counties ) {
-            defaultCityState.alternate_counties.forEach( ( county: USZipCode.AlternateCounty ) => {
-               counties.add( county.county_name );
-               states.set( county.state_abbreviation, county.state );
-            } );
+         if (defaultCityState.alternate_counties) {
+            defaultCityState.alternate_counties.forEach(
+               (county: USZipCode.AlternateCounty) => {
+                  counties.add(county.county_name);
+                  states.set(county.state_abbreviation, county.state);
+               },
+            );
          }
 
          return {
@@ -52,5 +61,5 @@ export default async ( zipcode: string ): Promise<ZipGeocodingResult | ZipGeocod
             counties: counties,
             states: states,
          };
-      } );
+      });
 };

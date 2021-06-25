@@ -1,1 +1,3 @@
-export interface FullJurisdictionData { [state: string]: string[]; }
+export interface FullJurisdictionData {
+   [state: string]: string[];
+}

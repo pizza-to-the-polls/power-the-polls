@@ -1,4 +1,12 @@
-import { Component, Event, EventEmitter, h, Host, Method, State } from "@stencil/core";
+import {
+   Component,
+   Event,
+   EventEmitter,
+   h,
+   Host,
+   Method,
+   State,
+} from "@stencil/core";
 
 import ZipGeocode from "./zipGeocoding";
 
@@ -6,17 +14,17 @@ import ZipGeocode from "./zipGeocoding";
  * An input and (optional) select element for a US postal address and state which will lookup address values based on
  * the user's input to allow the user to select from.
  */
-@Component( {
+@Component({
    tag: "input-address",
    shadow: false,
-} )
+})
 export class AddressInput {
-
-   @Event( {
+   @Event({
       eventName: "lookup",
       composed: true,
       cancelable: false,
-   } ) public onLookup!: EventEmitter<"STARTED" | "COMPLETED">;
+   })
+   public onLookup!: EventEmitter<"STARTED" | "COMPLETED">;
 
    @State() private cityValue: string;
    @State() private countyValue: string;
@@ -39,70 +47,70 @@ export class AddressInput {
 
    @Method()
    public state() {
-      return Promise.resolve( this.m_state );
+      return Promise.resolve(this.m_state);
    }
 
    public render() {
       const zipValidationRegex = /^\d{5}$/;
 
-      const onZipInputChange = ( event: Event ) => {
-         this.zipValue = ( event.target as HTMLInputElement ).value;
-         if( zipValidationRegex.test( this.zipValue ) ) {
+      const onZipInputChange = (event: Event) => {
+         this.zipValue = (event.target as HTMLInputElement).value;
+         if (zipValidationRegex.test(this.zipValue)) {
             this.m_state = "STARTED";
-            this.onLookup.emit( this.m_state );
-            ZipGeocode( this.zipValue )
-               .then( ( result ) => {
-                  if( "error" in result ) {
-                     console.log( result.error );
-                  } else {
-                     this.cityOptions = result.cities;
-                     this.cityValue = this.cityOptions.values().next().value;
-                     this.countyOptions = result.counties;
-                     this.countyValue = this.countyOptions.values().next().value;
-                     this.stateOptions = result.states;
-                     this.stateValue = this.stateOptions.keys().next().value;
-                  }
-                  this.m_state = "COMPLETED";
-                  this.onLookup.emit( this.m_state );
-               } );
+            this.onLookup.emit(this.m_state);
+            ZipGeocode(this.zipValue).then((result) => {
+               if ("error" in result) {
+                  console.log(result.error);
+               } else {
+                  this.cityOptions = result.cities;
+                  this.cityValue = this.cityOptions.values().next().value;
+                  this.countyOptions = result.counties;
+                  this.countyValue = this.countyOptions.values().next().value;
+                  this.stateOptions = result.states;
+                  this.stateValue = this.stateOptions.keys().next().value;
+               }
+               this.m_state = "COMPLETED";
+               this.onLookup.emit(this.m_state);
+            });
          }
       };
 
-      return ( <Host>
+      return (
+         <Host>
+            <label>
+               ZIP
+               <input
+                  name="zip"
+                  required
+                  value={this.zipValue}
+                  pattern={"\\d{5}"}
+                  maxLength={5}
+                  title={"Please enter a valid ZIP code"}
+                  onInput={onZipInputChange}
+               />
+            </label>
 
-         <label>
-            ZIP
-            <input
-               name="zip"
-               required
-               value={this.zipValue}
-               pattern={"\\d{5}"}
-               maxLength={5}
-               title={"Please enter a valid ZIP code"}
-               onInput={onZipInputChange}
+            <input-possibly-hidden-select
+               fieldLabel="City"
+               name="city"
+               selected={this.cityValue}
+               options={this.cityOptions}
             />
-         </label>
 
-         <input-possibly-hidden-select
-            fieldLabel="City"
-            name="city"
-            selected={this.cityValue}
-            options={this.cityOptions}
-         />
+            <input-possibly-hidden-select
+               fieldLabel="County"
+               name="user_county"
+               selected={this.countyValue}
+               options={this.countyOptions}
+            />
 
-         <input-possibly-hidden-select
-            fieldLabel="County"
-            name="user_county"
-            selected={this.countyValue}
-            options={this.countyOptions}
-         />
-
-         <input-possibly-hidden-select
-            fieldLabel="State"
-            name="state"
-            selected={this.stateValue}
-            options={this.stateOptions}
-         />
-      </Host> );
+            <input-possibly-hidden-select
+               fieldLabel="State"
+               name="state"
+               selected={this.stateValue}
+               options={this.stateOptions}
+            />
+         </Host>
+      );
    }
 }

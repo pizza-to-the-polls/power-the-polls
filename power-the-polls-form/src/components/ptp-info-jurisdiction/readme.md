@@ -1,7 +1,5 @@
 # ptp-info-jurisdiction
 
-
-
 <!-- Auto Generated Below -->
 
 

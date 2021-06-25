@@ -101,6 +101,10 @@ export class AppRoot {
             component: "page-info",
          },
          {
+            url: "/jurisdiction/:state/:id",
+            component: "page-jurisdiction",
+         },
+         {
             url: "/jurisdiction/:id",
             component: "page-jurisdiction",
          },

@@ -4,7 +4,7 @@ Renders GeoJSON for each jurisdiction.
 
 Adapted from:
 https://github.com/gagan-bansal/geojson2svg
-https://github.com/geosquare/multigeojson 
+https://github.com/geosquare/multigeojson
 http://mikefowler.me/journal/2014/06/10/drawing-geojson-in-a-canvas
 
 <!-- Auto Generated Below -->

@@ -52,7 +52,7 @@ This is currently done manually
 1. In `/site`, remove the npm version and reference the local version with `npm uninstall @ptp-us/power-the-polls-form` and then `npm install ../power-the-polls-form`
 2. In `page-form.tsx` change the import from `import "@ptp-us/power-the-polls-form";` to `import "@ptp-us/power-the-polls-form/dist";`
 3. In `/power-the-polls-form` Use `npm run build` which will build the form and then  in `/site` run `npm run dev`
-   > NOTE: Watch doesn't work across the projects atm. So you'll still have to kill the process and re-run `npm run dev:form` if you change the form.
+   > NOTE: Watch doesn't work across the projects atm. So you'll still have to kill the process and re-run `npm run dev` if you change the form.
 4. Make sure you don't commit this `package.json` or `page-form.tsx`
 
 ### Deploying
