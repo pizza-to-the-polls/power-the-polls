@@ -85,7 +85,7 @@ export class PageForm {
                         <h2>Paid*</h2>
                      </div>
                   </div>
-                  <p class="accent">*Varies by district</p>
+                  <p class="accent">*Varies by location</p>
                </div>
                <hr />
             </Fragment> ) : null}
