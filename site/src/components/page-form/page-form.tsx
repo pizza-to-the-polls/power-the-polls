@@ -64,18 +64,15 @@ export class PageForm {
                )}
                <h1 class={{ "partner": partner?.logoAppearsOnLandingPage ?? false }}>Help staff your local polling place</h1>
                <p>
-                  In 2020, America faced a record shortage of poll workers due to the coronavirus, and over 700,000 people stepped up to help
-                  Power the Polls meet that challenge. That was just the beginning. Our democracy depends on ordinary people who make sure every
-                  election runs smoothly and everyone's vote is counted. You can make sure we have a safe, fair, efficient election for all.
+                  In 2020, America faced a record shortage of poll workers due to the coronavirus, and over 700,000 people stepped up via Power the Polls to help meet that challenge. That was just the beginning.
+               </p>
+               <p>
+                  Our democracy depends on ordinary people who make sure every election runs smoothly and everyone's vote is counted. You can make sure we have safe, fair, and efficient elections for all.
                </p>
 
                <div class="incentive-container">
                   <p class="accent uppercase">Poll workers get:</p>
                   <div class="incentive-items">
-                     <div>
-                        <img src="/assets/images/icon_checkmark.svg" />
-                        <h2>PPE</h2>
-                     </div>
                      <div>
                         <img src="/assets/images/icon_checkmark.svg" />
                         <h2>Training</h2>
@@ -85,7 +82,7 @@ export class PageForm {
                         <h2>Paid*</h2>
                      </div>
                   </div>
-                  <p class="accent">*Varies by district</p>
+                  <p class="accent">*Varies by location</p>
                </div>
                <hr />
             </Fragment> ) : null}
