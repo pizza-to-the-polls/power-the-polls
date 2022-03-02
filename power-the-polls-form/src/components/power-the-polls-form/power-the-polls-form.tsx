@@ -272,7 +272,7 @@ export class PowerThePollsForm {
                   <footer>
                      <p class="disclaimer">
                         <a
-                           href="https://www.workelections.com/"
+                           href="https://www.workelections.org/"
                            target="_blank"
                            rel="noopener"
                         >

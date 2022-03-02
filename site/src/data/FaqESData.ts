@@ -20,7 +20,7 @@ const data: { question: string, answer: string }[] = [
       answer: `
       En algunas jurisdicciones, puede trabajar en los centros de votación si
       es residente permanente. Encuentre el reglamento de su oficina electoral
-      usando workelections.com.
+      usando workelections.org.
       `,
    },
    {
@@ -69,7 +69,7 @@ const data: { question: string, answer: string }[] = [
       inquietudes específicas sobre qué clase de EPP se proporcionará en su
       jurisdicción, comuníquese con sus funcionarios locales para obtener más
       información. La información para contactarlos se puede encontrar en
-      workelections.com.
+      workelections.org.
       `,
    },
    {
@@ -97,7 +97,7 @@ const data: { question: string, answer: string }[] = [
       answer: `
       Los reglamentos varían a través del país y algunas jurisdicciones permiten
       que las personas viajen y trabajen en las urnas aunque no estén
-      registradas para votar en esa jurisdicción. Workelections.com tiene más
+      registradas para votar en esa jurisdicción. workelections.org tiene más
       información para cada jurisdicción. Sin embargo, animamos a las personas
       a inscribirse para trabajar localmente.
       `,

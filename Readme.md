@@ -31,7 +31,7 @@ This is currently done manually
 
 1. [ActionKit](https://ptp.actionkit.com/admin/), is the data store and provides marketing and chase functionality
 2. [SmartyStreets](https://account.smartystreets.com/), is used for address autocomplete and data augmentation.
-3. [WorkElections](https://www.workelections.com), provides all our jurisdiction and election data.
+3. [WorkElections](https://www.workelections.org), provides all our jurisdiction and election data.
 
 ## `/site`
 

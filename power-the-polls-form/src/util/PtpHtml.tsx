@@ -16,11 +16,11 @@ const toJsx = (node: Node): VNode => {
     }
     if( nodeName === "A" && node instanceof HTMLAnchorElement ) {
         const { href } = node;
-        if( href.match(/workelections.com\/jurisdiction/gi) ) {
+        if( href.match(/workelections.org\/jurisdiction/gi) ) {
             return <PtpLink
                         path={
                             href
-                                .replace(/https\:\/\/workelections.com\/jurisdiction/gi, "/jurisdiction") // link to power the polls
+                                .replace(/https\:\/\/workelections.org\/jurisdiction/gi, "/jurisdiction") // link to power the polls
                                 .replace("jurisdiction\/\/", "jurisdiction/") // sometimes WE has bad links : (
                         }
                     >

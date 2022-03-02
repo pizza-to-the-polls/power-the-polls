@@ -32,7 +32,7 @@ export const fetchJurisdictionInfo = async (
 ): Promise<JurisdictionInfo> => {
    const { id, slug, acf, link, title: { rendered } } = await fetchFromWE(`/wp-json/wp/v2/jurisdiction/${jurisdictionId}/`);
 
-   const alpha = link.replace("https://workelections.com/jurisdiction/", "").toUpperCase().split("/")[0];
+   const alpha = link.replace("https://workelections.org/jurisdiction/", "").toUpperCase().split("/")[0];
 
    return {
       id,
