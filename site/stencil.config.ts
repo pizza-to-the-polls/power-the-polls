@@ -12,6 +12,7 @@ export const config: Config = {
    globalStyle: "styles/main.scss",
    globalScript: "src/app-init.ts",
    srcDir: "src", // "src" is the default; just here for clarity
+   sourceMap: true,
    plugins: [
       replace( {
          exclude: "node_modules/**",
