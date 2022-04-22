@@ -17,6 +17,7 @@ import {
     PtpFormData,
     PtpHtml,
 } from "../../util";
+import {fetchJurisdictionInfo} from "../../util/WorkElections";
 
 import AdditionalInfoForm from "./AdditionalInfoForm";
 import CallToApplyButton from "./CallToApplyButton";
@@ -60,6 +61,17 @@ export class JurisdictionInfoComponent {
         this.showNextSteps = false;
         // we are post-election, so setting additional info state to "submitted" so the form doesn't show up
         this.additionalInfoFormStatus = "submitted";
+    }
+
+    public componentWillLoad() {
+        this.formData = this.initialFormData || {};
+        if (this.jurisdictionId && this.jurisdictionId !== -1) {
+            fetchJurisdictionInfo(this.jurisdictionId).then(
+                (x) => (this.jurisdiction = x),
+            );
+            // Not currently supported by WE
+            // fetchJurisdictionGeoJson( this.jurisdictionId ).then( x => this.jurisdictionShape = x );
+        }
     }
 
     @Watch("additionalInfoFormStatus")
