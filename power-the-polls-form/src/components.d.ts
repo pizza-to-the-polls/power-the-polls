@@ -79,7 +79,7 @@ export namespace Components {
          */
         "jurisdictionIdOrSlug"?: string | number;
         /**
-          * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+          * If `true`, this component will lso render 1-3 bullet items indicating the next steps for the user
          */
         "showNextSteps": boolean;
         /**
@@ -244,7 +244,7 @@ declare namespace LocalJSX {
          */
         "jurisdictionIdOrSlug"?: string | number;
         /**
-          * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+          * If `true`, this component will lso render 1-3 bullet items indicating the next steps for the user
          */
         "showNextSteps"?: boolean;
         /**
