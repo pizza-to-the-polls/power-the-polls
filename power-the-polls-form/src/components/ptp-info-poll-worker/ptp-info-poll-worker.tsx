@@ -39,7 +39,7 @@ export class PollWorkerInfo {
    @Prop() public formData?: PtpFormData;
 
    /**
-    * If `true`, this component will lso render 1-3 bullet items indicating next steps for the user
+    * If `true`, this component will lso render 1-3 bullet items indicating the next steps for the user
     */
    @Prop() public showNextSteps: boolean;
 
@@ -82,11 +82,6 @@ export class PollWorkerInfo {
                </strong>
             </p>
             <p>
-               We are passing your information on to your state's election
-               administrators who will reach out if their needs change or if
-               there are other opportunities to help their offices.
-            </p>
-            <p>
                <strong>You can still help power the polls</strong> by voting in
                this upcoming election, and encouraging your friends and family
                across the country to register to vote!
@@ -98,8 +93,7 @@ export class PollWorkerInfo {
             <h2>What’s next?</h2>
             <hr />
             {jurisdictionId != null ||
-            stateInfo?.noPollWorkersNeeded === true ||
-            state === "MI" ? (
+            stateInfo?.noPollWorkersNeeded === true ? (
                <ptp-info-jurisdiction
                   jurisdictionId={jurisdictionId}
                   initialFormData={

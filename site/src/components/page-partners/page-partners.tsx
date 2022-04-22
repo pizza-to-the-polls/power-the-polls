@@ -31,17 +31,13 @@ export class PagePartners {
       return ( <Host>
          <h1>Power the Polls Partners</h1>
          <p>
-            Power the Polls is uniting nonprofits and businesses to help recruit and support these workers by:
+            Power the Polls unites nonprofits and businesses to help recruit and support these workers by:
          </p>
          <ul>
             <li>Educating potential voters about the opportunity to work Election Day polling places.</li>
             <li>Creating efficient and effective programming that ensures poll workers sign up and then show up when they’re needed.</li>
             <li>Activating businesses to give their workers Election Day off so they can serve.</li>
-            <li>Providing PPE to ensure worker safety on Election Day (through corporate partners)</li>
          </ul>
-         <p>
-            Over the coming weeks, Power the Polls will recruit poll workers while simultaneously activating business to get involved.
-         </p>
          <p>
             If you’d like to become a campaign partner, please reach out to: <a href="mailto:partnerships@powerthepolls.org">partnerships@powerthepolls.org</a>.
          </p>
@@ -66,7 +62,7 @@ export class PagePartners {
             ) ) )}
          </div>
 
-         <ui-h3-bar>Partners</ui-h3-bar>
+         <ui-h3-bar>Past & Present Partners</ui-h3-bar>
          <div class="partner-logos">
             {partners.map( partner => ( !partner.isFoundingPartner && !partner.excludeFromPartnerList && partner.logo && (
                <ui-partner-image partner={partner} chosenPartnerId={highlightedPartner} />
